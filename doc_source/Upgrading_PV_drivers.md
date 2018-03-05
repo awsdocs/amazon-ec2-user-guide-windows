@@ -40,14 +40,15 @@ When you stop an instance, the data on any instance store volumes is erased\. Th
 
 1. Connect to the instance using Remote Desktop and prepare the instance for upgrade\. We recommend that you take all non\-system disks offline before you perform this upgrade\. Note that this step is not required if you are performing an in\-place update of AWS PV drivers\. We also recommend setting non\-essential services to **Manual** start\-up in the Services console\.
 
-1. [Download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverSetup.zip) the latest driver package to the instance\.
+1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/Latest/AWSPVDriver.zip) the latest driver package to the instance\.
 
 1. Extract the contents of the folder and then run `AWSPVDriverSetup.msi`\.
 
 After running the MSI, the instance automatically reboots and then upgrades the driver\. The instance will not be available for up to 15 minutes\. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)\.
 
-**Note**  
-If you previously disabled [TCP Offloading](pvdrivers-troubleshooting.md#citrix-tcp-offloading) using Netsh for Citrix PV drivers we recommend that you re\-enable this feature after upgrading to AWS PV Drivers\. TCP Offloading issues with Citrix drivers are not present in the AWS PV drivers\. As a result, TCP Offloading provides better performance with AWS PV drivers\.
+If you previously disabled [TCP Offloading](pvdrivers-troubleshooting.md#citrix-tcp-offloading) using Netsh for Citrix PV drivers we recommend that you re\-enable this feature after upgrading to AWS PV drivers\. TCP Offloading issues with Citrix drivers are not present in the AWS PV drivers\. As a result, TCP Offloading provides better performance with AWS PV drivers\.
+
+If you previously applied a static IP address or DNS configuration to the network interface, you must reapply the static IP address or DNS configuration after upgrading AWS PV drivers\.
 
 ## Upgrade Windows Server 2016, Nano Edition \(AWS PV Upgrade\)<a name="aws-pv-upgrade-nano"></a>
 
@@ -118,7 +119,7 @@ After you run this command do not manually reboot the system\. The system will b
    reg add HKLM\SOFTWARE\Wow6432Node\Amazon\AWSPVDriverSetup /v DisableDCCheck /t REG_SZ /d true
    ```
 
-1. [Download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverSetup.zip) the latest driver package to the instance\.
+1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/Latest/AWSPVDriver.zip) the latest driver package to the instance\.
 
 1. Extract the contents of the folder and then run `AWSPVDriverSetup.msi`\.
 

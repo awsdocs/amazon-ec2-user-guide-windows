@@ -83,7 +83,7 @@ There is no way to disable the enhanced networking attribute after you've enable
 
 **To enable enhanced networking**
 
-1. Connect to your instance and log in as the local administrator\.
+1. <a name="amazon-linux-enhanced-networking-start-step"></a>Connect to your instance and log in as the local administrator\.
 
 1. \[Windows Server 2016\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
 

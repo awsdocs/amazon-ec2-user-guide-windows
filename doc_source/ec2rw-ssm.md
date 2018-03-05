@@ -32,8 +32,6 @@ The S3 pre\-signed URL expires after 10 minutes\.
 
 + **Parameters**—The PowerShell parameters to pass for the specified command\.
 
-+ **Region**—The region from which to retrieve the EC2Rescue for Windows Server module\. By default, this is set to the same region from which you are running the command\.
-
 **Note**  
 In order for the **ResetAccess** action to work, your Amazon EC2 instance needs to have the following policy attached in order to write the encrypted password to Parameter Store\. Please wait a few minutes before attempting to reset the password of an instance after you have attached this policy to the related IAM role:  
 
@@ -77,7 +75,7 @@ The following procedure describes how to view the JSON for this document in the 
 
 ## Examples<a name="ec2rw-ssm-examples"></a>
 
-Here are some examples on how to use the Systems Manager Run Command document to execute EC2Rescue for Windows Server, using the AWS CLI\. For more information about sending commands with the AWS CLI, see the [AWS Command Line Interface Reference](http://docs.aws.amazon.com/cli/latest/reference/ssm/send-command.html)\.
+Here are some examples on how to use the Systems Manager Run Command document to execute EC2Rescue for Windows Server, using the AWS CLI\. For more information about sending commands with the AWS CLI, see the [AWS CLI Command Reference](http://docs.aws.amazon.com/cli/latest/reference/ssm/send-command.html)\.
 
 ### Attempt to Fix All Identified Issues Using Either the FixAll or Custom Parameter<a name="ec2rw-ssm-exam1"></a>
 

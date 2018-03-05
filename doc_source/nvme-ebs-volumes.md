@@ -37,10 +37,8 @@ Number SerialNumber
 
 ## Working with NVMe EBS Volumes<a name="using-nvme-ebs-volumes"></a>
 
-If you resize your volume on a Windows system, you need to rescan the volume or reboot the instance for the change to be recognized\.
+The latest AWS Windows AMIs have AWS NVMe drivers that support Elastic Volumes\. However, if you resize your root volume on a Windows system, you must rescan the volume in order for the change to be recognized\. If you aren't using the latest AWS Windows AMIs, you can install the latest AWS NVMe driver\. For more information, see [AWS NVMe Drivers for Windows Instances](aws-nvme-drivers.md)\.
 
 ## I/O Operation Timeout<a name="timeout-nvme-ebs-volumes"></a>
 
-NVMe EBS volumes use the default NVMe driver provided by the operating system\. Most operating systems specify a timeout for I/O operations submitted to NVMe devices\. 
-
-On Windows systems, the default timeout is 30 seconds and the maximum is 255 seconds\. You can modify the `TimeoutValue` disk class registry setting using the procedure described in [Registry Entries for SCSI Miniport Drivers](https://docs.microsoft.com/en-us/windows-hardware/drivers/storage/registry-entries-for-scsi-miniport-drivers)\.
+Most operating systems specify a timeout for I/O operations submitted to NVMe devices\. On Windows systems, the default timeout is 30 seconds and the maximum is 255 seconds\. You can modify the `TimeoutValue` disk class registry setting using the procedure described in [Registry Entries for SCSI Miniport Drivers](https://docs.microsoft.com/en-us/windows-hardware/drivers/storage/registry-entries-for-scsi-miniport-drivers)\.

@@ -7,6 +7,8 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Feature | API Version | Description | Release Date | 
 | --- | --- | --- | --- | 
+|  Longer resource IDs  |  2016\-11\-15  |  You can enable the longer ID format for more resource types\. For more information, see [Resource IDs](resource-ids.md)\.  | 9 February 2018 | 
+|  Network performance improvements  |  2016\-11\-15  |  Instances outside of a cluster placement group can now benefit from increased bandwidth when sending or receiving network traffic between other instances or Amazon S3\. For more information, see [Networking and Storage Features](instance-types.md#instance-networking-storage)\.  | 24 January 2018 | 
 |  Tag Elastic IP addresses  |  2016\-11\-15  |  You can tag your Elastic IP addresses\. For more information, see [Tagging an Elastic IP Address](elastic-ip-addresses-eip.md#using-instance-addressing-eips-tagging)\.  | 21 December 2017 | 
 | Amazon Time Sync Service |  2016\-11\-15  |  You can use the Amazon Time Sync Service to keep accurate time on your instance\. For more information, see [Setting the Time for a Windows Instance](windows-set-time.md)\.  | 29 November 2017 | 
 | T2 Unlimited |  2016\-11\-15  |  T2 Unlimited instances can burst above the baseline for as long as required\. For more information, see [T2 Unlimited](t2-unlimited.md)\.  | 29 November 2017 | 

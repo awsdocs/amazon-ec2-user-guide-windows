@@ -130,11 +130,11 @@ By using IAM with Amazon EC2, you can control whether users in your organization
 
 For more information about IAM, see the following:
 
-+ Creating an IAM Group and Users
++ [Creating an IAM Group and Users](UsingIAM.md#creating-an-iam-group)
 
-+ IAM Policies for Amazon EC2
++ [IAM Policies for Amazon EC2](iam-policies-for-amazon-ec2.md)
 
-+ IAM Roles for Amazon EC2
++ [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)
 
 + [Identity and Access Management \(IAM\)](http://aws.amazon.com/iam)
 

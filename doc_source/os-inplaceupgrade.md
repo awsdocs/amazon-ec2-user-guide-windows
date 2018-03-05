@@ -1,6 +1,6 @@
 # Performing an In\-Place Upgrade<a name="os-inplaceupgrade"></a>
 
-Before you perform an in\-place upgrade, you must determine which network drivers the instance is running\. PV network drivers enable you to access your instance using Remote Desktop\. Starting with Windows Server 2008 R2, instances use either *AWS PV*, Intel Network Adapter, or the Enhanced Networking drivers\. Instances with Windows Server 2003 and Windows Server 2008 use *Citrix PV* drivers\. For more information, see [Paravirtual Drivers for Windows Server Instances](xen-drivers-overview.md)\.
+Before you perform an in\-place upgrade, you must determine which network drivers the instance is running\. PV network drivers enable you to access your instance using Remote Desktop\. Starting with Windows Server 2008 R2, instances use either *AWS PV*, Intel Network Adapter, or the Enhanced Networking drivers\. Instances with Windows Server 2003 and Windows Server 2008 use *Citrix PV* drivers\. For more information, see [Paravirtual Drivers for Windows Instances](xen-drivers-overview.md)\.
 
 ## Before You Begin an In\-Place Upgrade<a name="os-upgrade-before"></a>
 
@@ -26,7 +26,7 @@ Complete the following tasks and note the following important details before you
 
 + Disable antivirus and anti\-spyware software and firewalls\. These types of software can conflict with the upgrade process\. Re\-enable antivirus and anti\-spyware software and firewalls after the upgrade completes\.
 
-+ The Upgrade Helper Service only supports instances running Citrix PV drivers\. If the instance is running Red Hat drivers, you must manually upgrade those drivers first\.
++ The Upgrade Helper Service only supports instances running Citrix PV drivers\. If the instance is running Red Hat drivers, you must manually [upgrade those drivers](Upgrading_PV_drivers.md) first\.
 
 ## Upgrade an Instance In\-Place with AWS PV, Intel Network Adapter, or the Enhanced Networking Drivers<a name="os-upgrade-pv"></a>
 

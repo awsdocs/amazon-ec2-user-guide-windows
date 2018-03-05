@@ -205,7 +205,7 @@ The output should match the fingerprint that's displayed in the console\.
 When you delete a key pair, you are only deleting Amazon EC2's copy of the public key\. Deleting a key pair doesn't affect the private key on your computer or the public key on any instances already launched using that key pair\. You can't launch a new instance using a deleted key pair, but you can continue to connect to any instances that you launched using a deleted key pair, as long as you still have the private key \(`.pem`\) file\.
 
 **Note**  
-If you're using an Auto Scaling group \(for example, in an Elastic Beanstalk environment\), ensure that the key pair you're deleting is not specified in your launch configuration\. Auto Scaling launches a replacement instance if it detects an unhealthy instance; however, the instance launch fails if the key pair cannot be found\. 
+If you're using an Auto Scaling group \(for example, in an Elastic Beanstalk environment\), ensure that the key pair you're deleting is not specified in your launch configuration\. Amazon EC2 Auto Scaling launches a replacement instance if it detects an unhealthy instance; however, the instance launch fails if the key pair cannot be found\. 
 
 You can delete a key pair using the Amazon EC2 console or the command line\.
 

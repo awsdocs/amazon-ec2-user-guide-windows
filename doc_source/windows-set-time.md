@@ -37,9 +37,6 @@ Windows instances are set to the UTC time zone by default\. you can change the t
 
 Windows instances use the time\.windows\.com NTP server to configure the system time\. We recommend that you configure your instance to use the Amazon Time Sync Service\. This service uses a fleet of satellite\-connected and atomic reference clocks in each AWS Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. This service is available at the `169.254.169.123` IP address for any instance running in a VPC, and your instance does not require internet access to use this service\.
 
-**Note**  
-Support for the Amazon Time Sync Service on C5 and M5 instances is coming soon\.
-
 **To verify the NTP configuration**
 
 1. From your instance, open a Command Prompt window\.

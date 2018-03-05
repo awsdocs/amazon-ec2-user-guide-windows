@@ -64,7 +64,7 @@ The following steps don't update the environment variables in your current comma
 
 **Initialize a volume using dd for Windows**
 
-1. Execute the following command to read all blocks on the specified device \(and send the output to the `/dev/null` virtual device\)\. This command safely initializes your existing data\.
+1. <a name="prewarm_snapshot_command"></a>Execute the following command to read all blocks on the specified device \(and send the output to the `/dev/null` virtual device\)\. This command safely initializes your existing data\.
 **Important**  
 Incorrect use of dd can easily destroy a volume's data\. Be sure to follow precisely the example command below\. Only the `if=\\.\PHYSICALDRIVEn` parameter will vary depending on the name of the device you are reading\.
 

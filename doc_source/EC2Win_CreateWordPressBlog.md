@@ -160,7 +160,7 @@ Congratulations\! You have just deployed a WordPress site on a Windows instance\
 
 ## Next Steps<a name="WordPress-next-steps"></a>
 
-If you no longer need this instance, you can remove it to avoid incurring charges\. For more information, see Clean Up Your Instance\.
+If you no longer need this instance, you can remove it to avoid incurring charges\. For more information, see [Clean Up Your Instance](EC2_GetStarted.md#ec2-clean-up-your-instance)\.
 
 If your WordPress blog becomes popular and you need more compute power or storage, consider the following steps:
 

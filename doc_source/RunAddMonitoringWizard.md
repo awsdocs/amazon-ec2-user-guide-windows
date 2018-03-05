@@ -15,8 +15,7 @@ You can configure the AWS Management Pack to monitor a particular AWS account by
 1. On the **General Properties** page, in the **Name** box, enter a name \(for example, "My AWS Resources"\)\. In the **Description** box, enter a description\. 
 
 1. In the **Select destination management pack** list, select an existing management pack \(or click **New** to create one\) where you want to save the settings\. Click **Next**\.  
-![\[Configuring the AWS Management Pack for monitoring an AWS
-										account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AddMonitoringWizard-Step2.png)
+![\[Configuring the AWS Management Pack for monitoring an AWS account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AddMonitoringWizard-Step2.png)
 
    By default, when you create a management pack object, disable a rule or monitor, or create an override, Operations Manager saves the setting to the default management pack\. As a best practice, you should create a separate management pack for each sealed management pack that you want to customize, instead of saving your customized settings to the default management pack\.
 
@@ -27,18 +26,15 @@ You can configure the AWS Management Pack to monitor a particular AWS account by
    1. Click the **Resource Pools** node\.
 
    1. Right\-click the **AWS Resource Pool** in the **Resource Pools** pane and select **Manual Membership**\.  
-![\[Configuring the AWS Management Pack for monitoring an AWS
-												account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ResourcePool-ManualMembership.png)
+![\[Configuring the AWS Management Pack for monitoring an AWS account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ResourcePool-ManualMembership.png)
 
    1. Right\-click the **AWS Resource Pool** in the **Resource Pools** pane and select **Properties**\.
 
    1. On the **Pool Membership** page, remove the management servers that should not monitor AWS resources\.  
-![\[Configuring the AWS Management Pack for monitoring an AWS
-												account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ResourcePool-MemberServers.png)
+![\[Configuring the AWS Management Pack for monitoring an AWS account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ResourcePool-MemberServers.png)
 
 1. After the AWS Management Pack is configured, it shows up as a sub\-folder of the `Amazon Web Services` folder in the **Monitoring** workspace of the Operations console\.  
-![\[Configuring the AWS Management Pack for monitoring an AWS
-										account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AddMonitoringWizard-CreatedNodeInMonitoring.png)
+![\[Configuring the AWS Management Pack for monitoring an AWS account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AddMonitoringWizard-CreatedNodeInMonitoring.png)
 
 ## System Center 2007 R2<a name="add-monitoring-2007"></a>
 
@@ -53,8 +49,7 @@ You can configure the AWS Management Pack to monitor a particular AWS account by
 1. On the **General Properties** page, in the **Name** box, enter a name \(for example, "My AWS Resources"\)\. In the **Description** box, enter a description\. 
 
 1. In the **Select destination management pack** drop\-down list, select an existing management pack \(or click **New** to create a new one\) where you want to save the settings\. Click **Next**\.  
-![\[Configuring the AWS Management Pack to monitor an AWS
-										account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/monitor_aws_account.png)
+![\[Configuring the AWS Management Pack to monitor an AWS account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/monitor_aws_account.png)
 
    By default, when you create a management pack object, disable a rule or monitor, or create an override, Operations Manager saves the setting to the default management pack\. As a best practice, you should create a separate management pack for each sealed management pack that you want to customize, instead of saving your customized settings to the default management pack\.
 

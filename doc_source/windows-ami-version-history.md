@@ -43,13 +43,13 @@ For Windows instances, you can install updates to the following services or appl
 
 +  [Windows PowerShell](http://technet.microsoft.com/en-us/scriptcenter/dd772288) 
 
-+ EC2Launch
++ [EC2Launch](ec2launch.md#ec2launch-download)
 
-+ EC2Config service
++ [EC2Config service](UsingConfig_Install.md)
 
 + [SSM Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
 
-+ PV Drivers
++ [PV Drivers](Upgrading_PV_drivers.md)
 
 + [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell)
 
@@ -202,6 +202,8 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2018\.02\.23 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
+| 2018\.02\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.01\.12 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.01\.05 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 

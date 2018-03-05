@@ -2,11 +2,11 @@
 
 Choose from the following methods to configure integration with CloudWatch:
 
-+ Use Run Command
++ [Use Run Command](#remote-commands-cloudwatch)
 
-+ Use State Manager
++ [Use State Manager](#ec2-configuration-cwl)
 
-+ Use a Local Configuration File
++ [Use a Local Configuration File](#send_logs_cwl_configfile)
 
 ## Before You Begin<a name="send_logs_to_cwl_prerequisites"></a>
 

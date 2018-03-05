@@ -77,9 +77,9 @@ If you do not create the instance in the same Availability Zone as the affected 
 
 1. In the navigation pane, choose **Volumes**\.
 
-1. Locate the root volume of the affected instance\. Detach the volume and attach it to the temporary instance you created earlier\. Attach it with the default device name \(xvdf\)\.
+1. Locate the root volume of the affected instance\. [Detach](ebs-detaching-volume.md) the volume and [attach](ebs-attaching-volume.md) it to the temporary instance you created earlier\. Attach it with the default device name \(xvdf\)\.
 
-1. Use Remote Desktop to connect to the temporary instance, and then use the Disk Management utility to make the volume available for use\.
+1. Use Remote Desktop to connect to the temporary instance, and then use the Disk Management utility to [make the volume available for use](ebs-using-volumes.md)\.
 
 1. On the temporary instance, open the **Run** dialog box, type **regedit**, and press Enter\.
 

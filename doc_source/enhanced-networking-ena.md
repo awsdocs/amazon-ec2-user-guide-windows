@@ -64,35 +64,11 @@ If you launched your instance and it does not have enhanced networking enabled a
 
 1. From the instance, install the driver as follows:
 
-   1. Download the Amazon ENA adapter driver for your operating system:
-
-      + [Windows Server 2008 R2](https://s3.amazonaws.com/ec2-windows-drivers/ENA.zip)
-
-      + [Windows Server 2012 and later](https://s3.amazonaws.com/ec2-windows-drivers/ENA_1_0_8.zip)
+   1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/Latest/AwsEnaNetworkDriver.zip) the latest driver to the instance\.
 
    1. Extract the zip archive\.
 
-   1. Change to the folder that corresponds to your OS version\. \(For Windows Server 2016, use the `2012R2` folder\.\) This folder contains the following driver files: `ena.cat`, `ena.inf`, and `ena.sys`\.
-
-   1. Install the driver using the following command:
-
-      ```
-      pnputil -i -a ena.inf
-      ```
-
-      The following is example output if the installation is successful:
-
-      ```
-      Microsoft PnP Utility
-                                      
-      Processing inf :            ena.inf 
-      Succesfully installed the driver on a device on the system.
-      Driver package added successfully.
-      Published name :            oem9.inf
-                                  
-      Total attempted:                 1                            
-      Number successfully imported:    1
-      ```
+   1. Install the driver by running the `install.ps1` PowerShell script\.
 
 1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
 
@@ -165,7 +141,8 @@ If you launched your instance and it does not have enhanced networking enabled a
 Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The following table summarizes the changes for each release\.
 
 
-| Driver version | Details | 
-| --- | --- | 
-|  1\.0\.9\.0  |  Includes some reliability fixes\. Applies only to Windows Server 2008 R2\. Not recommended for other versions of Windows Server\.  | 
-|  1\.0\.8\.0  |  The initial release\. Included in AMIs for Windows Server 2008 R2, Windows Server 2012 RTM, Windows Server 2012 R2, and Windows Server 2016\.  | 
+| Driver version | Details | Release date | 
+| --- | --- | --- | 
+|  1\.2\.3  |  Includes reliability fixes and unifies support for Windows Server 2008 R2 through Windows Server 2016\.  | February 2018 | 
+|  1\.0\.9  |  Includes some reliability fixes\. Applies only to Windows Server 2008 R2\. Not recommended for other versions of Windows Server\.  | December 2016 | 
+|  1\.0\.8  |  The initial release\. Included in AMIs for Windows Server 2008 R2, Windows Server 2012 RTM, Windows Server 2012 R2, and Windows Server 2016\.  | July 2016 | 

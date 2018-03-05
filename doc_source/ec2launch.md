@@ -128,9 +128,9 @@ EC2Launch generates a password and encrypts it using the user's key\. The system
 `Specify`  
 Choose this option to specify a password in `adminPassword`\. If the password does not meet the system requirements, a random password is generated instead\. The password is stored in `LaunchConfig.json` as clear text and is deleted after Sysprep sets the administrator password\. EC2Launch encrypts the password using the user's key\.  
 `DoNothing`  
-Choose this option if you specified a password in the `unattend.xml` file\. If you choose this option and don't specify a password in `unattend.xml`, the system uses the password of the parent AMI\.
+Choose this option if you specified a password in the `unattend.xml` file\. If you don't run sysprep and don't specify a password in `unattend.xml`, the system uses the password of the parent AMI\.
 
-1. In Windows PowerShell, run the following command so that the system schedules the script to run as a Windows Scheduled Task\. The script runs one time during the next boot and then disables these tasks from running again\.
+1. In Windows PowerShell, run the following command to schedule the script to run as a Windows Scheduled Task\. The script runs one time during the next boot and then disables these tasks from running again\.
 
    ```
    C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
@@ -240,7 +240,7 @@ On the full installation of Windows Server 2016 \(with a desktop experience\), y
 
 **To run Sysprep using the EC2Launch Settings application**
 
-1. In the Amazon EC2 console, locate or create a Windows Server 2016, Datacenter edition AMI\.
+1. In the Amazon EC2 console, locate or create a Windows Server 2016 AMI\.
 
 1. Launch a Windows instance from the AMI\.
 
@@ -257,9 +257,7 @@ On the full installation of Windows Server 2016 \(with a desktop experience\), y
 
    + Choose **Specify** and type a password that meets the system requirements\. The password is stored in `LaunchConfig.json` as clear text and is deleted after Sysprep sets the administrator password\. If you shut down now, the password is set immediately\. EC2Launch encrypts the password using the user's key\.
 
-   + If you specified a password in the `unattend.xml` file, choose **DoNothing**\. If you choose this option and don't specify a password in `unattend.xml`, the system sets the password to match the password of the parent AMI\.
-
-   + If you plan to shut down the system without running sysprep, choose **DoNothing**\.
+   + Choose **DoNothing** if you specified a password in the `unattend.xml` file\.
 
 1. Choose **Shutdown with Sysprep**\.
 
@@ -279,7 +277,7 @@ EC2Launch generates a password and encrypts it using the user's key\. The system
 `Specify`  
 Choose this option to specify a password in `adminPassword`\. If the password does not meet the system requirements, a random password is generated instead\. The password is stored in `LaunchConfig.json` as clear text and is deleted after Sysprep sets the administrator password\. EC2Launch encrypts the password using the user's key\.  
 `DoNothing`  
-Choose this option if you specified a password in the `unattend.xml` file\. If you choose this option and don't specify a password in `unattend.xml`, the system uses the password of the parent AMI\.
+Choose this option if you specified a password in the `unattend.xml` file\.
 
 1. \(Optional\) Specify settings in `unattend.xml` and other configuration files\. If plan to attend to the installation, then you don't need to make changes in these files\. The files are located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep`\.
 

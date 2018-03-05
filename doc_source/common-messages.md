@@ -69,7 +69,7 @@ If the instance is failing the instance reachability test, try the following to 
 
 + It's possible that the system has been configured with a static IP address\. Try the following:
 
-  + \[EC2\-VPC\] Create a network interface and attach it to the instance\.
+  + \[EC2\-VPC\] [Create a network interface](using-eni.md#create_eni) and [attach it to the instance](using-eni.md#attach_eni_running_stopped)\.
 
   + \[EC2\-Classic\] Enable DHCP\.
 

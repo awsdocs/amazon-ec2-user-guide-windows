@@ -52,11 +52,11 @@ After you've created your instance, it appears in the list of instances for the 
 
 You can manage the lifecycle of your instance using AWS Systems Manager, as described on this page\. To perform other tasks, such as the following, you must use the AWS Management Console:
 
-+ Attach an Amazon EBS volume to your instance
++ [Attach an Amazon EBS volume to your instance](ebs-attaching-volume.md)
 
-+ Associate an Elastic IP address with your instance
++ [Associate an Elastic IP address with your instance](elastic-ip-addresses-eip.md#using-instance-addressing-eips-associating)
 
-+ Enable termination protection
++ [Enable termination protection](terminating-instances.md#Using_ChangingDisableAPITermination)
 
 ## Viewing Your Instances<a name="view-instances"></a>
 

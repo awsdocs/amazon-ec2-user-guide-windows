@@ -1,4 +1,4 @@
-# Paravirtual Drivers for Windows Server Instances<a name="xen-drivers-overview"></a>
+# Paravirtual Drivers for Windows Instances<a name="xen-drivers-overview"></a>
 
 Windows AMIs contain a set of drivers to permit access to virtualized hardware\. These drivers are used by Amazon EC2 to map instance store and Amazon EBS volumes to their devices\. The following table shows key differences between the different drivers\.
 
@@ -7,7 +7,7 @@ Windows AMIs contain a set of drivers to permit access to virtualized hardware\.
 | --- | --- | --- | --- | 
 |  Instance type  |  Not supported for all instance types\. If you specify an unsupported instance type, the instance is impaired\.  |  Supported for all instance types\.  |  Supported for all instance types\.  | 
 |  Attached volumes  |  Supports up to 16 attached volumes\.  |  Supports more than 16 attached volumes\.  |  Supports more than 16 attached volumes\.  | 
-|  Network  |  The driver has known issues where the network connection resets under high loads; for example, fast FTP file transfers\.  |   |  The driver automatically configures jumbo frames on the network adapter when on a compatible instance type\. When the instance is in a cluster placement group, this offers better network performance between instances in the cluster placement group\.  | 
+|  Network  |  The driver has known issues where the network connection resets under high loads; for example, fast FTP file transfers\.  |   |  The driver automatically configures jumbo frames on the network adapter when on a compatible instance type\. When the instance is in a [cluster placement group](placement-groups.md), this offers better network performance between instances in the cluster placement group\.  | 
 
 The following list shows which PV drivers you should run on each version of Windows Server on Amazon EC2\.
 
@@ -38,7 +38,7 @@ PS C:\> [DateTime]::FromFileTimeUTC((gwmi -n root\wmi -cl AWSXenStoreBase).XenTi
 
 The AWS PV driver components are listed in the Windows registry under `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services`\. These driver components are as follows: `XENBUS`, xeniface, xennet, xenvbd, and xenvif\.
 
-AWS PV also has a driver component named LiteAgent, which runs as a Windows service\. It handles tasks such as shutdown and restart events from the API\. You can access and manage services by running `Services.msc` from the command line\.
+AWS PV also has a driver component named LiteAgent, which runs as a Windows service\. It handles tasks such as shutdown and restart events from the API\. You can access and manage services by running `Services.msc` from the command line\. This component runs on all instance types including C5 and M5\. Updating to AWS PV 8\.2 also updates the LiteAgent and adds multiple bug fixes\.
 
 ### Installing the Latest AWS PV Drivers<a name="aws-pv-download"></a>
 

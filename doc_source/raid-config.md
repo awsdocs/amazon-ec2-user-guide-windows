@@ -74,7 +74,7 @@ Create volumes with identical size and IOPS performance values for your array\. 
 
    Identify the disks you want to use in your array and take note of their disk numbers\.
 
-1. Each disk you want to use in your array must be an online dynamic disk that does not contain any existing volumes\. Use the following steps to convert basic disks to dynamic disks and to delete any existing volumes\.
+1. <a name="windows_raid_disk_step"></a>Each disk you want to use in your array must be an online dynamic disk that does not contain any existing volumes\. Use the following steps to convert basic disks to dynamic disks and to delete any existing volumes\.
 
    1. Select a disk you want to use in your array with the following command, substituting *n* with your disk number\.
 
@@ -143,7 +143,7 @@ This destroys any existing data on the volume\.
 
       1. Repeat these substeps for each volume you need to delete on the selected disk\.
 
-   1. Repeat [[ERROR] BAD/MISSING LINK TEXT](#windows_raid_disk_step) for each disk you want to use in your array\.
+   1. Repeat [Step 6](#windows_raid_disk_step) for each disk you want to use in your array\.
 
 1. Verify that the disks you want to use are now dynamic\.
 

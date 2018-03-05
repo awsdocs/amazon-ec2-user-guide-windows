@@ -37,7 +37,7 @@ Follow these best practices to get the maximum benefit from and satisfaction wit
 
 + Use a recommended AMI
 
-  For Windows T2 instances, we recommend the latest AWS Windows AMI\.
+  For Windows T2 instances, we recommend the [latest AWS Windows AMI](windows-ami-version-history.md#windows-ami-versions)\.
 
 + Turn on auto\-recover
 

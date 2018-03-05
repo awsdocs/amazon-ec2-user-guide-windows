@@ -143,7 +143,7 @@ For more information about Amazon VPC, see [What is Amazon VPC?](http://docs.aws
 
 Security groups act as a firewall for associated instances, controlling both inbound and outbound traffic at the instance level\. You must add rules to a security group that enable you to connect to your instance from your IP address using RDP\. You can also add rules that allow inbound and outbound HTTP and HTTPS access from anywhere\.
 
-Note that if you plan to launch instances in multiple regions, you'll need to create a security group in each region\. For more information about regions, see Regions and Availability Zones\.
+Note that if you plan to launch instances in multiple regions, you'll need to create a security group in each region\. For more information about regions, see [Regions and Availability Zones](EC2Win_Infrastructure.md#EC2Win_Regions)\.
 
 **Prerequisites**  
 You'll need the public IPv4 address of your local computer\. The security group editor in the Amazon EC2 console can automatically detect the public IPv4 address for you\. Alternatively, you can use the search phrase "what is my IP address" in an Internet browser, or use the following service: [Check IP](http://checkip.amazonaws.com/)\. If you are connecting through an Internet service provider \(ISP\) or from behind a firewall without a static IP address, you need to find out the range of IP addresses used by client computers\.

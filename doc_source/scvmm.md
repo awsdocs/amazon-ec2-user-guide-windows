@@ -36,8 +36,8 @@ Amazon Web Services \(AWS\) Systems Manager for Microsoft System Center Virtual 
 
 To get started, see the following documentation:
 
-+ Setting Up
++ [Setting Up](scvmm-set-up.md)
 
-+ Managing EC2 Instances
++ [Managing EC2 Instances](scvmm-manage-ec2.md)
 
-+ Troubleshooting
++ [Troubleshooting](scvmm-troubleshoot.md)

@@ -22,9 +22,9 @@ If you do not create the instance in the same Availability Zone as the affected 
 
 1. In the EC2 console, choose **Volumes**\.
 
-1. Locate the root volume of the affected instance\. Detach the volume and attach it to the temporary instance that you created earlier\. Attach it with the default device name \(xvdf\)\.
+1. Locate the root volume of the affected instance\. [Detach](ebs-detaching-volume.md) the volume and [attach](ebs-attaching-volume.md) it to the temporary instance that you created earlier\. Attach it with the default device name \(xvdf\)\.
 
-1. Use Remote Desktop to connect to the temporary instance, and then use the Disk Management utility to make the volume available for use\.
+1. Use Remote Desktop to connect to the temporary instance, and then use the Disk Management utility to [make the volume available for use](ebs-using-volumes.md)\.
 
 1. [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) the latest version of the EC2Config service\. Extract the files from the `.zip` file to the `Temp` directory on the drive you attached\.
 

@@ -7,7 +7,8 @@ After you have successfully launched and logged into your instance, you can make
 
 + [Configuring a Windows Instance Using EC2Launch](ec2launch.md)
 + [Configuring a Windows Instance Using the EC2Config Service](UsingConfig_WinAMI.md)
-+ [Paravirtual Drivers for Windows Server Instances](xen-drivers-overview.md)
++ [Paravirtual Drivers for Windows Instances](xen-drivers-overview.md)
++ [AWS NVMe Drivers for Windows Instances](aws-nvme-drivers.md)
 + [Setting the Time for a Windows Instance](windows-set-time.md)
 + [Setting Passwords for Windows Instances](ec2-windows-passwords.md)
 + [Adding Windows Components Using Installation Media](windows-optional-components.md)
