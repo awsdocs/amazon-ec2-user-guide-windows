@@ -30,6 +30,8 @@ EC2Rescue for Windows Server is able to collect the following data from active a
 
 Brandon shows you how to use the Diagnose and Rescue feature of EC2Rescue for Windows Server:
 
+[![AWS Videos](http://img.youtube.com/vi/Apc6u2II5JA/0.jpg)](http://www.youtube.com/watch?v=Apc6u2II5JA)
+
 ## Analyzing an Offline Instance<a name="ec2rescue-offline"></a>
 
 The **Offline Instance** option is useful for debugging boot issues with Windows instances\.

@@ -39,7 +39,7 @@ The permissions that you've been granted by your administrator determine whether
 
    1. Select a region for the instance\. By default, we select the region that you configured as your default region\.
 
-   1. Select an instance type for the instance\. First, select one of the latest instance families from **Family**, and then select an instance type from **Instance type**\. To include previous generation instance families in the list, select **Show previous generations\.** For more information, see [Amazon EC2 Instances](http://aws.amazon.com/ec2/instance-types/) and [Previous Generation Instances](http://aws.amazon.com/ec2/previous-generation/)\.
+   1. Select an instance type for the instance\. First, select one of the latest instance families from **Family**, and then select an instance type from **Instance type**\. To include previous generation instance families in the list, select **Show previous generations\.** For more information, see [Amazon EC2 Instances](https://aws.amazon.com/ec2/instance-types/) and [Previous Generation Instances](https://aws.amazon.com/ec2/previous-generation/)\.
 
    1. Select a VPC from **Network \(VPC\)**\. Note that this list includes all VPCs for the region, including VPCs created using the Amazon VPC console and the default VPC \(if it exists\)\. If you have a default VPC in this region, we select it by default\. If the text is "There is no VPC available for launch or import operations in this region", then you must create a VPC in this region using the Amazon VPC console\.
 

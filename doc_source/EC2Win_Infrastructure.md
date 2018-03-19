@@ -24,11 +24,11 @@ You can launch different types of instances from a single AMI\. An *instance typ
 
 Your Windows instances keep running until you stop or terminate them, or until they fail\. If an instance fails, you can launch a new one from the AMI\.
 
-Your AWS account has a limit on the number of instances that you can have running\. For more information about this limit, and how to request an increase, see [How many instances can I run in Amazon EC2](http://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
+Your AWS account has a limit on the number of instances that you can have running\. For more information about this limit, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
 
 ## Regions and Availability Zones<a name="EC2Win_Regions"></a>
 
-Amazon has data centers in different areas of the world \(for example, North America, Europe, and Asia\)\. Correspondingly, Amazon EC2 is available to use in different *regions*\. By launching instances in separate regions, you can design your application to be closer to specific customers or to meet legal or other requirements\. Prices for Amazon EC2 usage vary by region \(for more information about pricing by region, see [Amazon EC2 Pricing](http://aws.amazon.com/ec2/pricing)\)\. 
+Amazon has data centers in different areas of the world \(for example, North America, Europe, and Asia\)\. Correspondingly, Amazon EC2 is available to use in different *regions*\. By launching instances in separate regions, you can design your application to be closer to specific customers or to meet legal or other requirements\. Prices for Amazon EC2 usage vary by region \(for more information about pricing by region, see [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing)\)\. 
 
 Each region contains multiple distinct locations called *Availability Zones*\. Each Availability Zone is engineered to be isolated from failures in other Availability Zones, and to provide inexpensive, low\-latency network connectivity to other zones in the same region\. By launching instances in separate Availability Zones, you can protect your applications from the failure of a single location\. 
 
@@ -40,11 +40,11 @@ For more information about the available regions and Availability Zones, see [Us
 
 When using Amazon EC2, you may have data that you need to store\. Amazon EC2 offers the following storage options:
 
-+  [Amazon Elastic Block Store \(Amazon EBS\)](http://aws.amazon.com/ebs) 
++  [Amazon Elastic Block Store \(Amazon EBS\)](https://aws.amazon.com/ebs) 
 
 + [Amazon EC2 Instance Store](InstanceStorage.md)
 
-+  [Amazon Simple Storage Service \(Amazon S3\)](http://aws.amazon.com/s3) 
++  [Amazon Simple Storage Service \(Amazon S3\)](https://aws.amazon.com/s3) 
 
 The following figure shows the relationship between these types of storage\.
 
@@ -70,7 +70,7 @@ Instance store is an option for inexpensive temporary storage\. You can use inst
 
 ### Amazon S3<a name="EC2Win_StorageS3"></a>
 
-Amazon S3 is storage for the Internet\. It provides a simple web service interface that enables you to store and retrieve any amount of data from anywhere on the web\. For more information about Amazon S3, see the [Amazon S3 product page](http://aws.amazon.com/s3)\.
+Amazon S3 is storage for the Internet\. It provides a simple web service interface that enables you to store and retrieve any amount of data from anywhere on the web\. For more information about Amazon S3, see the [Amazon S3 product page](https://aws.amazon.com/s3)\.
 
 ## Root Device Volume<a name="RootDevice_WinAMI"></a>
 
@@ -136,7 +136,7 @@ For more information about IAM, see the following:
 
 + [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)
 
-+ [Identity and Access Management \(IAM\)](http://aws.amazon.com/iam)
++ [Identity and Access Management \(IAM\)](https://aws.amazon.com/iam)
 
 + [IAM User Guide](http://docs.aws.amazon.com/IAM/latest/UserGuide/)
 

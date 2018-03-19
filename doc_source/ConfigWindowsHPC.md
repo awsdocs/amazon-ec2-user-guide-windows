@@ -12,7 +12,7 @@ To set up a Windows HPC cluster on Amazon EC2, complete the following tasks:
 
 + [Step 5: Scale Your HPC Compute Nodes \(Optional\)](#scale_cluster)
 
-For more information about high performance computing, see [High Performance Computing \(HPC\) on AWS](http://aws.amazon.com/hpc-applications/)\.
+For more information about high performance computing, see [High Performance Computing \(HPC\) on AWS](https://aws.amazon.com/hpc-applications/)\.
 
 ## Prerequisites<a name="prereqs"></a>
 

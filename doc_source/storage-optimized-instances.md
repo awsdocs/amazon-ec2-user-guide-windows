@@ -55,8 +55,6 @@ Instance store volumes persist only for the life of the instance\. When you stop
 The following is a summary of the hardware specifications for Storage optimized instances\.
 
 
-****  
-
 | Instance type | vCPUs | Memory \(GiB\) | 
 | --- | --- | --- | 
 | d2\.xlarge | 4 | 30\.5 | 
@@ -78,7 +76,7 @@ For more information about the hardware specifications for each Amazon EC2 insta
 
 ## Instance Performance<a name="storage-performance"></a>
 
-For instances with NVMe instance store volumes, you must use a Linux AMI with kernel version 4\.4 or later\. Otherwise, your instance will not achieve the maximum IOPS performance available\.
+For instances with NVMe instance store volumes, be sure to use the AWS NVMe driver\. For more information, see [AWS NVMe Drivers for Windows Instances](aws-nvme-drivers.md)\.
 
 EBS\-optimized instances enable you to get consistently high performance for your EBS volumes by eliminating contention between Amazon EBS I/O and other network traffic from your instance\. D2 and H1 instances are EBS\-optimized by default at no additional cost\. For more information, see [Amazon EBS–Optimized Instances](EBSOptimized.md)\.
 
@@ -91,8 +89,6 @@ Instance types that use the Elastic Network Adapter \(ENA\) for enhanced network
 The following is a summary of network performance for Storage optimized instances that support enhanced networking\.
 
 
-****  
-
 | Instance type | Network performance | Enhanced networking | 
 | --- | --- | --- | 
 |  `i3.4xlarge` and smaller  |  Up to 10 Gbps, use network I/O credit mechanism  | [ENA](enhanced-networking-ena.md) | 
@@ -104,7 +100,7 @@ The following is a summary of network performance for Storage optimized instance
 
 ## SSD I/O Performance<a name="i2-instances-diskperf"></a>
 
-If you use a Linux AMI with kernel version 4\.4 or later and use all the SSD\-based instance store volumes available to your instance, you get the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
+If you use all the SSD\-based instance store volumes available to your instance, you get the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
 
 
 | Instance Size | 100% Random Read IOPS | Write IOPS | 
@@ -149,7 +145,7 @@ For more information, see the following:
 
 ## Release Notes<a name="storage-instance-limits"></a>
 
-+ You must launch Storage optimized instances using an HVM AMI\. \.
++ You must launch Storage optimized instances using an HVM AMI\. 
 
 + You must launch I3 instances using an Amazon EBS\-backed AMI\.
 

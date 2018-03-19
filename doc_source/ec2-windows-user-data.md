@@ -20,7 +20,7 @@ Example: `<script>dir > c:\test.log</script>`
 
 `<powershell></powershell>`  
 Run any command that you can run at the Windows PowerShell command prompt\.  
-If you use an AMI that includes the [AWS Tools for Windows PowerShell](http://aws.amazon.com/powershell/), you can also use those cmdlets\. If an IAM role is associated with your instance, then you don't need to specify credentials to the cmdlets, as applications that run on the instance can use the role's credentials to access AWS resources such as Amazon S3 buckets\.  
+If you use an AMI that includes the [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell/), you can also use those cmdlets\. If an IAM role is associated with your instance, then you don't need to specify credentials to the cmdlets, as applications that run on the instance can use the role's credentials to access AWS resources such as Amazon S3 buckets\.  
 Example: `<powershell>Read-S3Object -BucketName myS3Bucket -Key myFolder/myFile.zip -File c:\destinationFile.zip</powershell>`
 
 You can separate the commands in a script using line breaks\.

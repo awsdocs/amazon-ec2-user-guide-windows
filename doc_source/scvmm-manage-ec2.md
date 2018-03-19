@@ -31,7 +31,7 @@ The permissions that you've been granted by your administrator determine whether
 
    1. Select a template \(known as an AMI\) for your instance\. To use an AMI provided by Amazon, select **Windows** or **Linux** and then select an AMI from **Image**\. To use an AMI that you created, select **My images** and then select the AMI from **Image**\.
 
-   1. Select an instance type for the instance\. First, select one of the latest instance families from **Family**, and then select an instance type from **Instance type**\. To include previous generation instance families in the list, select **Show previous generations\.** For more information, see [Amazon EC2 Instances](http://aws.amazon.com/ec2/instance-types/) and [Previous Generation Instances](http://aws.amazon.com/ec2/previous-generation/)\.
+   1. Select an instance type for the instance\. First, select one of the latest instance families from **Family**, and then select an instance type from **Instance type**\. To include previous generation instance families in the list, select **Show previous generations\.** For more information, see [Amazon EC2 Instances](https://aws.amazon.com/ec2/instance-types/) and [Previous Generation Instances](https://aws.amazon.com/ec2/previous-generation/)\.
 
    1. Create or select a key pair\. To create a key pair, select `Create a new key pair` from **Key pair name** and enter a name for the key pair in the highlighted field \(for example, `my-key-pair`\)\.
 

@@ -107,7 +107,7 @@ When you change the time on a Windows instance, you must ensure that the time pe
 
 1. If you are using a Windows Server 2008 AMI \(*not* Windows Server 2008 R2\) that was created before February 22, 2013, you should verify that the Microsoft hotfix [KB2800213](http://support.microsoft.com/default.aspx?scid=kb;EN-US;2800213) is installed\. If this hotfix is not installed, install it\. This hotfix resolves a known issue in which the RealTimeIsUniversal key causes the Windows CPU to run at 100% during Daylight savings events and the start of each calendar year \(January 1\)\.
 
-   If you are using an AMI running Windows Server 2008 R2 \(*not* Windows Server 2008\), you must verify that the Microsoft hotfix [KB2922223](http://support.microsoft.com/default.aspx?scid=kb;EN-US;2922223) is installed\. If this hotfix is not installed, install it\. This hotfix resolves a known issue in which the RealTimeIsUniversal key prevents the system from updating the CMOS clock\.
+   If you are using an AMI running Windows Server 2008 R2 \(*not* Windows Server 2008\), you must verify that the Microsoft hotfix [KB2922223](https://support.microsoft.com/en-us/help/2922223/you-cannot-change-system-time-if-realtimeisuniversal-registry-entry-is) is installed\. If this hotfix is not installed, install it\. This hotfix resolves a known issue in which the RealTimeIsUniversal key prevents the system from updating the CMOS clock\.
 
 1. \(Optional\) Verify that the instance saved the key successfully using the following command:
 
@@ -134,12 +134,12 @@ When you change the time on a Windows instance, you must ensure that the time pe
 
 ## Related Topics<a name="server-time-related-topics"></a>
 
-For more information about how the Windows operating system coordinates and manages time, including the addition of a leap second, see the following topics:
+For more information about how the Windows operating system coordinates and manages time, including the addition of a leap second, see the following documentation:
 
-+ [How the Windows Time Service Works](https://technet.microsoft.com/en-us/library/cc773013.aspx) \(TechNet\)
++ [How the Windows Time Service Works](https://docs.microsoft.com/en-us/windows-server/networking/windows-time-service/how-the-windows-time-service-works) \(Microsoft\)
 
-+ [W32tm](https://technet.microsoft.com/en-us/library/bb491016.aspx) \(TechNet\)
++ [W32tm](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-xp/bb491016(v=technet.10)) \(Microsoft\)
 
-+ [How the Windows Time service treats a leap second](https://support.microsoft.com/en-us/kb/909614) \(TechNet\)
++ [How the Windows Time service treats a leap second](https://support.microsoft.com/en-us/help/909614/how-the-windows-time-service-treats-a-leap-second) \(Microsoft\)
 
-+ [The story around Leap Seconds and Windows: It's likely not Y2K](http://blogs.msdn.com/b/mthree/archive/2015/01/08/leap-seconds-010815.aspx) \(blog\)
++ [The story around Leap Seconds and Windows: It's likely not Y2K](https://blogs.msdn.microsoft.com/mthree/2015/01/08/the-story-around-leap-seconds-and-windows-its-likely-not-y2k/) \(Microsoft\)
