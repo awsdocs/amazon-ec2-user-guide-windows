@@ -67,7 +67,7 @@ Try {
 	$InstanceId = Get-EC2InstanceMetadata "meta-data/instance-id"
 	$AZ = Get-EC2InstanceMetadata "meta-data/placement/availability-zone"
 	$Region = $AZ.Remove($AZ.Length - 1)
-	$BlockDeviceMappings = (Get-EC2Instance -Region $Region -Instance $InstanceId).Instances.BlockDeviceMappings
+	$BlockDeviceMappings = (Get-EC2InstanceMetadata -Region $Region -Instance $InstanceId).Instances.BlockDeviceMappings
 	$VirtualDeviceMap = @{}
 	(Get-EC2InstanceMetadata "meta-data/block-device-mapping").Split("`n") | ForEach-Object {
 		$VirtualDevice = $_
