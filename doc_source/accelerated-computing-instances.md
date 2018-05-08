@@ -1,3 +1,5 @@
+pengfei
+
 # Windows Accelerated Computing Instances<a name="accelerated-computing-instances"></a>
 
 If you require high processing capability, you'll benefit from using accelerated computing instances, which provide access to hardware\-based compute accelerators such as Graphics Processing Units \(GPUs\) or Field Programmable Gate Arrays \(FPGAs\)\. Accelerated computing instances enable more parallelism for higher throughput on compute\-intensive workloads\.
@@ -58,7 +60,7 @@ nvidia-smi topo -m
 For more information, see [NVIDIA GPUDirect](https://developer.nvidia.com/gpudirect)\.
 
 **G3 Instances**  
-G3 instances use NVIDIA Tesla M60 GPUs and provide a cost\-effective, high\-performance platform for graphics applications using DirectX or OpenGL\. G3 instances also provide NVIDIA GRID Virtual Workstation features, such as support for four monitors with resolutions up to 4096x2160, and NVIDIA GRID Virtual Applications\. G3 instances are well\-suited for applications such as 3D visualizations, graphics\-intensive remote workstations, 3D rendering, video encoding, virtual reality, and other server\-side graphics workloads requiring massively parallel processing power\. 
+G3 instances use NVIDIA Tesla M60 GPUs and provide a cost\-effective, high\-performance platform for graphics applications using DirectX or OpenGL\. G3 instances also provide NVIDIA GRID Virtual Workstation features, such as support for four monitors with resolutions up to 4096x2160, and NVIDIA GRID Virtual Applications\. G3 instances are well\-suited for applications such as 3D visualizations, graphics\-intensive remote workstations, 3D rendering, video encoding, virtual reality, and other server\-side graphics workloads requiring massively parallel processing power\.
 
 G3 instances support NVIDIA GRID Virtual Workstation and NVIDIA GRID Virtual Applications\. To activate either of these features, see [Activate NVIDIA GRID Capabilities \(G3 Instances Only\)](activate_grid.md)\.
 
@@ -69,19 +71,19 @@ The following is a summary of the hardware specifications for accelerated comput
 
 ****  
 
-| Instance type | vCPUs | Memory \(GiB\) | 
-| --- | --- | --- | 
-| p2\.xlarge | 4 | 61 | 
-| p2\.8xlarge | 32 | 488 | 
-| p2\.16xlarge | 64 | 732 | 
-| p3\.2xlarge | 8 | 61 | 
-| p3\.8xlarge | 32 | 244 | 
-| p3\.16xlarge | 64 | 488 | 
-| g3\.4xlarge | 16 | 122 | 
-| g3\.8xlarge | 32 | 244 | 
-| g3\.16xlarge | 64 | 488 | 
-| f1\.2xlarge | 8 | 122 | 
-| f1\.16xlarge | 64 | 976 | 
+| Instance type | vCPUs | Memory \(GiB\) |
+| --- | --- | --- |
+| p2\.xlarge | 4 | 61 |
+| p2\.8xlarge | 32 | 488 |
+| p2\.16xlarge | 64 | 732 |
+| p3\.2xlarge | 8 | 61 |
+| p3\.8xlarge | 32 | 244 |
+| p3\.16xlarge | 64 | 488 |
+| g3\.4xlarge | 16 | 122 |
+| g3\.8xlarge | 32 | 244 |
+| g3\.16xlarge | 64 | 488 |
+| f1\.2xlarge | 8 | 122 |
+| f1\.16xlarge | 64 | 976 |
 
 For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
@@ -100,23 +102,23 @@ The following is a summary of network performance for accelerated computing inst
 
 ****  
 
-| Instance type | Network performance | Enhanced networking | 
-| --- | --- | --- | 
-|  `f1.2xlarge`, `g3.4xlarge`, `p3.2xlarge`  |  Up to 10 Gbps  |  [ENA](enhanced-networking-ena.md)  | 
-|  `g3.8xlarge`, `p2.8xlarge`, `p3.8xlarge`  |  10 Gbps  |  [ENA](enhanced-networking-ena.md)  | 
-|  `f1.16xlarge`, `g3.16.xlarge`, `g3.16.xlarge`, `p2.16xlarge`, `p3.16xlarge`  |  25 Gbps  |  [ENA](enhanced-networking-ena.md)  | 
+| Instance type | Network performance | Enhanced networking |
+| --- | --- | --- |
+|  `f1.2xlarge`, `g3.4xlarge`, `p3.2xlarge`  |  Up to 10 Gbps  |  [ENA](enhanced-networking-ena.md)  |
+|  `g3.8xlarge`, `p2.8xlarge`, `p3.8xlarge`  |  10 Gbps  |  [ENA](enhanced-networking-ena.md)  |
+|  `f1.16xlarge`, `g3.16.xlarge`, `g3.16.xlarge`, `p2.16xlarge`, `p3.16xlarge`  |  25 Gbps  |  [ENA](enhanced-networking-ena.md)  |
 
 ## Instance Features<a name="gpu-instances-features"></a>
 
 The following is a summary of features for accelerated computing instances\.
 
 
-|  | VPC only | EBS only | Instance store | Placement group | 
-| --- | --- | --- | --- | --- | 
-|  G3  |  Yes  |  Yes  |   |  Yes  | 
-|  P2  |  Yes  |  Yes  |   |  Yes  | 
-|  P3  |  Yes  |  Yes  |   |  Yes  | 
-|  F1  |  Yes  |   |  NVMe \*  |  Yes  | 
+|  | VPC only | EBS only | Instance store | Placement group |
+| --- | --- | --- | --- | --- |
+|  G3  |  Yes  |  Yes  |   |  Yes  |
+|  P2  |  Yes  |  Yes  |   |  Yes  |
+|  P3  |  Yes  |  Yes  |   |  Yes  |
+|  F1  |  Yes  |   |  NVMe \*  |  Yes  |
 
 \* The root device volume must be an Amazon EBS volume\.
 
