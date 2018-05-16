@@ -1,14 +1,13 @@
 # Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances in a VPC<a name="enhanced-networking-ena"></a>
 
-To prepare for enhanced networking with the ENA network adapter, set up your instance as follows:
+Amazon EC2 provides enhanced networking capabilities to C5, F1, G3, H1, I3, `m4.16xlarge`, M5, P2, P3, R4, and X1 instances through the Elastic Network Adapter \(ENA\)\.
 
+To prepare for enhanced networking using the ENA, set up your instance as follows:
 + Launch the instance in a VPC\. \(You can't enable enhanced networking if the instance is in EC2\-Classic\.\)
-
 + Install and configure the [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](http://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\. 
-
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, may render incompatible instances or operating systems unreachable; if you have a recent backup, your data will still be retained if this happens\.
 
-
+**Topics**
 + [Testing Whether Enhanced Networking with ENA Is Enabled](#test-enhanced-networking-ena)
 + [Enabling Enhanced Networking with ENA on Windows](#enable-enhanced-networking-ena-WIN)
 + [Amazon ENA Driver Versions](#ena-adapter-driver-versions)
@@ -20,13 +19,13 @@ To test whether enhanced networking with ENA is already enabled, verify that the
 **Instance Attribute \(enaSupport\)**
 
 To check whether an instance has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
-
 + [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
 
   ```
-  aws ec2 describe-instances --instance-ids instance_id --query "Reservations[].Instances[].EnaSupport"
+  aws ec2 describe-instances --instance-ids instance_id --query 'Reservations[].Instances[].EnaSupport'
   ```
-
+**Note**  
+Some command prompts require double quotes \("\)\. For more information, see [Specifying Parameter Values for the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html) in the *AWS Command Line Interface User Guide*\.
 + [Get\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(Tools for Windows PowerShell\)
 
   ```
@@ -35,13 +34,13 @@ To check whether an instance has the enhanced networking `enaSupport` attribute 
 
 **Image Attribute \(enaSupport\)**  
 To check whether an AMI has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
-
 + [describe\-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI\)
 
   ```
-  aws ec2 describe-images --image-id ami_id --query "Images[].EnaSupport"
+  aws ec2 describe-images --image-id ami_id --query 'Images[].EnaSupport'
   ```
-
+**Note**  
+Some command prompts require double quotes \("\)\. For more information, see [Specifying Parameter Values for the AWS Command Line Interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html) in the *AWS Command Line Interface User Guide*\.
 + [Get\-EC2Image](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Image.html) \(Tools for Windows PowerShell\)
 
   ```
@@ -75,13 +74,11 @@ If you launched your instance and it does not have enhanced networking enabled a
 1. Enable ENA support on your instance as follows:
 
    1. From your local computer, check the EC2 instance ENA support attribute on your instance by running one of the following commands\. If the attribute is not enabled, the output will be "\[\]" or blank\. `EnaSupport` is set to `false` by default\.
-
       + [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
 
         ```
         aws ec2 describe-instances --instance-ids instance_id --query "Reservations[].Instances[].EnaSupport"
         ```
-
       + [Get\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(Tools for Windows PowerShell\)
 
         ```
@@ -89,13 +86,11 @@ If you launched your instance and it does not have enhanced networking enabled a
         ```
 
    1. To enable ENA support, run one of the following commands:
-
       + [modify\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
 
         ```
         aws ec2 modify-instance-attribute --instance-id instance_id --ena-support
         ```
-
       + [Edit\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
         ```
@@ -103,13 +98,11 @@ If you launched your instance and it does not have enhanced networking enabled a
         ```
 
       If you encounter problems when you restart the instance, you can also disable ENA support using one of the following commands:
-
       + [modify\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
 
         ```
         aws ec2 modify-instance-attribute --instance-id instance_id --no-ena-support
         ```
-
       + [Edit\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
         ```

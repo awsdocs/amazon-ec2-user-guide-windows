@@ -2,7 +2,7 @@
 
 The following procedures and tips can help you troubleshoot problems with your Amazon EC2 Windows instances\.
 
-
+**Topics**
 + [Troubleshoot an Unreachable Instance](screenshot-service.md)
 + [Resetting a Lost or Expired Windows Administrator Password](ResettingAdminPassword.md)
 + [Common Issues](common-issues.md)
@@ -30,13 +30,9 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Updat
 ```
 
 When you execute this script specify a value for /d\. The default value is 3\. Possible values include the following: 
-
 + Never check for updates
-
 + Check for updates but let me choose whether to download and install them
-
 + Download updates but let me choose whether to install them
-
 + Install updates automatically
 
 **To modify the user data for a Amazon EBS\-backed instance**
@@ -57,9 +53,9 @@ After you modify the user data for your instance, you can execute it\. For more 
 
 ## No console output<a name="no-console-output"></a>
 
-For Windows instances, the instance console displays the output from the EC2Config service running on the instance\. The output logs the status of tasks performed during the Windows boot process\. If Windows boots successfully, the last message logged is `Windows is Ready to use`\. Note that you can also display event log messages in the console, but this feature is not enabled by default\. For more information, see [Ec2 Service Properties](UsingConfig_WinAMI.md#UsingConfigInterface_WinAMI)\.
+For Windows instances, the instance console displays the output from the EC2Config service running on the instance\. The output logs the status of tasks performed during the Windows boot process\. If Windows boots successfully, the last message logged is `Windows is Ready to use`\. Note that you can also display event log messages in the console, but this feature is not enabled by default\. For more information, see [Ec2 Service Properties](ec2config-service.md#UsingConfigInterface_WinAMI)\.
 
-To get the console output for your instance using the Amazon EC2 console, select the instance, click **Actions**, select **Instance Settings**, and then click **Get System Log**\. To get the console output using the command line, use one of the following commands: [get\-console\-output](http://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-output.html) \(AWS CLI\) or [Get\-EC2ConsoleOutput](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ConsoleOutput.html) \(AWS Tools for Windows PowerShell\)\.
+To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, **Instance Settings**, and then **Get System Log**\. To get the console output using the command line, use one of the following commands: [get\-console\-output](http://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-output.html) \(AWS CLI\) or [Get\-EC2ConsoleOutput](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ConsoleOutput.html) \(AWS Tools for Windows PowerShell\)\.
 
 If the console output is empty, it could indicate an issue with the EC2Config service, such as a misconfigured configuration file, or that Windows failed to boot properly\. To fix the issue, download and install the latest version of EC2Config\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
 
@@ -85,21 +81,13 @@ Use the [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec
 ## Remote Desktop can't connect to the remote computer<a name="rdp-issues"></a>
 
 Try the following to resolve issues related to connecting to your instance:
-
 + Verify that you're using the correct public DNS hostname\. \(In the Amazon EC2 console, select the instance and check **Public DNS \(IPv4\)** in the details pane\.\) If your instance is in a VPC and you do not see a public DNS name, you must enable DNS hostnames\. For more information, see [Using DNS with Your VPC](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-dns.html) in the *Amazon VPC User Guide*\.
-
 + Verify that your instance has a public IPv4 address\. If not, you can associate an Elastic IP address with your instance\. For more information, see [Elastic IP Addresses](elastic-ip-addresses-eip.md)\. 
-
 + To connect to your instance using an IPv6 address, check that your local computer has an IPv6 address and is configured to use IPv6\. If you launched an instance from a Windows Server 2008 SP2 AMI or earlier, your instance is not automatically configured to recognize an IPv6 address assigned to the instance\. For more information, see [Configure IPv6 on Your Instances](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-migrate-ipv6.html#vpc-migrate-ipv6-dhcpv6) in the *Amazon VPC User Guide*\.
-
 + Verify that your security group has a rule that allows RDP access\. For more information, see [Create a Security Group](get-set-up-for-amazon-ec2.md#create-a-base-security-group)\.
-
 + If you copied the password but get the error `Your credentials did not work`, try typing them manually when prompted\. It's possible that you missed a character or got an extra whitespace character when you copied the password\.
-
 + Verify that the instance has passed status checks\. For more information, see [Status Checks for Your Instances](monitoring-system-instance-status-check.md) and [Troubleshooting Instances with Failed Status Checks](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html) \(*Amazon EC2 User Guide for Linux Instances*\)\.
-
 + \[EC2\-VPC\] Verify that the route table for the subnet has a route that sends all traffic destined outside the VPC to the Internet gateway for the VPC\. For more information, see [Creating a Custom Route Table](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_Internet_Gateway.html#Add_IGW_Routing) \(Internet Gateways\) in the *Amazon VPC User Guide*\.
-
 + Verify that Windows Firewall, or other firewall software, is not blocking RDP traffic to the instance\. We recommend that you disable Windows Firewall and control access to your instance using security group rules\.
 
 **To disable Windows Firewall on a Windows instance that you can't connect to**
@@ -177,32 +165,23 @@ The drive is automatically offline if the temporary instance is running the same
   1. Restore the root volume of the affected instance by attaching it as `/dev/sda1`\.
 
   1. Start the instance\.
-
 + Verify that the password has not expired\. If the password has expired, you can reset it\. For more information, see [Resetting a Lost or Expired Windows Administrator Password](ResettingAdminPassword.md)\.
-
 + If you attempt to connect using a user account that you created on the instance and receive the error `The user cannot connect to the server due to insufficient access privileges`, verify that you granted the user the right to log on locally\. For more information, see [http://technet\.microsoft\.com/en\-us/library/ee957044\.aspx](http://technet.microsoft.com/en-us/library/ee957044.aspx)\.
-
 + If you attempt more than the maximum allowed concurrent RDP sessions, your session is terminated with the message `Your Remote Desktop Services session has ended. Another user connected to the remote computer, so your connection was lost.` By default, you are allowed two concurrent RDP sessions to your instance\.
 
 ## RDP displays a black screen instead of the desktop<a name="rdp-black-screen"></a>
 
 Try the following to resolve this issue:
-
 + Check the console output for additional information\. To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, select **Instance Settings**, and then choose **Get System Log**\.
-
 + Verify that you are running the latest version of your RDP client\.
-
 + Try the default settings for the RDP client\. For more information, see [Remote Session Environment](http://technet.microsoft.com/en-us/library/cc772398.aspx) in the *Microsoft TechNet Library*\.
-
 + If you are using Remote Desktop Connection, try starting it with the `/admin` option as follows\.
 
   ```
   mstsc /v:instance /admin
   ```
-
 + If the server is running a full\-screen application, it might have stopped responding\. Use Ctrl\+Shift\+Esc to start Windows Task Manager, and then close the application\.
-
-+ If the server is over\-utilized, it might have stopped responding\. To monitor the instance using the Amazon EC2 console, select the instance and then select the **Monitoring** tab\. If you need to change the instance type to a larger size, see [Resizing Your Instance](ec2-instance-resize.md)\.
++ If the server is over\-utilized, it might have stopped responding\. To monitor the instance using the Amazon EC2 console, select the instance and then select the **Monitoring** tab\. If you need to change the instance type to a larger size, see [Changing the Instance Type](ec2-instance-resize.md)\.
 
 ## Instance loses network connectivity or scheduled tasks don't run when expected<a name="instance-loses-network-connectivity"></a>
 
@@ -225,15 +204,10 @@ To use a time zone other than UTC persistently, you must set the **RealTimeIsUni
 If you get an `InsufficientInstanceCapacity` error when you try to launch an instance, AWS does not currently have enough available capacity to service your request\.
 
 Try the following:
-
 + Wait a few minutes and then submit your request again; capacity can shift frequently\.
-
 + Submit a new request with a reduced number of instances\. For example, if you're making a single request to launch 15 instances, try making 3 requests for 5 instances, or 15 requests for 1 instance instead\.
-
 + Submit a new request without specifying an Availability Zone\.
-
-+ Submit a new request using a different instance type \(which you can resize at a later stage\)\. For more information, see [Resizing Your Instance](ec2-instance-resize.md)\.
-
++ Submit a new request using a different instance type \(which you can resize at a later stage\)\. For more information, see [Changing the Instance Type](ec2-instance-resize.md)\.
 + Try purchasing Reserved Instances\. Reserved Instances are a long\-term capacity reservation\. For more information, see [Amazon EC2 Reserved Instances](https://aws.amazon.com/ec2/purchasing-options/reserved-instances/)\.
 
 ## Instance Limit Exceeded<a name="instance-limit-exceeded"></a>

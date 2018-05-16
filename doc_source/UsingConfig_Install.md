@@ -8,11 +8,8 @@ EC2Launch replaces EC2Config on Windows Server 2016 AMIs\. For more information,
 For information about how to receive notifications for EC2Config updates, see [Subscribing to EC2Config Service Notifications](ec2config-version-details.md#ec2-subscribe-notifications)\. For information about the changes in each version, see the [EC2Config Version History](ec2config-version-details.md)\.
 
 ## Before You Begin<a name="ec2config-prereqs"></a>
-
 + Verify that you have \.NET framework 3\.5 SP1 or greater\.
-
 + By default, Setup replaces your settings files with default settings files during installation and restarts the EC2Config service when the installation is completed\. If you changed EC2Config service settings, copy the `config.xml` file from the `%Program Files%\Amazon\Ec2ConfigService\Settings` directory\. After you update the EC2Config service, you can restore this file to retain your configuration changes\.
-
 + If your version of EC2Config is earlier than version 2\.1\.19 and you are installing version 2\.2\.12 or earlier, you must first install version 2\.1\.19\. To install version 2\.1\.19, download [EC2Install\_2\.1\.19\.zip](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install_2.1.19.zip), unzip the file, and then run `EC2Install.exe`\.
 **Note**  
 If your version of EC2Config is earlier than version 2\.1\.19 and you are installing version 2\.3\.313 or later, you can install it directly without installing version 2\.1\.19 first\.

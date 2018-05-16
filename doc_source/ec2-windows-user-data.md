@@ -1,35 +1,66 @@
 # Running Commands on Your Windows Instance at Launch<a name="ec2-windows-user-data"></a>
 
-When you launch an instance in Amazon EC2, you can pass user data to the instance that can be used to perform common automated configuration tasks and even run scripts after the instance starts\.
+When you launch a Windows instance in Amazon EC2, you can pass user data to the instance\. Instance user data is treated as opaque data; it is up to the instance to interpret it\. For example, you can specify data to be used by automated configuration tasks or specify scripts that are run after the instance starts\. User data is processed by [EC2Config](ec2config-service.md) on Windows Server 2012 R2 and earlier and by [EC2Launch](ec2launch.md) on Windows Server 2016\.
 
-
-+ [User Data and Scripts](#user-data-scripts)
+**Topics**
++ [User Data Scripts](#user-data-scripts)
 + [User Data Execution](#user-data-execution)
 + [User Data and the Console](#user-data-console)
 + [User Data and the Tools for Windows PowerShell](#user-data-powershell)
 
-## User Data and Scripts<a name="user-data-scripts"></a>
+## User Data Scripts<a name="user-data-scripts"></a>
 
-You can specify scripts to execute when an instance starts\.
+For EC2Config or EC2Launch to execute scripts, you must enclose the script within a special tag when you add it to user data\. The tag you use depends on whether the commands run in a Command Prompt window \(batch commands\) or using Windows PowerShell\.
 
-For EC2Config or EC2Launch to execute user data scripts, you must enclose the lines of the specified script within one of the following special tags:
+If you specify both a batch script and a Windows PowerShell script, the batch script runs first and the Windows PowerShell script runs next, regardless of the order in which they appear in the instance user data\.
 
-`<script></script>`  
-Run any command that you can run in a Command Prompt window\.  
-Example: `<script>dir > c:\test.log</script>`
+### Syntax for Batch Scripts<a name="user-data-batch-scripts"></a>
 
-`<powershell></powershell>`  
-Run any command that you can run at the Windows PowerShell command prompt\.  
-If you use an AMI that includes the [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell/), you can also use those cmdlets\. If an IAM role is associated with your instance, then you don't need to specify credentials to the cmdlets, as applications that run on the instance can use the role's credentials to access AWS resources such as Amazon S3 buckets\.  
-Example: `<powershell>Read-S3Object -BucketName myS3Bucket -Key myFolder/myFile.zip -File c:\destinationFile.zip</powershell>`
+Specify a batch script using the `script` tag\. Separate the commands using line breaks\. For example:
 
-You can separate the commands in a script using line breaks\.
+```
+<script>
+echo Current date and time >> %SystemRoot%\Temp\test.log
+echo %DATE% %TIME% >> %SystemRoot%\Temp\test.log
+</script>
+```
 
-If both `script` and `powershell` tags are present, the batch script are run first and the PowerShell script next, regardless of the order in which they appear\.
+By default, the user data scripts are executed one time when you launch the instance\. To execute the user data scripts every time you reboot or start the instance, add `<persist>true</persist>` to the user data\.
 
-The `\Log` \(EC2Launch\) or `\Logs` \(EC2Config\) folder contains output from the standard output and standard error streams\.
+```
+<script>
+echo Current date and time >> %SystemRoot%\Temp\test.log
+echo %DATE% %TIME% >> %SystemRoot%\Temp\test.log
+</script>
+<persist>true</persist>
+```
 
-If you're using the Amazon EC2 API or a tool that does not perform base64 encoding of the user data, you must encode the user data yourself\. If not, an error is logged about being unable to find `script` or `powershell` tags to execute\. The following is an example that encodes using PowerShell\.
+### Syntax for Windows PowerShell Scripts<a name="user-data-powershell-scripts"></a>
+
+The AWS Windows AMIs include the [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell/), so you can specify these cmdlets in user data\. If you associate an IAM role with your instance, you don't need to specify credentials to the cmdlets, as applications that run on the instance use the role's credentials to access AWS resources \(for example, Amazon S3 buckets\)\.
+
+Specify a Windows PowerShell script using the `powershell` tag\. Separate the commands using line breaks\. For example:
+
+```
+<powershell>
+$file = $env:SystemRoot + "\Temp\" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+New-Item $file -ItemType file
+</powershell>
+```
+
+By default, the user data scripts are executed one time when you launch the instance\. To execute the user data scripts every time you reboot or start the instance, add `<persist>true</persist>` to the user data\.
+
+```
+<powershell>
+$file = $env:SystemRoot + "\Temp\" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+New-Item $file -ItemType file
+</powershell>
+<persist>true</persist>
+```
+
+### Base64 Encoding<a name="user-data-base64-encoding"></a>
+
+If you're using the Amazon EC2 API or a tool that does not perform base64 encoding of the user data, you must encode the user data yourself\. If not, an error is logged about being unable to find `script` or `powershell` tags to execute\. The following is an example that encodes using Windows PowerShell\.
 
 ```
 $UserData = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($Script))
@@ -45,80 +76,112 @@ For more information about base64 encoding, see [http://tools\.ietf\.org/html/rf
 
 ## User Data Execution<a name="user-data-execution"></a>
 
-By default, all Amazon AMIs have user data execution enabled for the initial boot\. For instances using the EC2Config service, you can specify that user data must be executed on the next boot or restart of the service\. For more information, see [Ec2 Service Properties](UsingConfig_WinAMI.md#UsingConfigInterface_WinAMI)\.
+By default, all AWS Windows AMIs have user data execution enabled for the initial launch\. You can specify that user data scripts are executed the next time the instance reboots or restarts\. Alternatively, you can specify that user data scripts are executed every time the instance reboots or restarts\.
 
-### Initial Boot<a name="user-data-initial-boot"></a>
+User data scripts are executed from the local administrator account when a random password is generated\. Otherwise, user data scripts are executed from the System account\.
 
-User data script execution happens under the local administrator user only when a random password is generated\. The EC2Config service generates the password and is aware of the credentials briefly \(prior to sending to the console\)\. EC2Config doesn't store or track password changes, so when you don't generate a random password, user data execution is performed by the EC2Config service account\. If you choose the option to **Shutdown with Sysprep** in EC2Config, user data script execution is enabled, regardless of the setting of the **User Data** check box\.
+### Instance Launch<a name="user-data-scripts-launch"></a>
 
-Similarly, for instances using the EC2Launch service, if you choose the option to **Shutdown with Sysprep**, user data script execution is enabled when the instance is restarted\.
+Any scripts in the instance user data are executed during the initial launch of the instance\. If the persist tag is found, user data execution is enabled for subsequent reboots or starts\. The log files for EC2Launch and EC2Config contain the output from the standard output and standard error streams\.
 
-### Subsequent Boots<a name="user-data-subsequent-boot"></a>
+With EC2Launch, the log file is `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`\. The following information is logged as user data is executed\.
++ Userdata execution begins — The start of user data execution
++ <persist> tag was provided: true — If the persist tag is found
++ Running userdata on every boot — If the persist tag is found
++ <powershell> tag was provided\.\. running powershell content — If the powershell tag is found
++ <script> tag was provided\.\. running script content — If the script tag is found
++ Message: The output from user scripts — If user data scripts are executed, their output is logged
 
-Because Amazon AMIs automatically disable user data script execution after the initial boot, you can do one of the following to make user data persist across reboots:
+With EC2Config, the log file is `C:\Program Files\Amazon\Ec2ConfigService\Logs\Ec2Config.log`\. The following information is logged as user data is executed\.
++ Ec2HandleUserData: Message: Start running user scripts — The start of user data execution
++ Ec2HandleUserData: Message: Re\-enabled userdata execution — If the persist tag is found
++ Ec2HandleUserData: Message: Could not find <persist> and </persist> — If the persist tag is not found
++ Ec2HandleUserData: Message: The output from user scripts — If user data scripts are executed, their output is logged
 
-+ For EC2Config, specify that user data must be executed on the next boot or restart of the service\. For more information, see [Ec2 Service Properties](UsingConfig_WinAMI.md#UsingConfigInterface_WinAMI)\. You can also use this option if you want to add or change user data for an existing instance\.
+### Subsequent Reboots or Starts<a name="user-data-scripts-subsequent"></a>
 
-+ For EC2Config, programmatically create a scheduled task to run at system start using `schtasks.exe /Create`, and point the scheduled task to the user data script \(or another script\) at `C:\Program Files\Amazon\Ec2ConfigService\Scripts\UserScript.ps1`\.
+When you update instance user data, user data scripts are not executed automatically when you reboot or start the instance\. However, you can enable user data execution so that user data scripts are executed one time when you reboot or start the instance or every time you reboot or start the instance\.
 
-+ For EC2Config, programmatically enable the user data plug\-in in `Config.xml` using a script similar to the following:
+If you choose the **Shutdown with Sysprep** option, user data scripts are executed when the instance is rebooted or restarted, even if you did not enable user data execution for subsequent reboots or starts\.
 
-  ```
-  <powershell>
-  $EC2SettingsFile="C:\Program Files\Amazon\Ec2ConfigService\Settings\Config.xml"
-  $xml = [xml](get-content $EC2SettingsFile)
-  $xmlElement = $xml.get_DocumentElement()
-  $xmlElementToModify = $xmlElement.Plugins
-  
-  foreach ($element in $xmlElementToModify.Plugin)
-  {
-      if ($element.name -eq "Ec2SetPassword")
-      {
-          $element.State="Enabled"
-      }
-      elseif ($element.name -eq "Ec2HandleUserData")
-      {
-          $element.State="Enabled"
-      }
-  }
-  $xml.Save($EC2SettingsFile)
-  </powershell>
-  ```
+**To enable user data execution on Windows Server 2016 \(EC2Launch\)**
 
-+ For EC2Config version 2\.1\.10 and later, or for EC2Launch, you can use `<persist>true</persist>` in the user data to enable the plug\-in after user data execution\.
+1. Connect to your Windows instance\.
 
-  ```
-  <powershell>
-      insert script here
-  </powershell>
-  <persist>true</persist>
-  ```
+1. Open a PowerShell command window and run the following command:
+
+   ```
+   InitializeInstance.ps1 -Schedule
+   ```
+
+1. Disconnect from your Windows instance\. To execute updated scripts next time the instance is started, stop the instance and update the user data\. For more information, see [View and Update the Instance User Data](#user-data-view-change)\.
+
+**To enable user data execution on Windows Server 2012 R2 and earlier \(EC2Config\)**
+
+1. Connect to your Windows instance\.
+
+1. Open `C:\Program Files\Amazon\Ec2ConfigService\Ec2ConfigServiceSetting.exe`\.
+
+1. For **User Data**, select **Enable UserData execution for next service start**\.
+
+1. Disconnect from your Windows instance\. To execute updated scripts next time the instance is started, stop the instance and update the user data\. For more information, see [View and Update the Instance User Data](#user-data-view-change)\.
 
 ## User Data and the Console<a name="user-data-console"></a>
 
-When you launch an instance, you specify the script in **Advanced Details**, **User data** on the **Step 3: Configure Instance Details** page of the Launch Instance wizard\. The example in the following image uses the `Rename-Computer` command to change the name of the instance when it boots\. When you select **As text**, the Amazon EC2 console performs base64 encoding on the input for you\.
+You can specify instance user data when you launch the instance\. If the root volume of the instance is an EBS volume, you can also stop the instance and update its user data\.
+
+### Specify Instance User Data at Launch<a name="user-data-launch-instance-wizard"></a>
+
+When you launch an instance, you specify the script in **Advanced Details**, **User data** on the **Step 3: Configure Instance Details** page of the Launch Instance wizard\. The example in the following image creates a file in the Windows temporary folder, using the current date and time in the file name\. When you include `<persist>true</persist>`, the script is executed every time you reboot or start the instance\. When you select **As text**, the Amazon EC2 console performs the base64 encoding for you\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/configure_ec2config_userdata.png)
 
-You can view the instance metadata for any instance, and you can change the instance metadata for a stopped instance\. Select the instance, and then choose **Actions**, **Instance Settings**, **View/Change User Data**\.
+### View and Update the Instance User Data<a name="user-data-view-change"></a>
 
+You can view the instance user data for any instance, and you can update the instance user data for a stopped instance\.
+
+**To update the user data for an instance using the console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Instances**\. the instance\.
+
+1. Select the instance and choose **Actions**, **Instance State**, **Stop**\.
+**Warning**  
+When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
+
+1. When prompted for confirmation, choose **Yes, Stop**\. It can take a few minutes for the instance to stop\.
+
+1. With the instance still selected, choose **Actions**, **Instance Settings**, **View/Change User Data**\. You can't change the user data if the instance is running, but you can view it\.
+
+1. In the **View/Change User Data** dialog box, update the user data, and then choose **Save**\. To execute user data scripts every time you reboot or start the instance, add `<persist>true</persist>`, as shown in the following example:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/view-change-user-data.png)
+
+1. Restart the instance\. If you enabled user data execution for subsequent reboots or starts, the updated user data scripts are executed as part of the instance start process\.
 
 ## User Data and the Tools for Windows PowerShell<a name="user-data-powershell"></a>
 
-You can use the Tools for Windows PowerShell to specify, modify, and view the user data for your instance\. For information about viewing user data from your instance using instance metadata, see [Retrieving User Data](ec2-instance-metadata.md#instancedata-user-data-retrieval)\. For information about user data and the AWS CLI, see [User Data and the AWS CLI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-api-cli) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can use the Tools for Windows PowerShell to specify, modify, and view the user data for your instance\. For information about viewing user data from your instance using instance metadata, see [Retrieve Instance User Data](ec2-instance-metadata.md#instancedata-user-data-retrieval)\. For information about user data and the AWS CLI, see [User Data and the AWS CLI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-api-cli) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-**Example: Specify User Data at Launch**  
-To specify user data when you launch your instance, use the [New\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Instance.html) command\.
+**Example: Specify Instance User Data at Launch**  
+Create a text file with the instance user data\. To execute user data scripts every time you reboot or start the instance, add `<persist>true</persist>`, as shown in the following example:
 
-This command does not perform base64 encoding of the user data for you\. Use the following commands to encode the user data in a text file\.
+```
+<powershell>
+$file = $env:SystemRoot + "\Temp\" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+New-Item $file -ItemType file
+</powershell>
+<persist>true</persist>
+```
+
+To specify instance user data when you launch your instance, use the [New\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Instance.html) command\. This command does not perform base64 encoding of the user data for you\. Use the following commands to encode the user data in a text file named `script.txt`\.
 
 ```
 PS C:\> $Script = Get-Content -Raw script.txt
 PS C:\> $UserData = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes($Script))
 ```
 
-Use the `-UserData` parameter to pass the user data to the command\.
+Use the `-UserData` parameter to pass the user data to the New\-EC2Instance command\.
 
 ```
 PS C:\> New-EC2Instance -ImageId ami-abcd1234 -MinCount 1 -MaxCount 1 -InstanceType m3.medium \
@@ -126,10 +189,10 @@ PS C:\> New-EC2Instance -ImageId ami-abcd1234 -MinCount 1 -MaxCount 1 -InstanceT
 -UserData $UserData
 ```
 
-**Example: Modify the User Data of a Stopped Instance**  
+**Example: Update Instance User Data for a Stopped Instance**  
 You can modify the user data of a stopped instance using the [Edit\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) command\.
 
-This command does not perform base64 encoding of the user data for you\. Use the following commands to encode the user data in a text file\.
+Create a text file with the new script\. Use the following commands to encode the user data in the text file named `new-script.txt`\.
 
 ```
 PS C:\> $NewScript = Get-Content -Raw new-script.txt
@@ -142,7 +205,7 @@ Use the `-UserData` and `-Value` parameters to specify the user data\.
 PS C:\> Edit-EC2InstanceAttribute -InstanceId i-1234567890abcdef0 -Attribute userData -Value $NewUserData
 ```
 
-**Example: View User Data**  
+**Example: View Instance User Data**  
 To retrieve the user data for an instance, use the [Get\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2InstanceAttribute.html) command\.
 
 ```
@@ -166,6 +229,8 @@ The following is example output\.
 
 ```
 <powershell>
-Rename-Computer -NewName user-data-test
+$file = $env:SystemRoot + "\Temp\" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+New-Item $file -ItemType file
 </powershell>
+<persist>true</persist>
 ```

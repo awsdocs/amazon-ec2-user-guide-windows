@@ -3,19 +3,13 @@
 AWS Support provides you with a Systems Manager Run Command document to interface with your Systems Manager\-enabled instance to run EC2Rescue for Windows Server\. The Run Command document is called `AWSSupport-RunEC2RescueForWindowsTool`\.
 
 This Systems Manager Run Command document performs the following tasks:
-
 + Downloads and verifies EC2Rescue for Windows Server\.
-
 + Imports a PowerShell module to ease your interaction with the tool\.
-
 + Runs EC2RescueCmd with the provided command and parameters\.
 
 The Systems Manager Run Command document accepts three parameters:
-
 + **Command**—The EC2Rescue for Windows Server action\. The current allowed values are:
-
   + **ResetAccess**—Resets the local Administrator password\. The local Administrator password of the current instance will be reset and the randomly generated password will be securely stored in Parameter Store as `/EC2Rescue/Password/<INSTANCE_ID>`\. If you select this action and provide no parameters, passwords are encrypted automatically with the default KMS key\. Optionally, you can specify a KMS Key ID in Parameters to encrypt the password with your own key\.
-
   + **CollectLogs**—Runs EC2Rescue for Windows Server with the `/collect:all` action\. If you select this action, `Parameters` must include an Amazon S3 presigned URL to upload the logs to \(or the URL that AWS Support provided for a support case\)\. Use the following PowerShell command to generate an S3 pre\-signed URL for a bucket you own in a specific region:
 
     ```
@@ -25,11 +19,8 @@ The Systems Manager Run Command document accepts three parameters:
 The S3 pre\-signed URL expires after 10 minutes\.
 
     For more information about Amazon S3 presigned URLs, see [Uploading Objects Using Pre\-Signed URLs](http://docs.aws.amazon.com/AmazonS3/latest/dev/PresignedUrlUploadObject.html)\.
-
   + **FixAll**—Runs EC2Rescue for Windows Server with the `/rescue:all` action\. If you select this action, `Parameters` must include the block device name to rescue\.
-
   + **Custom**—Allows you to run EC2Rescue for Windows Server with custom parameters\.
-
 + **Parameters**—The PowerShell parameters to pass for the specified command\.
 
 **Note**  

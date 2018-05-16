@@ -15,9 +15,7 @@ To activate the GRID capabilities on G3 instances, such as NVIDIA GRID Virtual W
 1. Open the context \(right\-click\) menu on **FeatureType** and choose **Modify**\.
 
 1. For **Value data**, type the appropriate value below for the NVIDIA GRID feature to enable and choose **OK**\.
-
    + For NVIDIA GRID Virtual Workstation: 2
-
    + For NVIDIA GRID Virtual Applications: 0
 
 1. Open the context \(right\-click\) menu on the right pane and choose **New**, **DWORD**\.

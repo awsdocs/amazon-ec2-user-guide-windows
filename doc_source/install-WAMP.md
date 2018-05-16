@@ -3,11 +3,8 @@
 This tutorial shows you how to install an Apache web server with PHP and MySQL on an EC2 instance running Windows Server\. This software configuration is sometimes called a WAMP server or WAMP stack \(Windows, Apache, MySQL, PHP\)\. For information about how to create a similar server on Linux, see [Tutorial: Installing a LAMP Web Server](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-LAMP.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 A WAMP stack is designed for easy installation to help developers get up and running quickly\. It is not designed for production environments for the following reasons:
-
 + The default configurations do not meet security requirements for most production environments\.
-
 + Upgrading and patching the different software components on a single production server would affect server availability\.
-
 + The WAMP one\-click installers do not place files in standard locations, which can make it difficult to locate important configuration files\.
 
 You can, however, create a WAMP stack on an EC2 instance to prototype a web project in a controlled test environment\. For example, you can host a static website or deploy a dynamic PHP application that reads and writes information to a database\. 
@@ -15,15 +12,10 @@ You can, however, create a WAMP stack on an EC2 instance to prototype a web proj
 There are many third\-party solutions that you can use to install a WAMP stack; this tutorial uses the Bitnami WAMP stack\. For more information, see [Review: WAMP stacks for Web developers](http://www.infoworld.com/d/application-development/review-wamp-stacks-web-developers-194346)\. 
 
 **Prerequisites**
-
 + Provision a Windows Server 2008 R2 or 2012 R2 base instance\. You must configure the base instance with a public domain name system \(DNS\) name that is reachable from the Internet\. For more information, see [Getting Started with Amazon EC2 Windows Instances](EC2_GetStarted.md)\.
-
 + Verify that the security group for your instance has the following ports open:
-
   + Port 80 \(HTTP inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTP\. 
-
   + Port 443 \(HTTPS inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTPS\.
-
   + Port 3389 \(RDP inbound only\) \- Allows you to connect to the instance using Remote Desktop Protocol \(RDP\)\. As a security best practice, restrict RDP access to a range of IP addresses in your organization\.
 
 **To install a WAMP server**
@@ -45,9 +37,7 @@ There are many third\-party solutions that you can use to install a WAMP stack; 
    1. Make a note to re\-enable Internet Explorer Enhanced Security Configuration when you have finished installing software from the web\.
 
 1. Install software updates to ensure that the instance has the latest security updates and bug fixes\.
-
    + **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
-
    + **Windows Update** \- Run Windows Update to ensure that the latest security and software updates are installed on the instance\. In Control Panel, click **System and Security**\. In the **Windows Update** section, click **Check for updates**\.
 
 1. Download and install the WAMP stack\. For the purposes of this tutorial, we suggest that you download and install [this WAMP stack](https://bitnami.com/stack/wamp)\. You can, however, download and install [other Bitnami WAMP stacks](https://bitnami.com/stack/wamp/modules)\. Regardless of which stack you install, the Bitnami site prompts you to either create a free Bitnami account or log in by using a social media account\. After you log in, run the Bitnami setup wizard\.

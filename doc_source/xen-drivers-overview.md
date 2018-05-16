@@ -10,16 +10,12 @@ Windows AMIs contain a set of drivers to permit access to virtualized hardware\.
 |  Network  |  The driver has known issues where the network connection resets under high loads; for example, fast FTP file transfers\.  |   |  The driver automatically configures jumbo frames on the network adapter when on a compatible instance type\. When the instance is in a [cluster placement group](placement-groups.md), this offers better network performance between instances in the cluster placement group\.  | 
 
 The following list shows which PV drivers you should run on each version of Windows Server on Amazon EC2\.
-
 + Windows Server 2016: AWS PV
-
 + Windows Server 2012 and 2012 R2: AWS PV
-
 + Windows Server 2008 R2: AWS PV 
-
 + Windows Server 2008: Citrix PV 5\.9
 
-
+**Topics**
 + [AWS PV Drivers](#xen-driver-awspv)
 + [Citrix PV Drivers](#xen-driver-citrix)
 + [RedHat PV Drivers](#xen-driver-redhat)
@@ -45,11 +41,8 @@ AWS PV also has a driver component named LiteAgent, which runs as a Windows serv
 Amazon Windows AMIs contain a set of drivers to permit access to virtualized hardware\. These drivers are used by Amazon EC2 to map instance store and Amazon EBS volumes to their devices\. We recommend that you install the latest drivers to improve stability and performance of your EC2 Windows instances\.
 
 **Installation Options**
-
 + You can use AWS Systems Manager to automatically update the PV drivers\. For more information, see [Automatically Update PV Drivers on EC2 Windows Instances](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-walk.html#sysman-state-pvdriver) in the *AWS Systems Manager User Guide*\.
-
 + You can download the setup package and run the install program manually\. For information about downloading and installing the AWS PV drivers, see [Upgrade Windows Server Instances \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade)\.
-
 + Windows Server 2016, Nano edition uses a slightly different version of AWS PV drivers\. For information about downloading and installing AWS PV drivers for Nano edition, see [Upgrade Windows Server 2016, Nano Edition \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade-nano)\.
 
 ### AWS PV Driver Version History<a name="pv-driver-history"></a>

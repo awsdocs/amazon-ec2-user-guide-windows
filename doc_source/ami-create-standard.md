@@ -7,18 +7,15 @@ We also recommend that you run Sysprep with EC2Launch \(Windows Server 2016\) or
 **Important**  
 Don't use Sysprep to create an instance backup\. Sysprep removes system\-specific information; removing this information might have unintended consequences for an instance backup\.
 
-
+**Topics**
 + [Before You Begin](#sysprep-begin)
 + [Using Sysprep with the EC2Config Service](#sysprep-using)
 + [Run Sysprep with the EC2Config Service](#sysprep-gui-procedure)
 + [Troubleshooting Sysprep with EC2Config](#sysprep-troubleshoot)
 
 ## Before You Begin<a name="sysprep-begin"></a>
-
 + Learn more about [Sysprep](https://technet.microsoft.com/en-us/library/cc721940.aspx) on Microsoft TechNet\.
-
 + Learn which [server roles are supported for Sysprep](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)\.
-
 + The procedures on this page apply to E2Config\. With Windows Server 2016, see [Using Sysprep with EC2Launch](ec2launch.md#ec2launch-sysprep)\.
 
 ## Using Sysprep with the EC2Config Service<a name="sysprep-using"></a>
@@ -28,13 +25,10 @@ Learn the details of the different Sysprep execution phases and the tasks perfor
 ### Sysprep Phases<a name="sysprep-phases"></a>
 
 Sysprep runs through the following phases:
-
 + **Generalize**: The tool removes image\-specific information and configurations\. For example, Sysprep removes the security identifier \(SID\), the computer name, the event logs, and specific drivers, to name a few\. After this phase is completed, the operating system \(OS\) is ready to create an AMI\. 
 **Note**  
 When you run Sysprep with the EC2Config service, the system prevents drivers from being removed because the PersistAllDeviceInstalls setting is set to true by default\.
-
 + **Specialize**: Plug and Play scans the computer and installs drivers for any detected devices\. The tool generates OS requirements like the computer name and SID\. Optionally, you can execute commands in this phase\. 
-
 + **Out\-of\-Box Experience \(OOBE\)**: The system runs an abbreviated version of Windows Setup and asks the user to enter information such as a system language, the time zone, and a registered organization\. When you run Sysprep with EC2Config, the answer file automates this phase\. 
 
 ### Sysprep Actions<a name="sysprep-actions"></a>
@@ -46,13 +40,9 @@ Sysprep and the EC2Config service perform the following actions when preparing a
 1. The EC2Config service reads the content of the `BundleConfig.xml` file\. This file is located in the following directory, by default: `C:\Program Files\Amazon\Ec2ConfigService\Settings`\.
 
     The BundleConfig\.xml file includes the following settings\. You can change these settings:
-
    + **AutoSysprep**: Indicates whether to use Sysprep automatically\. You do not need to change this value if you are running Sysprep from the EC2 Service Properties dialog box\. The default value is No\.
-
    + **SetRDPCertificate**: Sets a self\-signed certificate for the Remote Desktop server\. This enables you to securely use the Remote Desktop Protocol \(RDP\) to connect to the instance\. Change the value to **Yes** if new instances should use a certificate\. This setting is not used with Windows Server 2008 or Windows Server 2012 instances because these operating systems can generate their own certificates\. The default value is **No**\.
-
    + **SetPasswordAfterSysprep**: Sets a random password on a newly launched instance, encrypts it with the user launch key, and outputs the encrypted password to the console\. Change the value to No if new instances should not be set to a random encrypted password\. The default value is Yes\.
-
    +  **PreSysprepRunCmd**: The location of the command to run\. The command is located in the following directory, by default: C:\\Program Files\\Amazon\\Ec2ConfigService\\Scripts\\BeforeSysprep\.cmd
 
 1. The system executes `BeforeSysprep.cmd`\. This command creates a registry key as follows:
@@ -70,33 +60,24 @@ Sysprep and the EC2Config service perform the following actions when preparing a
    ```
 
 #### Generalize Phase<a name="sysprep-generalize"></a>
-
 + The tool removes image\-specific information and configurations such as the computer name and the SID\. If the instance is a member of a domain, it is removed from the domain\. The `sysprep2008.xml` answer file includes the following settings which affect this phase: 
-
   + **PersistAllDeviceInstalls**: This setting prevents Windows Setup from removing and reconfiguring devices, which speeds up the image preparation process because Amazon AMIs require certain drivers to run and re\-detection of those drivers would take time\.
-
   + **DoNotCleanUpNonPresentDevices**: This setting retains Plug and Play information for devices that are not currently present\.
-
 + Sysprep shuts down the OS as it prepares to create the AMI\. The system either launches a new instance or starts the original instance\.
 
 #### Specialize Phase<a name="sysprep-specialize"></a>
 
 The system generates OS specific requirements such as a computer name and a SID\. The system also performs the following actions based on configurations that you specify in the sysprep2008\.xml answer file\.
-
 + **CopyProfile**: Sysprep can be configured to delete all user profiles, including the built\-in Administrator profile\. This setting retains the built\-in Administrator account so that any customizations you made to that account are carried over to the new image\. The default value is True\.
 
   If you don’t have specific user\-profile customizations that you want to carry over to the new image then change this setting to False\. Sysprep will remove all user profiles; this saves time and disk space\. 
-
 + **TimeZone**: The time zone is set to Coordinate Universal Time \(UTC\) by default\.
-
 + **Synchronous command with order 1**: The system executes the following command that enables the administrator account and specifies the password requirement\.
 
   net user Administrator /ACTIVE:YES /LOGONPASSWORDCHG:NO /EXPIRES:NEVER /PASSWORDREQ:YES
-
 + **Synchronous command with order 2**: The system scrambles the administrator password\. This security measure is designed to prevent the instance from being accessible after Sysprep completes if you did not enable the ec2setpassword setting\. 
 
   C:\\Program Files\\Amazon\\Ec2ConfigService\\ScramblePassword\.exe" \-u Administrator
-
 + **Synchronous command with order 3**: The system executes the following command:
 
   C:\\Program Files\\Amazon\\Ec2ConfigService\\Scripts\\SysprepSpecializePhase\.cmd
@@ -108,29 +89,17 @@ The system generates OS specific requirements such as a computer name and a SID\
 #### OOBE Phase<a name="sysprep-oobe"></a>
 
 1. Using the EC2Config service answer file, the system specifies the following configurations:
-
    + <InputLocale>en\-US</InputLocale>
-
    + <SystemLocale>en\-US</SystemLocale>
-
    + <UILanguage>en\-US</UILanguage>
-
    + <UserLocale>en\-US</UserLocale>
-
    + <HideEULAPage>true</HideEULAPage>
-
    + <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
-
    + <NetworkLocation>Other</NetworkLocation>
-
    + <ProtectYourPC>3</ProtectYourPC>
-
    + <BluetoothTaskbarIconEnabled>false</BluetoothTaskbarIconEnabled>
-
    + <TimeZone>UTC</TimeZone>
-
    + <RegisteredOrganization>Amazon\.com</RegisteredOrganization>
-
    + <RegisteredOwner>Amazon</RegisteredOwner>
 **Note**  
 During the generalize and specialize phases the EC2Config service monitors the status of of the OS\. If EC2Config detects that the OS is in a Sysprep phase, then it publishes the following message the system log:
@@ -140,9 +109,7 @@ During the generalize and specialize phases the EC2Config service monitors the s
 1. After the OOBE phase completes, the system executes the SetupComplete\.cmd from the following location: C:\\Windows\\Setup\\Scripts\\SetupComplete\.cmd\. In Amazon public AMIs before April 2015 this file was empty and executed nothing on the image\. In public AMIs dated after April 2015, the file includes the following value: **call "C:\\Program Files\\Amazon\\Ec2ConfigService\\Scripts\\PostSysprep\.cmd"**\.
 
 1. The system executes the PostSysprep\.cmd, which performs the following operations:
-
    + Sets the local Administrator password to not expire\. If the password expired, Administrators might not be able to log on\.
-
    + Sets the MSSQLServer machine name \(if installed\) so that the name will be in sync with the AMI\.
 
 ### Post Sysprep<a name="sysprep-post"></a>
@@ -160,36 +127,24 @@ EC2Config then performs the following actions:
 1. Reads the content of the config\.xml file and lists all enabled plug\-ins\. 
 
 1. Executes all “Before Windows is ready” plug\-ins at the same time\.
-
    + Ec2SetPassword
-
    + Ec2SetComputerName
-
    + Ec2InitializeDrives
-
    + Ec2EventLog
-
    + Ec2ConfigureRDP
-
    + Ec2OutputRDPCert
-
    + Ec2SetDriveLetter
-
    + Ec2WindowsActivate
-
    + Ec2DynamicBootVolumeSize
 
 1. After it is finished, sends a “Windows is ready” message to the instance system logs\.
 
 1. Runs all “After Windows is ready” plug\-ins at the same time\.
-
    + AWS CloudWatch logs 
-
    + UserData
-
    + Simple Systems Manager \(SSM\) 
 
-For more information about Windows plug\-ins, see [Configuring a Windows Instance Using the EC2Config Service](UsingConfig_WinAMI.md)\.
+For more information about Windows plug\-ins, see [Configuring a Windows Instance Using the EC2Config Service](ec2config-service.md)\.
 
 ## Run Sysprep with the EC2Config Service<a name="sysprep-gui-procedure"></a>
 
@@ -207,14 +162,11 @@ Use the following procedure to create a standardized AMI using Sysprep and the E
 
 1. From the Windows **Start** menu, choose **All Programs**, and then choose **EC2ConfigService Settings**\. 
 
-1. Choose the **Image** tab in the **Ec2 Service Properties** dialog box\. For more information about the options and settings in the Ec2 Service Properties dialog box, see [Ec2 Service Properties](UsingConfig_WinAMI.md)\.
+1. Choose the **Image** tab in the **Ec2 Service Properties** dialog box\. For more information about the options and settings in the Ec2 Service Properties dialog box, see [Ec2 Service Properties](ec2config-service.md)\.
 
 1. Select an option for the Administrator password, and then select **Shutdown with Sysprep** or **Shutdown without Sysprep**\. EC2Config edits the settings files based on the password option that you selected\.
-
    + **Random**: EC2Config generates a password, encrypts it with user's key, and displays the encrypted password to the console\. We disable this setting after the first launch so that this password persists if the instance is rebooted or stopped and started\.
-
    + **Specify**: The password is stored in the Sysprep answer file in unencrypted form \(clear text\)\. When Sysprep runs next, it sets the Administrator password\. If you shut down now, the password is set immediately\. When the service starts again, the Administrator password is removed\. It's important to remember this password, as you can't retrieve it later\.
-
    + **Keep Existing**: The existing password for the Administrator account doesn't change when Sysprep is run or EC2Config is restarted\. It's important to remember this password, as you can't retrieve it later\.
 
 1. Choose **OK**\.
@@ -230,16 +182,13 @@ You can manually invoke the Sysprep tool from the command line using the followi
 **Note**  
 The double quotation marks in the command are not required if your CMD shell is already in the C:\\Program Files\\Amazon\\EC2ConfigService\\ directory\.
 
-However, you must be very careful that the XML file options specified in the `Ec2ConfigService\Settings` folder are correct; otherwise, you might not be able to connect to the instance\. For more information about the settings files, see [EC2Config Settings Files](UsingConfig_WinAMI.md#UsingConfigXML_WinAMI)\. For an example of configuring and then running Sysprep from the command line, see `Ec2ConfigService\Scripts\InstallUpdates.ps1`\.
+However, you must be very careful that the XML file options specified in the `Ec2ConfigService\Settings` folder are correct; otherwise, you might not be able to connect to the instance\. For more information about the settings files, see [EC2Config Settings Files](ec2config-service.md#UsingConfigXML_WinAMI)\. For an example of configuring and then running Sysprep from the command line, see `Ec2ConfigService\Scripts\InstallUpdates.ps1`\.
 
 ## Troubleshooting Sysprep with EC2Config<a name="sysprep-troubleshoot"></a>
 
 If you experience problems or receive error messages during image preparations, review the following logs: 
-
 + %WINDIR%\\Panther\\Unattendgc
-
 + %WINDIR%\\System32\\Sysprep\\Panther
-
 + "C:\\Program Files\\Amazon\\Ec2ConfigService\\Logs\\Ec2ConfigLog\.txt"
 
 If you receive an error message during image preparation with Sysprep, the OS might not be reachable\. To review the log files, you must stop the instance, attach its root volume to another healthy instance as a secondary volume, and then review the logs mentioned earlier on the secondary volume\.

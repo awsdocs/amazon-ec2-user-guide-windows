@@ -2,7 +2,7 @@
 
 The following are common errors and troubleshooting steps\.
 
-
+**Topics**
 + [Error: Add\-in cannot be installed](#scvmm-addin-error)
 + [Installation Errors](#scvmm-install-errors)
 + [Checking the Log File](#scvmm-log)
@@ -47,9 +47,7 @@ that this assembly was included with the add-in package.
 ```
 
 Try one of the following steps to work around this issue:
-
 + Grant authenticated users permission to read and execute the `C:\Program Files\Microsoft System Center 2012\Virtual Machine Manager\Bin\AddInPipeline` folder\. In Windows Explorer, right\-click the folder, select **Properties**, and then select the **Security** tab\.
-
 + Close the SCVMM console and start it one time as an administrator\. From the **Start** menu, locate SCVMM, right\-click, and then select **Run as administrator**\.
 
 ## Checking the Log File<a name="scvmm-log"></a>

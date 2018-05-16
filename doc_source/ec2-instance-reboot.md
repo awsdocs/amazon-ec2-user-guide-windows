@@ -6,7 +6,7 @@ Rebooting an instance doesn't start a new instance billing hour, unlike stopping
 
 We might schedule your instance for a reboot for necessary maintenance, such as to apply updates that require a reboot\. No action is required on your part; we recommend that you wait for the reboot to occur within its scheduled window\. For more information, see [Scheduled Events for Your Instances](monitoring-instances-status-check_sched.md)\.
 
-We recommend that you use Amazon EC2 to reboot your instance instead of running the operating system reboot command from your instance\. If you use Amazon EC2 to reboot your instance, we perform a hard reboot if the instance does not cleanly shut down within four minutes\. If you use AWS CloudTrail, then using Amazon EC2 to reboot your instance also creates an API record of when your instance was rebooted\.
+We recommend that you use the Amazon EC2 console, a command line tool, or the Amazon EC2 API to reboot your instance instead of running the operating system reboot command from your instance\. If you use the Amazon EC2 console, a command line tool, or the Amazon EC2 API to reboot your instance, we perform a hard reboot if the instance does not cleanly shut down within four minutes\. If you use AWS CloudTrail, then using Amazon EC2 to reboot your instance also creates an API record of when your instance was rebooted\.
 
 If Windows is installing updates on your instance, we recommend that you do not reboot or shut down your instance using the Amazon EC2 console or the command line until all the updates are installed\. When you use the Amazon EC2 console or the command line to reboot or shut down your instance, there is a risk that your instance will be hard rebooted\. A hard reboot while updates are being installed could throw your instance into an unstable state\.
 
@@ -23,7 +23,5 @@ If Windows is installing updates on your instance, we recommend that you do not 
 **To reboot an instance using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-
 + [reboot\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/reboot-instances.html) \(AWS CLI\)
-
 + [Restart\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Restart-EC2Instance.html) \(AWS Tools for Windows PowerShell\)

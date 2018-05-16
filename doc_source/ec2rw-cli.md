@@ -3,9 +3,7 @@
 The EC2Rescue for Windows Server command line interface \(CLI\) allows you to run an EC2Rescue for Windows Server plugin \(referred as an "action"\) programmatically\.
 
 The EC2Rescue for Windows Server tool has two execution modes:
-
 + **/online**—This allows you to take action on the instance that EC2Rescue for Windows Server is installed on, such as collect log files\.
-
 + **/offline:<device\_id>**—This allows you to take action on the offline root volume that is attached to a separate Amazon EC2 Windows instance, on which you have installed EC2Rescue for Windows Server\.
 
 Download the [EC2Rescue for Windows Server](https://s3.amazonaws.com/ec2rescue/windows/EC2Rescue_latest.zip?x-download-source=docs) tool to your Windows instance and extract the files\. You can view the help file with the following command:
@@ -15,11 +13,8 @@ EC2RescueCmd.exe /help
 ```
 
 EC2Rescue for Windows Server can perform the following actions on an Amazon EC2 Windows instance:
-
 + [Collect Action](#ec2rw-collect)
-
 + [Rescue Action](#ec2rw-rescue)
-
 + [Restore Action](#ec2rw-restore)
 
 ## Collect Action<a name="ec2rw-collect"></a>
@@ -45,11 +40,8 @@ EC2Rescue for Windows Server is able to collect the following data from active a
 | windows\-update | 'Log Files' | Collects information about the updates that are installed on the instance\.  Windows Update logs are not captured on Windows Server 2016 instances\.  | 
 
 The following are the available options:
-
 + **/output:<outputFilePath>** ‐ Required destination file path location to save collected log files in zip format\.
-
 + **/no\-offline** ‐ Optional attribute used in offline mode\. Does not set the volume offline after completing the action\.
-
 + **/no\-fix\-signature** ‐ Optional attribute used in offline mode\. Does not fix a possible disk signature collision after completing the action\.
 
 ### Examples<a name="ec2rw-collect-examples"></a>
@@ -106,13 +98,9 @@ EC2Rescue for Windows Server is able to attempt to detect and modify and the fol
 | network | 'DHCP Service Startup' |  Network Interface [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2rw-cli.html)  | 
 
 The following are the available options:
-
 + **/level:<level>** ‐ Optional attribute for the check level that the action should trigger\. Allowed values are: `information`, `warning`, `error`, `all`\. By default, it is set to `error`\.
-
 + **/check\-only** ‐ Optional attribute that generates a report but makes no modifications to the offline volume\.
-
 + **/no\-offline** ‐ Optional attribute that prevents the volume from being set offline after completing the action\.
-
 + **/no\-fix\-signature** ‐ Optional attribute that does not fix a possible disk signature collision after completing the action\.
 
 ### Rescue Examples<a name="ec2rw-rescue-examples"></a>
@@ -154,9 +142,7 @@ EC2Rescue for Windows Server is able to detect and modify the following service 
 | Restore Windows registry from latest backup | regback | Restore registry from backup ‐ Restores the registry from \\Windows\\System32\\config\\RegBack\. | 
 
 The following are the available options:
-
 + **/no\-offline**—Optional attribute that prevents the volume from being set offline after completing the action\.
-
 + **/no\-fix\-signature**—Optional attribute that does not fix a possible disk signature collision after completing the action\.
 
 ### Restore Examples<a name="ec2rw-restore-examples"></a>

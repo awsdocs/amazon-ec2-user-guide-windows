@@ -13,7 +13,7 @@ FPGA\-based instances do not support Microsoft Windows\.
 
 You can cluster accelerated computing instances into a cluster placement group\. Cluster placement groups provide low latency and high\-bandwidth connectivity between the instances within a single Availability Zone\. For more information, see [Placement Groups](placement-groups.md)\.
 
-
+**Topics**
 + [Accelerated Computing Instance Families](#gpu-instance-families)
 + [Hardware Specifications](#gpu-instance-specifications)
 + [Instance Performance](#gpu-instance-performance)
@@ -67,9 +67,7 @@ G3 instances support NVIDIA GRID Virtual Workstation and NVIDIA GRID Virtual App
 The following is a summary of the hardware specifications for accelerated computing instances\.
 
 
-****  
-
-| Instance type | vCPUs | Memory \(GiB\) | 
+| Instance type | Default vCPUs | Memory \(GiB\) | 
 | --- | --- | --- | 
 | p2\.xlarge | 4 | 61 | 
 | p2\.8xlarge | 32 | 488 | 
@@ -85,9 +83,11 @@ The following is a summary of the hardware specifications for accelerated comput
 
 For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
+For more information about specifying CPU options, see [Optimizing CPU Options](instance-optimize-cpu.md)\.
+
 ## Instance Performance<a name="gpu-instance-performance"></a>
 
-EBS\-optimized instances enable you to get consistently high performance for your EBS volumes by eliminating contention between Amazon EBS I/O and other network traffic from your instance\. F1, P3, P2, and G3 instances are EBS\-optimized by default at no additional cost\. For more information, see [Amazon EBS–Optimized Instances](EBSOptimized.md)\.
+EBS\-optimized instances enable you to get consistently high performance for your EBS volumes by eliminating contention between Amazon EBS I/O and other network traffic from your instance\. F1, P3, P2, and G3 instances are EBS\-optimized by default at no additional cost\.For more information, see [Amazon EBS–Optimized Instances](EBSOptimized.md)\.
 
 ## Network Performance<a name="gpu-network-performance"></a>
 
@@ -121,29 +121,18 @@ The following is a summary of features for accelerated computing instances\.
 \* The root device volume must be an Amazon EBS volume\.
 
 For more information, see the following:
-
 + [Instance Types Available Only in a VPC](using-vpc.md#vpc-only-instance-types)
-
 + [Amazon EBS–Optimized Instances](EBSOptimized.md)
-
 + [Amazon EC2 Instance Store](InstanceStorage.md)
-
 + [Placement Groups](placement-groups.md)
-
 + [Enhanced Networking on Windows](enhanced-networking.md)
 
 ## Release Notes<a name="gpu-instance-current-limitations"></a>
-
 + You must launch the instance using an HVM AMI\.
-
 + GPU\-based instances can't access the GPU unless the NVIDIA drivers are installed\.
-
 + There is a limit of 100 AFIs per region\.
-
 + There is a limit on the number of instances that you can run\. For more information, see [How many instances can I run in Amazon EC2?](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ\. To request an increase in these limits, use the following form: [Request to Increase Amazon EC2 Instance Limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-ec2-instances)\.
-
 + If you launch a multi\-GPU instance with a Windows AMI that was created on a single\-GPU instance, Windows does not automatically install the NVIDIA driver for all GPUs\. You must authorize the driver installation for the new GPU hardware\. You can correct this manually in the Device Manager by opening the **Other** device category \(the inactive GPUs do not appear under **Display Adapters**\)\. For each inactive GPU, open the context \(right\-click\) menu, choose **Update Driver Software**, and then choose the default **Automatic Update** option\.
-
 + When using Microsoft Remote Desktop Protocol \(RDP\), GPUs that use the WDDM driver model are replaced with a non\-accelerated Remote Desktop display driver\. To access your GPU hardware, you must use a different remote access tool, such as [Teradici Cloud Access Software](http://www.teradici.com/products/cloud-access/cloud-access-software), [NICE Desktop Cloud Visualization \(DCV\)](https://www.nice-software.com/products/dcv), or VNC\. You can also use one of the GPU AMIs from the AWS Marketplace because they provide remote access tools that support 3D acceleration\.
 
 ## AMIs for GPU\-Based Accelerated Computing Instances<a name="gpu-operating-systems"></a>
@@ -151,13 +140,14 @@ For more information, see the following:
 To help you get started, NVIDIA and others provide AMIs for GPU\-based accelerated computing instances\. These reference AMIs include the NVIDIA driver, which enables full functionality and performance of the NVIDIA GPUs\.
 
 For a list of AMIs with the NVIDIA driver, search AWS Marketplace as follows:
-
 + [NVIDIA P3 AMIs](https://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=p3.2xlarge&searchTerms=NVIDIA)
-
 + [NVIDIA P2 AMIs](https://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=p2.xlarge&searchTerms=NVIDIA)
-
 + [NVIDIA GRID G3 AMIs](https://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=g3.4xlarge&searchTerms=NVIDIAGRID)
++ [NVIDIA GRID G2 AMIs](https://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=g2.2xlarge&searchTerms=NVIDIAGRID)
 
 You can launch accelerated computing instances using any HVM AMI\.
+
+**Important**  
+These AMIs include drivers, software, or toolkits that are developed, owned, or provided by NVIDIA Corporation\. By using these AMIs, you agree to use these NVIDIA drivers, software, or toolkits only on Amazon EC2 instances that include NVIDIA hardware\.
 
 You can also install the NVIDIA driver manually\. For more information, see [Installing the NVIDIA Driver on Windows](install-nvidia-driver-windows.md)\.

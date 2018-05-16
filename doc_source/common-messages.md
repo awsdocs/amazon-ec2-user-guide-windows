@@ -2,7 +2,7 @@
 
 This section includes tips to help you troubleshoot issues based on common messages\.
 
-
+**Topics**
 + ["Password is not available"](#password-not-available)
 + ["Password not available yet"](#password-not-ready)
 + ["Cannot retrieve Windows password"](#cannot-retrieve-password)
@@ -64,15 +64,10 @@ You can terminate this instance and launch a new instance using the same AMI, ma
 A Windows instance must obtain information from its instance metadata before it can activate itself\. By default, the `WaitForMetaDataAvailable` setting ensures that the EC2Config service waits for the instance metadata to be accessible before continuing with the boot process\. For more information, see [Instance Metadata and User Data](ec2-instance-metadata.md)\.
 
 If the instance is failing the instance reachability test, try the following to resolve this issue\.
-
 + \[EC2\-VPC\] Check the CIDR block for your VPC\. A Windows instance cannot boot correctly if it's launched into a VPC that has an IP address range from `224.0.0.0` to `255.255.255.255` \(Class D and Class E IP address ranges\)\. These IP address ranges are reserved, and should not be assigned to host devices\. We recommend that you create a VPC with a CIDR block from the private \(non\-publicly routable\) IP address ranges as specified in [RFC 1918](http://www.faqs.org/rfcs/rfc1918.html)\.
-
 + It's possible that the system has been configured with a static IP address\. Try the following:
-
   + \[EC2\-VPC\] [Create a network interface](using-eni.md#create_eni) and [attach it to the instance](using-eni.md#attach_eni_running_stopped)\.
-
   + \[EC2\-Classic\] Enable DHCP\.
-
 + 
 
 **To enable DHCP on a Windows instance that you can't connect to**
@@ -172,19 +167,14 @@ http://169.254.169.254/latest/meta-data/
 ```
 
 If you can't contact the metadata server, try the following to resolve the issue:
-
 + [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\. 
-
 + Check whether the Windows instance is running RedHat PV drivers\. If so, update to Citrix PV drivers\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
-
 + Verify that the firewall, IPSec, and proxy settings do not block outgoing traffic to the metadata service \(`169.254.169.254`\) or the KMS servers \(the addresses are specified in `TargetKMSServer` elements in `C:\Program Files\Amazon\Ec2ConfigService\Settings\ActivationSettings.xml`\)\.
-
 + Verify that you have a route to the metadata service \(`169.254.169.254`\) using the following command\.
 
   ```
   route print
   ```
-
 + Check for network issues that might affect the Availability Zone for your instance\. Go to [http://status\.aws\.amazon\.com/](http://status.aws.amazon.com/)\.
 
 ## "Unable to activate Windows"<a name="activate-windows"></a>
@@ -208,13 +198,11 @@ If this does not resolve the activation issue, follow these additional steps\.
 1. Activate Windows: C:\\> slmgr\.vbs /ato
 
  If you are still receiving an activation error, verify the following information\.
-
 + Verify that you have routes to the KMS servers\. Open `C:\Program Files\Amazon\Ec2ConfigService\Settings\ActivationSettings.xml` and locate the `TargetKMSServer` elements\. Run the following command and check whether the addresses for these KMS servers are listed\.
 
   ```
   route print
   ```
-
 + Verify that the KMS client key is set\. Run the following command and check the output\.
 
   ```
@@ -226,9 +214,7 @@ If this does not resolve the activation issue, follow these additional steps\.
   ```
   C:\Windows\System32\slmgr.vbs /ipk client_key
   ```
-
 + Verify that the system has the correct time and time zone\. If you are using Windows Server 2008 or later and a time zone other than UTC, add the following registry key and set it to `1` to ensure that the time is correct: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation\RealTimeIsUniversal`\.
-
 + If Windows Firewall is enabled, temporarily disable it using the following command\.
 
   ```
@@ -246,13 +232,9 @@ Try the suggestions for ["Unable to activate Windows"](#activate-windows)\.
 By default, Windows Server is licensed for two simultaneous users through Remote Desktop\. If you need to provide more than two users with simultaneous access to your Windows instance through Remote Desktop, you can purchase a Remote Desktop Services client access license \(CAL\) and install the Remote Desktop Session Host and Remote Desktop Licensing Server roles\.
 
 Check for the following issues:
-
 + You've exceeded the maximum number of concurrent RDP sessions\.
-
 + You've installed the Windows Remote Desktop Services role\.
-
 + Licensing has expired\. If the licensing has expired, you can't connect to your Windows instance as a user\. You can try the following: 
-
   + Connect to the instance from the command line using an `/admin` parameter, for example: 
 
     ```
@@ -260,5 +242,4 @@ Check for the following issues:
     ```
 
     For more information, see the following Microsoft article: [Use command line parameters with Remote Desktop Connection](http://windows.microsoft.com/en-us/windows/command-line-parameters-remote-desktop-connection#1TC=windows-7)\.
-
   + Stop the instance, detach its Amazon EBS volumes, and attach them to another instance in the same Availability Zone to recover your data\.

@@ -2,7 +2,13 @@
 
 Complete the following preliminary tasks to configure integration with CloudWatch\. These tasks apply to all methods for configuring instances to send logs, events, and performance counters to CloudWatch\. 
 
+**Important**  
+The unified CloudWatch Agent has replaced the SSM Agent as the tool for sending log data to Amazon CloudWatch Logs\. Support for using the SSM Agent to send log data will be deprecated in the near future\. We recommend that you begin using the unified CloudWatch Agent for your log collection processes as soon as possible\. For more information, see the following topics:  
+[Send Logs to CloudWatch Logs \(CloudWatch Agent\)](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
+[ Migrate Windows Server Instance Log Collection to the CloudWatch Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html#monitoring-cloudwatch-agent-migrate) in the *AWS Systems Manager User Guide*
+[Collect Metrics from Amazon Elastic Compute Cloud Instances and On\-Premises Servers with the CloudWatch Agent](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) in the *Amazon CloudWatch User Guide*
 
+**Topics**
 + [Download the Sample Configuration File](#configure_cwl_download)
 + [Configure the JSON File for CloudWatch](#send_logs_to_cwl_json)
 + [Create an IAM User and Role for Systems Manager](#iam_permissions)
@@ -21,7 +27,7 @@ You determine which logs, events, and performance counters are sent to CloudWatc
 **Important**  
 Use UTF\-8 without BOM encoding for the CloudWatch\.json file\. If you don't, CloudWatch might not read the configuration file correctly\.
 
-
+**Topics**
 + [Step 1: Configure Settings for CloudWatch](#configure_cwl_credentials)
 + [Step 2: Configure the Data to Send](#configure_logs)
 + [Step 3: Configure Flow Control](#configure_log_flow)
@@ -128,11 +134,8 @@ You can send performance counters, event log data, Event Tracing for Windows \(E
 1. For `CounterName`, type the name of the performance counter\.
 
 1. For `InstanceName`, type values from the **Add Counters** dialog box in Performance Monitor, which can be one of the following:
-
    + Blank, if the selected object has no instances\.
-
    + A single instance of the selected object\.
-
    + `_Total` to use the aggregate of all instances\.
 
    Do not use an asterisk \(\*\) to indicate all instances because each performance counter component only supports one metric\.
@@ -141,7 +144,7 @@ You can send performance counters, event log data, Event Tracing for Windows \(E
 
 1. For `Unit`, type the appropriate unit of measure for the metric\. The possible values are as follows:
 
-   Seconds | Microseconds | Milliseconds | Bytes | Kilobytes | Megabytes | Gigabytes | Terabytes | Bits | Kilobits | Megabits | Gigabits | Terabits | Percent | Count | Bytes/Second | Kilobytes/Second | Megabytes/Second | Gigabytes/Second | Terabytes/Second | Bits/Second | Kilobits/Second | Megabits/Second | Gigabits/Second | Terabits/Second | Count/Second | None\.
+   Seconds \| Microseconds \| Milliseconds \| Bytes \| Kilobytes \| Megabytes \| Gigabytes \| Terabytes \| Bits \| Kilobits \| Megabits \| Gigabits \| Terabits \| Percent \| Count \| Bytes/Second \| Kilobytes/Second \| Megabytes/Second \| Gigabytes/Second \| Terabytes/Second \| Bits/Second \| Kilobits/Second \| Megabits/Second \| Gigabits/Second \| Terabits/Second \| Count/Second \| None\.
 
 1. \(Optional\) To specify a dimension for your metric, type a dimension name and value for `DimensionName` and `DimensionValue`\. These parameters provide another view when listing metrics\. You can also use the same dimension for multiple metrics so that you can view all metrics belonging to a specific dimension\.
 
@@ -164,11 +167,8 @@ If the SSM Agent or the CloudWatch plugin is stopped, performance counter data i
    ```
 
 1. For `Levels`, specify the type of messages to upload\. You can specify one of the following values:
-
    + **1** – Upload only error messages\.
-
    + **2** – Upload only warning messages\.
-
    + **4** – Upload only information messages\.
 
    You can combine values to include more than one type of message\. For example, a value of **3** uploads error messages \(**1**\) and warning messages \(**2**\)\. A value of **7** uploads error messages \(**1**\), warning messages \(**2**\), and information messages \(**4**\)\.
@@ -206,11 +206,8 @@ If the SSM Agent or the CloudWatch plugin is stopped, performance counter data i
    ```
 
 1. For `Levels`, specify the type of messages to upload\. You can specify one of the following values:
-
    + **1** – Upload only error messages\.
-
    + **2** – Upload only warning messages\.
-
    + **4** – Upload only information messages\.
 
    You can combine values to include more than one type of message\. For example, a value of **3** uploads error messages \(**1**\) and warning messages \(**2**\)\. A value of **7** uploads error messages \(**1**\), warning messages \(**2**\), and information messages \(**4**\)\.
@@ -241,11 +238,8 @@ If the SSM Agent or the CloudWatch plugin is stopped, performance counter data i
    1. Navigate to the log, and then choose **Actions**, **Properties**\.
 
 1. For `Levels`, specify the type of messages to upload\. You can specify one of the following values:
-
    + **1** – Upload only error messages\.
-
    + **2** – Upload only warning messages\.
-
    + **4** – Upload only information messages\.
 
    You can combine values to include more than one type of message\. For example, a value of **3** uploads error messages \(**1**\) and warning messages \(**2**\)\. A value of **7** uploads error messages \(**1**\), warning messages \(**2**\), and information messages \(**4**\)\.
@@ -270,11 +264,8 @@ ETW \(Event Tracing for Windows\) provides an efficient and detailed logging mec
 1. For `LogName`, type the name of the log to upload\.
 
 1. For `Levels`, specify the type of messages to upload\. You can specify one of the following values:
-
    + **1** – Upload only error messages\.
-
    + **2** – Upload only warning messages\.
-
    + **4** – Upload only information messages\.
 
    You can combine values to include more than one type of message\. For example, a value of **3** uploads error messages \(**1**\) and warning messages \(**2**\)\. A value of **7** uploads error messages \(**1**\), warning messages \(**2**\), and information messages \(**4**\)\.

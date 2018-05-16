@@ -2,17 +2,17 @@
 
 The following are troubleshooting tips to help you solve common issues with EC2 instance running Windows Server\.
 
-
+**Topics**
 + [EBS volumes don't initialize on Windows Server 2016 AMIs](#init-disks-win2k16)
 + [Boot an EC2 Windows Instance into Directory Services Restore Mode \(DSRM\)](#boot-dsrm)
 
 ## EBS volumes don't initialize on Windows Server 2016 AMIs<a name="init-disks-win2k16"></a>
 
-Instances created from Windows Server 2012 R2 and earlier Amazon Machine Images \(AMIs\) use the EC2Config service for a variety of startup tasks, including initializing EBS volumes\. To accommodate the change from \.NET Framework to \.NET Core, the EC2Config service has been deprecated on Windows Server 2016 AMIs and replaced by EC2Launch\. EC2Launch is a bundle of Windows PowerShell scripts that perform many of the tasks performed by the EC2Config service\. By default, EC2Launch does not initialize secondary volumes\. You can configure EC2Launch to initialize disks automatically by either scheduling the script to run or by calling EC2Launch in user data\.
+Instances created from Windows Server 2016 Amazon Machine Images \(AMIs\) use the EC2Launch service for a variety of startup tasks, including initializing EBS volumes\. By default, EC2Launch does not initialize secondary volumes\. You can configure EC2Launch to initialize these disks automatically\.
 
 **To map drive letters to volumes**
 
-1. On the instance you want to configure, open the `C:\ProgramData\Amazon\EC2-Windows\Launch\Config\DriveLetterMappingConfig.json` file in a text editor\.
+1. Connect to the instance to configure and open the `C:\ProgramData\Amazon\EC2-Windows\Launch\Config\DriveLetterMappingConfig.json` file in a text editor\.
 
 1. Specify the volume settings using the following format:
 
@@ -27,31 +27,19 @@ Instances created from Windows Server 2012 R2 and earlier Amazon Machine Images 
    }
    ```
 
-1. Save your changes\.
+1. Save your changes and close the file\.
 
-1. In Windows PowerShell, use the following script to initialize the disks:
-
-   ```
-   PS C:\> cd /ProgramData/Amazon/EC2-Windows/Launch/Scripts/
-   PS C:\> ./InitializeDisks.ps1
-   ```
-
-   To initialize disks each time the instance boots, use the `-Schedule` flag:
+1. Open Windows PowerShell and use the following command to run the EC2Launch script that initializes the disks:
 
    ```
-   PS C:\> cd /ProgramData/Amazon/EC2-Windows/Launch/Scripts/
-   PS C:\> ./InitializeDisks.ps1 -Schedule
+   PS C:\>  C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeDisks.ps1
    ```
 
-You can also initialize attached disks at the instance launch by adding the following path to the PowerShell script in Amazon EC2 user data\.
+   To initialize the disks each time the instance boots, add the `-Schedule` flag as follows:
 
-```
-<powershell>
-C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeDisks.ps1
-</powershell>
-```
-
-For more information, see [Configuring Instances with User Data](ec2-instance-metadata.md#instancedata-add-user-data)\.
+   ```
+   PS C:\>  C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeDisks.ps1 -Schedule
+   ```
 
 ## Boot an EC2 Windows Instance into Directory Services Restore Mode \(DSRM\)<a name="boot-dsrm"></a>
 

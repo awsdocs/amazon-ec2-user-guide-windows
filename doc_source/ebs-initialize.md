@@ -74,7 +74,7 @@ Incorrect use of dd can easily destroy a volume's data\. Be sure to follow preci
 **Note**  
 You may see an error if dd attempts to read beyond the end of the volume\. This can be safely ignored\.
 
-1. When the operation completes, you are ready to use your new volume\. For more information, see [Making an Amazon EBS Volume Available for Use](ebs-using-volumes.md)\.
+1. When the operation completes, you are ready to use your new volume\. For more information, see [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\.
 
 ### Using fio<a name="using_fio"></a>
 
@@ -82,7 +82,7 @@ Complete the following procedures to install and use fio to initialize a volume\
 
 **Install fio for Windows**
 
-The fio for Windows program provides a similar experience to the fio program that is commonly available for Linux and Unix systems, and it allows you to initialize Amazon EBS volumes that have been restored from snapshots\. Full documentation for the program is available at [https://bluestop\.org/fio/](https://bluestop.org/fio/)\.
+The fio for Windows program provides a similar experience to the fio program that is commonly available for Linux and Unix systems, and it allows you to initialize Amazon EBS volumes that have been restored from snapshots\. Full documentation for the program is available at [https://github\.com/axboe/fio](https://github.com/axboe/fio)\.
 
 1. Download the [fio MSI](https://bluestop.org/fio/) installer\.
 
@@ -96,4 +96,4 @@ The fio for Windows program provides a similar experience to the fio program tha
    fio --filename=\\.\PHYSICALDRIVEn  --rw=read --bs=128k --iodepth=32 --direct=1 --name=volume-initialize
    ```
 
-1. When the operation completes, you are ready to use your new volume\. For more information, see [Making an Amazon EBS Volume Available for Use](ebs-using-volumes.md)\.
+1. When the operation completes, you are ready to use your new volume\. For more information, see [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\.

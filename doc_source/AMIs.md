@@ -3,11 +3,8 @@
 An Amazon Machine Image \(AMI\) provides the information required to launch an instance, which is a virtual server in the cloud\. You must specify a source AMI when you launch an instance\. You can launch multiple instances from a single AMI when you need multiple instances with the same configuration\. You can use different AMIs to launch instances when you need instances with different configurations\.
 
 An AMI includes the following:
-
 + A template for the root volume for the instance \(for example, an operating system, an application server, and applications\)
-
 + Launch permissions that control which AWS accounts can use the AMI to launch instances
-
 + A block device mapping that specifies the volumes to attach to the instance when it's launched
 
 ## Creating Your Own AMI<a name="creating-an-ami"></a>
@@ -41,9 +38,7 @@ Microsoft no longer supports Windows Server 2003 \(see [Microsoft Windows Server
 To view the Windows AMIs provided by AWS, you can use the Amazon EC2 console or [AWS Marketplace](https://aws.amazon.com/marketplace/)\. For more information, see [Finding a Windows AMI](finding-an-ami.md)\.
 
 You can also create an AMI from your own Windows computer\. For more information, see the following services:
-
 + [AWS Server Migration Service](http://docs.aws.amazon.com/server-migration-service/latest/userguide/)
-
 + [VM Import/Export](http://docs.aws.amazon.com/vm-import/latest/userguide/)
 
 ### Keeping Your AMIs Up\-to\-Date<a name="WinAMI_Updating"></a>

@@ -3,9 +3,7 @@
 If you are unable to reach your instance via SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility as to the status of the instance, and allows for quicker troubleshooting\.
 
 There is no data transfer cost for this screenshot\. The image is generated in JPG format, no larger than 100kb\.
-
 + [How to Take a Screenshot of an Unreachable Instance](#how-to-ics)
-
 + [Common Screenshots](#ics-common)
 
 ## How to Take a Screenshot of an Unreachable Instance<a name="how-to-ics"></a>
@@ -27,9 +25,7 @@ Right\-click on the image to download and save it\.
 **To capture a screenshot using the command line**
 
 You can use one of the following commands\. The returned output is base64\-encoded\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-
 + [get\-console\-screenshot](http://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-screenshot.html) \(AWS CLI\)
-
 + [GetConsoleScreenshot](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-GetConsoleScreenshot.html) \(Amazon EC2 Query API\)
 
 For API calls, the returned content is base64\-encoded\. For command line tools, the decoding is performed for you\.
@@ -37,19 +33,12 @@ For API calls, the returned content is base64\-encoded\. For command line tools,
 ## Common Screenshots<a name="ics-common"></a>
 
 You can use the following information to help you troubleshoot an unreachable instance based on screenshots returned by the service\.
-
 + [Log On Screen \(Ctrl\+Alt\+Delete\)](#logon-screen) 
-
 + [Recovery Console Screen](#recovery-console-screen) 
-
 + [Windows Boot Manager Screen](#boot-manager-screen) 
-
 + [Sysprep Screen](#sysprep-screen) 
-
 + [Getting Ready Screen](#getting-ready-screen) 
-
 + [Windows Update Screen](#windows-update-screen) 
-
 + [Chkdsk](#Chkdsk) 
 
 ### Log On Screen \(Ctrl\+Alt\+Delete\)<a name="logon-screen"></a>
@@ -85,7 +74,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 
 Verify that a local network configuration isn't blocking access\. Try to connect to another instance in the same VPC as your unreachable instance\. If you can't access another instance, work with your local network administrator to determine whether a local policy is restricting access\.
 
-#### Remote Desktop Service Issue<a name="rds-issue"></a>
+#### Remote Desktop Services Issue<a name="rds-issue"></a>
 
 If the instance can't be reached during log on, there could a problem with Remote Desktop Services \(RDS\) on the instance\.
 
@@ -95,18 +84,14 @@ If the instance can't be reached during log on, there could a problem with Remot
 | Configuration | Verify | 
 | --- | --- | 
 | RDS is running | Verify that RDS is running on the instance\. Connect to the instance using the Microsoft Management Console \(MMC\) Services snap\-in \(services\.msc\)\. In the list of services, verify that Remote Desktop Services is Running\. If it isn't, start it and then set the startup type to Automatic\. If you can't connect to the instance by using the Services snap\-in, detach the root volume from the instance, take a snapshot of the volume or create an AMI from it, attach the original volume to another instance in the same availability zone as a secondary volume, and modify the [Start](https://technet.microsoft.com/en-us/library/cc959920.aspx) registry key\. When you are finished, reattach the root volume to the original instance\. For more information about detaching volumes, see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\. | 
-| RDS is enabled | Even if the service is started, it may be disabled\. Detach the root volume from the instance, take a snapshot of the volume or create an AMI from it, attach the original volume to another instance in the same availability zone as a secondary volume, and enable the service by modifying the Terminal Server registry key as described in the following articles:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/screenshot-service.html) When you are finished, reattach the root volume to the original instance\. For more information about detaching volumes, see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\. | 
+| RDS is enabled |  Even if the service is started, it might be disabled\. Detach the root volume from the instance, take a snapshot of the volume or create an AMI from it, attach the original volume to another instance in the same Availability Zone as a secondary volume, and enable the service by modifying the **Terminal Server** registry key as described in the following articles: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/screenshot-service.html) When you are finished, reattach the root volume to the original instance\. For more information, see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\.  | 
 
 #### High CPU<a name="high-cpu"></a>
 
 Check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon CloudWatch\. If **CPUUtilization \(Maximum\)** is a high number, wait for the CPU to go down and try connecting again\. High CPU usage can be caused by:
-
 + Windows Update
-
 + Security Software Scan
-
 + Custom Startup Script
-
 + Task Scheduler
 
 For more information about the **CPUUtilization \(Maximum\)** metric, see [Get Statistics for a Specific EC2 Instance](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. For additional troubleshooting tips, see [High CPU usage shortly after Windows starts](troubleshooting-windows-instances.md#high-cpu-issue)\.

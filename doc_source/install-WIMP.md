@@ -3,27 +3,18 @@
 This tutorial shows you how to install a Microsoft Internet Information Services \(IIS\) web server with PHP and MySQL on an EC2 instance running Windows Server\. This software configuration is sometimes called a WIMP server or WIMP stack \(Windows, IIS, MySQL, PHP\)\.
 
 A WIMP stack is designed for easy installation to help developers get up and running quickly\. It is *not* designed for production environments for the following reasons:
-
 + The default configurations do not meet security requirements for most production environments\.
-
 + Upgrading and patching the different software components on a single production server would affect server availability\.
-
 + The WAMP one\-click installers do not place files in standard locations, which can make it difficult to locate important configuration files\.
 
 You can, however, create a WIMP stack on an EC2 instance to prototype a web project in a controlled test environment\. For example, you can host a static website or deploy a dynamic PHP application that reads and writes information to a database\.
 
 ## Prerequisites<a name="wimp-prerequisites"></a>
-
 + Provision a Windows Server 2008 R2 or 2012 R2 base instance\. You must configure the base instance with a public domain name system \(DNS\) name that is reachable from the Internet\. For more information, see [Getting Started with Amazon EC2 Windows Instances](EC2_GetStarted.md)\.
-
 + Verify that the security group for your instance has the following ports open:
-
   + Port 80 \(HTTP inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTP\. 
-
   + Port 443 \(HTTPS inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTPS\.
-
   + Port 3389 \(RDP inbound only\) \- Allows you to connect to the instance using Remote Desktop Protocol \(RDP\)\. As a security best practice, restrict RDP access to a range of IP addresses in your organization\.
-
 + Read the best practices for installing PHP on the [Microsoft web platform](http://www.iis.net/learn/application-frameworks/running-php-applications-on-iis/best-practices-for-php-on-the-microsoft-web-platform)\.
 
 ## Prepare Your Instance<a name="wimp-prepare-instance"></a>

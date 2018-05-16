@@ -4,7 +4,7 @@ An elastic GPU is a GPU resource that you can attach to your Amazon EC2 instance
 
 Elastic GPUs are suited for applications that require a small or intermittent amount of additional GPU for graphics acceleration, and that use OpenGL graphics support\. If you need access to full, directly attached GPUs and use of DirectX, CUDA, or Open Computing Language \(OpenCL\) parallel computing frameworks, use an accelerated computing instance type instance instead\. For more information, see [Windows Accelerated Computing Instances](accelerated-computing-instances.md)\.
 
-
+**Topics**
 + [Elastic GPU Basics](#elastic-gpus-basics)
 + [Working with Elastic GPUs](working-with-elastic-gpus.md)
 + [Using CloudWatch Metrics to Monitor Your Elastic GPUs](elastic-gpus-cloudwatch.md)
@@ -15,19 +15,12 @@ Elastic GPUs are suited for applications that require a small or intermittent am
 To use an elastic GPU, launch an instance and specify an elastic GPU type to attach to the instance during launch\. AWS finds available elastic GPU capacity and establishes a network connection between your instance and the elastic GPU\.
 
 The following instance types support elastic GPUs:
-
-+ c3 | c4 | c5
-
-+ m3 | m4 | m5
-
-+ r3 | r4
-
++ c3 \| c4 \| c5
++ m3 \| m4 \| m5
++ r3 \| r4
 + t2\.medium \(or greater\)
-
 + x1
-
 + d2
-
 + i3
 
 The following elastic GPU types are available\. You can attach any elastic GPU type to any supported instance type\. 
@@ -60,17 +53,10 @@ You are charged for each second that an elastic GPU is attached to an instance i
 ### Elastic GPU Limitations<a name="elastic-gpus-limitations"></a>
 
 Before you start using elastic GPUs, be aware of the following limitations:
-
 + You can attach one elastic GPU to an instance at a time, and only during instance launch\.
-
 + You cannot share an elastic GPU between instances\.
-
 + You cannot detach an elastic GPU from an instance or transfer it to another instance\. If you no longer require an elastic GPU, you must terminate your instance\. If you want to change the elastic GPU type, create an AMI from your instance, terminate the instance, and launch a new instance with a different elastic GPU specification\.
-
 + Currently, only versions of the OpenGL API up to and including 4\.3 are supported\. DirectX, CUDA, and OpenCL are not supported\.
-
 + Currently, elastic GPUs can be attached to instances launched from Window Server AMIs only\.
-
 + Elastic GPUs can only be attached to instances in a VPC\.
-
 + Pricing for elastic GPUs is available at On\-Demand rates only\. You can attach an elastic GPU to a Reserved, Scheduled, or Spot Instance; however, the On\-Demand price for the elastic GPU applies\. You cannot reserve elastic GPU capacity and you cannot schedule elastic GPU capacity\.

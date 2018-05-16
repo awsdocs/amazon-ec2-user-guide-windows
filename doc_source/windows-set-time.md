@@ -2,7 +2,7 @@
 
 A consistent and accurate time reference is crucial for many server tasks and processes\. Most system logs include a time stamp that you can use to determine when problems occur and in what order the events take place\. If you use the AWS CLI or an AWS SDK to make requests from your instance, these tools sign requests on your behalf\. If your instance's date and time are not set correctly, the date in the signature may not match the date of the request, and AWS rejects the request\. We recommend that you use Coordinated Universal Time \(UTC\) for your Windows instances\. However, you can use a different time zone if you want\.
 
-
+**Topics**
 + [Changing the Time Zone](#windows-changing-time-zone)
 + [Configuring Network Time Protocol \(NTP\)](#windows-configuring-ntp)
 + [Configuring Time Settings for Windows Server 2008 and later](#windows-persisting-time-changes-w2k8)
@@ -135,11 +135,7 @@ When you change the time on a Windows instance, you must ensure that the time pe
 ## Related Topics<a name="server-time-related-topics"></a>
 
 For more information about how the Windows operating system coordinates and manages time, including the addition of a leap second, see the following documentation:
-
 + [How the Windows Time Service Works](https://docs.microsoft.com/en-us/windows-server/networking/windows-time-service/how-the-windows-time-service-works) \(Microsoft\)
-
 + [W32tm](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-xp/bb491016(v=technet.10)) \(Microsoft\)
-
 + [How the Windows Time service treats a leap second](https://support.microsoft.com/en-us/help/909614/how-the-windows-time-service-treats-a-leap-second) \(Microsoft\)
-
 + [The story around Leap Seconds and Windows: It's likely not Y2K](https://blogs.msdn.microsoft.com/mthree/2015/01/08/the-story-around-leap-seconds-and-windows-its-likely-not-y2k/) \(Microsoft\)

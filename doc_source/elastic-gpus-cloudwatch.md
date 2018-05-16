@@ -23,7 +23,6 @@ Metrics are grouped first by the service namespace, and then by the various dime
 1. Under **All metrics**, select a metrics category, and then scroll down to view the full list of metrics\.
 
 **To view metrics using the AWS CLI**
-
 + At a command prompt, use the following command:
 
   ```
@@ -64,9 +63,6 @@ For example, you can create an alarm that monitors the health of an elastic GPU 
 1. Select the elastic GPU and the **GPUHealthCheckFailed** metric and choose **Next**\.
 
 1. Configure the alarm as follows, and choose **Create Alarm** when you are done:
-
    + Under **Alarm Threshold**, enter a name and description for your alarm\. For **Whenever**, choose **=>** and enter `1`\. Enter **3** for the consecutive periods\.
-
    + Under **Actions**, select an existing notification list or choose **New list** to create a new one\. 
-
    + Under **Alarm Preview**, select a period of 5 minutes\.

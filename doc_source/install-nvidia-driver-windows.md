@@ -37,7 +37,7 @@ Associate an IAM role with your instance that has permissions to use the `s3:Lis
 
 1. Complete the optimization steps in [Optimizing GPU Settings \(P2, P3, and G3 Instances\)](optimize_gpu.md) to achieve the best performance from your GPU\.
 
-## Public NVIDIA Drivers \(P2, P3\)<a name="nvidia-drivers-public"></a>
+## Public NVIDIA Drivers \(G2, P2, P3\)<a name="nvidia-drivers-public"></a>
 
 For instance types other than G3, or if you are not using NVIDIA GRID capabilities on a G3 instance, you can download a public NVIDIA driver\.
 
@@ -47,6 +47,8 @@ For instance types other than G3, or if you are not using NVIDIA GRID capabiliti
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/install-nvidia-driver-windows.html)
 
 1. Open the folder where you downloaded the driver and launch the installation file\. Follow the instructions to install the driver and reboot your instance as required\.
+
+1. Disable the built\-in display adapter using Device Manager\. Install Media Foundation and Quality Windows Audio Video Experience\.
 
 1. To verify that the GPU is working correctly, check Device Manager\.
 

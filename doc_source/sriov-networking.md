@@ -1,18 +1,14 @@
 # Enabling Enhanced Networking with the Intel 82599 VF Interface on Windows Instances in a VPC<a name="sriov-networking"></a>
 
-Amazon EC2 provides enhanced networking capabilities to C3, C4, D2, I2, R3, and M4 \(excluding `m4.16xlarge`\) instances with the Intel 82599 VF interface, which uses the Intel `ixgbevf` driver\.
+Amazon EC2 provides enhanced networking capabilities to C3, C4, D2, I2, M4 \(excluding `m4.16xlarge`\), and R3 instances through the Intel 82599 VF interface, which uses the Intel `ixgbevf` driver\.
 
-To prepare for enhanced networking with the Intel 82599 VF interface, set up your instance as follows:
-
+To prepare for enhanced networking using the Intel 82599 VF interface, set up your instance as follows:
 + Launch the instance from a 64\-bit HVM AMI\. You can't enable enhanced networking on Windows Server 2008 and Windows Server 2003\. Enhanced networking is already enabled for Windows Server 2012 R2 and Windows Server 2016 AMIs\. Windows Server 2012 R2 includes Intel driver 1\.0\.15\.3 and we recommend that you upgrade that driver to the latest version using the Pnputil\.exe utility\. 
-
 + Launch the instance in a VPC\. \(You can't enable enhanced networking if the instance is in EC2\-Classic\.\)
-
 + Install and configure the [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](http://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\. 
-
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `sriovNetSupport` attribute, may render incompatible instances or operating systems unreachable; if you have a recent backup, your data will still be retained if this happens\.
 
-
+**Topics**
 + [Testing Whether Enhanced Networking with the Intel 82599 VF Interface is Enabled](#test-enhanced-networking)
 + [Enabling Enhanced Networking with the Intel 82599 VF Interface on Windows](#enable-enhanced-networking)
 
@@ -25,13 +21,11 @@ To verify that the driver is installed, connect to your instance and open Device
 
 **Instance Attribute \(sriovNetSupport\)**  
 To check whether an instance has the enhanced networking `sriovNetSupport` attribute set, use one of the following commands:
-
 + [describe\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html) \(AWS CLI\)
 
   ```
   aws ec2 describe-instance-attribute --instance-id instance_id --attribute sriovNetSupport
   ```
-
 + [Get\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
   ```
@@ -48,7 +42,6 @@ If the attribute isn't set, `SriovNetSupport` is empty; otherwise, it is set as 
 
 **Image Attribute \(sriovNetSupport\)**  
 To check whether an AMI already has the enhanced networking `sriovNetSupport` attribute set, use one of the following commands:
-
 + [describe\-image\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html) \(AWS CLI\)
 
   ```
@@ -56,7 +49,6 @@ To check whether an AMI already has the enhanced networking `sriovNetSupport` at
   ```
 
   Note that this command only works for images that you own\. You receive an `AuthFailure` error for images that do not belong to your account\.
-
 + [Get\-EC2ImageAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ImageAttribute.html) \(AWS Tools for Windows PowerShell\)
 
   ```
@@ -94,13 +86,9 @@ There is no way to disable the enhanced networking attribute after you've enable
 1. From the instance, install the driver as follows:
 
    1. Download the Intel network adapter driver for your operating system:
-
       + [Windows Server 2008 R2](https://downloadcenter.intel.com/detail_desc.aspx?agr=Y&DwnldID=18725)
-
       + [Windows Server 2012](https://downloadcenter.intel.com/download/21694/Network-Adapter-Driver-for-Windows-Server-2012-)
-
       + [Windows Server 2012 R2](https://downloadcenter.intel.com/download/23073/Network-Adapter-Driver-for-Windows-Server-2012-R2-)
-
       + [Windows Server 2016](https://downloadcenter.intel.com/download/26092/Ethernet-Intel-Network-Adapter-Driver-for-Windows-Server-2016-?product=83418)
 
    1. In the **Download** folder, locate the `PROWinx64.exe` file\. Rename this file `PROWinx64.zip`\.
@@ -136,13 +124,11 @@ There is no way to disable the enhanced networking attribute after you've enable
 1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
 
 1. From your local computer, enable the enhanced networking attribute using one of the following commands:
-
    + [modify\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
 
      ```
      aws ec2 modify-instance-attribute --instance-id instance_id --sriov-net-support simple
      ```
-
    + [Edit\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
      ```

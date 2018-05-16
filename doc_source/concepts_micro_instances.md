@@ -9,7 +9,7 @@ The `t1.micro` instance is available as an Amazon EBS\-backed instance only\.
 
 This documentation describes how `t1.micro` instances work so that you can understand how to apply them\. It's not our intent to specify exact behavior, but to give you visibility into the instance's behavior so you can understand its performance\.
 
-
+**Topics**
 + [Hardware Specifications](#storage_instances_hardware_micro)
 + [Optimal Application of T1 Micro Instances](#optimal-application-of-micro-instances)
 + [Available CPU Resources During Spikes](#available-cpu-resources-during-spikes)
@@ -90,9 +90,7 @@ The following figure shows the situation where the background level used up the 
 ## AMI Optimization for Micro Instances<a name="ami-optimization-for-micro-instances"></a>
 
 We recommend that you follow these best practices when optimizing an AMI for the `t1.micro` instance type:
-
 + Design the AMI to run on 600 MB of RAM
-
 + Limit the number of recurring processes that use CPU time \(for example, cron jobs, daemons\)
 
 When you perform significant AMI or instance configuration changes \(for example, enable server roles or install large applications\), you might see limited instance performance, because these changes can be memory intensive and require long\-running CPU resources\. We recommend that you first use a larger instance type when performing these changes to the AMI, and then run the AMI on a `t1.micro` instance for normal operations\.

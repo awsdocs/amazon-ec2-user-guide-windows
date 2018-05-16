@@ -59,7 +59,5 @@ Amazon EBS volumes attached to Windows instances after launch must be manually i
 **To restore an EBS volume using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-
 + [create\-volume](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-volume.html) \(AWS CLI\)
-
 + [New\-EC2Volume](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Volume.html) \(AWS Tools for Windows PowerShell\)

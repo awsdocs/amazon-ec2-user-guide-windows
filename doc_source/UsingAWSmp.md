@@ -2,7 +2,7 @@
 
 You can use the AWS Management Pack to monitor the health of your AWS resources\.
 
-
+**Topics**
 + [Views](#AWSmpViews)
 + [Discoveries](#Discoveries)
 + [Monitors](#Monitors)
@@ -15,7 +15,7 @@ You can use the AWS Management Pack to monitor the health of your AWS resources\
 
 The AWS Management Pack provides the following views, which are displayed in the **Monitoring** workspace of the Operations console\.
 
-
+**Topics**
 + [EC2 Instances](#w3ab1c31c23b7b6)
 + [Amazon EBS Volumes](#w3ab1c31c23b7b8)
 + [Elastic Load Balancers](#w3ab1c31c23b7c10)
@@ -33,15 +33,10 @@ View the health state of the EC2 instances for a particular AWS account, from al
 ![\[EC2 instances view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2_instance_view.png)
 
 When you select an EC2 instance, you can perform instance health tasks:
-
 + **Open Amazon Console**: Launches the AWS Management Console in a web browser\.
-
 + **Open RDP to Amazon EC2 Instance**: Opens an RDP connection to the selected Windows instance\.
-
 + **Reboot Amazon EC2 Instance**: Reboots the selected EC2 instance\. 
-
 + **Start Amazon EC2 Instance**: Starts the selected EC2 instance\.
-
 + **Stop Amazon EC2 Instance**: Stops the selected EC2 instance\.
 
 **EC2 Instances Diagram View**  
@@ -120,55 +115,33 @@ View the health state of the watcher nodes across all of the AWS accounts that a
 ## Discoveries<a name="Discoveries"></a>
 
 Discoveries are the AWS resources that are monitored by the AWS Management Pack\. The AWS Management Pack discovers the following objects:
-
 + Amazon EC2 instances
-
 + EBS volumes
-
 + ELB load balancers
-
 + AWS CloudFormation stacks
-
 + Amazon CloudWatch alarms
-
 + AWS Elastic Beanstalk applications
-
 + Amazon EC2 Auto Scaling groups and Availability Zones
 
 Amazon CloudWatch metrics are generated for the following resources:
-
 + Amazon EC2 instance
-
 + EBS volume
-
 + Elastic Load Balancing
-
 + Custom Amazon CloudWatch metrics
-
 + Metrics from existing Amazon CloudWatch alarms
 
 For Amazon CloudWatch metrics discovery, the following guidelines apply:
-
 + AWS CloudFormation stacks do not have any default Amazon CloudWatch metrics\.
-
 + Stopped Amazon EC2 instances or unused Amazon EBS volumes do not generate data for their default Amazon CloudWatch metrics\.
-
 + After starting an Amazon EC2 instance, it can take up to 30 minutes for the Amazon CloudWatch metrics to appear in Operations Manager\.
-
 + Amazon CloudWatch retains the monitoring data for two weeks, even if your AWS resources have been terminated\. This data appears in Operations Manager\.
-
 + An existing Amazon CloudWatch alarm for a resource that is not supported will create a metric and be associated with the Amazon CloudWatch alarm\. These metric can be viewed in the Other Metrics performance view\.
 
 The AWS Management Pack also discovers the following relationships:
-
 + AWS CloudFormation stack and its Elastic Load Balancing or Amazon EC2 resources
-
 + Elastic Load Balancing load balancer and its EC2 instances
-
 + Amazon EC2 instance and its EBS volumes
-
 + Amazon EC2 instance and its operating system
-
 + AWS Elastic Beanstalk application and its environment, configuration, and resources
 
 The AWS Management Pack automatically discovers the relationship between an EC2 instance and the operating system running on it\. To discover this relationship, the Operations Manager Agent must be installed and configured on the instance and the corresponding operating system management pack must be imported in Operations Manager\.

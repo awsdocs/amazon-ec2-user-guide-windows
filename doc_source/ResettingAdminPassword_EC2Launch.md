@@ -93,7 +93,7 @@ The temporary instance must be in the same Availability Zone as the original ins
 
 1. Detach the root volume from the temporary instance using the Amazon EC2 console as follows:
 
-   1. On the **Description** pane of the original instance, note the ID of the EB volume listed as the **Root device**\.
+   1. On the **Description** pane of the temporary instance, note the ID of the EB volume listed as the **Root device**\.
 
    1. In the navigation pane, choose **Volumes**\.
 

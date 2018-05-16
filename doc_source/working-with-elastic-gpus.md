@@ -2,7 +2,7 @@
 
 You can launch an instance and associate it with an elastic GPU during launch\. You must then manually install the necessary libraries on your instance that enable communication with the elastic GPU\.
 
-
+**Topics**
 + [Configuring Your Security Groups](#elastic-gpus-security)
 + [Launching an Instance with an Elastic GPU](#attach-elastic-gpus-launch)
 + [Installing and Updating the Elastic GPU Packages](#elastic-gpus-install-libraries)
@@ -43,11 +43,8 @@ For more information about security groups, see [Amazon EC2 Security Groups for 
 ## Launching an Instance with an Elastic GPU<a name="attach-elastic-gpus-launch"></a>
 
 You can associate an elastic GPU to an instance during launch\. If the launch fails, it may be for one of the following reasons:
-
 + Insufficient elastic GPU capacity
-
 + Exceeded limit on elastic GPUs in the region
-
 + Not enough private IPv4 addresses in your VPC to create a network interface for the elastic GPU
 
 For more information, see [Elastic GPU Limitations](elastic-gpus.md#elastic-gpus-limitations)\.
@@ -97,7 +94,7 @@ The Elastic GPU packages on your instance include tools that you can use to view
 
 If your instance was launched with an AMI that does not have the Elastic GPU packages pre\-installed, you can download and install them yourself\. For more information, see [Installing and Updating the Elastic GPU Packages](#elastic-gpus-install-libraries)\.
 
-
+**Topics**
 + [Using the Elastic GPU Status Monitor](#elastic-gpus-verify-status)
 + [Using the Elastic GPU Command Line Tool](#elastic-gpus-command-tools)
 
@@ -151,7 +148,7 @@ The following parameters are supported:
 
 To use these parameters, you can use the following syntax:
 
-\[`-`|`--`|`/`\]\[*argument*\]\[`=`|`:`| \]\[*value*\]
+\[`-`\|`--`\|`/`\]\[*argument*\]\[`=`\|`:`\| \]\[*value*\]
 
 For example, the following command disables the JSON message output:
 
@@ -185,9 +182,7 @@ aws ec2 describe-network-interfaces --filters "Name=attachment.instance-owner-id
 ```
 
 Alternatively, you can use the following Tools for Windows PowerShell commands:
-
 + [Get\-EC2ElasticGpu](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ElasticGpu.html)
-
 + [Get\-EC2NetworkInterface](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2NetworkInterface.html)
 
 **To view information about an elastic GPU using instance metadata**  

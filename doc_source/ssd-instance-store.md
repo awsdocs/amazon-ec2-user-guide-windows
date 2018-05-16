@@ -7,13 +7,9 @@ Like other instance store volumes, you must map the SSD instance store volumes f
 ## NVMe SSD Volumes<a name="nvme-ssd-volumes"></a>
 
 I3 and F1 instances offer non\-volatile memory express \(NVMe\) SSD instance store volumes\. To access the NVMe volumes, you must use an operating system that supports NVMe\. The following are the recommended operating systems:
-
 + Windows Server 2016
-
 + Windows Server 2012 R2
-
 + Windows Server 2012
-
 + Windows Server 2008 R2
 
 After you connect to your instance, you can verify that you see the NVMe volumes in Disk Manager\. On the taskbar, open the context \(right\-click\) menu for the Windows logo and choose **Disk Management**\. On Windows Server 2008 R2, choose **Start**, **Administrative Tools**, **Computer Management**, **Disk Management**\.

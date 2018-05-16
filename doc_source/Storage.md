@@ -3,18 +3,13 @@
 Amazon EC2 provides you with flexible, cost effective, and easy\-to\-use data storage options for your instances\. Each option has a unique combination of performance and durability\. These storage options can be used independently or in combination to suit your requirements\.
 
 After reading this section, you should have a good understanding about how you can use the data storage options supported by Amazon EC2 to meet your specific requirements\. These storage options include the following:
-
 + [Amazon Elastic Block Store \(Amazon EBS\)](AmazonEBS.md)
-
 + [Amazon EC2 Instance Store](InstanceStorage.md)
-
-+ [Amazon Elastic File System \(Amazon EFS\)](AmazonEFS.md)
-
 + [Amazon Simple Storage Service \(Amazon S3\)](AmazonS3.md)
 
 The following figure shows the relationship between these types of storage\.
 
-![\[Storage options for Amazon EC2\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/architecture_storage.png)
+![\[Storage options for Amazon EC2\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/architecture_storage_windows.png)
 
 **Amazon EBS**  
 Amazon EBS provides durable, block\-level storage volumes that you can attach to a running instance\. You can use Amazon EBS as a primary storage device for data that requires frequent and granular updates\. For example, Amazon EBS is the recommended storage option when you run a database on an instance\.
@@ -25,9 +20,6 @@ To keep a backup copy of your data, you can create a *snapshot* of an EBS volume
 
 **Amazon EC2 Instance Store**  
 Many instances can access storage from disks that are physically attached to the host computer\. This disk storage is referred to as *instance store*\. Instance store provides temporary block\-level storage for instances\. The data on an instance store volume persists only during the life of the associated instance; if you stop or terminate an instance, any data on instance store volumes is lost\. For more information, see [Amazon EC2 Instance Store](InstanceStorage.md)\.
-
-**Amazon EFS File System**  
-Amazon EFS provides scalable file storage for use with Amazon EC2\. You can create an EFS file system and configure your instances to mount the file system\. You can use an EFS file system as a common data source for workloads and applications running on multiple instances\. For more information, see [Amazon Elastic File System \(Amazon EFS\)](AmazonEFS.md)\.
 
 **Amazon S3**  
 Amazon S3 provides access to reliable and inexpensive data storage infrastructure\. It is designed to make web\-scale computing easier by enabling you to store and retrieve any amount of data, at any time, from within Amazon EC2 or anywhere on the web\. For example, you can use Amazon S3 to store backup copies of your data and applications\. Amazon EC2 uses Amazon S3 to store EBS snapshots and instance store\-backed AMIs\. For more information, see [Amazon Simple Storage Service \(Amazon S3\)](AmazonS3.md)\.

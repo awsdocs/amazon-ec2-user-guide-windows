@@ -10,9 +10,6 @@ The EC2Rescue for Windows Server tool only runs on Amazon EC2 instances running 
 If you are using a Linux instance, see [EC2Rescue for Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Linux-Server-EC2Rescue.html)\.
 
 **Contents**
-
 + [Using EC2Rescue for Windows Server GUI](ec2rw-gui.md)
-
 + [Using EC2Rescue for Windows Server with the Command Line](ec2rw-cli.md)
-
 + [Using EC2Rescue for Windows Server with Systems Manager Run Command](ec2rw-ssm.md)

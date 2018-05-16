@@ -1,11 +1,14 @@
 # Configure Instances for CloudWatch<a name="send_logs_to_cwl_instances"></a>
 
+**Important**  
+The unified CloudWatch Agent has replaced the SSM Agent as the tool for sending log data to Amazon CloudWatch Logs\. Support for using the SSM Agent to send log data will be deprecated in the near future\. We recommend that you begin using the unified CloudWatch Agent for your log collection processes as soon as possible\. For more information, see the following topics:  
+[Send Logs to CloudWatch Logs \(CloudWatch Agent\)](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
+[ Migrate Windows Server Instance Log Collection to the CloudWatch Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html#monitoring-cloudwatch-agent-migrate) in the *AWS Systems Manager User Guide*
+[Collect Metrics from Amazon Elastic Compute Cloud Instances and On\-Premises Servers with the CloudWatch Agent](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) in the *Amazon CloudWatch User Guide*
+
 Choose from the following methods to configure integration with CloudWatch:
-
 + [Use Run Command](#remote-commands-cloudwatch)
-
 + [Use State Manager](#ec2-configuration-cwl)
-
 + [Use a Local Configuration File](#send_logs_cwl_configfile)
 
 ## Before You Begin<a name="send_logs_to_cwl_prerequisites"></a>
@@ -86,7 +89,7 @@ The Amazon EC2 console truncates output after 2500 characters\. Configure an Ama
 
 The procedure to configure your instances using a local configuration file depends on the agent and the version of the agent that you're using\. The SSM Agent is the only agent compatible with Windows Server 2016\. With Windows Server 2008 to Windows Server 2012 R2, you must determine which version of EC2Config is running on your instance\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
 
-
+**Topics**
 + [Use SSM Agent to Configure CloudWatch](#configure-ssm-agent)
 + [Use EC2Config 4\.x to Configure CloudWatch](#ec2config-4x)
 + [Use EC2Config 3\.x or Earlier to Configure CloudWatch](#ec2config-3x)

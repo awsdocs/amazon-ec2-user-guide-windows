@@ -2,7 +2,7 @@
 
 This topic describes solutions to common issues that you might encounter with Amazon EC2 PV drivers\.
 
-
+**Topics**
 + [Windows Server 2012 R2 loses network and storage connectivity after an instance reboot](#server2012R2-instance-unavailable)
 + [TCP Offloading](#citrix-tcp-offloading)
 + [Time Synchronization](#citrix-time-sync)
@@ -14,13 +14,9 @@ Windows Server 2012 R2 Amazon Machine Images \(AMIs\) made available *before* Se
 For systems that you suspect could be affected by this issue, you can download and run an in\-place driver upgrade\. If you are unable to perform the in\-place driver upgrade, you can run a helper script\. The script determines if your instance is affected\. If it is affected, and the Amazon EC2 network device has *not* been removed, the script disables the Plug and Play Cleanup scan\. If the Amazon EC2 network device has been removed, the script repairs the device, disables the Plug and Play Cleanup scan, and allows your instance to reboot with network connectivity enabled\.
 
  **In this section** 
-
 +  [Choose How You Want to Fix This Problem](#choose-fix) 
-
 +  [Method 1 \- Enhanced Networking](#plug-n-play-fix-method1) 
-
 +  [Method 2 \- Registry configuration](#plug-n-play-fix-method2) 
-
 +  [Run the Remediation Script](#plug-n-play-script) 
 
 ### Choose How You Want to Fix This Problem<a name="choose-fix"></a>
@@ -93,7 +89,7 @@ If you do not create the instance in the same Availability Zone as the affected 
 
     **HKEY\_LOCAL\_MACHINE\\*your\_temporary\_key\_name*\\ControlSet001\\Control\\Class\\4d36e96a\-e325\-11ce\-bfc1\-08002be10318** 
 
-1. For each key, double\-click **UpperFilters**, enter a value of XENFILT, and then click **OK**\.  
+1. For each key, double\-click **UpperFilters**, enter a value of XENFILT, and then choose **OK**\.  
 ![\[Registry key for affected volume.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/troubleshooting-server2012R2-regedit.png)
 
 1. Locate the following key:
@@ -165,39 +161,27 @@ When you stop an instance, the data on any instance store volumes is erased\. Th
 By default, TCP offloading is enabled for the Citrix PV drivers in Windows AMIs\. If you encounter transport\-level errors or packet transmission errors \(as visible on the Windows Performance Monitor\)—for example, when you're running certain SQL workloads—you may need to disable this feature\.
 
 **Important**  
+You do not need to perform this procedure on instances running AWS PV or Intel network drivers\.  
 Disabling TCP offloading may reduce the network performance of your instance\.
-
-You do not need to perform this procedure on instances running AWS PV or Intel network drivers\.
 
 **To disable TCP offloading for Windows Server 2012 and 2008**
 
 1. Connect to your instance and log in as the local administrator\.
 
-1. If you're using Windows Server 2012, press **Ctrl\+Esc** to access the **Start** screen, and then click **Control Panel**\. If you're using Windows Server 2008, click **Start** and select **Control Panel**\.
+1. If you're using Windows Server 2012, press **Ctrl\+Esc** to access the **Start** screen, and then choose **Control Panel**\. If you're using Windows Server 2008, choose **Start** and select **Control Panel**\.
 
-1. Click **Network and Internet**, then **Network and Sharing Center**\.
+1. Choose **Network and Internet**, then **Network and Sharing Center**\.
 
-1. Click **Change adapter settings**\.
+1. Choose **Change adapter settings**\.
 
 1. Right\-click **Citrix PV Ethernet Adapter \#0** and select **Properties**\.  
 ![\[Local area connection properties\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/citrix-local-area-conn.png)
 
-1. In the **Local Area Connection Properties** dialog box, click **Configure** to open the **Citrix PV Ethernet Adapter \#0 Properties** dialog box\.
+1. In the **Local Area Connection Properties** dialog box, choose **Configure** to open the **Citrix PV Ethernet Adapter \#0 Properties** dialog box\.
 
-1. On the **Advanced** tab, disable each of the following properties by selecting them in the **Property** list, and selecting **Disabled** from the **Value** list:
+1. On the **Advanced** tab, disable each of the properties, except for **Correct TCP/UDP Checksum Value**\. To disable a property, select it from **Property** and choose **Disabled** from **Value**\.
 
-   + **IPv4 Checksum Offload**
-
-   + **Large Receive Offload \(IPv4\)**
-
-   + **Large Send Offload Version 2 \(IPv4\)**
-
-   + **TCP Checksum Offload \(IPv4\)**
-
-   + **UDP Checksum Offload \(IPv4\)**  
-![\[Citrix PV Ethernet adapter properties\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/citrix-disable-tcp-offload.png)
-
-1. Click **OK**\.
+1. Choose **OK**\.
 
 1. Run the following commands from a Command Prompt window\.
 

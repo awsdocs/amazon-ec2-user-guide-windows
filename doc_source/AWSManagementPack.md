@@ -7,24 +7,16 @@ The AWS Management Pack allows Microsoft System Center Operations Manager to acc
 The AWS Management Pack uses Amazon CloudWatch metrics and alarms to monitor your AWS resources\. Amazon CloudWatch metrics appear in Microsoft System Center as performance counters and Amazon CloudWatch alarms appear as alerts\.
 
 You can monitor the following resources:
-
 + EC2 instances
-
 + EBS volumes
-
 + ELB load balancers
-
 + Amazon EC2 Auto Scaling groups and Availability Zones
-
 + Elastic Beanstalk applications
-
 + CloudFormation stacks
-
 + CloudWatch Alarms
-
 + CloudWatch Custom Metrics
 
-
+**Topics**
 + [Overview of AWS Management Pack for System Center 2012](#overview-2012)
 + [Overview of AWS Management Pack for System Center 2007 R2](#overview-2007)
 + [Downloading the AWS Management Pack](DownloadAWSmp.md)

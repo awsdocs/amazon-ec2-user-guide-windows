@@ -3,11 +3,8 @@
 If you are using a previous generation Amazon EC2 instance and you need to modify the root \(boot\) volume, you must stop the instance, apply the modifications, and then restart the instance\. The procedure described here can be used to modify any EBS volume on any instance type\.
 
 When you stop and start an instance, be aware of the following:
-
 + If your instance is running in a VPC and has a public IPv4 address, we release the address and give it a new public IPv4 address\. The instance retains its private IPv4 addresses and any Elastic IP addresses\.
-
 + If your instance is running in EC2\-Classic, we give it new public and private IPv4 addresses, and disassociate any Elastic IP address that's associated with the instance\. You must re\-associate any Elastic IP address after you restart your instance\.
-
 + If your instance is in an Auto Scaling group, Amazon EC2 Auto Scaling marks the stopped instance as unhealthy, and may terminate it and launch a replacement instance\. To prevent this, you can temporarily suspend the Auto Scaling processes for the group\. For more information, see [Suspending and Resuming Scaling Processes](http://docs.aws.amazon.com/autoscaling/latest/userguide/as-suspend-resume-processes.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
 **To modify the root volume of an instance**
@@ -44,4 +41,4 @@ After the instance has started, you can check the file system size to see if you
 
 If the size does not reflect your newly expanded volume, you must extend the file system of your device so that your instance can use the new space\. For more information, see [Extending a Windows File System after Resizing the Volume](recognize-expanded-volume-windows.md)\.
 
-You may have to bring the volume online in order to use it\. For more information, see [Making an Amazon EBS Volume Available for Use](ebs-using-volumes.md)\. You do not need to reformat the volume\.
+You may have to bring the volume online in order to use it\. For more information, see [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\. You do not need to reformat the volume\.

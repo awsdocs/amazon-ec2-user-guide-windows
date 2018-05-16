@@ -7,15 +7,11 @@ If you'd prefer to host your WordPress blog on a Linux instance, see [Tutorial: 
 ## Prerequisites<a name="EC2Win_PrerequisiteWordPressBlog"></a>
 
 Before you get started, be sure that you do the following:
-
 + Launch an Amazon EC2 instance from a Windows Server AMI\. For information, see [Getting Started with Amazon EC2 Windows Instances](EC2_GetStarted.md)\.
-
 + Use the AWS free usage tier \(if eligible\) to launch and use the free Windows `t2.micro` instance for 12 months\. You can use the AWS free usage tier for launching new applications, testing existing applications, or simply gaining hands\-on experience with AWS\. For more information about eligibility and the highlights, see the [AWS Free Usage Tier](https://aws.amazon.com/free/) product page\.
 **Important**  
 If you've launched a regular instance and use it to deploy the WordPress website, you will incur the standard Amazon EC2 usage fees for the instance until you terminate it\. For more information about Amazon EC2 usage rates, go to the [Amazon EC2 product page](https://aws.amazon.com/ec2)\.
-
 + Ensure that the security group in which you're launching your instance has ports 80 \(HTTP\), 443 \(HTTPS\), and 3389 \(RDP\) open for inbound traffic\. Ports 80 and 443 allow computers outside of the instance to connect with HTTP and HTTPS\. If these ports are not open, the WordPress site can't be accessed from outside the instance\. Port 3389 allows you to connect to the instance with Remote Desktop Protocol\.
-
 + Connect to your instance\. 
 
 ## Installing the Microsoft Web Platform Installer<a name="InstallWebDeployment"></a>
@@ -31,9 +27,7 @@ You can use the Microsoft Web Platform Installer to install and configure WordPr
 1. Disable Internet Explorer Enhanced Security Configuration so that you can download and install required software from the web\.
 
    1. Open Server Manager\.
-
       + On Windows Server 2008 R2, under **Server Summary**, in the **Security Information** section, click **Configure IE ESC**\.
-
       + On Windows Server 2012 R2, click **Local Server** in the left pane\. In the **Properties** pane, locate **IE Enhanced Security Configuration**\. Click **On**\. 
 
    1. Under **Administrators**, click **Off**, and then click **OK**\.
@@ -147,11 +141,9 @@ Now that you can see your WordPress blog on your local host, you can publish thi
 1. In the **Dashboard** pane, click **Settings**\. 
 
 1. On the **General Settings** page, enter the following information and click **Save Changes**\.
-
    + **WordPress address \(URL\)**—The public DNS address of your instance\. For example, your URL may look something like `http://ec2-203-0-113-25.compute-1.amazonaws.com`\.
 
      You can get the public DNS for your instance using the Amazon EC2 console \(select the instance and check the **Public DNS** column; if this column is hidden, click the **Show/Hide** icon and select **Public DNS**\)\.
-
    + **Site address \(URL\)**—The same public DNS address of your instance that you set in **WordPress address \(URL\)**\.
 
 1. To see your new site, open a browser on a computer other than the instance hosting WordPress and type the public DNS address of your instance in the web address field\. Your WordPress site appears\.
@@ -163,13 +155,9 @@ Congratulations\! You have just deployed a WordPress site on a Windows instance\
 If you no longer need this instance, you can remove it to avoid incurring charges\. For more information, see [Clean Up Your Instance](EC2_GetStarted.md#ec2-clean-up-your-instance)\.
 
 If your WordPress blog becomes popular and you need more compute power or storage, consider the following steps:
-
 + Expand the storage space on your instance\. For more information, see [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](ebs-modify-volume.md)\.
-
 + Move your MySQL database to [Amazon RDS](https://aws.amazon.com/rds) to take advantage of the service's ability to scale automatically\.
-
-+ Migrate to a larger instance type\. For more information, see [Resizing Your Instance](ec2-instance-resize.md)\.
-
++ Migrate to a larger instance type\. For more information, see [Changing the Instance Type](ec2-instance-resize.md)\.
 + Add additional instances\. For more information, see [Tutorial: Increase the Availability of Your Application on Amazon EC2](ec2-increase-availability.md)\.
 
 For information about WordPress, see the WordPress Codex help documentation at [http://codex\.wordpress\.org/](http://codex.wordpress.org/)\. For more information about troubleshooting your installation, see [http://codex\.wordpress\.org/Installing\_WordPress\#Common\_Installation\_Problems](http://codex.wordpress.org/Installing_WordPress#Common_Installation_Problems)\. For information about making your WordPress blog more secure, see [http://codex\.wordpress\.org/Hardening\_WordPress](http://codex.wordpress.org/Hardening_WordPress)\. For information about keeping your WordPress blog up\-to\-date, see [http://codex\.wordpress\.org/Updating\_WordPress](http://codex.wordpress.org/Updating_WordPress)\.

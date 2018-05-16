@@ -3,11 +3,8 @@
 On the EC2\-VPC platform, you can specify multiple private IPv4 addresses for your instances\. After you assign a secondary private IPv4 address to an instance in a VPC, you must configure the operating system on the instance to recognize the secondary private IPv4 address\. 
 
 Configuring the operating system on a Windows instance to recognize a secondary private IPv4 address requires the following:
-
 + [Step 1: Configure Static IP Addressing on Your Windows Instance ](#step1)
-
 + [Step 2: Configure a Secondary Private IP Address for Your Windows Instance ](#step2)
-
 + [Step 3: Configure Applications to Use the Secondary Private IP Address](#step3)
 
 **Note**  
@@ -16,11 +13,8 @@ These instructions are based on Windows Server 2008 R2\. The implementation of t
 ## Prerequisites<a name="prerequisites"></a>
 
 Before you begin, make sure you meet the following requirements:
-
 + As a best practice, launch your Windows instances using the latest AMIs\. If you are using an older Windows AMI, ensure that it has the Microsoft hot fix referenced in [http://support\.microsoft\.com/kb/2582281](http://support.microsoft.com/kb/2582281)\.
-
 + After you launch your instance in your VPC, add a secondary private IP address\. For more information, see [Assigning a Secondary Private IPv4 Address](MultipleIP.md#ManageMultipleIP)\.
-
 + To allow Internet requests to your website after you complete the tasks in these steps, you must configure an Elastic IP address and associate it with the secondary private IP address\. For more information, see [Associating an Elastic IP Address with the Secondary Private IPv4 Address](MultipleIP.md#StepThreeEIP)\.
 
 ## Step 1: Configure Static IP Addressing on Your Windows Instance<a name="step1"></a>

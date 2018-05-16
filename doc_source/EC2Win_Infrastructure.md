@@ -2,7 +2,7 @@
 
 As you get started with Amazon EC2, you'll benefit from understanding the components of its basic infrastructure and how they compare or contrast with your own data centers\.
 
-
+**Topics**
 + [Amazon Machine Images and Instances](#AMISandInstances)
 + [Regions and Availability Zones](#EC2Win_Regions)
 + [Storage](#EC2Win_Storage)
@@ -39,16 +39,13 @@ For more information about the available regions and Availability Zones, see [Us
 ## Storage<a name="EC2Win_Storage"></a>
 
 When using Amazon EC2, you may have data that you need to store\. Amazon EC2 offers the following storage options:
-
 +  [Amazon Elastic Block Store \(Amazon EBS\)](https://aws.amazon.com/ebs) 
-
 + [Amazon EC2 Instance Store](InstanceStorage.md)
-
 +  [Amazon Simple Storage Service \(Amazon S3\)](https://aws.amazon.com/s3) 
 
 The following figure shows the relationship between these types of storage\.
 
-![\[Storage options for Amazon EC2\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/architecture_storage.png)
+![\[Storage options for Amazon EC2\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/architecture_storage_windows.png)
 
 ### Amazon EBS Volumes<a name="EC2Win_StorageEBS"></a>
 
@@ -97,9 +94,7 @@ You can verify the setting by viewing details for the root device volume on the 
 **To change the root device volume of an instance to persist using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-
 + [modify\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
-
 + [Edit\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
 ## Networking and Security<a name="EC2Win_Sec"></a>
@@ -113,31 +108,20 @@ You can use *security groups* to control who can access your instances\. These a
 ## AWS Identity and Access Management<a name="EC2Win_IAM"></a>
 
 AWS Identity and Access Management \(IAM\) enables you to do the following:
-
 + Create users and groups under your AWS account
-
 + Assign unique security credentials to each user under your AWS account
-
 + Control each user's permissions to perform tasks using AWS resources
-
 + Allow the users in another AWS account to share your AWS resources
-
 + Create roles for your AWS account and define the users or services that can assume them
-
 + Use existing identities for your enterprise to grant permissions to perform tasks using AWS resources
 
 By using IAM with Amazon EC2, you can control whether users in your organization can perform a task using specific Amazon EC2 API actions and whether they can use specific AWS resources\.
 
 For more information about IAM, see the following:
-
 + [Creating an IAM Group and Users](UsingIAM.md#creating-an-iam-group)
-
 + [IAM Policies for Amazon EC2](iam-policies-for-amazon-ec2.md)
-
 + [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)
-
 + [Identity and Access Management \(IAM\)](https://aws.amazon.com/iam)
-
 + [IAM User Guide](http://docs.aws.amazon.com/IAM/latest/UserGuide/)
 
 ## Differences between Windows Server and an Amazon EC2 Windows Instance<a name="EC2InstanceAndWindowsServer"></a>

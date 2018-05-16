@@ -89,7 +89,7 @@ The temporary instance must be in the same Availability Zone as the original ins
 
    1. For **Device**, type **xvdf** \(if it isn't already there\), and then choose **Attach**\.
 
-   1. Connect to the temporary instance, open the **Disk Management** utility, and bring the drive online using these instructions: [Making the Volume Available on Windows](ebs-using-volumes.md#using-ebs-volume-windows)\.
+   1. Connect to the temporary instance, open the **Disk Management** utility, and bring the drive online using these instructions: [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\.
 
 1. On the secondary volume, modify the configuration file as follows:
 

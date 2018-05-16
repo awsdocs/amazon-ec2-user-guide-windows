@@ -23,5 +23,5 @@ For information about extending a Linux file system, see [Extending a Linux File
 
    Complete the wizard\.  
 ![\[Windows Server Extend Volume Wizard\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/Extend-Volume-Wizard-Win2008.png)
-**Tip**  
-If the increased available space on your volume remains invisible to the system, try re\-initializing the volume as described in [Initializing Amazon EBS Volumes](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
+
+1. If you increase the size of an NVMe volume on an instance that does not have the AWS NVMe drivers, you must reboot the instance to enable Windows to see the new volume size\. For more information about installing the AWS NVMe drivers, see [AWS NVMe Drivers for Windows Instances](aws-nvme-drivers.md)\.

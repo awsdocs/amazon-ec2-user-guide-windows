@@ -5,27 +5,16 @@ Before you perform an in\-place upgrade, you must determine which network driver
 ## Before You Begin an In\-Place Upgrade<a name="os-upgrade-before"></a>
 
 Complete the following tasks and note the following important details before you begin your in\-place upgrade\.
-
 + Read the Microsoft documentation to understand the upgrade requirements, known issues, and restrictions\. Also review the official instructions for upgrading\.
-
   + [Upgrading to Windows Server 2008](https://technet.microsoft.com/en-us/library/cc754728.aspx)
-
   + [Upgrading to Windows Server 2008 R2](https://technet.microsoft.com/en-us/library/ff968983.aspx)
-
   + [Upgrade Options for Windows Server 2012](https://technet.microsoft.com/en-us/library/jj574204.aspx)
-
   + [Upgrade Options for Windows Server 2012 R2](https://technet.microsoft.com/en-us/library/dn303416.aspx)
-
   + [Upgrade and conversion options for Windows Server 2016](https://docs.microsoft.com/en-us/windows-server/get-started/supported-upgrade-paths)
-
-+ We do not recommend performing an operating system upgrade on a T1 or T2 instance type\. These types of instances might not have enough resources to manage the upgrade process\. To upgrade one of these instances, you must resize the instance to another instance type, perform the upgrade, and then resize it back to a T1 or T2 instance type\. For more information, see [Resizing Your Instance](ec2-instance-resize.md)\.
-
++ We do not recommend performing an operating system upgrade on a T1 or T2 instance type\. These types of instances might not have enough resources to manage the upgrade process\. To upgrade one of these instances, you must resize the instance to another instance type, perform the upgrade, and then resize it back to a T1 or T2 instance type\. For more information, see [Changing the Instance Type](ec2-instance-resize.md)\.
 + Verify that the root volume on your Windows instance has enough free disk space\. The Windows Setup process might not warn you of insufficient disk space\. For information about how much disk space is required to upgrade a specific operating system, see the Microsoft documentation\. If the volume does not have enough space, it can be expanded\. For more information, see [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](ebs-modify-volume.md)\.
-
 + Determine your upgrade path\. You must upgrade the operating system to the same architecture\. For example, you must upgrade a 32\-bit system to a 32\-bit system\. Windows Server 2008 R2 and later are 64\-bit only\.
-
 + Disable antivirus and anti\-spyware software and firewalls\. These types of software can conflict with the upgrade process\. Re\-enable antivirus and anti\-spyware software and firewalls after the upgrade completes\.
-
 + The Upgrade Helper Service only supports instances running Citrix PV drivers\. If the instance is running Red Hat drivers, you must manually [upgrade those drivers](Upgrading_PV_drivers.md) first\.
 
 ## Upgrade an Instance In\-Place with AWS PV, Intel Network Adapter, or the Enhanced Networking Drivers<a name="os-upgrade-pv"></a>
@@ -106,25 +95,18 @@ Citrix PV drivers are used in Windows Server 2003 and 2008\. There is a known is
 You must run the Upgrade Helper Service before you start the upgrade\. After you run it, the utility creates a Windows service that executes during the post\-upgrade steps to correct the driver state\. The executable is written in C\# and can run on \.NET Framework versions 2\.0 through 4\.0\.
 
 When you run Upgrade Helper Service on the system *before* the upgrade, it performs the following tasks:
-
 + Creates a new Windows service called `UpgradeHelperService`\.
-
 + Verifies that Citrix PV drivers are installed\.
-
 + Checks for unsigned boot critical drivers and presents a warning if any are found\. Unsigned boot critical drivers could cause system failure after the upgrade if the drivers are not compatible with the newer Windows Server version\.
 
 When you run Upgrade Helper Service on the system *after* the upgrade, it performs the following tasks:
-
 + Enables the `RealTimeIsUniversal` registry key for correct time synchronization\.
-
 + Restores the missing PV driver by executing the following command:
 
   pnputil \-i \-a "C:\\Program Files \(x86\)\\Citrix\\XenTools\\\*\.inf"
-
 + Installs the missing device by executing the following command:
 
   C:\\Temp\\EC2DriverUtils\.exe install "C:\\Program Files \(x86\)\\Citrix\\XenTools\\xevtchn\.inf" ROOT\\XENEVTCHN
-
 + Automatically removes `UpgradeHelperService` when complete\.
 
 ### Performing the Upgrade on Instances Running Citrix PV Drivers<a name="os-upgrade-citrix-go"></a>

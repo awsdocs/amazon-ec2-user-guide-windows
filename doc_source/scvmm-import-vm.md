@@ -5,22 +5,17 @@ You can launch an EC2 instance from a virtual machine that you import from SCVMM
 **Important**  
 You can't import Linux virtual machines from SCVMM to Amazon EC2\.
 
-
+**Topics**
 + [Prerequisites](#scvmm-import-vm-prereqs)
 + [Importing Your Virtual Machine](#scvmm-importing)
 + [Checking the Import Task Status](#scvmm-import-status)
 + [Backing Up Your Imported Instance](#scvmm-backup)
 
 ## Prerequisites<a name="scvmm-import-vm-prereqs"></a>
-
 + Ensure that your VM is ready\. For more information, see [Prepare Your VM](http://docs.aws.amazon.com/vm-import/latest/userguide/prepare-vm-image.html) in the * VM Import/Export User Guide*\.
-
 + In AWS Systems Manager, click **Configuration**, select the **VM Import** tab, and review the following settings:
-
   + **S3 bucket prefix**: We create a bucket for disk images to be uploaded before they are imported\. The name of the bucket starts with the prefix listed here and includes the region \(for example, `us-east-2`\)\. To delete the disk images after they are imported, select **Clean up S3 bucket after import**\.
-
   + **VM image export path**: A location for the disk images exported from the VM\. To delete the disk images after they are imported, select **Clean up export path after import**\.
-
   + **Alternate Hyper\-V PowerShell module path**: The location of the Hyper\-V PowerShell module, if it's not installed in the standard location\. For more information, see [Installing the Hyper\-V Management Tools](http://technet.microsoft.com/en-us/library/dn632582.aspx#BKMK_SERVER) in the Microsoft TechNet Library\.
 
 ## Importing Your Virtual Machine<a name="scvmm-importing"></a>
@@ -53,17 +48,11 @@ The permissions that you've been granted by your administrator determine whether
 The import task can take several hours to complete\. To view the current status, open AWS System Manager and click **Notifications**\.
 
 You'll receive the following notifications as the import task progresses:
-
 + `Import VM: Created Import VM Task`
-
 + `Import VM: Export VM Disk Image Done`
-
 + `Import VM: Upload to S3`
-
 + `Import VM: Image Conversion Starting`
-
 + `Import VM: Image Conversion Done`
-
 + `Import VM: Import Complete`
 
 Note that you'll receive the `Import VM: Upload to S3`, `Import VM: Image Conversion Starting`, and `Import VM: Image Conversion Done` notifications for each disk image converted\.

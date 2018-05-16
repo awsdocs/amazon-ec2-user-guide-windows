@@ -2,7 +2,7 @@
 
 When you attach a volume to your instance, you include a device name for the volume\. This device name is used by Amazon EC2\. The block device driver for the instance assigns the actual volume name when mounting the volume, and the name assigned can be different from the name that Amazon EC2 uses\.
 
-
+**Topics**
 + [Available Device Names](#available-ec2-device-names)
 + [Device Name Considerations](#device-name-limits)
 
@@ -27,9 +27,6 @@ For more information about instance store volumes, see [Amazon EC2 Instance Stor
 ## Device Name Considerations<a name="device-name-limits"></a>
 
 Keep the following in mind when selecting a device name:
-
 + Although you can attach your EBS volumes using the device names used to attach instance store volumes, we strongly recommend that you don't because the behavior can be unpredictable\.
-
-+ Amazon EC2 Windows AMIs come with an additional service installed, the **Ec2Config Service**\. The Ec2Config service runs as a local system and performs various functions to prepare an instance when it first boots up\. After the devices have been mapped with the drives, the Ec2Config service then initializes and mounts the drives\. The root drive is initialized and mounted as `C:\`\. The instance store volumes that come attached to the instance are initialized and mounted as `Z:\`, `Y:\`, and so on\. By default, when an EBS volume is attached to a Windows instance, it can show up as any drive letter on the instance\. You can change the settings of the Ec2Config service to set the drive letters of the EBS volumes per your specifications\. For more information, see [Configuring a Windows Instance Using the EC2Config Service](UsingConfig_WinAMI.md) and [Mapping Disks to Volumes on Your Windows Instance](ec2-windows-volumes.md)\.
-
++ AWS Windows AMIs come with additional software that prepares an instance when it first boots up\. This is either the Ec2Config service \(Windows AMIs prior to Windows Server 2016\) or EC2Launch \(Windows Server 2016\)\. After the devices have been mapped to drives, they are initialized and mounted\. The root drive is initialized and mounted as `C:\`\. The instance store volumes attached to the instance are initialized and mounted as `Z:\`, `Y:\`, and so on\. By default, when an EBS volume is attached to a Windows instance, it can show up as any drive letter on the instance\. You can change the settings to set the drive letters of the volumes per your specifications\. For more information, see [Configuring a Windows Instance Using the EC2Config Service](ec2config-service.md), [Configuring a Windows Instance Using EC2Launch](ec2launch.md), and [Mapping Disks to Volumes on Your Windows Instance](ec2-windows-volumes.md)\.
 + The number of NVMe instance store volumes for an instance depends on the size of the instance\. The device names are `/dev/nvme0n1`, `/dev/nvme1n1`, and so on\.

@@ -1,16 +1,13 @@
 # Upgrading PV Drivers on Your Windows Instances<a name="Upgrading_PV_drivers"></a>
 
 To verify which driver your Windows instance uses, open **Network Connections** in Control Panel and view the **Local Area Connection**\. Check whether the driver is one of the following:
-
 +  AWS PV Network Device 
-
 +  Citrix PV Ethernet Adapter 
-
 +  RedHat PV NIC Driver 
 
 Alternatively, you can check the output from the `pnputil -e` command\.
 
-
+**Topics**
 + [Upgrade Windows Server Instances \(AWS PV Upgrade\)](#aws-pv-upgrade)
 + [Upgrade Windows Server 2016, Nano Edition \(AWS PV Upgrade\)](#aws-pv-upgrade-nano)
 + [Upgrade a Domain Controller \(AWS PV Upgrade\)](#aws-pv-upgrade-dc)
@@ -151,9 +148,7 @@ If you previously disabled [TCP Offloading](pvdrivers-troubleshooting.md#citrix-
 ## Upgrade Windows Server 2008 and 2008 R2 Instances \(Redhat to Citrix PV Upgrade\)<a name="win2008-citrix-upgrade"></a>
 
 Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure you do the following:
-
 + Install the latest version of the EC2Config service\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
-
 + Verify that you have Windows PowerShell 2\.0 installed\. To verify the version that you have installed, run the following command in a PowerShell window:
 
   ```
@@ -161,13 +156,9 @@ Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure y
   ```
 
   If you need to install version 2\.0, see [Windows Management Framework \(Windows PowerShell 2\.0, WinRM 2\.0, and BITS 4\.0\)](http://support2.microsoft.com/kb/968929/en-us) from Microsoft Support\.
-
 + Back up your important information on the instance, or create an AMI from the instance\. For more information about creating an AMI, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. If you create an AMI, make sure that you do the following:
-
   + Write down your password\.
-
   + Do not run the Sysprep tool manually or using the EC2Config service\.
-
   + Set your Ethernet adapter to obtain an IP address automatically using DHCP\. For more information, see [Configure TCP/IP Settings](https://technet.microsoft.com/en-us/library/cc731673.aspx) in the Microsoft TechNet Library\.
 
 **To upgrade Redhat drivers**
@@ -178,13 +169,13 @@ Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure y
 
 1. Extract the contents of the upgrade package to a location of your choice\.
 
-1. Double\-click the **Upgrade\.bat** file\. If you get a security warning, click **Run**\.
+1. Double\-click the **Upgrade\.bat** file\. If you get a security warning, choose **Run**\.
 
-1. In the **Upgrade Drivers** dialog box, review the information and click **Yes** if you are ready to start the upgrade\. 
+1. In the **Upgrade Drivers** dialog box, review the information and choose **Yes** if you are ready to start the upgrade\.
 
-1. In the **Red Hat Paravirtualized Xen Drivers for Windows uninstaller** dialog box, click **Yes** to remove the RedHat software\. Your instance will be rebooted\.
+1. In the **Red Hat Paravirtualized Xen Drivers for Windows uninstaller** dialog box, choose **Yes** to remove the RedHat software\. Your instance will be rebooted\.
 **Note**  
-If you do not see the uninstaller dialog box, click **Red Hat Paravirtualize…** in the Windows taskbar\.  
+If you do not see the uninstaller dialog box, choose **Red Hat Paravirtualize** in the Windows taskbar\.  
 ![\[Red Hat Paravirtualized in taskbar\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win2003-citrix-taskbar.png)
 
 1. Check that the instance has rebooted and is ready to be used\.
@@ -211,11 +202,8 @@ If you are using Citrix PV drivers on Windows Server, you can upgrade the Citrix
 Do not perform these steps on Windows Server 2012 or 2012 R2 instances that are running AWS PV drivers\.
 
 Before you start upgrading your drivers, make sure you back up your important information on the instance, or create an AMI from the instance\. For more information about creating an AMI, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. If you create an AMI, make sure you do the following:
-
 + Do not enable the Sysprep tool in the EC2Config service\.
-
 + Write down your password\.
-
 + Set your Ethernet adapter to DHCP\. 
 
 **To upgrade your Citrix Xen guest agent service**
@@ -226,9 +214,9 @@ Before you start upgrading your drivers, make sure you back up your important in
 
 1. Extract the contents of the upgrade package to a location of your choice\.
 
-1. Double\-click the **Upgrade\.bat** file\. If you get a security warning, click **Run**\.
+1. Double\-click the **Upgrade\.bat** file\. If you get a security warning, choose **Run**\.
 
-1. In the **Upgrade Drivers** dialog box, review the information and click **Yes** if you are ready to start the upgrade\. 
+1. In the **Upgrade Drivers** dialog box, review the information and choose **Yes** if you are ready to start the upgrade\. 
 
 1. When the upgrade is complete, the `PVUpgrade.log` file will open and contain the text `UPGRADE IS COMPLETE`\.
 

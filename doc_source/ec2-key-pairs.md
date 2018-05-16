@@ -18,7 +18,7 @@ The keys that Amazon EC2 uses are 2048\-bit SSH\-2 RSA keys\. You can have up to
 **Launching and Connecting to Your Instance**  
 When you launch an instance, you should specify the name of the key pair you plan to use to connect to the instance\. If you don't specify the name of an existing key pair when you launch an instance, you won't be able to connect to the instance\. When you connect to the instance, you must specify the private key that corresponds to the key pair you specified when you launched the instance\.
 
-
+**Topics**
 + [Creating a Key Pair Using Amazon EC2](#having-ec2-create-your-key-pair)
 + [Importing Your Own Public Key to Amazon EC2](#how-to-generate-your-own-key-and-import-it-to-aws)
 + [Retrieving the Public Key for Your Key Pair on Linux](#retrieving-the-public-key)
@@ -51,9 +51,7 @@ This is the only chance for you to save the private key file\. You'll need to pr
 **To create your key pair using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-
 + [create\-key\-pair](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html) \(AWS CLI\)
-
 + [New\-EC2KeyPair](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
 
 ## Importing Your Own Public Key to Amazon EC2<a name="how-to-generate-your-own-key-and-import-it-to-aws"></a>
@@ -61,11 +59,8 @@ You can use one of the following commands\. For more information about these com
 Instead of using Amazon EC2 to create your key pair, you can create an RSA key pair using a third\-party tool and then import the public key to Amazon EC2\. For example, you can use ssh\-keygen \(a tool provided with the standard OpenSSH installation\) to create a key pair\. Alternatively, Java, Ruby, Python, and many other programming languages provide standard libraries that you can use to create an RSA key pair\.
 
 Amazon EC2 accepts the following formats:
-
 + OpenSSH public key format 
-
 + Base64 encoded DER format
-
 + SSH public key file format as specified in [RFC4716](http://tools.ietf.org/html/rfc4716)
 
 Amazon EC2 does not accept DSA keys\. Make sure your key generator is set up to create RSA keys\.
@@ -95,9 +90,7 @@ Use the following steps to import your key pair using the Amazon EC2 console\.
 **To import the public key using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-
 + [import\-key\-pair](http://docs.aws.amazon.com/cli/latest/reference/ec2/import-key-pair.html) \(AWS CLI\)
-
 + [Import\-EC2KeyPair](http://docs.aws.amazon.com/powershell/latest/reference/items/Import-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
 
 After the public key file is imported, you can verify that the key pair was imported successfully using the Amazon EC2 console as follows\. 
@@ -115,9 +108,7 @@ After the public key file is imported, you can verify that the key pair was impo
 **To view your key pair using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-
 + [describe\-key\-pairs](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html) \(AWS CLI\)
-
 + [Get\-EC2KeyPair](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
 
 ## Retrieving the Public Key for Your Key Pair on Linux<a name="retrieving-the-public-key"></a>
@@ -222,9 +213,7 @@ You can delete a key pair using the Amazon EC2 console or the command line\.
 **To delete your key pair using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-
 + [delete\-key\-pair](http://docs.aws.amazon.com/cli/latest/reference/ec2/delete-key-pair.html) \(AWS CLI\)
-
 + [Remove\-EC2KeyPair](http://docs.aws.amazon.com/powershell/latest/reference/items/Remove-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
 
 ## Connecting to Your Windows Instance if You Lose Your Private Key<a name="replacing-lost-key-pair-windows"></a>

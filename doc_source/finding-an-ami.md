@@ -1,20 +1,15 @@
 # Finding a Windows AMI<a name="finding-an-ami"></a>
 
 Before you can launch an instance, you must select an AMI to use\. As you select an AMI, consider the following requirements you might have for the instances that you'll launch:
-
 + The region
-
 + The operating system
-
 + The architecture: 32\-bit \(`i386`\) or 64\-bit \(`x86_64`\)
-
 + The provider \(for example, Amazon Web Services\)
-
 + Additional software \(for example, SQL server\)
 
 If you need to find a Linux AMI, see [Finding a Linux AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-
+**Topics**
 + [Finding a Windows AMI Using the Amazon EC2 Console](#finding-an-ami-console)
 + [Finding an AMI Using the AWS Tools for Windows PowerShell](#finding-an-ami-psh)
 + [Finding an AMI Using the AWS CLI](#finding-an-ami-aws-cli)

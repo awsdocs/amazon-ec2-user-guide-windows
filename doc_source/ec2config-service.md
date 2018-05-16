@@ -1,13 +1,13 @@
-# Configuring a Windows Instance Using the EC2Config Service<a name="UsingConfig_WinAMI"></a>
+# Configuring a Windows Instance Using the EC2Config Service<a name="ec2config-service"></a>
 
-Windows AMIs prior to Windows Server 2016 include an optional service called the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. EC2Config can also perform tasks on demand\. Some of these tasks are automatically enabled, while others must be enabled manually\. Although optional, this service provides access to advanced features that aren't otherwise available\. This service runs in the LocalSystem account\.
+Windows AMIs for Windows Server 2012 R2 and earlier include an optional service, the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. EC2Config can also perform tasks on demand\. Some of these tasks are automatically enabled, while others must be enabled manually\. Although optional, this service provides access to advanced features that aren't otherwise available\. This service runs in the LocalSystem account\.
 
 **Note**  
-EC2Launch replaces EC2Config on Windows Server 2016 AMIs\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\.
+EC2Launch replaces EC2Config on Windows AMIs for Windows Server 2016\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\.
 
 EC2Config uses settings files to control its operation\. You can update these settings files using either a graphical tool or by directly editing XML files\. The service binaries and additional files are contained in the `%ProgramFiles%\Amazon\EC2ConfigService` directory\.
 
-
+**Topics**
 + [EC2Config Tasks](#UsingConfig_Ovw)
 + [EC2Config and AWS Systems Manager](#ec2config-ssm)
 + [EC2Config and Sysprep](#ec2config-sysprep)
@@ -22,35 +22,23 @@ EC2Config uses settings files to control its operation\. You can update these se
 ## EC2Config Tasks<a name="UsingConfig_Ovw"></a>
 
 EC2Config runs initial startup tasks when the instance is first started and then disables them\. To run these tasks again, you must explicitly enable them prior to shutting down the instance, or by running Sysprep manually\. These tasks are as follows:
-
 + Set a random, encrypted password for the administrator account\.
-
 + Generate and install the host certificate used for Remote Desktop Connection\.
-
 + Dynamically extend the operating system partition to include any unpartitioned space\.
-
-+ Execute the specified user data \(and Cloud\-Init, if it's installed\)\.
++ Execute the specified user data \(and Cloud\-Init, if it's installed\)\. For more information about specifying user data, see [Working with Instance User Data](ec2-instance-metadata.md#instancedata-add-user-data)\.
 
 EC2Config performs the following tasks every time the instance starts:
-
 + Change the host name to match the private IP address in Hex notation \(this task is disabled by default and must be enabled in order to run at instance start\)\.
-
 + Configure the key management server \(AWS KMS\), check for Windows activation status, and activate Windows as necessary\.
-
 + Mount all Amazon EBS volumes and instance store volumes, and map volume names to drive letters\.
-
 + Write event log entries to the console to help with troubleshooting \(this task is disabled by default and must be enabled in order to run at instance start\)\.
-
 + Write to the console that Windows is ready\.
-
 + Add a custom route to the primary network adapter to enable the following IP addresses when multiple NICs are attached: 169\.254\.169\.250, 169\.254\.169\.251, and 169\.254\.169\.254\. These addresses are used by Windows Activation and when you access instance metadata\.
 
 EC2Config performs the following task every time a user logs in:
-
 + Display wallpaper information to the desktop background\.
 
 While the instance is running, you can request that EC2Config perform the following task on demand:
-
 + Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a Standard Amazon Machine Image Using Sysprep](ami-create-standard.md)\.
 
 ## EC2Config and AWS Systems Manager<a name="ec2config-ssm"></a>
@@ -82,8 +70,8 @@ The following procedure describes how to use the **Ec2 Service Properties** dial
  **Set Computer Name**   
 If this setting is enabled \(it is disabled by default\), the host name is compared to the current internal IP address at each boot; if the host name and internal IP address do not match, the host name is reset to contain the internal IP address and then the system reboots to pick up the new host name\. To set your own host name, or to prevent your existing host name from being modified, do not enable this setting\.  
  **User Data**   
-User data execution enables you to inject scripts into the instance metadata during the first launch\. From an instance, you can read user data at http://169\.254\.169\.254/latest/user\-data/\. The scripts remain static for the life of the instance, persisting when the instance is stopped and started, until it is terminated\.   
-If you use a large script, we recommend that you use user data to download the script, and then execute it\.  
+User data execution enables you to specify scripts in the instance metadata\. By default, these scripts are run during the initial launch\. You can also configure them to run the next time you reboot or start the instance, or every time you reboot or start the instance\.  
+If you have a large script, we recommend that you use user data to download the script, and then execute it\.  
 For more information, see [User Data Execution](ec2-windows-user-data.md#user-data-execution)\.  
  **Event Log**   
 Use this setting to display event log entries on the console during boot for easy monitoring and debugging\.  
@@ -117,89 +105,57 @@ After you specify a drive letter mapping and attach a volume with same label as 
 ## EC2Config Settings Files<a name="UsingConfigXML_WinAMI"></a>
 
 The settings files control the operation of the EC2Config service\. These files are located in the `C:\Program Files\Amazon\Ec2ConfigService\Settings` directory:
-
 + `ActivationSettings.xml`—Controls product activation using a key management server \(KMS\)\.
-
 + `AWS.EC2.Windows.CloudWatch.json`—Controls which performance counters to send to CloudWatch and which logs to send to CloudWatch Logs\. For more information about how to change the settings in this file, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md)\.
-
 + `BundleConfig.xml`—Controls how EC2Config prepares an instance store\-backed instance for AMI creation\.
-
 + `Config.xml`—Controls the primary settings\.
-
 + `DriveLetterConfig.xml`—Controls drive letter mappings\.
-
 + `EventLogConfig.xml`—Controls the event log information that's displayed on the console while the instance is booting\.
-
 + `WallpaperSettings.xml`—Controls the information that's displayed on the desktop background\.
 
 **ActivationSettings\.xml**
 
 This file contains settings that control product activation\. When Windows boots, the EC2Config service checks whether Windows is already activated\. If Windows is not already activated, it attempts to activate Windows by searching for the specified KMS server\.
-
 + `SetAutodiscover`—Indicates whether to detect a KMS automatically\.
-
 + `TargetKMSServer`—Stores the private IP address of a KMS\. The KMS must be in the same region as your instance\.
-
 + `DiscoverFromZone`—Discovers the KMS server from the specified DNS zone\.
-
 + `ReadFromUserData`—Gets the KMS server from UserData\.
-
 + `LegacySearchZones`—Discovers the KMS server from the specified DNS zone\.
-
 + `DoActivate`—Attempts activation using the specified settings in the section\. This value can be `true` or `false`\.
-
 + `LogResultToConsole`—Displays the result to the console\.
 
 **BundleConfig\.xml**
 
 This file contains settings that control how EC2Config prepares an instance for AMI creation\.
-
 + `AutoSysprep`—Indicates whether to use Sysprep automatically\. Change the value to `Yes` to use Sysprep\. 
-
 + `SetRDPCertificate`—Sets a self\-signed certificate to the Remote Desktop server\. This enables you to securely RDP into the instances\. Change the value to `Yes` if the new instances should have the certificate\.
 
   This setting is not used with Windows Server 2008 or Windows Server 2012 instances because they can generate their own certificates\.
-
 + `SetPasswordAfterSysprep`—Sets a random password on a newly launched instance, encrypts it with the user launch key, and outputs the encrypted password to the console\. Change the value of this setting to `No` if the new instances should not be set to a random encrypted password\.
 
 **Config\.xml**
 
  *Plug\-ins* 
-
 + `Ec2SetPassword`—Generates a random encrypted password each time you launch an instance\. This feature is disabled by default after the first launch so that reboots of this instance don't change a password set by the user\. Change this setting to `Enabled` to continue to generate passwords each time you launch an instance\.
 
   This setting is important if you are planning to create an AMI from your instance\.
-
 + `Ec2SetComputerName`—Sets the host name of the instance to a unique name based on the IP address of the instance and reboots the instance\. To set your own host name, or prevent your existing host name from being modified, you must disable this setting\.
-
 + `Ec2InitializeDrives`—Initializes and formats all volumes during startup\. This feature is enabled by default\.
-
 + `Ec2EventLog`—Displays event log entries in the console\. By default, the three most recent error entries from the system event log are displayed\. To specify the event log entries to display, edit the `EventLogConfig.xml` file located in the `EC2ConfigService\Settings` directory\. For information about the settings in this file, see [Eventlog Key](http://msdn.microsoft.com/en-us/library/aa363648.aspx) in the MSDN Library\.
-
 + `Ec2ConfigureRDP`—Sets up a self\-signed certificate on the instance, so users can securely access the instance using Remote Desktop\. This feature is disabled on Windows Server 2008 and Windows Server 2012 instances because they can generate their own certificates\.  
-
 + `Ec2OutputRDPCert`—Displays the Remote Desktop certificate information to the console so that the user can verify it against the thumbprint\. 
-
 + `Ec2SetDriveLetter`—Sets the drive letters of the mounted volumes based on user\-defined settings\. By default, when an Amazon EBS volume is attached to an instance, it can be mounted using the drive letter on the instance\. To specify your drive letter mappings, edit the `DriveLetterConfig.xml` file located in the `EC2ConfigService\Settings` directory\.
-
 + `Ec2WindowsActivate`—The plug\-in handles Windows activation\. It checks to see if Windows is activated\. If not, it updates the KMS client settings, and then activates Windows\.
 
   To modify the KMS settings, edit the `ActivationSettings.xml` file located in the `EC2ConfigService\Settings` directory\.
-
 + `Ec2DynamicBootVolumeSize`—Extends Disk 0/Volume 0 to include any unpartitioned space\.
-
 + `Ec2HandleUserData`—Creates and executes scripts created by the user on the first launch of an instance after Sysprep is run\. Commands wrapped in script tags are saved to a batch file, and commands wrapped in PowerShell tags are saved to a \.ps1 file\.
 
  *Global Settings* 
-
 + `ManageShutdown`—Ensures that instances launched from instance store\-backed AMIs do not terminate while running Sysprep\. 
-
 + `SetDnsSuffixList`—Sets the DNS suffix of the network adapter for Amazon EC2\. This allows DNS resolution of servers running in Amazon EC2 without providing the fully qualified domain name\.
-
 + `WaitForMetaDataAvailable`—Ensures that the EC2Config service will wait for metadata to be accessible and the network available before continuing with the boot\. This check ensures that EC2Config can obtain information from metadata for activation and other plug\-ins\. 
-
 + `ShouldAddRoutes`—Adds a custom route to the primary network adapter to enable the following IP addresses when multiple NICs are attached: 169\.254\.169\.250, 169\.254\.169\.251, and 169\.254\.169\.254\. These addresses are used by Windows Activation and when you access instance metadata\. 
-
 + `RemoveCredentialsfromSyspreponStartup`—Removes the administrator password from `Sysprep.xml` the next time the service starts\. To ensure that this password persists, edit this setting\.
 
 **DriveLetterConfig\.xml**
@@ -220,41 +176,27 @@ This file contains settings that control drive letter mappings\. By default, a v
   </Mapping>
 </DriveLetterMapping>
 ```
-
 + `VolumeName`—The volume label\. For example, `My Volume`\. To specify a mapping for an instance storage volume, use the label `Temporary Storage X`, where `X` is a number from 0 to 25\.
-
 + `DriveLetter`—The drive letter\. For example, `M:`\. The mapping fails if the drive letter is already in use\.
 
 **EventLogConfig\.xml**
 
 This file contains settings that control the event log information that's displayed on the console while the instance is booting\. By default, we display the three most recent error entries from the System event log\.
-
 + `Category`—The event log key to monitor\.
-
 + `ErrorType`—The event type \(for example, `Error`, `Warning`, `Information`\.\)
-
 + `NumEntries`—The number of events stored for this category\.
-
 + `LastMessageTime`—To prevent the same message from being pushed repeatedly, the service updates this value every time it pushes a message\.
-
 + `AppName`—The event source or application that logged the event\.
 
 **WallpaperSettings\.xml**
 
 This file contains settings that control the information that's displayed on the desktop background\. The following information is displayed by default\.
-
 + `Hostname`—Displays the computer name\.
-
 + `Instance ID`—Displays the ID of the instance\.
-
 + `Public IP Address`—Displays the public IP address of the instance\.
-
 + `Private IP Address`—Displays the private IP address of the instance\.
-
 + `Availability Zone`—Displays the Availability Zone in which the instance is running\.
-
 + `Instance Size`—Displays the type of instance\.
-
 + `Architecture`—Displays the setting of the `PROCESSOR_ARCHITECTURE` environment variable\.
 
 You can remove any of the information that's displayed by default by deleting its entry\. You can add additional instance metadata to display as follows\.
@@ -304,7 +246,7 @@ Disables formatting for new drives\. Use this setting to initialize drives manua
 
 You can configure the EC2Config service to communicate through a proxy using one of the following methods: the AWS SDK for \.NET, the `system.net` element, or Microsoft Group Policy and Internet Explorer\. Using the AWS SDK for \.NET is the preferred method because you can specify a user name and password\.
 
-
+**Topics**
 + [Configure Proxy Settings Using the AWS SDK for \.NET \(Preferred\)](#sdk-proxy)
 + [Configure Proxy Settings Using the system\.net Element](#system-proxy)
 + [Configure Proxy Settings Using Microsoft Group Policy and Microsoft Internet Explorer](#ie-proxy)

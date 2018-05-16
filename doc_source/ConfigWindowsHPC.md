@@ -3,13 +3,9 @@
 You can launch a scalable Windows High Performance Computing \(HPC\) cluster using Amazon EC2 instances\. A Windows HPC cluster requires an Active Directory domain controller, a DNS server, a head node, and one or more compute nodes\.
 
 To set up a Windows HPC cluster on Amazon EC2, complete the following tasks:
-
 + [Step 2: Set Up Your Active Directory Domain Controller](#ADSetup)
-
 + [Step 3: Configure Your Head Node](#HeadNode)
-
 + [Step 4: Set Up the Compute Node](#ComputeNode)
-
 + [Step 5: Scale Your HPC Compute Nodes \(Optional\)](#scale_cluster)
 
 For more information about high performance computing, see [High Performance Computing \(HPC\) on AWS](https://aws.amazon.com/hpc-applications/)\.

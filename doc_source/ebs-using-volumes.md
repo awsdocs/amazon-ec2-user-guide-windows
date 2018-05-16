@@ -1,12 +1,10 @@
-# Making an Amazon EBS Volume Available for Use<a name="ebs-using-volumes"></a>
+# Making an Amazon EBS Volume Available for Use on Windows<a name="ebs-using-volumes"></a>
 
 After you attach an Amazon EBS volume to your instance, it is exposed as a block device\. You can format the volume with any file system and then mount it\. After you make the EBS volume available for use, you can access it in the same ways that you access any other volume\. Any data written to this file system is written to the EBS volume and is transparent to applications using the device\.
 
 You can take snapshots of your EBS volume for backup purposes or to use as a baseline when you create another volume\. For more information, see [Amazon EBS Snapshots](EBSSnapshots.md)\.
 
-## Making the Volume Available on Windows<a name="using-ebs-volume-windows"></a>
-
-Use the following procedure to make the volume available\. You can get directions for volumes on a Linux instance from [Making the Volume Available on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html#using-ebs-volume-linux) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can get directions for volumes on a Linux instance from [Making a Volume Available for Use on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **To make an EBS volume available for use on Windows**
 

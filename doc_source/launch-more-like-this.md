@@ -7,43 +7,25 @@ The **Launch More Like This** wizard option does not clone your selected instanc
 Alternatively, create a [launch template](ec2-launch-templates.md) to store the launch parameters for your instances\.
 
 The following configuration details are copied from the selected instance into the launch wizard:
-
 + AMI ID
-
 + Instance type
-
 + Availability Zone, or the VPC and subnet in which the selected instance is located
-
 + Public IPv4 address\. If the selected instance currently has a public IPv4 address, the new instance receives a public IPv4 address \- regardless of the selected instance's default public IPv4 address setting\. For more information about public IPv4 addresses, see [Public IPv4 Addresses and External DNS Hostnames](using-instance-addressing.md#concepts-public-addresses)\.
-
 + Placement group, if applicable
-
 + IAM role associated with the instance, if applicable
-
 + Shutdown behavior setting \(stop or terminate\)
-
 + Termination protection setting \(true or false\)
-
 + CloudWatch monitoring \(enabled or disabled\)
-
 + Amazon EBS\-optimization setting \(true or false\)
-
 + Tenancy setting, if launching into a VPC \(shared or dedicated\)
-
 + Kernel ID and RAM disk ID, if applicable
-
 + User data, if specified
-
 + Tags associated with the instance, if applicable 
-
 + Security groups associated with the instance
-
-+ Association information\. If the selected instance is associated with a configuration file, the same file is automatically associated with new instance\. If the configuration file includes a joined domain configuration, the new instance is joined to the same domain\. For more information about joining a domain, see [Launching an Instance \(Simple AD and Microsoft AD\)](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/launching_instance.html)\.
++ Association information\. If the selected instance is associated with a configuration file, the same file is automatically associated with the new instance\. If the configuration file includes a joined domain configuration, the new instance is joined to the same domain\. For more information about joining a domain, see [Launching an Instance \(Simple AD and Microsoft AD\)](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/launching_instance.html)\.
 
 The following configuration details are not copied from your selected instance; instead, the wizard applies their default settings or behavior:
-
 + \(VPC only\) Number of network interfaces: The default is one network interface, which is the primary network interface \(eth0\)\.
-
 + Storage: The default storage configuration is determined by the AMI and the instance type\.
 
 **To use your current instance as a template**

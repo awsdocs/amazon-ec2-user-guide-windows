@@ -9,10 +9,9 @@ You can also use instance metadata to access *user data* that you specified when
 
 EC2 instances can also include *dynamic data*, such as an instance identity document that is generated when the instance is launched\. For more information, see [Dynamic Data Categories](#dynamic-data-categories)\.
 
-
+**Topics**
 + [Retrieving Instance Metadata](#instancedata-data-retrieval)
-+ [Configuring Instances with User Data](#instancedata-add-user-data)
-+ [Retrieving User Data](#instancedata-user-data-retrieval)
++ [Working with Instance User Data](#instancedata-add-user-data)
 + [Retrieving Dynamic Data](#instancedata-dynamic-data-retrieval)
 + [Instance Metadata Categories](#instancedata-data-categories)
 + [Instance Identity Documents](instance-identity-documents.md)
@@ -149,49 +148,24 @@ If you're using the instance metadata service to retrieve AWS security credentia
 
 If you're throttled while accessing the instance metadata service, retry your query with an exponential backoff strategy\.
 
-## Configuring Instances with User Data<a name="instancedata-add-user-data"></a>
+## Working with Instance User Data<a name="instancedata-add-user-data"></a>
 
-When you specify user data, note the following:
-
+When working with instance user data, keep the following in mind:
 + User data is treated as opaque data: what you give is what you get back\. It is up to the instance to be able to interpret it\.
-
 + User data is limited to 16 KB\. This limit applies to the data in raw form, not base64\-encoded form\.
-
 + User data must be base64\-encoded\. The Amazon EC2 console can perform the base64 encoding for you or accept base64\-encoded input\.
-
 + User data must be decoded when you retrieve it\. The data is decoded when you retrieve it using instance metadata and the console\.
++ If you stop an instance, modify its user data, and start the instance, the updated user data is not executed automatically when you start the instance\. However, you can configure settings so that updated user data scripts are executed one time when you start the instance or every time you reboot or start the instance\.
 
-+ User data is executed only at launch\. If you stop an instance, modify the user data, and start the instance, the new user data is not executed automatically\.
+### Specify Instance User Data at Launch<a name="specify-user-data-launch"></a>
 
-### Specify User Data at Launch<a name="specify-user-data-launch"></a>
+You can specify user data when you launch an instance\. You can specify that the user data is executed one time at launch, or every time you reboot or start the instance\. For more information, see [Running Commands on Your Windows Instance at Launch](ec2-windows-user-data.md)\.
 
-You can specify user data when you launch an instance\. For more information, see [Running Commands on Your Windows Instance at Launch](ec2-windows-user-data.md)\.
+### Modify Instance User Data<a name="modify-user-data-run"></a>
 
-### Modify User Data for a Running Instance<a name="modify-user-data-run"></a>
+You can modify user data for an instance in the stopped state if the root volume is an EBS volume\. For more information, see [View and Update the Instance User Data](ec2-windows-user-data.md#user-data-view-change)\.
 
-You can modify user data for an existing instance if the root volume is an EBS volume\. If the instance is running, you must first stop the instance\. The new user data is visible on your instance after you restart it; however, it is not executed\.
-
-**Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
-
-**To modify the user data for an instance using the console**
-
-1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
-
-1. In the navigation pane, choose **Instances**, and select the instance\.
-
-1. Choose **Actions**, **Instance State**, **Stop**\.
-
-1. In the confirmation dialog box, click **Yes, Stop**\. It can take a few minutes for the instance to stop\.
-
-1. With the instance still selected, choose **Actions**, select **Instance Settings**, and then choose **View/Change User Data**\. Note that you can't change the user data if the instance is running, but you can view it\.
-
-1. In the **View/Change User Data** dialog box, update the user data, and then choose **Save**\.
-
-**To modify the user data for an instance using the command line**  
-You can modify user data using the AWS CLI and the Tools for Windows PowerShell\. For more information, see [User Data and the AWS CLI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-api-cli) and [User Data and the Tools for Windows PowerShell](ec2-windows-user-data.md#user-data-powershell)\.
-
-## Retrieving User Data<a name="instancedata-user-data-retrieval"></a>
+### Retrieve Instance User Data<a name="instancedata-user-data-retrieval"></a>
 
 To retrieve user data from within a running instance, use the following URI:
 
@@ -208,19 +182,18 @@ PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/user-data
 1234,john,reboot,true | 4512,richard, | 173,,,
 ```
 
-This example returns user data that was provided as line\-separated text:
+This example returns user data that was provided as a script:
 
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/user-data
-[general]
-instances: 4
-
-[instance-0]
-s3-bucket: <user_name>
-
-[instance-1]
-reboot-on-error: yes
+<powershell>
+$file = $env:SystemRoot + "\Temp\" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+New-Item $file -ItemType file
+</powershell>
+<persist>true</persist>
 ```
+
+To retrieve user data for an instance from your own computer, see [User Data and the Tools for Windows PowerShell](ec2-windows-user-data.md#user-data-powershell)
 
 ## Retrieving Dynamic Data<a name="instancedata-dynamic-data-retrieval"></a>
 
@@ -265,7 +238,7 @@ Category names that are formatted in red text are placeholders for data that is 
 | hostname | The private IPv4 DNS hostname of the instance\. In cases where multiple network interfaces are present, this refers to the eth0 device \(the device for which the device number is 0\)\. | 1\.0 | 
 |  iam/info  | If there is an IAM role associated with the instance, contains information about the last time the instance profile was updated, including the instance's LastUpdated date, InstanceProfileArn, and InstanceProfileId\. Otherwise, not present\. | 2012\-01\-12 | 
 |  iam/security\-credentials/role\-name  | If there is an IAM role associated with the instance, role\-name is the name of the role, and role\-name contains the temporary security credentials associated with the role \(for more information, see [Retrieving Security Credentials from Instance Metadata](iam-roles-for-amazon-ec2.md#instance-metadata-security-credentials)\)\. Otherwise, not present\. | 2012\-01\-12 | 
-|  instance\-action  | Notifies the instance that it should reboot in preparation for bundling\. Valid values: none | shutdown | bundle\-pending\. | 2008\-09\-01 | 
+|  instance\-action  | Notifies the instance that it should reboot in preparation for bundling\. Valid values: none \| shutdown \| bundle\-pending\. | 2008\-09\-01 | 
 |  instance\-id  | The ID of this instance\. | 1\.0 | 
 |  instance\-type  | The type of instance\. For more information, see [Instance Types](instance-types.md)\. | 2007\-08\-29 | 
 |  kernel\-id  | The ID of the kernel launched with this instance, if applicable\. | 2008\-02\-01 | 
@@ -310,7 +283,7 @@ The following table lists the categories of dynamic data\.
 
 | Data | Description | Version introduced | 
 | --- | --- | --- | 
-|  fws/instance\-monitoring  | Value showing whether the customer has enabled detailed one\-minute monitoring in CloudWatch\. Valid values: enabled | disabled | 2009\-04\-04 | 
+|  fws/instance\-monitoring  | Value showing whether the customer has enabled detailed one\-minute monitoring in CloudWatch\. Valid values: enabled \| disabled | 2009\-04\-04 | 
 | instance\-identity/document  | JSON containing instance attributes, such as instance\-id, private IP address, etc\. See [Instance Identity Documents](instance-identity-documents.md)\.  | 2009\-04\-04 | 
 | instance\-identity/pkcs7  | Used to verify the document's authenticity and content against the signature\. See [Instance Identity Documents](instance-identity-documents.md)\.  | 2009\-04\-04 | 
 | instance\-identity/signature  | Data that can be used by other parties to verify its origin and authenticity\. See [Instance Identity Documents](instance-identity-documents.md)\.  | 2009\-04\-04 | 
