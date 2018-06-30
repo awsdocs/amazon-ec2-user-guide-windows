@@ -46,3 +46,13 @@ You can also create an AMI from your own Windows computer\. For more information
 AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. For more information, see [Details About AWS Windows AMI Versions](windows-ami-version-history.md#windows-ami-versions)\.
 
 The AWS Windows AMIs contain the latest security updates available at the time they were created\. For more information, see [Updating Your Windows Instance](windows-ami-version-history.md#update-windows-instance)\.
+
+### Virtualization Types<a name="virtualization-types"></a>
+
+AMIs use one of two types of virtualization: paravirtual \(PV\) or hardware virtual machine \(HVM\)\. The main differences between PV and HVM AMIs are the way in which they boot and whether they can take advantage of special hardware extensions for better performance\. Windows AMIs are HVM AMIs\.
+
+HVM AMIs are presented with a fully virtualized set of hardware and boot by executing the master boot record of the root block device of your image\. This virtualization type provides the ability to run an operating system directly on top of a virtual machine without any modification, as if it were run on the bare\-metal hardware\. The Amazon EC2 host system emulates some or all of the underlying hardware that is presented to the guest\.
+
+HVM guests can take advantage of hardware extensions that provide fast access to the underlying hardware on the host system\. HVM AMIs are required to take advantage of enhanced networking and GPU processing\. In order to pass through instructions to specialized network and GPU devices, the OS needs to be able to have access to the native hardware platform; HVM virtualization provides this access\.
+
+Paravirtual guests traditionally performed better with storage and network operations than HVM guests because they could leverage special drivers for I/O that avoided the overhead of emulating network and disk hardware, whereas HVM guests had to translate these instructions to emulated hardware\. Now PV drivers are available for HVM guests, so Windows instances can get performance advantages in storage and network I/O by using them\. With these PV on HVM drivers, HVM guests can get the same performance as paravirtual guests, or better\.

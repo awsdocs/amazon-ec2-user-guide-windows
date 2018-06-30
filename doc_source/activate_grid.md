@@ -1,8 +1,8 @@
-# Activate NVIDIA GRID Capabilities \(G3 Instances Only\)<a name="activate_grid"></a>
+# Activate NVIDIA GRID Virtual Applications \(G3 Instances Only\)<a name="activate_grid"></a>
 
-To activate the GRID capabilities on G3 instances, such as NVIDIA GRID Virtual Workstation or NVIDIA GRID Virtual Applications, you must define the product type for the driver in the registry and disable the licensing page in the control panel to prevent users from accidentally changing the product type\. For more information, see the [GRID Licensing User Guide](http://docs.nvidia.com/grid/4.6/grid-licensing-user-guide/index.html)\.
+To activate the GRID Virtual Applications on G3 instances \(NVIDIA GRID Virtual Workstation is enabled by default\), you must define the product type for the driver in the registry\.
 
-**To activate GRID features on G3 Windows instances**
+**To activate GRID Virtual Applications on G3 Windows instances**
 
 1. Run regedit\.exe to open the registry editor\.
 
@@ -14,26 +14,14 @@ To activate the GRID capabilities on G3 instances, such as NVIDIA GRID Virtual W
 
 1. Open the context \(right\-click\) menu on **FeatureType** and choose **Modify**\.
 
-1. For **Value data**, type the appropriate value below for the NVIDIA GRID feature to enable and choose **OK**\.
-   + For NVIDIA GRID Virtual Workstation: 2
-   + For NVIDIA GRID Virtual Applications: 0
+1. For **Value data**, enter `0` for NVIDIA GRID Virtual Applications and choose **OK**\.
 
 1. Open the context \(right\-click\) menu on the right pane and choose **New**, **DWORD**\.
 
-1. For **Name**, enter **NvCplDisableManageLicensePage** and type `Enter`\.
+1. For **Name**, enter **IgnoreSP** and type `Enter`\.
 
-1. Open the context \(right\-click\) menu on **NvCplDisableManageLicensePage** and choose **Modify**\.
+1. Open the context \(right\-click\) menu on **IgnoreSP** and choose **Modify**\.
 
 1. For **Value data**, type `1` and choose **OK**\.
-
-1. For NVIDIA GRID Virtual Applications only:
-
-   1. Open the context \(right\-click\) menu on the right pane and choose **New**, **DWORD**\.
-
-   1. For **Name**, enter **IgnoreSP** and type `Enter`\.
-
-   1. Open the context \(right\-click\) menu on **IgnoreSP** and choose **Modify**\.
-
-   1. For **Value data**, type `1` and choose **OK**\.
 
 1. Close the registry editor\.

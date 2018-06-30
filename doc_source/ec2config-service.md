@@ -97,7 +97,9 @@ This setting dynamically extends Disk 0/Volume 0 to include any unpartitioned sp
 This setting formats and mounts all volumes attached to the instance during start\.  
  **Drive Letter Mapping**   
 The system maps the volumes attached to an instance to drive letters\. For Amazon EBS volumes, the default is to assign drive letters going from D: to Z:\. For instance store volumes, the default depends on the driver\. Citrix PV drivers assign instance store volumes drive letters going from Z: to A:\. Red Hat drivers assign instance store volumes drive letters going from D: to Z:\.  
-To choose the drive letters for your volumes, click **Mappings**\. In the **DriveLetterSetting** dialog box, specify the **Volume Name** and **Drive Letter** values for each volume, and then click **OK**\. We recommend that you select drive letters that avoid conflicts with drive letters that are likely to be in use, such as drive letters in the middle of the alphabet\.  
+To choose the drive letters for your volumes, click **Mappings**\. In the **DriveLetterSetting** dialog box, specify the **Volume Name** and **Drive Letter** values for each volume, click **Apply**, and then click **OK**\. We recommend that you select drive letters that avoid conflicts with drive letters that are likely to be in use, such as drive letters in the middle of the alphabet\.  
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_driver_letter_mapping.png)
 After you specify a drive letter mapping and attach a volume with same label as one of the volume names that you specified, EC2Config automatically assigns your specified drive letter to that volume\. However, the drive letter mapping fails if the drive letter is already in use\. Note that EC2Config doesn't change the drive letters of volumes that were already mounted when you specified the drive letter mapping\.
 
 1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a Standard Amazon Machine Image Using Sysprep](ami-create-standard.md)\.
@@ -150,6 +152,8 @@ This file contains settings that control how EC2Config prepares an instance for 
   To modify the KMS settings, edit the `ActivationSettings.xml` file located in the `EC2ConfigService\Settings` directory\.
 + `Ec2DynamicBootVolumeSize`—Extends Disk 0/Volume 0 to include any unpartitioned space\.
 + `Ec2HandleUserData`—Creates and executes scripts created by the user on the first launch of an instance after Sysprep is run\. Commands wrapped in script tags are saved to a batch file, and commands wrapped in PowerShell tags are saved to a \.ps1 file\.
++ `Ec2ElasticGpuSetup`—Installs the Elastic GPU software package if the instance is associated with an elastic GPU\.
++ `Ec2FeatureLogging`—Sends Windows feature installation and corresponding service status to the console\. Supported only for the Microsoft Hyper\-V feature and corresponding vmms service\.
 
  *Global Settings* 
 + `ManageShutdown`—Ensures that instances launched from instance store\-backed AMIs do not terminate while running Sysprep\. 

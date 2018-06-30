@@ -16,17 +16,17 @@ You can use the AWS Management Pack to monitor the health of your AWS resources\
 The AWS Management Pack provides the following views, which are displayed in the **Monitoring** workspace of the Operations console\.
 
 **Topics**
-+ [EC2 Instances](#w3ab1c31c23b7b6)
-+ [Amazon EBS Volumes](#w3ab1c31c23b7b8)
-+ [Elastic Load Balancers](#w3ab1c31c23b7c10)
-+ [AWS Elastic Beanstalk Applications](#w3ab1c31c23b7c12)
-+ [AWS CloudFormation Stacks](#w3ab1c31c23b7c14)
-+ [Amazon Performance Views](#w3ab1c31c23b7c16)
-+ [Amazon CloudWatch Metric Alarms](#w3ab1c31c23b7c18)
-+ [AWS Alerts](#w3ab1c31c23b7c20)
-+ [Watcher Nodes \(System Center Operations Manager 2007 R2\)](#w3ab1c31c23b7c22)
++ [EC2 Instances](#awsmp-ec2-instances-view)
++ [Amazon EBS Volumes](#awsmp-ebs-volumes-view)
++ [Elastic Load Balancers](#awsmp-load-balancers-view)
++ [AWS Elastic Beanstalk Applications](#awsmp-beanstalk-apps-view)
++ [AWS CloudFormation Stacks](#awsmp-cfn-stacks-view)
++ [Amazon Performance Views](#awsmp-performance-views)
++ [Amazon CloudWatch Metric Alarms](#awsmp-metric-alarms-view)
++ [AWS Alerts](#awsmp-aws-alerts-view)
++ [Watcher Nodes \(System Center Operations Manager 2007 R2\)](#awsmp-watcher-nodes-view)
 
-### EC2 Instances<a name="w3ab1c31c23b7b6"></a>
+### EC2 Instances<a name="awsmp-ec2-instances-view"></a>
 
 View the health state of the EC2 instances for a particular AWS account, from all Availability Zones and regions\. The view also includes EC2 instances running in a virtual private cloud \(VPC\)\. The AWS Management Pack retrieves tags, so you can search and filter the list using those tags\.
 
@@ -44,7 +44,7 @@ Shows the relationship of an instance with other components\.
 
 ![\[EC2 instance diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_diagram_view.png)
 
-### Amazon EBS Volumes<a name="w3ab1c31c23b7b8"></a>
+### Amazon EBS Volumes<a name="awsmp-ebs-volumes-view"></a>
 
 Shows the health state of all the Amazon EBS volumes for a particular AWS account from all Availability Zones and regions\.
 
@@ -55,7 +55,7 @@ Shows an Amazon EBS volume and any associated alarms\. The following illustratio
 
 ![\[Amazon Elastic Block Store volume diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs_volume_diagram_view.png)
 
-### Elastic Load Balancers<a name="w3ab1c31c23b7c10"></a>
+### Elastic Load Balancers<a name="awsmp-load-balancers-view"></a>
 
 Shows the health state of all the load balancers for a particular AWS account from all regions\.
 
@@ -66,7 +66,7 @@ Shows the Elastic Load Balancing relationship with other components\. The follow
 
 ![\[Elastic Load Balancing diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_diagram_view.png)
 
-### AWS Elastic Beanstalk Applications<a name="w3ab1c31c23b7c12"></a>
+### AWS Elastic Beanstalk Applications<a name="awsmp-beanstalk-apps-view"></a>
 
 Shows the state of all discovered AWS Elastic Beanstalk applications\.
 
@@ -77,7 +77,7 @@ Shows the AWS Elastic Beanstalk application, application environment, applicatio
 
 ![\[AWS Elastic Beanstalk diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/beanstalk_diagram_view.png)
 
-### AWS CloudFormation Stacks<a name="w3ab1c31c23b7c14"></a>
+### AWS CloudFormation Stacks<a name="awsmp-cfn-stacks-view"></a>
 
 Shows the health state of all the AWS CloudFormation stacks for a particular AWS account from all regions\.
 
@@ -88,25 +88,25 @@ Shows the AWS CloudFormation stack relationship with other components\. An AWS C
 
 ![\[AWS CloudFormation stack diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_diagram_view.png)
 
-### Amazon Performance Views<a name="w3ab1c31c23b7c16"></a>
+### Amazon Performance Views<a name="awsmp-performance-views"></a>
 
 Shows the Amazon CloudWatch metrics for Amazon EC2, Amazon EBS, and Elastic Load Balancing, custom metrics, and metrics created from CloudWatch alarms\. In addition, there are separate performance views for each resource\. The **Other Metrics** performance view contains custom metrics, and metrics created from CloudWatch alarms\. For more information about these metrics, see the [CloudWatch Metrics, Namespaces, and Dimensions Reference](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html) in the *Amazon CloudWatch Developer Guide*\. The following illustration shows an example\. 
 
 ![\[Amazon performance views\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_performance_view.png)
 
-### Amazon CloudWatch Metric Alarms<a name="w3ab1c31c23b7c18"></a>
+### Amazon CloudWatch Metric Alarms<a name="awsmp-metric-alarms-view"></a>
 
 Shows Amazon CloudWatch alarms related to the discovered AWS resources\.
 
 ![\[Amazon CloudWatch metric alarms\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudwatch_alarms_view.png)
 
-### AWS Alerts<a name="w3ab1c31c23b7c20"></a>
+### AWS Alerts<a name="awsmp-aws-alerts-view"></a>
 
 Shows the alerts that the AWS management pack produces when the health of an object is in a critical state\. 
 
 ![\[AWS Alerts\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_alerts_view.png)
 
-### Watcher Nodes \(System Center Operations Manager 2007 R2\)<a name="w3ab1c31c23b7c22"></a>
+### Watcher Nodes \(System Center Operations Manager 2007 R2\)<a name="awsmp-watcher-nodes-view"></a>
 
 View the health state of the watcher nodes across all of the AWS accounts that are being monitored\. A **Healthy** state means that the watcher node is configured correctly and can communicate with AWS\.
 

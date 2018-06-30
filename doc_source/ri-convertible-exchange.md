@@ -1,6 +1,6 @@
 # Exchanging Convertible Reserved Instances<a name="ri-convertible-exchange"></a>
 
-You can exchange one or more Convertible Reserved Instances for another Convertible Reserved Instance with a different configuration, including instance family\. There are no limits to how many times you perform an exchange, as long as the target Convertible Reserved Instance is of an equal or higher value than the Convertible Reserved Instances that you are exchanging\.
+You can exchange one or more Convertible Reserved Instances for another Convertible Reserved Instance with a different configuration, including instance family, operating system, and tenancy\. There are no limits to how many times you perform an exchange, as long as the target Convertible Reserved Instance is of an equal or higher value than the Convertible Reserved Instances that you are exchanging\.
 
 When you exchange your Convertible Reserved Instance, the number of instances for your current reservation is exchanged for a number of instances that cover the equal or higher value of the configuration of the target Convertible Reserved Instance\. Amazon EC2 calculates the number of Reserved Instances that you can receive as a result of the exchange\.
 
@@ -37,7 +37,7 @@ If the total value \(hourly price \* number of remaining hours\) of the new Conv
 
 ## Calculating Convertible Reserved Instances Exchanges<a name="riconvertible-exchange-cost"></a>
 
-Exchanging Convertible Reserved Instances is free\. However, you may be required to pay a true\-up cost, which is a prorated upfront cost of the difference between the Convertible Reserved Instances that you had and the Convertible Reserved Instances that you receive from the exchange\. 
+Exchanging Convertible Reserved Instances is free\. However, you may be required to pay a true\-up cost, which is a prorated upfront cost of the difference between the Convertible Reserved Instances that you had and the Convertible Reserved Instances that you receive from the exchange\.
 
 Each Convertible Reserved Instance has a list value\. This list value is compared to the list value of the Convertible Reserved Instances that you want in order to determine how many instance reservations you can receive from the exchange\.
 
@@ -66,8 +66,6 @@ If you merge two or more Convertible Reserved Instances, the term of the new Con
 For example, you have the following Convertible Reserved Instances in your account:
 
 
-****  
-
 | Reserved Instance ID | Term | Expiration date | 
 | --- | --- | --- | 
 | aaaa1111 | 1\-year | 2018\-12\-31 | 
@@ -87,7 +85,7 @@ In this example, you have a `t2.micro` Convertible Reserved Instance with four i
 
 1. Modify the `t2.micro` Convertible Reserved Instance by splitting it into two `t2.micro` Convertible Reserved Instances with two instances each\.
 
-1. Exchange one of the new `t2.micro` Convertible Reserved Instances for an `m4.xlarge` Convertible Reserved Instance\. 
+1. Exchange one of the new `t2.micro` Convertible Reserved Instances for an `m4.xlarge` Convertible Reserved Instance\.
 
 ![\[Modifying and exchange Reserved Instances\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ri-split-cri-multiple.png)
 
@@ -107,10 +105,6 @@ Not all Reserved Instances can be modified\. Ensure that you read the applicable
 ## Submitting Exchange Requests<a name="ri-exchange-process"></a>
 
 You can exchange your Convertible Reserved Instances using the Amazon EC2 console or a command line tool\.
-
-**Topics**
-+ [Exchanging a Convertible Reserved Instance Using the Console](#ri-exchange-process-console)
-+ [Exchanging a Convertible Reserved Instance Using the Command Line Interface](#ri-exchange-process-CLI)
 
 ### Exchanging a Convertible Reserved Instance Using the Console<a name="ri-exchange-process-console"></a>
 

@@ -26,13 +26,17 @@ I3 instances are well suited for the following applications:
 + Data warehousing applications
 + Low latency Ad\-Tech serving applications
 
+`i3.metal` instances provide your applications with direct access to physical resources of the host server, such as processors and memory\. These instances are well suited for the following:
++ Workloads that require access to low\-level hardware features \(for example, Intel VT\) that are not available or fully supported in virtualized environments
++ Applications that require a non\-virtualized environment for licensing or support
+
 **Topics**
 + [Hardware Specifications](#storage-instances-hardware)
 + [Instance Performance](#storage-performance)
 + [Network Performance](#storage-network-performance)
 + [SSD I/O Performance](#i2-instances-diskperf)
 + [Instance Features](#storage-instances-features)
-+ [Release Notes](#storage-instance-limits)
++ [Release Notes](#storage-instance-release-notes)
 
 ## Hardware Specifications<a name="storage-instances-hardware"></a>
 
@@ -59,6 +63,7 @@ The following is a summary of the hardware specifications for Storage optimized 
 | i3\.4xlarge | 16 | 122 | 
 | i3\.8xlarge | 32 | 244 | 
 | i3\.16xlarge | 64 | 488 | 
+| i3\.metal | 72 | 512 | 
 
 For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
@@ -83,7 +88,7 @@ The following is a summary of network performance for Storage optimized instance
 | --- | --- | --- | 
 |  `i3.4xlarge` and smaller  |  Up to 10 Gbps, use network I/O credit mechanism  | [ENA](enhanced-networking-ena.md) | 
 |  `i3.8xlarge`, `h1.8xlarge`  |  10 Gbps  | [ENA](enhanced-networking-ena.md) | 
-|  `i3.16xlarge`, `h1.16xlarge`  |  25 Gbps  | [ENA](enhanced-networking-ena.md) | 
+|  `i3.16xlarge`, `i3.metal`, `h1.16xlarge`  |  25 Gbps  | [ENA](enhanced-networking-ena.md) | 
 |  `d2.xlarge`  |  Moderate  | [Intel 82599 VF](sriov-networking.md) | 
 | d2\.2xlarge, d2\.4xlarge |  High  | [Intel 82599 VF](sriov-networking.md) | 
 | d2\.8xlarge |  10 Gbps  | [Intel 82599 VF](sriov-networking.md) | 
@@ -128,7 +133,22 @@ For more information, see the following:
 + [Placement Groups](placement-groups.md)
 + [Enhanced Networking on Windows](enhanced-networking.md)
 
-## Release Notes<a name="storage-instance-limits"></a>
-+ You must launch Storage optimized instances using an HVM AMI\. 
+## Release Notes<a name="storage-instance-release-notes"></a>
++ You must launch storage optimized instances using an HVM AMI\. 
 + You must launch I3 instances using an Amazon EBS\-backed AMI\.
++ The following are requirements for `i3.metal` instances:
+  + NVMe drivers must be installed\. EBS volumes are exposed as [NVMe block devices](nvme-ebs-volumes.md)\.
+  + Elastic Network Adapter \([ENA](enhanced-networking-ena.md)\) drivers must be installed\.
+
+  The following AMIs meet these requirements:
+  + Amazon Linux 2
+  + Amazon Linux 2014\.03 or later
+  + Ubuntu 14\.04 or later
+  + SUSE Linux Enterprise Server 12 or later
+  + Red Hat Enterprise Linux 7\.4 or later
+  + CentOS 7 or later
+  + Windows Server 2008 R2 or later
++ Launching an `i3.metal` instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
++ To attach or detach EBS volumes or secondary network interfaces from an `i3.metal` instance requires PCIe native hotplug support\.
++ `i3.metal` instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The upstream Linux kernel and the latest Amazon Linux AMIs support this device\. `i3.metal` instances also provide an ACPI SPCR table to enable the system to automatically use the PCI\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device\.
 + There is a limit on the total number of instances that you can launch in a region, and there are additional limits on some instance types\. For more information, see [How many instances can I run in Amazon EC2?](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2)\. To request a limit increase, use the [Amazon EC2 Instance Request Form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-ec2-instances)\.

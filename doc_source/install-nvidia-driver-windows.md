@@ -20,8 +20,9 @@ Associate an IAM role with your instance that has permissions to use the `s3:Lis
 
    ```
    $Bucket = "ec2-windows-nvidia-drivers"
+   $KeyPrefix = "latest"
    $LocalPath = "C:\Users\Administrator\Desktop\NVIDIA"
-   $Objects = Get-S3Object -BucketName $Bucket -Region us-east-1
+   $Objects = Get-S3Object -BucketName $Bucket -KeyPrefix $KeyPrefix -Region us-east-1
    foreach ($Object in $Objects) {
        $LocalFileName = $Object.Key
        if ($LocalFileName -ne '' -and $Object.Size -ne 0) {
@@ -31,9 +32,25 @@ Associate an IAM role with your instance that has permissions to use the `s3:Lis
    }
    ```
 
+   Multiple versions of the NVIDIA GRID driver are stored in this bucket\. You can download all of the available versions in the bucket by removing the `-KeyPrefix $KeyPrefix` option in the above code block\.
+
 1. Navigate to the desktop and double\-click the installation file to launch it \(choose the driver version that corresponds to your instance OS version\)\. Follow the instructions to install the driver and reboot your instance as required\. To verify that the GPU is working properly, check Device Manager\.
 
-1. Complete the GRID activation steps in [Activate NVIDIA GRID Capabilities \(G3 Instances Only\)](activate_grid.md)\.
+1. Disable the licensing page in the control panel to prevent users from accidentally changing the product type \(NVIDIA GRID Virtual Workstation is enabled by default\)\. For more information, see the [GRID Licensing User Guide](http://docs.nvidia.com/grid/4.6/grid-licensing-user-guide/index.html)\.
+
+   1. Run regedit\.exe to open the registry editor\.
+
+   1. Navigate to `HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\GridLicensing`\.
+
+   1. Open the context \(right\-click\) menu on the right pane and choose **New**, **DWORD**\.
+
+   1. For **Name**, enter **NvCplDisableManageLicensePage** and type `Enter`\.
+
+   1. Open the context \(right\-click\) menu on **NvCplDisableManageLicensePage** and choose **Modify**\.
+
+   1. For **Value data**, type `1` and choose **OK**\.
+
+1. \(Optional\) To enable NVIDIA GRID Virtual Applications, complete the GRID activation steps in [Activate NVIDIA GRID Virtual Applications \(G3 Instances Only\)](activate_grid.md) \(NVIDIA GRID Virtual Workstation is enabled by default\)\.
 
 1. Complete the optimization steps in [Optimizing GPU Settings \(P2, P3, and G3 Instances\)](optimize_gpu.md) to achieve the best performance from your GPU\.
 

@@ -10,55 +10,55 @@ This Systems Manager Run Command document performs the following tasks:
 The Systems Manager Run Command document accepts three parameters:
 + **Command**—The EC2Rescue for Windows Server action\. The current allowed values are:
   + **ResetAccess**—Resets the local Administrator password\. The local Administrator password of the current instance will be reset and the randomly generated password will be securely stored in Parameter Store as `/EC2Rescue/Password/<INSTANCE_ID>`\. If you select this action and provide no parameters, passwords are encrypted automatically with the default KMS key\. Optionally, you can specify a KMS Key ID in Parameters to encrypt the password with your own key\.
-  + **CollectLogs**—Runs EC2Rescue for Windows Server with the `/collect:all` action\. If you select this action, `Parameters` must include an Amazon S3 bucket name to upload the logs to.
+  + **CollectLogs**—Runs EC2Rescue for Windows Server with the `/collect:all` action\. If you select this action, `Parameters` must include an Amazon S3 bucket name to upload the logs to\.
   + **FixAll**—Runs EC2Rescue for Windows Server with the `/rescue:all` action\. If you select this action, `Parameters` must include the block device name to rescue\.
 + **Parameters**—The PowerShell parameters to pass for the specified command\.
 
 **Note**  
-In order for the **ResetAccess** action to work, your Amazon EC2 instance needs to have the following policy attached in order to write the encrypted password to Parameter Store\. Please wait a few minutes before attempting to reset the password of an instance after you have attached this policy to the related IAM role:  
+In order for the **ResetAccess** action to work, your Amazon EC2 instance needs to have the following policy attached in order to write the encrypted password to Parameter Store\. Please wait a few minutes before attempting to reset the password of an instance after you have attached this policy to the related IAM role\.  
+Using the default KMS key:  
 
-**Using the default KMS key**
 ```
-{ 
-  "Version": "2012-10-17", 
-  "Statement": [ 
-    { 
-      "Effect": "Allow", 
-      "Action": [ 
-        "ssm:PutParameter" 
-      ], 
-      "Resource": [ 
-        "arn:aws:ssm:<region>:<account>:parameter/EC2Rescue/Passwords/<instanceid>" 
-      ] 
-    }
-  ] 
-}
-```
-
-**Using a custom KMS key**
-```
-{ 
-  "Version": "2012-10-17", 
-  "Statement": [ 
-    { 
-      "Effect": "Allow", 
-      "Action": [ 
-        "ssm:PutParameter" 
-      ], 
-      "Resource": [ 
-        "arn:aws:ssm:<region>:<account>:parameter/EC2Rescue/Passwords/<instanceid>" 
-      ] 
-      },
-      {
-      "Effect": "Allow"
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
       "Action": [
-        "kms:Encrypt"
+        "ssm:PutParameter"
       ],
       "Resource": [
-        "arn:aws:kms:<region>:<account>:key/<kmskeyid>"
+        "arn:aws:ssm:region:account_id:parameter/EC2Rescue/Passwords/<instanceid>"
       ]
     }
-  ] 
+  ]
+}
+```
+Using a custom KMS key:  
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ssm:PutParameter"
+      ],
+      "Resource": [
+        "arn:aws:ssm:region:account_id:parameter/EC2Rescue/Passwords/<instanceid>"
+        ] 
+      }, 
+      { 
+      "Effect": "Allow",
+      "Action": [
+      "kms:Encrypt"
+      ],
+      "Resource": [
+        "arn:aws:kms:region:account_id:key/<kmskeyid>"
+      ]
+    }
+  ]
 }
 ```
 
@@ -66,11 +66,11 @@ The following procedure describes how to view the JSON for this document in the 
 
 **To view the JSON for the Systems Manager Run Command document**
 
-1. Open the AWS Systems Manager console at [https://console.aws.amazon.com/systems-manager/home](https://console.aws.amazon.com/systems-manager/home)\.
+1. Open the SSM console at [https://console\.aws\.amazon\.com/systems\-manager/home](https://console.aws.amazon.com/systems-manager/home)\.
 
-1. In the navigation pane, expand **Shared Resources** and choose **Documents**\.
+1. In the navigation pane, expand **Shared Services** and choose **Documents**\.
 
-1. In the search bar, set **Owner** as `Owned by Me or Amazon` and set **Document name prefix** to `AWSSupport-RunEC2RescueForWindowsTool`\.
+1. In the search bar, set **Owner** as **Owned by Me or Amazon** and set the **Document name prefix** to `AWSSupport-RunEC2RescueForWindowsTool`\.
 
 1. Select the `AWSSupport-RunEC2RescueForWindowsTool` document, choose **Contents**, and then view the JSON\.
 
@@ -78,7 +78,7 @@ The following procedure describes how to view the JSON for this document in the 
 
 Here are some examples on how to use the Systems Manager Run Command document to execute EC2Rescue for Windows Server, using the AWS CLI\. For more information about sending commands with the AWS CLI, see the [AWS CLI Command Reference](http://docs.aws.amazon.com/cli/latest/reference/ssm/send-command.html)\.
 
-### Attempt to Fix All Identified Issues on an offline root volume<a name="ec2rw-ssm-exam1"></a>
+### Attempt to Fix All Identified Issues on an Offline Root Volume<a name="ec2rw-ssm-exam1"></a>
 
 Attempt to fix all identified issues on an offline root volume attached to an Amazon EC2 Windows instance:
 
@@ -88,10 +88,18 @@ aws ssm send-command --instance-ids "i-0cb2b964d3e14fd9f" --document-name "AWSSu
 
 ### Collect Logs from the Current Amazon EC2 Windows Instance<a name="ec2rw-ssm-exam2"></a>
 
-Collect all logs from the current online Amazon EC2 Windows instance and upload them to Amazon S3 bucket in your account:
+Collect all logs from the current online Amazon EC2 Windows instance and upload them to an Amazon S3 bucket:
 
 ```
 aws ssm send-command --instance-ids "i-0cb2b964d3e14fd9f" --document-name "AWSSupport-RunEC2RescueForWindowsTool" --comment "EC2Rescue online log collection to S3" --parameters "Command=CollectLogs, Parameters='YOURS3BUCKETNAME'" --output text
+```
+
+### Collect Logs from an Offline Amazon EC2 Windows Instance Volume<a name="ec2rw-ssm-exam3"></a>
+
+Collect all logs from an offline volume attached to an Amazon EC2 Windows instance and upload them to Amazon S3 with a presigned URL: 
+
+```
+aws ssm send-command --instance-ids "i-0cb2b964d3e14fd9f" --document-name "AWSSupport-RunEC2RescueForWindowsTool" --comment "EC2Rescue offline log collection to S3" --parameters "Command=CollectLogs, Parameters=\"-Offline -BlockDeviceName xvdf -S3PreSignedUrl 'YOURS3PRESIGNEDURL'\"" --output text
 ```
 
 ### Reset the Local Administrator Password<a name="ec2rw-ssm-exam4"></a>

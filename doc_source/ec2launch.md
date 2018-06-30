@@ -95,8 +95,8 @@ Specify settings in the `LaunchConfig.json` file to enable or disable the follow
      "setWallpaper": true,
      "addDnsSuffixList": true,
      "extendBootVolumeSize": true,
-     "adminPasswordType": "Random, Specify, DoNothing",
-     "adminPassword":  "Password that adheres to your security policy."
+     "adminPasswordType": "Random | Specify | DoNothing",
+     "adminPassword":  "password that adheres to your security policy (optional)"
    }
    ```
 
@@ -128,7 +128,7 @@ Specify settings in the `DriveLetterMappingConfig.json` file to map drive letter
    {
      "driveLetterMapping": [
        {
-         "volumeName": "Temporary Storage 0",
+         "volumeName": "sample volume",
          "driveLetter": "H"
        }
      ]
@@ -163,7 +163,7 @@ Specify settings in the `EventLogConfig.json` file to send Windows Event logs to
        {
          "logName": "System",
          "source": "An event source (optional)",
-         "level": "Error",
+         "level": "Error | Warning | Information",
          "numEntries": 3
        }
      ]

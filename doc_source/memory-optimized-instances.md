@@ -14,7 +14,7 @@ R4 instances are well suited for the following applications:
 **X1 Instances**
 
 X1 instances are well suited for the following applications:
-+ In\-memory databases such as SAP HANA, including SAP\-certified support for Business Suite S/4HANA, Business Suite on HANA \(SoH\), Business Warehouse on HANA \(BW\), and Data Mart Solutions on HANA\. For more information, see [SAP HANA on the AWS Cloud](https://aws.amazon.com//sap/solutions/saphana/)\.
++ In\-memory databases such as SAP HANA, including SAP\-certified support for Business Suite S/4HANA, Business Suite on HANA \(SoH\), Business Warehouse on HANA \(BW\), and Data Mart Solutions on HANA\. For more information, see [SAP HANA on the AWS Cloud](https://aws.amazon.com/sap/solutions/saphana/)\.
 + Big\-data processing engines such as Apache Spark or Presto\.
 + High\-performance computing \(HPC\) applications\.
 
@@ -22,7 +22,7 @@ X1 instances are well suited for the following applications:
 
 X1e instances are well suited for the following applications:
 + High\-performance databases\.
-+ In\-memory databases such as SAP HANA\. For more information, see [SAP HANA on the AWS Cloud](https://aws.amazon.com//sap/solutions/saphana/)\.
++ In\-memory databases such as SAP HANA\. For more information, see [SAP HANA on the AWS Cloud](https://aws.amazon.com/sap/solutions/saphana/)\.
 + Memory\-intensive enterprise applications\.
 
 **Topics**
@@ -118,7 +118,7 @@ For more information, see the following:
 
 X1 instances support Single Device Data Correction \(SDDC \+1\), which detects and corrects multi\-bit errors\. SDDC \+1 uses error checking and correction code to identify and disable a failed single DRAM device\.
 
-In addition, you can implement high availability \(HA\) and disaster recovery \(DR\) solutions to meet recovery point objective \(RPO\), recovery time objective \(RTO\), and cost requirements by leveraging [Amazon CloudFormation](https://aws.amazon.com//cloudformation/) and [Recover Your Instance](ec2-instance-recover.md)\. For more information about implementing HA and DR solutions, see the [Using AWS for Disaster Recovery](http://media.amazonwebservices.com/AWS_Disaster_Recovery.pdf) whitepaper\.
+In addition, you can implement high availability \(HA\) and disaster recovery \(DR\) solutions to meet recovery point objective \(RPO\), recovery time objective \(RTO\), and cost requirements by leveraging [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) and [Recover Your Instance](ec2-instance-recover.md)\. For more information about implementing HA and DR solutions, see the [Using AWS for Disaster Recovery](http://media.amazonwebservices.com/AWS_Disaster_Recovery.pdf) whitepaper\.
 
 If you run an SAP HANA production environment, you also have the option of using HANA System Replication \(HSR\) on X1 instances\. For more information about architecting HA and DR solutions on X1 instances, see [SAP HANA on the Amazon Web Services Cloud: Quick Start Reference Deployment](https://s3.amazonaws.com/quickstart-reference/sap/hana/latest/doc/SAP+HANA+Quick+Start.pdf)\.
 
@@ -127,6 +127,7 @@ If you run an SAP HANA production environment, you also have the option of using
 Memory optimized instances provide a high number of vCPUs, which can cause launch issues with operating systems that have a lower vCPU limit\. We strongly recommend that you use the latest AMIs when you launch Memory optimized instances\.
 
 The following AMIs support launching Memory optimized instances:
++ Amazon Linux 2 \(HVM\)
 + Amazon Linux AMI 2016\.03 \(HVM\) or later
 + Ubuntu Server 14\.04 LTS \(HVM\)
 + Red Hat Enterprise Linux 7\.1 \(HVM\)

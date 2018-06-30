@@ -226,7 +226,7 @@ You can submit feedback about your experience with Elastic GPUs so the team can 
 
 **To submit feedback using the Elastic GPU Status Monitor**
 
-1. Open the Elastic GPU Statue Monitor\. This tool is available in the notification area of the taskbar in your Windows instance\.
+1. Open the Elastic GPU Status Monitor\. This tool is available in the notification area of the taskbar in your Windows instance\.
 
 1. Choose **Feedback** in the lower left corner\.
 

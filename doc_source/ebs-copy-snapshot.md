@@ -2,7 +2,7 @@
 
 With Amazon EBS, you can create point\-in\-time snapshots of volumes, which we store for you in Amazon S3\. After you've created a snapshot and it has finished copying to Amazon S3 \(when the snapshot status is `completed`\), you can copy it from one AWS region to another, or within the same region\. Amazon S3 server\-side encryption \(256\-bit AES\) protects a snapshot's data in\-transit during a copy operation\. The snapshot copy receives an ID that is different than the ID of the original snapshot\.
 
-For information about copying an Amazon RDS snapshot, see [Copying a DB Snapshot](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html) in the *Amazon Relational Database Service User Guide*\.
+For information about copying an Amazon RDS snapshot, see [Copying a DB Snapshot](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_CopySnapshot.html) in the *Amazon RDS User Guide*\.
 
 If you would like another account to be able to copy your snapshot, you must either modify the snapshot permissions to allow access to that account or make the snapshot public so that all AWS accounts may copy it\. For more information, see [Sharing an Amazon EBS Snapshot](ebs-modifying-snapshot-permissions.md)\.
 
@@ -38,7 +38,7 @@ For more information, see [Encrypt a Snapshot Under a New CMK](http://docs.aws.a
 
 ## Encrypted Snapshots<a name="ebs-encrypt-snapshot-copy"></a>
 
-When you copy a snapshot, you can choose to encrypt the copy \(if the original snapshot was not encrypted\) or you can specify a CMK different from the original one, and the resulting copied snapshot uses the new CMK\. However, changing the encryption status of a snapshot or using a non\-default EBS CMK during a copy operation always results in a full \(not incremental\) copy, which may incur greater data transfer and storage charges\. 
+When you copy a snapshot, you can choose to encrypt the copy \(if the original snapshot was not encrypted\) or you can specify a CMK different from the original one, and the resulting copied snapshot uses the new CMK\. However, changing the encryption status of a snapshot during a copy operation results in a full \(not incremental\) copy, which might incur greater data transfer and storage charges\. 
 
 To copy an encrypted snapshot from another account, you must have permissions to use the snapshot and you must have permissions to use the customer master key \(CMK\) that was used to encrypt the original snapshot\. For more information, see [Sharing an Amazon EBS Snapshot](ebs-modifying-snapshot-permissions.md)\.
 

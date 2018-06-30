@@ -1,6 +1,6 @@
 # Copying an AMI<a name="CopyingAMIs"></a>
 
-You can copy an Amazon Machine Image \(AMI\) within or across an AWS region using the AWS Management Console, the AWS command line tools or SDKs, or the Amazon EC2 API, all of which support the `CopyImage` action\. You can copy both Amazon EBS\-backed AMIs and instance store\-backed AMIs\. You can copy encrypted AMIs and AMIs with encrypted snapshots\.
+You can copy an Amazon Machine Image \(AMI\) within or across an AWS region using the AWS Management Console, the AWS AWS Command Line Interface or SDKs, or the Amazon EC2 API, all of which support the `CopyImage` action\. You can copy both Amazon EBS\-backed AMIs and instance store\-backed AMIs\. You can copy encrypted AMIs and AMIs with encrypted snapshots\.
 
 Copying a source AMI results in an identical but distinct target AMI with its own unique identifier\. In the case of an Amazon EBS\-backed AMI, each of its backing snapshots is, by default, copied to an identical but distinct target snapshot\. \(The one exception is when you choose to encrypt the snapshot\.\) You can change or deregister the source AMI with no effect on the target AMI\. The reverse is also true\.
 

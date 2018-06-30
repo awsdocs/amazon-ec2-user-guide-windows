@@ -39,8 +39,9 @@ You can change the behavior so that Amazon EC2 hibernates Spot Instances when th
 + For a Spot Fleet request, the type must be `maintain`, not `request`\.
 + The root volume must be an EBS volume, not an instance store volume, and it must be large enough to store the instance memory \(RAM\) during hibernation\.
 + The following instances are supported: C3, C4, C5, M4, M5, R3, and R4, with less than 100 GB of memory\.
-+ The following operating systems are supported: Amazon Linux AMI, Ubuntu with an AWS\-tuned Ubuntu kernel \(linux\-aws\) greater than 4\.4\.0\-1041, and Windows Server 2008 R2 and later\.
++ The following operating systems are supported: Amazon Linux 2, Amazon Linux AMI, Ubuntu with an AWS\-tuned Ubuntu kernel \(linux\-aws\) greater than 4\.4\.0\-1041, and Windows Server 2008 R2 and later\.
 + Install the hibernation agent on a supported operating system, or use one of the following AMIs, which already include the agent:
+  + Amazon Linux 2
   + Amazon Linux AMI 2017\.09\.1 or later
   + Ubuntu Xenial 16\.04 20171121 or later
   + Windows Server 2008 R2 AMI 2017\.11\.19 or later
@@ -121,7 +122,7 @@ The following is an example of the event for Spot Instance interruption\. The po
 
 ### instance\-action<a name="instance-action-metadata"></a>
 
-If your Spot Instance is marked to be hibernated, stopped, or terminated by the Spot service, the `instance-action` item is present in your instance metadata\. You can retrieve `instance-action` as follows\.
+If your Spot Instance is marked to be hibernated, stopped, or terminated by the Spot service, the `instance-action` item is present in your instance metadata\. Otherwise, it is not present\. You can retrieve `instance-action` as follows\.
 
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/spot/instance-action
@@ -145,9 +146,13 @@ The following example indicates that hibernation has started immediately:
 {"action": "hibernate", "time": "2017-11-28T08:22:00Z"}
 ```
 
+If Amazon EC2 is not preparing to hibernate, stop, or terminate the instance, or if you terminated the instance yourself, `instance-action` is not present and you receive an HTTP 404 error\.
+
 ### termination\-time<a name="termination-time-metadata"></a>
 
-If your Spot Instance is marked for termination by the Spot service, the `termination-time` item is present in your instance metadata\. This item is maintained for backward compatibility; you should use `instance-action` instead\. You can retrieve `termination-time` as follows\.
+This item is maintained for backward compatibility; you should use `instance-action` instead\.
+
+If your Spot Instance is marked for termination by the Spot service, the `termination-time` item is present in your instance metadata\. Otherwise, it is not present\. You can retrieve `termination-time` as follows\.
 
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/spot/termination-time

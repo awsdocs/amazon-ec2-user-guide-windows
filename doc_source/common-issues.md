@@ -20,7 +20,7 @@ Instances created from Windows Server 2016 Amazon Machine Images \(AMIs\) use th
    {
      "driveLetterMapping": [
        {
-         "volumeName": "Temporary Storage 0",
+         "volumeName": "sample volume",
          "driveLetter": "H"
        }
      ]

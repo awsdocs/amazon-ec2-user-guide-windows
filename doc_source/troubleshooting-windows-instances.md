@@ -3,17 +3,15 @@
 The following procedures and tips can help you troubleshoot problems with your Amazon EC2 Windows instances\.
 
 **Topics**
++ [Troubleshooting Instance Launch Issues](troubleshooting-launch.md)
 + [Troubleshoot an Unreachable Instance](screenshot-service.md)
 + [Resetting a Lost or Expired Windows Administrator Password](ResettingAdminPassword.md)
 + [Common Issues](common-issues.md)
 + [High CPU usage shortly after Windows starts](#high-cpu-issue)
 + [No console output](#no-console-output)
-+ [Instance terminates immediately](#Using_InstanceStraightToTerminated)
 + [Remote Desktop can't connect to the remote computer](#rdp-issues)
 + [RDP displays a black screen instead of the desktop](#rdp-black-screen)
 + [Instance loses network connectivity or scheduled tasks don't run when expected](#instance-loses-network-connectivity)
-+ [Insufficient Instance Capacity](#insufficient-instance-capacity)
-+ [Instance Limit Exceeded](#instance-limit-exceeded)
 + [Windows Server 2012 R2 not available on the network](#server-2012-network-loss)
 + [Common Messages](common-messages.md)
 
@@ -58,25 +56,6 @@ For Windows instances, the instance console displays the output from the EC2Conf
 To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, **Instance Settings**, and then **Get System Log**\. To get the console output using the command line, use one of the following commands: [get\-console\-output](http://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-output.html) \(AWS CLI\) or [Get\-EC2ConsoleOutput](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ConsoleOutput.html) \(AWS Tools for Windows PowerShell\)\.
 
 If the console output is empty, it could indicate an issue with the EC2Config service, such as a misconfigured configuration file, or that Windows failed to boot properly\. To fix the issue, download and install the latest version of EC2Config\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
-
-## Instance terminates immediately<a name="Using_InstanceStraightToTerminated"></a>
-
-After you launch an instance, we recommend that you check its status to confirm that it goes from the `pending` status to the `running` status, and not the `terminated` status\.
-
-If the instance terminates immediately, you can use the Amazon EC2 console or command line to get information about the reason that the instance terminated\.
-
-**To get the reason that an instance terminated using the console**
-
-1. Open the Amazon EC2 console\.
-
-1. In the navigation pane, choose **Instances** to display the instance details\.
-
-1. Select your instance\.
-
-1. In the **Description** tab, locate the reason next to the label **State transition reason**\. If the instance is still running, there's typically no reason listed\. If you've explicitly stopped or terminated the instance, the reason is `User initiated shutdown`\.
-
-**To get the reason that an instance terminated using the command line**  
-Use the [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) command \(AWS CLI\) with the ID of the instance\. Look for the `StateReason` element in the output\.
 
 ## Remote Desktop can't connect to the remote computer<a name="rdp-issues"></a>
 
@@ -198,21 +177,6 @@ To use a time zone other than UTC persistently, you must set the **RealTimeIsUni
 1. Ensure that you are running the recommended PV drivers\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
 
 1. Verify that the following registry key exists and is set to `1`: **HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation\\RealTimeIsUniversal**
-
-## Insufficient Instance Capacity<a name="insufficient-instance-capacity"></a>
-
-If you get an `InsufficientInstanceCapacity` error when you try to launch an instance, AWS does not currently have enough available capacity to service your request\.
-
-Try the following:
-+ Wait a few minutes and then submit your request again; capacity can shift frequently\.
-+ Submit a new request with a reduced number of instances\. For example, if you're making a single request to launch 15 instances, try making 3 requests for 5 instances, or 15 requests for 1 instance instead\.
-+ Submit a new request without specifying an Availability Zone\.
-+ Submit a new request using a different instance type \(which you can resize at a later stage\)\. For more information, see [Changing the Instance Type](ec2-instance-resize.md)\.
-+ Try purchasing Reserved Instances\. Reserved Instances are a long\-term capacity reservation\. For more information, see [Amazon EC2 Reserved Instances](https://aws.amazon.com/ec2/purchasing-options/reserved-instances/)\.
-
-## Instance Limit Exceeded<a name="instance-limit-exceeded"></a>
-
-If you get an `InstanceLimitExceeded` error when you try to launch an instance, you have reached your concurrent running instance limit\. For new AWS accounts, the default limit is 20\. If you need additional running instances, complete the form at [Request to Increase Amazon EC2 Instance Limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-ec2-instances)\.
 
 ## Windows Server 2012 R2 not available on the network<a name="server-2012-network-loss"></a>
 
