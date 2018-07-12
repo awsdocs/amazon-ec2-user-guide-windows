@@ -14,7 +14,7 @@ Depending on the size of the volumes, it can take several minutes for the AMI\-c
 
 After the process completes, you have a new AMI and snapshot created from the root volume of the instance\. When you launch an instance using the new AMI, we create a new EBS volume for its root volume using the snapshot\.
 
-If you add instance\-store volumes or Amazon EBS volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance\-store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block Device Mapping](block-device-mapping-concepts.md)\.
+If you add instance store volumes or Amazon EBS volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block Device Mapping](block-device-mapping-concepts.md)\.
 
 **Note**  
 When you create a new instance from a custom AMI, you should initialize both its root volume and any additional EBS storage before putting it into production\. For more information, see [Initializing Amazon EBS Volumes](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
@@ -31,7 +31,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
 
 1. In the navigation pane, choose **Images**, **AMIs**\.
 
-1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **Amazon images** Choose **Source** from the menu and type one of the following, depending on the version of Windows Server that you need:
+1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **Amazon images**\. Choose **Source** from the menu and type one of the following, depending on the version of Windows Server that you need:
    + **amazon/Windows\_Server\-2016**
    + **amazon/Windows\_Server\-2012**
    + **amazon/Windows\_Server\-2008**
@@ -56,7 +56,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
 **Tip**  
 If this option is disabled, your instance isn't an Amazon EBS\-backed instance\.
 
-1. Specify a unique name for the image and an optional description \(up to 255 characters\.\)
+1. Specify a unique name for the image and an optional description \(up to 255 characters\)\.
 
    By default, Amazon EC2 shuts down the instance, takes snapshots of any attached volumes, creates and registers the AMI, and then reboots the instance\. Choose **No reboot** if you don't want your instance to be shut down\.
 **Warning**  

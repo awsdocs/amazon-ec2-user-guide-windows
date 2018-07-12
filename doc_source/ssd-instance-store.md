@@ -16,7 +16,7 @@ After you connect to your instance, you can verify that you see the NVMe volumes
 
 If you are using a supported version of Windows Server but you do not see the NVMe devices, verify that the NVMe storage controllers are operational using Device Manager\. Expand **Storage controllers** and look for **Standard NVM Express Controller**\. If you are using a custom Windows Server 2008 R2 AMI and can't see the instance storage volume, consider installing the Microsoft hotfix for [Native driver support in NVM Express in Windows 7 and Windows Server 2008 R2](https://support.microsoft.com/en-us/help/2990941/update-to-add-native-driver-support-in-nvm-express-in-windows-7-and-wi)\.
 
-The data on NVMe instance storage is encrypted using an XTS\-AED\-256 block cipher implemented in a hardware module on the instance\. The encryption keys are generated using the hardware module and are unique to each NVMe instance storage device\. All encryption keys are destroyed when the instance is stopped or terminated and cannot be recovered\. You cannot disable this encryption and you cannot provide your own encryption key\.
+The data on NVMe instance storage is encrypted using an XTS\-AES\-256 block cipher implemented in a hardware module on the instance\. The encryption keys are generated using the hardware module and are unique to each NVMe instance storage device\. All encryption keys are destroyed when the instance is stopped or terminated and cannot be recovered\. You cannot disable this encryption and you cannot provide your own encryption key\.
 
 ## Instance Store Volume TRIM Support<a name="InstanceStoreTrimSupport"></a>
 

@@ -302,7 +302,7 @@ Use the encoding name, not the display name\.
 
 1. \(Optional\) For `Filter`, type the prefix of log names\. Leave this parameter blank to monitor all files\. For a list of supported values, see the [FileSystemWatcherFilter Property](https://msdn.microsoft.com/en-us/library/system.io.filesystemwatcher.filter.aspx) topic on MSDN\.
 
-1. \(Optional\) For `CultureName`, type the locale where the timestamp is logged\. If `CultureName` is blank, it defaults to the same locale currently used by your Windows instance\. For a list of supported values, see [National Language Support \(NLS\) API Reference](https://www.microsoft.com/resources/msdn/goglobal/default.mspx) in the Microsoft documentation\.
+1. \(Optional\) For `CultureName`, type the locale where the timestamp is logged, the structure of which is based on RFC 5646\. If `CultureName` is blank, it defaults to the same locale currently used by your Windows instance\. 
 **Note**  
 The `div`, `div-MV`, `hu`, and `hu-HU` values are not supported\.
 
@@ -342,7 +342,7 @@ Use the encoding name, not the display name\.
 
 1. \(Optional\) For `Filter`, type the prefix of log names\. Leave this parameter blank to monitor all files\. For a list of supported values, see the [FileSystemWatcherFilter Property](https://msdn.microsoft.com/en-us/library/system.io.filesystemwatcher.filter.aspx) topic on MSDN\.
 
-1. \(Optional\) For `CultureName`, type the locale where the timestamp is logged\. If `CultureName` is blank, it defaults to the same locale currently used by your Windows instance\. For a list of supported values, see the [National Language Support \(NLS\) API Reference](https://msdn.microsoft.com/goglobal/bb896001.aspx) topic on MSDN\.
+1. \(Optional\) For `CultureName`, type the locale where the timestamp is logged, the structure of which is based on RFC 5646\. If `CultureName` is blank, it defaults to the same locale currently used by your Windows instance\.
 **Note**  
 The `div`, `div-MV`, `hu`, and `hu-HU` values are not supported\.
 

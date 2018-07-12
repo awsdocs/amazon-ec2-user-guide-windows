@@ -7,7 +7,7 @@ After reading this section, you should have a good understanding about how you c
 + [Amazon EC2 Instance Store](InstanceStorage.md)
 + [Amazon Simple Storage Service \(Amazon S3\)](AmazonS3.md)
 
-The following figure shows the relationship between these types of storage\.
+The following figure shows the relationship between these storage options and your instance\.
 
 ![\[Storage options for Amazon EC2\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/architecture_storage_windows.png)
 
