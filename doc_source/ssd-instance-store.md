@@ -1,12 +1,12 @@
 # SSD Instance Store Volumes<a name="ssd-instance-store"></a>
 
-The following instances support instance store volumes that use solid state drives \(SSD\) to deliver high random I/O performance: C3, C5d, F1, G2, I2, I3, M3, M5d, R3, and X1\. For more information about the instance store volumes support by each instance type, see [Instance Store Volumes](InstanceStorage.md#instance-store-volumes)\.
+The following instances support instance store volumes that use solid state drives \(SSD\) to deliver high random I/O performance: C3, C5d, F1, G2, I2, I3, M3, M5d, R3, X1, and z1d\. For more information about the instance store volumes support by each instance type, see [Instance Store Volumes](InstanceStorage.md#instance-store-volumes)\.
 
 Like other instance store volumes, you must map the SSD instance store volumes for your instance when you launch it\. The data on an SSD instance volume persists only for the life of its associated instance\. For more information, see [Add Instance Store Volumes to Your EC2 Instance](add-instance-store-volumes.md)\.
 
 ## NVMe SSD Volumes<a name="nvme-ssd-volumes"></a>
 
-The following instances offer non\-volatile memory express \(NVMe\) SSD instance store volumes: C5d, I3, F1, and M5d\. To access the NVMe volumes, you must use an operating system that supports NVMe\. The following are the recommended operating systems:
+The following instances offer non\-volatile memory express \(NVMe\) SSD instance store volumes; C5d, I3, F1, M5d, and z1d\. To access the NVMe volumes, you must use an operating system that supports NVMe\. The following are the recommended operating systems:
 + Windows Server 2016
 + Windows Server 2012 R2
 + Windows Server 2012
