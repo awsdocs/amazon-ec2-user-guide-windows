@@ -45,8 +45,10 @@ Now you'll use the Web Platform Installer to deploy WordPress on your server\.
 **To install WordPress**
 
 1. [Download](https://www.microsoft.com/en-us/download/details.aspx?id=30679) and install Visual C\+\+ Redistributable for Visual Studio 2012 Update 4 or later\. 
+**Important**  
+Even if your operating system is a 64\-bit operating system, you must install the 32\-bit version as PHP will not run in 64 bit\. 
 
-1. Open the **Web Platform Installer** and click **Applications**\.
+   Open the **Web Platform Installer** and click **Applications**\.
 
 1. Select **WordPress**, click **Add**, and then click **Install**\.
 

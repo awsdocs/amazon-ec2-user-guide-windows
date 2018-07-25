@@ -9,7 +9,6 @@ Alternatively, you can check the output from the `pnputil -e` command\.
 
 **Topics**
 + [Upgrade Windows Server Instances \(AWS PV Upgrade\)](#aws-pv-upgrade)
-+ [Upgrade Windows Server 2016, Nano Edition \(AWS PV Upgrade\)](#aws-pv-upgrade-nano)
 + [Upgrade a Domain Controller \(AWS PV Upgrade\)](#aws-pv-upgrade-dc)
 + [Upgrade Windows Server 2008 and 2008 R2 Instances \(Redhat to Citrix PV Upgrade\)](#win2008-citrix-upgrade)
 + [Upgrade Your Citrix Xen Guest Agent Service](#citrix-pv-guest-agent-upgrade)
@@ -19,7 +18,7 @@ Alternatively, you can check the output from the `pnputil -e` command\.
 Use the following procedure to perform an in\-place upgrade of AWS PV drivers, or to upgrade from Citrix PV drivers to AWS PV drivers on Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, or Windows Server 2016\. This upgrade is not available for RedHat drivers, or for other versions of Windows Server\.
 
 **Important**  
-If your instances uses Windows Server 2016, Nano edition, see [Upgrade Windows Server 2016, Nano Edition \(AWS PV Upgrade\)](#aws-pv-upgrade-nano)\. If your instance is a domain controller, see [Upgrade a Domain Controller \(AWS PV Upgrade\)](#aws-pv-upgrade-dc)\. The upgrade process for these instances is different than standard editions of Windows\. 
+If your instance is a domain controller, see [Upgrade a Domain Controller \(AWS PV Upgrade\)](#aws-pv-upgrade-dc)\. The upgrade process for domain controller instances is different than standard editions of Windows\. 
 
 **To upgrade AWS PV drivers**
 
@@ -46,39 +45,6 @@ After running the MSI, the instance automatically reboots and then upgrades the 
 If you previously disabled [TCP Offloading](pvdrivers-troubleshooting.md#citrix-tcp-offloading) using Netsh for Citrix PV drivers we recommend that you re\-enable this feature after upgrading to AWS PV drivers\. TCP Offloading issues with Citrix drivers are not present in the AWS PV drivers\. As a result, TCP Offloading provides better performance with AWS PV drivers\.
 
 If you previously applied a static IP address or DNS configuration to the network interface, you must reapply the static IP address or DNS configuration after upgrading AWS PV drivers\.
-
-## Upgrade Windows Server 2016, Nano Edition \(AWS PV Upgrade\)<a name="aws-pv-upgrade-nano"></a>
-
-The following procedure describes how to upgrade AWS PV drivers on the Windows Server 2016, Nano edition\. 
-
-**Before You Begin**  
-The following procedure uses PowerShell remoting to install the latest driver package on the instance\. Before you begin, verify that TCP port 5985 is open on the instance\.
-
-**To upgrade AWS PV drivers on Nano edition**
-
-1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
-
-1. In the navigation pane, choose **Instances**\.
-
-1. Choose the instance that requires the driver upgrade, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\.
-**Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
-
-1. After the instance is stopped, create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
-
-1. From the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Start**\.
-
-1. [Download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverNanoSetup.zip) and extract the latest driver package to your local computer\. The upgrade script runs on your local computer and creates a remote PowerShell session to your Nano instance to install the latest drivers\.
-
-1. Navigate to the directory where you unzipped the installation package\.
-
-1. Run `UpgradeDriver.ps1 –HostName <instance public DNS name>` \-UserName <*a user with admin rights*>\.
-
-   For example, `UpgradeDriver.ps1 –HostName ec2-123-45-678-90.compute-1.amazonaws.com –UserName Administrator`\. 
-
-1. When prompted, specify the instance password, and press Enter\.
-
-The installation can take several minutes to complete\. After a successful installation, the system shows the following message: "Upgrade process finished successfully"\.
 
 ## Upgrade a Domain Controller \(AWS PV Upgrade\)<a name="aws-pv-upgrade-dc"></a>
 

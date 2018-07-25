@@ -85,7 +85,7 @@ If your temporary instance is based on the same AMI that the original instance i
 
   1. \(Optional\) If your temporary instance is based on the same AMI that the original instance is based on, you must complete the following steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\.
 **Warning**  
-The following procedure describes how to edit the Windows Registry using Registry Editor\. If you are not familiar with the Registry or how to safely make changes using Registry Editor, see [Microsoft TechNet](https://technet.microsoft.com/en-us/library/cc725612.aspx)\.
+The following procedure describes how to edit the Windows Registry using Registry Editor\. If you are not familiar with the Windows Registry or how to safely make changes using Registry Editor, see [Configure the Registry](https://technet.microsoft.com/en-us/library/cc725612.aspx)\.
 
      1. Open a command prompt, type regedit\.exe, and press Enter\.
 
@@ -145,7 +145,7 @@ The drive is automatically offline if the temporary instance is running the same
 
   1. Start the instance\.
 + Verify that the password has not expired\. If the password has expired, you can reset it\. For more information, see [Resetting a Lost or Expired Windows Administrator Password](ResettingAdminPassword.md)\.
-+ If you attempt to connect using a user account that you created on the instance and receive the error `The user cannot connect to the server due to insufficient access privileges`, verify that you granted the user the right to log on locally\. For more information, see [http://technet\.microsoft\.com/en\-us/library/ee957044\.aspx](http://technet.microsoft.com/en-us/library/ee957044.aspx)\.
++ If you attempt to connect using a user account that you created on the instance and receive the error `The user cannot connect to the server due to insufficient access privileges`, verify that you granted the user the right to log on locally\. For more information, see [Grant a Member the Right to Log On Locally](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/ee957044(v%3dws.10))\.
 + If you attempt more than the maximum allowed concurrent RDP sessions, your session is terminated with the message `Your Remote Desktop Services session has ended. Another user connected to the remote computer, so your connection was lost.` By default, you are allowed two concurrent RDP sessions to your instance\.
 
 ## RDP displays a black screen instead of the desktop<a name="rdp-black-screen"></a>
@@ -153,7 +153,7 @@ The drive is automatically offline if the temporary instance is running the same
 Try the following to resolve this issue:
 + Check the console output for additional information\. To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, select **Instance Settings**, and then choose **Get System Log**\.
 + Verify that you are running the latest version of your RDP client\.
-+ Try the default settings for the RDP client\. For more information, see [Remote Session Environment](http://technet.microsoft.com/en-us/library/cc772398.aspx) in the *Microsoft TechNet Library*\.
++ Try the default settings for the RDP client\. For more information, see [Remote Session Environment](http://technet.microsoft.com/en-us/library/cc772398.aspx)\.
 + If you are using Remote Desktop Connection, try starting it with the `/admin` option as follows\.
 
   ```

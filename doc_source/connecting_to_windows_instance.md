@@ -2,16 +2,12 @@
 
 Amazon EC2 instances created from most Windows Amazon Machine Images \(AMIs\) enable you to connect using Remote Desktop\. Remote Desktop uses the Remote Desktop Protocol \(RDP\) and enables you to connect to and use your instance in the same way you use a computer sitting in front of you\. It is available on most editions of Windows and available for Mac OS\.
 
-**Important**  
-The Windows Server 2016 Nano installation option \(Nano Server\) does not support RDP\. For more information, see [Connect to a Windows Server 2016 Nano Server Instance](#connecting-nano)\.
-
 For information about connecting to a Linux instance, see [Connect to Your Linux Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
 + [Prerequisites](#rdp-prereqs)
 + [Connect to Your Windows Instance](#connect-rdp)
 + [Connect to a Windows Instance Using Its IPv6 Address](#connecting-to-windows-ipv6)
-+ [Connect to a Windows Server 2016 Nano Server Instance](#connecting-nano)
 + [Transfer Files to Windows Instances](#AccessingInstancesWindowsFileTransfer)
 
 ## Prerequisites<a name="rdp-prereqs"></a>
@@ -30,7 +26,7 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
   If you've assigned an IPv6 address to your instance, you can optionally connect to the instance using its IPv6 address instead of a public IPv4 address or public IPv4 DNS hostname\. Your local computer must have an IPv6 address and must be configured to use IPv6\. You can get the IPv6 address of your instance using the Amazon EC2 console\. Check the **IPv6 IPs** field\. If you prefer, you can use the [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\) or [Get\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(AWS Tools for Windows PowerShell\) command\. For more information about IPv6, see [IPv6 Addresses](using-instance-addressing.md#ipv6-addressing)\.
 + **Locate the private key**
 
-  Get the fully qualified path to the location on your computer of the `.pem` file for the key pair that you specified when you launched the instance\.
+  Get the fully\-qualified path to the location on your computer of the `.pem` file for the key pair that you specified when you launched the instance\.
 + **Enable inbound RDP traffic from your IP address to your instance**
 
   Ensure that the security group associated with your instance allows incoming RDP traffic from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorizing Inbound Traffic for Your Windows Instances](authorizing-access-to-an-instance.md)\.
@@ -122,61 +118,8 @@ If you've enabled your VPC for IPv6 and assigned an IPv6 address to your Windows
 
 1. When prompted, enter the password that you recorded or copied previously\.
 
-## Connect to a Windows Server 2016 Nano Server Instance<a name="connecting-nano"></a>
-
-Windows Server 2016 Nano Server does not support Remote Desktop connections\. To connect to a Windows Server 2016 Nano Server instance, you must connect using Windows PowerShell, as described in the following procedure\.
-
-**Prerequisites**
-+ Ensure that the security group associated with the instance allows inbound TCP traffic from your IP address on port 5985 \(HTTP\)\.
-+ Get the ID of the instance\.
-+ Get the public IP address of the instance\. If you use the private IP address, you must connect to the instance from another instance in the same virtual private cloud \(VPC\)\.
-+ Get the fully\-qualified path to the location of the `.pem` file for the key pair that you specified when you launched the instance\. You need this to retrieve the Administrator password for the instance\.
-
-**To connect to a Nano Server instance**
-
-1. Start a PowerShell session in administrator mode \(from **Start**, **Amazon Web Services**, right\-click **Windows PowerShell** and choose **Run as administrator**\)\.
-
-1. Store the IP address of your instance in a variable as follows\.
-
-   ```
-   PS C:\> $ip = "198.51.100.1"
-   ```
-
-1. Add the IP address of your instance to the list of trusted hosts as follows\. When prompted for confirmation, press Enter\. Note that you must do this step only the first time you connect to this instance from a computer\.
-
-   ```
-   PS C:\> Set-Item WSMan:\localhost\Client\TrustedHosts $ip
-   ```
-
-1. Retrieve the administrator password for your instance using the [Get\-EC2PasswordData](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2PasswordData.html) command as follows\. Save the password, as you'll need it to connect to the instance\.
-
-   ```
-   PS C:\> Get-EC2PasswordData -InstanceId i-1234567890abcdef0 -PemFile C:\path\my-key-pair.pem
-   ```
-
-1. Start the session as follows\.
-
-   ```
-   PS C:\> Enter-PSSession -ComputerName $ip -Credential ~\Administrator
-   ```
-
-1. When prompted for the password, specify the password that you saved\. Upon success, the prompt is modified with the IP address of your instance as follows, indicating that any commands will be run on the instance\.
-
-   ```
-   [198.51.100.1]: PS C:\> 
-   ```
-
-1. After you are finished, you can end the session as follows\.
-
-   ```
-   [198.51.100.1]: PS C:\> Exit-PSSession
-   ```
-
-WS\-Management encrypts all transmitted Windows PowerShell data, even when you use HTTP\. If you prefer to connect to your Nano Server instance using HTTPS, you must connect using HTTP and enable HTTPS support\. Before you can connect using HTTPS, you must also add a rule to the security group associated with the instance that allows inbound TCP traffic from your IP address on port 5986 \(HTTPS\)\. For more information, see [Configuring WinRM over HTTPS to enable PowerShell remoting](https://blogs.technet.microsoft.com/uktechnet/2016/02/11/configuring-winrm-over-https-to-enable-powershell-remoting/) on the Microsoft TechNet Blog\.
-
 ## Transfer Files to Windows Instances<a name="AccessingInstancesWindowsFileTransfer"></a>
 
 You can work with your Windows instance the same way that you would work with any Windows server\. For example, you can transfer files between a Windows instance and your local computer using the local file sharing feature of the Microsoft Remote Desktop Connection software\. If you enable this option, you can access your local files from your Windows instances\. You can access local files on hard disk drives, DVD drives, portable media drives, and mapped network drives\. For more information, see the following articles from Microsoft:
 + [Make Local Devices and Resources Available in a Remote Session](http://technet.microsoft.com/en-us/library/cc770631.aspx)
 + [Getting Started with Remote Desktop Client on Mac](http://technet.microsoft.com/en-us/library/dn473012.aspx)
-+ [How to copy files to and from Nano Server](https://msdn.microsoft.com/en-us/library/mt708806.aspx)

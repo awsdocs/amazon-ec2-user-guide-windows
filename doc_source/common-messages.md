@@ -100,7 +100,7 @@ If you have multiple network interfaces, you'll need to identify the correct int
 
   1. \(Optional\) If your temporary instance is based on the same AMI that the original instance is based on, you must complete the following steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\.
 **Warning**  
-The following procedure describes how to edit the Windows Registry using Registry Editor\. If you are not familiar with the Registry or how to safely make changes using Registry Editor, see [Microsoft TechNet](https://technet.microsoft.com/en-us/library/cc725612.aspx)\.
+The following procedure describes how to edit the Windows Registry using Registry Editor\. If you are not familiar with the Windows Registry or how to safely make changes using Registry Editor, see [Configure the Registry](https://technet.microsoft.com/en-us/library/cc725612.aspx)\.
 
      1. Open a command prompt, type regedit\.exe, and press Enter\.
 
@@ -209,7 +209,7 @@ If this does not resolve the activation issue, follow these additional steps\.
   C:\Windows\System32\slmgr.vbs /dlv
   ```
 
-  If the output contains Error: product key not found, the KMS client key isn't set\. If the KMS client key isn't set, look up the client key as described in this Microsoft TechNet article: [http://technet\.microsoft\.com/en\-us/library/jj612867\.aspx](http://technet.microsoft.com/en-us/library/jj612867.aspx), and then run the following command to set the KMS client key\.
+  If the output contains Error: product key not found, the KMS client key isn't set\. If the KMS client key isn't set, look up the client key as described in this Microsoft article: [KMS Client Setup Keys](http://technet.microsoft.com/en-us/library/jj612867.aspx), and then run the following command to set the KMS client key\.
 
   ```
   C:\Windows\System32\slmgr.vbs /ipk client_key

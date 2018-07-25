@@ -176,6 +176,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2018\.07\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.06\.22 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.06\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.05\.09 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
@@ -328,17 +329,15 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 AWS provides AMIs for Windows Server 2016\. These AMIs include the following high\-level changes from earlier Windows AMIs:
 + To accommodate the change from \.NET Framework to \.NET Core, the EC2Config service has been deprecated on Windows Server 2016 AMIs and replaced by EC2Launch\. EC2Launch is a bundle of Windows PowerShell scripts that perform many of the tasks performed by the EC2Config service\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\. 
-+ The Windows Server 2016 Nano Server installation option \(Nano Server\) does not support Remote Desktop connections\. The **Connection** option is available in the EC2 console, but the connection fails\. You must remotely connect to your instance using Windows PowerShell\. For more information, see [Connect to a Windows Server 2016 Nano Server Instance](connecting_to_windows_instance.md#connecting-nano)\.
 + On earlier versions of Windows Server AMIs, you can use the EC2Config service to join an EC2 instance to a domain and configure integration with Amazon CloudWatch\. On Windows Server 2016 AMIs, the Amazon EC2 Systems Manager \(SSM\) agent performs these tasks\. This means that you must use either Amazon EC2 Run Command or SSM Config to join an EC2 instance to a domain or configure integration with Amazon CloudWatch on Windows Server 2016 instances\. For more information about configuring instances to send log data to CloudWatch, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md) For information about joining an EC2 instance to a domain, see [Joining a Windows Instance to an AWS Directory Service Domain](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-domain-join.html)\.
 
 **Other Differences**
 
 Note these additional important differences for instances created from Windows Server 2016 AMIs\.
 + By default, EC2Launch does not initialize secondary EBS volumes\. You can configure EC2Launch to initialize disks automatically by either scheduling the script to run or by calling EC2Launch in user data\. For the procedure to initialize disks using EC2Launch, see "Initialize Drives and Drive Letter Mappings" in [Configuring EC2Launch](ec2launch.md#ec2launch-config)\.
-+ Nano Server does not support online domain joining\. You must perform an offline domain join instead\. For more information, see [Offline Domain Join \(Djoin\.exe\) Step\-by\-Step Guide](https://technet.microsoft.com/en-us/library/offline-domain-join-djoin-step-by-step%28v=ws.10%29.aspx) on Microsoft TechNet\.
 + If you previously enabled CloudWatch integration on your instances by using a local configuration file \(AWS\.EC2\.Windows\.CloudWatch\.json\), you can configure the file to work with the SSM Agent on instances created from Windows Server 2016 AMIs\. For more information, see [Use SSM Agent to Configure CloudWatch](send_logs_to_cwl_instances.md#configure-ssm-agent)\.
 
-For more information, see [Windows Server 2016](https://www.microsoft.com/en-us/cloud-platform/windows-server) and [Install Nano Server](https://docs.microsoft.com/en-us/windows-server/get-started/getting-started-with-nano-server) on Microsoft\.com\.
+For more information, see [Windows Server 2016](https://www.microsoft.com/en-us/cloud-platform/windows-server) on Microsoft\.com\.
 
 ## Docker Container Conflict on Windows Server 2016 Instances<a name="ec2launch-docker"></a>
 

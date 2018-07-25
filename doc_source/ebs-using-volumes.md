@@ -6,7 +6,9 @@ You can take snapshots of your EBS volume for backup purposes or to use as a bas
 
 You can get directions for volumes on a Linux instance from [Making a Volume Available for Use on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-**To make an EBS volume available for use on Windows**
+You can make an EBS volume available for use using the Disk Management utility and the DiskPart command line tool\.
+
+**To make an EBS volume available for use using the Disk Management utility**
 
 1. Log in to your Windows instance using Remote Desktop\. For more information, see, [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
 
@@ -26,3 +28,31 @@ If you're mounting a volume that already has data on it \(for example, a public 
 
 1. Open the context \(right\-click\) menu for the right panel for the disk and choose **New Simple Volume**\. Complete the wizard\.  
 ![\[Mount a simple volume.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-2016-new-simple-volume.png)
+
+**To make an EBS volume available for use using the DiskPart command line tool**
+
+1. Log in to your Windows instance using Remote Desktop\. For more information, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+
+1. Create a new script file named `diskpart.txt`\.
+
+1. Add the following commands to the script file and specify the volume label and drive letter\. This script configures the volume to use the master boot record \(MBR\) partition structure, formats the volume as an NTFS volume, sets the volume label, and assigns it a drive letter\.
+**Warning**  
+If you're mounting a volume that already has data on it, do not reformat the volume or you will delete the existing data\.
+
+   ```
+   select disk 1 
+   attributes disk clear readonly 
+   online disk 
+   convert mbr 
+   create partition primary 
+   format quick fs=ntfs label="volume_label" 
+   assign letter="drive_letter"
+   ```
+
+   For more information, see [DiskPart Syntax and Parameters](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-vista/cc766465(v=ws.10)#diskpart-syntax-and-parameters)\.
+
+1. Navigate to the folder in which the script is located and execute the following command:
+
+   ```
+   C:\> diskpart /s diskpart.txt
+   ```

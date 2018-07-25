@@ -1,10 +1,10 @@
 # Configuring a Windows Instance Using EC2Launch<a name="ec2launch"></a>
 
 EC2Launch is a set of Windows PowerShell scripts that replaces the EC2Config service on Windows Server 2016 AMIs\. EC2Launch performs the following tasks by default during the initial instance boot:
-+ Sets up new wallpaper that renders information about the instance\. \(Doesn't apply to Nano Server\.\)
++ Sets up new wallpaper that renders information about the instance\.
 + Sets the computer name\.
 + Sends instance information to the Amazon EC2 console\.
-+ Sends the RDP certificate thumbprint to the EC2 console\. \(Doesn't apply to Nano Server\.\) 
++ Sends the RDP certificate thumbprint to the EC2 console\. 
 + Sets a random password for the administrator account\.
 + Adds DNS suffixes\.
 + Dynamically extends the operating system partition to include any unpartitioned space\.
@@ -15,7 +15,7 @@ The following tasks help to maintain backward compatibility with the EC2Config s
 + Send Windows Event logs to the EC2 console logs\.
 + Send the *Windows is ready to use* message to the EC2 console\.
 
-For more information about Windows Server 2016, see [What's New with Windows Server 2016](https://www.microsoft.com/en-us/cloud-platform/windows-server) and [Install Nano Server](https://docs.microsoft.com/en-us/windows-server/get-started/getting-started-with-nano-server) on Microsoft\.com\.
+For more information about Windows Server 2016, see [What's New with Windows Server 2016](https://www.microsoft.com/en-us/cloud-platform/windows-server) on Microsoft\.com\.
 
 **Topics**
 + [Verify the EC2Launch Version](#ec2launch-verify-version)
@@ -191,7 +191,7 @@ PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\SendWindowsIsReady.ps1 
 Sysprep simplifies the process of duplicating a customized installation of Windows Server 2016\. Ec2Launch offers a default answer file and batch files for Sysprep that automate and secure the image\-preparation process on your AMI\. Modifying these files is optional\. These files are located in the following directory, by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep`\.
 
 **Important**  
-Sysprep is not supported on Windows Server 2016 Nano Server\. Also, don't use Sysprep to create an instance backup\. Sysprep removes system\-specific information\. If you remove this information there might be unintended consequences for an instance backup\.
+Do not use Sysprep to create an instance backup\. Sysprep removes system\-specific information\. If you remove this information there might be unintended consequences for an instance backup\.
 
 The EC2Launch answer file and batch files for Sysprep include the following:
 

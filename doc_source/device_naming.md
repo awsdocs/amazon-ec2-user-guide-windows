@@ -20,7 +20,7 @@ The following table lists the available device names for Windows instances\. The
 
 † If you map an EBS volume with the name `xvda`, Windows does not recognize the volume\.
 
-\* NVMe instance store volumes are automatically enumerated and assigned a Windows drive letter\. There is no need to specify NVMe instance store volumes in your block device mapping\.
+\* NVMe instance store volumes are automatically enumerated and assigned a Windows drive letter\.
 
 For more information about instance store volumes, see [Amazon EC2 Instance Store](InstanceStorage.md)\.
 

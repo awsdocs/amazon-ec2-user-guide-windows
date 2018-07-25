@@ -2,7 +2,7 @@
 
 The Microsoft System Preparation \(Sysprep\) tool simplifies the process of duplicating a customized installation of Windows\. We recommend that you use Sysprep to create a standardized Amazon Machine Image \(AMI\)\. You can then create new Amazon EC2 instances for Windows from this standardized image\.
 
-We also recommend that you run Sysprep with EC2Launch \(Windows Server 2016\) or the EC2Config service \(prior to Windows Server 2016\)\. Sysprep with EC2Launch is not supported on the Nano installation of Windows Server 2016\.
+We also recommend that you run Sysprep with EC2Launch \(Windows Server 2016\) or the EC2Config service \(prior to Windows Server 2016\)\.
 
 **Important**  
 Don't use Sysprep to create an instance backup\. Sysprep removes system\-specific information; removing this information might have unintended consequences for an instance backup\.
