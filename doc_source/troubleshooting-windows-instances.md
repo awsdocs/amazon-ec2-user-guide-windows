@@ -191,7 +191,7 @@ To use a time zone other than UTC persistently, you must set the **RealTimeIsUni
 
 For information about troubleshooting a Windows Server 2012 R2 instance that is not available on the network, see [Windows Server 2012 R2 loses network and storage connectivity after an instance reboot](pvdrivers-troubleshooting.md#server2012R2-instance-unavailable).
 
-## Troubleshooting Remote Desktop Connection issues using AWS Systems Manager
+## Troubleshooting Remote Desktop Connection issues using AWS Systems Manager<a name="Troubleshooting-Remote-Desktop-Connection-issues-using-AWS-Systems-Manager"></a>  
 
 ### AWSSupport-TroubleshootRDP
 
