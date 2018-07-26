@@ -15,7 +15,7 @@ The following procedures and tips can help you troubleshoot problems with your A
 + [Instance loses network connectivity or scheduled tasks don't run when expected](#instance-loses-network-connectivity)
 + [Windows Server 2012 R2 not available on the network](#server-2012-network-loss)
 + [Common Messages](common-messages.md)
-+ [Troubleshooting Remote Desktop Connection Issues using AWS Systems Manager](#Troubleshooting-RDP-Connection-issues-using-AWS-Systems-Manager)
++ [Troubleshooting Remote Desktop Connection issues using AWS Systems Manager](#Troubleshooting-RDP-Connection-issues-using-AWS-Systems-Manager)
 
 If you need additional help, you can post a question to the [Amazon EC2 forum](https://forums.aws.amazon.com/forum.jspa?forumID=30). Be sure to post the ID of your instance and any error messages, including error messages available through console output.
 
