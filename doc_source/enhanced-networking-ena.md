@@ -1,12 +1,13 @@
 # Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances<a name="enhanced-networking-ena"></a>
 
-Amazon EC2 provides enhanced networking capabilities to C5, C5d, F1, G3, H1, I3, `m4.16xlarge`, M5, M5d, P2, P3, R4, R5, R5d, X1, and z1d instances through the Elastic Network Adapter \(ENA\)\.
+Amazon EC2 provides enhanced networking capabilities to C5, C5d, F1, G3, H1, I3, `m4.16xlarge`, M5, M5d, P2, P3, R4, R5, R5d, X1, X1e, and z1d instances through the Elastic Network Adapter \(ENA\)\.
 
 **Topics**
 + [Requirements](#ena-requirements)
 + [Testing Whether Enhanced Networking Is Enabled](#test-enhanced-networking-ena)
 + [Enabling Enhanced Networking on Windows](#enable-enhanced-networking-ena-WIN)
 + [Amazon ENA Driver Versions](#ena-adapter-driver-versions)
++ [Subscribing to Notifications](#drivers-subscribe-notifications)
 
 ## Requirements<a name="ena-requirements"></a>
 
@@ -138,3 +139,41 @@ Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The f
 |  1\.2\.3  |  Includes reliability fixes and unifies support for Windows Server 2008 R2 through Windows Server 2016\.  | February 2018 | 
 |  1\.0\.9  |  Includes some reliability fixes\. Applies only to Windows Server 2008 R2\. Not recommended for other versions of Windows Server\.  | December 2016 | 
 |  1\.0\.8  |  The initial release\. Included in AMIs for Windows Server 2008 R2, Windows Server 2012 RTM, Windows Server 2012 R2, and Windows Server 2016\.  | July 2016 | 
+
+## Subscribing to Notifications<a name="drivers-subscribe-notifications"></a>
+
+Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use the following procedure to subscribe to these notifications\.
+
+**To subscribe to EC2 notifications**
+
+1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v2/home](https://console.aws.amazon.com/sns/v2/home)\.
+
+1. In the navigation bar, change the region to **US East \(N\. Virginia\)**, if necessary\. You must select this region because the SNS notifications that you are subscribing to are in this region\.
+
+1. In the navigation pane, choose **Subscriptions**\.
+
+1. Choose **Create subscription**\.
+
+1. In the **Create subscription** dialog box, do the following:
+
+   1. For **TopicARN**, copy the following Amazon Resource Name \(ARN\):
+
+      arn:aws:sns:us\-east\-1:801119661308:ec2\-windows\-drivers
+
+   1. For **Protocol**, choose `Email`\.
+
+   1. For **Endpoint**, type an email address that you can use to receive the notifications\.
+
+   1. Choose **Create subscription**\.
+
+1. You'll receive a confirmation email\. Open the email and follow the directions to complete your subscription\.
+
+Whenever new EC2 Windows drivers are released, we send notifications to subscribers\. If you no longer want to receive these notifications, use the following procedure to unsubscribe\.
+
+**To unsubscribe from Amazon EC2 Windows driver notification**
+
+1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v2/home](https://console.aws.amazon.com/sns/v2/home)\.
+
+1. In the navigation pane, choose **Subscriptions**\.
+
+1. Select the checkbox for the subscription and then choose **Actions**, **Delete subscriptions**\. When prompted for confirmation, choose **Delete**\.

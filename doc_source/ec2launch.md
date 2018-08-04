@@ -9,6 +9,9 @@ EC2Launch is a set of Windows PowerShell scripts that replaces the EC2Config ser
 + Adds DNS suffixes\.
 + Dynamically extends the operating system partition to include any unpartitioned space\.
 + Executes user data \(if specified\)\. For more information about specifying user data, see [Working with Instance User Data](ec2-instance-metadata.md#instancedata-add-user-data)\.
++  Sets persistent static routes to reach the metadata service and KMS servers\. 
+**Important**  
+ If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Updating metadata/KMS routes for Server 2016 when launching a custom AMI](#update-metadata-KMS)\. 
 
 The following tasks help to maintain backward compatibility with the EC2Config service\. You can also configure EC2Launch to perform these tasks during startup:
 + Initialize secondary EBS volumes\.
@@ -253,3 +256,16 @@ EC2Launch uses the password you specify in the `unattend.xml` file\. If you don'
 1. In Windows PowerShell, run `./SysprepInstance.ps1`\. The script is located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts`\. 
 
 You are logged off the instance, and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `running` to `stopping`, and then finally to `stopped`\. At this point, it's safe to create an AMI from this instance\.
+
+### Updating metadata/KMS routes for Server 2016 when launching a custom AMI<a name="update-metadata-KMS"></a>
+
+**To update metadata/KMS routes for Server 2016 when launching a custom AMI**
+
+1. Use EC2LaunchSettings GUI \(C:\\ProgramData\\Amazon\\EC2\-Windows\\Launch\\Settings\\Ec2LaunchSettings\.exe\) to shut down with Sysprep\.
+
+1. Or, shut down without Sysprep before creating an AMI\. This sets the EC2 Launch Initialize tasks to run at the next boot, which will set routes based on the subnet being launched into\. 
+
+1. Or, manually reschedule EC2 Launch initialize tasks before creating an AMI from [PowerShell](#ec2launch-inittasks)\. 
+
+**Important**  
+Please take note of the default password reset behavior before rescheduling tasks\.

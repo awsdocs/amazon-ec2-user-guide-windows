@@ -37,7 +37,7 @@ Number SerialNumber
 
 ## Working with NVMe EBS Volumes<a name="using-nvme-ebs-volumes"></a>
 
-The latest AWS Windows AMIs have AWS NVMe drivers that support Elastic Volumes\. However, if you resize your root volume on a Windows system, you must rescan the volume in order for the change to be recognized\. If you aren't using the latest AWS Windows AMIs, you can install the latest AWS NVMe driver\. For more information, see [AWS NVMe Drivers for Windows Instances](aws-nvme-drivers.md)\.
+The latest AWS Windows AMIs contain the AWS NVMe driver that is required by instance types that expose EBS volumes as NVMe block devices\. However, if you resize your root volume on a Windows system, you must rescan the volume in order for this change to be reflected in the instance\. If you launched your instance from a different AMI, it might not contain the required AWS NVMe driver\. If your instance does not have the latest AWS NVMe driver, you must install it\. For more information, see [AWS NVMe Drivers for Windows Instances](aws-nvme-drivers.md)\.
 
 ## I/O Operation Timeout<a name="timeout-nvme-ebs-volumes"></a>
 

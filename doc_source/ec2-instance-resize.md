@@ -40,6 +40,8 @@ Use the following procedure to resize an Amazon EBS–backed instance using the 
 **To resize an Amazon EBS–backed instance**
 
 1. \(Optional\) If the new instance type requires drivers that are not installed on the existing instance, you must connect to your instance and install the drivers first\. For more information, see [Compatibility for Resizing Instances](#resize-limitations)\.
+**Note**  
+The AWS PV driver package should be updated before changing instance families\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
 
 1. Open the Amazon EC2 console\.
 

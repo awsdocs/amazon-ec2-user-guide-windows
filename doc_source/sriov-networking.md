@@ -71,7 +71,7 @@ If the attribute isn't set, `SriovNetSupport` is empty; otherwise, it is set as 
 If you launched your instance and it does not have enhanced networking enabled already, you must download and install the required network adapter driver on your instance, and then set the `sriovNetSupport` instance attribute to activate enhanced networking\. You can only enable this attribute on supported instance types\. For more information, see [Enhanced Networking Types](enhanced-networking.md#supported_instances)\. 
 
 **Important**  
-Windows Server enhanced networking is already enabled for Windows Server 2012 R2 and Windows Server 2016 AMIs\. However, Windows Server 2012 R2 includes Intel driver 1\.0\.15\.3 and we recommend that you upgrade that driver to the latest version using the `Pnputil.exe` utility as described here\.
+ To view the latest version of the Intel driver in the Windows AMIs, see [Details About AWS Windows AMI Versions](windows-ami-version-history.md#windows-ami-versions)\.
 
 **Warning**  
 There is no way to disable the enhanced networking attribute after you've enabled it\.
