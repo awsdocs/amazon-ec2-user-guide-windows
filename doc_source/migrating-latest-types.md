@@ -89,4 +89,17 @@ For Windows instances, the latest EC2Config and EC2Launch will provide additiona
 
 1. If you made a backup of the EC2Launch configuration file, copy it to the `C:\ProgramData\Amazon\EC2-Windows\Launch\Config` directory\. 
 
-   For more information, see 
+   For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\.
+
+## Part 5: Installing the Serial Port driver for Bare Metal Instances<a name="install-serial-port-bare-metal"></a>
+
+ `i3.metal` instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device and have the serial port driver installed\. If you are not using an instance launched from an Amazon\-provided Windows AMI dated 2018\.04\.11 or later, you will need to install the Serial Port Driver to enable the serial device for EC2 features such as Password Generation and Console Output\. The latest EC2Config and EC2Launch also support i3\.metal and provide additional functionality, therefore we recommend following the steps in Part 4 if you have not yet done so\. 
+
+**Note**  
+Windows Server 2012 R2 and Windows Server 2016 are currently supported on i3\.metal\.
+
+1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPCISerialDriver/1.0.0.0/AWSPCISerialDriver-2012R2-2016.zip) the serial driver package to the instance\. 
+
+1. Extract the contents of the folder, right click on aws\_ser\.INF, and choose **install**\. 
+
+1. Confirm the operation completed by selecting **Okay**\. 
