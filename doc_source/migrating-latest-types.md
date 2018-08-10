@@ -69,7 +69,7 @@ this step only performs a sysprep on the driver devices\. It does not perform a 
 
 For Windows instances, the latest EC2Config and EC2Launch will provide additional functionality and information when running on the Nitro system, including on EC2 Bare Metal\. By default, the EC2Config service is included in AMIs prior to Windows Server 2016\. EC2Launch replaces EC2Config on Windows Server 2016 AMIs\. When the EC2Config and EC2Launch services are updated, new Windows AMIs from AWS include the latest version of the service\. However, you need to update your own Windows AMIs and instances with the latest version of EC2Config and EC2Launch\.
 
-** Installing or updating EC2Config**
+**Installing or updating EC2Config**
 
 1. Download and unzip the [ EC2Config Installer](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip)\.
 
