@@ -8,12 +8,12 @@ For more information on the Nitro system, see [Amazon EC2 Update — Additional 
 
 This guide assumes you are currently running on a previous generation Xen\-based instance type, such as an M4 or C4, and you are migrating to a latest generation instance type, such as an M5 or C5\. 
 
- Before following the steps in this guide, we recommend that you create a backup of the instance\. From the EC2 console, choose the instance that requires the migration, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\. 
+Before following the steps in this guide, we recommend that you create a backup of the instance\. From the EC2 console, choose the instance that requires the migration, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\. 
 
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you wish to preserve, ensure that you back it up to persistent storage\. 
 
- Open the context \(right\-click\) menu for the instance in the [EC2 console](https://console.aws.amazon.com/ec2/), choose **Image\***, and then choose **Create Image**\. 
+Open the context \(right\-click\) menu for the instance in the [EC2 console](https://console.aws.amazon.com/ec2/), choose **Image**, and then choose **Create Image**\. 
 
 **Note**  
 Parts 4 and 5 of these instructions can be completed after you migrate or change the instance type to the latest generation, such as M5 or C5\. However, we recommend that you complete them before you migrate if you are migrating specifically to an EC2 Bare Metal instance type\. 
