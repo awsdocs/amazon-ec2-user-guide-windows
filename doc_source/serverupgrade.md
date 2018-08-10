@@ -7,4 +7,5 @@ Microsoft has traditionally recommended migrating to a newer version of Windows 
 **Topics**
 + [Performing a Server Migration](os-migration.md)
 + [Performing an In\-Place Upgrade](os-inplaceupgrade.md)
++ [Migrating to Latest Generation Instance Types](migrating-latest-types.md)
 + [Troubleshooting an Upgrade](os-upgrade-trbl.md)
