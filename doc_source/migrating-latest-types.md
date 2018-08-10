@@ -8,7 +8,7 @@ For more information on the Nitro system, see [Amazon EC2 Update — Additional 
 
 This guide assumes you are currently running on a previous generation Xen\-based instance type, such as an M4 or C4, and you are migrating to a latest generation instance type, such as an M5 or C5\. 
 
- Before following the steps in this guide, we recommend that you create a backup of the instance\. From the EC2 console, choose the instance that requires the driver upgrade, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\. 
+ Before following the steps in this guide, we recommend that you create a backup of the instance\. From the EC2 console, choose the instance that requires the migration, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\. 
 
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you wish to preserve, ensure that you back it up to persistent storage\. 
@@ -61,7 +61,7 @@ The following instructions are modified specifically for when you install or upg
 
    `start /wait rundll32.exe sppnp.dll,Sysprep_Generalize_Pnp.exe`
 **Note**  
-this step only performs a sysprep on the driver devices\. It does not perform a full sysprep\.
+This step only performs a sysprep on the driver devices\. It does not perform a full sysprep\.
 
 1. For Windows Server 2008 R2, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type any time after the device sysprep\.
 
