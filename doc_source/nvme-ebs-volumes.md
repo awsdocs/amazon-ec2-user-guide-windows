@@ -1,6 +1,6 @@
 # Amazon EBS and NVMe<a name="nvme-ebs-volumes"></a>
 
-With the following instances, EBS volumes are exposed as NVMe block devices: C5, C5d, `i3.metal`, M5, M5d, R5, R5d, and z1d\. 
+With the following instances, EBS volumes are exposed as NVMe block devices: C5, C5d, `i3.metal`, M5, M5d, R5, R5d, T3, and z1d\. 
 
 **Note**  
 The EBS performance guarantees stated in [Amazon EBS Product Details](https://aws.amazon.com/ebs/details/) are valid regardless of the block\-device interface\.

@@ -8,12 +8,12 @@ For more information on the Nitro system, see [Amazon EC2 Update — Additional 
 
 This guide assumes you are currently running on a previous generation Xen\-based instance type, such as an M4 or C4, and you are migrating to a latest generation instance type, such as an M5 or C5\. 
 
-Before following the steps in this guide, we recommend that you create a backup of the instance\. From the EC2 console, choose the instance that requires the migration, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\. 
+Before following the steps in this guide, we recommend that you create a backup of the instance\. From the [EC2 console](https://console.aws.amazon.com/ec2/), choose the instance that requires the migration, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\. 
 
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you wish to preserve, ensure that you back it up to persistent storage\. 
 
-Open the context \(right\-click\) menu for the instance in the [EC2 console](https://console.aws.amazon.com/ec2/), choose **Image**, and then choose **Create Image**\. 
+ Open the context \(right\-click\) menu for the instance in the [EC2 console](https://console.aws.amazon.com/ec2/), choose **Image**, and then choose **Create Image**\. 
 
 **Note**  
 Parts 4 and 5 of these instructions can be completed after you migrate or change the instance type to the latest generation, such as M5 or C5\. However, we recommend that you complete them before you migrate if you are migrating specifically to an EC2 Bare Metal instance type\. 
@@ -30,7 +30,7 @@ Use the following procedure to perform an in\-place upgrade of AWS PV drivers, o
 
 1. Extract the contents of the folder and then run `AWSPVDriverSetup.msi`\. 
 
-   After running the MSI, the instance automatically reboots and then upgrades the driver\. The instance will not be available for up to 15 minutes\. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#aws-pv-driver-version-history)\. 
+   After running the MSI, the instance automatically reboots and then upgrades the driver\. The instance will not be available for up to 15 minutes\. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)\. 
 
 ## Part 2: Installing and upgrading ENA<a name="upgrade-ena"></a>
 
@@ -44,7 +44,7 @@ We recommend you upgrade to the latest Elastic Network Adapter driver to ensure 
 
 1.  Check if your AMI has enaSupport activated and, if not, continue by following the documentation at [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
 
-## Part 3: Upgrading AWS NVMe Drivers<a name="upgrade-nvme"></a>
+## Part 3: Upgrading AWS NVMe drivers<a name="upgrade-nvme"></a>
 
 AWS NVMe drivers are used to interact with EBS and SSD instance store volumes that are exposed as NVMe block devices in the Nitro system for better performance\. 
 
@@ -57,9 +57,9 @@ The following instructions are modified specifically for when you install or upg
 
 1. Install the driver by running `dpinst.exe`\.
 
-1. Open a command prompt or PowerShell session and run a “device sysprep”: 
+1. Open a PowerShell session and run a “device sysprep”: 
 
-   `start /wait rundll32.exe sppnp.dll,Sysprep_Generalize_Pnp.exe`
+   `start rundll32.exe sppnp.dll,Sysprep_Generalize_Pnp -wait`
 **Note**  
 This step only performs a sysprep on the driver devices\. It does not perform a full sysprep\.
 
@@ -69,7 +69,7 @@ This step only performs a sysprep on the driver devices\. It does not perform a 
 
 For Windows instances, the latest EC2Config and EC2Launch will provide additional functionality and information when running on the Nitro system, including on EC2 Bare Metal\. By default, the EC2Config service is included in AMIs prior to Windows Server 2016\. EC2Launch replaces EC2Config on Windows Server 2016 AMIs\. When the EC2Config and EC2Launch services are updated, new Windows AMIs from AWS include the latest version of the service\. However, you need to update your own Windows AMIs and instances with the latest version of EC2Config and EC2Launch\.
 
-**Installing or updating EC2Config**
+** Installing or updating EC2Config**
 
 1. Download and unzip the [ EC2Config Installer](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip)\.
 
@@ -95,11 +95,8 @@ For Windows instances, the latest EC2Config and EC2Launch will provide additiona
 
  `i3.metal` instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device and have the serial port driver installed\. If you are not using an instance launched from an Amazon\-provided Windows AMI dated 2018\.04\.11 or later, you will need to install the Serial Port Driver to enable the serial device for EC2 features such as Password Generation and Console Output\. The latest EC2Config and EC2Launch also support i3\.metal and provide additional functionality, therefore we recommend following the steps in Part 4 if you have not yet done so\. 
 
-**Note**  
-Windows Server 2012 R2 and Windows Server 2016 are currently supported on i3\.metal\.
-
-1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPCISerialDriver/1.0.0.0/AWSPCISerialDriver-2012R2-2016.zip) the serial driver package to the instance\. 
+1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPCISerialDriver/Latest/AWSPCISerialDriver.zip) the serial driver package to the instance\. 
 
 1. Extract the contents of the folder, right click on aws\_ser\.INF, and choose **install**\. 
 
-1. Confirm the operation completed by selecting **Okay**\. 
+1. Confirm the operation completed by selecting **Okay**\.

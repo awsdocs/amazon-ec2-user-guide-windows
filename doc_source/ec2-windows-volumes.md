@@ -31,10 +31,12 @@ You can find the disks on your Windows instance using Windows Disk Management\.
 1. Right\-click the gray pane labeled Disk 1, and then select **Properties**\. Note the value of **Location** and look it up in the tables in [Disk Device to Device Name Mapping](#windows-volume-mapping)\. For example, the following disk has the location Bus Number 0, Target Id 9, LUN 0\. According to the table for EBS volumes, the device name for this location is `xvdj`\.  
 ![\[The location of an EBS volume.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/disk_1_location.png)
 
-1. To map the device name of an EBS volume to its volume ID, open the Amazon EC2 console on your computer\. In the navigation pane, select **Instances**, and then select your instance\. Under **Block devices**, click the device name, and locate **EBS ID**\. For this example, the volume ID is `vol-0a07f3e37b14708b9`\.  
+1. To map the device name of an EBS volume to its volume ID, open the Amazon EC2 console on your computer\. In the navigation pane, select **Instances**, and then select your instance\. Under **Block devices** on the **Description** tab, click the device name, and locate **EBS ID**\. For this example, the volume ID is `vol-0a07f3e37b14708b9`\.  
 ![\[Display the block device mapping in the Amazon EC2 console.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/block_devices.png)
 
    Note that the Amazon EC2 console shows only the EBS volumes\.
+
+   Another way to access volume IDs from the console is to select **Volumes** under **Elastic Block Store** in the navigation pane\. Volumes will be listed by instance name and volume size\. Review or select the **Attachment Information** to verify the instance to which the volume is attached\. 
 
 ## Listing the Disks Using Windows PowerShell<a name="windows-list-disks"></a>
 

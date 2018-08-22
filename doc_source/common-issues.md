@@ -5,6 +5,7 @@ The following are troubleshooting tips to help you solve common issues with EC2 
 **Topics**
 + [EBS volumes don't initialize on Windows Server 2016 AMIs](#init-disks-win2k16)
 + [Boot an EC2 Windows Instance into Directory Services Restore Mode \(DSRM\)](#boot-dsrm)
++ [Unable to remotely log on to an instance with a user account that is not an Administrator](#remote-failure)
 
 ## EBS volumes don't initialize on Windows Server 2016 AMIs<a name="init-disks-win2k16"></a>
 
@@ -117,3 +118,7 @@ If you do not create the instance in the same Availability Zone as the affected 
 1. After the instance passes the health checks in the EC2 console, connect to the instance using Remote Desktop and verify that it boots into DSRM mode\.
 
 1. \(Optional\) Delete or stop the temporary instance you created in this procedure\.
+
+## Unable to remotely log on to an instance with a user account that is not an Administrator<a name="remote-failure"></a>
+
+If you are not able to remotely log on to a Windows Server EC2 instance from a user account that is not an administrator account, ensure that you have granted the user the right to log on locally\. See [Grant a user or group the right to log on locally to the domain controllers in the domain](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee957044(v=ws.10)#grant-a-user-or-group-the-right-to-log-on-locally-to-the-domain-controllers-in-the-domain)\. 

@@ -10,6 +10,7 @@ The following procedures and tips can help you troubleshoot problems with your A
 + [High CPU usage shortly after Windows starts](#high-cpu-issue)
 + [No console output](#no-console-output)
 + [Remote Desktop can't connect to the remote computer](#rdp-issues)
++ [Error Using macOS RDP Client](#troubleshoot-instance-connect-mac-rdp)
 + [RDP displays a black screen instead of the desktop](#rdp-black-screen)
 + [Instance loses network connectivity or scheduled tasks don't run when expected](#instance-loses-network-connectivity)
 + [Windows Server 2012 R2 not available on the network](#server-2012-network-loss)
@@ -154,6 +155,16 @@ The drive is automatically offline if the temporary instance is running the same
 + Verify that the password has not expired\. If the password has expired, you can reset it\. For more information, see [Resetting a Lost or Expired Windows Administrator Password](ResettingAdminPassword.md)\.
 + If you attempt to connect using a user account that you created on the instance and receive the error `The user cannot connect to the server due to insufficient access privileges`, verify that you granted the user the right to log on locally\. For more information, see [Grant a Member the Right to Log On Locally](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/ee957044(v%3dws.10))\.
 + If you attempt more than the maximum allowed concurrent RDP sessions, your session is terminated with the message `Your Remote Desktop Services session has ended. Another user connected to the remote computer, so your connection was lost.` By default, you are allowed two concurrent RDP sessions to your instance\.
+
+## Error Using macOS RDP Client<a name="troubleshoot-instance-connect-mac-rdp"></a>
+
+If you are connecting to a Windows Server 2012 R2 instance using the Remote Desktop Connection client from the Microsoft website, you may get the following error:
+
+```
+Remote Desktop Connection cannot verify the identity of the computer that you want to connect to.
+```
+
+Download the Microsoft Remote Desktop app from the Apple iTunes store and use the app to connect to your instance\.
 
 ## RDP displays a black screen instead of the desktop<a name="rdp-black-screen"></a>
 

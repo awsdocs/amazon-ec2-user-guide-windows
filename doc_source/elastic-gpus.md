@@ -18,7 +18,8 @@ The following instance types support elastic GPUs:
 + c3 \| c4 \| c5 \| c5d
 + m3 \| m4 \| m5 \| m5d
 + r3 \| r4
-+ `t2.medium` \(or greater\)
++ `t2.medium` or larger
++ `t3.medium` or larger
 + x1 \| x1e
 + d2
 + h1
