@@ -85,6 +85,8 @@ There is no way to disable the enhanced networking attribute after you've enable
    ```
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
    ```
+**Important**  
+The administrator password will reset when you enable the initialize instance EC2Launch script\. You can modify the configuration file to disable the administrator password reset by specifying it in the settings for the initialization tasks\. For steps on how to disable password reset, see [Configure Initialization Tasks](ec2launch.md#ec2launch-inittasks)\.
 
 1. From the instance, install the driver as follows:
 

@@ -12,7 +12,7 @@ For more information about high performance computing, see [High Performance Com
 
 ## Prerequisites<a name="prereqs"></a>
 
-You must launch your instances in a VPC\. You can use the default VPC or create a nondefault VPC\. For more information, see [Getting Started](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/GetStarted.html) in the *Amazon VPC User Guide*\.
+You must launch your instances in a VPC\. You can use the default VPC or create a nondefault VPC\. For more information, see [Getting Started](http://docs.aws.amazon.com/vpc/latest/userguide/GetStarted.html) in the *Amazon VPC User Guide*\.
 
 ## Step 1: Create Security Groups<a name="Set_ADSecurity_Groups"></a>
 

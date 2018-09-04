@@ -161,7 +161,7 @@ Use the following procedure if you need to run an older version of EC2Config on 
 
 1. On the **General** tab of the **Ec2 Service Properties** dialog box, under **CloudWatch Logs**, choose **Enable CloudWatch Logs integration**, and then choose **OK**\.
 
-1. If you made changes to the `AWS.EC2.Windows.CloudWatch.json` file, then you must restart the EC2Config service\. For more information, see [Stopping, Restarting, Deleting, or Uninstalling EC2Config](UsingConfig_StopDelete.md)\.
+1. If you made changes to the `AWS.EC2.Windows.CloudWatch.json` file, then you must restart the EC2Config service\. For more information, see [Stopping, Restarting, Deleting, or Uninstalling EC2Config](ec2config-service.md#UsingConfig_StopDelete)\.
 
 **To enable CloudWatch Logs using user data**  
 You can enable CloudWatch Logs by adding the following script to the user data field when you launch an instance\. EC2Config will run this script every time your instance is restarted to make sure that CloudWatch Logs integration is enabled\. To run this script only when an instance is first launched, remove `<persist>true</persist>` from the script\.

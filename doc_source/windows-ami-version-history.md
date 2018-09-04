@@ -31,7 +31,7 @@ For Windows instances, you can install updates to the following services or appl
 +  [Microsoft Windows Server](http://windows.microsoft.com/en-us/windows/windows-update) 
 +  [Microsoft SQL Server](http://technet.microsoft.com/en-us/library/ff803383.aspx) 
 +  [Windows PowerShell](http://technet.microsoft.com/en-us/scriptcenter/dd772288) 
-+ [EC2Launch](ec2launch.md#ec2launch-download)
++ [EC2Launch](ec2launch-download.md)
 + [EC2Config service](UsingConfig_Install.md)
 + [SSM Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
 + [PV Drivers](Upgrading_PV_drivers.md)
@@ -176,6 +176,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2018\.08\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) **Microsoft Windows Server 2016 Base Nano** Access to all public versions of Windows\_Server\-2016\-English\-Nano\-Base will be removed in September 2018\. Additional information about Nano Server lifecycle, including details on launching Nano Server as a Container, can be found here: [https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel](https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel)\.  | 
 | 2018\.07\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.06\.22 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.06\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 

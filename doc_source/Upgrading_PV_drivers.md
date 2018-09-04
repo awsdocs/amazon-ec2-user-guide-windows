@@ -34,13 +34,13 @@ When you stop an instance, the data on any instance store volumes is erased\. Th
 
 1. From the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Start**\.
 
-1. Connect to the instance using Remote Desktop and prepare the instance for upgrade\. We recommend that you take all non\-system disks offline before you perform this upgrade\. Note that this step is not required if you are performing an in\-place update of AWS PV drivers\. We also recommend setting non\-essential services to **Manual** start\-up in the Services console\.
+1. Connect to the instance using Remote Desktop and prepare the instance for upgrade\. We recommend that you take all non\-system disks offline and note any drive letter mappings to the secondary disks in Disk Management before you perform this upgrade\. Note that this step is not required if you are performing an in\-place update of AWS PV drivers\. We also recommend setting non\-essential services to **Manual** start\-up in the Services console\.
 
 1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/Latest/AWSPVDriver.zip) the latest driver package to the instance\.
 
 1. Extract the contents of the folder and then run `AWSPVDriverSetup.msi`\.
 
-After running the MSI, the instance automatically reboots and then upgrades the driver\. The instance will not be available for up to 15 minutes\. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)\.
+After running the MSI, the instance automatically reboots and then upgrades the driver\. The instance will not be available for up to 15 minutes\. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history) Open Disk Management to review any offline secondary volumes and bring them online corresponding to the drive letters noted in Step 6\.
 
 If you previously disabled [TCP Offloading](pvdrivers-troubleshooting.md#citrix-tcp-offloading) using Netsh for Citrix PV drivers we recommend that you re\-enable this feature after upgrading to AWS PV drivers\. TCP Offloading issues with Citrix drivers are not present in the AWS PV drivers\. As a result, TCP Offloading provides better performance with AWS PV drivers\.
 
@@ -72,7 +72,7 @@ When you stop an instance, the data on any instance store volumes is erased\. Th
 **Warning**  
 Before running this command, confirm that you know the DSRM password\. You'll need this information so that you can log in to your instance after the upgrade is complete and the instance automatically reboots\.
 
-   The system must boot into DSRM because the upgrade utility removes Citrix PV storage drivers so it can install AWS PV drivers\. When Citrix PV storage drivers are not present, secondary drives will not be detected\. Domain controllers that use an NTDS folder on secondary drives will not boot because the secondary disk will not be detected\.
+   The system must boot into DSRM because the upgrade utility removes Citrix PV storage drivers so it can install AWS PV drivers\. Therefore we recommend noting any drive letter and folder mappings to the secondary disks in Disk Management\. When Citrix PV storage drivers are not present, secondary drives will not be detected\. Domain controllers that use an NTDS folder on secondary drives will not boot because the secondary disk will not be detected\.
 **Warning**  
 After you run this command do not manually reboot the system\. The system will be unreachable because Citrix PV drivers do not support DSRM\.
 
@@ -88,7 +88,7 @@ After you run this command do not manually reboot the system\. The system will b
 
    After running the MSI, the instance automatically reboots and then upgrades the driver\. The instance will not be available for up to 15 minutes\. 
 
-1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop\.
+1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop\. Open Disk Management to review any offline secondary volumes and bring them online corresponding to the drive letters and folder mappings noted in Step 6\. 
 **Important**  
 You must connect to the instance by specifying user name in the following format *hostname*\\administrator\. For example, Win2k12TestBox\\administrator\.
 

@@ -69,5 +69,8 @@ You can add the following filter to the previous command to display only Windows
 --filters "Name=platform,Values=windows"
 ```
 
+**Important**  
+Omitting the `--owners` flag from the describe\-images command will return all images for which you have launch permissions, regardless of ownership\.
+
 **Systems Manager Parameter Store**  
 For information and examples, see [Query for the Latest Windows AMI Using Systems Manager Parameter Store](https://aws.amazon.com/blogs/mt/query-for-the-latest-windows-ami-using-systems-manager-parameter-store/)\.

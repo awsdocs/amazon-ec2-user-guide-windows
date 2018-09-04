@@ -5,6 +5,7 @@ A consistent and accurate time reference is crucial for many server tasks and pr
 **Topics**
 + [Changing the Time Zone](#windows-changing-time-zone)
 + [Configuring Network Time Protocol \(NTP\)](#windows-configuring-ntp)
++ [Default Network Time Protocol \(NTP\) Settings for Amazon Windows AMIs](#default-ntp-settings)
 + [Configuring Time Settings for Windows Server 2008 and later](#windows-persisting-time-changes-w2k8)
 + [Related Topics](#server-time-related-topics)
 
@@ -90,6 +91,25 @@ You can change the instance to use a different set of NTP servers if you need to
    ```
    w32tm /query /configuration
    ```
+
+## Default Network Time Protocol \(NTP\) Settings for Amazon Windows AMIs<a name="default-ntp-settings"></a>
+
+Amazon Machine Images \(AMIs\) generally adhere to the out\-of\-the\-box defaults except in cases where changes are required to function on EC2 infrastructure\. The following settings have been determined to work well in a virtualized environment, as well as to keep any clock drift to within one second of accuracy: 
++ **Update Interval** – governs how frequently the time service will adjust system time towards accuracy\. AWS configures the update interval to occur once every two minutes\.
++ **NTP Server** – starting with the August 2018 release, AMIs will now use the AWS time service by default\. This time service is accessible from any EC2 region at the 169\.254\.169\.123 endpoint\. Additionally, the 0x9 flag indicates that the time service is acting as a client, and to use “SpecialPollInterval” to determine how frequently to check in with the configured time server\.
++ **Type** – “NTP” means that the service will act as a standalone NTP client as opposed to acting as part of a domain\.
++ **Enabled and InputProvider** – the time service is enabled and provides time to the operating system\.
++ **Special Poll Interval** – checks against the configured NTP Server every 900 seconds, or 15 minutes\. 
+
+
+| Registry Path | Key Name | Data | 
+| --- | --- | --- | 
+|  HKLM:\\System\\CurrentControlSet\\services\\w32time\\Config  |  UpdateInterval  | 120 | 
+| HKLM:\\System\\CurrentControlSet\\services\\w32time\\Parameters | NtpServer | 169\.254\.169\.123,0x9 | 
+| HKLM:\\System\\CurrentControlSet\\services\\w32time\\Parameters | Type | NTP | 
+| HKLM:\\System\\CurrentControlSet\\services\\w32time\\TimeProviders\\NtpClient | Enabled | 1 | 
+| HKLM:\\System\\CurrentControlSet\\services\\w32time\\TimeProviders\\NtpClient | InputProvider | 1 | 
+| HKLM:\\System\\CurrentControlSet\\services\\w32time\\TimeProviders\\NtpClient | SpecialPollInterval | 900 | 
 
 ## Configuring Time Settings for Windows Server 2008 and later<a name="windows-persisting-time-changes-w2k8"></a>
 

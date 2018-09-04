@@ -33,9 +33,9 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 1. If you are upgrading from Windows Server 2012 or 2012 R2 to Windows Server 2016, do the following on your instance before proceeding:
 
-   1. Uninstall the EC2Config service\. For more information, see [Stopping, Restarting, Deleting, or Uninstalling EC2Config](UsingConfig_StopDelete.md)\.
+   1. Uninstall the EC2Config service\. For more information, see [Stopping, Restarting, Deleting, or Uninstalling EC2Config](ec2config-service.md#UsingConfig_StopDelete)\.
 
-   1. Install the EC2Launch service\. For more information, see [Installing the Latest Version of EC2Launch](ec2launch.md#ec2launch-download)\.
+   1. Install the EC2Launch service\. For more information, see [Installing the Latest Version of EC2Launch](ec2launch-download.md)\.
 
    1. Install the Amazon SSM Agent\. For more information, see [Installing SSM Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html)\.
 

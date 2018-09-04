@@ -5,7 +5,7 @@ With Amazon EBS, you can use any of the standard RAID configurations that you ca
 Amazon EBS volume data is replicated across multiple servers in an Availability Zone to prevent the loss of data from the failure of any single component\. This replication makes Amazon EBS volumes ten times more reliable than typical commodity disk drives\. For more information, see [Amazon EBS Availability and Durability](https://aws.amazon.com/ebs/details/#Amazon_EBS_Availability_and_Durability) in the Amazon EBS product detail pages\.
 
 **Note**  
-You should avoid booting from a RAID volume\. Grub is typically installed on only one device in a RAID array, and if one of the mirrored devices fails, you may be unable to boot the operating system\.
+You should avoid booting from a RAID volume\. If one of the devices fails, you may be unable to boot the operating system\.
 
 If you need to create a RAID array on a Linux instance, see [RAID Configuration on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
@@ -232,6 +232,6 @@ To perform a full format, omit the `quick` option\.
 
 If you want to back up the data on the EBS volumes in a RAID array using snapshots, you must ensure that the snapshots are consistent\. This is because snapshots of these volumes are created independently, not as a whole\. Restoring EBS volumes in a RAID array from snapshots that are out of sync would degrade the integrity of the array\.
 
-To create a consistent set of snapshots for your RAID array, stop applications from writing to the RAID array and flush all caches to disk\. To stop writes to the RAID array, you can take steps such as stopping the applications, stopping the instance, or unmounting the RAID array\. After you've stopped all I/O activity, you can create the snapshots\.
+To create a consistent set of snapshots for your RAID array, stop applications from writing to the RAID array and flush all caches to disk\. To stop writes to the RAID array, you can take steps such as stopping the applications, stopping the instance, or unmounting the RAID array\. After you've stopped all I/O activity, you can create the snapshots\. When the snapshot has been initiated or the snapshot API returns successfully, it is safe to resume all I/O activity\.
 
 When restoring the EBS volumes in a RAID array from a set of snapshots, stop all I/O activity as you did when you created the snapshots and then restore the volumes from the snapshots\.

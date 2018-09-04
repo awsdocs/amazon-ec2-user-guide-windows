@@ -26,6 +26,10 @@ Your Windows instances keep running until you stop or terminate them, or until t
 
 Your AWS account has a limit on the number of instances that you can have running\. For more information about this limit, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
 
+### Bare Metal Instances<a name="bare-metal-instances"></a>
+
+Amazon now offers EC2 bare metal instances which are available with the EC2 Storage Optimized [Amazon EC2 I3 instance family](https://aws.amazon.com/ec2/instance-types/i3) in the form of i3\.metal instances\. Bare metal instances allow you to run applications that benefit from deep performance analysis tools, specialized workloads that require direct access to bare metal infrastructure, legacy workloads not supported in virtual environments, licensing\-restricted Tier 1 business critical applications, as well as virtualization\-secured containers\.
+
 ## Regions and Availability Zones<a name="EC2Win_Regions"></a>
 
 Amazon has data centers in different areas of the world \(for example, North America, Europe, and Asia\)\. Correspondingly, Amazon EC2 is available to use in different *regions*\. By launching instances in separate regions, you can design your application to be closer to specific customers or to meet legal or other requirements\. Prices for Amazon EC2 usage vary by region \(for more information about pricing by region, see [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing)\)\. 
@@ -99,7 +103,7 @@ You can use one of the following commands\. For more information about these com
 
 ## Networking and Security<a name="EC2Win_Sec"></a>
 
-You can launch instances in one of two platforms: EC2\-Classic and EC2\-VPC\. An instance that's launched into EC2\-Classic is assigned a public IPv4 address\. By default, an instance that's launched into EC2\-VPC is assigned public IPv4 address only if it's launched into a default VPC\. An instance that's launched into a nondefault VPC must be specifically assigned a public IPv4 address at launch, or you must modify your subnet's default public IPv4 addressing behavior\. For more information about EC2\-Classic and EC2\-VPC, see [Supported Platforms](ec2-supported-platforms.md)\.
+By default, an instance that's launched into EC2\-VPC is assigned public IPv4 address only if it's launched into a default VPC\. An instance that's launched into a non\-default VPC must be specifically assigned a public IPv4 address at launch, or you must modify your subnet's default public IPv4 addressing behavior\. For more information about EC2\-VPC, see [Supported Platforms](ec2-supported-platforms.md)\.
 
 Instances can fail or terminate for reasons outside of your control\. If one fails and you launch a replacement instance, the replacement has a different public IPv4 address than the original\. However, if your application needs a static IPv4 address, Amazon EC2 offers *Elastic IP addresses*\. For more information, see [Amazon EC2 Instance IP Addressing](using-instance-addressing.md)\.
 

@@ -9,13 +9,13 @@ EC2Config uses settings files to control its operation\. You can update these se
 
 **Topics**
 + [EC2Config Tasks](#UsingConfig_Ovw)
++ [Installing the Latest Version of EC2Config](UsingConfig_Install.md)
++ [Stopping, Restarting, Deleting, or Uninstalling EC2Config](#UsingConfig_StopDelete)
 + [EC2Config and AWS Systems Manager](#ec2config-ssm)
 + [EC2Config and Sysprep](#ec2config-sysprep)
-+ [Ec2 Service Properties](#UsingConfigInterface_WinAMI)
++ [EC2 Service Properties](#UsingConfigInterface_WinAMI)
 + [EC2Config Settings Files](#UsingConfigXML_WinAMI)
 + [Configure Proxy Settings for the EC2Config Service](#ec2config-proxy)
-+ [Installing the Latest Version of EC2Config](UsingConfig_Install.md)
-+ [Stopping, Restarting, Deleting, or Uninstalling EC2Config](UsingConfig_StopDelete.md)
 + [EC2Config Version History](ec2config-version-details.md)
 + [Troubleshooting Issues with the EC2Config Service](repair-ec2config.md)
 
@@ -41,11 +41,55 @@ EC2Config performs the following task every time a user logs in:
 While the instance is running, you can request that EC2Config perform the following task on demand:
 + Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a Standard Amazon Machine Image Using Sysprep](ami-create-standard.md)\.
 
+## Stopping, Restarting, Deleting, or Uninstalling EC2Config<a name="UsingConfig_StopDelete"></a>
+
+You can manage the EC2Config service just as you would any other service\.
+
+To apply updated settings to your instance, you can stop and restart the service\. If you're manually installing EC2Config, you must stop the service first\.
+
+**To stop the EC2Config service**
+
+1. Launch and connect to your Windows instance\.
+
+1. On the **Start** menu, point to **Administrative Tools**, and then click **Services**\.
+
+1. In the list of services, right\-click **EC2Config**, and select **Stop**\.
+
+**To restart the EC2Config service**
+
+1. Launch and connect to your Windows instance\.
+
+1. On the **Start** menu, point to **Administrative Tools**, and then click **Services**\.
+
+1. In the list of services, right\-click **EC2Config**, and select **Restart**\.
+
+If you don't need to update the configuration settings, create your own AMI, or use Amazon EC2 Systems Manager \(SSM\), you can delete and uninstall the service\. Deleting a service removes its registry subkey\. Uninstalling a service removes the files, the registry subkey, and any shortcuts to the service\.
+
+**To delete the EC2Config service**
+
+1. Start a command prompt window\.
+
+1. Run the following command:
+
+   ```
+   sc delete ec2config
+   ```
+
+**To uninstall EC2Config**
+
+1. Launch and connect to your Windows instance\.
+
+1. On the **Start** menu, click **Control Panel**\.
+
+1. Double\-click **Programs and Features**\.
+
+1. On the list of programs, select **EC2ConfigService**, and click **Uninstall** \.
+
 ## EC2Config and AWS Systems Manager<a name="ec2config-ssm"></a>
 
 The EC2Config service processes Systems Manager requests on instances created from AMIs for versions of Windows Server prior to Windows Server 2016 that were published before November 2016\.
 
-Instances created from AMIs for versions of Windows Server prior to Windows Server 2016 that were published after November 2016 include the EC2Config service *and* SSM Agent\. EC2Config performs all of the tasks described earlier, and SSM Agent processes requests for Systems Manager capabilities like Run Command and State Manager\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\.
+Instances created from AMIs for versions of Windows Server prior to Windows Server 2016 that were published after November 2016 include the EC2Config service *and* SSM Agent\. EC2Config performs all of the tasks described earlier, and SSM Agent processes requests for Systems Manager capabilities like Run Command and State Manager\.
 
 You can use Run Command to upgrade your existing instances to use to the latest version of the EC2Config service and SSM Agent\. For more information, see [Example: Update the SSM Agent ](http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-console.html#rc-console-agentexample) in the *AWS Systems Manager User Guide*\.
 
@@ -55,7 +99,7 @@ The EC2Config service runs Sysprep, a Microsoft tool that enables you to create 
 
 If you create an AMI from an instance after updating its settings, the new settings are applied to any instance that's launched from the new AMI\. For information about creating an AMI, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
-## Ec2 Service Properties<a name="UsingConfigInterface_WinAMI"></a>
+## EC2 Service Properties<a name="UsingConfigInterface_WinAMI"></a>
 
 The following procedure describes how to use the **Ec2 Service Properties** dialog box to enable or disable settings\.
 

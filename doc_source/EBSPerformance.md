@@ -8,6 +8,7 @@ Several factors, including I/O characteristics and the configuration of your ins
 + [I/O Characteristics and Monitoring](ebs-io-characteristics.md)
 + [Initializing Amazon EBS Volumes](ebs-initialize.md)
 + [RAID Configuration on Windows](raid-config.md)
++ [Benchmark EBS Volumes](benchmark_procedures.md)
 
 ## Amazon EBS Performance Tips<a name="tips"></a>
 

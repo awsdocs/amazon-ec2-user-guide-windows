@@ -31,7 +31,8 @@ The following table describes the released versions of the AWS NVMe driver\.
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
-| 1\.2\.0 | Performance and reliability improvements for AWS NVMe devices on all supported instances, including bare metal instances\. | 13 June 2018 | 
+| 1\.3\.0 | Device optimization improvements | 31 August 2018 | 
+| 1\.2\.0 | Performance and reliability improvements for AWS NVMe devices on all supported instances, including bare metal instances | 13 June 2018 | 
 | 1\.0\.0 | AWS NVMe driver for supported instance types running Windows Server | 12 February 2018 | 
 
 ## Subscribing to Notifications<a name="drivers-subscribe-notifications"></a>

@@ -1,6 +1,19 @@
 # Configuring a Windows Instance Using EC2Launch<a name="ec2launch"></a>
 
-EC2Launch is a set of Windows PowerShell scripts that replaces the EC2Config service on Windows Server 2016 AMIs\. EC2Launch performs the following tasks by default during the initial instance boot:
+EC2Launch is a set of Windows PowerShell scripts that replaces the EC2Config service on Windows Server 2016 AMIs\.
+
+**Topics**
++ [EC2Launch Tasks](#ec2launch-tasks)
++ [Installing the Latest Version of EC2Launch](ec2launch-download.md)
++ [Verify the EC2Launch Version](#ec2launch-verify-version)
++ [EC2Launch Directory Structure](#ec2launch-directories)
++ [Configuring EC2Launch](#ec2launch-config)
++ [Using Sysprep with EC2Launch](#ec2launch-sysprep)
++ [EC2Launch Version History](ec2launch-version-details.md)
+
+## EC2Launch Tasks<a name="ec2launch-tasks"></a>
+
+EC2Launch performs the following tasks by default during the initial instance boot:
 + Sets up new wallpaper that renders information about the instance\.
 + Sets the computer name\.
 + Sends instance information to the Amazon EC2 console\.
@@ -20,37 +33,13 @@ The following tasks help to maintain backward compatibility with the EC2Config s
 
 For more information about Windows Server 2016, see [What's New with Windows Server 2016](https://www.microsoft.com/en-us/cloud-platform/windows-server) on Microsoft\.com\.
 
-**Topics**
-+ [Verify the EC2Launch Version](#ec2launch-verify-version)
-+ [Installing the Latest Version of EC2Launch](#ec2launch-download)
-+ [EC2Launch Directory Structure](#ec2launch-directories)
-+ [Configuring EC2Launch](#ec2launch-config)
-+ [Using Sysprep with EC2Launch](#ec2launch-sysprep)
-+ [EC2Launch Version History](ec2launch-version-details.md)
-
 ## Verify the EC2Launch Version<a name="ec2launch-verify-version"></a>
 
-Use the following Windows Powershell command to verify the installed version of EC2Launch\.
+Use the following Windows PowerShell command to verify the installed version of EC2Launch\.
 
 ```
 PS C:\> Import-Module -Name C:\ProgramData\Amazon\EC2-Windows\Launch\Module\Ec2Launch.psd1; (Get-Module EC2Launch).Version.ToString()
 ```
-
-## Installing the Latest Version of EC2Launch<a name="ec2launch-download"></a>
-
-Use the following procedure to download and install the latest version of EC2Launch on your instances\.
-
-**To download and install the latest version of EC2Launch**
-
-1. If you have already installed and configured EC2Launch on an instance, make a backup of the EC2Launch configuration file\. The installation process does not preserve changes in this file\. By default, the file is located in the `C:\ProgramData\Amazon\EC2-Windows\Launch\Config` directory\.
-
-1. Download [EC2\-Windows\-Launch\.zip](https://s3.amazonaws.com/ec2-downloads-windows/EC2Launch/latest/EC2-Windows-Launch.zip) to a directory on the instance\.
-
-1. Download [install\.ps1](https://s3.amazonaws.com/ec2-downloads-windows/EC2Launch/latest/install.ps1) to the same directory where you downloaded `EC2-Windows-Launch.zip`\.
-
-1. Run `install.ps1`
-
-1. If you made a backup of the EC2Launch configuration file, copy it to the `C:\ProgramData\Amazon\EC2-Windows\Launch\Config` directory\.
 
 ## EC2Launch Directory Structure<a name="ec2launch-directories"></a>
 
@@ -191,7 +180,7 @@ PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\SendWindowsIsReady.ps1 
 
 ## Using Sysprep with EC2Launch<a name="ec2launch-sysprep"></a>
 
-Sysprep simplifies the process of duplicating a customized installation of Windows Server 2016\. Ec2Launch offers a default answer file and batch files for Sysprep that automate and secure the image\-preparation process on your AMI\. Modifying these files is optional\. These files are located in the following directory, by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep`\.
+Sysprep simplifies the process of duplicating a customized installation of Windows Server 2016\. EC2Launch offers a default answer file and batch files for Sysprep that automate and secure the image\-preparation process on your AMI\. Modifying these files is optional\. These files are located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep`\.
 
 **Important**  
 Do not use Sysprep to create an instance backup\. Sysprep removes system\-specific information\. If you remove this information there might be unintended consequences for an instance backup\.
@@ -202,7 +191,7 @@ The EC2Launch answer file and batch files for Sysprep include the following:
 This is the default answer file\. If you run `SysprepInstance.ps1` or choose **ShutdownWithSysprep** in the user interface, the system reads the setting from this file\.
 
 `BeforeSysprep.cmd`  
-Customize this batch file to run commands before Ec2Launch runs Sysprep\.
+Customize this batch file to run commands before EC2Launch runs Sysprep\.
 
 `SysprepSpecialize.cmd`  
 Customize this batch file to run commands during the Sysprep specialize phase\.
@@ -255,7 +244,7 @@ EC2Launch uses the password you specify in the `unattend.xml` file\. If you don'
 
 1. In Windows PowerShell, run `./SysprepInstance.ps1`\. The script is located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts`\. 
 
-You are logged off the instance, and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `running` to `stopping`, and then finally to `stopped`\. At this point, it's safe to create an AMI from this instance\.
+You are logged off the instance and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `running` to `stopping`, and then to `stopped`\. At this point, it is safe to create an AMI from this instance\.
 
 ### Updating metadata/KMS routes for Server 2016 when launching a custom AMI<a name="update-metadata-KMS"></a>
 

@@ -15,18 +15,19 @@ Elastic GPUs are suited for applications that require a small or intermittent am
 To use an elastic GPU, launch an instance and specify an elastic GPU type to attach to the instance during launch\. AWS finds available elastic GPU capacity and establishes a network connection between your instance and the elastic GPU\.
 
 The following instance types support elastic GPUs:
-+ c3 \| c4 \| c5 \| c5d
-+ m3 \| m4 \| m5 \| m5d
-+ r3 \| r4
++ C3 \| C4 \| C5 \| C5d
++ D2
++ H1
++ I3
++ M3 \| M4 \| M5 \| M5d
++ P2 \| P3
++ R3 \| R4 \| R5 \| R5d
 + `t2.medium` or larger
 + `t3.medium` or larger
-+ x1 \| x1e
-+ d2
-+ h1
-+ i3 \| i3p
-+ p2 \| p3
++ X1 \| X1e
++ z1d
 
-The following elastic GPU types are available\. You can attach any elastic GPU type to any supported instance type\. 
+The following elastic GPU types are available\. You can attach any elastic GPU type to any supported instance type\.
 
 
 | GPU type | GPU memory \(MB\) | 
