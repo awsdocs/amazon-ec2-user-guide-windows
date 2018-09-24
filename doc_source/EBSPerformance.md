@@ -32,36 +32,9 @@ There is a significant increase in latency when you first access each block of d
 
 ### Factors That Can Degrade HDD Performance<a name="snapshotting_latency"></a>
 
-When you create a snapshot of a Throughput Optimized HDD \(`st1`\) or Cold HDD \(`sc1`\) volume, performance may drop as far as the volume's baseline value while the snapshot is in progress\. This behavior is specific to these volume types\. Other factors that can limit performance include driving more throughput than the instance can support, the performance penalty encountered while initializing volumes restored from a snapshot, and excessive amounts of small, random I/O on the volume\. For more information about calculating throughput for HDD volumes, see [Amazon EBS Volume Types ](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)\. 
+When you create a snapshot of a Throughput Optimized HDD \(`st1`\) or Cold HDD \(`sc1`\) volume, performance may drop as far as the volume's baseline value while the snapshot is in progress\. This behavior is specific to these volume types\. Other factors that can limit performance include driving more throughput than the instance can support, the performance penalty encountered while initializing volumes restored from a snapshot, and excessive amounts of small, random I/O on the volume\. For more information about calculating throughput for HDD volumes, see [Amazon EBS Volume Types ](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)\. 
 
 Your performance can also be impacted if your application isn’t sending enough I/O requests\. This can be monitored by looking at your volume’s queue length and I/O size\. The queue length is the number of pending I/O requests from your application to your volume\. For maximum consistency, HDD\-backed volumes must maintain a queue length \(rounded to the nearest whole number\) of 4 or more when performing 1 MiB sequential I/O\. For more information about ensuring consistent performance of your volumes, see [I/O Characteristics and Monitoring](ebs-io-characteristics.md)
-
-### Increase Read\-Ahead for High\-Throughput, Read\-Heavy Workloads on `st1` and `sc1`<a name="read_ahead"></a>
-
-Some workloads are read\-heavy and access the block device through the operating system page cache \(for example, from a file system\)\. In this case, to achieve the maximum throughput, we recommend that you configure the read\-ahead setting to 1 MiB\. This is a per\-block\-device setting that should only be applied to your HDD volumes\. The following examples assume that you are on an Amazon Linux instance\. 
-
-To examine the current value of read\-ahead for your block devices, use the following command:
-
-```
-[ec2-user ~]$ sudo blockdev --report /dev/<device>
-```
-
-Block device information is returned in the following format:
-
-```
-RO    RA   SSZ   BSZ   StartSec            Size   Device
-rw   256   512  4096       4096      8587820544   /dev/<device>
-```
-
-The device shown reports a read\-ahead value of 256 \(the default\)\. Multiply this number by the sector size \(512 bytes\) to obtain the size of the read\-ahead buffer, which in this case is 128 KiB\. To set the buffer value to 1 MiB, use the following command:
-
-```
-[ec2-user ~]$ sudo blockdev --setra 2048 /dev/<device>
-```
-
-Verify that the read\-ahead setting now displays 2,048 by running the first command again\.
-
-Only use this setting when your workload consists of large, sequential I/Os\. If it consists mostly of small, random I/Os, this setting will actually degrade your performance\. In general, if your workload consists mostly of small or random I/Os, you should consider using a General Purpose SSD \(`gp2`\) volume rather than `st1` or `sc1`\.
 
 ### Use RAID 0 to Maximize Utilization of Instance Resources<a name="RAID"></a>
 

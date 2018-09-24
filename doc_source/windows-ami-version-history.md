@@ -33,10 +33,10 @@ For Windows instances, you can install updates to the following services or appl
 +  [Windows PowerShell](http://technet.microsoft.com/en-us/scriptcenter/dd772288) 
 + [EC2Launch](ec2launch-download.md)
 + [EC2Config service](UsingConfig_Install.md)
-+ [SSM Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
++ [SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
 + [PV Drivers](Upgrading_PV_drivers.md)
 + [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell)
-+ [AWS CloudFormation helper scripts](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html)
++ [AWS CloudFormation helper scripts](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html)
 
 You can reboot a Windows instance after installing updates\. For more information, see [Reboot Your Instance](ec2-instance-reboot.md)\.
 
@@ -141,26 +141,51 @@ The following changes are applied to each AWS Windows AMI\.
 
 ## Details About AWS Windows AMI Versions<a name="windows-ami-versions"></a>
 
+### What to Expect in an Official AWS Windows AMI<a name="windows-ami-creation-standards"></a>
+
+AWS provides AMIs with a variety of configurations for all supported Windows Operating System versions from 2003 R2 to 2016\. For each of these images, AWS:
++ installs all Microsoft recommended Windows security patches\. We release images shortly after each monthly Microsoft patches are made available\.
++ installs the latest drivers for AWS hardware, including network and disk drivers, as well as GPU drivers in selected AMIs\.
++ includes AWS helper software, like [EC2 Config](ec2config-service.md) for Server 2012 R2 and earlier, or [EC2 Launch](ec2launch.md) for Server 2016\.
++ configures Windows Time to use the [AWS Time Service](windows-set-time.md#default-ntp-settings)\.
++ performs minor bug fixes – generally one\-line registry changes to enable or disable features that we have found to improve performance on AWS\.
+
+Other than the adjustments listed above, we keep our AMIs as close as possible to the default install\. This means we default to the “stock” PowerShell or \.NET framework versions, don’t install Windows Features, and generally don’t change the AMI\.
+
+### How AWS Decides Which Windows AMIs to Offer<a name="windows-ami-creation-standards-AMI-type"></a>
+
+Each AMI is extensively tested prior to release to the general public\. We periodically streamline our AMI offerings to simplify customer choice and to reduce costs\.
++ New AMI offerings are created for new OS releases\. You can count on AWS releasing “Base,” “Core/Container,” and “SQL Express/Standard/Web/Enterprise” offerings in English and other widely used languages\.
++ New AMI offerings are created to support new platforms – for example, the Deep Learning and “NVidia” AMIs were created to support customers using our GPU\-based instance types \(P2 and P3, G2 and G3, etc\.\)\.
++ Less popular AMIs are sometimes removed\. If we see a particular AMI is launched only a few times in its entire lifespan, we will remove it in favor of more widely used options\.
+
+If there is an AMI variant that you would like to see, let us know by filing a ticket with Cloud Support, or by providing feedback through [one of our established channels](https://aws.amazon.com/premiumsupport/knowledge-center/send-feedback-aws/)\.
+
+### Patches, Security Updates, and AMI IDs<a name="ami-patches-security-ID"></a>
+
 AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. The new AMIs are available immediately through the **Images** page in the Amazon EC2 console\. The new AMIs are available in the AWS Marketplace and the **Quick Start** tab of the launch instance wizard within a few days of their release\.
 
-To ensure that customers have the latest security updates by default, AWS keeps Windows AMIs available only for three months\. After releasing new Windows AMIs, AWS makes the Windows AMIs that are older than three months private within 10 days\. After an AMI has been made private, if you look at an instance launched from that AMI in the console, the **AMI ID** field states, "Cannot load detail for ami\-xxxxx\. You may not be permitted to view it\." You can still retrieve the AMI ID using the AWS CLI or an AWS SDK\.
+To ensure that customers have the latest security updates by default, AWS keeps Windows AMIs available for three months\. After releasing new Windows AMIs, AWS makes the Windows AMIs that are older than three months private within 10 days\. After an AMI has been made private, if you look at an instance launched from that AMI in the console, the **AMI ID** field states, "Cannot load detail for ami\-xxxxx\. You may not be permitted to view it\." You can still retrieve the AMI ID using the AWS CLI or an AWS SDK\.
 
 The Windows AMIs in each release have new AMI IDs\. Therefore, we recommend that you write scripts that locate the latest AWS Windows AMIs by their names, rather than by their IDs\. For more information, see the following examples:
-+ [Get\-EC2ImageByName](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-get-amis.html#pstools-ec2-get-ec2imagebyname) \(AWS Tools for Windows PowerShell\)
++ [Get\-EC2ImageByName](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-get-amis.html#pstools-ec2-get-ec2imagebyname) \(AWS Tools for Windows PowerShell\)
 + [Query for the Latest Windows AMI Using Systems Manager Parameter Store](https://aws.amazon.com/blogs/mt/query-for-the-latest-windows-ami-using-systems-manager-parameter-store/)
-+ [Walkthrough: Looking Up Amazon Machine Image IDs](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/walkthrough-custom-resources-lambda-lookup-amiids.html) \(AWS Lambda, AWS CloudFormation\)
++ [Walkthrough: Looking Up Amazon Machine Image IDs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/walkthrough-custom-resources-lambda-lookup-amiids.html) \(AWS Lambda, AWS CloudFormation\)
 
 The following tables summarize the changes to each release of the AWS Windows AMIs\. Note that some changes apply to all AWS Windows AMIs while others apply to only a subset of these AMIs\.
 
 **Topics**
-+ [AMIs Released in 2018 \(to date\)](#amis-2018)
-+ [AMIs Released in 2017](#amis-2017)
-+ [AMIs Released in 2016](#amis-2016)
-+ [AMIs Released in 2015](#amis-2015)
-+ [AMIs Released in 2014](#amis-2014)
-+ [AMIs Released in 2013](#amis-2013)
-+ [AMIs Released in 2012](#amis-2012)
-+ [AMIs Released in 2011 and earlier](#amis-2011)
++ [What to Expect in an Official AWS Windows AMI](#windows-ami-creation-standards)
++ [How AWS Decides Which Windows AMIs to Offer](#windows-ami-creation-standards-AMI-type)
++ [Patches, Security Updates, and AMI IDs](#ami-patches-security-ID)
++ [Monthly AMI Updates for 2018 \(to date\)](#amis-2018)
++ [Monthly AMI Updates for 2017](#amis-2017)
++ [Monthly AMI Updates for 2016](#amis-2016)
++ [Monthly AMI Updates for 2015](#amis-2015)
++ [Monthly AMI Updates for 2014](#amis-2014)
++ [Monthly AMI Updates for 2013](#amis-2013)
++ [Monthly AMI Updates for 2012](#amis-2012)
++ [Monthly AMI Updates for 2011 and earlier](#amis-2011)
 
 For more information about components included in these AMIs, see the following:
 + [EC2Config Version History](ec2config-version-details.md)
@@ -169,13 +194,14 @@ For more information about components included in these AMIs, see the following:
 + [Amazon ENA Driver Versions](enhanced-networking-ena.md#ena-adapter-driver-versions)
 + [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)
 
-### AMIs Released in 2018 \(to date\)<a name="amis-2018"></a>
+### Monthly AMI Updates for 2018 \(to date\)<a name="amis-2018"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2018](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv)\.
 
 
 | Release | Changes | 
 | --- | --- | 
+| 2018\.09\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) **Microsoft Windows Server 2016 Base Nano** Access to all public versions of Windows\_Server\-2016\-English\-Nano\-Base will be removed in September 2018\. Additional information about Nano Server lifecycle, including details on launching Nano Server as a Container, can be found here: [https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel](https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel)\.  | 
 | 2018\.08\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) **Microsoft Windows Server 2016 Base Nano** Access to all public versions of Windows\_Server\-2016\-English\-Nano\-Base will be removed in September 2018\. Additional information about Nano Server lifecycle, including details on launching Nano Server as a Container, can be found here: [https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel](https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel)\.  | 
 | 2018\.07\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.06\.22 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
@@ -190,7 +216,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 | 2018\.01\.12 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.01\.05 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 
-### AMIs Released in 2017<a name="amis-2017"></a>
+### Monthly AMI Updates for 2017<a name="amis-2017"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2017](https://support.microsoft.com/en-us/help/4073007/description-of-software-update-services-and-windows-server-update-serv)\.
 
@@ -215,7 +241,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 | 2017\.02\.21 | Microsoft recently [announced](https://blogs.technet.microsoft.com/msrc/2017/02/14/february-2017-security-update-release/) that they will not release monthly patches or security updates for the month of February\. All February patches and security updates will be included in the March update\.Amazon Web Services did not release updated Windows Server AMIs in February\.   | 
 | 2017\.01\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 
-### AMIs Released in 2016<a name="amis-2016"></a>
+### Monthly AMI Updates for 2016<a name="amis-2016"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2016](https://support.microsoft.com/en-us/help/3215781/description-of-software-update-services-and-windows-server-update-serv)\.
 
@@ -240,7 +266,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 | 2016\.1\.25 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2016\.1\.5 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 
-### AMIs Released in 2015<a name="amis-2015"></a>
+### Monthly AMI Updates for 2015<a name="amis-2015"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2015](https://support.microsoft.com/en-us/help/3132806/description-of-software-update-services-and-windows-server-update-serv)\.
 
@@ -261,7 +287,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 |  2015\.02\.11  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 |  2015\.01\.14  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 
-### AMIs Released in 2014<a name="amis-2014"></a>
+### Monthly AMI Updates for 2014<a name="amis-2014"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2014](https://support.microsoft.com/en-us/help/3028013/description-of-software-update-services-and-windows-server-update-serv)\.
 
@@ -280,7 +306,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 |  2014\.03\.12  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 |  2014\.02\.12  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 
-### AMIs Released in 2013<a name="amis-2013"></a>
+### Monthly AMI Updates for 2013<a name="amis-2013"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2013](https://support.microsoft.com/en-us/help/2921911/description-of-software-update-services-and-windows-server-update-serv)\.
 
@@ -296,7 +322,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 |  2013\.03\.14  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 |  2013\.02\.22  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 
-### AMIs Released in 2012<a name="amis-2012"></a>
+### Monthly AMI Updates for 2012<a name="amis-2012"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2012](https://support.microsoft.com/en-us/help/2800436/description-of-software-update-services-and-windows-server-update-serv)\.
 
@@ -315,7 +341,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 |  2012\.02\.24  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 |  2012\.01\.12  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 
-### AMIs Released in 2011 and earlier<a name="amis-2011"></a>
+### Monthly AMI Updates for 2011 and earlier<a name="amis-2011"></a>
 
 
 | Release | Changes | 
@@ -330,7 +356,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 AWS provides AMIs for Windows Server 2016\. These AMIs include the following high\-level changes from earlier Windows AMIs:
 + To accommodate the change from \.NET Framework to \.NET Core, the EC2Config service has been deprecated on Windows Server 2016 AMIs and replaced by EC2Launch\. EC2Launch is a bundle of Windows PowerShell scripts that perform many of the tasks performed by the EC2Config service\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\. 
-+ On earlier versions of Windows Server AMIs, you can use the EC2Config service to join an EC2 instance to a domain and configure integration with Amazon CloudWatch\. On Windows Server 2016 AMIs, the Amazon EC2 Systems Manager \(SSM\) agent performs these tasks\. This means that you must use either Amazon EC2 Run Command or SSM Config to join an EC2 instance to a domain or configure integration with Amazon CloudWatch on Windows Server 2016 instances\. For more information about configuring instances to send log data to CloudWatch, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md) For information about joining an EC2 instance to a domain, see [Joining a Windows Instance to an AWS Directory Service Domain](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-domain-join.html)\.
++ On earlier versions of Windows Server AMIs, you can use the EC2Config service to join an EC2 instance to a domain and configure integration with Amazon CloudWatch\. On Windows Server 2016 AMIs, the Amazon EC2 Systems Manager \(SSM\) agent performs these tasks\. This means that you must use either Amazon EC2 Run Command or SSM Config to join an EC2 instance to a domain or configure integration with Amazon CloudWatch on Windows Server 2016 instances\. For more information about configuring instances to send log data to CloudWatch, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md) For information about joining an EC2 instance to a domain, see [Joining a Windows Instance to an AWS Directory Service Domain](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-domain-join.html)\.
 
 **Other Differences**
 

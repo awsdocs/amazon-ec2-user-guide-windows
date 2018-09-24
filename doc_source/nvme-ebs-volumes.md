@@ -5,6 +5,8 @@ With the following instances, EBS volumes are exposed as NVMe block devices: C5,
 **Note**  
 The EBS performance guarantees stated in [Amazon EBS Product Details](https://aws.amazon.com/ebs/details/) are valid regardless of the block\-device interface\.
 
+Some of these instance types also support NVMe instance store volumes\. For more information, see [NVMe SSD Volumes](ssd-instance-store.md#nvme-ssd-volumes)\.
+
 ## Identifying the EBS Device<a name="identify-nvme-ebs-device"></a>
 
 You can use the [Get\-Disk](https://docs.microsoft.com/en-us/powershell/module/storage/get-disk) command to map Windows disk numbers to EBS volume IDs\.

@@ -50,7 +50,7 @@ Use the following procedure to use the Tools for Windows PowerShell to add Windo
 
 **To add Windows components to your instance using the Tools for Windows PowerShell**
 
-1. Use the [Get\-EC2Snapshot](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Snapshot.html) cmdlet with the `Owner` and `description` filters to get a list of the available installation media snapshots\.
+1. Use the [Get\-EC2Snapshot](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Snapshot.html) cmdlet with the `Owner` and `description` filters to get a list of the available installation media snapshots\.
 
    ```
    PS C:\> Get-EC2Snapshot -Owner amazon -Filter @{ Name="description"; Values="Windows*" }
@@ -77,7 +77,7 @@ Use the following procedure to use the Tools for Windows PowerShell to add Windo
    ...
    ```
 
-1. Use the [New\-EC2Volume](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Volume.html) cmdlet to create a volume from the snapshot\. Specify the same Availability Zone as your instance\.
+1. Use the [New\-EC2Volume](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Volume.html) cmdlet to create a volume from the snapshot\. Specify the same Availability Zone as your instance\.
 
    ```
    PS C:\> New-EC2Volume -AvailabilityZone us-east-1a -VolumeType gp2 -SnapshotId snap-22da283e
@@ -100,7 +100,7 @@ Use the following procedure to use the Tools for Windows PowerShell to add Windo
    VolumeType       : gp2
    ```
 
-1. Use the [Add\-EC2Volume](http://docs.aws.amazon.com/powershell/latest/reference/items/Add-EC2Volume.html) cmdlet to attach the volume to your instance\.
+1. Use the [Add\-EC2Volume](https://docs.aws.amazon.com/powershell/latest/reference/items/Add-EC2Volume.html) cmdlet to attach the volume to your instance\.
 
    ```
    PS C:\> Add-EC2Volume -InstanceId i-087711ddaf98f9489 -VolumeId vol-06aa9e1fbf8b82ed1 -Device xvdh
@@ -118,7 +118,7 @@ Use the following procedure to use the AWS CLI to add Windows components to your
 
 **To add Windows components to your instance using the AWS CLI**
 
-1. Use the [describe\-snapshots](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-snapshots.html) command with the `owner-ids` parameter and `description` filter to get a list of the available installation media snapshots\.
+1. Use the [describe\-snapshots](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-snapshots.html) command with the `owner-ids` parameter and `description` filter to get a list of the available installation media snapshots\.
 
    ```
    aws ec2 describe-snapshots --owner-ids amazon --filters Name=description,Values=Windows*
@@ -147,7 +147,7 @@ Use the following procedure to use the AWS CLI to add Windows components to your
    }
    ```
 
-1. Use the [create\-volume](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-volume.html) command to create a volume from the snapshot\. Specify the same Availability Zone as your instance\.
+1. Use the [create\-volume](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-volume.html) command to create a volume from the snapshot\. Specify the same Availability Zone as your instance\.
 
    ```
    aws ec2 create-volume --snapshot-id snap-22da283e --volume-type gp2 --availability-zone us-east-1a
@@ -169,7 +169,7 @@ Use the following procedure to use the AWS CLI to add Windows components to your
    }
    ```
 
-1. Use the [attach\-volume](http://docs.aws.amazon.com/cli/latest/reference/ec2/attach-volume.html) command to attach the volume to your instance\.
+1. Use the [attach\-volume](https://docs.aws.amazon.com/cli/latest/reference/ec2/attach-volume.html) command to attach the volume to your instance\.
 
    ```
    aws ec2 attach-volume --volume-id vol-0c98b37f30bcbc290 --instance-id i-01474ef662b89480 --device xvdg 

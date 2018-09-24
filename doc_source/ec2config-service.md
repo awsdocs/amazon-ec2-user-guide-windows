@@ -91,7 +91,7 @@ The EC2Config service processes Systems Manager requests on instances created fr
 
 Instances created from AMIs for versions of Windows Server prior to Windows Server 2016 that were published after November 2016 include the EC2Config service *and* SSM Agent\. EC2Config performs all of the tasks described earlier, and SSM Agent processes requests for Systems Manager capabilities like Run Command and State Manager\.
 
-You can use Run Command to upgrade your existing instances to use to the latest version of the EC2Config service and SSM Agent\. For more information, see [Example: Update the SSM Agent ](http://docs.aws.amazon.com/systems-manager/latest/userguide/rc-console.html#rc-console-agentexample) in the *AWS Systems Manager User Guide*\.
+You can use Run Command to upgrade your existing instances to use to the latest version of the EC2Config service and SSM Agent\. For more information, see [Example: Update the SSM Agent ](https://docs.aws.amazon.com/systems-manager/latest/userguide/rc-console.html#rc-console-agentexample) in the *AWS Systems Manager User Guide*\.
 
 ## EC2Config and Sysprep<a name="ec2config-sysprep"></a>
 
@@ -121,7 +121,7 @@ For more information, see [User Data Execution](ec2-windows-user-data.md#user-da
 Use this setting to display event log entries on the console during boot for easy monitoring and debugging\.  
 Click **Settings** to specify filters for the log entries sent to the console\. The default filter sends the three most recent error entries from the system event log to the console\.  
  **CloudWatch Logs**   
-Starting with EC2Config version 2\.2\.5 \(version 2\.2\.6 or later is recommended\), you can export all Windows Server messages in the System log, Security log, Application log, and IIS log to CloudWatch Logs and monitor them using CloudWatch metrics\. EC2Config version 2\.2\.10 or later adds the ability to export any event log data, Event Tracing \(Windows\) data, or text\-based log files to CloudWatch Logs\. In addition, you can also export performance counter data to CloudWatch\. For more information, see [Monitoring System, Application, and Custom Log Files](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatchLogs.html) in the Amazon CloudWatch User Guide\.  
+Starting with EC2Config version 2\.2\.5 \(version 2\.2\.6 or later is recommended\), you can export all Windows Server messages in the System log, Security log, Application log, and IIS log to CloudWatch Logs and monitor them using CloudWatch metrics\. EC2Config version 2\.2\.10 or later adds the ability to export any event log data, Event Tracing \(Windows\) data, or text\-based log files to CloudWatch Logs\. In addition, you can also export performance counter data to CloudWatch\. For more information, see [Monitoring System, Application, and Custom Log Files](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatchLogs.html) in the Amazon CloudWatch User Guide\.  
 
    1. Select **Enable CloudWatch integration**, and then click **OK**\.
 
@@ -301,7 +301,7 @@ You can configure the EC2Config service to communicate through a proxy using one
 
 ### Configure Proxy Settings Using the AWS SDK for \.NET \(Preferred\)<a name="sdk-proxy"></a>
 
-You can configure proxy settings for the EC2Config service by specifying the `proxy` element in the `Ec2Config.exe.config` file\. For more information, see [Configuration Files Reference for AWS SDK for \.NET](http://docs.aws.amazon.com/sdk-for-net/v2/developer-guide/net-dg-config-ref.html#net-dg-config-ref-elements-proxy)\.
+You can configure proxy settings for the EC2Config service by specifying the `proxy` element in the `Ec2Config.exe.config` file\. For more information, see [Configuration Files Reference for AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v2/developer-guide/net-dg-config-ref.html#net-dg-config-ref-elements-proxy)\.
 
 **To specify the proxy element in Ec2Config\.exe\.config**
 

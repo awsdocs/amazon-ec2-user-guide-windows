@@ -58,7 +58,7 @@ How you enable DSRM and boot into the instance depends on the drivers the instan
 | AWS PV 7\.2\.2 and later | Yes | Detach the root volume, attach it to another instance, and enable DSRM \(as described in this section\)\. | 
 | Enhanced Networking | Yes | Detach the root volume, attach it to another instance, and enable DSRM \(as described in this section\)\. | 
 
-For information about how to enable Enhanced Networking, see [Enabling Enhanced Networking on Windows Instances in a VPC](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking.html)\. For more information about upgrading AWS PV drivers, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
+For information about how to enable Enhanced Networking, see [Enabling Enhanced Networking on Windows Instances in a VPC](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking.html)\. For more information about upgrading AWS PV drivers, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
 
 ### Configure an Instance to Boot into DSRM<a name="configure-boot-dsrm"></a>
 
@@ -99,9 +99,9 @@ If you do not create the instance in the same Availability Zone as the affected 
 
 1. In the navigation pane, choose **Volumes**\.
 
-1. Locate the root volume of the affected instance\. [Detach](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-detaching-volume.html) the volume and [attach](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-attaching-volume.html) it to the temporary instance you created earlier\. Attach it with the default device name \(xvdf\)\.
+1. Locate the root volume of the affected instance\. [Detach](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-detaching-volume.html) the volume and [attach](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-attaching-volume.html) it to the temporary instance you created earlier\. Attach it with the default device name \(xvdf\)\.
 
-1. Use Remote Desktop to connect to the temporary instance, and then use the Disk Management utility to [make the volume available for use](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-using-volumes.html)\.
+1. Use Remote Desktop to connect to the temporary instance, and then use the Disk Management utility to [make the volume available for use](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-using-volumes.html)\.
 
 1. Open a command prompt and run the following command\. Replace *D* with the actual drive letter of the secondary volume you just attached:
 
@@ -113,7 +113,7 @@ If you do not create the instance in the same Availability Zone as the affected 
 
 1. In the EC2 console, detach the affected volume from the temporary instance and reattach it to your original instance with the device name `/dev/sda1`\. You must specify this device name to designate the volume as a root volume\.
 
-1. [Start](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Stop_Start.html) the instance\.
+1. [Start](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Stop_Start.html) the instance\.
 
 1. After the instance passes the health checks in the EC2 console, connect to the instance using Remote Desktop and verify that it boots into DSRM mode\.
 

@@ -41,7 +41,7 @@ AWS PV also has a driver component named LiteAgent, which runs as a Windows serv
 Amazon Windows AMIs contain a set of drivers to permit access to virtualized hardware\. These drivers are used by Amazon EC2 to map instance store and Amazon EBS volumes to their devices\. We recommend that you install the latest drivers to improve stability and performance of your EC2 Windows instances\.
 
 **Installation Options**
-+ You can use AWS Systems Manager to automatically update the PV drivers\. For more information, see [Automatically Update PV Drivers on EC2 Windows Instances](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-walk.html#sysman-state-pvdriver) in the *AWS Systems Manager User Guide*\.
++ You can use AWS Systems Manager to automatically update the PV drivers\. For more information, see [Automatically Update PV Drivers on EC2 Windows Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-walk.html#sysman-state-pvdriver) in the *AWS Systems Manager User Guide*\.
 + You can download the setup package and run the install program manually\. For information about downloading and installing the AWS PV drivers, see [Upgrade Windows Server Instances \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade)\.
 
 ### AWS PV Driver Version History<a name="pv-driver-history"></a>

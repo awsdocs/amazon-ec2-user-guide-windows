@@ -38,8 +38,8 @@ Microsoft no longer supports Windows Server 2003 \(see [Microsoft Windows Server
 To view the Windows AMIs provided by AWS, you can use the Amazon EC2 console or [AWS Marketplace](https://aws.amazon.com/marketplace/)\. For more information, see [Finding a Windows AMI](finding-an-ami.md)\.
 
 You can also create an AMI from your own Windows computer\. For more information, see the following services:
-+ [AWS Server Migration Service](http://docs.aws.amazon.com/server-migration-service/latest/userguide/)
-+ [VM Import/Export](http://docs.aws.amazon.com/vm-import/latest/userguide/)
++ [AWS Server Migration Service](https://docs.aws.amazon.com/server-migration-service/latest/userguide/)
++ [VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/)
 
 ### Keeping Your AMIs Up\-to\-Date<a name="WinAMI_Updating"></a>
 

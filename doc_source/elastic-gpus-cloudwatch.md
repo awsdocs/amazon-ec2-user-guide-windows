@@ -4,7 +4,7 @@ You can monitor your elastic GPUs using Amazon CloudWatch, which collects metric
 
 By default, elastic GPUs send metric data to CloudWatch in 5\-minute periods\.
 
-For more information about Amazon CloudWatch, see the [Amazon CloudWatch User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
+For more information about Amazon CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
 
 ## Elastic GPU Metrics and Dimensions<a name="elastic-gpus-metrics"></a>
 

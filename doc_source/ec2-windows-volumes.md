@@ -134,7 +134,7 @@ Disk Partitions DriveLetter EbsVolumeId           Device    VirtualDevice Volume
    3          0 N/A         vol-02256example8a4a3 xvdf      ebs2          N/A
 ```
 
-If you specified an IAM role with a policy that allows access to Amazon EC2 when you launched the instance, or if you set up your credentials on the Windows instance as described in [Using AWS Credentials](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html) in the *AWS Tools for Windows PowerShell User Guide*, you'll get the volume ID for the EBS volumes in the `VolumeId` column instead of `NA`\.
+If you specified an IAM role with a policy that allows access to Amazon EC2 when you launched the instance, or if you set up your credentials on the Windows instance as described in [Using AWS Credentials](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html) in the *AWS Tools for Windows PowerShell User Guide*, you'll get the volume ID for the EBS volumes in the `VolumeId` column instead of `NA`\.
 
 ## Disk Device to Device Name Mapping<a name="windows-volume-mapping"></a>
 

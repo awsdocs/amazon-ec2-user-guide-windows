@@ -7,7 +7,7 @@ Amazon EBS volume data is replicated across multiple servers in an Availability 
 **Note**  
 You should avoid booting from a RAID volume\. If one of the devices fails, you may be unable to boot the operating system\.
 
-If you need to create a RAID array on a Linux instance, see [RAID Configuration on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+If you need to create a RAID array on a Linux instance, see [RAID Configuration on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
 + [RAID Configuration Options](#raid-config-options)
@@ -35,7 +35,7 @@ This documentation provides basic RAID setup examples\. For more information abo
 
 ## Creating a RAID Array on Windows<a name="windows-raid"></a>
 
-Use the following procedure to create the RAID array\. Note that you can get directions for Linux instances from [Creating a RAID Array on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html#linux-raid) in the *Amazon EC2 User Guide for Linux Instances*\.
+Use the following procedure to create the RAID array\. Note that you can get directions for Linux instances from [Creating a RAID Array on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html#linux-raid) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **To create a RAID array on Windows**
 

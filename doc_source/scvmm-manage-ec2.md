@@ -16,7 +16,7 @@ After you log in to the AWS Systems Manager using your AWS credentials, you can 
 The permissions that you've been granted by your administrator determine whether you can create instances\.
 
 **Prerequisites**
-+ A virtual private cloud \(VPC\) with a subnet in the Availability Zone where you'll launch the instance\. For more information about creating a VPC, see the [Amazon VPC Getting Started Guide](http://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/)\.
++ A virtual private cloud \(VPC\) with a subnet in the Availability Zone where you'll launch the instance\. For more information about creating a VPC, see the [Amazon VPC Getting Started Guide](https://docs.aws.amazon.com/AmazonVPC/latest/GettingStartedGuide/)\.
 
 **To create an EC2 instance**
 
@@ -87,7 +87,7 @@ You can log in to an EC2 instance if you have the private key \(`.pem` file\) fo
 
 1. Because the certificate is self\-signed, you might get a warning that the security certificate is not from a trusted certifying authority\. Click **Yes** to continue\.
 
-   If the connection fails, see [Troubleshooting Windows Instances](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/troubleshooting-windows-instances.html) in the *Amazon EC2 User Guide for Windows Instances*\.
+   If the connection fails, see [Troubleshooting Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/troubleshooting-windows-instances.html) in the *Amazon EC2 User Guide for Windows Instances*\.
 
 **To connect to a Linux EC2 instance**
 
@@ -99,7 +99,7 @@ You can log in to an EC2 instance if you have the private key \(`.pem` file\) fo
 
 1. Locate the public DNS name\. You'll need this information to connect to your instance\.
 
-1. Connect to the instance using PuTTY\. For step\-by\-step instructions, see [Connect to Your Linux Instance from Windows Using PuTTY](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+1. Connect to the instance using PuTTY\. For step\-by\-step instructions, see [Connect to Your Linux Instance from Windows Using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Rebooting Your Instance<a name="reboot-instance"></a>
 

@@ -68,13 +68,13 @@ For more information, see [Elastic GPU Limitations](elastic-gpus.md#elastic-gpus
 1. Choose **Review and Launch** to review your instance options and then choose **Launch** to complete the instance creation process\.
 
 **To associate an elastic GPU during instance launch using the command line**  
-You can use the [run\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) AWS CLI command\. It may be necessary to update to the latest version of the AWS CLI to use this feature\.
+You can use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) AWS CLI command\. It may be necessary to update to the latest version of the AWS CLI to use this feature\.
 
 ```
 aws ec2 run-instances --elastic-gpu-specification Type=eg1.medium --region us-east-1 --image-id ami-1a2b3c4d --subnet subnet-11223344 --instance-type r4.large --key-name keypair_name --security-group-ids sg-1234
 ```
 
-Alternatively, you can use the [New\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Instance.html) Tools for Windows PowerShell command\.
+Alternatively, you can use the [New\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Instance.html) Tools for Windows PowerShell command\.
 
 ## Installing and Updating the Elastic GPU Packages<a name="elastic-gpus-install-libraries"></a>
 
@@ -169,21 +169,21 @@ You can view information about the elastic GPU attached to your instance, includ
 1. In the details pane, you can view information about the elastic GPU by looking at the **Elastic GPU**, **Elastic GPU type**, and **Elastic GPU status** fields\.
 
 **To view information about an elastic GPU using the command line**  
-You can use the [describe\-elastic\-gpus](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-elastic-gpus.html) AWS CLI command:
+You can use the [describe\-elastic\-gpus](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-elastic-gpus.html) AWS CLI command:
 
 ```
 aws ec2 describe-elastic-gpus
 ```
 
-You can use the [describe\-network\-interfaces](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) AWS CLI command and filter by owner ID to view information about the elastic GPU network interface\.
+You can use the [describe\-network\-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) AWS CLI command and filter by owner ID to view information about the elastic GPU network interface\.
 
 ```
 aws ec2 describe-network-interfaces --filters "Name=attachment.instance-owner-id,Values=amazon-elastic-graphics"
 ```
 
 Alternatively, you can use the following Tools for Windows PowerShell commands:
-+ [Get\-EC2ElasticGpu](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ElasticGpu.html)
-+ [Get\-EC2NetworkInterface](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2NetworkInterface.html)
++ [Get\-EC2ElasticGpu](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ElasticGpu.html)
++ [Get\-EC2NetworkInterface](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2NetworkInterface.html)
 
 **To view information about an elastic GPU using instance metadata**  
 You can view information about an elastic GPU from within the instance by accessing the instance metadata\.

@@ -4,9 +4,9 @@ Complete the following preliminary tasks to configure integration with CloudWatc
 
 **Important**  
 The unified CloudWatch Agent has replaced the SSM Agent as the tool for sending log data to Amazon CloudWatch Logs\. Support for using the SSM Agent to send log data will be deprecated in the near future\. We recommend that you begin using the unified CloudWatch Agent for your log collection processes as soon as possible\. For more information, see the following topics:  
-[Send Logs to CloudWatch Logs \(CloudWatch Agent\)](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
-[ Migrate Windows Server Instance Log Collection to the CloudWatch Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html#monitoring-cloudwatch-agent-migrate) in the *AWS Systems Manager User Guide*
-[Collect Metrics from Amazon Elastic Compute Cloud Instances and On\-Premises Servers with the CloudWatch Agent](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) in the *Amazon CloudWatch User Guide*
+[Send Logs to CloudWatch Logs \(CloudWatch Agent\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
+[ Migrate Windows Server Instance Log Collection to the CloudWatch Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html#monitoring-cloudwatch-agent-migrate) in the *AWS Systems Manager User Guide*
+[Collect Metrics from Amazon Elastic Compute Cloud Instances and On\-Premises Servers with the CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) in the *Amazon CloudWatch User Guide*
 
 **Topics**
 + [Download the Sample Configuration File](#configure_cwl_download)
@@ -381,17 +381,17 @@ Note that you can send the same performance counter or log file to more than one
 
 If you plan to use a local configuration file with local credentials, then you can skip this task\.
 
-An IAM role for instance credentials is required when you use Systems Manager Run Command or State Manager and optional when you use a local configuration file\. This role enables Systems Manager to perform actions on the instance\. You can optionally create a unique IAM user account for configuring and running Systems Manager\. For more information, see [Configuring Access to Systems Manager](http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-access.html) in the *AWS Systems Manager User Guide*\. For information about how to attach an IAM role to an existing instance, see [Attaching an IAM Role to an Instance](iam-roles-for-amazon-ec2.md#attach-iam-role)\.
+An IAM role for instance credentials is required when you use Systems Manager Run Command or State Manager and optional when you use a local configuration file\. This role enables Systems Manager to perform actions on the instance\. You can optionally create a unique IAM user account for configuring and running Systems Manager\. For more information, see [Configuring Access to Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-access.html) in the *AWS Systems Manager User Guide*\. For information about how to attach an IAM role to an existing instance, see [Attaching an IAM Role to an Instance](iam-roles-for-amazon-ec2.md#attach-iam-role)\.
 
 ## Verify Systems Manager Prerequisites<a name="send_logs_cwl_syspre"></a>
 
 If you plan to use a local configuration file, then you can skip this task\.
 
-Before you use either Systems Manager Run Command or State Manager to configure integration with CloudWatch, verify that your instances meet the minimum requirements\. For more information, see [Systems Manager Prerequisites](http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
+Before you use either Systems Manager Run Command or State Manager to configure integration with CloudWatch, verify that your instances meet the minimum requirements\. For more information, see [Systems Manager Prerequisites](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 
 ## Verify Internet Access<a name="send_logs_cwl_internet"></a>
 
-Your Amazon EC2 Windows Server instances and managed instances must have outbound internet access in order to send log and event data to CloudWatch\. For more information about how to configure internet access, see [Internet Gateways](http://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) in the *Amazon VPC User Guide*\.
+Your Amazon EC2 Windows Server instances and managed instances must have outbound internet access in order to send log and event data to CloudWatch\. For more information about how to configure internet access, see [Internet Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) in the *Amazon VPC User Guide*\.
 
 ## Next Step<a name="send_longs_cwl_next_step"></a>
 

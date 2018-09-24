@@ -2,7 +2,7 @@
 
 This tutorial will help you install and deploy a WordPress blog on an Amazon EC2 instance running Windows Server\.
 
-If you'd prefer to host your WordPress blog on a Linux instance, see [Tutorial: Hosting a WordPress Blog with Amazon EC2](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hosting-wordpress.html) in the *Amazon EC2 User Guide for Linux Instances*\. If you need a high\-availability solution with a decoupled database, see [Deploying a High\-Availability WordPress Website](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/php-hawordpress-tutorial.html) in the *AWS Elastic Beanstalk Developer Guide*\.
+If you'd prefer to host your WordPress blog on a Linux instance, see [Tutorial: Hosting a WordPress Blog with Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hosting-wordpress.html) in the *Amazon EC2 User Guide for Linux Instances*\. If you need a high\-availability solution with a decoupled database, see [Deploying a High\-Availability WordPress Website](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/php-hawordpress-tutorial.html) in the *AWS Elastic Beanstalk Developer Guide*\.
 
 ## Prerequisites<a name="EC2Win_PrerequisiteWordPressBlog"></a>
 

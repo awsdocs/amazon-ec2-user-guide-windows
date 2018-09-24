@@ -3,9 +3,9 @@
 Use the Windows Disk Management utility to extend the disk size to the new size of the volume\. You can begin resizing the file system as soon as the volume enters the `Optimizing` state\.
 
 **Important**  
-Before extending a file system that contains valuable data, it is a best practice to create a snapshot of the volume that contains it in case you need to roll back your changes\. For information about EBS snapshots, see [Creating an Amazon EBS Snapshot](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-creating-snapshot.html)\.
+Before extending a file system that contains valuable data, it is a best practice to create a snapshot of the volume that contains it in case you need to roll back your changes\. For information about EBS snapshots, see [Creating an Amazon EBS Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-creating-snapshot.html)\.
 
-For information about extending a Linux file system, see [Extending a Linux File System after Resizing the Volume](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For information about extending a Linux file system, see [Extending a Linux File System after Resizing the Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **To extend a Windows file system**
 

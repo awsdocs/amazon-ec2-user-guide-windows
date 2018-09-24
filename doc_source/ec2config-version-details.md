@@ -9,6 +9,8 @@ The following table describes the released versions of EC2Config\. For informati
 
 | Version | Details | 
 | --- | --- | 
+| 4\.9\.2926 |  New version of SSM Agent \(2\.3\.68\.0\)  | 
+| 4\.9\.2905 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 | 4\.9\.2854 |  New version of SSM Agent \(2\.3\.13\.0\)  | 
 | 4\.9\.2831 |  New version of SSM Agent \(2\.2\.916\.0\)  | 
 | 4\.9\.2818 |  New version of SSM Agent \(2\.2\.902\.0\)  | 

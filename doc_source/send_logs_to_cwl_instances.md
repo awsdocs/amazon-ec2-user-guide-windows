@@ -2,9 +2,9 @@
 
 **Important**  
 The unified CloudWatch Agent has replaced the SSM Agent as the tool for sending log data to Amazon CloudWatch Logs\. Support for using the SSM Agent to send log data will be deprecated in the near future\. We recommend that you begin using the unified CloudWatch Agent for your log collection processes as soon as possible\. For more information, see the following topics:  
-[Send Logs to CloudWatch Logs \(CloudWatch Agent\)](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
-[ Migrate Windows Server Instance Log Collection to the CloudWatch Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html#monitoring-cloudwatch-agent-migrate) in the *AWS Systems Manager User Guide*
-[Collect Metrics from Amazon Elastic Compute Cloud Instances and On\-Premises Servers with the CloudWatch Agent](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) in the *Amazon CloudWatch User Guide*
+[Send Logs to CloudWatch Logs \(CloudWatch Agent\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
+[ Migrate Windows Server Instance Log Collection to the CloudWatch Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html#monitoring-cloudwatch-agent-migrate) in the *AWS Systems Manager User Guide*
+[Collect Metrics from Amazon Elastic Compute Cloud Instances and On\-Premises Servers with the CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) in the *Amazon CloudWatch User Guide*
 
 Choose from the following methods to configure integration with CloudWatch:
 + [Use Run Command](#remote-commands-cloudwatch)
@@ -33,7 +33,7 @@ If you previously enabled CloudWatch integration by using the EC2Config service,
 
 1. For **Command document**, choose **AWS\-ConfigureCloudWatch**\.
 
-1. For **Target instances**, choose the instances to integrate with CloudWatch\. If you do not see an instance in this list, it might not be configured for Run Command\. For more information, see [Systems Manager Prerequisites](http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
+1. For **Target instances**, choose the instances to integrate with CloudWatch\. If you do not see an instance in this list, it might not be configured for Run Command\. For more information, see [Systems Manager Prerequisites](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 
 1. For **Status**, choose **Enabled**\.
 
@@ -71,7 +71,7 @@ If you previously enabled CloudWatch integration by using the EC2Config service,
 
 1. For **Document Version**, choose **Default version at runtime**\.
 
-1. For **Targets**, choose the instances to integrate with CloudWatch\. If you do not see an instance in this list, it might not be configured for Run Command\. For more information, see [Systems Manager Prerequisites](http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-seting-up.html) in the *AWS Systems Manager User Guide*\.
+1. For **Targets**, choose the instances to integrate with CloudWatch\. If you do not see an instance in this list, it might not be configured for Run Command\. For more information, see [Systems Manager Prerequisites](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-seting-up.html) in the *AWS Systems Manager User Guide*\.
 
 1. For **Schedule**, choose how often you want Systems Manager to apply this policy\. This indicates how often you want Systems Manager to ensure the integration with CloudWatch is still valid\. This does not affect the frequency when the SSM Agent sends data to CloudWatch\.
 
@@ -79,7 +79,7 @@ If you previously enabled CloudWatch integration by using the EC2Config service,
 
 1. \(Optional\) To send command output to an Amazon S3 bucket, choose **Advanced**, **Write to S3**\.
 **Important**  
-The Amazon EC2 console truncates output after 2500 characters\. Configure an Amazon S3 bucket before executing commands using Systems Manager so that you can view the full output, beyond 2500 characters, in your bucket\. For more information, see [Create a Bucket](http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
+The Amazon EC2 console truncates output after 2500 characters\. Configure an Amazon S3 bucket before executing commands using Systems Manager so that you can view the full output, beyond 2500 characters, in your bucket\. For more information, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) in the *Amazon Simple Storage Service Getting Started Guide*\.
 
 1. Choose **Create Association**\.
 
@@ -100,7 +100,7 @@ The following procedure describes how to configure CloudWatch using the SSM Agen
 
 **To configure CloudWatch using SSM Agent**
 
-1. Download the latest version of the SSM Agent to your instance\. For more information, see [Installing SSM Agent on Windows](http://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html#sysman-install-ssm-win)\.
+1. Download the latest version of the SSM Agent to your instance\. For more information, see [Installing SSM Agent on Windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html#sysman-install-ssm-win)\.
 
 1. Open the `AWS.EC2.Windows.CloudWatch.json` file, and change `IsEnabled` to `true`\. This tells the agent to start sending data to CloudWatch immediately after it is started or restarted\.
 

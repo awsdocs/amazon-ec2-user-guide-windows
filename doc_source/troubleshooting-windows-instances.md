@@ -55,20 +55,20 @@ After you modify the user data for your instance, you can execute it\. For more 
 
 For Windows instances, the instance console displays the output from the EC2Config service running on the instance\. The output logs the status of tasks performed during the Windows boot process\. If Windows boots successfully, the last message logged is `Windows is Ready to use`\. Note that you can also display event log messages in the console, but this feature is not enabled by default\. For more information, see [EC2 Service Properties](ec2config-service.md#UsingConfigInterface_WinAMI)\.
 
-To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, **Instance Settings**, and then **Get System Log**\. To get the console output using the command line, use one of the following commands: [get\-console\-output](http://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-output.html) \(AWS CLI\) or [Get\-EC2ConsoleOutput](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ConsoleOutput.html) \(AWS Tools for Windows PowerShell\)\.
+To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, **Instance Settings**, and then **Get System Log**\. To get the console output using the command line, use one of the following commands: [get\-console\-output](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-output.html) \(AWS CLI\) or [Get\-EC2ConsoleOutput](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ConsoleOutput.html) \(AWS Tools for Windows PowerShell\)\.
 
 If the console output is empty, it could indicate an issue with the EC2Config service, such as a misconfigured configuration file, or that Windows failed to boot properly\. To fix the issue, download and install the latest version of EC2Config\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
 
 ## Remote Desktop can't connect to the remote computer<a name="rdp-issues"></a>
 
 Try the following to resolve issues related to connecting to your instance:
-+ Verify that you're using the correct public DNS hostname\. \(In the Amazon EC2 console, select the instance and check **Public DNS \(IPv4\)** in the details pane\.\) If your instance is in a VPC and you do not see a public DNS name, you must enable DNS hostnames\. For more information, see [Using DNS with Your VPC](http://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html) in the *Amazon VPC User Guide*\.
++ Verify that you're using the correct public DNS hostname\. \(In the Amazon EC2 console, select the instance and check **Public DNS \(IPv4\)** in the details pane\.\) If your instance is in a VPC and you do not see a public DNS name, you must enable DNS hostnames\. For more information, see [Using DNS with Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html) in the *Amazon VPC User Guide*\.
 + Verify that your instance has a public IPv4 address\. If not, you can associate an Elastic IP address with your instance\. For more information, see [Elastic IP Addresses](elastic-ip-addresses-eip.md)\. 
-+ To connect to your instance using an IPv6 address, check that your local computer has an IPv6 address and is configured to use IPv6\. If you launched an instance from a Windows Server 2008 SP2 AMI or earlier, your instance is not automatically configured to recognize an IPv6 address assigned to the instance\. For more information, see [Configure IPv6 on Your Instances](http://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html#vpc-migrate-ipv6-dhcpv6) in the *Amazon VPC User Guide*\.
++ To connect to your instance using an IPv6 address, check that your local computer has an IPv6 address and is configured to use IPv6\. If you launched an instance from a Windows Server 2008 SP2 AMI or earlier, your instance is not automatically configured to recognize an IPv6 address assigned to the instance\. For more information, see [Configure IPv6 on Your Instances](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html#vpc-migrate-ipv6-dhcpv6) in the *Amazon VPC User Guide*\.
 + Verify that your security group has a rule that allows RDP access\. For more information, see [Create a Security Group](get-set-up-for-amazon-ec2.md#create-a-base-security-group)\.
 + If you copied the password but get the error `Your credentials did not work`, try typing them manually when prompted\. It's possible that you missed a character or got an extra whitespace character when you copied the password\.
-+ Verify that the instance has passed status checks\. For more information, see [Status Checks for Your Instances](monitoring-system-instance-status-check.md) and [Troubleshooting Instances with Failed Status Checks](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html) \(*Amazon EC2 User Guide for Linux Instances*\)\.
-+ \[EC2\-VPC\] Verify that the route table for the subnet has a route that sends all traffic destined outside the VPC to the Internet gateway for the VPC\. For more information, see [Creating a Custom Route Table](http://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html#Add_IGW_Routing) \(Internet Gateways\) in the *Amazon VPC User Guide*\.
++ Verify that the instance has passed status checks\. For more information, see [Status Checks for Your Instances](monitoring-system-instance-status-check.md) and [Troubleshooting Instances with Failed Status Checks](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html) \(*Amazon EC2 User Guide for Linux Instances*\)\.
++ \[EC2\-VPC\] Verify that the route table for the subnet has a route that sends all traffic destined outside the VPC to the Internet gateway for the VPC\. For more information, see [Creating a Custom Route Table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html#Add_IGW_Routing) \(Internet Gateways\) in the *Amazon VPC User Guide*\.
 + Verify that Windows Firewall, or other firewall software, is not blocking RDP traffic to the instance\. We recommend that you disable Windows Firewall and control access to your instance using security group rules\. You can use [AWSSupport\-TroubleshootRDP](#AWSSupport-TroubleshootRDP) to [disable the Windows Firewall profiles using the SSM agent](#disable-firewall) \. To disable Windows Firewall on a Windows instance that is not configured for SSM, use [AWSSupport\-ExecuteEC2Rescue](#AWSSupport-ExecuteEC2Rescue), or use the following manual steps: 
 
 ### <a name="manual-steps"></a>
@@ -206,7 +206,7 @@ For information about troubleshooting a Windows Server 2012 R2 instance that is 
 
 The AWSSupport\-TroubleshootRDP automation document allows the user to check or modify common settings on the target instance that can impact Remote Desktop Protocol \(RDP\) connections, such as the **RDP Port**, **Network Layer Authentication \(NLA\)**, and **Windows Firewall** profiles\. By default, the document reads and outputs the values of these settings\.
 
-The AWSSupport\-TroubleshootRDP automation document can be used only with instances that are enabled for [AWS Systems Manager](https://aws.amazon.com/systems-manager/), also referred to as a [managed instance](http://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html)\. Your instance must have the SSM agent installed and have an IAM role attached with permissions to Systems Manager\. You must change the default parameter values to modify the common RDP settings on the target instance\.
+The AWSSupport\-TroubleshootRDP automation document can be used only with instances that are enabled for [AWS Systems Manager](https://aws.amazon.com/systems-manager/), also referred to as a [managed instance](https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html)\. Your instance must have the SSM agent installed and have an IAM role attached with permissions to Systems Manager\. You must change the default parameter values to modify the common RDP settings on the target instance\.
 
 1. Log in to the [Systems Manager Console](https://console.aws.amazon.com/systems-manager/)\.
 
@@ -218,7 +218,7 @@ The AWSSupport\-TroubleshootRDP automation document can be used only with instan
 
 1. In **Input parameters**, in the **InstanceId** field, enable **Show interactive instance picker**\.
 
-1. Choose your Amazon EC2 instance\. **Note:** If you don't see your instance in the list, it's not enabled for Systems Manager\. To configure AWS Identity and Access Management \(IAM\) for SSM Agent, see [Create an Instance Profile for Systems Manager](http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-configuring-access-role.html)\.
+1. Choose your Amazon EC2 instance\. **Note:** If you don't see your instance in the list, it's not enabled for Systems Manager\. To configure AWS Identity and Access Management \(IAM\) for SSM Agent, see [Create an Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-configuring-access-role.html)\.
 
 1. Review the [examples](#AWSSupport-TroubleshootRDP-Examples), then choose **Execute automation**\.
 
@@ -314,10 +314,10 @@ https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-Tro
 
 ### AWSSupport\-ExecuteEC2Rescue<a name="AWSSupport-ExecuteEC2Rescue"></a>
 
-The AWSSupport\-ExecuteEC2Rescue automation document uses [Using EC2Rescue for Windows Server](Windows-Server-EC2Rescue.md) to automatically troubleshoot and restore EC2 instance connectivity and RDP issues\. For more information, see [Run the EC2Rescue Tool on Unreachable Instances](http://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2rescue.html)\.
+The AWSSupport\-ExecuteEC2Rescue automation document uses [Using EC2Rescue for Windows Server](Windows-Server-EC2Rescue.md) to automatically troubleshoot and restore EC2 instance connectivity and RDP issues\. For more information, see [Run the EC2Rescue Tool on Unreachable Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2rescue.html)\.
 
 **Note**  
-The AWSSupport\-ExecuteEC2Rescue automation document can be used on any Amazon EC2 instance, but it requires a stop and restart of the instance\. Systems Manager Automation stops the instance and creates an Amazon Machine Image \(AMI\)\. Data stored in instance store volumes are lost\. The public IP address changes if you are not using an Elastic IP\. For more information, see [Run the EC2Rescue Tool on Unreachable Instances](http://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2rescue.html)\.
+The AWSSupport\-ExecuteEC2Rescue automation document can be used on any Amazon EC2 instance, but it requires a stop and restart of the instance\. Systems Manager Automation stops the instance and creates an Amazon Machine Image \(AMI\)\. Data stored in instance store volumes are lost\. The public IP address changes if you are not using an Elastic IP\. For more information, see [Run the EC2Rescue Tool on Unreachable Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2rescue.html)\.
 
 1. Open the [Systems Manager console](https://console.aws.amazon.com/systems-manager/)\.
 

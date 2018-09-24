@@ -10,7 +10,7 @@ For G3 instances, you can download the NVIDIA GRID driver from Amazon S3 using t
 This download is available to AWS customers only\. By downloading, you agree that you will only use the downloaded software to develop AMIs for use with the NVIDIA Tesla M60 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](http://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
 **Prerequisites**  
-Associate an IAM role with your instance that has permissions to use the `s3:ListBucket` and `s3:GetObject` actions\. For more information, see [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)\. Alternatively, configure the Tools for Windows PowerShell to use your AWS credentials\. For more information, see [Using AWS Credentials](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)\.
+Associate an IAM role with your instance that has permissions to use the `s3:ListBucket` and `s3:GetObject` actions\. For more information, see [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)\. Alternatively, configure the Tools for Windows PowerShell to use your AWS credentials\. For more information, see [Using AWS Credentials](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)\.
 
 **To install the NVIDIA GRID driver \(G3 instances\)**
 

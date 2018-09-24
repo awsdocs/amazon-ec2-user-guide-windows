@@ -12,7 +12,7 @@ For more information about high performance computing, see [High Performance Com
 
 ## Prerequisites<a name="prereqs"></a>
 
-You must launch your instances in a VPC\. You can use the default VPC or create a nondefault VPC\. For more information, see [Getting Started](http://docs.aws.amazon.com/vpc/latest/userguide/GetStarted.html) in the *Amazon VPC User Guide*\.
+You must launch your instances in a VPC\. You can use the default VPC or create a nondefault VPC\. For more information, see [Getting Started](https://docs.aws.amazon.com/vpc/latest/userguide/GetStarted.html) in the *Amazon VPC User Guide*\.
 
 ## Step 1: Create Security Groups<a name="Set_ADSecurity_Groups"></a>
 
@@ -20,19 +20,19 @@ Use the Tools for Windows PowerShell to create security groups for the domain co
 
 **To create the security groups**
 
-1. Use the [New\-EC2SecurityGroup](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2SecurityGroup.html) cmdlet to create the security group for the domain controller\. Note the ID of the security group in the output\.
+1. Use the [New\-EC2SecurityGroup](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2SecurityGroup.html) cmdlet to create the security group for the domain controller\. Note the ID of the security group in the output\.
 
    ```
    PS C:\> New-EC2SecurityGroup -VpcId vpc-id -GroupName "SG - Domain Controller" -Description "Active Directory Domain Controller"
    ```
 
-1. Use the [New\-EC2SecurityGroup](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2SecurityGroup.html) cmdlet to create the security group for the domain members\. Note the ID of the security group in the output\.
+1. Use the [New\-EC2SecurityGroup](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2SecurityGroup.html) cmdlet to create the security group for the domain members\. Note the ID of the security group in the output\.
 
    ```
    PS C:\> New-EC2SecurityGroup -VpcId vpc-id -GroupName "SG - Domain Member" -Description "Active Directory Domain Member"
    ```
 
-1. Use the [New\-EC2SecurityGroup](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2SecurityGroup.html) cmdlet to create the security group for the HPC cluster\. Note the ID of the security group in the output\.
+1. Use the [New\-EC2SecurityGroup](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2SecurityGroup.html) cmdlet to create the security group for the HPC cluster\. Note the ID of the security group in the output\.
 
    ```
    PS C:\> New-EC2SecurityGroup -VpcId vpc-id -GroupName "SG - Windows HPC Cluster" -Description "Windows HPC Cluster Nodes"
@@ -64,7 +64,7 @@ Use the Tools for Windows PowerShell to create security groups for the domain co
    PS C:\> $r17 = @{ IpProtocol="TCP"; FromPort="3389"; ToPort="3389"; IpRanges="203.0.113.25/32" }
    ```
 
-1. Use the [Grant\-EC2SecurityGroupIngress](http://docs.aws.amazon.com/powershell/latest/reference/items/Grant-EC2SecurityGroupIngress.html) cmdlet to add the rules to the domain controller security group\.
+1. Use the [Grant\-EC2SecurityGroupIngress](https://docs.aws.amazon.com/powershell/latest/reference/items/Grant-EC2SecurityGroupIngress.html) cmdlet to add the rules to the domain controller security group\.
 
    ```
    PS C:\> Grant-EC2SecurityGroupIngress -GroupId sg-1a2b3c4d -IpPermission @( $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17 )
@@ -83,7 +83,7 @@ Use the Tools for Windows PowerShell to create security groups for the domain co
    PS C:\> $r4 = @{ IpProtocol="UDP"; FromPort="53"; ToPort="53"; UserIdGroupPairs=$sg_dc }
    ```
 
-1. Use the [Grant\-EC2SecurityGroupIngress](http://docs.aws.amazon.com/powershell/latest/reference/items/Grant-EC2SecurityGroupIngress.html) cmdlet to add the rules to the domain member security group\.
+1. Use the [Grant\-EC2SecurityGroupIngress](https://docs.aws.amazon.com/powershell/latest/reference/items/Grant-EC2SecurityGroupIngress.html) cmdlet to add the rules to the domain member security group\.
 
    ```
    PS C:\> Grant-EC2SecurityGroupIngress -GroupId sg-12345678 -IpPermission @( $r1, $r2, $r3, $r4 )
@@ -120,7 +120,7 @@ Use the Tools for Windows PowerShell to create security groups for the domain co
    PS C:\> $r24 = @{ IpProtocol="TCP"; FromPort="3389"; ToPort="3389"; IpRanges="203.0.113.25/32" }
    ```
 
-1. Use the [Grant\-EC2SecurityGroupIngress](http://docs.aws.amazon.com/powershell/latest/reference/items/Grant-EC2SecurityGroupIngress.html) cmdlet to add the rules to the HPC cluster security group\.
+1. Use the [Grant\-EC2SecurityGroupIngress](https://docs.aws.amazon.com/powershell/latest/reference/items/Grant-EC2SecurityGroupIngress.html) cmdlet to add the rules to the HPC cluster security group\.
 
    ```
    PS C:\> Grant-EC2SecurityGroupIngress -GroupId sg-87654321 -IpPermission @( $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21, $r22, $r23, $r24 )

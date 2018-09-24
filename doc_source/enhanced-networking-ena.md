@@ -13,7 +13,7 @@ Amazon EC2 provides enhanced networking capabilities to C5, C5d, F1, G3, H1, I3,
 
 To prepare for enhanced networking using the ENA, set up your instance as follows:
 + Launch the instance in a VPC\. \(You can't enable enhanced networking if the instance is in EC2\-Classic\.\)
-+ Install and configure the [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](http://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\. 
++ Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\. 
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable; if you have a recent backup, your data will still be retained if this happens\.
 
 ## Testing Whether Enhanced Networking Is Enabled<a name="test-enhanced-networking-ena"></a>
@@ -23,12 +23,12 @@ To test whether enhanced networking is already enabled, verify that the driver i
 **Instance Attribute \(enaSupport\)**
 
 To check whether an instance has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
-+ [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
++ [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
 
   ```
   aws ec2 describe-instances --instance-ids instance_id --query "Reservations[].Instances[].EnaSupport"
   ```
-+ [Get\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(Tools for Windows PowerShell\)
++ [Get\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(Tools for Windows PowerShell\)
 
   ```
   (Get-EC2Instance -InstanceId instance-id).Instances.EnaSupport
@@ -36,12 +36,12 @@ To check whether an instance has the enhanced networking `enaSupport` attribute 
 
 **Image Attribute \(enaSupport\)**  
 To check whether an AMI has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
-+ [describe\-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI\)
++ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI\)
 
   ```
   aws ec2 describe-images --image-id ami_id --query "Images[].EnaSupport"
   ```
-+ [Get\-EC2Image](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Image.html) \(Tools for Windows PowerShell\)
++ [Get\-EC2Image](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Image.html) \(Tools for Windows PowerShell\)
 
   ```
   (Get-EC2Image -ImageId ami_id).EnaSupport
@@ -69,41 +69,41 @@ If you launched your instance and it does not have enhanced networking enabled a
 
    1. Install the driver by running the `install.ps1` PowerShell script\.
 
-1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
+1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
 
 1. Enable ENA support on your instance as follows:
 
    1. From your local computer, check the EC2 instance ENA support attribute on your instance by running one of the following commands\. If the attribute is not enabled, the output will be "\[\]" or blank\. `EnaSupport` is set to `false` by default\.
-      + [describe\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
+      + [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
 
         ```
         aws ec2 describe-instances --instance-ids instance_id --query "Reservations[].Instances[].EnaSupport"
         ```
-      + [Get\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(Tools for Windows PowerShell\)
+      + [Get\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(Tools for Windows PowerShell\)
 
         ```
         (Get-EC2Instance -InstanceId instance-id).Instances.EnaSupport
         ```
 
    1. To enable ENA support, run one of the following commands:
-      + [modify\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
+      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
 
         ```
         aws ec2 modify-instance-attribute --instance-id instance_id --ena-support
         ```
-      + [Edit\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
+      + [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
         ```
         Edit-EC2InstanceAttribute -InstanceId instance_id -EnaSupport $true
         ```
 
       If you encounter problems when you restart the instance, you can also disable ENA support using one of the following commands:
-      + [modify\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
+      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
 
         ```
         aws ec2 modify-instance-attribute --instance-id instance_id --no-ena-support
         ```
-      + [Edit\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
+      + [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
         ```
         Edit-EC2InstanceAttribute -InstanceId instance_id -EnaSupport $false
@@ -117,7 +117,7 @@ If you launched your instance and it does not have enhanced networking enabled a
       ]
       ```
 
-1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [start\-instances](http://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\), [Start\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance using the AWS OpsWorks console so that the instance state remains in sync\.
+1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\), [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance using the AWS OpsWorks console so that the instance state remains in sync\.
 
 1. On the instance, validate that the ENA driver is installed and enabled as follows:
 

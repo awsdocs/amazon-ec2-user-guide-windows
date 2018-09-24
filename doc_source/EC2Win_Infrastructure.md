@@ -38,7 +38,7 @@ Each region contains multiple distinct locations called *Availability Zones*\. E
 
 ![\[Regions and Availability Zones\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_regions.png)
 
-For more information about the available regions and Availability Zones, see [Using Regions and Availability Zones](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For more information about the available regions and Availability Zones, see [Using Regions and Availability Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Storage<a name="EC2Win_Storage"></a>
 
@@ -98,8 +98,8 @@ You can verify the setting by viewing details for the root device volume on the 
 **To change the root device volume of an instance to persist using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-+ [modify\-instance\-attribute](http://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
-+ [Edit\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
++ [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
++ [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
 ## Networking and Security<a name="EC2Win_Sec"></a>
 
@@ -126,7 +126,7 @@ For more information about IAM, see the following:
 + [IAM Policies for Amazon EC2](iam-policies-for-amazon-ec2.md)
 + [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)
 + [Identity and Access Management \(IAM\)](https://aws.amazon.com/iam)
-+ [IAM User Guide](http://docs.aws.amazon.com/IAM/latest/UserGuide/)
++ [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)
 
 ## Differences between Windows Server and an Amazon EC2 Windows Instance<a name="EC2InstanceAndWindowsServer"></a>
 

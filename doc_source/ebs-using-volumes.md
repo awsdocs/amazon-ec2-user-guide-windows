@@ -4,7 +4,7 @@ After you attach an Amazon EBS volume to your instance, it is exposed as a block
 
 You can take snapshots of your EBS volume for backup purposes or to use as a baseline when you create another volume\. For more information, see [Amazon EBS Snapshots](EBSSnapshots.md)\.
 
-You can get directions for volumes on a Linux instance from [Making a Volume Available for Use on Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can get directions for volumes on a Linux instance from [Making a Volume Available for Use on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 You can make an EBS volume available for use using the Disk Management utility and the DiskPart command line tool\.
 

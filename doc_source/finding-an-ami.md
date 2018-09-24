@@ -7,7 +7,7 @@ Before you can launch an instance, you must select an AMI to use\. As you select
 + The provider \(for example, Amazon Web Services\)
 + Additional software \(for example, SQL server\)
 
-If you need to find a Linux AMI, see [Finding a Linux AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+If you need to find a Linux AMI, see [Finding a Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
 + [Finding a Windows AMI Using the Amazon EC2 Console](#finding-an-ami-console)
@@ -44,20 +44,20 @@ You can find Windows AMIs using the Amazon EC2 console\. You can search through 
 
 ## Finding an AMI Using the AWS Tools for Windows PowerShell<a name="finding-an-ami-psh"></a>
 
-You can use cmdlets for Amazon EC2 or AWS Systems Manager to list only the Windows AMIs that meet your needs\. After locating an AMI that meets your needs, make note of its ID so that you can use it to launch instances\. For more information, see [Launch an Instance Using Windows PowerShell](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-launch.html) in the *AWS Tools for Windows PowerShell User Guide*\.
+You can use cmdlets for Amazon EC2 or AWS Systems Manager to list only the Windows AMIs that meet your needs\. After locating an AMI that meets your needs, make note of its ID so that you can use it to launch instances\. For more information, see [Launch an Instance Using Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-launch.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 
 **Amazon EC2**  
-For information and examples, see [Find an AMI Using Windows PowerShell](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-get-amis.html) in the *AWS Tools for Windows PowerShell User Guide*\.
+For information and examples, see [Find an AMI Using Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-get-amis.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 
 **Systems Manager Parameter Store**  
 For information and examples, see [Query for the Latest Windows AMI Using Systems Manager Parameter Store](https://aws.amazon.com/blogs/mt/query-for-the-latest-windows-ami-using-systems-manager-parameter-store/)\.
 
 ## Finding an AMI Using the AWS CLI<a name="finding-an-ami-aws-cli"></a>
 
-You can use AWS CLI commands for Amazon EC2 or AWS Systems Manager to list only the Windows AMIs that meet your needs\. After locating an AMI that meets your needs, make note of its ID so that you can use it to launch instances\. For more information, see [Launching an Instance Using the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-launch.html#launching-instances) in the *AWS Command Line Interface User Guide*\.
+You can use AWS CLI commands for Amazon EC2 or AWS Systems Manager to list only the Windows AMIs that meet your needs\. After locating an AMI that meets your needs, make note of its ID so that you can use it to launch instances\. For more information, see [Launching an Instance Using the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-launch.html#launching-instances) in the *AWS Command Line Interface User Guide*\.
 
 **Amazon EC2**  
-The [describe\-images](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) command supports filtering parameters\. For example, use the `--owners` parameter to public AMIs owned by Amazon\.
+The [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) command supports filtering parameters\. For example, use the `--owners` parameter to public AMIs owned by Amazon\.
 
 ```
 aws ec2 describe-images --owners self amazon

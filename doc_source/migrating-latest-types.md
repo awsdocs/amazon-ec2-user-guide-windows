@@ -36,7 +36,7 @@ Use the following procedure to perform an in\-place upgrade of AWS PV drivers, o
 
 We recommend you upgrade to the latest Elastic Network Adapter driver to ensure all network features are supported\. If you launched your instance and it does not have enhanced networking already enabled, you must download and install the required network adapter driver on your instance and then set the enaSupport instance attribute to **activate enhanced networking**\. You can only enable this attribute on supported instance types and only if the ENA driver is installed\. For more information, see [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
 
-1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/Latest/AwsEnaNetworkDriver.zip) the latest driver to the instance\. 
+1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/Latest/AwsEnaNetworkDriver.zip) the latest driver to the instance\.
 
 1. Extract the zip archive\. 
 

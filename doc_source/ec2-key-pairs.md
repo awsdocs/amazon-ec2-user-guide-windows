@@ -2,7 +2,7 @@
 
 Amazon EC2 uses public–key cryptography to encrypt and decrypt login information\. Public–key cryptography uses a public key to encrypt a piece of data, such as a password, then the recipient uses the private key to decrypt the data\. The public and private keys are known as a *key pair*\.
 
-To log in to your instance, you must create a key pair, specify the name of the key pair when you launch the instance, and provide the private key when you connect to the instance\. With Windows instances, you use the private key to obtain the administrator password and then log in using RDP\. For more information about key pairs and Linux instances, see [Amazon EC2 Key Pairs](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+To log in to your instance, you must create a key pair, specify the name of the key pair when you launch the instance, and provide the private key when you connect to the instance\. With Windows instances, you use the private key to obtain the administrator password and then log in using RDP\. For more information about key pairs and Linux instances, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Creating a Key Pair**  
 You can use Amazon EC2 to create your key pair\. For more information, see [Creating a Key Pair Using Amazon EC2](#having-ec2-create-your-key-pair)\.
@@ -51,8 +51,8 @@ This is the only chance for you to save the private key file\. You'll need to pr
 **To create your key pair using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-+ [create\-key\-pair](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html) \(AWS CLI\)
-+ [New\-EC2KeyPair](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
++ [create\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html) \(AWS CLI\)
++ [New\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
 
 ## Importing Your Own Public Key to Amazon EC2<a name="how-to-generate-your-own-key-and-import-it-to-aws"></a>
 
@@ -90,8 +90,8 @@ Use the following steps to import your key pair using the Amazon EC2 console\.
 **To import the public key using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-+ [import\-key\-pair](http://docs.aws.amazon.com/cli/latest/reference/ec2/import-key-pair.html) \(AWS CLI\)
-+ [Import\-EC2KeyPair](http://docs.aws.amazon.com/powershell/latest/reference/items/Import-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
++ [import\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-key-pair.html) \(AWS CLI\)
++ [Import\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/reference/items/Import-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
 
 After the public key file is imported, you can verify that the key pair was imported successfully using the Amazon EC2 console as follows\. 
 
@@ -108,8 +108,8 @@ After the public key file is imported, you can verify that the key pair was impo
 **To view your key pair using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-+ [describe\-key\-pairs](http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html) \(AWS CLI\)
-+ [Get\-EC2KeyPair](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
++ [describe\-key\-pairs](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html) \(AWS CLI\)
++ [Get\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
 
 ## Retrieving the Public Key for Your Key Pair on Linux<a name="retrieving-the-public-key"></a>
 
@@ -213,8 +213,8 @@ You can delete a key pair using the Amazon EC2 console or the command line\.
 **To delete your key pair using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-+ [delete\-key\-pair](http://docs.aws.amazon.com/cli/latest/reference/ec2/delete-key-pair.html) \(AWS CLI\)
-+ [Remove\-EC2KeyPair](http://docs.aws.amazon.com/powershell/latest/reference/items/Remove-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
++ [delete\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-key-pair.html) \(AWS CLI\)
++ [Remove\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/reference/items/Remove-EC2KeyPair.html) \(AWS Tools for Windows PowerShell\)
 
 ## Connecting to Your Windows Instance if You Lose Your Private Key<a name="replacing-lost-key-pair-windows"></a>
 

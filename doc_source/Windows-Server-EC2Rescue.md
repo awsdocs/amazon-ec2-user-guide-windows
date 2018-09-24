@@ -7,7 +7,7 @@ EC2Rescue for Windows Server has two different modules: a data collector module 
 The EC2Rescue for Windows Server tool only runs on Amazon EC2 instances running Windows Server 2008 R2 and later\. When the tool starts, it checks whether it is running on an Amazon EC2 instance\.
 
 **Note**  
-If you are using a Linux instance, see [EC2Rescue for Linux](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Linux-Server-EC2Rescue.html)\.
+If you are using a Linux instance, see [EC2Rescue for Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Linux-Server-EC2Rescue.html)\.
 
 **Contents**
 + [Using EC2Rescue for Windows Server GUI](ec2rw-gui.md)

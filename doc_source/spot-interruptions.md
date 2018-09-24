@@ -76,7 +76,7 @@ Here are some best practices to follow when you use Spot Instances:
 
 You must install a hibernation agent on your instance, unless you used an AMI that already includes the agent\. You must run the agent on instance startup, whether the agent was included in your AMI or you installed it yourself\.
 
-The following procedure helps you prepare a Windows instance\. For directions to prepare a Linux instance, see [Preparing for Instance Hibernation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#prepare-for-instance-hibernation) in the *Amazon EC2 User Guide for Linux Instances*\.
+The following procedure helps you prepare a Windows instance\. For directions to prepare a Linux instance, see [Preparing for Instance Hibernation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#prepare-for-instance-hibernation) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **To prepare a Windows instance**
 
@@ -99,7 +99,7 @@ This warning is made available as a CloudWatch event and as an item in the [inst
 
 ### EC2 Spot Instance Interruption Warning<a name="ec2-spot-instance-interruption-warning-event"></a>
 
-When Amazon EC2 interrupts your Spot Instance, it emits an event that can be detected by Amazon CloudWatch Events\. For more information, see the [Amazon CloudWatch Events User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/events/)\.
+When Amazon EC2 interrupts your Spot Instance, it emits an event that can be detected by Amazon CloudWatch Events\. For more information, see the [Amazon CloudWatch Events User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/)\.
 
 The following is an example of the event for Spot Instance interruption\. The possible values for `instance-action` are `hibernate`, `stop`, and `terminate`\.
 

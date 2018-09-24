@@ -1,6 +1,6 @@
 # Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server<a name="install-WAMP"></a>
 
-This tutorial shows you how to install an Apache web server with PHP and MySQL on an EC2 instance running Windows Server\. This software configuration is sometimes called a WAMP server or WAMP stack \(Windows, Apache, MySQL, PHP\)\. For information about how to create a similar server on Linux, see [Tutorial: Installing a LAMP Web Server](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-LAMP.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+This tutorial shows you how to install an Apache web server with PHP and MySQL on an EC2 instance running Windows Server\. This software configuration is sometimes called a WAMP server or WAMP stack \(Windows, Apache, MySQL, PHP\)\. For information about how to create a similar server on Linux, see [Tutorial: Installing a LAMP Web Server](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-LAMP.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 A WAMP stack is designed for easy installation to help developers get up and running quickly\. It is not designed for production environments for the following reasons:
 + The default configurations do not meet security requirements for most production environments\.

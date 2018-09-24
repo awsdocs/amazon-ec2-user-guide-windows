@@ -25,7 +25,7 @@ You can cluster accelerated computing instances into a cluster placement group\.
 + [Activate NVIDIA GRID Virtual Applications \(G3 Instances Only\)](activate_grid.md)
 + [Optimizing GPU Settings \(P2, P3, and G3 Instances\)](optimize_gpu.md)
 
-For information about Linux accelerated computing instances, see [Linux Accelerated Computing Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/accelerated-computing-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For information about Linux accelerated computing instances, see [Linux Accelerated Computing Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/accelerated-computing-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Accelerated Computing Instance Families<a name="gpu-instance-families"></a>
 

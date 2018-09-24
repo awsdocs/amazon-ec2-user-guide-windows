@@ -5,10 +5,10 @@ If you have lost your Windows administrator password and are using a Windows AMI
 If you are using a Windows Server 2016 AMI, see [Resetting the Windows Administrator Password Using EC2Launch](ResettingAdminPassword_EC2Launch.md)\.
 
 **Note**  
-If you have disabled the local administrator account on the instance and your instance is configured for Systems Manager, you can also re\-enable and reset your local administrator password by using EC2Rescue and Run Command\. For more information, see [Using EC2Rescue for Windows Server with Systems Manager Run Command](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2rw-ssm.html)\.
+If you have disabled the local administrator account on the instance and your instance is configured for Systems Manager, you can also re\-enable and reset your local administrator password by using EC2Rescue and Run Command\. For more information, see [Using EC2Rescue for Windows Server with Systems Manager Run Command](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2rw-ssm.html)\.
 
 **Note**  
-There is an AWS Systems Manager Automation document that automatically applies the manual steps necessary to reset the local administrator password\. For more information, see [Reset the Local Administrator Password on Amazon EC2 Windows Instances](http://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
+There is an AWS Systems Manager Automation document that automatically applies the manual steps necessary to reset the local administrator password\. For more information, see [Reset the Local Administrator Password on Amazon EC2 Windows Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
 
 To reset your Windows administrator password using EC2Config, you need to do the following:
 + [Step 1: Verify that the EC2Config service is running](#resetting-password-ec2config-step1)
@@ -111,7 +111,7 @@ After you have attached the volume to the temporary instance as a secondary volu
 
    1. Launch and connect to the temporary instance\.
 
-   1. Open the **Disk Management** utility, and bring the drive online using these instructions: [Making an Amazon EBS Volume Available for Use](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-using-volumes.html)\.
+   1. Open the **Disk Management** utility, and bring the drive online using these instructions: [Making an Amazon EBS Volume Available for Use](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-using-volumes.html)\.
 
    1. Navigate to the secondary volume, and open `\Program Files\Amazon\Ec2ConfigService\Settings\config.xml` using a text editor, such as Notepad\.
 

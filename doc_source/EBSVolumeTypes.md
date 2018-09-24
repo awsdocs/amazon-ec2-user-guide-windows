@@ -30,9 +30,9 @@ The following table describes the use cases and performance characteristics for 
 
 \*\*\*\* General Purpose SSD \(gp2\) volumes have a throughput limit between 128 MiB/s and 160 MiB/s depending on volume size\. Volumes greater than 170 GiB up to 214 GiB deliver a maximum throughput of 160 MiB/s if burst credits are available\. Volumes above 214 GiB deliver 160 MiB/s irrespective of burst credits\.
 
-† An `io1` volume created before 12/6/2017 will not achieve this throughput until modified in some way\. For more information, see [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html)\.
+† An `io1` volume created before 12/6/2017 will not achieve this throughput until modified in some way\. For more information, see [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html)\.
 
-†† To achieve this throughput, you must have an instance that supports it\. For more information, see [Amazon EBS–Optimized Instances](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EBSOptimized.html)\.
+†† To achieve this throughput, you must have an instance that supports it\. For more information, see [Amazon EBS–Optimized Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EBSOptimized.html)\.
 
 The following table describes previous\-generation EBS volume types\. If you need higher performance or performance consistency than previous\-generation volumes can provide, we recommend that you consider using General Purpose SSD \(`gp2`\) or other current volume types\. For more information, see [Previous Generation Volumes](https://aws.amazon.com/ebs/previous-generation/)\.
 
@@ -57,7 +57,7 @@ Windows boot volumes of 2 TiB \(2048 GiB\) that have been converted to use a dyn
 The following Amazon EBS volume considerations apply to Windows data \(non\-boot\) volumes:  
 Windows volumes 2 TiB \(2048 GiB\) or greater must use a GPT partition table to access the entire volume\.
 Amazon EBS volumes over 2048 GiB that are attached to Windows instances at launch are automatically formatted with a GPT partition table\.
-Amazon EBS volumes attached to Windows instances after launch must be manually initialized with a GPT partition table\. For more information, see [Making an Amazon EBS Volume Available for Use](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-using-volumes.html)\.
+Amazon EBS volumes attached to Windows instances after launch must be manually initialized with a GPT partition table\. For more information, see [Making an Amazon EBS Volume Available for Use](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-using-volumes.html)\.
 
 There are several factors that can affect the performance of EBS volumes, such as instance configuration, I/O characteristics, and workload demand\. For more information about getting the most out of your EBS volumes, see [Amazon EBS Volume Performance on Windows Instances](EBSPerformance.md)\.
 
@@ -105,7 +105,7 @@ Burst duration  =  ------------------------------------
 ```
 
 **What happens if I empty my I/O credit balance?**  
-If your `gp2` volume uses all of its I/O credit balance, the maximum IOPS performance of the volume remains at the baseline IOPS performance level \(the rate at which your volume earns credits\) and the volume's maximum throughput is reduced to the baseline IOPS multiplied by the maximum I/O size\. Throughput can never exceed 160 MiB/s\. When I/O demand drops below the baseline level and unused credits are added to the I/O credit balance, the maximum IOPS performance of the volume again exceeds the baseline\. For example, a 100 GiB `gp2` volume with an empty credit balance has a baseline performance of 300 IOPS and a throughput limit of 75 MiB/s \(300 I/O operations per second \* 256 KiB per I/O operation = 75 MiB/s\)\. The larger a volume is, the greater the baseline performance is and the faster it replenishes the credit balance\. For more information about how IOPS are measured, see [I/O Characteristics](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html)\.
+If your `gp2` volume uses all of its I/O credit balance, the maximum IOPS performance of the volume remains at the baseline IOPS performance level \(the rate at which your volume earns credits\) and the volume's maximum throughput is reduced to the baseline IOPS multiplied by the maximum I/O size\. Throughput can never exceed 160 MiB/s\. When I/O demand drops below the baseline level and unused credits are added to the I/O credit balance, the maximum IOPS performance of the volume again exceeds the baseline\. For example, a 100 GiB `gp2` volume with an empty credit balance has a baseline performance of 300 IOPS and a throughput limit of 75 MiB/s \(300 I/O operations per second \* 256 KiB per I/O operation = 75 MiB/s\)\. The larger a volume is, the greater the baseline performance is and the faster it replenishes the credit balance\. For more information about how IOPS are measured, see [I/O Characteristics](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html)\.
 
 If you notice that your volume performance is frequently limited to the baseline level \(due to an empty I/O credit balance\), you should consider using a larger `gp2` volume \(with a higher baseline performance level\) or switching to an `io1` volume for workloads that require sustained IOPS performance greater than 10,000 IOPS\.
 
@@ -406,8 +406,8 @@ Throughput for `st1` and `sc1` volumes is always determined by the smaller of th
 + Throughput limits of the volume
 + Throughput limits of the instance
 
-As for all Amazon EBS volumes, we recommend that you select an appropriate EBS\-optimized EC2 instance in order to avoid network bottlenecks\. For more information, see [Amazon EBS\-Optimized Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html)\.
+As for all Amazon EBS volumes, we recommend that you select an appropriate EBS\-optimized EC2 instance in order to avoid network bottlenecks\. For more information, see [Amazon EBS\-Optimized Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html)\.
 
 ## Monitoring the Burst Bucket Balance for `gp2`, `st1`, and `sc1` Volumes<a name="monitoring_burstbucket"></a>
 
-You can monitor the burst\-bucket level for `gp2`, `st1`, and `sc1` volumes using the EBS `BurstBalance` metric available in Amazon CloudWatch\. This metric shows the percentage of I/O credits \(for `gp2`\) or throughput credits \(for `st1` and `sc1`\) remaining in the burst bucket\. For more information about the `BurstBalance` metric and other metrics related to I/O, see [I/O Characteristics and Monitoring](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html)\. CloudWatch also allows you to set an alarm that notifies you when the `BurstBalance` value falls to a certain level\. For more information, see [Creating Amazon CloudWatch Alarms](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)\.
+You can monitor the burst\-bucket level for `gp2`, `st1`, and `sc1` volumes using the EBS `BurstBalance` metric available in Amazon CloudWatch\. This metric shows the percentage of I/O credits \(for `gp2`\) or throughput credits \(for `st1` and `sc1`\) remaining in the burst bucket\. For more information about the `BurstBalance` metric and other metrics related to I/O, see [I/O Characteristics and Monitoring](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-io-characteristics.html)\. CloudWatch also allows you to set an alarm that notifies you when the `BurstBalance` value falls to a certain level\. For more information, see [Creating Amazon CloudWatch Alarms](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html)\.

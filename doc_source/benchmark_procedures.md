@@ -1,6 +1,6 @@
 # Benchmark EBS Volumes<a name="benchmark_procedures"></a>
 
-This section demonstrates how you can test the performance of Amazon EBS volumes by simulating I/O workloads\. The process is as follows:
+TYou can test the performance of Amazon EBS volumes by simulating I/O workloads\. The process is as follows:
 
 1. Launch an EBS\-optimized instance\.
 
@@ -17,7 +17,7 @@ This section demonstrates how you can test the performance of Amazon EBS volumes
 1. Delete your volumes and terminate your instance so that you don't continue to incur charges\.
 
 **Important**  
-Some of the procedures described in this topic will result in the destruction of existing data on the EBS volumes you benchmark\. The benchmarking procedures are intended for use on volumes specially created for testing purposes, not production volumes\.
+Some of the procedures result in the destruction of existing data on the EBS volumes you benchmark\. The benchmarking procedures are intended for use on volumes specially created for testing purposes, not production volumes\.
 
 ## Set Up Your Instance<a name="set_up_instance"></a>
 
@@ -31,49 +31,9 @@ To create an `io1` volume, choose **Provisioned IOPS SSD** when creating the vol
 
 For the example tests, we recommend that you create a RAID array with 6 volumes, which offers a high level of performance\. Because you are charged by gigabytes provisioned \(and the number of provisioned IOPS for `io1` volumes\), not the number of volumes, there is no additional cost for creating multiple, smaller volumes and using them to create a stripe set\. If you're using Oracle Orion to benchmark your volumes, it can simulate striping the same way that Oracle ASM does, so we recommend that you let Orion do the striping\. If you are using a different benchmarking tool, you need to stripe the volumes yourself\.
 
-To create a six\-volume stripe set on Amazon Linux, use a command such as the following:
-
-```
-[ec2-user ~]$ sudo mdadm --create /dev/md0 --level=0 --chunk=64 --raid-devices=6 /dev/sdf /dev/sdg /dev/sdh /dev/sdi /dev/sdj /dev/sdk
-```
-
-For this example, the file system is XFS\. Use the file system that meets your requirements\. Use the following command to install XFS file system support:
-
-```
-[ec2-user ~]$ sudo yum install -y xfsprogs
-```
-
-Then, use these commands to create, mount, and assign ownership to the XFS file system:
-
-```
-[ec2-user ~]$ sudo mkdir -p /mnt/p_iops_vol0 && sudo mkfs.xfs /dev/md0
-[ec2-user ~]$ sudo mount -t xfs /dev/md0 /mnt/p_iops_vol0
-[ec2-user ~]$ sudo chown ec2-user:ec2-user /mnt/p_iops_vol0/
-```
-
 ### Setting up Throughput Optimized HDD \(`st1`\) or Cold HDD \(`sc1`\) volumes<a name="set_up_hdd"></a>
 
 To create an `st1` volume, choose **Throughput Optimized HDD** when creating the volume using the Amazon EC2 console, or specify \-\-type `st1` when using the command line\. To create an `sc1` volume, choose Cold HDD when creating the volume using the Amazon EC2 console, or specify \-\-type `sc1` when using the command line\. For information about creating EBS volumes, see [Creating an Amazon EBS Volume](ebs-creating-volume.md)\. For information about attaching these volumes to your instance, see [Attaching an Amazon EBS Volume to an Instance](ebs-attaching-volume.md)\.
-
-AWS provides a JSON template for use with AWS CloudFormation that simplifies this setup procedure\. Access the [template](https://s3.amazonaws.com/cloudformation-examples/community/st1_cloudformation_template.json) and save it as a JSON file\. AWS CloudFormation allows you to configure your own SSH keys and offers an easy way to set up a performance test environment to evaluate `st1` volumes\. The template creates a current\-generation instance and a 2 TiB `st1` volume, and attaches the volume to the instance at `/dev/xvdf`\. 
-
-**To create an HDD volume with the template**
-
-1. Open the AWS CloudFormation console at [https://console\.aws\.amazon\.com/cloudformation](https://console.aws.amazon.com/cloudformation/)\.
-
-1. Choose **Create Stack**\.
-
-1. Choose **Upload a Template to Amazon S3** and select the JSON template you previously obtained\.
-
-1. Give your stack a name like “ebs\-perf\-testing”, and select an instance type \(the default is r3\.8xlarge\) and SSH key\.
-
-1. Choose **Next** twice, and then choose **Create Stack**\.
-
-1. After the status for your new stack moves from **CREATE\_IN\_PROGRESS** to **COMPLETE**, choose **Outputs** to get the public DNS entry for your new instance, which will have a 2 TiB `st1` volume attached to it\.
-
-1. Connect using SSH to your new stack as user **ec2\-user**, with the hostname obtained from the DNS entry in the previous step\. 
-
-1. Proceed to [Install Benchmark Tools](#install_tools)\.
 
 ## Install Benchmark Tools<a name="install_tools"></a>
 
@@ -103,32 +63,16 @@ To determine the optimal queue length for your workload on HDD\-backed volumes, 
 
 ## Disable C\-States<a name="cstates"></a>
 
-Before you run benchmarking, you should disable processor C\-states\. Temporarily idle cores in a supported CPU can enter a C\-state to save power\. When the core is called on to resume processing, a certain amount of time passes until the core is again fully operational\. This latency can interfere with processor benchmarking routines\. For more information about C\-states and which EC2 instance types support them, see [Processor State Control for Your EC2 Instance](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/processor_state_control.html)\.
-
-### Disabling C\-States on a Linux System<a name="linux-cstates"></a>
-
-You can disable C\-states on Amazon Linux, RHEL, and CentOS as follows:
-
-1. Get the number of C\-states\.
-
-   ```
-   $ cpupower idle-info | grep "Number of idle states:"
-   ```
-
-1. Disable the C\-states from c1 to cN\. Ideally, the cores should be in state c0\.
-
-   ```
-   $ for i in `seq 1 $((N-1))`; do cpupower idle-set -d $i; done
-   ```
+Before you run benchmarking, you should disable processor C\-states\. Temporarily idle cores in a supported CPU can enter a C\-state to save power\. When the core is called on to resume processing, a certain amount of time passes until the core is again fully operational\. This latency can interfere with processor benchmarking routines\. For more information about C\-states and which EC2 instance types support them, see [Processor State Control for Your EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/processor_state_control.html)\.
 
 ### Disabling C\-States on a Windows System<a name="windows-cstates"></a>
 
-You can diable C\-states on Windows as follows:
+You can disable C\-states on Windows as follows:
 
 1. In PowerShell, get the current active power scheme\.
 
    ```
-   C:\> $current_scheme = powercfg /getactivescheme          
+   C:\> $current_scheme = powercfg /getactivescheme
    ```
 
 1. Get the power scheme GUID\.
@@ -190,9 +134,6 @@ For more information about interpreting the results, see this tutorial: [Inspect
 ### Benchmarking `st1` and `sc1` Volumes<a name="hdd_benchmarking"></a>
 
 Run fio on your `st1` or `sc1` volume\.
-
-**Note**  
-Prior to running these tests, set buffered I/O on your instance as described in [Increase Read\-Ahead for High\-Throughput, Read\-Heavy Workloads on `st1` and `sc1`](EBSPerformance.md#read_ahead)\. 
 
 The following command performs 1 MiB sequential read operations against an attached `st1` block device \(e\.g\., `/dev/xvdf`\):
 

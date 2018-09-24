@@ -2,7 +2,7 @@
 
 You may benefit from being able to determine whether a system is an EC2 instance\. There are two methods that you can use to identify an EC2 instance\.
 
-For information about identifying Linux instances, see [Identify EC2 Linux Instances](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/identify_ec2_instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For information about identifying Linux instances, see [Identify EC2 Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/identify_ec2_instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Inspecting the System UUID<a name="inspect-uuid"></a>
 

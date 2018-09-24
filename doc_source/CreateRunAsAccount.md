@@ -4,7 +4,7 @@ You must set up credentials that grant AWS Management Pack access to your AWS re
 
 **To create an AWS Run As account**
 
-1. We recommend that you create an IAM user with the minimum access rights required \(for example, the **ReadOnlyAccess** AWS managed policy works in most cases\)\. You'll need the access keys \(access key ID and secret access key\) for this user to complete this procedure\. For more information, see [Administering Access Keys for IAM Users](http://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html) in the *IAM User Guide*\.
+1. We recommend that you create an IAM user with the minimum access rights required \(for example, the **ReadOnlyAccess** AWS managed policy works in most cases\)\. You'll need the access keys \(access key ID and secret access key\) for this user to complete this procedure\. For more information, see [Administering Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html) in the *IAM User Guide*\.
 
 1. In the Operations console, on the **Go** menu, click **Administration**\.
 

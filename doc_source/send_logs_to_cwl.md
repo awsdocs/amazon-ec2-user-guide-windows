@@ -4,16 +4,16 @@ You can configure your Amazon EC2 instances to send Windows Server logs, events,
 
 **Important**  
 The unified CloudWatch Agent has replaced the SSM Agent as the tool for sending log data to Amazon CloudWatch Logs\. Support for using the SSM Agent to send log data will be deprecated in the near future\. We recommend that you begin using the unified CloudWatch Agent for your log collection processes as soon as possible\. For more information, see the following topics:  
-[Send Logs to CloudWatch Logs \(CloudWatch Agent\)](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
-[ Migrate Windows Server Instance Log Collection to the CloudWatch Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html#monitoring-cloudwatch-agent-migrate) in the *AWS Systems Manager User Guide*
-[Collect Metrics from Amazon Elastic Compute Cloud Instances and On\-Premises Servers with the CloudWatch Agent](http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) in the *Amazon CloudWatch User Guide*
+[Send Logs to CloudWatch Logs \(CloudWatch Agent\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
+[ Migrate Windows Server Instance Log Collection to the CloudWatch Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html#monitoring-cloudwatch-agent-migrate) in the *AWS Systems Manager User Guide*
+[Collect Metrics from Amazon Elastic Compute Cloud Instances and On\-Premises Servers with the CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) in the *Amazon CloudWatch User Guide*
 
-For more information about CloudWatch Logs, see the [Amazon CloudWatch Logs User Guide](http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/)\. For more information about Systems Manager, see the [AWS Systems Manager User Guide](http://docs.aws.amazon.com/systems-manager/latest/userguide/)\.
+For more information about CloudWatch Logs, see the [Amazon CloudWatch Logs User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/)\. For more information about Systems Manager, see the [AWS Systems Manager User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/)\.
 
 **Note**  
 We refer to CloudWatch Logs, CloudWatch Events, and CloudWatch collectively as CloudWatch, unless otherwise noted\.
 
-Amazon EC2 instances use an agent to send log data to CloudWatch\. With Windows Server 2008 to Windows Server 2012 R2, the agent is either the EC2Config service or SSM Agent\. With Windows Server 2016, the agent is SSM Agent\. For more information, see [Installing and Configuring SSM Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html)\.
+Amazon EC2 instances use an agent to send log data to CloudWatch\. With Windows Server 2008 to Windows Server 2012 R2, the agent is either the EC2Config service or SSM Agent\. With Windows Server 2016, the agent is SSM Agent\. For more information, see [Installing and Configuring SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html)\.
 
 **Topics**
 + [Methods to Send Instance Metrics to CloudWatch](#send_logs_to_cwl_diff)

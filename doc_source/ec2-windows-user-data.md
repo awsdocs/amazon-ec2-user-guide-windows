@@ -161,7 +161,7 @@ When you stop an instance, the data on any instance store volumes is erased\. Th
 
 ## User Data and the Tools for Windows PowerShell<a name="user-data-powershell"></a>
 
-You can use the Tools for Windows PowerShell to specify, modify, and view the user data for your instance\. For information about viewing user data from your instance using instance metadata, see [Retrieve Instance User Data](ec2-instance-metadata.md#instancedata-user-data-retrieval)\. For information about user data and the AWS CLI, see [User Data and the AWS CLI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-api-cli) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can use the Tools for Windows PowerShell to specify, modify, and view the user data for your instance\. For information about viewing user data from your instance using instance metadata, see [Retrieve Instance User Data](ec2-instance-metadata.md#instancedata-user-data-retrieval)\. For information about user data and the AWS CLI, see [User Data and the AWS CLI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-api-cli) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Example: Specify Instance User Data at Launch**  
 Create a text file with the instance user data\. To execute user data scripts every time you reboot or start the instance, add `<persist>true</persist>`, as shown in the following example:
@@ -174,7 +174,7 @@ New-Item $file -ItemType file
 <persist>true</persist>
 ```
 
-To specify instance user data when you launch your instance, use the [New\-EC2Instance](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Instance.html) command\. This command does not perform base64 encoding of the user data for you\. Use the following commands to encode the user data in a text file named `script.txt`\.
+To specify instance user data when you launch your instance, use the [New\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Instance.html) command\. This command does not perform base64 encoding of the user data for you\. Use the following commands to encode the user data in a text file named `script.txt`\.
 
 ```
 PS C:\> $Script = Get-Content -Raw script.txt
@@ -190,7 +190,7 @@ PS C:\> New-EC2Instance -ImageId ami-abcd1234 -MinCount 1 -MaxCount 1 -InstanceT
 ```
 
 **Example: Update Instance User Data for a Stopped Instance**  
-You can modify the user data of a stopped instance using the [Edit\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) command\.
+You can modify the user data of a stopped instance using the [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) command\.
 
 Create a text file with the new script\. Use the following commands to encode the user data in the text file named `new-script.txt`\.
 
@@ -206,7 +206,7 @@ PS C:\> Edit-EC2InstanceAttribute -InstanceId i-1234567890abcdef0 -Attribute use
 ```
 
 **Example: View Instance User Data**  
-To retrieve the user data for an instance, use the [Get\-EC2InstanceAttribute](http://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2InstanceAttribute.html) command\.
+To retrieve the user data for an instance, use the [Get\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2InstanceAttribute.html) command\.
 
 ```
 PS C:\> (Get-EC2InstanceAttribute -InstanceId i-1234567890abcdef0 -Attribute userData).UserData

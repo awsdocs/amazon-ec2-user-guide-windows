@@ -37,7 +37,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
    1. Install the EC2Launch service\. For more information, see [Installing the Latest Version of EC2Launch](ec2launch-download.md)\.
 
-   1. Install the Amazon SSM Agent\. For more information, see [Installing SSM Agent](http://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html)\.
+   1. Install the Amazon SSM Agent\. For more information, see [Installing SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html)\.
 
 1. Create a new volume from a Windows Server installation media snapshot\.
 

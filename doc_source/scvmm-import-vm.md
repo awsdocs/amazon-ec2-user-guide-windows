@@ -12,7 +12,7 @@ You can't import Linux virtual machines from SCVMM to Amazon EC2\.
 + [Backing Up Your Imported Instance](#scvmm-backup)
 
 ## Prerequisites<a name="scvmm-import-vm-prereqs"></a>
-+ Ensure that your VM is ready\. For more information, see [Prepare Your VM](http://docs.aws.amazon.com/vm-import/latest/userguide/prepare-vm-image.html) in the * VM Import/Export User Guide*\.
++ Ensure that your VM is ready\. For more information, see [Prepare Your VM](https://docs.aws.amazon.com/vm-import/latest/userguide/prepare-vm-image.html) in the * VM Import/Export User Guide*\.
 + In AWS Systems Manager, click **Configuration**, select the **VM Import** tab, and review the following settings:
   + **S3 bucket prefix**: We create a bucket for disk images to be uploaded before they are imported\. The name of the bucket starts with the prefix listed here and includes the region \(for example, `us-east-2`\)\. To delete the disk images after they are imported, select **Clean up S3 bucket after import**\.
   + **VM image export path**: A location for the disk images exported from the VM\. To delete the disk images after they are imported, select **Clean up export path after import**\.

@@ -90,7 +90,7 @@ Shows the AWS CloudFormation stack relationship with other components\. An AWS C
 
 ### Amazon Performance Views<a name="awsmp-performance-views"></a>
 
-Shows the Amazon CloudWatch metrics for Amazon EC2, Amazon EBS, and Elastic Load Balancing, custom metrics, and metrics created from CloudWatch alarms\. In addition, there are separate performance views for each resource\. The **Other Metrics** performance view contains custom metrics, and metrics created from CloudWatch alarms\. For more information about these metrics, see the [CloudWatch Metrics, Namespaces, and Dimensions Reference](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html) in the *Amazon CloudWatch Developer Guide*\. The following illustration shows an example\. 
+Shows the Amazon CloudWatch metrics for Amazon EC2, Amazon EBS, and Elastic Load Balancing, custom metrics, and metrics created from CloudWatch alarms\. In addition, there are separate performance views for each resource\. The **Other Metrics** performance view contains custom metrics, and metrics created from CloudWatch alarms\. For more information about these metrics, see the [CloudWatch Metrics, Namespaces, and Dimensions Reference](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html) in the *Amazon CloudWatch Developer Guide*\. The following illustration shows an example\. 
 
 ![\[Amazon performance views\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_performance_view.png)
 

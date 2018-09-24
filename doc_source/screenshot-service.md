@@ -25,8 +25,8 @@ Right\-click on the image to download and save it\.
 **To capture a screenshot using the command line**
 
 You can use one of the following commands\. The returned output is base64\-encoded\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-+ [get\-console\-screenshot](http://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-screenshot.html) \(AWS CLI\)
-+ [GetConsoleScreenshot](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-GetConsoleScreenshot.html) \(Amazon EC2 Query API\)
++ [get\-console\-screenshot](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-screenshot.html) \(AWS CLI\)
++ [GetConsoleScreenshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-GetConsoleScreenshot.html) \(Amazon EC2 Query API\)
 
 For API calls, the returned content is base64\-encoded\. For command line tools, the decoding is performed for you\.
 
@@ -59,7 +59,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 | Configuration | Verify | 
 | --- | --- | 
 | Security group configuration | Verify that port 3389 is open for your security group\. Verify you are connecting to the right public IP address\. If the instance was not associated with an Elastic IP, the public IP changes after the instance stops/starts\. For more information, see [Remote Desktop can't connect to the remote computer](troubleshooting-windows-instances.md#rdp-issues)\. | 
-| VPC configuration \(Network ACLs\) | Verify that the access control list \(ACL\) for your Amazon VPC is not blocking access\. For information, see [Network ACLs](http://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the Amazon VPC User Guide\. | 
+| VPC configuration \(Network ACLs\) | Verify that the access control list \(ACL\) for your Amazon VPC is not blocking access\. For information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the Amazon VPC User Guide\. | 
 | VPN configuration | If you are connecting to your VPC using a virtual private network \(VPN\), verify VPN tunnel connectivity\. For more information, see [How do I troubleshoot VPN tunnel connectivity to an Amazon VPC?](https://aws.amazon.com/premiumsupport/knowledge-center/vpn-tunnel-troubleshooting/) | 
 
 
@@ -94,7 +94,7 @@ Check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon
 + Custom Startup Script
 + Task Scheduler
 
-For more information about the **CPUUtilization \(Maximum\)** metric, see [Get Statistics for a Specific EC2 Instance](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. For additional troubleshooting tips, see [High CPU usage shortly after Windows starts](troubleshooting-windows-instances.md#high-cpu-issue)\.
+For more information about the **CPUUtilization \(Maximum\)** metric, see [Get Statistics for a Specific EC2 Instance](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. For additional troubleshooting tips, see [High CPU usage shortly after Windows starts](troubleshooting-windows-instances.md#high-cpu-issue)\.
 
 ### Recovery Console Screen<a name="recovery-console-screen"></a>
 
@@ -144,7 +144,7 @@ Console Screenshot Service returned the following\.
 
 ![\[Getting Ready Screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-5.png)
 
-Refresh the Instance Console Screenshot Service repeatedly to verify that the progress ring is spinning\. If the ring is spinning, wait for the operating system to start up\. You can also check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon CloudWatch to see if the operating system is active\. If the progress ring is not spinning, the instance may be stuck at the boot process\. Reboot the instance\. If rebooting does not solve the problem, recover the instance from a recent backup AMI or launch a replacement instance\. If you need to access data on the instance, detach the root volume from the unreachable instance, take a snapshot of the volume or create an AMI from it\. Then attach it to another instance in the same Availability Zone as a secondary volume\. For more information about **CPUUtilization \(Maximum\)**, see [Get Statistics for a Specific EC2 Instance](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. 
+Refresh the Instance Console Screenshot Service repeatedly to verify that the progress ring is spinning\. If the ring is spinning, wait for the operating system to start up\. You can also check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon CloudWatch to see if the operating system is active\. If the progress ring is not spinning, the instance may be stuck at the boot process\. Reboot the instance\. If rebooting does not solve the problem, recover the instance from a recent backup AMI or launch a replacement instance\. If you need to access data on the instance, detach the root volume from the unreachable instance, take a snapshot of the volume or create an AMI from it\. Then attach it to another instance in the same Availability Zone as a secondary volume\. For more information about **CPUUtilization \(Maximum\)**, see [Get Statistics for a Specific EC2 Instance](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. 
 
 ### Windows Update Screen<a name="windows-update-screen"></a>
 

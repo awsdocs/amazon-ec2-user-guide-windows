@@ -2,7 +2,7 @@
 
 To create a Windows AMI, you launch an instance from an existing Windows AMI, customize the instance, and create a new AMI from the instance\.
 
-To create a custom Linux AMI, use the procedure for the type of volume for the instance\. For more information, see [Creating an Amazon EBS\-Backed Linux AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) or [Creating an Instance Store\-Backed Linux AMI](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+To create a custom Linux AMI, use the procedure for the type of volume for the instance\. For more information, see [Creating an Amazon EBS\-Backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) or [Creating an Instance Store\-Backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Overview of Creating an AMI<a name="process-creating-a-windows-ami-ebs"></a>
 
@@ -17,7 +17,7 @@ After the process completes, you have a new AMI and snapshot created from the ro
 If you add instance store volumes or Amazon EBS volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block Device Mapping](block-device-mapping-concepts.md)\.
 
 **Note**  
-When you create a new instance from a custom AMI, you should initialize both its root volume and any additional EBS storage before putting it into production\. For more information, see [Initializing Amazon EBS Volumes](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
+When you create a new instance from a custom AMI, you should initialize both its root volume and any additional EBS storage before putting it into production\. For more information, see [Initializing Amazon EBS Volumes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
 
 ## Creating a Windows AMI from a Running Instance<a name="how-to-create-windows-ebs-ami"></a>
 
@@ -80,5 +80,5 @@ If you choose **No reboot**, we can't guarantee the file system integrity of the
 ### To create an AMI from an instance using the command line<a name="create-windows-ami-cli"></a>
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
-+ [create\-image](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-image.html) \(AWS CLI\)
-+ [New\-EC2Image](http://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Image.html) \(AWS Tools for Windows PowerShell\)
++ [create\-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-image.html) \(AWS CLI\)
++ [New\-EC2Image](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Image.html) \(AWS Tools for Windows PowerShell\)

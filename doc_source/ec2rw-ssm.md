@@ -76,7 +76,7 @@ The following procedure describes how to view the JSON for this document in the 
 
 ## Examples<a name="ec2rw-ssm-examples"></a>
 
-Here are some examples on how to use the Systems Manager Run Command document to execute EC2Rescue for Windows Server, using the AWS CLI\. For more information about sending commands with the AWS CLI, see the [AWS CLI Command Reference](http://docs.aws.amazon.com/cli/latest/reference/ssm/send-command.html)\.
+Here are some examples on how to use the Systems Manager Run Command document to execute EC2Rescue for Windows Server, using the AWS CLI\. For more information about sending commands with the AWS CLI, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ssm/send-command.html)\.
 
 ### Attempt to Fix All Identified Issues on an Offline Root Volume<a name="ec2rw-ssm-exam1"></a>
 

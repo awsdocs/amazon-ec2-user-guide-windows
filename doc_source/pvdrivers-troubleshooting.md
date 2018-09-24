@@ -41,9 +41,9 @@ When you stop an instance, the data on any instance store volumes is erased\. Th
 
 1. After the instance is stopped create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
 
-1. [Change](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-resize.html) the instance type to any C3 instance type\.
+1. [Change](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-resize.html) the instance type to any C3 instance type\.
 
-1. [Start](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Stop_Start.html) the instance\.
+1. [Start](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Stop_Start.html) the instance\.
 
 1. Connect to the instance using Remote Desktop and then [download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverSetup.zip) the AWS PV Drivers Upgrade package to the instance\.
 
@@ -120,7 +120,7 @@ If you do not create the instance in the same Availability Zone as the affected 
 
 1. In the Amazon EC2 console, detach the affected volume from the temporary instance and reattach it to your Windows Server 2012 R2 instance with the device name /dev/sda1\. You must specify this device name to designate the volume as a root volume\.
 
-1. [Start](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Stop_Start.html) the instance\.
+1. [Start](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Stop_Start.html) the instance\.
 
 1. Connect to the instance using Remote Desktop and then [download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverSetup.zip) the AWS PV Drivers Upgrade package to the instance\.
 
