@@ -12,7 +12,6 @@ Amazon EC2 provides enhanced networking capabilities to C5, C5d, F1, G3, H1, I3,
 ## Requirements<a name="ena-requirements"></a>
 
 To prepare for enhanced networking using the ENA, set up your instance as follows:
-+ Launch the instance in a VPC\. \(You can't enable enhanced networking if the instance is in EC2\-Classic\.\)
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\. 
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable; if you have a recent backup, your data will still be retained if this happens\.
 

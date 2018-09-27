@@ -39,7 +39,7 @@ Security groups act as a firewall for associated instances, controlling both inb
 
 1. Choose **Save**\.
 
-\(VPC only\) If you launched an instance with an IPv6 address and want to connect to your instance using its IPv6 address, you must add rules that allow inbound IPv6 traffic over RDP\.
+If you launched an instance with an IPv6 address and want to connect to your instance using its IPv6 address, you must add rules that allow inbound IPv6 traffic over RDP\.
 
 **To add a rule to a security group for inbound RDP traffic over IPv6 using the console**
 
@@ -96,4 +96,4 @@ Be sure to run the following commands on your local system, not on the instance 
 
 You can assign a security group to an instance when you launch the instance\. When you add or remove rules, those changes are automatically applied to all instances to which you've assigned the security group\.
 
-After you launch an instance in EC2\-Classic, you can't change its security groups\. After you launch an instance in a VPC, you can change its security groups\. For more information, see [Changing an Instance's Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#SG_Changing_Group_Membership) in the *Amazon VPC User Guide*\.
+After you launch an instance, you can change its security groups\. For more information, see [Changing an Instance's Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#SG_Changing_Group_Membership) in the *Amazon VPC User Guide*\.

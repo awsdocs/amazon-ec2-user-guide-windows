@@ -156,7 +156,7 @@ The Active Directory domain controller provides authentication and centralized r
 
 1. In the navigation pane, choose **Elastic IPs**\. 
 
-1. Choose **Allocate new address**\. If your account supports EC2\-Classic, choose **VPC**\. Choose **Allocate**\. Choose **Close**\.
+1. Choose **Allocate new address**\. Choose **Allocate**\. Choose **Close**\.
 
 1. Select the Elastic IP address you created, and choose **Actions**, **Associate address**\. For **Instance**, choose the domain controller instance\. Choose **Associate**\.
 

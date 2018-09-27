@@ -1,6 +1,6 @@
-# Configuring a Secondary Private IPv4 Address for Your Windows Instance in a VPC<a name="config-windows-multiple-ip"></a>
+# Configuring a Secondary Private IPv4 Address for Your Windows Instance<a name="config-windows-multiple-ip"></a>
 
-On the EC2\-VPC platform, you can specify multiple private IPv4 addresses for your instances\. After you assign a secondary private IPv4 address to an instance in a VPC, you must configure the operating system on the instance to recognize the secondary private IPv4 address\. 
+You can specify multiple private IPv4 addresses for your instances\. After you assign a secondary private IPv4 address to an instance, you must configure the operating system on the instance to recognize the secondary private IPv4 address\.
 
 Configuring the operating system on a Windows instance to recognize a secondary private IPv4 address requires the following:
 + [Step 1: Configure Static IP Addressing on Your Windows Instance ](#step1)

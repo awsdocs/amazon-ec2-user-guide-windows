@@ -14,8 +14,5 @@ Amazon EC2 provides different instance types to enable you to choose the CPU, me
 **Q\. What purchasing option best meets my needs?**  
 Amazon EC2 supports On\-Demand instances \(the default\), Spot instances, and Reserved Instances\. For more information, see [Instance Purchasing Options](instance-purchasing-options.md)\.
 
-**Q\. Would I benefit from using a virtual private cloud?**  
-If you can launch instances in either EC2\-Classic or EC2\-VPC, you'll need to decide which platform meets your needs\. For more information, see [Supported Platforms](ec2-supported-platforms.md) and [Amazon EC2 and Amazon Virtual Private Cloud](using-vpc.md)\.
-
 **Q\. Can I remotely manage a fleet of EC2 instances *and* machines in my hybrid environment?**  
 Amazon Elastic Compute Cloud \(Amazon EC2\) Run Command lets you remotely and securely manage the configuration of your Amazon EC2 instances, virtual machines \(VMs\) and servers in hybrid environments, or VMs from other cloud providers\. For more information, see [Systems Manager Remote Management \(Run Command\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html)\.

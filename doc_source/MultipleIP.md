@@ -1,6 +1,6 @@
 # Multiple IP Addresses<a name="MultipleIP"></a>
 
-In EC2\-VPC, you can specify multiple private IPv4 and IPv6 addresses for your instances\. The number of network interfaces and private IPv4 and IPv6 addresses that you can specify for an instance depends on the instance type\. For more information, see [IP Addresses Per Network Interface Per Instance Type](using-eni.md#AvailableIpPerENI)\.
+You can specify multiple private IPv4 and IPv6 addresses for your instances\. The number of network interfaces and private IPv4 and IPv6 addresses that you can specify for an instance depends on the instance type\. For more information, see [IP Addresses Per Network Interface Per Instance Type](using-eni.md#AvailableIpPerENI)\.
 
 It can be useful to assign multiple IP addresses to an instance in your VPC to do the following:
 + Host multiple websites on a single server by using multiple SSL certificates on a single server and associating each certificate with a specific IP address\.
@@ -47,12 +47,12 @@ You can assign a secondary private IPv4 address to an instance, associate an Ela
 ### Assigning a Secondary Private IPv4 Address<a name="ManageMultipleIP"></a>
 
 You can assign the secondary private IPv4 address to the network interface for an instance as you launch the instance, or after the instance is running\. This section includes the following procedures\.
-+ [To assign a secondary private IPv4 address when launching an instance in EC2\-VPC](#assignIP-launch)
++ [To assign a secondary private IPv4 address when launching an instance](#assignIP-launch)
 + [To assign a secondary IPv4 address during launch using the command line](#assignIP-launch-cmd)
 + [To assign a secondary private IPv4 address to a network interface](#assignIP-existing)
 + [To assign a secondary private IPv4 to an existing instance using the command line](#assignIP-existing-cmd)<a name="assignIP-launch"></a>
 
-**To assign a secondary private IPv4 address when launching an instance in EC2\-VPC**
+**To assign a secondary private IPv4 address when launching an instance**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -111,11 +111,11 @@ Alternatively, you can assign a secondary private IPv4 address to an instance\. 
 
 After you assign a secondary private IPv4 address to your instance, you need to configure the operating system on your instance to recognize the secondary private IP address\.
 
-For information about configuring a Windows instance, see [Configuring a Secondary Private IPv4 Address for Your Windows Instance in a VPC](config-windows-multiple-ip.md)\.
+For information about configuring a Windows instance, see [Configuring a Secondary Private IPv4 Address for Your Windows Instance](config-windows-multiple-ip.md)\.
 
 ### Associating an Elastic IP Address with the Secondary Private IPv4 Address<a name="StepThreeEIP"></a>
 
-**To associate an Elastic IP address with a secondary private IPv4 address in EC2\-VPC**
+**To associate an Elastic IP address with a secondary private IPv4 address**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -134,7 +134,7 @@ For information about configuring a Windows instance, see [Configuring a Seconda
 
 ### Viewing Your Secondary Private IPv4 Addresses<a name="view-privateIPs"></a>
 
-**To view the private IPv4 addresses assigned to a network interface in EC2\-VPC**
+**To view the private IPv4 addresses assigned to a network interface**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 

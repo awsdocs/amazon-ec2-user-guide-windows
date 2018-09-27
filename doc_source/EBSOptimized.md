@@ -48,6 +48,7 @@ The following table lists current\-generation instance types that support EBS op
 | d2\.4xlarge | Yes | 2,000 | 250 | 16,000 | 
 | d2\.8xlarge | Yes | 4,000 | 500 | 32,000 | 
 | f1\.2xlarge | Yes | 1,700 | 212\.5 | 12,000 | 
+| f1\.4xlarge | Yes | 3,500 | 400 | 44,000 | 
 | f1\.16xlarge | Yes | 14,000 | 1,750 | 75,000 | 
 | g3\.4xlarge | Yes | 3,500 | 437\.5 | 20,000 | 
 | g3\.8xlarge | Yes | 7,000 | 875 | 40,000 | 

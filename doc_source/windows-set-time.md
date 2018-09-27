@@ -125,9 +125,7 @@ When you change the time on a Windows instance, you must ensure that the time pe
    reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
    ```
 
-1. If you are using a Windows Server 2008 AMI \(*not* Windows Server 2008 R2\) that was created before February 22, 2013, you should verify that the Microsoft hotfix [KB2800213](http://support.microsoft.com/default.aspx?scid=kb;EN-US;2800213) is installed\. If this hotfix is not installed, install it\. This hotfix resolves a known issue in which the RealTimeIsUniversal key causes the Windows CPU to run at 100% during Daylight savings events and the start of each calendar year \(January 1\)\.
-
-   If you are using an AMI running Windows Server 2008 R2 \(*not* Windows Server 2008\), you must verify that the Microsoft hotfix [KB2922223](https://support.microsoft.com/en-us/help/2922223/you-cannot-change-system-time-if-realtimeisuniversal-registry-entry-is) is installed\. If this hotfix is not installed, install it\. This hotfix resolves a known issue in which the RealTimeIsUniversal key prevents the system from updating the CMOS clock\.
+1. If you are using a Windows Server 2008 AMI \(*not* Windows Server 2008 R2\) that was created before February 22, 2013, you should verify that the Microsoft hotfix [KB2800213](https://support.microsoft.com/en-us/help/2800213/high-cpu-usage-during-dst-changeover-in-windows-server-2008-windows-7) is installed\. If this hotfix is not installed, we recommend updating to the latest AWS Windows AMI\. If you are using an AMI running Windows Server 2008 R2 \(*not* Windows Server 2008\), you must verify that the Microsoft hotfix [KB2922223](https://support.microsoft.com/en-us/help/2922223/you-cannot-change-system-time-if-realtimeisuniversal-registry-entry-is) is installed\. If this hotfix is not installed, we recommend updating to the latest AWS Windows AMI\. 
 
 1. \(Optional\) Verify that the instance saved the key successfully using the following command:
 

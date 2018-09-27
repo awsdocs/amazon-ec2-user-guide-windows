@@ -94,7 +94,7 @@ X1 instances include Intel Scalable M​​emory Buffers, providing 300 GiB/s of
 
 For more information about how much RAM can be enabled for memory optimized instances, see [Hardware Specifications](#memory-instances-hardware)\.
 
-Memory optimized instances have high\-memory and require 64\-bit HVM AMIs to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. \.
+Memory optimized instances have high memory and require 64\-bit HVM AMIs to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on memory optimized instances\. \.
 
 ## Instance Performance<a name="memory-compute-perf"></a>
 
@@ -152,23 +152,21 @@ For instance store volumes that support TRIM, you can use the TRIM command to no
 The following is a summary of features for memory optimized instances\.
 
 
-|  | VPC only | EBS only | Instance store | Placement group | 
+|  | EBS only | NVMe EBS | Instance store | Placement group | 
 | --- | --- | --- | --- | --- | 
-| R4 | Yes | Yes |  | Yes | 
+| R4 | Yes |  |  | Yes | 
 | R5 | Yes | Yes |  | Yes | 
-| R5d | Yes |  | NVME \* | Yes | 
-| X1 | Yes |  | SSD | Yes | 
-| X1e | Yes |  | SSD | Yes | 
-| z1d | Yes |  | NVME \* | Yes | 
+| R5d |  | Yes | NVME \* | Yes | 
+| X1 |  |  | SSD | Yes | 
+| X1e |  |  | SSD | Yes | 
+| z1d |  | Yes | NVME \* | Yes | 
 
 **\*** The root device volume must be an Amazon EBS volume\.
 
 For more information, see the following:
-+ [Instance Types Available Only in a VPC](using-vpc.md#vpc-only-instance-types)
-+ [Amazon EBS–Optimized Instances](EBSOptimized.md)
++ [Amazon EBS and NVMe](nvme-ebs-volumes.md)
 + [Amazon EC2 Instance Store](InstanceStorage.md)
 + [Placement Groups](placement-groups.md)
-+ [Enhanced Networking on Windows](enhanced-networking.md)
 
 ## High Availability and Reliability \(X1\)<a name="x1-windows-high-avail"></a>
 
@@ -210,5 +208,4 @@ The following AMIs support launching memory optimized instances:
 + You can't launch X1 instances using a Windows Server 2008 SP2 64\-bit AMI, except for `x1.16xlarge` instances\.
 + You can't launch X1e instances using a Windows Server 2008 SP2 64\-bit AMI\.
 + With earlier versions of the Windows Server 2008 R2 64\-bit AMI, you can't launch `r4.large` and `r4.4xlarge` instances\. If you experience this issue, update to the latest version of this AMI\.
-+ [ClassicLink](vpc-classiclink.md) is not supported for R5, R5d, and z1d instances—you cannot use ClassicLink to link your EC2\-Classic instances to these instances in your VPC\.
 + There is a limit on the total number of instances that you can launch in a region, and there are additional limits on some instance types\. For more information, see [How many instances can I run in Amazon EC2?](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2)\. To request a limit increase, use the [Amazon EC2 Instance Request Form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-ec2-instances)\.

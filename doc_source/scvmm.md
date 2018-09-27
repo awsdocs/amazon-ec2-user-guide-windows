@@ -13,7 +13,6 @@ Amazon Web Services \(AWS\) Systems Manager for Microsoft System Center Virtual 
 
 ## Limitations<a name="limitations"></a>
 + Users must have an account that they can use to log in to SCVMM\.
-+ You can't launch EC2 instances into EC2\-Classic; you must launch them into a VPC\.
 + You can't import Linux virtual machines from SCVMM to Amazon EC2\.
 + This is not a comprehensive tool for creating and managing AWS resources\. The add\-in enables SCVMM users to get started quickly with the basic tasks for managing their EC2 instances\. Future releases might support managing additional AWS resources\.
 

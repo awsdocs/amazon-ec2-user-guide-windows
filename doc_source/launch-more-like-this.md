@@ -25,7 +25,7 @@ The following configuration details are copied from the selected instance into t
 + Association information\. If the selected instance is associated with a configuration file, the same file is automatically associated with the new instance\. If the configuration file includes a joined domain configuration, the new instance is joined to the same domain\. For more information about joining a domain, see [Launching an Instance \(Simple AD and Microsoft AD\)](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/launching_instance.html)\.
 
 The following configuration details are not copied from your selected instance; instead, the wizard applies their default settings or behavior:
-+ \(VPC only\) Number of network interfaces: The default is one network interface, which is the primary network interface \(eth0\)\.
++ Number of network interfaces: The default is one network interface, which is the primary network interface \(eth0\)\.
 + Storage: The default storage configuration is determined by the AMI and the instance type\.
 
 **To use your current instance as a template**

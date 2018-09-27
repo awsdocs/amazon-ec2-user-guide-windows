@@ -12,6 +12,6 @@ After you have successfully launched and logged into your instance, you can make
 + [Setting the Time for a Windows Instance](windows-set-time.md)
 + [Setting Passwords for Windows Instances](ec2-windows-passwords.md)
 + [Adding Windows Components Using Installation Media](windows-optional-components.md)
-+ [Configuring a Secondary Private IPv4 Address for Your Windows Instance in a VPC](config-windows-multiple-ip.md)
++ [Configuring a Secondary Private IPv4 Address for Your Windows Instance](config-windows-multiple-ip.md)
 + [Running Commands on Your Windows Instance at Launch](ec2-windows-user-data.md)
 + [Instance Metadata and User Data](ec2-instance-metadata.md)

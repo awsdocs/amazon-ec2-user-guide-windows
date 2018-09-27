@@ -103,7 +103,7 @@ You can use one of the following commands\. For more information about these com
 
 ## Networking and Security<a name="EC2Win_Sec"></a>
 
-By default, an instance that's launched into EC2\-VPC is assigned public IPv4 address only if it's launched into a default VPC\. An instance that's launched into a non\-default VPC must be specifically assigned a public IPv4 address at launch, or you must modify your subnet's default public IPv4 addressing behavior\. For more information about EC2\-VPC, see [Supported Platforms](ec2-supported-platforms.md)\.
+By default, an instance is assigned public IPv4 address only if it's launched into a default VPC\. An instance that's launched into a nondefault VPC must be specifically assigned a public IPv4 address at launch, or you must modify your subnet's default public IPv4 addressing behavior\.
 
 Instances can fail or terminate for reasons outside of your control\. If one fails and you launch a replacement instance, the replacement has a different public IPv4 address than the original\. However, if your application needs a static IPv4 address, Amazon EC2 offers *Elastic IP addresses*\. For more information, see [Amazon EC2 Instance IP Addressing](using-instance-addressing.md)\.
 

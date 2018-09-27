@@ -54,7 +54,7 @@ The following table shows the changes to AWS PV drivers for each driver release\
 | 8\.2\.3 |  Bug fixes and performance improvements\.  | 29 May 2018 | 
 | 8\.2\.1 |  Network and storage performance improvements plus multiple robustness fixes\. To verify that this version has been installed, refer to the following Windows registry value: `HKLM\Software\Amazon\PVDriver\Version 8.2.1`\.  | 8 March 2018 | 
 | 7\.4\.6 | Stability fixes to make AWS PV drivers more resilient\. | 26 April 2017 | 
-| 7\.4\.3 |  Added support for Windows Server 2016\. Stability fixes for all supported Windows OS versions\.  | 18 Nov 2016 | 
+| 7\.4\.3 |  Added support for Windows Server 2016\. Stability fixes for all supported Windows OS versions\. \*AWS PV driver version 7\.4\.3's signature expires on March 29, 2019\. We recommend updating to the latest AWS PV driver\.   | 18 Nov 2016 | 
 | 7\.4\.2 | Stability fixes for support of X1 instance type\. | 2 Aug 2016 | 
 | 7\.4\.1 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 12 July 2016 | 
 | [7\.3\.2](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverSetup7.3.2.zip) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 24 June 2015 | 

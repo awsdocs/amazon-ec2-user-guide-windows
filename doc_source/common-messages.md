@@ -64,10 +64,8 @@ You can terminate this instance and launch a new instance using the same AMI, ma
 A Windows instance must obtain information from its instance metadata before it can activate itself\. By default, the `WaitForMetaDataAvailable` setting ensures that the EC2Config service waits for the instance metadata to be accessible before continuing with the boot process\. For more information, see [Instance Metadata and User Data](ec2-instance-metadata.md)\.
 
 If the instance is failing the instance reachability test, try the following to resolve this issue\.
-+ \[EC2\-VPC\] Check the CIDR block for your VPC\. A Windows instance cannot boot correctly if it's launched into a VPC that has an IP address range from `224.0.0.0` to `255.255.255.255` \(Class D and Class E IP address ranges\)\. These IP address ranges are reserved, and should not be assigned to host devices\. We recommend that you create a VPC with a CIDR block from the private \(non\-publicly routable\) IP address ranges as specified in [RFC 1918](http://www.faqs.org/rfcs/rfc1918.html)\.
-+ It's possible that the system has been configured with a static IP address\. Try the following:
-  + \[EC2\-VPC\] [Create a network interface](using-eni.md#create_eni) and [attach it to the instance](using-eni.md#attach_eni_running_stopped)\.
-  + \[EC2\-Classic\] Enable DHCP\.
++ Check the CIDR block for your VPC\. A Windows instance cannot boot correctly if it's launched into a VPC that has an IP address range from `224.0.0.0` to `255.255.255.255` \(Class D and Class E IP address ranges\)\. These IP address ranges are reserved, and should not be assigned to host devices\. We recommend that you create a VPC with a CIDR block from the private \(non\-publicly routable\) IP address ranges as specified in [RFC 1918](http://www.faqs.org/rfcs/rfc1918.html)\.
++ It's possible that the system has been configured with a static IP address\. Try [creating a network interface](using-eni.md#create_eni) and [attaching it to the instance](using-eni.md#attach_eni_running_stopped)\.
 + 
 
 **To enable DHCP on a Windows instance that you can't connect to**
