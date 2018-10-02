@@ -18,6 +18,28 @@ When you stop an instance, the data on any instance store volumes is erased\. Th
 **Note**  
 Parts 4 and 5 of these instructions can be completed after you migrate or change the instance type to the latest generation, such as M5 or C5\. However, we recommend that you complete them before you migrate if you are migrating specifically to an EC2 Bare Metal instance type\. 
 
+## Automated version: AWSSupport-UpgradeWindowsAWSDrivers (Systems Manager Automation document)
+The AWSSupport-UpgradeWindowsAWSDrivers automation automates the steps described in Part 1, Part 2 and Part 3. Additionally, this method can repair an instance where the drivers upgrade fail.
+The AWSSupport-UpgradeWindowsAWSDrivers automation upgrades or repairs storage and network AWS drivers on the specified EC2 instance. The document attempts to install the latest versions of AWS drivers online by calling the SSM agent. If the SSM agent is not contactable, the document can perform an offline installation of the AWS drivers if explicitly requested. Note: Both the online and offline upgrade will create an AMI before attempting any operations, which will persist after the automation completes. It is your responsibility to secure access to the AMI, or to delete it. The online method restarts the instance as part of the upgrade process, while the offline method requires the provided EC2 instance be stopped and then started.
+
+**Warning**  
+When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you wish to preserve, ensure that you back it up to persistent storage\.
+
+- Open the Systems Manager Console at https://console.aws.amazon.com/systems-manager
+- Click **Automation**
+- Click **Execute Automation**
+- Select **AWSSupport-UpgradeWindowsAWSDrivers** (Owner: Amazon)
+- Select your targets
+- Under **Input Parameters**:
+  - Locate **InstanceId**, and enter the ID of the instance (Windows) to upgrade the AWS drivers of.
+  - (Optional) Locate **AllowOffline**, and specify if you consent to an offline upgrade (if needed). The default is *False*.
+  - (Optional) Locate **SubnetId**, and enter one of the following values:
+   - *SelectedInstanceSubnet*: use the same subnet of your instance to create a helper instance to perform the offline upgrade. Your subnet must allow communication to the SSM endpoints. This is the default value.
+   - *CreateNewVPC*: create a new VPC for the helper instance. You must be able to create a VPC to use this option. Use this option if you are not sure that the current instance subnet allows communication to the SSM endpoints.
+   - Provide a custom subnet ID. This must be in the same AZ as your instance, and must allow communication to the SSM endpoints.
+- Click **Run**
+- Monitor progress of execution. It takes approximately 10 minutes to complete the online upgrade, and 25 minutes to complete the offline upgrade.
+
 ## Part 1: Installing and upgrading AWS PV drivers<a name="upgrade-pv"></a>
 
 Though AWS PV drivers are not utilized in the Nitro system, we still recommend upgrading them if you are on previous versions of either Citrix PV or AWS PV\. The latest AWS PV drivers resolve bugs in previous versions of the drivers that may appear while you are on a Nitro system, or if you need to migrate back to a Xen\-based instance\. As best practice, we recommend always updating to the latest drivers for Windows instances on AWS\. 
