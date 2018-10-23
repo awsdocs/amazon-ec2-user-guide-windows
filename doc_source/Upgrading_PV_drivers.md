@@ -90,7 +90,7 @@ After you run this command do not manually reboot the system\. The system will b
 
 1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop\. Open Disk Management to review any offline secondary volumes and bring them online corresponding to the drive letters and folder mappings noted in Step 6\. 
 **Important**  
-You must connect to the instance by specifying user name in the following format *hostname*\\administrator\. For example, Win2k12TestBox\\administrator\.
+You must connect to the instance by specifying the user name in the following format *hostname*\\administrator\. For example, Win2k12TestBox\\administrator\.
 
 1. Run the following command to remove the DSRM boot configuration:
 

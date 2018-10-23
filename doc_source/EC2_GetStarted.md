@@ -122,7 +122,7 @@ Sometimes copying and pasting content can corrupt data\. If you encounter a "Pas
 
    1. \[Windows\] Choose **Yes** in the **Remote Desktop Connection** window to connect to your instance\.
 
-      \[Mac OS\] Log in as prompted, using the default administrator account and the default administrator password that you recorded or copied previously\. Note that you might need to switch spaces to see the login screen\. For more information about spaces, see [http://support\.apple\.com/kb/PH14155](http://support.apple.com/kb/PH14155)\.
+      \[Mac OS\] Log in as prompted, using the default administrator account and the default administrator password that you recorded or copied previously\. Note that you might need to switch spaces to see the login screen\. For more information about spaces, see [support\.apple\.com/en\-us/HT204100](https://support.apple.com/en-us/HT204100)\.
 
    1. If you receive an error while attempting to connect to your instance, see [Remote Desktop can't connect to the remote computer](troubleshooting-windows-instances.md#rdp-issues)\.
 

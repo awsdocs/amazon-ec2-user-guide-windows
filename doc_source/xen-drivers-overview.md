@@ -51,6 +51,7 @@ The following table shows the changes to AWS PV drivers for each driver release\
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+| 8\.2\.4 |  Reliability improvements\.  | 2 October 2018 | 
 | 8\.2\.3 |  Bug fixes and performance improvements\.  | 29 May 2018 | 
 | 8\.2\.1 |  Network and storage performance improvements plus multiple robustness fixes\. To verify that this version has been installed, refer to the following Windows registry value: `HKLM\Software\Amazon\PVDriver\Version 8.2.1`\.  | 8 March 2018 | 
 | 7\.4\.6 | Stability fixes to make AWS PV drivers more resilient\. | 26 April 2017 | 

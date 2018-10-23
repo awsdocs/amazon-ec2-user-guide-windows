@@ -100,7 +100,7 @@ When you run Upgrade Helper Service on the system *before* the upgrade, it perfo
 + Checks for unsigned boot critical drivers and presents a warning if any are found\. Unsigned boot critical drivers could cause system failure after the upgrade if the drivers are not compatible with the newer Windows Server version\.
 
 When you run Upgrade Helper Service on the system *after* the upgrade, it performs the following tasks:
-+ Enables the `RealTimeIsUniversal` registry key for correct time synchronization\.
++ Enables the `RealTimeIsUniversal` registry key for the correct time synchronization\.
 + Restores the missing PV driver by executing the following command:
 
   pnputil \-i \-a "C:\\Program Files \(x86\)\\Citrix\\XenTools\\\*\.inf"

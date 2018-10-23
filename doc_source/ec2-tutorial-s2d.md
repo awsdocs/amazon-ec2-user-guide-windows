@@ -41,7 +41,7 @@ A basic understanding of Windows Server computing as well as how to create and m
 
 The following diagram shows the architecture of a two node EC2 Windows S2D Cluster using a file share witness hosted on an existing bastion machine on AWS\.
 
-![\[Two Node EC2 S2D Cluster\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/2%20Nodes%20EC2%20Windows%20S2D%20Cluster.jpg)
+![\[Two Node EC2 S2D Cluster\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/2 Nodes EC2 Windows S2D Cluster.jpg)
 
 ## Step 1: Launch and Domain Join Instances<a name="ec2-s2d-launch-instances"></a>
 

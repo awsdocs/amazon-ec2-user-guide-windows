@@ -239,5 +239,5 @@ Check for the following issues:
     mstsc /v:instance /admin
     ```
 
-    For more information, see the following Microsoft article: [Use command line parameters with Remote Desktop Connection](http://windows.microsoft.com/en-us/windows/command-line-parameters-remote-desktop-connection#1TC=windows-7)\.
+    For more information, see the following Microsoft article: [Access Remote Desktop Via Command Line](https://social.technet.microsoft.com/wiki/contents/articles/4487.access-remote-desktop-via-commandline.aspx)\.
   + Stop the instance, detach its Amazon EBS volumes, and attach them to another instance in the same Availability Zone to recover your data\.

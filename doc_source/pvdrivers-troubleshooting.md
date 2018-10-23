@@ -45,7 +45,7 @@ When you stop an instance, the data on any instance store volumes is erased\. Th
 
 1. [Start](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Stop_Start.html) the instance\.
 
-1. Connect to the instance using Remote Desktop and then [download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverSetup.zip) the AWS PV Drivers Upgrade package to the instance\.
+1. Connect to the instance using Remote Desktop and then [download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/Latest/AWSPVDriver.zip) the AWS PV Drivers Upgrade package to the instance\.
 
 1. Extract the contents of the folder and run `AWSPVDriverSetup.msi`\.
 
@@ -122,7 +122,7 @@ If you do not create the instance in the same Availability Zone as the affected 
 
 1. [Start](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Stop_Start.html) the instance\.
 
-1. Connect to the instance using Remote Desktop and then [download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverSetup.zip) the AWS PV Drivers Upgrade package to the instance\.
+1. Connect to the instance using Remote Desktop and then [download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/Latest/AWSPVDriver.zip) the AWS PV Drivers Upgrade package to the instance\.
 
 1. Extract the contents of the folder and run `AWSPVDriverSetup.msi`\.
 

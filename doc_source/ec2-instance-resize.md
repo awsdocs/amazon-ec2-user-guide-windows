@@ -47,6 +47,8 @@ Use the following procedure to resize an Amazon EBS–backed instance using the 
 **Note**  
 The AWS PV driver package should be updated before changing instance families\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
 
+1. \(Optional\) If you've configured your instance to use [static IP addressing](config-windows-multiple-ip.md#step1) and you resize the instance from a type that doesn't support enhanced networking to an instance type that does support enhanced networking you might get a warning about a potential IP address conflict when you reconfigure static IP addressing\. To prevent this, enable DHCP on the network interface for your instance before you change the instance type\. From your instance, open the **Network and Sharing Center**, go to **Internet Protocol Version 4 \(TCP/IPv4\) Properties** for the network interface, and choose **Obtain an IP address automatically**\. Change the instance type and reconfigure static IP addressing on the network interface\.
+
 1. Open the Amazon EC2 console\.
 
 1. \[Windows Server 2016\] Connect to your Windows instance and run the following EC2Launch PowerShell script to configure the instance after it is resized\.
