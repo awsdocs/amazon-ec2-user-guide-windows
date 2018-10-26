@@ -25,9 +25,9 @@ Windows Firewall may also block incoming traffic\. If you're having trouble sett
 
 Security groups act as a firewall for associated instances, controlling both inbound and outbound traffic at the instance level\. You must add rules to a security group that enable you to connect to your Windows instance from your IP address using RDP\.
 
-**To add a rule to a security group for inbound RDP traffic over IPv4 using the console**
+**To add a rule to a security group for inbound RDP traffic over IPv4 \(console\)**
 
-1. In the navigation pane of the Amazon EC2 console, choose **Instances**\. Select your instance and look at the **Description** tab; **Security groups** lists the security groups that are associated with the instance\. Choose **view rules** to display a list of the rules that are in effect for the instance\.
+1. In the navigation pane of the Amazon EC2 console, choose **Instances**\. Select your instance and look at the **Description** tab; **Security groups** lists the security groups that are associated with the instance\. Choose **view inbound rules** to display a list of the rules that are in effect for the instance\.
 
 1. In the navigation pane, choose **Security Groups**\. Select one of the security groups associated with your instance\.
 
@@ -41,7 +41,7 @@ Security groups act as a firewall for associated instances, controlling both inb
 
 If you launched an instance with an IPv6 address and want to connect to your instance using its IPv6 address, you must add rules that allow inbound IPv6 traffic over RDP\.
 
-**To add a rule to a security group for inbound RDP traffic over IPv6 using the console**
+**To add a rule to a security group for inbound RDP traffic over IPv6 \(console\)**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
