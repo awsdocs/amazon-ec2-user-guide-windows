@@ -1,4 +1,4 @@
-# Deploying Storage Spaces Direct \(S2D\) on Amazon EC2<a name="ec2-tutorial-s2d"></a>
+# Tutorial: Deploy Storage Spaces Direct \(S2D\) on Amazon EC2<a name="ec2-tutorial-s2d"></a>
 
 Storage Spaces Direct \(S2D\) is a highly\-scalable, software\-defined storage architecture that enables users to cluster local storage with features in Windows Server 2016\. S2D is an alternative to traditional SAN or NAS arrays\. It uses built\-in Windows features and tools to configure highly\-available storage that crosses multiple nodes in a cluster\. For more information, see [Storage Spaces Direct](https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/storage-spaces-direct-overview) in the Microsoft documentation\.
 
@@ -18,14 +18,14 @@ A basic understanding of Windows Server computing as well as how to create and m
 + If you haven't done so already, open [https://aws\.amazon\.com/](https://aws.amazon.com/) and create an AWS account\.
 + Create a virtual private cloud \(VPC\) with a public subnet and two private subnets for your instances\. A third, private, subnet should be configured for AWS Directory Service\.
 + Select one of the latest Amazon Machine Images \(AMIs\) for Windows Server 2016\. You can use this AMI as is, or use it as the basis for your own custom AMI\. AWS recommends using the latest public EC2 Windows Server 2016 AMI\. 
-+ Create an AWS Directory Service directory\. This is no longer a requirement for enabling Failover Clustering in Windows Server 2016\. However, this tutorial assumes that your instances will be joined to an Active Directory domain, either on EC2 or AWS Managed Active Directory\. For more information, see [Getting Started with AWS Directory Service](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/getting_started.html) in the *AWS Directory Service Administration Guide*\.
++ Create an AWS Directory Service directory\. This is no longer a requirement for enabling the Failover Clustering feature in Windows Server 2016\. However, this tutorial assumes that your instances will be joined to an Active Directory domain, either on EC2 or AWS Managed Active Directory\. For more information, see [Getting Started with AWS Directory Service](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/getting_started.html) in the *AWS Directory Service Administration Guide*\.
 + Install and configure the AWS Tools for Windows PowerShell on your computer\. For more information, see the [AWS Tools for Windows PowerShell User Guide](https://docs.aws.amazon.com/powershell/latest/userguide/)\.
 
 **Important considerations**
 +  Stopping instances with [Instance Store Volumes](InstanceStorage.md) can cause data loss if the data is not backed up or replicated\. The data in an instance store persists only during the lifetime of its associated instance\. If an instance reboots \(intentionally or unintentionally\), data in the instance store persists\. However, data in the instance store is lost under the following circumstances: 
-  + The underlying disk drive fails
-  + The instance stops
-  + The instance terminates
+  + The underlying disk drive fails\.
+  + The instance stops\.
+  + The instance terminates\.
 + Stopping too many instance in a cluster can cause data loss if the data is not backed up or replicated\. When you use S2D on AWS, as with any cluster, losing more nodes than your fault tolerance allows will result in loss of data\. One of the biggest risks to any cluster is losing all nodes\. Cluster redundancy protects against failures on a single instance \(or more, if your fault tolerance supports it\)\. However, you can lose data if the number of instances with failed disk drives in a cluster exceeds the fault tolerance\. You can also lose data if the number of stopped or terminated instances exceeds the fault tolerance\. To reduce risk, limit the number of people or systems that can stop or terminate instances in the cluster\. To mitigate the risk of terminating cluster node instances, [enable termination protection](terminating-instances.md#Using_ChangingDisableAPITermination) on these instances\. You can also configure [IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_ec2_tag-owner.html) to allow users to only restart nodes from the AWS console but not stop them\.
 + S2D does not protect against networking or data center failures that affect the entire cluster\. To reduce risk, consider using Dedicated Hosts to ensure that instances are not placed in the same rack\.
 
@@ -209,11 +209,11 @@ When the cluster is ready, enable S2D on one of the nodes using [Enable\-Cluster
 
 To provision storage, create a storage pool and then create volumes in that pool\. To keep thing simple, by default, the [Enable\-ClusterS2D](https://technet.microsoft.com/en-us/itpro/powershell/windows/failoverclusters/enable-clusterstoragespacesdirect) command creates a pool using all of the disks available in the cluster\. With this command we configured the storage pool name as "S2D Pool\." 
 
-Once volumes are created, they become accessible to every node in the cluster\. The volumes can then be assigned to a specific role in the cluster, such as a file server role; or, they can be assigned as [Cluster Shared Volumes](https://docs.microsoft.com/en-us/windows-server/failover-clustering/failover-cluster-csvs) \(CSV\)\. A CSV is accessible to the entire cluster, which means that every node in this cluster can write\-read to this volume\.
+Once volumes are created, they become accessible to every node in the cluster\. The volumes can then be assigned to a specific role in the cluster, such as a file server role; or, they can be assigned as [cluster shared volumes](https://docs.microsoft.com/en-us/windows-server/failover-clustering/failover-cluster-csvs) \(CSV\)\. A CSV is accessible to the entire cluster, which means that every node in this cluster can write\-read to this volume\.
 
 To improve performance, we recommend you use fixed provisioning and a ReFS file system for CSV\. Sector size depends on what type of workloads will be deployed on the cluster\. For more information on sector size, see [Cluster Size Recommendations for ReFS and NTFS](https://blogs.technet.microsoft.com/filecab/2017/01/13/cluster-size-recommendations-for-refs-and-ntfs/)\. For improved local read performance, we recommend that you align the CSV with the node hosting your application or workload\. You can have multiple CSV and multiple applications spread across nodes\. 
 
-**Create a Cluster Shared Volume \(CSV\)**
+**Create a cluster shared volume \(CSV\)**
 + Use the [New\-Volume](https://docs.microsoft.com/en-us/powershell/module/storage/new-volume?view=win10-ps) command to create a new 1TB CSV\.
 
   ```

@@ -62,6 +62,7 @@ After your instance has been initialized the first time, you can configure EC2La
 
 **Topics**
 + [Configure Initialization Tasks](#ec2launch-inittasks)
++ [Schedule EC2Launch to Run on Every Boot](#run-on-every-boot)
 + [Initialize Drives and Map Drive Letters](#ec2launch-mapping)
 + [Send Windows Event Logs to the EC2 Console](#ec2launch-sendlogs)
 + [Send Windows Is Ready Message After A Successful Boot](#ec2launch-sendwinisready)
@@ -87,6 +88,7 @@ Specify settings in the `LaunchConfig.json` file to enable or disable the follow
      "setWallpaper": true,
      "addDnsSuffixList": true,
      "extendBootVolumeSize": true,
+     "handleUserData": true,                      
      "adminPasswordType": "Random | Specify | DoNothing",
      "adminPassword":  "password that adheres to your security policy (optional)"
    }
@@ -105,6 +107,32 @@ EC2Launch uses the password you specify in the `unattend.xml` file\. If you don'
    ```
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
    ```
+
+### Schedule EC2Launch to Run on Every Boot<a name="run-on-every-boot"></a>
+
+You can schedule EC2Launch to run on every boot instead of only the initial boot\.
+
+To enable EC2Launch to run on every boot: 
+
+1. Open Windows PowerShell and run the following command:
+
+   ```
+   PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -SchedulePerBoot
+   ```
+
+1. Or, run the executable with the following command:
+
+   ```
+   PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Settings\Ec2LaunchSettings.exe
+   ```
+
+   Then select `Run EC2Launch on every boot`\. You can specify that your EC2 instance `Shutdown without Sysprep` or `Shutdown with Sysprep`\.
+
+**Note**  
+When you enable EC2Launch to run on every boot, the following changes will be made to the `LaunchConfig.json` the next time EC2Launch runs:  
+`AdminPasswordType` will be set back to `DoNothing` so that the password does not change on each boot\.
+`HandleUserData` will be set back to `false` unless the user data has `persist` set to `true`\. For more information about user data scripts, see [User Data Scripts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html#user-data-scripts) in the Amazon EC2 User Guide\.
+Similarly, if you do not want your password reset on the next boot, you should set `AdminPasswordType` to `DoNothing` before rebooting\.
 
 ### Initialize Drives and Map Drive Letters<a name="ec2launch-mapping"></a>
 
