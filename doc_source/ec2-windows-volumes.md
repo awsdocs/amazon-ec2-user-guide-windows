@@ -96,7 +96,7 @@ Get-disk | ForEach-Object {
   If ($DiskDrive.path -like "*PROD_PVDISK*") {
     $BlockDeviceName = Convert-SCSITargetIdToDeviceName((Get-WmiObject -Class Win32_Diskdrive | Where-Object {$_.DeviceID -eq ("\\.\PHYSICALDRIVE" + $DiskDrive.Number) }).SCSITargetId)
     $BlockDeviceName = "/dev/" + $BlockDeviceName
-    $BlockDevice = $BlockDeviceMappings | Where-Object { $_.DeviceName -eq ($BlockDeviceName) }
+    $BlockDevice = $BlockDeviceMappings | Where-Object { $BlockDeviceName -like "*"+$_.DeviceName+"*" }
     $EbsVolumeID = $BlockDevice.Ebs.VolumeId 
     $VirtualDevice = If ($VirtualDeviceMap.ContainsKey($BlockDeviceName)) { $VirtualDeviceMap[$BlockDeviceName] } Else { $null }
   }
