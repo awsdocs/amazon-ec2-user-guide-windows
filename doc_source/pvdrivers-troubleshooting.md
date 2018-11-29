@@ -37,7 +37,7 @@ There are two methods for restoring network and storage connectivity to an insta
 
 1. Locate the affected instance\. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Stop**\.
 **Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
+When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
 1. After the instance is stopped create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
 
@@ -65,7 +65,7 @@ When you stop an instance, the data on any instance store volumes is erased\. Th
 
 1. Locate the affected instance\. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Stop**\.
 **Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
+When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
 1. Choose **Launch Instance** and create a temporary Windows Server 2008 or Windows Server 2012 instance in the same Availability Zone as the affected instance\. Do not create a Windows Server 2012 R2 instance\.
 **Important**  
@@ -144,7 +144,7 @@ If you are unable to perform an in\-place driver upgrade or migrate to a newer i
 
 1. Choose the instance for which you want to run the remediation script\. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Stop**\.
 **Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
+When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
 1. After the instance is stopped create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
 

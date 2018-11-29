@@ -28,7 +28,7 @@ If your instance is a domain controller, see [Upgrade a Domain Controller \(AWS 
 
 1. Choose the instance that requires the driver upgrade, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\.
 **Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
+When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
 1. After the instance is stopped, create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
 
@@ -58,7 +58,7 @@ Use the following procedure on a domain controller to perform either an in\-plac
 
 1. Choose the instance that requires the driver upgrade, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\.
 **Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
+When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
 1. After the instance is stopped, create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
 

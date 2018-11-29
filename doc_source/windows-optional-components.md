@@ -36,7 +36,7 @@ Use the following procedure to use the AWS Management Console to add Windows com
 
 1. Choose **Actions**, **Attach Volume**\.
 
-1. In the **Attach Volume** dialog box, type the instance ID, and choose **Attach**\.
+1. In the **Attach Volume** dialog box, type the instance ID and the name of the device for the attachment, and choose **Attach**\. If you need help with the device name, see [Device Naming](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html)\. 
 
 1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\.
 **Important**  

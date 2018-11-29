@@ -148,7 +148,7 @@ You can view the instance user data for any instance, and you can update the ins
 
 1. Select the instance and choose **Actions**, **Instance State**, **Stop**\.
 **Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
+When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
 1. When prompted for confirmation, choose **Yes, Stop**\. It can take a few minutes for the instance to stop\.
 

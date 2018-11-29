@@ -4,7 +4,7 @@ If you require high processing capability, you'll benefit from using accelerated
 
 GPU\-based instances provide access to NVIDIA GPUs with thousands of compute cores\. You can use GPU\-based accelerated computing instances to accelerate scientific, engineering, and rendering applications by leveraging the CUDA or Open Computing Language \(OpenCL\) parallel computing frameworks\. You can also use them for graphics applications, including game streaming, 3\-D application streaming, and other graphics workloads\.
 
-If your application needs a small amount of additional GPU resources for graphics acceleration, but is better suited for an instance type with different compute, memory, or storage specifications, use an Elastic GPU instead\. For more information, see [Amazon EC2 Elastic GPUs](elastic-gpus.md)\.
+If your application needs a small amount of additional graphics acceleration, but is better suited for an instance type with different compute, memory, or storage specifications, use an Elastic Graphics accelerator instead\. For more information, see [Amazon Elastic Graphics](elastic-graphics.md)\.
 
 FPGA\-based instances provide access to large FPGAs with millions of parallel system logic cells\. You can use FPGA\-based accelerated computing instances to accelerate workloads such as genomics, financial analysis, real\-time video processing, big data analysis, and security workloads by leveraging custom hardware accelerations\. You can develop these accelerations using hardware description languages such as Verilog or VHDL, or by using higher\-level languages such as OpenCL parallel computing frameworks\. You can either develop your own hardware acceleration code or purchase hardware accelerations through the [AWS Marketplace](https://aws.amazon.com/marketplace/)\.
 
@@ -100,7 +100,7 @@ EBS\-optimized instances enable you to get consistently high performance for you
 
 You can enable enhanced networking capabilities on supported instance types\. Enhanced networking provides significantly higher packet\-per\-second \(PPS\) performance, lower network jitter, and lower latencies\. For more information, see [Enhanced Networking on Windows](enhanced-networking.md)\.
 
-Instance types that use the Elastic Network Adapter \(ENA\) for enhanced networking deliver high packet per second performance with consistently low latencies\. Most applications do not consistently need a high level of network performance, but can benefit from having access to increased bandwidth when they send or receive data\. Instance types that use the ENA and support up to 10 Gbps of throughput use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. These instances accrue credits when their network throughput is below their baseline limits, and can use these credits when they perform network data transfers\. For workloads that require access to 10 Gbps of bandwidth or more on a sustained basis, we recommend using instance types that support 10 Gbps or 25 Gbps network speeds\.
+Instance types that use the Elastic Network Adapter \(ENA\) for enhanced networking deliver high packet per second performance with consistently low latencies\. Most applications do not consistently need a high level of network performance, but can benefit from having access to increased bandwidth when they send or receive data\. Instance sizes that use the ENA and are documented with network performance of "Up to 10 Gbps" or "Up to 25 Gbps" use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. These instances accrue credits when their network bandwidth is below their baseline limits, and can use these credits when they perform network data transfers\.
 
 The following is a summary of network performance for accelerated computing instances that support enhanced networking\.
 
@@ -123,7 +123,7 @@ The following is a summary of features for accelerated computing instances\.
 | G2 |  |  | SSD | Yes | 
 |  G3  |  Yes  |  |  |  Yes  | 
 |  P2  |  Yes  |  |  |  Yes  | 
-|  P3  |  Yes  |  |  |  Yes  | 
+|  P3  |  Yes  |   |   |  Yes  | 
 |  F1  |  |  |  NVMe \*  |  Yes  | 
 
 **\*** The root device volume must be an Amazon EBS volume\.

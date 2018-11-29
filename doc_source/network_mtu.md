@@ -22,8 +22,8 @@ For instances that are collocated inside a cluster placement group, jumbo frames
 You can use jumbo frames for traffic between your VPCs and your on\-premises networks over AWS Direct Connect\. For more information, see [Setting Network MTU](https://docs.aws.amazon.com/directconnect/latest/UserGuide/set-jumbo-frames-vif.html) in the *AWS Direct Connect User Guide*\.
 
 The following instances support jumbo frames:
-+ General purpose: M3, M4, M5, M5a, M5d, T2, T3
-+ Compute optimized: C3, C4, C5, C5d, and CC2
++ General purpose: M3, M4, M5, M5a, M5d, T2, and T3
++ Compute optimized: C3, C4, C5, C5d, C5n, and CC2
 + Memory optimized: CR1, R3, R4, R5, R5a, R5d, X1, and z1d
 + Storage optimized: D2, H1, HS1, I2, and I3
 + Accelerated computing: F1, G2, G3, P2, and P3
@@ -70,7 +70,7 @@ Some drivers are configured to use jumbo frames, and others are configured to us
 
 You can change the MTU setting using Device Manager or the Set\-NetAdapterAdvancedProperty command\.
 
-To get the current MTU setting using the Get\-NetAdapterAdvancedProperty command, use the following command\. Check the entry for the interface name `MTU`\. A value of 9000 indicates that Jumbo frames are enabled\. Jumbo frames are disabled by default\.
+To get the current MTU setting using the Get\-NetAdapterAdvancedProperty command, use the following command\. Check the entry for the interface name `MTU`\. A value of 9001 indicates that Jumbo frames are enabled\. Jumbo frames are disabled by default\.
 
 ```
 Get-NetAdapterAdvancedProperty -Name "Ethernet"
@@ -79,7 +79,7 @@ Get-NetAdapterAdvancedProperty -Name "Ethernet"
 Enable jumbo frames as follows:
 
 ```
-Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "MTU" -RegistryValue 9000
+Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "MTU" -RegistryValue 9001
 ```
 
 Disable jumbo frames as follows:
@@ -114,7 +114,7 @@ Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*JumboPacket" 
 
 You cannot change the MTU setting using Device Manager, but you can change it using the netsh command\.
 
-Get the current MTU setting using the following command\. The name of the interface can vary\. In the output, look for an entry with the name "Ethernet," "Ethernet 2," or "Local Area Connection"\. You'll need the interface name to enable or disable jumbo frames\. A value of 9000 indicates that Jumbo frames are enabled\.
+Get the current MTU setting using the following command\. The name of the interface can vary\. In the output, look for an entry with the name "Ethernet," "Ethernet 2," or "Local Area Connection"\. You'll need the interface name to enable or disable jumbo frames\. A value of 9001 indicates that Jumbo frames are enabled\.
 
 ```
 netsh interface ipv4 show subinterface
@@ -123,7 +123,7 @@ netsh interface ipv4 show subinterface
 Enable jumbo frames as follows:
 
 ```
-netsh interface ipv4 set subinterface "Ethernet" mtu=9000
+netsh interface ipv4 set subinterface "Ethernet" mtu=9001
 ```
 
 Disable jumbo frames as follows:

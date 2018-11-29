@@ -14,7 +14,7 @@ Use the following procedure to update the EC2Config service on a Windows Server 
 
 1. Locate the affected instance\. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Stop**\.
 **Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
+When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
 1. Choose **Launch Instance** and create a temporary `t2.micro` instance in the same Availability Zone as the affected instance\. Use a different AMI than the one that you used to launch the affected instance\.
 **Important**  

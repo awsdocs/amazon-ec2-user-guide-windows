@@ -5,7 +5,7 @@ If you have lost your Windows administrator password and are using a Windows Ser
 If you are using a Windows Server AMI earlier than Windows Server 2016, see [Resetting the Windows Administrator Password Using EC2Config](ResettingAdminPassword_EC2Config.md)\.
 
 **Warning**  
-When you stop an instance, the data on any instance store volumes is erased\. Therefore, if you have any data on instance store volumes that you want to keep, be sure to back it up to persistent storage\.
+When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
 **Note**  
 If you have disabled the local administrator account on the instance and your instance is configured for Systems Manager, you can also re\-enable and reset your local administrator password by using EC2Rescue and Run Command\. For more information, see [Using EC2Rescue for Windows Server with Systems Manager Run Command](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2rw-ssm.html)\.
