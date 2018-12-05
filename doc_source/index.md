@@ -164,6 +164,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md)
       + [Preliminary Tasks for Configuring Integration with CloudWatch](send_logs_to_cwl_gs.md)
       + [Configure Instances for CloudWatch](send_logs_to_cwl_instances.md)
+   + [Logging Amazon EC2 and Amazon EBS API Calls with AWS CloudTrail](monitor-with-cloudtrail.md)
 + [Network and Security](ec2-network-and-security.md)
    + [Amazon EC2 Key Pairs and Windows Instances](ec2-key-pairs.md)
    + [Amazon EC2 Security Groups for Windows Instances](using-network-security.md)

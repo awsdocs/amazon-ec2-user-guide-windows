@@ -85,7 +85,7 @@ The following procedure helps you prepare a Windows instance\. For directions to
    + [EC2HibernateAgent\.ps1](https://ec2-hibernate-downloads.s3.amazonaws.com/HibernateAgent/latest/windows/EC2HibernateAgent.ps1)
    + [LICENSE\.txt](https://ec2-hibernate-downloads.s3.amazonaws.com/HibernateAgent/latest/windows/LICENSE.txt)
 
-1. Add the following command to user data:
+1. Add the following command to the user data:
 
    ```
    <powershell>."C:\Program Files\Amazon\Hibernate\EC2HibernateAgent.exe"</powershell>

@@ -1,8 +1,8 @@
 # Migrating to Latest Generation Instance Types<a name="migrating-latest-types"></a>
 
-The AWS Windows AMIs are configured with the default settings used by the Microsoft installation media with some customizations, including drivers and configurations, that support the latest generation instance types\. However, if you are launching instances from custom Windows AMIs or from Windows AMIs provided by Amazon created before August 2018, we recommend that you follow the steps in this topic when migrating to the latest generation of EC2 instances, including instances in the Nitro system and Bare Metal families\. 
+The AWS Windows AMIs are configured with the default settings used by the Microsoft installation media with some customizations, including drivers and configurations, that support the latest generation instance types\. However, if you are launching instances from custom Windows AMIs or from Windows AMIs provided by Amazon created before August 2018, we recommend that you follow the steps in this topic when migrating to the latest generation of EC2 instances, Nitro instances, including bare metal instances\. 
 
-For more information about the Nitro system, see [Amazon EC2 Update — Additional Instance Types, Nitro System, and CPU Options](https://aws.amazon.com/blogs/aws/amazon-ec2-update-additional-instance-types-nitro-system-and-cpu-options/)\. 
+For more information, see [Amazon EC2 Update — Additional Instance Types, Nitro System, and CPU Options](https://aws.amazon.com/blogs/aws/amazon-ec2-update-additional-instance-types-nitro-system-and-cpu-options/)\. 
 
 **Contents**
 + [Part 1: Installing and Upgrading AWS PV Drivers](#upgrade-pv)
@@ -10,6 +10,7 @@ For more information about the Nitro system, see [Amazon EC2 Update — Addition
 + [Part 3: Upgrading AWS NVMe drivers](#upgrade-nvme)
 + [Part 4: Updating EC2Config and EC2Launch](#upgdate-ec2config-ec2launch)
 + [Part 5: Installing the Serial Port Driver for Bare Metal Instances](#install-serial-port-bare-metal)
++ [Part 6: Updating Power Management Settings](#power-management)
 + [\(Alternative\) Upgrading the AWS PV, ENA, and NVMe Drivers Using AWS Systems Manager](#auto-upgrade)
 
 **Note**  
@@ -58,11 +59,11 @@ Upgrade to the latest Elastic Network Adapter driver to ensure that all network 
 
 1. Extract the zip archive\. 
 
-1. Install the driver by running the `install.ps1` PowerShell script from the extracted folder\. 
+1. Install the driver by running the `install.ps1` PowerShell script from the extracted folder\.
 **Note**  
-To avoid installation errors, run the `install.ps1` script as an administrator\.
+To avoid installation errors, run this script as an administrator\.
 
-1.  Check if your AMI has enaSupport activated\. If not, continue by following the documentation at [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
+1. Check if your AMI has `enaSupport` enabled\. If not, continue by following the documentation at [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
 
 ## Part 3: Upgrading AWS NVMe drivers<a name="upgrade-nvme"></a>
 
@@ -75,15 +76,17 @@ The following instructions are modified specifically for when you install or upg
 
 1. Extract the zip archive\.
 
-1. Install the driver by running `dpinst.exe`\.
+1. Install the driver by running `install.ps1 -NoReboot`\.
 
 1. Open a PowerShell session and run the following command: 
 
-   `start rundll32.exe sppnp.dll,Sysprep_Generalize_Pnp -wait`
-**Note**  
-This command only runs sysprep on the driver devices\. It does not run the full sysprep preparation\.
+   ```
+   start rundll32.exe sppnp.dll,Sysprep_Generalize_Pnp -wait
+   ```
 
-1. For Windows Server 2008 R2, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type any time after the device sysprep\.
+   This command only runs sysprep on the driver devices\. It does not run the full sysprep preparation\.
+
+1. For Windows Server 2008 R2 and Windows Server 2012 RTM, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type any time after the device sysprep\.
 
 ## Part 4: Updating EC2Config and EC2Launch<a name="upgdate-ec2config-ec2launch"></a>
 
@@ -109,7 +112,7 @@ For more information, see [Installing the Latest Version of EC2Config](UsingConf
 
 1. Run `install.ps1`\.
 **Note**  
-To avoid installation errors, run the `install.ps1` script as an administrator\.
+To avoid installation errors, run the this script as an administrator\.
 
 1. If you made a backup of the EC2Launch configuration file, copy it to the `C:\ProgramData\Amazon\EC2-Windows\Launch\Config` directory\. 
 
@@ -117,15 +120,29 @@ For more information, see [Configuring a Windows Instance Using EC2Launch](ec2la
 
 ## Part 5: Installing the Serial Port Driver for Bare Metal Instances<a name="install-serial-port-bare-metal"></a>
 
-The `i3.metal` instance type uses a PCI\-based serial device rather than an I/O port\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device and have the serial port driver installed\. If you are not using an instance launched from an Amazon\-provided Windows AMI dated 2018\.04\.11 or later, you must install the Serial Port Driver to enable the serial device for EC2 features such as Password Generation and Console Output\. The latest EC2Config and EC2Launch utilities also support i3\.metal and provide additional functionality\. Follow the steps in Part 4, if you have not yet done so\. 
+The `i3.metal` instance type uses a PCI\-based serial device rather than an I/O port\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device and have the serial port driver installed\. If you are not using an instance launched from an Amazon\-provided Windows AMI dated 2018\.04\.11 or later, you must install the Serial Port Driver to enable the serial device for EC2 features such as Password Generation and Console Output\. The latest EC2Config and EC2Launch utilities also support `i3.metal` and provide additional functionality\. Follow the steps in Part 4, if you have not yet done so\. 
 
 **To install the serial port driver**
 
 1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPCISerialDriver/Latest/AWSPCISerialDriver.zip) the serial driver package to the instance\. 
 
-1. Extract the contents of the folder, open the context \(right\-click\) menu for aws\_ser\.INF, and choose **install**\. 
+1. Extract the contents of the folder, open the context \(right\-click\) menu for `aws_ser.INF`, and choose **install**\. 
 
 1. Choose **Okay**\.
+
+## Part 6: Updating Power Management Settings<a name="power-management"></a>
+
+The following update to power management settings will set displays to never turn off, which allows for graceful OS shutdowns on the Nitro system\. All Windows AMIs provided by Amazon as of 2018\.11\.28 already have this default configuration\.
+
+1. Open a command prompt or PowerShell session\.
+
+1. Run the following commands:
+
+   ```
+   powercfg /setacvalueindex 381b4222-f694-41f0-9685-ff5bb260df2e 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 0
+   powercfg /setacvalueindex 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 0
+   powercfg /setacvalueindex a1841308-3541-4fab-bc81-f71556f20b4a 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 0
+   ```
 
 ## \(Alternative\) Upgrading the AWS PV, ENA, and NVMe Drivers Using AWS Systems Manager<a name="auto-upgrade"></a>
 

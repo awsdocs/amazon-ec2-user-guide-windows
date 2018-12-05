@@ -164,7 +164,7 @@ If you are connecting to a Windows Server 2012 R2 instance using the Remote Desk
 Remote Desktop Connection cannot verify the identity of the computer that you want to connect to.
 ```
 
-Download the Microsoft Remote Desktop app from the Apple iTunes store and use the app to connect to your instance\.
+Download the Microsoft Remote Desktop app from the Mac App Store and use the app to connect to your instance\.
 
 ## RDP displays a black screen instead of the desktop<a name="rdp-black-screen"></a>
 

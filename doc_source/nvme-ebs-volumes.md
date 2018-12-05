@@ -9,10 +9,10 @@ Some of these instance types also support NVMe instance store volumes\. For more
 
 ## Identifying the EBS Device<a name="identify-nvme-ebs-device"></a>
 
-NVMe drivers typically discover attached devices by scanning the PCI bus during instance boot and create device nodes based on the order in which the devices respond\. This differs from the block\-device mapping that is performed during `RunInstances` or `AttachVolume` API call\. In Linux, NVMe devices names follow the pattern: `/dev/nvme<x>n<y>`, where `x` is the enumeration order, and, for EBS, `y` is 1\. Devices may respond to discovery in a different order in subsequent instance starts, causing the device name to change\.
+EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachments on Nitro\-based instances using the NVMe specification\. These devices rely on standard NVMe drivers on the operating system\. These drivers typically discover attached devices by scanning the PCI bus during instance boot, and create device nodes based on the order in which the devices respond, not on how the devices are specified in the block device mapping\. In Linux, NVMe device names follow the pattern `/dev/nvme<x>n<y>`, where <x> is the enumeration order, and, for EBS, <y> is 1\. Occasionally, devices can respond to discovery in a different order in subsequent instance starts, which causes the device name to change\.
 
-We recommend that you track your EBS volumes with one of the following stable identifiers:
-+ For Nitro\-based instances, the block device mappings that are specified in the Amazon EC2 console when you are attaching an EBS volume or during `AttachVolume` or `RunInstances` API calls are captured in the vendor\-specific data field of the NVMe controller identification\. Amazon Linux AMIs later than version 2017\.09\.01 provide a `udev` rule that reads this data and creates a symbolic link to the block\-device mapping\.
+We recommend that you use stable identifiers for your EBS volumes within your instance, such as one of the following:
++ For Nitro\-based instances, the block device mappings that are specified in the Amazon EC2 console when you are attaching an EBS volume or during `AttachVolume` or `RunInstances` API calls are captured in the vendor\-specific data field of the NVMe controller identification\. With Amazon Linux AMIs later than version 2017\.09\.01, we provide a `udev` rule that reads this data and creates a symbolic link to the block\-device mapping\.
 + NVMe\-attached EBS volumes have the EBS volume ID set as the serial number in the device identification\.
 + When a device is formatted, a UUID is generated that persists for the life of the filesystem\. A device label can be specified at the same time\. For more information, see [Making an Amazon EBS Volume Available for Use on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) and [Booting from the Wrong Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-booting-from-wrong-volume.html)\.
 
@@ -55,3 +55,5 @@ Most operating systems specify a timeout for I/O operations submitted to NVMe de
 + Canonical 4\.4\.0\-1041 or later
 + SLES 12 SP2 \(4\.4 kernel\) or later
 + RHEL 7\.5 \(3\.10\.0\-862 kernel\) or later
+
+You can verify the maximum value for your Linux distribution by writing a value higher than the suggested maximum to `/sys/module/nvme_core/parameters/io_timeout` and checking for the `Numerical result out of range` error when attempting to save the file\.

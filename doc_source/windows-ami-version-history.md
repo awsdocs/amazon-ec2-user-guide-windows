@@ -148,6 +148,7 @@ AWS provides AMIs with a variety of configurations for all supported Windows Ope
 + installs the latest drivers for AWS hardware, including network and disk drivers, as well as GPU drivers in selected AMIs\.
 + includes AWS helper software, like [EC2 Config](ec2config-service.md) for Server 2012 R2 and earlier, or [EC2 Launch](ec2launch.md) for Server 2016\.
 + configures Windows Time to use the [AWS Time Service](windows-set-time.md#default-ntp-settings)\.
++ makes changes in all power schemes to set the display to never turn off\.
 + performs minor bug fixes – generally one\-line registry changes to enable or disable features that we have found to improve performance on AWS\.
 
 Other than the adjustments listed above, we keep our AMIs as close as possible to the default install\. This means we default to the “stock” PowerShell or \.NET framework versions, don’t install Windows Features, and generally don’t change the AMI\.
@@ -201,6 +202,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2018\.11\.28 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.11\.20 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.11\.19 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.10\.14 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) **Microsoft Windows Server 2016 Datacenter and Standard Editions for Nano Server ** Microsoft ended mainstream support for Windows Server 2016 Datacenter and Standard Editions for Nano Server installation options as of April 10, 2018 \(see the [Microsoft Support Lifecycle page](https://support.microsoft.com/en-us/lifecycle/search?alpha=nano) for more details\)\.  Additional information about Nano Server lifecycle, including details on launching Nano Server as a container, can be found here: [https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel](https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel)\.  | 

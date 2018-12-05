@@ -95,18 +95,22 @@ Citrix PV drivers are used in Windows Server 2003 and 2008\. There is a known is
 You must run the Upgrade Helper Service before you start the upgrade\. After you run it, the utility creates a Windows service that executes during the post\-upgrade steps to correct the driver state\. The executable is written in C\# and can run on \.NET Framework versions 2\.0 through 4\.0\.
 
 When you run Upgrade Helper Service on the system *before* the upgrade, it performs the following tasks:
-+ Creates a new Windows service called `UpgradeHelperService`\.
-+ Verifies that Citrix PV drivers are installed\.
++ Creates a new Windows service named `UpgradeHelperService`\.
++ Verifies that the Citrix PV drivers are installed\.
 + Checks for unsigned boot critical drivers and presents a warning if any are found\. Unsigned boot critical drivers could cause system failure after the upgrade if the drivers are not compatible with the newer Windows Server version\.
 
 When you run Upgrade Helper Service on the system *after* the upgrade, it performs the following tasks:
 + Enables the `RealTimeIsUniversal` registry key for the correct time synchronization\.
 + Restores the missing PV driver by executing the following command:
 
-  pnputil \-i \-a "C:\\Program Files \(x86\)\\Citrix\\XenTools\\\*\.inf"
+  ```
+  pnputil -i -a "C:\Program Files (x86)\Citrix\XenTools\*.inf"
+  ```
 + Installs the missing device by executing the following command:
 
-  C:\\Temp\\EC2DriverUtils\.exe install "C:\\Program Files \(x86\)\\Citrix\\XenTools\\xevtchn\.inf" ROOT\\XENEVTCHN
+  ```
+  C:\Temp\EC2DriverUtils.exe install "C:\Program Files (x86)\Citrix\XenTools\xevtchn.inf" ROOT\XENEVTCHN
+  ```
 + Automatically removes `UpgradeHelperService` when complete\.
 
 ### Performing the Upgrade on Instances Running Citrix PV Drivers<a name="os-upgrade-citrix-go"></a>
@@ -145,7 +149,7 @@ This folder must be available in the same location after the upgrade\. Creating 
 
 1. [Download OSUpgrade\.zip](https://s3.amazonaws.com/ec2-downloads-windows/Upgrade/OSUpgrade.zip) and extract the files into the `C:\temp` folder\.
 
-1. Run `C:\temp\UpgradeHelperService.exe` review the `C:\temp\Log.txt` file for any warnings\.
+1. Run `C:\temp\UpgradeHelperService.exe` and review the `C:\temp\Log.txt` file for any warnings\.
 
 1. Use [Knowledge Base article 950376](http://support.microsoft.com/en-us/kb/950376) from Microsoft to uninstall PowerShell from a Windows 2003 instance\.
 

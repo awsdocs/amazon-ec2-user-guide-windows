@@ -12,8 +12,8 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
 
 ## Prerequisites<a name="rdp-prereqs"></a>
 + **Install an RDP client**
-  + \[Windows\] Windows includes an RDP client by default\. To verify, type mstsc at a Command Prompt window\. If your computer doesn't recognize this command, see the [Windows home page](http://windows.microsoft.com) and search for the download for Remote Desktop Connection\.
-  + \[Mac OS X\] Use the Microsoft Remote Desktop app from the Apple App Store\.
+  + \[Windows\] Windows includes an RDP client by default\. To verify, type mstsc at a Command Prompt window\. If your computer doesn't recognize this command, see the [Windows home page](https://windows.microsoft.com) and search for the download for the Microsoft Remote Desktop app\.
+  + \[Mac OS X\] Download the Microsoft Remote Desktop app from the Mac App Store\.
   + \[Linux\] Use [rdesktop](http://www.rdesktop.org/)\.
 + **Get the ID of the instance**
 
@@ -121,5 +121,5 @@ If you've enabled your VPC for IPv6 and assigned an IPv6 address to your Windows
 ## Transfer Files to Windows Instances<a name="AccessingInstancesWindowsFileTransfer"></a>
 
 You can work with your Windows instance the same way that you would work with any Windows server\. For example, you can transfer files between a Windows instance and your local computer using the local file sharing feature of the Microsoft Remote Desktop Connection software\. If you enable this option, you can access your local files from your Windows instances\. You can access local files on hard disk drives, DVD drives, portable media drives, and mapped network drives\. For more information, see the following articles from Microsoft:
-+ [Make Local Devices and Resources Available in a Remote Session](http://technet.microsoft.com/en-us/library/cc770631.aspx)
-+ [Getting Started with Remote Desktop Client on Mac](http://technet.microsoft.com/en-us/library/dn473012.aspx)
++ [Make Local Devices and Resources Available in a Remote Session](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770631)
++ [Get Started with Remote Desktop on Mac](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)
