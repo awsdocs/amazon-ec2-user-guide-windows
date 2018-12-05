@@ -123,9 +123,8 @@ Get-disk | ForEach-Object {
     Device        = If ($BlockDeviceName -eq $null) { "N/A" } Else { $BlockDeviceName };
     VirtualDevice = If ($VirtualDevice -eq $null) { "N/A" } Else { $VirtualDevice };
     VolumeName    = If ($VolumeName -eq $null) { "N/A" } Else { $VolumeName };
-    AWSVolumeName = If ($BlockDevice -eq $null) { "N/A" } Else { (Get-EC2Volume -VolumeId $EbsVolumeID).Tags.Value };
   }
-} | Sort-Object Disk | Format-Table -AutoSize -Property Disk, Partitions, DriveLetter, EbsVolumeId, Device, VirtualDevice, VolumeName, AWSVolumeName
+} | Sort-Object Disk | Format-Table -AutoSize -Property Disk, Partitions, DriveLetter, EbsVolumeId, Device, VirtualDevice, VolumeName
 ```
 
 **Note**  
