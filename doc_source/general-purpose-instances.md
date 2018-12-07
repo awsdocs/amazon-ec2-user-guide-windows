@@ -11,6 +11,8 @@ These instances provide an ideal cloud infrastructure, offering a balance of com
 + Caching fleets
 + Running backend servers for SAP, Microsoft SharePoint, cluster computing, and other enterprise applications
 
+For more information, see [Amazon EC2 M5 Instances](https://aws.amazon.com/ec2/instance-types/m5)\.
+
 **T2 and T3 Instances**
 
 These instances provide a baseline level of CPU performance with the ability to burst to a higher level when required by your workload\. An Unlimited instance can sustain high CPU performance for any period of time whenever required\. For more information, see [Burstable Performance Instances](burstable-performance-instances.md)\. These instances are well\-suited for the following applications:
@@ -18,6 +20,8 @@ These instances provide a baseline level of CPU performance with the ability to 
 + Code repositories
 + Development, build, test, and staging environments
 + Microservices
+
+For more information, see [Amazon EC2 T2 Instances](https://aws.amazon.com/ec2/instance-types/t2) and [Amazon EC2 T3 Instances](https://aws.amazon.com/ec2/instance-types/t3)\.
 
 **Topics**
 + [Hardware Specifications](#general-purpose-hardware)

@@ -38,7 +38,7 @@ For more information about Windows Server 2016, see [What's New with Windows Ser
 Use the following Windows PowerShell command to verify the installed version of EC2Launch\.
 
 ```
-PS C:\> Import-Module -Name C:\ProgramData\Amazon\EC2-Windows\Launch\Module\Ec2Launch.psd1; (Get-Module EC2Launch).Version.ToString()
+PS C:\> Test-ModuleManifest -Path "C:\ProgramData\Amazon\EC2-Windows\Launch\Module\Ec2Launch.psd1" | Select Version
 ```
 
 ## EC2Launch Directory Structure<a name="ec2launch-directories"></a>

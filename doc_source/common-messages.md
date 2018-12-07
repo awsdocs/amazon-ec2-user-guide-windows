@@ -181,6 +181,8 @@ Windows instances use Windows KMS activation\. You can receive this message: `A 
 
 If you encounter a Windows activation issue, use the following procedure to resolve the issue\.
 
+**For EC2Config \(Windows Server 2012 R2 AMIs and earlier\)**
+
 1. [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\. 
 
 1. Log onto the instance and open the following file: `C:\Program Files\Amazon\Ec2ConfigService\Settings\config.xml`\.
@@ -218,6 +220,24 @@ If this does not resolve the activation issue, follow these additional steps\.
   ```
   netsh advfirewall set allprofiles state off
   ```
+
+**For EC2Launch \(Windows Server 2016 AMIs and later\)**
+
+1. Run the following PowerShell commands:
+
+   ```
+   PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1
+   ```
+
+   ```
+   PS C:\> cscript "${env:SYSTEMROOT}\system32\slmgr.vbs" /ato
+   ```
+
+1. If the previous step doesn't fix the issue, try the following script to configure the appropriate registry keys for Windows to find the KMS servers\.
+
+   ```
+   PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Module\Scripts\Set-ActivationSettings.ps1
+   ```
 
 ## "Windows is not genuine \(0x80070005\)"<a name="windows-not-genuine"></a>
 

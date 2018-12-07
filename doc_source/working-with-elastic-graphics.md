@@ -5,44 +5,42 @@ You can launch an instance and associate it with an Elastic Graphics accelerator
 **Topics**
 + [Configuring Your Security Groups](#elastic-graphics-security)
 + [Launching an Instance with an Elastic Graphics accelerator](#attach-elastic-graphics-launch)
-+ [Installing and Updating the Elastic Graphics Packages](#elastic-graphics-install-libraries)
++ [Installing the Required Software for Elastic Graphics](#elastic-graphics-install-libraries)
 + [Verifying Elastic Graphics Functionality on Your Instance](#elastic-graphics-verify-instance)
 + [Viewing Elastic Graphics Information](#viewing-elastic-graphics)
 + [Submitting Feedback](#elastic-gpu-feedback)
 
 ## Configuring Your Security Groups<a name="elastic-graphics-security"></a>
 
-Create a new security group for the Elastic Graphics network interface\. To ensure communication between your instance and the accelerator, the security group rules must include a rule that allows both inbound and outbound TCP traffic over port 2007 from your instance's network interface, or from the security group associated with your instance\.
+If you use the Amazon EC2 console to launch your instance with an Elastic Graphics accelerator and create a security group for you, the console adds the inbound and outbound rules that are required to allow traffic on the Elastic Graphics port\. If you are launching your instance using the AWS CLI or an SDK, you must ensure that your security group allows traffic on the Elastic Graphics port\.
 
-**To create the security group for your Elastic Graphics network interface**
+**To create a security group for Elastic Graphics**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
 1. In the navigation pane, choose **Security Groups**, **Create Security Group**\.
 
-1. For **Security group name** type a value such as `Elastic Graphics Security Group`\. For **Description**, type a value\. For **VPC ID**, enter a VPC with which to associate the security group and then choose **Create**\.
+1. Provide a name for your security group, such as "Elastic Graphics security group", and a description for the security group\. Select the VPC that you will use to launch your instance with an Elastic Graphics accelerator\.
 
-1. Select the security group that you just created and choose **Actions**, **Edit inbound rules**\.
+1. Create an inbound security group rule as follows:
 
-1. Create the ingress security group rule:
+   1. On the **Inbound** tab, choose **Add Rule**
 
-   1. For **Type**, choose **Custom TCP Rule**\. For **Protocol**, choose **TCP**\. For **Port Range**, enter `2007`\. For **Source**, choose **Custom** and enter the ID of the security group that you created in the previous step\.
+   1. For **Type**, choose **Elastic Graphics**\. For **Source**, choose **Custom** and type the ID of the security group\.
 
-   1. Choose **Save**\.
+1. Create an outbound security group rule as follows:
 
-1. Select the security group that you just created and choose **Actions**, **Edit outbound rules**\.
+   1. On the **Outbound** tab, choose **Add Rule**
 
-1. Create the egress security group rule:
+   1. For **Type**, choose **All TCP**\. For **Destination**, choose **Custom** and type the ID of the security group\.
 
-   1. For **Type**, choose **Custom TCP Rule**\. For **Protocol**, choose **TCP**\. For **Port Range**, enter `0-65535`\. For **Destination**, choose **Custom** and enter the ID of the security group that you created in the previous step\.
+1. Choose **Create**\.
 
-   1. Choose **Save**\.
-
-For more information about security groups, see [Amazon EC2 Security Groups for Windows Instances](using-network-security.md)\.
+For more information, see [Amazon EC2 Security Groups for Windows Instances](using-network-security.md)\.
 
 ## Launching an Instance with an Elastic Graphics accelerator<a name="attach-elastic-graphics-launch"></a>
 
-You can associate an Elastic Graphics accelerator to an instance during launch\. If the launch fails, it may be for one of the following reasons:
+You can associate an Elastic Graphics accelerator to an instance during launch\. If the launch fails, the following are possible reasons:
 + Insufficient Elastic Graphics accelerator capacity
 + Exceeded limit on Elastic Graphics accelerators in the Region
 + Not enough private IPv4 addresses in your VPC to create a network interface for the accelerator
@@ -55,36 +53,39 @@ For more information, see [Elastic Graphics Limitations](elastic-graphics.md#ela
 
 1. From the dashboard, choose **Launch Instance**\.
 
-1. Select an AMI and an instance type\. For more information about supported AMIs and instance types, see [Elastic Graphics Basics](elastic-graphics.md#elastic-graphics-basics)\.
+1. Select a Windows AMI and a supported instance type\. For more information, see [Elastic Graphics Basics](elastic-graphics.md#elastic-graphics-basics)\.
 
 1. On the **Configure Instance Details** page, select a VPC and subnet in which to launch your instance\.
 
 1. Choose **Add Graphics Acceleration**, and select an Elastic Graphics accelerator type\.
 
-1. On the **Add Storage** and **Add Tags** pages, choose the options that meet your instance needs\.
+1. \(Optional\) On the **Add Storage** and **Add Tags** pages, add volumes and tags as needed\.
 
-1. On the **Configure Security Group** page, choose **Select an existing security group** and select the security group that you created in the [Configuring Your Security Groups](#elastic-graphics-security) step\. Add additional security groups as needed to meet your needs\.
+1. On the **Configure Security Group** page, you can let the console create a security group for you with the required inbound and outbound rules, or you can use the security group that you created manually in [Configuring Your Security Groups](#elastic-graphics-security)\. Add additional security groups as needed\.
 
 1. Choose **Review and Launch** to review your instance options and then choose **Launch**\.
 
 **To associate an Elastic Graphics accelerator during instance launch \(AWS CLI\)**  
-You can use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) AWS CLI command\. It may be necessary to update to the latest version of the AWS CLI to use this feature\.
+You can use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) AWS CLI command with the following parameter:
 
 ```
-aws ec2 run-instances --elastic-gpu-specification Type=eg1.medium --region us-east-1 --image-id ami-1a2b3c4d --subnet subnet-11223344 --instance-type r4.large --key-name keypair_name --security-group-ids sg-1234
+--elastic-gpu-specification Type=eg1.medium
 ```
 
-Alternatively, you can use the [New\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Instance.html) Tools for Windows PowerShell command\.
+For the `--security-group-ids` parameter, you must include a security group that has the required inbound and outbound rules\. For more information, see [Configuring Your Security Groups](#elastic-graphics-security)\.
 
-## Installing and Updating the Elastic Graphics Packages<a name="elastic-graphics-install-libraries"></a>
+**To associate an Elastic Graphics accelerator during instance launch \(Tools for Windows PowerShell\)**  
+Use the [New\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Instance.html) Tools for Windows PowerShell command\.
 
-To use the Elastic Graphics accelerator, your instance requires Amazon\-optimized OpenGL libraries and the Elastic Graphics agents\.
+## Installing the Required Software for Elastic Graphics<a name="elastic-graphics-install-libraries"></a>
 
-**Installing the Elastic Graphics packages on an instance with Elastic Graphics enabled**
+If you launched your instance using a current AWS Windows AMI, the required software is installed automatically during the first boot\. If you launched your instance using Windows AMIs that do not automatically install the required software, you must install the required software on the instance manually\.
 
-1. Launch an instance with the desired Elastic Graphics accelerator type\.
+**To install the required software for Elastic Graphics \(if necessary\)**
 
-1. After connecting to the instance, download the [Elastic Graphics driver installer](http://ec2-elasticgpus.s3-website-us-east-1.amazonaws.com/latest) and open it up to install it\. The installation manager connects to the Elastic Graphics endpoint and downloads the latest version of all required components\.
+1. Connect to the instance\.
+
+1. Download the [Elastic Graphics installer](http://ec2-elasticgpus.s3-website-us-east-1.amazonaws.com/latest) and open it\. The installation manager connects to the Elastic Graphics endpoint and downloads the latest version of the required software\.
 
 1. Reboot the instance to verify\.
 
@@ -92,7 +93,7 @@ To use the Elastic Graphics accelerator, your instance requires Amazon\-optimize
 
 The Elastic Graphics packages on your instance include tools that you can use to view the status of the accelerator, and to verify that OpenGL commands from your instance to the accelerator are functional\.
 
-If your instance was launched with an AMI that does not have the Elastic Graphics packages pre\-installed, you can download and install them yourself\. For more information, see [Installing and Updating the Elastic Graphics Packages](#elastic-graphics-install-libraries)\.
+If your instance was launched with an AMI that does not have the Elastic Graphics packages pre\-installed, you can download and install them yourself\. For more information, see [Installing the Required Software for Elastic Graphics](#elastic-graphics-install-libraries)\.
 
 **Topics**
 + [Using the Elastic Graphics Status Monitor](#elastic-graphics-verify-status)
@@ -100,28 +101,36 @@ If your instance was launched with an AMI that does not have the Elastic Graphic
 
 ### Using the Elastic Graphics Status Monitor<a name="elastic-graphics-verify-status"></a>
 
-You can use the status monitor tool to view information about the status of an attached Elastic Graphics accelerator\. By default, this tool is available in the notification area of the taskbar in your Windows instance and shows the status of the graphics accelerator as healthy, updating, or out of service\.
+You can use the status monitor tool to view information about the status of an attached Elastic Graphics accelerator\. By default, this tool is available in the notification area of the taskbar in your Windows instance and shows the status of the graphics accelerator\. The following are the possible values\.
 
 **Healthy**  
-The Elastic Graphics accelerator is enabled and healthy\. 
+The Elastic Graphics accelerator is enabled and healthy\.
 
 **Updating**  
-The status of the Elastic Graphics accelerator is currently updating, and may take a few minutes to display\.
+The status of the Elastic Graphics accelerator is currently updating\. It might take a few minutes to display the status\.
 
 **Out of service**  
-The Elastic Graphics accelerator is out of service\. To get more information about the error, choose **Read More**\. 
+The Elastic Graphics accelerator is out of service\. To get more information about the error, choose **Read More**\.
 
 ### Using the Elastic Graphics Command Line Tool<a name="elastic-graphics-command-tools"></a>
 
-The Elastic Graphics command line tool can be used to check the status of the accelerator\. If there is a problem with the accelerator functionality, it returns an error message\.
+You can use the Elastic Graphics command line tool, `egcli.exe`, to check the status of the accelerator\. If there is a problem with the accelerator, the tool returns an error message\.
 
-To launch the tool, open a command prompt from within your instance and enter the following:
+To launch the tool, open a command prompt from within your instance and run the following command:
 
 ```
 C:\Program Files\Amazon\EC2ElasticGPUs\manager\egcli.exe
 ```
 
-If the accelerator is available and functioning normally, you receive the following output:
+The tool also supports the following parameters:
+
+`--json`, `-j`  
+Indicates whether to show the JSON message\. The possible values are `true` and `false`\. The default is `true`\.
+
+`--imds`, `-i`  
+Indicates whether to check the instance metadata for the availability of the accelerator\. The possible values are `true` and `false`\. The default is `true`\.
+
+The following is example output\. A status of `OK` indicates that the accelerator is enabled and healthy\.
 
 ```
 EG Infrastructure is available.
@@ -136,56 +145,38 @@ JSON Message:
 }
 ```
 
-Otherwise, the tool returns an error and a message explaining the reason for the error\. The following are the possible status values that can be returned:
+The following are the possible values for `status`:
 
-OK  
+`OK`  
 The Elastic Graphics accelerator is enabled and healthy\.
 
-UPDATING  
+`UPDATING`  
 The Elastic Graphics driver is being updated\.
 
-NEEDS\_REBOOT  
+`NEEDS_REBOOT`  
 The Elastic Graphics driver has been updated and a reboot of the Amazon EC2 instance is required\.
 
-LOADING\_DRIVER  
+`LOADING_DRIVER`  
 The Elastic Graphics driver is being loaded\.
 
-CONNECTING\_EGPU  
+`CONNECTING_EGPU`  
 The Elastic Graphics driver is verifying the connectivity with the Elastic Graphics accelerator\.
 
-ERROR\_UPDATE\_RETRY  
+`ERROR_UPDATE_RETRY`  
 An error occurred while updating the Elastic Graphics driver, an update will be retried soon\.
 
-ERROR\_UPDATE  
+`ERROR_UPDATE`  
 An unrecoverable error occurred while updating the Elastic Graphics driver\.
 
-ERROR\_LOAD\_DRIVER  
+`ERROR_LOAD_DRIVER`  
 An error occurred loading the Elastic Graphics driver\.
 
-ERROR\_EGPU\_CONNECTIVITY  
+`ERROR_EGPU_CONNECTIVITY`  
 The Elastic Graphics accelerator is unreacheable\.
-
-The following parameters are supported:
-
-
-| Parameter | Type | Description | Default value | 
-| --- | --- | --- | --- | 
-| json j | Boolean | If enabled, shows the JSON message that accompanies the status\. | true | 
-| imds i | Boolean | If enabled, checks the instance metadata to verify if the accelerator is available\. | true | 
-
-To use these parameters, you can use the following syntax:
-
-\[`-`\|`--`\|`/`\]\[*argument*\]\[`=`\|`:`\| \]\[*value*\]
-
-For example, the following command disables the JSON message output:
-
-```
-EG-CLI.exe --json false
-```
 
 ## Viewing Elastic Graphics Information<a name="viewing-elastic-graphics"></a>
 
-You can view information about the Elastic Graphics accelerator attached to your instance, including its ID and state\. 
+You can view information about the Elastic Graphics accelerator attached to your instance\.
 
 **To view information about an Elastic Graphics accelerator \(console\)**
 
@@ -193,10 +184,10 @@ You can view information about the Elastic Graphics accelerator attached to your
 
 1. In the navigation pane, choose **Instances** and select your instance\.
 
-1. In the details pane, you can view information about the Elastic Graphics Accelerator by looking at the following fields:
-   + **Elastic Graphics**
-   + **Elastic Graphics type**
-   + **Elastic Graphics status**
+1. On the **Description** tab, find **Elastic Graphics ID**\. Choose the ID to view the following information about the Elastic Graphics accelerator:
+   + **Attachment State**
+   + **Type**
+   + **Health status**
 
 **To view information about an Elastic Graphics accelerator \(AWS CLI\)**  
 You can use the [describe\-elastic\-gpus](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-elastic-gpus.html) AWS CLI command:
@@ -208,47 +199,30 @@ aws ec2 describe-elastic-gpus
 You can use the [describe\-network\-interfaces](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-network-interfaces.html) AWS CLI command and filter by owner ID to view information about the Elastic Graphics network interface\.
 
 ```
-aws ec2 describe-network-interfaces --filters "Name=attachment.instance-owner-id,Values=amazon-elastic-graphics"
+aws ec2 describe-network-interfaces --filters "Name=attachment.instance-owner-id,Values=amazon-elasticgpus"
 ```
 
-Alternatively, you can use the following Tools for Windows PowerShell commands:
+**To view information about an Elastic Graphics accelerator \(Tools for Windows PowerShell\)**
+
+Use the following commands:
 + [Get\-EC2ElasticGpu](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ElasticGpu.html)
 + [Get\-EC2NetworkInterface](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2NetworkInterface.html)
 
-**To view information about an Elastic Graphics accelerator using instance metadata**  
-You can query the metadata associated with an Elastic Graphics accelerator from within the instance using the following steps\.
+**To view information about an Elastic Graphics accelerator using instance metadata**
 
-**To view information about an Elastic Graphics accelerator using PowerShell**
+1. Connect to your Windows instance that is using an Elastic Graphics accelerator\.
 
-1. Access your Windows instance that is using an Elastic Graphics Accelerator\.
+1. Do one of the following:
+   + From PowerShell, use the following cmdlet:
 
-1. From PowerShell, use this command to query the metadata of your accelerator:
+     ```
+     PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/elastic-gpus/associations/egpu-f6d94dfa66df4883b284e96db7397ee6
+     ```
+   + From your web browser, paste the following URL into the address field:
 
-   ```
-   PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/elastic-gpus/associations/elastic-gpu-id
-   ```
-
-   For example:
-
-   ```
-   PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/elastic-gpus/associations/egpu-f6d94dfa66df4883b284e96db7397ee6
-   ```
-
-**To view information about an Elastic Graphics accelerator from a browser**
-
-1. Access your Windows instance that is using an Elastic Graphics Accelerator\.
-
-1. From your browser, navigate to this URL to query the metadata of your accelerator:
-
-   ```
-   http://169.254.169.254/latest/meta-data/elastic-gpus/associations/elastic-gpu-id
-   ```
-
-   For example:
-
-   ```
-   http://169.254.169.254/latest/meta-data/elastic-gpus/associations/egpu-f6d94dfa66df4883b284e96db7397ee6
-   ```
+     ```
+     http://169.254.169.254/latest/meta-data/elastic-gpus/associations/egpu-f6d94dfa66df4883b284e96db7397ee6
+     ```
 
 ## Submitting Feedback<a name="elastic-gpu-feedback"></a>
 

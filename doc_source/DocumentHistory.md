@@ -7,9 +7,9 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Feature | API Version | Description | Release Date | 
 | --- | --- | --- | --- | 
+| p3dn\.24xlarge instances | 2016\-11\-15 | New p3dn\.xlarge instances provide 100 Gbps of network bandwidth\. | 7 December 2018 | 
 | Hibernate EC2 Linux instances | 2016\-11\-15 | You can hibernate a Linux instance if it's enabled for hibernation and it meets the hibernation prerequisites\. For more information, see [Hibernate Your Instance](Hibernate.md)\. | 28 November 2018 | 
 | Instances featuring 100 Gbps of network bandwidth | 2016\-11\-15 | New C5n instances can utilize up to 100 Gbps of network bandwidth\. | 26 November 2018 | 
-| Instances featuring Arm\-based Processors | 2016\-11\-15 | New A1 instances deliver significant cost savings and are ideally suited for scale\-out and Arm\-based workloads\. | 26 November 2018 | 
 | Spot console recommends a fleet of instances | 2016\-11\-15 |  The Spot console recommends a fleet of instances based on Spot best practice \(instance diversification\) to meet the minimum hardware specifications \(vCPUs, memory, and storage\) for your application need\. For more information, see [Creating a Spot Fleet Request](spot-fleet-requests.md#create-spot-fleet)\.  | 20 November 2018 | 
 | New EC2 Fleet request type: instant | 2016\-11\-15 | EC2 Fleet now supports a new request type, instant, that you can use to synchronously provision capacity across instance types and purchase models\. The instant request returns the launched instances in the API response, and takes no further action, enabling you to control if and when instances are launched\. For more information, see [EC2 Fleet Request Types](ec2-fleet-configuration-strategies.md#ec2-fleet-request-type)\. | 14 November 2018 | 
 | Instances featuring AMD EYPC processors | 2016\-11\-15 | New general purpose \(M5a\) and memory optimized instances \(R5a\) offer lower\-priced options for microservices, small to medium databases, virtual desktops, development and test environments, business applications, and more\. | 6 November 2018 | 

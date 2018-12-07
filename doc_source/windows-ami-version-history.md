@@ -121,6 +121,7 @@ The following changes are applied to each AWS Windows AMI\.
 | Install the current AWS PV, ENA, and NVMe drivers | Windows Server 2008 R2 and later | 
 | Install the current SRIOV drivers | Windows Server 2012 R2 and later | 
 | Install the current Citrix PV driver | Windows Server 2008 SP2 and earlier | 
+| Install the current EC2WinUtil driver | Windows Server 2008 R2 and later | 
 | Install PowerShell 2\.0 and 3\.0 | Windows Server 2008 SP2 and R2 | 
 |  If Microsoft SQL Server is installed: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | All AMIs | 
 |  Apply the following hotfixes: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | Windows Server 2008 SP2 and R2 | 
@@ -145,7 +146,7 @@ The following changes are applied to each AWS Windows AMI\.
 
 AWS provides AMIs with a variety of configurations for all supported Windows Operating System versions from 2003 R2 to 2016\. For each of these images, AWS:
 + installs all Microsoft recommended Windows security patches\. We release images shortly after each monthly Microsoft patches are made available\.
-+ installs the latest drivers for AWS hardware, including network and disk drivers, as well as GPU drivers in selected AMIs\.
++ installs the latest drivers for AWS hardware, including network and disk drivers, EC2WinUtil for troubleshooting, as well as GPU drivers in selected AMIs\.
 + includes AWS helper software, like [EC2 Config](ec2config-service.md) for Server 2012 R2 and earlier, or [EC2 Launch](ec2launch.md) for Server 2016\.
 + configures Windows Time to use the [AWS Time Service](windows-set-time.md#default-ntp-settings)\.
 + makes changes in all power schemes to set the display to never turn off\.
@@ -173,12 +174,17 @@ The Windows AMIs in each release have new AMI IDs\. Therefore, we recommend that
 + [Query for the Latest Windows AMI Using Systems Manager Parameter Store](https://aws.amazon.com/blogs/mt/query-for-the-latest-windows-ami-using-systems-manager-parameter-store/)
 + [Walkthrough: Looking Up Amazon Machine Image IDs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/walkthrough-custom-resources-lambda-lookup-amiids.html) \(AWS Lambda, AWS CloudFormation\)
 
+### Semiannual Channel Releases<a name="channel-releases"></a>
+
+AWS provides Windows Server semiannual channel releases that combine the scale, performance, and elasticity of AWS with the new capabilities in the [Semiannual channel release versions of Windows Server](https://docs.microsoft.com/en-us/windows-server/get-started/semi-annual-channel-overview)\. 
+
 The following tables summarize the changes to each release of the AWS Windows AMIs\. Note that some changes apply to all AWS Windows AMIs while others apply to only a subset of these AMIs\.
 
 **Topics**
 + [What to Expect in an Official AWS Windows AMI](#windows-ami-creation-standards)
 + [How AWS Decides Which Windows AMIs to Offer](#windows-ami-creation-standards-AMI-type)
 + [Patches, Security Updates, and AMI IDs](#ami-patches-security-ID)
++ [Semiannual Channel Releases](#channel-releases)
 + [Monthly AMI Updates for 2018 \(to date\)](#amis-2018)
 + [Monthly AMI Updates for 2017](#amis-2017)
 + [Monthly AMI Updates for 2016](#amis-2016)
@@ -204,7 +210,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 | --- | --- | 
 | 2018\.11\.28 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.11\.20 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
-| 2018\.11\.19 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
+| 2018\.11\.19 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.10\.14 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) **Microsoft Windows Server 2016 Datacenter and Standard Editions for Nano Server ** Microsoft ended mainstream support for Windows Server 2016 Datacenter and Standard Editions for Nano Server installation options as of April 10, 2018 \(see the [Microsoft Support Lifecycle page](https://support.microsoft.com/en-us/lifecycle/search?alpha=nano) for more details\)\.  Additional information about Nano Server lifecycle, including details on launching Nano Server as a container, can be found here: [https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel](https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel)\.  | 
 | 2018\.09\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) **Microsoft Windows Server 2016 Base Nano** Access to all public versions of Windows\_Server\-2016\-English\-Nano\-Base will be removed in September 2018\. Additional information about Nano Server lifecycle, including details on launching Nano Server as a Container, can be found here: [https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel](https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel)\.  | 
 | 2018\.08\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) **Microsoft Windows Server 2016 Base Nano** Access to all public versions of Windows\_Server\-2016\-English\-Nano\-Base will be removed in September 2018\. Additional information about Nano Server lifecycle, including details on launching Nano Server as a Container, can be found here: [https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel](https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel)\.  | 
