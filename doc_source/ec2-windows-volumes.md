@@ -21,7 +21,7 @@ You can find the disks on your Windows instance using Windows Disk Management\.
 
 1. Start the Disk Management utility\.
 
-   On Windows Server 2012 or Windows Server 2016, on the taskbar, right\-click the Windows logo, and then choose **Disk Management**\. On Windows Server 2008, choose **Start**, **Administrative Tools**, **Computer Management**, **Disk Management**\.
+   On Windows Server 2012 and later, on the taskbar, right\-click the Windows logo, and then choose **Disk Management**\. On Windows Server 2008, choose **Start**, **Administrative Tools**, **Computer Management**, **Disk Management**\.
 
 1. Review the disks\. The root volume is an EBS volume mounted as `C:\`\. If there are no other disks shown, then you didn't specify additional volumes when you created the AMI or launched the instance\.
 

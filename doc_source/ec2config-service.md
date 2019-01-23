@@ -3,7 +3,7 @@
 Windows AMIs for Windows Server 2012 R2 and earlier include an optional service, the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. EC2Config can also perform tasks on demand\. Some of these tasks are automatically enabled, while others must be enabled manually\. Although optional, this service provides access to advanced features that aren't otherwise available\. This service runs in the LocalSystem account\.
 
 **Note**  
-EC2Launch replaces EC2Config on Windows AMIs for Windows Server 2016\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\.
+EC2Launch replaces EC2Config on Windows AMIs for Windows Server 2016 and later\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\.
 
 EC2Config uses settings files to control its operation\. You can update these settings files using either a graphical tool or by directly editing XML files\. The service binaries and additional files are contained in the `%ProgramFiles%\Amazon\EC2ConfigService` directory\.
 

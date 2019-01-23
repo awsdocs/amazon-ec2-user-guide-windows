@@ -32,6 +32,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
 1. In the navigation pane, choose **Images**, **AMIs**\.
 
 1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **Amazon images**\. Choose **Source** from the menu and type one of the following, depending on the version of Windows Server that you need:
+   + **amazon/Windows\_Server\-2019**
    + **amazon/Windows\_Server\-2016**
    + **amazon/Windows\_Server\-2012**
    + **amazon/Windows\_Server\-2008**
@@ -48,7 +49,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
    + Create a new user account and add it to the Administrators group
 
      If you are sharing your AMI, these credentials can be supplied for RDP access without disclosing your default administrator password\.
-   + \[Windows Server 2016\] Configure settings using EC2Launch\. To generate a random password at launch time, use the `adminPasswordType` setting\. For more information, see [Configuring EC2Launch](ec2launch.md#ec2launch-config)\.
+   + \[Windows Server 2016 and later\] Configure settings using EC2Launch\. To generate a random password at launch time, use the `adminPasswordType` setting\. For more information, see [Configuring EC2Launch](ec2launch.md#ec2launch-config)\.
    + \[Windows Server 2012 R2 and earlier\] Configure settings using EC2Config\. To generate a random password at launch time, enable the `Ec2SetPassword` plugin; otherwise, the current administrator password is used\. For more information, see [EC2Config Settings Files](ec2config-service.md#UsingConfigXML_WinAMI)\.
    + \[Windows Server 2008 R2\] If the instance uses RedHat drivers to access Xen virtualized hardware, upgrade to Citrix drivers before you create an AMI\. For more information, see [Upgrade Windows Server 2008 and 2008 R2 Instances \(Redhat to Citrix PV Upgrade\)](Upgrading_PV_drivers.md#win2008-citrix-upgrade)\.
 

@@ -3,13 +3,13 @@
 The following are troubleshooting tips to help you solve common issues with EC2 instance running Windows Server\.
 
 **Topics**
-+ [EBS volumes don't initialize on Windows Server 2016 AMIs](#init-disks-win2k16)
++ [EBS volumes don't initialize on Windows Server 2016 and later AMIs](#init-disks-win2k16)
 + [Boot an EC2 Windows Instance into Directory Services Restore Mode \(DSRM\)](#boot-dsrm)
 + [Unable to remotely log on to an instance with a user account that is not an Administrator](#remote-failure)
 
-## EBS volumes don't initialize on Windows Server 2016 AMIs<a name="init-disks-win2k16"></a>
+## EBS volumes don't initialize on Windows Server 2016 and later AMIs<a name="init-disks-win2k16"></a>
 
-Instances created from Windows Server 2016 Amazon Machine Images \(AMIs\) use the EC2Launch service for a variety of startup tasks, including initializing EBS volumes\. By default, EC2Launch does not initialize secondary volumes\. You can configure EC2Launch to initialize these disks automatically\.
+Instances created from Windows Server 2016 and later Amazon Machine Images \(AMIs\) use the EC2Launch service for a variety of startup tasks, including initializing EBS volumes\. By default, EC2Launch does not initialize secondary volumes\. You can configure EC2Launch to initialize these disks automatically\.
 
 **To map drive letters to volumes**
 

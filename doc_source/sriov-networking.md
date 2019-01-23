@@ -11,7 +11,7 @@ Amazon EC2 provides enhanced networking capabilities through the Intel 82599 VF 
 
 To prepare for enhanced networking using the Intel 82599 VF interface, set up your instance as follows:
 + Select from the following supported instance types: C3, C4, D2, I2, M4 \(excluding m4\.16xlarge\), and R3\.
-+ Launch the instance from a 64\-bit HVM AMI\. You can't enable enhanced networking on Windows Server 2008 and Windows Server 2003\. Enhanced networking is already enabled for Windows Server 2012 R2 and Windows Server 2016 AMIs\. Windows Server 2012 R2 includes Intel driver 1\.0\.15\.3 and we recommend that you upgrade that driver to the latest version using the Pnputil\.exe utility\. 
++ Launch the instance from a 64\-bit HVM AMI\. You can't enable enhanced networking on Windows Server 2008 and Windows Server 2003\. Enhanced networking is already enabled for Windows Server 2012 R2 and Windows Server 2016 and later AMIs\. Windows Server 2012 R2 includes Intel driver 1\.0\.15\.3 and we recommend that you upgrade that driver to the latest version using the Pnputil\.exe utility\. 
 + Ensure that the instance has internet connectivity\.
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `sriovNetSupport` attribute, might render incompatible instances or operating systems unreachable; if you have a recent backup, your data will still be retained if this happens\.
@@ -81,7 +81,7 @@ There is no way to disable the enhanced networking attribute after you've enable
 
 1. <a name="amazon-linux-enhanced-networking-start-step"></a>Connect to your instance and log in as the local administrator\.
 
-1. \[Windows Server 2016\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
+1. \[Windows Server 2016 and later\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
 
    ```
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
@@ -96,6 +96,7 @@ The administrator password will reset when you enable the initialize instance EC
       + [Windows Server 2012](https://downloadcenter.intel.com/download/21694/Network-Adapter-Driver-for-Windows-Server-2012-)
       + [Windows Server 2012 R2](https://downloadcenter.intel.com/download/23073/Network-Adapter-Driver-for-Windows-Server-2012-R2-)
       + [Windows Server 2016](https://downloadcenter.intel.com/download/26092/Ethernet-Intel-Network-Adapter-Driver-for-Windows-Server-2016-?product=83418)
+      + [Windows Server 2019](https://downloadcenter.intel.com/download/26092/Ethernet-Intel-Network-Adapter-Driver-for-Windows-Server-2016-?product=83418) \(download the 2016 driver\)
 
    1. In the **Download** folder, locate the `PROWinx64.exe` file\. Rename this file `PROWinx64.zip`\.
 

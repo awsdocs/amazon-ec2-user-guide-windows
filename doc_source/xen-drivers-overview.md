@@ -10,6 +10,7 @@ Windows AMIs contain a set of drivers to permit access to virtualized hardware\.
 |  Network  |  The driver has known issues where the network connection resets under high loads; for example, fast FTP file transfers\.  |   |  The driver automatically configures jumbo frames on the network adapter when on a compatible instance type\. When the instance is in a [cluster placement group](placement-groups.md), this offers better network performance between instances in the cluster placement group\.  | 
 
 The following list shows which PV drivers you should run on each version of Windows Server on Amazon EC2\.
++ Windows Server 2019: AWS PV
 + Windows Server 2016: AWS PV
 + Windows Server 2012 and 2012 R2: AWS PV
 + Windows Server 2008 R2: AWS PV 
@@ -51,8 +52,10 @@ The following table shows the changes to AWS PV drivers for each driver release\
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+| 8\.2\.6 |  Improved efficiency of crash dump path\.  | 15 January 2019 | 
+| 8\.2\.5 |  Additional security enhancements\. PowerShell installer now available in package\.  | 12 December 2018 | 
 | 8\.2\.4 |  Reliability improvements\.  | 2 October 2018 | 
-| 8\.2\.3 |  Bug fixes and performance improvements\.  | 29 May 2018 | 
+| 8\.2\.3 |  Bug fixes and performance improvements\. Report EBS volume ID as disk serial number for EBS volumes\. This enables cluster scenarios such as S2D\.  | 29 May 2018 | 
 | 8\.2\.1 |  Network and storage performance improvements plus multiple robustness fixes\. To verify that this version has been installed, refer to the following Windows registry value: `HKLM\Software\Amazon\PVDriver\Version 8.2.1`\.  | 8 March 2018 | 
 | 7\.4\.6 | Stability fixes to make AWS PV drivers more resilient\. | 26 April 2017 | 
 | 7\.4\.3 |  Added support for Windows Server 2016\. Stability fixes for all supported Windows OS versions\. \*AWS PV driver version 7\.4\.3's signature expires on March 29, 2019\. We recommend updating to the latest AWS PV driver\.   | 18 Nov 2016 | 

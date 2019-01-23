@@ -135,12 +135,12 @@ The following is a summary of features for general purpose instances:
 
 |  | EBS only | NVMe EBS | Instance store | Placement group | 
 | --- | --- | --- | --- | --- | 
-| M4 | Yes |  |  | Yes | 
-| M5 | Yes | Yes |  | Yes | 
-| M5a | Yes | Yes |  | Yes | 
-| M5d |  | Yes | NVMe \* | Yes | 
-| T2 | Yes |  |  |  | 
-| T3 | Yes | Yes |  |  | 
+| M4 | Yes | No | No | Yes | 
+| M5 | Yes | Yes | No | Yes | 
+| M5a | Yes | Yes | No | Yes | 
+| M5d | No | Yes | NVMe \* | Yes | 
+| T2 | Yes | No | No | No | 
+| T3 | Yes | Yes | No | No | 
 
 **\*** The root device volume must be an Amazon EBS volume\.
 

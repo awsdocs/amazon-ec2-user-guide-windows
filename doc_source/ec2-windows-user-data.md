@@ -1,6 +1,6 @@
 # Running Commands on Your Windows Instance at Launch<a name="ec2-windows-user-data"></a>
 
-When you launch a Windows instance in Amazon EC2, you can pass user data to the instance\. Instance user data is treated as opaque data; it is up to the instance to interpret it\. For example, you can specify data to be used by automated configuration tasks or specify scripts that are run after the instance starts\. User data is processed by [EC2Config](ec2config-service.md) on Windows Server 2012 R2 and earlier and by [EC2Launch](ec2launch.md) on Windows Server 2016\.
+When you launch a Windows instance in Amazon EC2, you can pass user data to the instance\. Instance user data is treated as opaque data; it is up to the instance to interpret it\. For example, you can specify data to be used by automated configuration tasks or specify scripts that are run after the instance starts\. User data is processed by [EC2Config](ec2config-service.md) on Windows Server 2012 R2 and earlier and by [EC2Launch](ec2launch.md) on Windows Server 2016 and later\.
 
 **Topics**
 + [User Data Scripts](#user-data-scripts)
@@ -104,7 +104,7 @@ When you update instance user data, user data scripts are not executed automatic
 
 If you choose the **Shutdown with Sysprep** option, user data scripts are executed when the instance is rebooted or restarted, even if you did not enable user data execution for subsequent reboots or starts\.
 
-**To enable user data execution on Windows Server 2016 \(EC2Launch\)**
+**To enable user data execution on Windows Server 2016 or later \(EC2Launch\)**
 
 1. Connect to your Windows instance\.
 

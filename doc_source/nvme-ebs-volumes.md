@@ -9,39 +9,41 @@ Some of these instance types also support NVMe instance store volumes\. For more
 
 ## Identifying the EBS Device<a name="identify-nvme-ebs-device"></a>
 
-EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachments on Nitro\-based instances using the NVMe specification\. These devices rely on standard NVMe drivers on the operating system\. These drivers typically discover attached devices by scanning the PCI bus during instance boot, and create device nodes based on the order in which the devices respond, not on how the devices are specified in the block device mapping\. In Linux, NVMe device names follow the pattern `/dev/nvme<x>n<y>`, where <x> is the enumeration order, and, for EBS, <y> is 1\. Occasionally, devices can respond to discovery in a different order in subsequent instance starts, which causes the device name to change\.
+EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachments on Nitro\-based instances using the NVMe specification\. These devices rely on standard NVMe drivers on the operating system\. These drivers typically discover attached devices by scanning the PCI bus during instance boot, and create device nodes based on the order in which the devices respond, not on how the devices are specified in the block device mapping\. 
 
-We recommend that you use stable identifiers for your EBS volumes within your instance, such as one of the following:
-+ For Nitro\-based instances, the block device mappings that are specified in the Amazon EC2 console when you are attaching an EBS volume or during `AttachVolume` or `RunInstances` API calls are captured in the vendor\-specific data field of the NVMe controller identification\. With Amazon Linux AMIs later than version 2017\.09\.01, we provide a `udev` rule that reads this data and creates a symbolic link to the block\-device mapping\.
-+ NVMe\-attached EBS volumes have the EBS volume ID set as the serial number in the device identification\.
-+ When a device is formatted, a UUID is generated that persists for the life of the filesystem\. A device label can be specified at the same time\. For more information, see [Making an Amazon EBS Volume Available for Use on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) and [Booting from the Wrong Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-booting-from-wrong-volume.html)\.
+### Windows Server 2008 R2 and Later<a name="nvme-windows"></a>
 
-You can use the [Get\-Disk](https://docs.microsoft.com/en-us/powershell/module/storage/get-disk) command to map Windows disk numbers to EBS volume IDs\.
+You can also run the **ebsnvme\-id** command to map the NVMe device disk number to an EBS volume ID and device name\. By default, all EBS NVMe devices are enumerated\. You can pass a disk number to enumerate information for a specific device\.
 
-**Windows Server 2016**  
-To get the volume IDs, select `AdapterSerialNumber`\. In this example, the ID of volume 0 is "vol\-0651a78c608e09c6a"\.
+You can download [ebsnvme\-id\.zip](https://s3.amazonaws.com/ec2-windows-drivers-downloads/EBSNVMeID/Latest/ebsnvme-id.zip) and extract the contents to your Amazon EC2 instance to get access to ebsnvme\-id\.exe\.
 
 ```
-PS C:\> Get-Disk | Select Number,AdapterSerialNumber | Sort-Object Number
+PS C:\Users\Administrator\Desktop> ebsnvme-id.exe
+Disk Number: 0
+Volume ID: vol-0d6d7ee9f6e471a7f
+Device Name: sda1
 
-Number AdapterSerialNumber
------- -------------------
-     0 vol0651a78c608e09c6a
-     1 vol03f93c68194556d14
-     2 vol0dbd294c35c6174de
-```
+Disk Number: 1
+Volume ID: vol-03a26248ff39b57cf
+Device Name: xvdd
 
-**Windows Server 2012 R2**  
-To get the volume IDs, select `SerialNumber`\. In this example, the ID of volume 0 is "vol\-01257d42be427a58b"\.
+Disk Number: 2
+Volume ID: vol-038bd1c629aa125e6
+Device Name: xvde
 
-```
-PS C:\> Get-Disk | Select Number,SerialNumber | Sort-Object Number
+Disk Number: 3
+Volume ID: vol-034f9d29ec0b64c89
+Device Name: xvdb
 
-Number SerialNumber
------- -------------------
-     0 vol01257d42be427a58b_00000001.
-     1 vol0da96b723afa69568_00000001.
-     2 vol0d577fdabd6001831_00000001.
+Disk Number: 4
+Volume ID: vol-03e2dbe464b66f0a1
+Device Name: xvdc
+
+PS C:\Users\Administrator\Desktop> ebsnvme-id.exe 4
+
+Disk Number: 4
+Volume ID: vol-03e2dbe464b66f0a1
+Device Name: xvdc
 ```
 
 ## Working with NVMe EBS Volumes<a name="using-nvme-ebs-volumes"></a>
@@ -51,9 +53,3 @@ The latest AWS Windows AMIs contain the AWS NVMe driver that is required by inst
 ## I/O Operation Timeout<a name="timeout-nvme-ebs-volumes"></a>
 
 Most operating systems specify a timeout for I/O operations submitted to NVMe devices\. On Windows systems, the default timeout is 60 seconds and the maximum is 255 seconds\. You can modify the `TimeoutValue` disk class registry setting using the procedure described in [Registry Entries for SCSI Miniport Drivers](https://docs.microsoft.com/en-us/windows-hardware/drivers/storage/registry-entries-for-scsi-miniport-drivers)\.
-+ Amazon Linux AMI 2017\.09\.01 or later
-+ Canonical 4\.4\.0\-1041 or later
-+ SLES 12 SP2 \(4\.4 kernel\) or later
-+ RHEL 7\.5 \(3\.10\.0\-862 kernel\) or later
-
-You can verify the maximum value for your Linux distribution by writing a value higher than the suggested maximum to `/sys/module/nvme_core/parameters/io_timeout` and checking for the `Numerical result out of range` error when attempting to save the file\.

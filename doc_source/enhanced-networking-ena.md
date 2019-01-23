@@ -56,7 +56,7 @@ If you launched your instance and it does not have enhanced networking enabled a
 
 1. Connect to your instance and log in as the local administrator\.
 
-1. \[Windows Server 2016\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
+1. \[Windows Server 2016 and later\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
 
    ```
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule

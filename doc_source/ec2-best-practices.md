@@ -1,6 +1,30 @@
-# Best Practices for Amazon EC2<a name="ec2-best-practices"></a>
+# Best Practices for Windows on Amazon EC2<a name="ec2-best-practices"></a>
 
-This checklist is intended to help you get the maximum benefit from and satisfaction with Amazon EC2\.
+This list of practices will help you get the best results from running Windows on Amazon EC2\.
+
+**Update Windows Drivers**
+
+Maintain the latest drivers on all Windows EC2 instances to ensure the latest issue fixes and performance enhancements are applied across your fleet\. Depending on your instance type, you should update AWS PV, ENA, and NVMe drivers\.
++ Leverage [Trusted Advisor](https://aws.amazon.com/premiumsupport/trustedadvisor/best-practices) to keep Amazon EC2 Windows up to date with AWS\-provided Windows drivers\.
++ Use [SNS topics](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html#drivers-subscribe-notifications) to receive updates for new driver releases\.
++ Use the public [AWSSupport\-UpgradeWindowsAWSDrivers](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awssupport-upgradewindowsawsdrivers.html) SSM document to easily apply the updates across your instances\.
+
+**Launch New Instances with the Latest Windows AMIs**
+
+AWS releases new Windows AMIs each month, which contain the latest OS patches, drivers, and launch agents\. You should leverage the latest AMI when you launch new instances or when you build your own custom images\. 
++ To build with the latest available AMIs, see [ Query for the Latest Windows AMI Using Systems Manager Parameter Store](https://aws.amazon.com/blogs/mt/query-for-the-latest-windows-ami-using-systems-manager-parameter-store)\.
+
+**Test System/Application Performance Before Migration**
+
+Migrating enterprise applications to AWS can involve many variables and configurations\. Always performance test the EC2 solution to ensure that:
++ Instance types are properly configured, including instance size, enhanced networking, and tenancy \(shared or dedicated\)\.
++ Instance topology is appropriate for the workload and leverages high\-performance features when necessary \(dedicated tenancy, placement groups, instance store volumes, bare metal\)\.
+
+**Update Launch Agents**
+
+Update to the latest EC2Config \(2012 R2 and earlier\) or EC2Launch \(2016 and later\) agents to ensure the latest issue fixes are applied across your fleet\.
++ For EC2Config update instructions, see [ Installing the Latest Version of EC2Config](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_Install.html)\. Leverage [ Trusted Advisor](https://aws.amazon.com/premiumsupport/trustedadvisor/best-practices) to describe all instances running older versions of EC2Config\. You can use SNS topics to receive updates for new releases\.
++ For EC2Launch update instructions, see [ Installing the Latest Version of EC2Launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-download.html)\.
 
 **Security and Network**
 + Manage access to AWS resources and APIs using identity federation, IAM users, and IAM roles\. Establish credential management policies and procedures for creating, distributing, rotating, and revoking AWS access credentials\. For more information, see [IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html) in the *IAM User Guide*\.

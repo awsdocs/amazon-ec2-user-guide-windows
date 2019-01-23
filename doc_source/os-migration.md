@@ -10,7 +10,7 @@ Migrating involves capturing settings, configurations, and data and porting thes
 
 1. For **Search**, add the following filters and press Enter\. The **Search** values are case\-sensitive\.
    + **Owner:** Amazon images
-   + **AMI Name:** Windows\_Server\-2008, Windows\_Server\-2012, or Windows\_Server\-2016
+   + **AMI Name:** Windows\_Server\-2008, Windows\_Server\-2012, Windows\_Server\-2016, or Windows\_Server\-2019\.
 
 1. Launch a new instance from an AMI\.
 

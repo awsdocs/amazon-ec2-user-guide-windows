@@ -1,7 +1,7 @@
 # Amazon Elastic Compute Cloud User Guide for Windows Instances
 
 -----
-*****Copyright &copy; 2018 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -18,7 +18,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Amazon EC2 Basic Infrastructure for Windows](EC2Win_Infrastructure.md)
 + [Setting Up with Amazon EC2](get-set-up-for-amazon-ec2.md)
 + [Getting Started with Amazon EC2 Windows Instances](EC2_GetStarted.md)
-+ [Best Practices for Amazon EC2](ec2-best-practices.md)
++ [Best Practices for Windows on Amazon EC2](ec2-best-practices.md)
 + [Tutorials for Amazon EC2 Instances Running Windows Server](ec2-tutorials.md)
    + [Tutorial: Deploying a WordPress Blog on Your Amazon EC2 Instance Running Windows Server](EC2Win_CreateWordPressBlog.md)
    + [Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md)
@@ -233,7 +233,9 @@ Amazon's trademarks and trade dress may not be used in
    + [Amazon EC2 Instance Store](InstanceStorage.md)
       + [Add Instance Store Volumes to Your EC2 Instance](add-instance-store-volumes.md)
       + [SSD Instance Store Volumes](ssd-instance-store.md)
-   + [Amazon Elastic File System (Amazon EFS)](AmazonEFS.md)
+   + [File Storage](file-storage.md)
+      + [Amazon Elastic File System (Amazon EFS)](AmazonEFS.md)
+      + [Amazon FSx for Windows File Server](storage_fsx.md)
    + [Amazon Simple Storage Service (Amazon S3)](AmazonS3.md)
    + [Instance Volume Limits](volume_limits.md)
    + [Device Naming on Windows Instances](device_naming.md)

@@ -9,6 +9,9 @@ The following table describes the released versions of EC2Config\. For informati
 
 | Version | Details | 
 | --- | --- | 
+| 4\.9\.3252 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
+| 4\.9\.3230 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
+| 4\.9\.3160 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 | 4\.9\.3067 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 | 4\.9\.3034 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 | 4\.9\.2986 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 

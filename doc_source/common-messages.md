@@ -197,7 +197,33 @@ If this does not resolve the activation issue, follow these additional steps\.
 
 1. Activate Windows: C:\\> slmgr\.vbs /ato
 
- If you are still receiving an activation error, verify the following information\.
+**For EC2Launch \(Windows Server 2016 AMIs and later\)**
+
+1. Import the EC2Launch module:
+
+   ```
+   PS C:\> Import-Module "C:\ProgramData\Amazon\EC2-Windows\Launch\Module\Ec2Launch.psd1"
+   ```
+
+1. Call the Add\-Routes function:
+
+   ```
+   PS C:\> Add-Routes
+   ```
+
+1. Call the Set\-ActivationSettings function:
+
+   ```
+   PS C:\> Set-Activationsettings
+   ```
+
+1. Then, run the following script to activate Windows:
+
+   ```
+   PS C:\> cscript "${env:SYSTEMROOT}\system32\slmgr.vbs" /ato
+   ```
+
+ For both EC2Config and EC2Launch, if you are still receiving an activation error, verify the following information\.
 + Verify that you have routes to the KMS servers\. Open `C:\Program Files\Amazon\Ec2ConfigService\Settings\ActivationSettings.xml` and locate the `TargetKMSServer` elements\. Run the following command and check whether the addresses for these KMS servers are listed\.
 
   ```
@@ -220,24 +246,6 @@ If this does not resolve the activation issue, follow these additional steps\.
   ```
   netsh advfirewall set allprofiles state off
   ```
-
-**For EC2Launch \(Windows Server 2016 AMIs and later\)**
-
-1. Run the following PowerShell commands:
-
-   ```
-   PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1
-   ```
-
-   ```
-   PS C:\> cscript "${env:SYSTEMROOT}\system32\slmgr.vbs" /ato
-   ```
-
-1. If the previous step doesn't fix the issue, try the following script to configure the appropriate registry keys for Windows to find the KMS servers\.
-
-   ```
-   PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Module\Scripts\Set-ActivationSettings.ps1
-   ```
 
 ## "Windows is not genuine \(0x80070005\)"<a name="windows-not-genuine"></a>
 

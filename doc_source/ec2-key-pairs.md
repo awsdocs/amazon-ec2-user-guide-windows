@@ -116,34 +116,27 @@ You can use one of the following commands\. For more information about these com
 On your local Linux or Mac computer, you can use the ssh\-keygen command to retrieve the public key for your key pair\.
 
 **To retrieve the public key from your computer**
++ Use the ssh\-keygen command on a computer to which you've downloaded your private key and specify the path to the `.pem` file; for example:
 
-1. Use the ssh\-keygen command on a computer to which you've downloaded your private key:
+  ```
+  ssh-keygen -y -f /path_to_key_pair/my-key-pair.pem
+  ```
 
-   ```
-   ssh-keygen -y
-   ```
+  The command returns the public key: 
 
-1. When prompted to enter the file in which the key is, specify the path to your `.pem` file; for example:
+  ```
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQClKsfkNkuSevGj3eYhCe53pcjqP3maAhDFcvBS7O6V
+  hz2ItxCih+PnDSUaw+WNQn/mZphTk/a/gU8jEzoOWbkM4yxyb/wB96xbiFveSFJuOp/d6RJhJOI0iBXr
+  lsLnBItntckiJ7FbtxJMXLvvwJryDUilBMTjYtwB+QhYXUMOzce5Pjz5/i8SeJtjnV3iAoG/cQk+0FzZ
+  qaeJAAHco+CY/5WrUBkrHmFJr6HcXkvJdWPkYQS3xqC0+FmUZofz221CBt5IMucxXPkX4rWi+z7wB3Rb
+  BQoQzd8v7yeb7OzlPnWOyN0qFU0XA246RA8QFYiCNYwI3f05p6KLxEXAMPLE
+  ```
 
-   ```
-   /path_to_key_pair/my-key-pair.pem
-   ```
+  If this command fails, ensure that you've changed the permissions on your key pair file so that only you can view it by running the following command:
 
-1. The command returns the public key: 
-
-   ```
-   ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQClKsfkNkuSevGj3eYhCe53pcjqP3maAhDFcvBS7O6V
-   hz2ItxCih+PnDSUaw+WNQn/mZphTk/a/gU8jEzoOWbkM4yxyb/wB96xbiFveSFJuOp/d6RJhJOI0iBXr
-   lsLnBItntckiJ7FbtxJMXLvvwJryDUilBMTjYtwB+QhYXUMOzce5Pjz5/i8SeJtjnV3iAoG/cQk+0FzZ
-   qaeJAAHco+CY/5WrUBkrHmFJr6HcXkvJdWPkYQS3xqC0+FmUZofz221CBt5IMucxXPkX4rWi+z7wB3Rb
-   BQoQzd8v7yeb7OzlPnWOyN0qFU0XA246RA8QFYiCNYwI3f05p6KLxEXAMPLE
-   ```
-
-   If this command fails, ensure that you've changed the permissions on your key pair file so that only you can view it by running the following command:
-
-   ```
-   chmod 400 my-key-pair.pem
-   ```
+  ```
+  chmod 400 my-key-pair.pem
+  ```
 
 ## Retrieving the Public Key for Your Key Pair on Windows<a name="retrieving-the-public-key-windows"></a>
 

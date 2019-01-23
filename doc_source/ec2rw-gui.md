@@ -24,7 +24,7 @@ EC2Rescue for Windows Server is able to collect the following data from active a
 | Registry | Collects SYSTEM and SOFTWARE hives\. | 
 | System Information | Collects MSInfo32\. | 
 | Boot Configuration | Collects HKEY\_LOCAL\_MACHINE\\BCD00000000 hive\. | 
-| Windows Update Log | Collects information about the updates that are installed on the instance\.  Windows Update logs are not captured on Windows Server 2016 instances\.  | 
+| Windows Update Log | Collects information about the updates that are installed on the instance\.  Windows Update logs are not captured on Windows Server 2016 and later instances\.  | 
 
 ## Video Walkthrough<a name="ec2rescue-walkthrough"></a>
 

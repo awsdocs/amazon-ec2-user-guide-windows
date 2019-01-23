@@ -46,7 +46,7 @@ You can launch a Windows instance using the AWS Management Console as described 
 
 1. From the console dashboard, choose **Launch Instance**\.
 
-1. The **Choose an Amazon Machine Image \(AMI\)** page displays a list of basic configurations, called *Amazon Machine Images \(AMIs\)*, that serve as templates for your instance\. Select the AMI for Windows Server 2016 Base or Windows Server 2012 R2 Base\. Notice that these AMIs are marked "Free tier eligible\."
+1. The **Choose an Amazon Machine Image \(AMI\)** page displays a list of basic configurations, called *Amazon Machine Images \(AMIs\)*, that serve as templates for your instance\. Select the AMI for Windows Server 2016 Base or later\. Notice that these AMIs are marked "Free tier eligible\."
 
 1. On the **Choose an Instance Type** page, you can select the hardware configuration of your instance\. Select the `t2.micro` type, which is selected by default\. Notice that this instance type is eligible for the free tier\.
 

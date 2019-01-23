@@ -26,7 +26,7 @@ Use the following procedure to use the AWS Management Console to add Windows com
 
 1. Press Enter
 
-1. Select the snapshot that matches your system architecture and language preference\. For example, select **Windows 2016 English Installation Media** if your instance is running Windows Server 2016\.
+1. Select the snapshot that matches your system architecture and language preference\. For example, select **Windows 2019 English Installation Media** if your instance is running Windows Server 2019\.
 
 1. Choose **Actions**, **Create Volume**\.
 
@@ -61,14 +61,14 @@ Use the following procedure to use the Tools for Windows PowerShell to add Windo
    ```
    ...
    DataEncryptionKeyId :
-   Description         : Windows 2016 English Installation Media
+   Description         : Windows 2019 English Installation Media
    Encrypted           : False
    KmsKeyId            :
    OwnerAlias          : amazon
    OwnerId             : 123456789012
    Progress            : 100%
    SnapshotId          : snap-22da283e
-   StartTime           : 10/25/2016 8:00:47 PM
+   StartTime           : 10/25/2019 8:00:47 PM
    State               : completed
    StateMessage        :
    Tags                : {}
@@ -132,13 +132,13 @@ Use the following procedure to use the AWS CLI to add Windows components to your
        ...
            {
                "OwnerAlias": "amazon", 
-               "Description": "Windows 2016 English Installation Media", 
+               "Description": "Windows 2019 English Installation Media", 
                "Encrypted": false, 
                "VolumeId": "vol-be5eafcb", 
                "State": "completed", 
                "VolumeSize": 6, 
                "Progress": "100%", 
-               "StartTime": "2016-10-25T20:00:47.000Z", 
+               "StartTime": "2019-10-25T20:00:47.000Z", 
                "SnapshotId": "snap-22da283e", 
                "OwnerId": "123456789012"
            }, 

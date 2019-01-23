@@ -2,7 +2,7 @@
 
 AWS provides managed Amazon Machine Images \(AMIs\) that include various versions and configurations of Windows Server\. In general, the AWS Windows AMIs are configured with the default settings used by the Microsoft installation media\. However, there are customizations\. For example, the AWS Windows AMIs come with the following software and drivers:
 + EC2Config service \(through Windows Server 2012 R2\)
-+ EC2Launch \(Windows Server 2016 only\)
++ EC2Launch \(Windows Server 2016 and later\)
 + AWS Systems Manager
 + AWS CloudFormation
 + AWS Tools for Windows PowerShell
@@ -13,13 +13,26 @@ AWS provides managed Amazon Machine Images \(AMIs\) that include various version
 
 For information about other customizations, see [Configuration Changes for AWS Windows AMIs](#windows-ami-configuration)\.
 
-**Topics**
+**Contents**
 + [Updating Your Windows Instance](#update-windows-instance)
 + [Upgrading or Migrating to a Newer Version of Windows Server](#WinAMI_Upgrading)
 + [Subscribing to Windows AMI Notifications](#subscribe-notifications)
 + [Configuration Changes for AWS Windows AMIs](#windows-ami-configuration)
 + [Details About AWS Windows AMI Versions](#windows-ami-versions)
-+ [Changes in Windows Server 2016 AMIs](#win2k16-amis)
+  + [What to Expect in an Official AWS Windows AMI](#windows-ami-creation-standards)
+  + [How AWS Decides Which Windows AMIs to Offer](#windows-ami-creation-standards-AMI-type)
+  + [Patches, Security Updates, and AMI IDs](#ami-patches-security-ID)
+  + [Semiannual Channel Releases](#channel-releases)
+  + [Monthly AMI Updates for 2019 \(to date\)](#amis-2019)
+  + [Monthly AMI Updates for 2018](#amis-2018)
+  + [Monthly AMI Updates for 2017](#amis-2017)
+  + [Monthly AMI Updates for 2016](#amis-2016)
+  + [Monthly AMI Updates for 2015](#amis-2015)
+  + [Monthly AMI Updates for 2014](#amis-2014)
+  + [Monthly AMI Updates for 2013](#amis-2013)
+  + [Monthly AMI Updates for 2012](#amis-2012)
+  + [Monthly AMI Updates for 2011 and earlier](#amis-2011)
++ [Changes in Windows Server 2016 and Later AMIs](#win2k16-amis)
 + [Docker Container Conflict on Windows Server 2016 Instances](#ec2launch-docker)
 + [Issue with the Hibernate Agent \(2018\.03\.16 AMIs\)](#ec2hibernateagent-2018-03-16)
 
@@ -34,6 +47,8 @@ For Windows instances, you can install updates to the following services or appl
 + [EC2Launch](ec2launch-download.md)
 + [EC2Config service](UsingConfig_Install.md)
 + [SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
++ [ENA](enhanced-networking-ena.md#enable-enhanced-networking-ena-WIN)
++ [NVMe Drivers](aws-nvme-drivers.md#install-nvme-drivers)
 + [PV Drivers](Upgrading_PV_drivers.md)
 + [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell)
 + [AWS CloudFormation helper scripts](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html)
@@ -63,6 +78,10 @@ To be notified when new AMIs are released or when previously released AMIs are m
    1. For **Topic ARN**, copy and paste one of the following Amazon Resource Names \(ARNs\):
       + **arn:aws:sns:us\-east\-1:801119661308:ec2\-windows\-ami\-update**
       + **arn:aws:sns:us\-east\-1:801119661308:ec2\-windows\-ami\-private**
+
+      For **AWS GovCloud \(US\)**:
+
+      **arn:aws\-us\-gov:sns:us\-gov\-west\-1:077303321853:ec2\-windows\-ami\-update** 
 
    1. For **Protocol**, choose **Email**\.
 
@@ -103,7 +122,7 @@ The following changes are applied to each AWS Windows AMI\.
 | Run Windows maintenance tools | Windows Server 2012 R2 and later | 
 | Restore default values for Internet Explorer | All AMIs | 
 | Restore default values for EC2Config | Windows Server 2012 R2 and earlier | 
-| Set EC2Launch to run at the next launch | Windows Server 2016 | 
+| Set EC2Launch to run at the next launch | Windows Server 2016 and later | 
 | Reset the Windows wallpaper | All AMIs | 
 | Run sysprep | All AMIs | 
 
@@ -117,7 +136,7 @@ The following changes are applied to each AWS Windows AMI\.
 | Install the current AWS Tools for Windows PowerShell | All AMIs | 
 | Install the current AWS CloudFormation helper scripts | All AMIs | 
 | Install the current EC2Config and SSM Agent | Windows Server 2012 R2 and earlier | 
-| Install the current EC2Launch and SSM Agent | Windows Server 2016 | 
+| Install the current EC2Launch and SSM Agent | Windows Server 2016 and later | 
 | Install the current AWS PV, ENA, and NVMe drivers | Windows Server 2008 R2 and later | 
 | Install the current SRIOV drivers | Windows Server 2012 R2 and later | 
 | Install the current Citrix PV driver | Windows Server 2008 SP2 and earlier | 
@@ -139,18 +158,19 @@ The following changes are applied to each AWS Windows AMI\.
 | Set the timezone to UTC | All AMIs | 
 | Disable Windows updates and notifications | All AMIs | 
 | Run Windows Update and reboot until there are no pending updates | All AMIs | 
+| Sets the display in all power schemes to never turn off\. | All AMIs | 
 
 ## Details About AWS Windows AMI Versions<a name="windows-ami-versions"></a>
 
 ### What to Expect in an Official AWS Windows AMI<a name="windows-ami-creation-standards"></a>
 
-AWS provides AMIs with a variety of configurations for all supported Windows Operating System versions from 2003 R2 to 2016\. For each of these images, AWS:
-+ installs all Microsoft recommended Windows security patches\. We release images shortly after each monthly Microsoft patches are made available\.
-+ installs the latest drivers for AWS hardware, including network and disk drivers, EC2WinUtil for troubleshooting, as well as GPU drivers in selected AMIs\.
-+ includes AWS helper software, like [EC2 Config](ec2config-service.md) for Server 2012 R2 and earlier, or [EC2 Launch](ec2launch.md) for Server 2016\.
-+ configures Windows Time to use the [AWS Time Service](windows-set-time.md#default-ntp-settings)\.
-+ makes changes in all power schemes to set the display to never turn off\.
-+ performs minor bug fixes – generally one\-line registry changes to enable or disable features that we have found to improve performance on AWS\.
+AWS provides AMIs with a variety of configurations for all supported Windows Operating System versions from 2003 R2 to 2019\. For each of these images, AWS:
++ Installs all Microsoft recommended Windows security patches\. We release images shortly after the monthly Microsoft patches are made available\.
++ Installs the latest drivers for AWS hardware, including network and disk drivers, EC2WinUtil for troubleshooting, as well as GPU drivers in selected AMIs\.
++ Includes AWS helper software, like [EC2 Config](ec2config-service.md) for Server 2012 R2 and earlier, or [EC2 Launch](ec2launch.md) for Server 2016 and later\.
++ Configures Windows Time to use the [AWS Time Service](windows-set-time.md#default-ntp-settings)\.
++ Makes changes in all power schemes to set the display to never turn off\.
++ Performs minor bug fixes – generally one\-line registry changes to enable or disable features that we have found to improve performance on AWS\.
 
 Other than the adjustments listed above, we keep our AMIs as close as possible to the default install\. This means we default to the “stock” PowerShell or \.NET framework versions, don’t install Windows Features, and generally don’t change the AMI\.
 
@@ -185,7 +205,8 @@ The following tables summarize the changes to each release of the AWS Windows AM
 + [How AWS Decides Which Windows AMIs to Offer](#windows-ami-creation-standards-AMI-type)
 + [Patches, Security Updates, and AMI IDs](#ami-patches-security-ID)
 + [Semiannual Channel Releases](#channel-releases)
-+ [Monthly AMI Updates for 2018 \(to date\)](#amis-2018)
++ [Monthly AMI Updates for 2019 \(to date\)](#amis-2019)
++ [Monthly AMI Updates for 2018](#amis-2018)
 + [Monthly AMI Updates for 2017](#amis-2017)
 + [Monthly AMI Updates for 2016](#amis-2016)
 + [Monthly AMI Updates for 2015](#amis-2015)
@@ -201,13 +222,23 @@ For more information about components included in these AMIs, see the following:
 + [Amazon ENA Driver Versions](enhanced-networking-ena.md#ena-adapter-driver-versions)
 + [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)
 
-### Monthly AMI Updates for 2018 \(to date\)<a name="amis-2018"></a>
+### Monthly AMI Updates for 2019 \(to date\)<a name="amis-2019"></a>
 
-For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2018](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv)\.
+For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2019](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv)\.
 
 
 | Release | Changes | 
 | --- | --- | 
+| 2019\.01\.10 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
+
+### Monthly AMI Updates for 2018<a name="amis-2018"></a>
+
+For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2018](https://support.microsoft.com/en-us/help/4486929/software-update-services-and-windows-server-update-services-2018)\.
+
+
+| Release | Changes | 
+| --- | --- | 
+| 2018\.12\.12 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.11\.28 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.11\.20 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2018\.11\.19 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
@@ -363,19 +394,19 @@ For more information about Microsoft updates, see [Description of Software Updat
 |  1\.01  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 |  1\.0  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 
-## Changes in Windows Server 2016 AMIs<a name="win2k16-amis"></a>
+## Changes in Windows Server 2016 and Later AMIs<a name="win2k16-amis"></a>
 
-AWS provides AMIs for Windows Server 2016\. These AMIs include the following high\-level changes from earlier Windows AMIs:
+AWS provides AMIs for Windows Server 2016 and later\. These AMIs include the following high\-level changes from earlier Windows AMIs:
 + To accommodate the change from \.NET Framework to \.NET Core, the EC2Config service has been deprecated on Windows Server 2016 AMIs and replaced by EC2Launch\. EC2Launch is a bundle of Windows PowerShell scripts that perform many of the tasks performed by the EC2Config service\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\. 
-+ On earlier versions of Windows Server AMIs, you can use the EC2Config service to join an EC2 instance to a domain and configure integration with Amazon CloudWatch\. On Windows Server 2016 AMIs, the Amazon EC2 Systems Manager \(SSM\) agent performs these tasks\. This means that you must use either Amazon EC2 Run Command or SSM Config to join an EC2 instance to a domain or configure integration with Amazon CloudWatch on Windows Server 2016 instances\. For more information about configuring instances to send log data to CloudWatch, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md) For information about joining an EC2 instance to a domain, see [Joining a Windows Instance to an AWS Directory Service Domain](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-domain-join.html)\.
++ On earlier versions of Windows Server AMIs, you can use the EC2Config service to join an EC2 instance to a domain and configure integration with Amazon CloudWatch\. On Windows Server 2016 and later AMIs, the Amazon EC2 Systems Manager \(SSM\) agent performs these tasks\. This means that you must use either Amazon EC2 Run Command or SSM Config to join an EC2 instance to a domain or configure integration with Amazon CloudWatch on Windows Server 2016 and later instances\. For more information about configuring instances to send log data to CloudWatch, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md) For information about joining an EC2 instance to a domain, see [Joining a Windows Instance to an AWS Directory Service Domain](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-domain-join.html)\.
 
 **Other Differences**
 
-Note these additional important differences for instances created from Windows Server 2016 AMIs\.
+Note these additional important differences for instances created from Windows Server 2016 and later AMIs\.
 + By default, EC2Launch does not initialize secondary EBS volumes\. You can configure EC2Launch to initialize disks automatically by either scheduling the script to run or by calling EC2Launch in user data\. For the procedure to initialize disks using EC2Launch, see "Initialize Drives and Drive Letter Mappings" in [Configuring EC2Launch](ec2launch.md#ec2launch-config)\.
-+ If you previously enabled CloudWatch integration on your instances by using a local configuration file \(AWS\.EC2\.Windows\.CloudWatch\.json\), you can configure the file to work with the SSM Agent on instances created from Windows Server 2016 AMIs\. For more information, see [Use SSM Agent to Configure CloudWatch](send_logs_to_cwl_instances.md#configure-ssm-agent)\.
++ If you previously enabled CloudWatch integration on your instances by using a local configuration file \(AWS\.EC2\.Windows\.CloudWatch\.json\), you can configure the file to work with the SSM Agent on instances created from Windows Server 2016 and later AMIs\. For more information, see [Use SSM Agent to Configure CloudWatch](send_logs_to_cwl_instances.md#configure-ssm-agent)\.
 
-For more information, see [Windows Server 2016](https://www.microsoft.com/en-us/cloud-platform/windows-server) on Microsoft\.com\.
+For more information, see [Windows Server 2019](https://www.microsoft.com/en-us/cloud-platform/windows-server) on Microsoft\.com\.
 
 ## Docker Container Conflict on Windows Server 2016 Instances<a name="ec2launch-docker"></a>
 

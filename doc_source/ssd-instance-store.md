@@ -7,6 +7,7 @@ Like other instance store volumes, you must map the SSD instance store volumes f
 ## NVMe SSD Volumes<a name="nvme-ssd-volumes"></a>
 
 The following instances offer non\-volatile memory express \(NVMe\) SSD instance store volumes: C5d, I3, F1, M5d, `p3dn.24xlarge`, R5d, and z1d\. To access the NVMe volumes, you must use an operating system that supports NVMe\. The following are the recommended operating systems:
++ Windows Server 2019
 + Windows Server 2016
 + Windows Server 2012 R2
 + Windows Server 2012

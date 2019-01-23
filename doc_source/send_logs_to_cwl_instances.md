@@ -87,7 +87,7 @@ The Amazon EC2 console truncates output after 2500 characters\. Configure an Ama
 
 ## Use a Local Configuration File<a name="send_logs_cwl_configfile"></a>
 
-The procedure to configure your instances using a local configuration file depends on the agent and the version of the agent that you're using\. The SSM Agent is the only agent compatible with Windows Server 2016\. With Windows Server 2008 to Windows Server 2012 R2, you must determine which version of EC2Config is running on your instance\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
+The procedure to configure your instances using a local configuration file depends on the agent and the version of the agent that you're using\. The SSM Agent is the only agent compatible with Windows Server 2016 and later\. With Windows Server 2008 to Windows Server 2012 R2, you must determine which version of EC2Config is running on your instance\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
 
 **Topics**
 + [Use SSM Agent to Configure CloudWatch](#configure-ssm-agent)
@@ -96,7 +96,7 @@ The procedure to configure your instances using a local configuration file depen
 
 ### Use SSM Agent to Configure CloudWatch<a name="configure-ssm-agent"></a>
 
-The following procedure describes how to configure CloudWatch using the SSM Agent on Amazon EC2 Windows Server 2016 instances\.
+The following procedure describes how to configure CloudWatch using the SSM Agent on Amazon EC2 Windows Server 2016 and later instances\.
 
 **To configure CloudWatch using SSM Agent**
 
@@ -104,7 +104,7 @@ The following procedure describes how to configure CloudWatch using the SSM Agen
 
 1. Open the `AWS.EC2.Windows.CloudWatch.json` file, and change `IsEnabled` to `true`\. This tells the agent to start sending data to CloudWatch immediately after it is started or restarted\.
 
-1. Save the file with the same name in the following folder on your Windows Server 2016 instance: `C:\Program Files\Amazon\SSM\Plugins\awsCloudWatch\`\.
+1. Save the file with the same name in the following folder on your Windows Server 2016 or later instance: `C:\Program Files\Amazon\SSM\Plugins\awsCloudWatch\`\.
 
 1. Start or restart the SSM agent \(`AmazonSSMAgent.exe`\) using the Windows Services control panel or by sending the following command in PowerShell: 
 

@@ -1,6 +1,7 @@
 # AWS NVMe Drivers for Windows Instances<a name="aws-nvme-drivers"></a>
 
 The latest AWS Windows AMIs of the following Windows operating systems contain the AWS NVMe drivers used to interact with EBS and SSD instance store volumes that are exposed as NVMe block devices for better performance:
++ Windows Server 2019
 + Windows Server 2016
 + Windows Server 2012 R2
 + Windows Server 2012 RTM

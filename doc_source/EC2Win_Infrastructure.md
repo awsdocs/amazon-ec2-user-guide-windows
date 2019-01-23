@@ -65,9 +65,9 @@ For more information about Amazon EBS volumes, see [Amazon Elastic Block Store \
 
 ### Instance Store<a name="EC2Win_InstanceStore"></a>
 
-All instance types, with the exception of Micro instances, offer *instance store*, which provides your instances with temporary, block\-level storage\. This is storage that is physically attached to the host computer\. The data on an instance store volume doesn't persist when the associated instance is stopped or terminated\. For more information about instance store volumes, see [Amazon EC2 Instance Store](InstanceStorage.md)\.
+*Instance store* provides your instances with temporary, block\-level storage\. This is storage that is physically attached to the host computer\. The data on an instance store volume doesn't persist when the associated instance is stopped or terminated\. For a list of instance store volumes available on each supported instance type, see [Instance Store Volumes](InstanceStorage.md#instance-store-volumes)\. 
 
-Instance store is an option for inexpensive temporary storage\. You can use instance store volumes if you don't require data persistence\.
+Instance store is an option for inexpensive temporary storage\. You can use instance store volumes if you don't require data persistence\. For more information about instance store volumes, see [Amazon EC2 Instance Store](InstanceStorage.md)\.
 
 ### Amazon S3<a name="EC2Win_StorageS3"></a>
 

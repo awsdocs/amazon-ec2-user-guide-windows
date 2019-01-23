@@ -1,6 +1,6 @@
 # Configuring a Windows Instance Using EC2Launch<a name="ec2launch"></a>
 
-EC2Launch is a set of Windows PowerShell scripts that replaces the EC2Config service on Windows Server 2016 AMIs\.
+EC2Launch is a set of Windows PowerShell scripts that replaces the EC2Config service on Windows Server 2016 and later AMIs\.
 
 **Topics**
 + [EC2Launch Tasks](#ec2launch-tasks)
@@ -24,14 +24,14 @@ EC2Launch performs the following tasks by default during the initial instance bo
 + Executes user data \(if specified\)\. For more information about specifying user data, see [Working with Instance User Data](ec2-instance-metadata.md#instancedata-add-user-data)\.
 +  Sets persistent static routes to reach the metadata service and KMS servers\. 
 **Important**  
- If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Updating metadata/KMS routes for Server 2016 when launching a custom AMI](#update-metadata-KMS)\. 
+ If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI](#update-metadata-KMS)\. 
 
 The following tasks help to maintain backward compatibility with the EC2Config service\. You can also configure EC2Launch to perform these tasks during startup:
 + Initialize secondary EBS volumes\.
 + Send Windows Event logs to the EC2 console logs\.
 + Send the *Windows is ready to use* message to the EC2 console\.
 
-For more information about Windows Server 2016, see [What's New with Windows Server 2016](https://www.microsoft.com/en-us/cloud-platform/windows-server) on Microsoft\.com\.
+For more information about Windows Server 2019, see [Compare Features in Windows Server Versions](https://www.microsoft.com/en-us/cloud-platform/windows-server-comparison) on Microsoft\.com\.
 
 ## Verify the EC2Launch Version<a name="ec2launch-verify-version"></a>
 
@@ -43,7 +43,7 @@ PS C:\> Test-ModuleManifest -Path "C:\ProgramData\Amazon\EC2-Windows\Launch\Modu
 
 ## EC2Launch Directory Structure<a name="ec2launch-directories"></a>
 
-EC2Launch is installed by default on Windows Server 2016 AMIs in the root directory `C:\ProgramData\Amazon\EC2-Windows\Launch`\.
+EC2Launch is installed by default on Windows Server 2016 and later AMIs in the root directory `C:\ProgramData\Amazon\EC2-Windows\Launch`\.
 
 **Note**  
 By default, Windows hides files and folders under `C:\ProgramData`\. To view EC2Launch directories and files, you must either type the path in Windows Explorer or change the folder properties to show hidden files and folders\.
@@ -208,7 +208,7 @@ PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\SendWindowsIsReady.ps1 
 
 ## Using Sysprep with EC2Launch<a name="ec2launch-sysprep"></a>
 
-Sysprep simplifies the process of duplicating a customized installation of Windows Server 2016\. EC2Launch offers a default answer file and batch files for Sysprep that automate and secure the image\-preparation process on your AMI\. Modifying these files is optional\. These files are located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep`\.
+Sysprep simplifies the process of duplicating a customized installation of Windows Server 2016 and later\. EC2Launch offers a default answer file and batch files for Sysprep that automate and secure the image\-preparation process on your AMI\. Modifying these files is optional\. These files are located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep`\.
 
 **Important**  
 Do not use Sysprep to create an instance backup\. Sysprep removes system\-specific information\. If you remove this information there might be unintended consequences for an instance backup\.
@@ -226,11 +226,11 @@ Customize this batch file to run commands during the Sysprep specialize phase\.
 
 ### Running Sysprep with EC2Launch<a name="ec2launch-sysprep-running"></a>
 
-On the full installation of Windows Server 2016 \(with a desktop experience\), you can run Sysprep with EC2Launch manually or by using the **EC2 Launch Settings** application\.
+On the full installation of Windows Server 2016 and later \(with a desktop experience\), you can run Sysprep with EC2Launch manually or by using the **EC2 Launch Settings** application\.
 
 **To run Sysprep using the EC2Launch Settings application**
 
-1. In the Amazon EC2 console, locate or create a Windows Server 2016 AMI\.
+1. In the Amazon EC2 console, locate or create a Windows Server 2016 or later AMI\.
 
 1. Launch a Windows instance from the AMI\.
 
@@ -250,7 +250,7 @@ On the full installation of Windows Server 2016 \(with a desktop experience\), y
 
 **To manually run Sysprep using EC2Launch**
 
-1. In the Amazon EC2 console locate or create a Windows Server 2016, Datacenter edition AMI that you want to duplicate\.
+1. In the Amazon EC2 console locate or create a Windows Server 2016 or later Datacenter edition AMI that you want to duplicate\.
 
 1. Launch and connect to your Windows instance\.
 
@@ -274,9 +274,9 @@ EC2Launch uses the password you specify in the `unattend.xml` file\. If you don'
 
 You are logged off the instance and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `running` to `stopping`, and then to `stopped`\. At this point, it is safe to create an AMI from this instance\.
 
-### Updating metadata/KMS routes for Server 2016 when launching a custom AMI<a name="update-metadata-KMS"></a>
+### Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI<a name="update-metadata-KMS"></a>
 
-**To update metadata/KMS routes for Server 2016 when launching a custom AMI**
+**To update metadata/KMS routes for Server 2016 and later when launching a custom AMI**
 
 1. Use EC2LaunchSettings GUI \(C:\\ProgramData\\Amazon\\EC2\-Windows\\Launch\\Settings\\Ec2LaunchSettings\.exe\) to shut down with Sysprep\.
 

@@ -7,7 +7,7 @@ There is an AWS Systems Manager Automation document that automatically applies t
 
 The manual methods to reset the administrator password use either EC2Config or EC2Launch\.
 + For Windows AMIs before Windows Server 2016, use the EC2Config service\.
-+ For Windows Server 2016 AMIs, use the EC2Launch service\.
++ For Windows Server 2016 and later AMIs, use the EC2Launch service\.
 
 These procedures also describe how to connect to an instance if you lost the key pair that was used to create the instance\. Amazon EC2 uses a public key to encrypt a piece of data, such as a password, and a private key to decrypt the data\. The public and private keys are known as a *key pair*\. With Windows instances, you use a key pair to obtain the administrator password and then log in using RDP\.
 

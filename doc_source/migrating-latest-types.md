@@ -37,7 +37,7 @@ Parts 4 and 5 of these instructions can be completed after you migrate or change
 
 Though AWS PV drivers are not used in the Nitro system, you should still upgrade them if you are on previous versions of either Citrix PV or AWS PV\. The latest AWS PV drivers resolve bugs in previous versions of the drivers that may appear while you are on a Nitro system, or if you need to migrate back to a Xen\-based instance\. As a best practice, we recommend always updating to the latest drivers for Windows instances on AWS\. 
 
-Use the following procedure to perform an in\-place upgrade of AWS PV drivers, or to upgrade from Citrix PV drivers to AWS PV drivers on Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, or Windows Server 2016\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\. 
+Use the following procedure to perform an in\-place upgrade of AWS PV drivers, or to upgrade from Citrix PV drivers to AWS PV drivers on Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\. 
 
 **To perform an upgrade of or to AWS PV drivers**
 
@@ -59,11 +59,11 @@ Upgrade to the latest Elastic Network Adapter driver to ensure that all network 
 
 1. Extract the zip archive\. 
 
-1. Install the driver by running the `install.ps1` PowerShell script from the extracted folder\.
+1. Install the driver by running the `install.ps1` PowerShell script from the extracted folder\. 
 **Note**  
-To avoid installation errors, run this script as an administrator\.
+To avoid installation errors, run the `install.ps1` script as an administrator\.
 
-1. Check if your AMI has `enaSupport` enabled\. If not, continue by following the documentation at [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
+1.  Check if your AMI has enaSupport activated\. If not, continue by following the documentation at [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
 
 ## Part 3: Upgrading AWS NVMe drivers<a name="upgrade-nvme"></a>
 
@@ -76,21 +76,19 @@ The following instructions are modified specifically for when you install or upg
 
 1. Extract the zip archive\.
 
-1. Install the driver by running `install.ps1 -NoReboot`\.
+1. Install the driver by running `dpinst.exe`\.
 
 1. Open a PowerShell session and run the following command: 
 
-   ```
-   start rundll32.exe sppnp.dll,Sysprep_Generalize_Pnp -wait
-   ```
-
-   This command only runs sysprep on the driver devices\. It does not run the full sysprep preparation\.
+   `start rundll32.exe sppnp.dll,Sysprep_Generalize_Pnp -wait`
+**Note**  
+This command only runs sysprep on the driver devices\. It does not run the full sysprep preparation\.
 
 1. For Windows Server 2008 R2 and Windows Server 2012 RTM, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type any time after the device sysprep\.
 
 ## Part 4: Updating EC2Config and EC2Launch<a name="upgdate-ec2config-ec2launch"></a>
 
-For Windows instances, the latest EC2Config and EC2Launch utilities provide additional functionality and information when running on the Nitro system, including on EC2 Bare Metal\. By default, the EC2Config service is included in AMIs prior to Windows Server 2016\. EC2Launch replaces EC2Config on Windows Server 2016 AMIs\. 
+For Windows instances, the latest EC2Config and EC2Launch utilities provide additional functionality and information when running on the Nitro system, including on EC2 Bare Metal\. By default, the EC2Config service is included in AMIs prior to Windows Server 2016\. EC2Launch replaces EC2Config on Windows Server 2016 and later AMIs\. 
 
 When the EC2Config and EC2Launch services are updated, new Windows AMIs from AWS include the latest version of the service\. However, you must update your own Windows AMIs and instances with the latest version of EC2Config and EC2Launch\.
 
@@ -112,7 +110,7 @@ For more information, see [Installing the Latest Version of EC2Config](UsingConf
 
 1. Run `install.ps1`\.
 **Note**  
-To avoid installation errors, run the this script as an administrator\.
+To avoid installation errors, run the `install.ps1` script as an administrator\.
 
 1. If you made a backup of the EC2Launch configuration file, copy it to the `C:\ProgramData\Amazon\EC2-Windows\Launch\Config` directory\. 
 
@@ -120,13 +118,13 @@ For more information, see [Configuring a Windows Instance Using EC2Launch](ec2la
 
 ## Part 5: Installing the Serial Port Driver for Bare Metal Instances<a name="install-serial-port-bare-metal"></a>
 
-The `i3.metal` instance type uses a PCI\-based serial device rather than an I/O port\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device and have the serial port driver installed\. If you are not using an instance launched from an Amazon\-provided Windows AMI dated 2018\.04\.11 or later, you must install the Serial Port Driver to enable the serial device for EC2 features such as Password Generation and Console Output\. The latest EC2Config and EC2Launch utilities also support `i3.metal` and provide additional functionality\. Follow the steps in Part 4, if you have not yet done so\. 
+The `i3.metal` instance type uses a PCI\-based serial device rather than an I/O port\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device and have the serial port driver installed\. If you are not using an instance launched from an Amazon\-provided Windows AMI dated 2018\.04\.11 or later, you must install the Serial Port Driver to enable the serial device for EC2 features such as Password Generation and Console Output\. The latest EC2Config and EC2Launch utilities also support i3\.metal and provide additional functionality\. Follow the steps in Part 4, if you have not yet done so\. 
 
 **To install the serial port driver**
 
 1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPCISerialDriver/Latest/AWSPCISerialDriver.zip) the serial driver package to the instance\. 
 
-1. Extract the contents of the folder, open the context \(right\-click\) menu for `aws_ser.INF`, and choose **install**\. 
+1. Extract the contents of the folder, open the context \(right\-click\) menu for aws\_ser\.INF, and choose **install**\. 
 
 1. Choose **Okay**\.
 
