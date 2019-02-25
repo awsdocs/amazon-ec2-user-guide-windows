@@ -84,7 +84,12 @@ User data scripts are executed from the local administrator account when a rando
 
 Any scripts in the instance user data are executed during the initial launch of the instance\. If the persist tag is found, user data execution is enabled for subsequent reboots or starts\. The log files for EC2Launch and EC2Config contain the output from the standard output and standard error streams\.
 
-With EC2Launch, the log file is `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`\. The following information is logged as user data is executed\.
+With EC2Launch, the log file is `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`\.
+
+**Note**  
+The `C:\ProgramData` folder might be hidden\. To view the folder, you must show hidden files and folders\.
+
+The following information is logged as user data is executed\.
 + Userdata execution begins — The start of user data execution
 + <persist> tag was provided: true — If the persist tag is found
 + Running userdata on every boot — If the persist tag is found
@@ -111,7 +116,7 @@ If you choose the **Shutdown with Sysprep** option, user data scripts are execut
 1. Open a PowerShell command window and run the following command:
 
    ```
-   InitializeInstance.ps1 -Schedule
+   C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 –Schedule
    ```
 
 1. Disconnect from your Windows instance\. To execute updated scripts next time the instance is started, stop the instance and update the user data\. For more information, see [View and Update the Instance User Data](#user-data-view-change)\.

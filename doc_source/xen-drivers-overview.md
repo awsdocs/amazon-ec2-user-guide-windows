@@ -35,7 +35,7 @@ PS C:\> [DateTime]::FromFileTimeUTC((gwmi -n root\wmi -cl AWSXenStoreBase).XenTi
 
 The AWS PV driver components are listed in the Windows registry under `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services`\. These driver components are as follows: `XENBUS`, xeniface, xennet, xenvbd, and xenvif\.
 
-AWS PV also has a driver component named LiteAgent, which runs as a Windows service\. It handles tasks such as shutdown and restart events from the API\. You can access and manage services by running `Services.msc` from the command line\. This component runs on all instance types including C5 and M5\. Updating to AWS PV 8\.2 also updates the LiteAgent and adds multiple bug fixes\.
+AWS PV drivers also have a Windows service named LiteAgent, which runs in user\-mode\. It handles tasks such as shutdown and restart events from AWS APIs on Xen generation instances\. You can access and manage services by running `Services.msc` from the command line\. When running on Nitro generation instances, the AWS PV drivers are not used and the LiteAgent service will self\-stop starting with driver version 8\.2\.4\. Updating to the latest AWS PV driver also updates the LiteAgent and improves reliability on all instance generations\.
 
 ### Installing the Latest AWS PV Drivers<a name="aws-pv-download"></a>
 

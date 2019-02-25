@@ -124,18 +124,18 @@ For more information, see the following:
 
 ## Release Notes<a name="compute-instance-limits"></a>
 + C4, C5, C5d, and C5n instances require 64\-bit EBS\-backed HVM AMIs\. They have high\-memory and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
-+ C5, C5d, and C5n instances have the following requirements: 
-  + Must have the NVMe drivers installed\. EBS volumes are exposed as [NVMe block devices](nvme-ebs-volumes.md)\.
-  + Must have the Elastic Network Adapter \([ENA](enhanced-networking-ena.md)\) drivers installed\.
++ C5, C5d, and C5n instances have the following requirements:
+  + NVMe drivers must be installed\. EBS volumes are exposed as [NVMe block devices](nvme-ebs-volumes.md)\.
+  + Elastic Network Adapter \([ENA](enhanced-networking-ena.md)\) drivers must be installed\.
 
   The following AMIs meet these requirements:
   + Amazon Linux 2
-  + Amazon Linux AMI 2014\.03 or later
+  + Amazon Linux AMI 2018\.03
   + Ubuntu 14\.04 or later
-  + SUSE Linux Enterprise Server 12 or later
   + Red Hat Enterprise Linux 7\.4 or later
+  + SUSE Linux Enterprise Server 12 or later
   + CentOS 7 or later
-  + FreeBSD 11\.1\-RELEASE
+  + FreeBSD 11\.1 or later
   + Windows Server 2008 R2 or later
 + C5, C5d, and C5n instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. Every instance has at least one network interface attachment\.
 + There is a limit on the total number of instances that you can launch in a region, and there are additional limits on some instance types\. For more information, see [How many instances can I run in Amazon EC2?](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2)\. To request a limit increase, use the [Amazon EC2 Instance Request Form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-ec2-instances)\.

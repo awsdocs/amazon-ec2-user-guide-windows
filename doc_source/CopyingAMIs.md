@@ -68,7 +68,7 @@ When you first copy an instance store\-backed AMI to a region, we create an Amaz
 Prior to copying an AMI, you must ensure that the contents of the source AMI are updated to support running in a different region\. For example, you should update any database connection strings or similar application configuration data to point to the appropriate resources\. Otherwise, instances launched from the new AMI in the destination region may still use the resources from the source region, which can impact performance and cost\.
 
 **Limits**
-+ Destination regions are limited to 50 concurrent AMI copies at a time, with no more than 25 of those coming from a single source region\.
++ Destination regions are limited to 50 concurrent AMI copies\.
 
 ## Cross\-Account AMI Copy<a name="copy-ami-across-accounts"></a>
 
@@ -102,7 +102,7 @@ The following table shows encryption support for various scenarios\. Note that w
 | 4 | Encrypted\-to\-unencrypted | No | 
 
 **Copy an unencrypted source AMI to an unencrypted target AMI**  
-In this scenario, a copy of an AMI with an unencrypted single backing snapshot is created in the specified geographical region \(not shown\)\. Although this diagram shows an AMI with a single backing snapshot, you can also copy an AMI with multiple snapshots\. The encryption status of each snapshot is preserved\. Therefore, an unencrypted snapshot in the source AMI results in an unencrypted snapshot in the target AMI, and an encrypted shapshot in the source AMI results in an encrypted snapshot in the target AMI\.
+In this scenario, a copy of an AMI with an unencrypted single backing snapshot is created in the specified geographical region \(not shown\)\. Although this diagram shows an AMI with a single backing snapshot, you can also copy an AMI with multiple snapshots\. The encryption status of each snapshot is preserved\. Therefore, an unencrypted snapshot in the source AMI results in an unencrypted snapshot in the target AMI, and an encrypted snapshot in the source AMI results in an encrypted snapshot in the target AMI\.
 
 ![\[Copy an unencrypted source AMI\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ami-to-ami-unencrypted.png)
 

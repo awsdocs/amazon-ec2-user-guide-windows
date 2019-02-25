@@ -40,6 +40,9 @@ For information about other customizations, see [Configuration Changes for AWS W
 
 After you launch a Windows instance, you are responsible for installing updates on it\. You can manually install only the updates that interest you, or you can start from a current AWS Windows AMI and build a new Windows instance\. For information about finding the current AWS Windows AMIs, see [Finding a Windows AMI](finding-an-ami.md)\.
 
+**Note**  
+Instances should be stateless when updating\. For more information, see [Managing Your AWS Infrastructure at Scale](https://d1.awsstatic.com/whitepapers/managing-your-aws-infrastructure-at-scale.pdf)\.
+
 For Windows instances, you can install updates to the following services or applications:
 +  [Microsoft Windows Server](http://windows.microsoft.com/en-us/windows/windows-update) 
 +  [Microsoft SQL Server](http://technet.microsoft.com/en-us/library/ff803383.aspx) 
@@ -177,7 +180,7 @@ Other than the adjustments listed above, we keep our AMIs as close as possible t
 ### How AWS Decides Which Windows AMIs to Offer<a name="windows-ami-creation-standards-AMI-type"></a>
 
 Each AMI is extensively tested prior to release to the general public\. We periodically streamline our AMI offerings to simplify customer choice and to reduce costs\.
-+ New AMI offerings are created for new OS releases\. You can count on AWS releasing “Base,” “Core/Container,” and “SQL Express/Standard/Web/Enterprise” offerings in English and other widely used languages\.
++ New AMI offerings are created for new OS releases\. You can count on AWS releasing “Base,” “Core/Container,” and “SQL Express/Standard/Web/Enterprise” offerings in English and other widely used languages\. The primary difference between Base and Core offerings is that Base offerings have a desktop/GUI whereas Core offerings are PowerShell command line only\. For more information about Windows Server Core, see [ https://docs\.microsoft\.com/en\-us/windows\-server/administration/server\-core/what\-is\-server\-core](https://docs.microsoft.com/en-us/windows-server/administration/server-core/what-is-server-core)\.
 + New AMI offerings are created to support new platforms – for example, the Deep Learning and “NVidia” AMIs were created to support customers using our GPU\-based instance types \(P2 and P3, G2 and G3, etc\.\)\.
 + Less popular AMIs are sometimes removed\. If we see a particular AMI is launched only a few times in its entire lifespan, we will remove it in favor of more widely used options\.
 
@@ -229,6 +232,8 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2019\.02\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) SQL 2014 with Service Pack 2 and SQL 2016 with Service Pack 1 will no longer be updated after this release\.   | 
+| 2019\.02\.09 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.01\.10 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 
 ### Monthly AMI Updates for 2018<a name="amis-2018"></a>

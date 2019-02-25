@@ -13,7 +13,7 @@ Complete the following tasks and note the following important details before you
   + [Upgrade and conversion options for Windows Server 2016](https://docs.microsoft.com/en-us/windows-server/get-started/supported-upgrade-paths)
   + [Upgrade and conversion options for Windows Server 2019](https://docs.microsoft.com/en-us/windows-server/get-started-19/install-upgrade-migrate-19)
   + [Windows Server Upgrade Center](https://www.microsoft.com/upgradecenter)
-+ We do not recommend performing an operating system upgrade on a T1 or T2 instance type\. These types of instances might not have enough resources to manage the upgrade process\. To upgrade one of these instances, you must resize the instance to another instance type, perform the upgrade, and then resize it back to a T1 or T2 instance type\. For more information, see [Changing the Instance Type](ec2-instance-resize.md)\.
++  We recommend performing an operating system upgrade on instances with at least 2 vCPUs and 4GB of RAM\. If needed, you can change the instance to a larger size of the same type \(t2\.small to t2\.large, for example\), perform the upgrade, and then resize it back to the original size\. If you are required to retain the instance size, you can monitor the progress using the [Instance Console Screenshot](screenshot-service.md)\. For more information, see [Changing the Instance Type](ec2-instance-resize.md)\.
 + Verify that the root volume on your Windows instance has enough free disk space\. The Windows Setup process might not warn you of insufficient disk space\. For information about how much disk space is required to upgrade a specific operating system, see the Microsoft documentation\. If the volume does not have enough space, it can be expanded\. For more information, see [Modifying the Size, IOPS, or Type of an EBS Volume on Windows](ebs-modify-volume.md)\.
 + Determine your upgrade path\. You must upgrade the operating system to the same architecture\. For example, you must upgrade a 32\-bit system to a 32\-bit system\. Windows Server 2008 R2 and later are 64\-bit only\.
 + Disable antivirus and anti\-spyware software and firewalls\. These types of software can conflict with the upgrade process\. Re\-enable antivirus and anti\-spyware software and firewalls after the upgrade completes\.
@@ -34,7 +34,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 1. In the navigation pane, choose **Instances**\. Locate the instance\. Make a note of the instance ID and Availability Zone for the instance\. You need this information later in this procedure\.
 
-1. If you are upgrading from Windows Server 2012 or 2012 R2 to Windows Server 2019, do the following on your instance before proceeding:
+1. If you are upgrading from Windows Server 2012 or 2012 R2 to Windows Server 2016 or 2019, do the following on your instance before proceeding:
 
    1. Uninstall the EC2Config service\. For more information, see [Stopping, Restarting, Deleting, or Uninstalling EC2Config](ec2config-service.md#UsingConfig_StopDelete)\.
 
@@ -64,7 +64,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 1. Begin the upgrade by using Windows PowerShell to open the installation media volume you attached to the instance\.
 
-   1. If you are upgrading to Windows Server 2019, run the following:
+   1. If you are upgrading to Windows Server 2016 or later, run the following:
 
       ```
       ./setup.exe /auto upgrade

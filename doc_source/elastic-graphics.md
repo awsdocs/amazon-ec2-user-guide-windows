@@ -61,7 +61,7 @@ For more information, see [Amazon Elastic Graphics Pricing](https://aws.amazon.c
 ## Elastic Graphics Limitations<a name="elastic-graphics-limitations"></a>
 
 Before you start using Elastic Graphics accelerators, be aware of the following limitations:
-+ You can attach accelerators only to Windows instances\. Linux instances are not supported\.
++ You can attach accelerators only to Windows instances with Microsoft Windows Server 2012 R2 or later\. Linux instances are not supported\.
 + You can attach one accelerator to an instance at a time, and only during instance launch\.
 + You can't share an accelerator between instances\.
 + You can't detach an accelerator from an instance or transfer it to another instance\. If you no longer require an accelerator, you must terminate your instance\. To change the accelerator type, create an AMI from your instance, terminate the instance, and launch a new instance with a different accelerator specification\.

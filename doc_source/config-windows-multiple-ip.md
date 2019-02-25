@@ -95,7 +95,7 @@ After you have set up static IP addressing on your Windows instance, you are rea
 
 1. Choose **Add**\.
 
-1. In the **TCP/IP Address** dialog box, type the secondary private IP address for **IP address**\. For **Subnet mask**x, type the same subnet mask that you entered for the primary private IP address in [Step 1: Configure Static IP Addressing on Your Windows Instance ](#step1), and then choose **Add**\.   
+1. In the **TCP/IP Address** dialog box, type the secondary private IP address for **IP address**\. For **Subnet mask**, type the same subnet mask that you entered for the primary private IP address in [Step 1: Configure Static IP Addressing on Your Windows Instance ](#step1), and then choose **Add**\.   
 ![\[TCP/IP Address dialog box\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/WinOSAddSPIP.png)
 
 1. Verify the IP address settings and choose **OK**\.  

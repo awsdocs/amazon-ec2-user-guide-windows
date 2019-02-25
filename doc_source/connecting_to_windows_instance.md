@@ -34,7 +34,7 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
 
 ## Connect to Your Windows Instance<a name="connect-rdp"></a>
 
-To connect to a Windows instance, you must retrieve the initial administrator password and then specify this password when you connect to your instance using Remote Desktop\.
+To connect to a Windows instance, you must retrieve the initial administrator password \(see step 2 below\) and then specify this password when you connect to your instance using Remote Desktop\.
 
 The name of the administrator account depends on the language of the operating system\. For example, for English, it's Administrator, for French it's Administrateur, and for Portuguese it's Administrador\. For more information, see [Localized Names for Administrator Account in Windows](http://social.technet.microsoft.com/wiki/contents/articles/13813.localized-names-for-administrator-account-in-windows.aspx) in the Microsoft TechNet Wiki\.
 

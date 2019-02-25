@@ -39,3 +39,5 @@ Use the following procedure to download and install the latest version of EC2Con
 To keep the custom settings from the `config.xml` file that you saved, run `EC2Install` with the `/norestart` option, restore your settings, and then restart the EC2Config service manually\.
 
 1. If you are running EC2Config version 4\.0 or later, you must restart the SSM Agent on the instance from the Microsoft Services snap\-in\.
+**Note**  
+The updated EC2Config version information will not appear in the instance System Log or Trusted Advisor check until you reboot or stop and start your instance\.

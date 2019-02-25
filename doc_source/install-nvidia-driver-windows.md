@@ -9,8 +9,9 @@ For G3 instances, you can download the NVIDIA GRID driver from Amazon S3 using t
 **Important**  
 This download is available to AWS customers only\. By downloading, you agree that you will only use the downloaded software to develop AMIs for use with the NVIDIA Tesla M60 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](http://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
-**Prerequisites**  
-Associate an IAM role with your instance that has permissions to use the `s3:ListBucket` and `s3:GetObject` actions\. For more information, see [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)\. Alternatively, configure the Tools for Windows PowerShell to use your AWS credentials\. For more information, see [Using AWS Credentials](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)\.
+**Prerequisites**
++ Confirm that the version of Windows you are launching is supported by NVidia GRID drivers\. Driver requirements are documented at [https://docs\.nvidia\.com/grid/index\.html]( https://docs.nvidia.com/grid/index.html)\. 
++ Associate an IAM role with your instance that has permissions to use the `s3:ListBucket` and `s3:GetObject` actions\. For more information, see [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)\. Alternatively, configure the Tools for Windows PowerShell to use your AWS credentials\. For more information, see [Using AWS Credentials](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)\.
 
 **To install the NVIDIA GRID driver \(G3 instances\)**
 
@@ -65,7 +66,7 @@ For instance types other than G3, or if you are not using NVIDIA GRID capabiliti
 
 1. Open the folder where you downloaded the driver and launch the installation file\. Follow the instructions to install the driver and reboot your instance as required\.
 
-1. Disable the built\-in display adapter using Device Manager\. Install Media Foundation and Quality Windows Audio Video Experience\.
+1. Disable the built\-in display adapter using Device Manager\. Install the Windows features Media Foundation and Quality Windows Audio Video Experience\.
 
 1. To verify that the GPU is working correctly, check Device Manager\.
 

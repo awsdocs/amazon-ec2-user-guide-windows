@@ -5,7 +5,17 @@ EBS volumes are exposed as NVMe block devices on [Nitro\-based instances](instan
 **Note**  
 The EBS performance guarantees stated in [Amazon EBS Product Details](https://aws.amazon.com/ebs/details/) are valid regardless of the block\-device interface\.
 
-Some of these instance types also support NVMe instance store volumes\. For more information, see [NVMe SSD Volumes](ssd-instance-store.md#nvme-ssd-volumes)\.
+The following Nitro\-based instances support NVMe instance store volumes: C5d, I3, F1, M5d, `p3dn.24xlarge`, R5d, and z1d\. For more information, see [NVMe SSD Volumes](ssd-instance-store.md#nvme-ssd-volumes)\.
+
+**Topics**
++ [Install or Upgrade the NVMe Driver](#install-nvme-driver)
++ [Identifying the EBS Device](#identify-nvme-ebs-device)
++ [Working with NVMe EBS Volumes](#using-nvme-ebs-volumes)
++ [I/O Operation Timeout](#timeout-nvme-ebs-volumes)
+
+## Install or Upgrade the NVMe Driver<a name="install-nvme-driver"></a>
+
+The AWS Windows AMIs for Windows Server 2008 R2 and later include the AWS NVMe driver\. If you are not using the latest AWS Windows AMIs provided by Amazon, see [Installing or Upgrading AWS NVMe Drivers](aws-nvme-drivers.md#install-nvme-drivers)\.
 
 ## Identifying the EBS Device<a name="identify-nvme-ebs-device"></a>
 
@@ -13,9 +23,9 @@ EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachmen
 
 ### Windows Server 2008 R2 and Later<a name="nvme-windows"></a>
 
-You can also run the **ebsnvme\-id** command to map the NVMe device disk number to an EBS volume ID and device name\. By default, all EBS NVMe devices are enumerated\. You can pass a disk number to enumerate information for a specific device\.
+You can also run the **ebsnvme\-id** command to map the NVMe device disk number to an EBS volume ID and device name\. By default, all EBS NVMe devices are enumerated\. You can pass a disk number to enumerate information for a specific device\. Ebsnvme\-id is included in the latest AWS provided Windows Server AMIs located in C:\\PROGRAMDATA\\AMAZON\\Tools\.
 
-You can download [ebsnvme\-id\.zip](https://s3.amazonaws.com/ec2-windows-drivers-downloads/EBSNVMeID/Latest/ebsnvme-id.zip) and extract the contents to your Amazon EC2 instance to get access to ebsnvme\-id\.exe\.
+You can also download [ebsnvme\-id\.zip](https://s3.amazonaws.com/ec2-windows-drivers-downloads/EBSNVMeID/Latest/ebsnvme-id.zip) and extract the contents to your Amazon EC2 instance to get access to ebsnvme\-id\.exe\.
 
 ```
 PS C:\Users\Administrator\Desktop> ebsnvme-id.exe
@@ -38,9 +48,7 @@ Device Name: xvdb
 Disk Number: 4
 Volume ID: vol-03e2dbe464b66f0a1
 Device Name: xvdc
-
 PS C:\Users\Administrator\Desktop> ebsnvme-id.exe 4
-
 Disk Number: 4
 Volume ID: vol-03e2dbe464b66f0a1
 Device Name: xvdc

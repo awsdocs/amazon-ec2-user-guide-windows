@@ -9,21 +9,18 @@ In addition to these operating system optimizations, you should also consider th
 
 ## Configure RSS CPU Affinity<a name="windows-rss-cpu-affinity"></a>
 
-Receive side scaling \(RSS\) is used to distribute network traffic CPU load across multiple processors\. By default, Amazon official Windows AMIs are configured with RSS enabled and allow up to eight RSS queues\. By defining CPU affinity for RSS queues as well as other processes that demand CPU, it is possible to spread the CPU load on multi\-core systems and allow more network traffic to be processed\. To avoid contention when using multiple elastic network interfaces, use the Set\-NetAdapterRSS command to manually assign different sets of processors to handle RSS queues for different interfaces\.
+Receive side scaling \(RSS\) is used to distribute network traffic CPU load across multiple processors\. By default, the official Amazon Windows AMIs are configured with RSS enabled\. ENA ENIs provide up to eight RSS queues\. By defining CPU affinity for RSS queues, as well as for other system processes, it is possible to spread the CPU load out over multi\-core systems, enabling more network traffic to be processed\. On instance types with more than 16 vCPUs, we recommend you use the `Set-NetAdapterRSS` PowerShell cmdlt \(available from Windows Server 2012 and later\), which manually excludes the boot processor \(logical processor 0 and 1 when hyper\-threading is enabled\) from the RSS configuration for all ENIs, in order to prevent contention with various system components\.
 
-For example, in a 16\-core instance with two elastic network interfaces, the following two commands spread the load evenly:
+Windows is hyper\-thread aware and will ensure the RSS queues of a single NIC are always placed on different physical cores\. Therefore, unless hyper\-threading is disabled, in order to completely prevent contention with other NICs, spread the RSS configuration of each NIC between a range of 16 logical processors\. The `Set-NetAdapterRss` cmdlt allows you to define the per\-NIC range of valid logical processors by defining the values of BaseProcessorGroup, BaseProcessorNumber, MaxProcessingGroup, MaxProcessorNumber, and NumaNode \(optional\)\. If there are not enough physical cores to completely eliminate inter\-NIC contention, minimize the overlapping ranges or reduce the number of logical processors in the ENI ranges depending on the expected workload of the ENI \(in other words, a low volume admin network ENI may not need as many RSS queues assigned\)\. Also, as noted above, various components must run on CPU 0, and therefore we recommend excluding it from all RSS configurations when sufficient vCPUs are available\. 
+
+For example, when there are three ENIs on a 72 vCPU instance with 2 NUMA nodes with hyper\-threading enabled, the following commands spread the network load between the two CPUs without overlap and preventthe use of core 0 completely\. 
 
 ```
-Set-NetAdapterRss -Name NIC1 -NumaNode 0 -BaseProcessorNumber 1 -MaxProcessorNumber 8
-Set-NetAdapterRss -Name NIC2 -NumaNode 0 -BaseProcessorNumber 9 -MaxProcessorNumber 16
+Set-NetAdapterRss -Name NIC1 -BaseProcessorGroup 0 -BaseProcessorNumber 2 -MaxProcessorNumber 16 
+Set-NetAdapterRss -Name NIC2 -BaseProcessorGroup 1 -BaseProcessorNumber 0 -MaxProcessorNumber 14 
+Set-NetAdapterRss -Name NIC3 -BaseProcessorGroup 1 -BaseProcessorNumber 16 -MaxProcessorNumber 30
 ```
 
-For more information, see [Set\-NetAdapterRss](https://docs.microsoft.com/en-us/powershell/module/netadapter/set-netadapterrss?view=win10-ps)\.
+Note that these settings are persistent for each network adapter\. If an instance is resized to one with a different number of vCPUs, you should reevaluate the RSS configuration for each enabled ENI\. The complete Microsoft documentation for the `Set-NetAdapterRss` cmdlt can be found here: [https://docs\.microsoft\.com/en\-us/powershell/module/netadapter/set\-netadapterrss](https://docs.microsoft.com/en-us/powershell/module/netadapter/set-netadapterrss?view=win10-ps)\.
 
-## Set Device Processor Affinity<a name="windows-processor-affinity"></a>
-
- Hardware devices need access to the CPU to raise interrupts and communicate with the host OS\. In the event of heavy network traffic becoming CPU bound, it may be possible to smooth out the load by allocating separate cores to network devices, other hardware devices, and applications \(such as SQL\) running on the OS\.
-
-Configure interrupt affinity on the ENA devices to ensure that interrupt requests are all handled by the same NUMA node \(setting `DevicePolicy` to `0x01` or `0x04`\)\. For more information, see [Interrupt Affinity](https://technet.microsoft.com/en-us/ff547969(v=vs.96)) in the Microsoft documentation\. When using multiple elastic network interfaces, we recommend that you configure them to use different NUMA groups, to further spread out the IRQ load\.
-
-To minimize performance bottlenecks that are caused by processor interrupts, it is important to consider configuration changes for other sources of load on the machine\. For example, [SQL Server may be configured to bind affinity to certain cores](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/affinity-mask-server-configuration-option?view=sql-server-2017)\. When spreading load, keep in mind that inter\-node NUMA communication is much more expensive than intra\-node\. In a hypothetical server with 64 processors distributed into two NUMA nodes, two elastic network interfaces, a web server, and a SQL database, it's optimal to divide CPUs up logically, rather than allowing the operating system to handle the distribution\. 
+Special note for SQL workloads: We also recommend that you review your IO thread affinity settings along with your ENI RSS configuration to minimize IO and network contention for the same CPUs\. See [affinity mask Server Configuration Option](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/affinity-mask-server-configuration-option)\. 

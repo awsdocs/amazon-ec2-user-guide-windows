@@ -9,6 +9,7 @@ The following table describes the released versions of EC2Launch\.
 
 | Version | Details | 
 | --- | --- | 
+|  1\.3\.2001160  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)  | 
 |  1\.3\.2001040  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)  | 
 |  1\.3\.2000930  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)  | 
 |  1\.3\.2000760  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)  | 
