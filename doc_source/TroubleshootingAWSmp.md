@@ -76,7 +76,7 @@ not be sent in 1440 minutes.
 
 ## Event 6024<a name="event-6024"></a>
 
-If you find the following event in the Windows event log, see [Health Service Restarts](http://blogs.technet.com/b/omx/archive/2013/10/17/health-service-restarts-on-service-manager-servers-with-scom-agents.aspx) for more information\.
+If you find the following event in the Windows event log, see [SCOM 2012 \- Event ID 6024](https://social.technet.microsoft.com/Forums/security/en-US/3f847c09-a4e9-497f-866c-c26440059aa2/scom-2012-event-id-6024-launching-restart-health-service-health-service-exceeded-processhandle?forum=operationsmanagerdeployment) for more information\.
 
 ```
 Event ID: 6024

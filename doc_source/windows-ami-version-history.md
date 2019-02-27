@@ -161,7 +161,8 @@ The following changes are applied to each AWS Windows AMI\.
 | Set the timezone to UTC | All AMIs | 
 | Disable Windows updates and notifications | All AMIs | 
 | Run Windows Update and reboot until there are no pending updates | All AMIs | 
-| Sets the display in all power schemes to never turn off\. | All AMIs | 
+| Set the display in all power schemes to never turn off | All AMIs | 
+| Set the PowerShell execution policy to "Unrestricted" | All AMIs | 
 
 ## Details About AWS Windows AMI Versions<a name="windows-ami-versions"></a>
 
