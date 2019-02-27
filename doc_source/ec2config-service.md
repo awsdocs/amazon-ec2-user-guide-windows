@@ -195,7 +195,7 @@ This file contains settings that control how EC2Config prepares an instance for 
 
   To modify the KMS settings, edit the `ActivationSettings.xml` file located in the `EC2ConfigService\Settings` directory\.
 + `Ec2DynamicBootVolumeSize`—Extends Disk 0/Volume 0 to include any unpartitioned space\.
-+ `Ec2HandleUserData`—Creates and executes scripts created by the user on the first launch of an instance after Sysprep is run\. Commands wrapped in script tags are saved to a batch file, and commands wrapped in PowerShell tags are saved to a \.ps1 file\.
++ `Ec2HandleUserData`—Creates and executes scripts created by the user on the first launch of an instance after Sysprep is run\. Commands wrapped in script tags are saved to a batch file, and commands wrapped in PowerShell tags are saved to a .ps1 file (corresponds to the User Data check box on the Ec2 Service Properties dialog box).
 + `Ec2ElasticGpuSetup`—Installs the Elastic GPU software package if the instance is associated with an elastic GPU\.
 + `Ec2FeatureLogging`—Sends Windows feature installation and corresponding service status to the console\. Supported only for the Microsoft Hyper\-V feature and corresponding vmms service\.
 
