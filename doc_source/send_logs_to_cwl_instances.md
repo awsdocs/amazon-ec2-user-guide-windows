@@ -120,6 +120,12 @@ After the SSM agent restarts, it detects the local configuration file and config
 
 1. Download the latest version of EC2Config to your instance\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
 
+1. To enable CloudWatch Logs, edit the `C:\Program Files\Amazon\Ec2ConfigService\Settings\Config.xml` file\. Add the following line to the file:
+
+   ```
+   AWS.EC2.Windows.CloudWatch.PlugIn : Enabled
+   ```
+
 1. \(Optional\) If you have an existing JSON file from an EC2Config 3\.x integration with CloudWatch, open the file, and add the `IsEnabled` section\. This tells the agent to start sending data to CloudWatch immediately after it is started or restarted\.
 
    The `IsEnabled` section must be located on the same level as the `EngineConfiguration` section\. The following example illustrates this:

@@ -1,6 +1,6 @@
 # Amazon Machine Images \(AMI\)<a name="AMIs"></a>
 
-An Amazon Machine Image \(AMI\) provides the information required to launch an instance, which is a virtual server in the cloud\. You must specify a source AMI when you launch an instance\. You can launch multiple instances from a single AMI when you need multiple instances with the same configuration\. You can use different AMIs to launch instances when you need instances with different configurations\.
+An Amazon Machine Image \(AMI\) provides the information required to launch an instance\. You must specify an AMI when you launch an instance\. You can launch multiple instances from a single AMI when you need multiple instances with the same configuration\. You can use different AMIs to launch instances when you need instances with different configurations\.
 
 An AMI includes the following:
 + A template for the root volume for the instance \(for example, an operating system, an application server, and applications\)

@@ -165,6 +165,9 @@ The `AWSSupport-UpgradeWindowsAWSDrivers` automation document automates the step
 
 The `AWSSupport-UpgradeWindowsAWSDrivers` automation document upgrades or repairs storage and network AWS drivers on the specified EC2 instance\. The document attempts to install the latest versions of AWS drivers online by calling the AWS Systems Manager Agent \(SSM Agent\)\. If the SSM Agent is not contactable, the document can perform an offline installation of the AWS drivers if explicitly requested\.
 
+**Note**  
+This procedure will fail on a domain controller\. To update drivers on a domain controller, see [Upgrade a Domain Controller \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade-dc)\.
+
 **To automatically upgrade the AWS PV ENA, and NVMe drivers using AWS Systems Manager**
 
 1. Open the Systems Manager console at [https://console\.aws\.amazon\.com/systems\-manager](https://console.aws.amazon.com/systems-manager)\.
