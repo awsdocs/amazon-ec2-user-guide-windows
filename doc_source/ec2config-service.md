@@ -119,19 +119,14 @@ If you have a large script, we recommend that you use user data to download the 
 For more information, see [User Data Execution](ec2-windows-user-data.md#user-data-execution)\.  
  **Event Log**   
 Use this setting to display event log entries on the console during boot for easy monitoring and debugging\.  
-Click **Settings** to specify filters for the log entries sent to the console\. The default filter sends the three most recent error entries from the system event log to the console\.  
- **CloudWatch Logs**   
-Starting with EC2Config version 2\.2\.5 \(version 2\.2\.6 or later is recommended\), you can export all Windows Server messages in the System log, Security log, Application log, and IIS log to CloudWatch Logs and monitor them using CloudWatch metrics\. EC2Config version 2\.2\.10 or later adds the ability to export any event log data, Event Tracing \(Windows\) data, or text\-based log files to CloudWatch Logs\. In addition, you can also export performance counter data to CloudWatch\. For more information, see [Monitoring System, Application, and Custom Log Files](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatchLogs.html) in the Amazon CloudWatch User Guide\.  
-
-   1. Select **Enable CloudWatch integration**, and then click **OK**\.
-
-   1. Edit the `\Amazon\Ec2ConfigService\Settings\AWS.EC2.Windows.CloudWatch.json` file and configure the types of logs you want to send to CloudWatch Logs\. For more information, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md)\.
-If your instance is running EC2Config version 4\.x or later, this option is not available\. SSM Agent sends log data to CloudWatch instead\.  
+Click **Settings** to specify filters for the log entries sent to the console\. The default filter sends the three most recent error entries from the system event log to the console\.   
  **Wallpaper Information**   
 Use this setting to display system information on the desktop background\. The following is an example of the information displayed on the desktop background\.  
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_Wallpaper.png)
-The information displayed on the desktop background is controlled by the settings file `EC2ConfigService\Settings\WallpaperSettings.xml`\.
+The information displayed on the desktop background is controlled by the settings file `EC2ConfigService\Settings\WallpaperSettings.xml`\.  
+ **Enable Hibernation**   
+Use this setting to allow EC2 to signal the operating system to perform hibernation\. 
 
 1. Click the **Storage** tab\. You can enable or disable the following settings\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_Storage.png)  

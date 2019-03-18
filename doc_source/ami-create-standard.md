@@ -11,7 +11,7 @@ Don't use Sysprep to create an instance backup\. Sysprep removes system\-specifi
 + [Before You Begin](#sysprep-begin)
 + [Using Sysprep with the EC2Config Service](#sysprep-using)
 + [Run Sysprep with the EC2Config Service](#sysprep-gui-procedure)
-+ [Troubleshooting Sysprep with EC2Config](#sysprep-troubleshoot)
++ [Troubleshooting Sysprep](#sysprep-troubleshoot)
 
 ## Before You Begin<a name="sysprep-begin"></a>
 + Learn more about [Sysprep](https://technet.microsoft.com/en-us/library/cc721940.aspx) on Microsoft TechNet\.
@@ -184,7 +184,7 @@ The double quotation marks in the command are not required if your CMD shell is 
 
 However, you must be very careful that the XML file options specified in the `Ec2ConfigService\Settings` folder are correct; otherwise, you might not be able to connect to the instance\. For more information about the settings files, see [EC2Config Settings Files](ec2config-service.md#UsingConfigXML_WinAMI)\. For an example of configuring and then running Sysprep from the command line, see `Ec2ConfigService\Scripts\InstallUpdates.ps1`\.
 
-## Troubleshooting Sysprep with EC2Config<a name="sysprep-troubleshoot"></a>
+## Troubleshooting Sysprep<a name="sysprep-troubleshoot"></a>
 
 If you experience problems or receive error messages during image preparations, review the following logs: 
 + %WINDIR%\\Panther\\Unattendgc

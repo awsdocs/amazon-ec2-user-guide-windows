@@ -40,7 +40,13 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 
 1. Extract the contents of the folder and then run `AWSPVDriverSetup.msi`\.
 
-After running the MSI, the instance automatically reboots and then upgrades the driver\. The instance will not be available for up to 15 minutes\. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history) Open Disk Management to review any offline secondary volumes and bring them online corresponding to the drive letters noted in Step 6\.
+After running the MSI, the instance automatically reboots and then upgrades the driver\. The instance will not be available for up to 15 minutes\. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, you can verify that the new driver was installed by connecting to the instance using Remote Desktop and then running the following PowerShell command:
+
+```
+Get-ItemProperty HKLM:\SOFTWARE\Amazon\PVDriver
+```
+
+Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history) Open Disk Management to review any offline secondary volumes and bring them online corresponding to the drive letters noted in Step 6\.
 
 If you previously disabled [TCP Offloading](pvdrivers-troubleshooting.md#citrix-tcp-offloading) using Netsh for Citrix PV drivers we recommend that you re\-enable this feature after upgrading to AWS PV drivers\. TCP Offloading issues with Citrix drivers are not present in the AWS PV drivers\. As a result, TCP Offloading provides better performance with AWS PV drivers\.
 

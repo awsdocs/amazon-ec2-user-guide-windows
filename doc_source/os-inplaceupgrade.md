@@ -2,6 +2,9 @@
 
 Before you perform an in\-place upgrade, you must determine which network drivers the instance is running\. PV network drivers enable you to access your instance using Remote Desktop\. Starting with Windows Server 2008 R2, instances use either *AWS PV*, Intel Network Adapter, or the Enhanced Networking drivers\. Instances with Windows Server 2003 and Windows Server 2008 use *Citrix PV* drivers\. For more information, see [Paravirtual Drivers for Windows Instances](xen-drivers-overview.md)\.
 
+**Automated Upgrades**  
+For steps on how to use AWS Systems Manager to automate the upgrade of your Windows Server 2008 R2 to Server 2012 R2 or from SQL Server 2008 R2 on Windows Server 2012 R2 to SQL Server 2016, see [ Upgrade Your End of Support Microsoft 2008 Workloads in AWS with Ease](https://aws.amazon.com/blogs/database/upgrade-your-end-of-support-microsoft-2008-r2-workloads-in-aws-with-ease/)\.
+
 ## Before You Begin an In\-Place Upgrade<a name="os-upgrade-before"></a>
 
 Complete the following tasks and note the following important details before you begin your in\-place upgrade\.

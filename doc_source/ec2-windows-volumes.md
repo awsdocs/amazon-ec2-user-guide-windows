@@ -8,7 +8,7 @@ When you add a volume to your instance, you specify the device name that Amazon 
 
 **Topics**
 + [Listing the Disks Using Windows Disk Management](#windows-disks)
-+ [Listing the Disks Using Windows PowerShell](#windows-list-disks)
++ [Listing the Disks Using Windows PowerShell \(Windows Server 2012 and later\)](#windows-list-disks)
 + [Disk Device to Device Name Mapping](#windows-volume-mapping)
 
 ## Listing the Disks Using Windows Disk Management<a name="windows-disks"></a>
@@ -38,7 +38,7 @@ You can find the disks on your Windows instance using Windows Disk Management\.
 
    Another way to access volume IDs from the console is to select **Volumes** under **Elastic Block Store** in the navigation pane\. Volumes will be listed by instance name and volume size\. Review or select the **Attachment Information** to verify the instance to which the volume is attached\. 
 
-## Listing the Disks Using Windows PowerShell<a name="windows-list-disks"></a>
+## Listing the Disks Using Windows PowerShell \(Windows Server 2012 and later\)<a name="windows-list-disks"></a>
 
 The following PowerShell script lists each disk and its corresponding device name and volume\. 
 
