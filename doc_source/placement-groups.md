@@ -20,7 +20,7 @@ There is no charge for creating a placement group\.
 
 ## Cluster Placement Groups<a name="placement-groups-cluster"></a>
 
-A cluster placement group is a logical grouping of instances within a single Availability Zone\. A placement group can span peered VPCs in the same Region\. The chief benefit of a cluster placement group, in addition to a 10 Gbps flow limit, is the non\-blocking, non\-oversubscribed, fully bi\-sectional nature of the connectivity\. In other words, all nodes within the placement group can talk to all other nodes within the placement group at the full line rate of 10 Gpbs flows and 25 aggregate without any slowing due to over\-subscription\.
+A cluster placement group is a logical grouping of instances within a single Availability Zone\. A placement group can span peered VPCs in the same Region\. The chief benefit of a cluster placement group, in addition to a 10 Gbps flow limit, is the non\-blocking, non\-oversubscribed, fully bi\-sectional nature of the connectivity\. In other words, all nodes within the placement group can talk to all other nodes within the placement group at the full line rate of 10 Gbps flows and 25 aggregate without any slowing due to over\-subscription\.
 
 The following image shows instances that are placed into a cluster placement group\.
 
@@ -82,9 +82,9 @@ Before you use placement groups, be aware of the following rules:
 
 The following rules apply to cluster placement groups:
 + The following are the only instance types that you can use when you launch an instance into a cluster placement group:
-  + General purpose: M4, M5, M5a, and M5d
+  + General purpose: M4, M5, M5a, M5ad, and M5d
   + Compute optimized: C3, C4, C5, C5d, C5n, and `cc2.8xlarge`
-  + Memory optimized: `cr1.8xlarge`, R3, R4, R5, R5a, R5d, X1, X1e, and z1d
+  + Memory optimized: `cr1.8xlarge`, R3, R4, R5, R5a, R5ad, R5d, X1, X1e, and z1d
   + Storage optimized: D2, H1, `hs1.8xlarge`, I2, and I3
   + Accelerated computing: F1, G2, G3, P2, and P3
 + A cluster placement group can't span multiple Availability Zones\.

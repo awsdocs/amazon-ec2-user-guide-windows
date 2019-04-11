@@ -6,7 +6,7 @@ Like other instance store volumes, you must map the SSD instance store volumes f
 
 ## NVMe SSD Volumes<a name="nvme-ssd-volumes"></a>
 
-The following instances offer non\-volatile memory express \(NVMe\) SSD instance store volumes: C5d, I3, F1, M5d, `p3dn.24xlarge`, R5d, and z1d\. The latest AWS Windows AMIs for the following operating systems contain the AWS NVMe drivers used to interact with SSD instance store volumes that are exposed as NVMe block devices for better performance:
+The following instances offer non\-volatile memory express \(NVMe\) SSD instance store volumes: C5d, I3, F1, M5ad, M5d, `p3dn.24xlarge`, R5ad, R5d, and z1d\. The latest AWS Windows AMIs for the following operating systems contain the AWS NVMe drivers used to interact with SSD instance store volumes that are exposed as NVMe block devices for better performance:
 + Windows Server 2019
 + Windows Server 2016
 + Windows Server 2012 R2
@@ -21,7 +21,7 @@ The data on NVMe instance storage is encrypted using an XTS\-AES\-256 block ciph
 
 ## Instance Store Volume TRIM Support<a name="InstanceStoreTrimSupport"></a>
 
-The following instances support SSD volumes with TRIM: C5d, F1, I2, I3, M5d, `p3dn.24xlarge`, R3, R5d, and z1d\.
+The following instances support SSD volumes with TRIM: C5d, F1, I2, I3, M5ad, M5d, `p3dn.24xlarge`, R3, R5ad, R5d, and z1d\.
 
 Instances running Windows Server 2012 R2 support TRIM as of AWS PV Driver version 7\.3\.0\. Instances running earlier versions of Windows Server do not support TRIM\.
 

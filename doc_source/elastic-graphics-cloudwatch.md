@@ -4,7 +4,7 @@ You can monitor your Elastic Graphics accelerator using Amazon CloudWatch, which
 
 By default, Elastic Graphics accelerators send metric data to CloudWatch in 5\-minute periods\.
 
-For more information about Amazon CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/)\.
+For more information about Amazon CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
 
 ## Elastic Graphics Metrics<a name="elastic-graphics-metrics"></a>
 

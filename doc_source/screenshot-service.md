@@ -94,7 +94,7 @@ Check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon
 + Custom Startup Script
 + Task Scheduler
 
-For more information about the **CPUUtilization \(Maximum\)** metric, see [Get Statistics for a Specific EC2 Instance](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. For additional troubleshooting tips, see [High CPU usage shortly after Windows starts](troubleshooting-windows-instances.md#high-cpu-issue)\.
+For more information, see [Get Statistics for a Specific Resource](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. For additional troubleshooting tips, see [High CPU usage shortly after Windows starts](troubleshooting-windows-instances.md#high-cpu-issue)\.
 
 ### Recovery Console Screen<a name="recovery-console-screen"></a>
 
@@ -144,7 +144,7 @@ Console Screenshot Service returned the following\.
 
 ![\[Getting Ready Screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-5.png)
 
-Refresh the Instance Console Screenshot Service repeatedly to verify that the progress ring is spinning\. If the ring is spinning, wait for the operating system to start up\. You can also check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon CloudWatch to see if the operating system is active\. If the progress ring is not spinning, the instance may be stuck at the boot process\. Reboot the instance\. If rebooting does not solve the problem, recover the instance from a recent backup AMI or launch a replacement instance\. If you need to access data on the instance, detach the root volume from the unreachable instance, take a snapshot of the volume or create an AMI from it\. Then attach it to another instance in the same Availability Zone as a secondary volume\. For more information about **CPUUtilization \(Maximum\)**, see [Get Statistics for a Specific EC2 Instance](https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. 
+Refresh the Instance Console Screenshot Service repeatedly to verify that the progress ring is spinning\. If the ring is spinning, wait for the operating system to start up\. You can also check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon CloudWatch to see if the operating system is active\. If the progress ring is not spinning, the instance may be stuck at the boot process\. Reboot the instance\. If rebooting does not solve the problem, recover the instance from a recent backup AMI or launch a replacement instance\. If you need to access data on the instance, detach the root volume from the unreachable instance, take a snapshot of the volume or create an AMI from it\. Then attach it to another instance in the same Availability Zone as a secondary volume\.
 
 ### Windows Update Screen<a name="windows-update-screen"></a>
 

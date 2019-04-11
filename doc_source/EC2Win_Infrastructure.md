@@ -32,13 +32,13 @@ Amazon now offers EC2 bare metal instances which are available with the EC2 Stor
 
 ## Regions and Availability Zones<a name="EC2Win_Regions"></a>
 
-Amazon has data centers in different areas of the world \(for example, North America, Europe, and Asia\)\. Correspondingly, Amazon EC2 is available to use in different *regions*\. By launching instances in separate regions, you can design your application to be closer to specific customers or to meet legal or other requirements\. Prices for Amazon EC2 usage vary by region \(for more information about pricing by region, see [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing)\)\. 
+Amazon has data centers in different areas of the world \(for example, North America, Europe, and Asia\)\. Correspondingly, Amazon EC2 is available to use in different *Regions*\. By launching instances in separate Regions, you can design your application to be closer to specific customers or to meet legal or other requirements\. Prices for Amazon EC2 usage vary by Region \(for more information about pricing by Region, see [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing)\)\. 
 
-Each region contains multiple distinct locations called *Availability Zones*\. Each Availability Zone is engineered to be isolated from failures in other Availability Zones, and to provide inexpensive, low\-latency network connectivity to other zones in the same region\. By launching instances in separate Availability Zones, you can protect your applications from the failure of a single location\. 
+Each Region contains multiple distinct locations called *Availability Zones*\. Each Availability Zone is engineered to be isolated from failures in other Availability Zones, and to provide inexpensive, low\-latency network connectivity to other zones in the same Region\. By launching instances in separate Availability Zones, you can protect your applications from the failure of a single location\. 
 
 ![\[Regions and Availability Zones\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_regions.png)
 
-For more information about the available regions and Availability Zones, see [Using Regions and Availability Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For more information about the available Regions and Availability Zones, see [Using Regions and Availability Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Storage<a name="EC2Win_Storage"></a>
 
@@ -166,7 +166,7 @@ When you run an Amazon EC2 Windows instance, you don't need to provision the exa
 
 With Amazon EC2, designing for failure and outages is an integral and crucial part of the architecture\. As with any scalable and redundant system, architecture of your system should account for computing, network, and storage failures\. You have to build mechanisms in your applications that can handle different kinds of failures\. The key is to build a modular system with individual components that are not tightly coupled, can interact asynchronously, and treat one another as black boxes that are independently scalable\. Thus, if one of your components fails or is busy, you can launch more instances of that component without breaking your current system\.
 
-Another key element to designing for failure is to distribute your application geographically\. Replicating your application across geographically distributed regions improves high availability in your system\.
+Another key element to designing for failure is to distribute your application geographically\. Replicating your application across geographically distributed Regions improves high availability in your system\.
 
 Amazon EC2 infrastructure is programmable and you can use scripts to automate the deployment process, to install and configure software and applications, and to bootstrap your virtual servers\.
 

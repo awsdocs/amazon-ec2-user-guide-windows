@@ -62,6 +62,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Changing the Instance Type](ec2-instance-resize.md)
    + [Instance Purchasing Options](instance-purchasing-options.md)
       + [Reserved Instances](ec2-reserved-instances.md)
+         + [Regional and Zonal Reserved Instances (Scope)](reserved-instances-scope.md)
          + [Types of Reserved Instances (Offering Classes)](reserved-instances-types.md)
          + [How Reserved Instances Are Applied](apply_ri.md)
          + [How You Are Billed](concepts-reserved-instances-application.md)
