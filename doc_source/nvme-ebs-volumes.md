@@ -1,11 +1,9 @@
-# Amazon EBS and NVMe<a name="nvme-ebs-volumes"></a>
+# Amazon EBS and NVMe on Windows Instances<a name="nvme-ebs-volumes"></a>
 
 EBS volumes are exposed as NVMe block devices on [Nitro\-based instances](instance-types.md#ec2-nitro-instances)\. 
 
 **Note**  
 The EBS performance guarantees stated in [Amazon EBS Product Details](https://aws.amazon.com/ebs/details/) are valid regardless of the block\-device interface\.
-
-The following Nitro\-based instances support NVMe instance store volumes: C5d, I3, F1, M5ad, M5d, `p3dn.24xlarge`, R5ad, R5d, and z1d\. For more information, see [NVMe SSD Volumes](ssd-instance-store.md#nvme-ssd-volumes)\.
 
 **Topics**
 + [Install or Upgrade the NVMe Driver](#install-nvme-driver)

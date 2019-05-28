@@ -24,7 +24,7 @@ Instance size flexibility does not apply to the following Reserved Instances:
 
 ### Instance Size Flexibility Determined by Normalization Factor<a name="ri-normalization-factor"></a>
 
-Instance size flexibility is determined by the normalization factor of the instance size\. The discount applies either fully or partially to running instances of the same instance type, depending on the instance size of the reservation, in any Availability Zone in the Region\. The only attributes that must be matched are the instance type, tenancy, and platform\. 
+Instance size flexibility is determined by the normalization factor of the instance size\. The discount applies either fully or partially to running instances of the same instance family, depending on the instance size of the reservation, in any Availability Zone in the Region\. The only attributes that must be matched are the instance family, tenancy, and platform\. 
 
 Instance size flexibility is applied from the smallest to the largest instance size within the instance family based on the normalization factor\. 
 
@@ -40,7 +40,9 @@ The table below describes the different sizes within an instance family, and cor
 |  large  |  4  | 
 |  xlarge  |  8  | 
 |  2xlarge  |  16  | 
+|  3xlarge  |  24  | 
 |  4xlarge  |  32  | 
+|  6xlarge  |  48  | 
 |  8xlarge  |  64  | 
 |  9xlarge  |  72  | 
 |  10xlarge  |  80  | 

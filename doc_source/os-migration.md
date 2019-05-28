@@ -1,6 +1,6 @@
 # Performing a Server Migration<a name="os-migration"></a>
 
-Migrating involves capturing settings, configurations, and data and porting these to a newer operating system on separate hardware\. After validation, the migrated system can be promoted to production\. You can migrate instances by launching a new instance from an AMI of the new operating system\. You can streamline the process further by using [AWS CloudFormation](https://aws.amazon.com/documentation/cloudformation/) and [Amazon EC2 Systems Manager](https://aws.amazon.com/documentation/ec2/#Amazon_EC2_Systems_Manager) to automatically apply settings and configurations to the new system with little manual work\.
+Migrating involves capturing settings, configurations, and data and porting these to a newer operating system on separate hardware\. After validation, the migrated system can be promoted to production\. You can migrate instances by launching a new instance from an AMI of the new operating system\. You can streamline the process further by using [AWS CloudFormation](https://aws.amazon.com/documentation/cloudformation/) and [AWS Systems Manager](https://aws.amazon.com/documentation/systems-manager/) to automatically apply settings and configurations to the new system with little manual work\.
 
 **To migrate your server**
 

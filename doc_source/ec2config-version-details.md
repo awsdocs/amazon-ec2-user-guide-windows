@@ -4,11 +4,12 @@ Windows AMIs prior to Windows Server 2016 include an optional service called the
 
 You can receive notifications when new versions of the EC2Config service are released\. For more information, see [Subscribing to EC2Config Service Notifications](#ec2-subscribe-notifications)\.
 
-The following table describes the released versions of EC2Config\. For information about the updates for SSM Agent, see [Amazon SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/master/RELEASENOTES.md)\.
+The following table describes the released versions of EC2Config\. For information about the updates for SSM Agent, see [Systems Manager SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/master/RELEASENOTES.md)\.
 
 
 | Version | Details | 
 | --- | --- | 
+| 4\.9\.3429 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 | 4\.9\.3289 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 | 4\.9\.3270 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 | 4\.9\.3230 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
@@ -73,9 +74,9 @@ The following table describes the released versions of EC2Config\. For informati
 |  3\.18\.1118   |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 | 3\.17\.1032 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 | 3\.16\.930 |  Added support to log "Window is Ready to use" event to Windows Event Log on start\.   | 
-|  3\.15\.880   |  Fix to allow uploading run command output to S3 bucket names with '\.' character\.  | 
+|  3\.15\.880   |  Fix to allow uploading Systems Manager Run Command output to S3 bucket names with '\.' character\.  | 
 |  3\.14\.786   |  Added support to override InitializeDisks plugin settings\. For example: To speed up SSD disk initialize, you can temporarily disable TRIM by specifying this in userdata:   <InitializeDrivesSettings><SettingsGroup>FormatWithoutTRIM</SettingsGroup></InitializeDrivesSettings   | 
-|  3\.13\.727   |  SSM RunCommand \- Fixes to process commands reliably after windows reboot\.  | 
+|  3\.13\.727   |  Systems Manager Run Command \- Fixes to process commands reliably after windows reboot\.  | 
 |  3\.12\.649   |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 |  3\.11\.521   |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 
 |  3\.10\.442   |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 

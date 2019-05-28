@@ -49,7 +49,7 @@ For Windows instances, you can install updates to the following services or appl
 +  [Windows PowerShell](http://technet.microsoft.com/en-us/scriptcenter/dd772288) 
 + [EC2Launch](ec2launch-download.md)
 + [EC2Config service](UsingConfig_Install.md)
-+ [SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
++ [AWS Systems Manager SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
 + [ENA](enhanced-networking-ena.md#enable-enhanced-networking-ena-WIN)
 + [NVMe Drivers](aws-nvme-drivers.md#install-nvme-drivers)
 + [PV Drivers](Upgrading_PV_drivers.md)
@@ -117,7 +117,7 @@ The following changes are applied to each AWS Windows AMI\.
 | --- | --- | 
 | Check for pending file renames or reboots, and reboot as needed | All AMIs | 
 | Delete `.dmp` files | All AMIs | 
-| Delete logs \(event logs, SSM, EC2Config\) | All AMIs | 
+| Delete logs \(event logs, Systems Manager, EC2Config\) | All AMIs | 
 | Delete temporary folders and files for sysprep | All AMIs | 
 | Clear recent history \(Start menu, Windows Explorer, and so on\) | Windows Server 2012 R2 and earlier | 
 | Perform virus scan | All AMIs | 
@@ -192,7 +192,8 @@ If there is an AMI variant that you would like to see, let us know by filing a t
 AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. The new AMIs are available immediately through the **Images** page in the Amazon EC2 console\. The new AMIs are available in the AWS Marketplace and the **Quick Start** tab of the launch instance wizard within a few days of their release\.
 
 **Note**  
-Instances launched from the latest Windows Server 2019 AMIs may show a Windows Update dialog message stating "Some settings are managed by your organization\." This message appears as a result of changes in Windows Server 2019 and does not impact the behavior of Windows Update or your ability to manage update settings\.
+Instances launched from the latest Windows Server 2019 AMIs may show a Windows Update dialog message stating "Some settings are managed by your organization\." This message appears as a result of changes in Windows Server 2019 and does not impact the behavior of Windows Update or your ability to manage update settings\.  
+To remove this warning, see ["Some settings are managed by your organization"](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/common-messages.html#some-settings-managed-by-org)\.
 
 To ensure that customers have the latest security updates by default, AWS keeps Windows AMIs available for three months\. After releasing new Windows AMIs, AWS makes the Windows AMIs that are older than three months private within 10 days\. After an AMI has been made private, if you look at an instance launched from that AMI in the console, the **AMI ID** field states, "Cannot load detail for ami\-xxxxx\. You may not be permitted to view it\." You can still retrieve the AMI ID using the AWS CLI or an AWS SDK\.
 
@@ -225,7 +226,7 @@ The following tables summarize the changes to each release of the AWS Windows AM
 For more information about components included in these AMIs, see the following:
 + [EC2Config Version History](ec2config-version-details.md)
 + [EC2Launch Version History](ec2launch-version-details.md)
-+ [Amazon SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/master/RELEASENOTES.md)
++ [Systems Manager SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/master/RELEASENOTES.md)
 + [Amazon ENA Driver Versions](enhanced-networking-ena.md#ena-adapter-driver-versions)
 + [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)
 
@@ -236,6 +237,10 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2019\.05\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
+| 2019\.04\.26 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
+| 2019\.04\.21 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
+| 2019\.04\.10 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.03\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.02\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) SQL 2014 with Service Pack 2 and SQL 2016 with Service Pack 1 will no longer be updated after this release\.   | 
 | 2019\.02\.09 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
@@ -408,7 +413,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 AWS provides AMIs for Windows Server 2016 and later\. These AMIs include the following high\-level changes from earlier Windows AMIs:
 + To accommodate the change from \.NET Framework to \.NET Core, the EC2Config service has been deprecated on Windows Server 2016 AMIs and replaced by EC2Launch\. EC2Launch is a bundle of Windows PowerShell scripts that perform many of the tasks performed by the EC2Config service\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\. 
-+ On earlier versions of Windows Server AMIs, you can use the EC2Config service to join an EC2 instance to a domain and configure integration with Amazon CloudWatch\. On Windows Server 2016 and later AMIs, the Amazon EC2 Systems Manager \(SSM\) agent performs these tasks\. This means that you must use either Amazon EC2 Run Command or SSM Config to join an EC2 instance to a domain or configure integration with Amazon CloudWatch on Windows Server 2016 and later instances\. For more information about configuring instances to send log data to CloudWatch, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md) For information about joining an EC2 instance to a domain, see [Joining a Windows Instance to an AWS Directory Service Domain](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-domain-join.html)\.
++ On earlier versions of Windows Server AMIs, you can use the EC2Config service to join an EC2 instance to a domain and configure integration with Amazon CloudWatch\. On Windows Server 2016 and later AMIs, the AWS Systems Manager SSM Agent performs these tasks\. This means that you must use either Systems Manager Run Command or State Manager to join an EC2 instance to a domain or configure integration with Amazon CloudWatch on Windows Server 2016 and later instances\. For more information about configuring instances to send log data to CloudWatch, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md)\. For information about joining an EC2 instance to a domain, see [ Join an Instance to a Domain Using the AWS\-JoinDirectoryServiceDomain JSON Document](https://docs.aws.amazon.com/systems-manager/latest/userguide/walkthrough-powershell.html#walkthrough-powershell-domain-join) in the *AWS Systems Manager User Guide*\.
 
 **Other Differences**
 

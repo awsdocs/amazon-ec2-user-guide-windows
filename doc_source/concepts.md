@@ -49,7 +49,7 @@ First, you need to get set up to use Amazon EC2\. After you are set up, you are 
 + [Instance Store](InstanceStorage.md)
 
 **Working with Windows Instances**
-+ [Remote Management \(Run Command\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html)
++ [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html) in the *AWS Systems Manager User Guide*
 + [Differences between Windows Server and an Amazon EC2 Windows Instance](EC2Win_Infrastructure.md#EC2InstanceAndWindowsServer)
 + [Designing Your Applications to Run on Amazon EC2 Windows Instances](EC2Win_Infrastructure.md#Win_AppDesign)
 + [Getting Started with AWS: Hosting a \.NET Web App](https://docs.aws.amazon.com/gettingstarted/latest/wah/)
@@ -68,7 +68,7 @@ To automatically distribute incoming application traffic across multiple instanc
 
 To monitor basic statistics for your instances and Amazon EBS volumes, use Amazon CloudWatch\. For more information, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
 
-To automate actions, such as activating a Lambda function whenever a new Amazon EC2 instance starts, or invoking SSM Run Command whenever an event in another AWS service happens, use Amazon CloudWatch Events\. For more information, see the [Amazon CloudWatch Events User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/)\.
+To automate actions, such as activating a Lambda function whenever a new Amazon EC2 instance starts, or invoking AWS Systems Manager Run Command whenever an event in another AWS service happens, use Amazon CloudWatch Events\. For more information, see the [Amazon CloudWatch Events User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/)\.
 
 To monitor the calls made to the Amazon EC2 API for your account, including calls made by the AWS Management Console, command line tools, and other services, use AWS CloudTrail\. For more information, see the [AWS CloudTrail User Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/)\.
 

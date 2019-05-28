@@ -16,19 +16,20 @@ Elastic Graphics is suited for applications that require a small or intermittent
 
 To use Elastic Graphics, launch a Windows instance and specify an accelerator type for the instance during launch\. AWS finds available Elastic Graphics capacity and establishes a network connection between your instance and the Elastic Graphics accelerator\.
 
+**Note**  
+Bare metal instances are not supported\.
+
 The following instance types support Elastic Graphics accelerators:
 + C3 \| C4 \| C5 \| C5d
 + D2
 + H1
-+ I3 \*
++ I3 \| I3en
 + M3 \| M4 \| M5 \| M5d
 + P2 \| P3
 + R3 \| R4 \| R5 \| R5d
 + `t2.medium` or larger \| `t3.medium` or larger 
 + X1 \| X1e
 + z1d
-
-\* Bare metal instances are not supported
 
 The following Elastic Graphics accelerators are available\. You can attach any Elastic Graphics accelerator to any supported instance type\.
 

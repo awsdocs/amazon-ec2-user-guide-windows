@@ -5,7 +5,7 @@ You can back up the data on your Amazon EBS volumes to Amazon S3 by taking point
 When you create an EBS volume based on a snapshot, the new volume begins as an exact replica of the original volume that was used to create the snapshot\. The replicated volume loads data lazily in the background so that you can begin using it immediately\. If you access data that hasn't been loaded yet, the volume immediately downloads the requested data from Amazon S3, and then continues loading the rest of the volume's data in the background\. For more information, see [Creating an Amazon EBS Snapshot](ebs-creating-snapshot.md)\.
 
 **Note**  
-Using Systems Manager Run Command, you can take application\-consistent snapshots of all [Amazon Elastic Block Store \(Amazon EBS\)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EBSVolumes.html) volumes attached to your Amazon EC2 Windows instances\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications, including data from pending transactions between these applications and the disk\. Furthermore, you don't need to shut down your instances or disconnect them when you need to back up all attached volumes\. For more information, see [Using Run Command to Take VSS\-Enabled Snapshots of EBS Volumes](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-vss.html) in the *AWS Systems Manager User Guide*\.
+Using AWS Systems Manager Run Command, you can take application\-consistent snapshots of all [Amazon Elastic Block Store \(Amazon EBS\)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EBSVolumes.html) volumes attached to your Amazon EC2 Windows instances\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications, including data from pending transactions between these applications and the disk\. Furthermore, you don't need to shut down your instances or disconnect them when you need to back up all attached volumes\. For more information, see [ Using Run Command to Take VSS\-Enabled Snapshots of EBS Volumes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/storage-vss-snapshots.html)\.
 
 You can track the status of your EBS snapshots through CloudWatch Events\. For more information, see [Amazon CloudWatch Events for Amazon EBS](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-cloud-watch-events.html)\.
 
@@ -14,6 +14,7 @@ You can track the status of your EBS snapshots through CloudWatch Events\. For m
 + [Copying and Sharing Snapshots](#copy-and-share)
 + [Encryption Support for Snapshots](#encryption-support)
 + [Creating an Amazon EBS Snapshot](ebs-creating-snapshot.md)
++ [Creating a VSS Application\-Consistent Snapshot](application-consistent-snapshots.md)
 + [Deleting an Amazon EBS Snapshot](ebs-deleting-snapshot.md)
 + [Copying an Amazon EBS Snapshot](ebs-copy-snapshot.md)
 + [Viewing Amazon EBS Snapshot Information](ebs-describing-snapshots.md)
@@ -34,6 +35,9 @@ In the diagram below, Volume 1 is shown at three points in time\. A snapshot is 
 
 ![\[Snapshots capturing an initial volume state and two subsequent states after data has been changed.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/snapshot_1a.png)
 
+**Note**  
+If you copy a snapshot and encrypt it to a new CMK, a complete \(non\-incremental\) copy is always created, resulting in additional delay and storage costs\.
+
 For more information about how data is managed when you delete a snapshot, see [Deleting an Amazon EBS Snapshot](ebs-deleting-snapshot.md)\.
 
 ## Copying and Sharing Snapshots<a name="copy-and-share"></a>
@@ -44,10 +48,16 @@ A snapshot is constrained to the Region where it was created\. After you create 
 
 ## Encryption Support for Snapshots<a name="encryption-support"></a>
 
-EBS snapshots broadly support EBS encryption\.
+EBS snapshots fully support EBS encryption\.
 + Snapshots of encrypted volumes are automatically encrypted\.
-+ Volumes that are created from encrypted snapshots are automatically encrypted\.
++ Volumes you create from encrypted snapshots are automatically encrypted\.
++ Volumes you create from an unencrypted snapshot that you own or have access to can be encrypted on\-the\-fly\.
 + When you copy an unencrypted snapshot that you own, you can encrypt it during the copy process\.
-+ When you copy an encrypted snapshot that you own, you can reencrypt it with a different key during the copy process\.
++ When you copy an encrypted snapshot that you own or have access to, you can reencrypt it with a different key during the copy process\.
+
+**Note**  
+If you copy a snapshot and encrypt it to a new CMK, a complete \(non\-incremental\) copy is always created, resulting in additional delay and storage costs\.
+
+Complete documentation of possible snapshot encryption scenarios is provided in [Creating an Amazon EBS Snapshot](ebs-creating-snapshot.md) and in [Copying an Amazon EBS Snapshot](ebs-copy-snapshot.md)\.
 
 For more information, see [Amazon EBS Encryption](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EBSEncryption.html)\.

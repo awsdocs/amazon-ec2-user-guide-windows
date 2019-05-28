@@ -1,6 +1,8 @@
 # Creating an Amazon EBS Snapshot<a name="ebs-creating-snapshot"></a>
 
-A point\-in\-time snapshot of an EBS volume, can be used as a baseline for new volumes or for data backup\. If you make periodic snapshots of a volume, the snapshots are incremental—only the blocks on the device that have changed after your last snapshot are saved in the new snapshot\. Even though snapshots are saved incrementally, the snapshot deletion process is designed so that you need to retain only the most recent snapshot in order to restore the entire volume\.
+To create an application\-consistent snapshot, see [Creating a VSS Application\-Consistent SnapshotRestoring Volumes from VSS\-Enabled EBS snapshots](application-consistent-snapshots.md)\.
+
+A point\-in\-time snapshot of an EBS volume, can be used as a baseline for new volumes or for data backup\. If you make periodic snapshots of a volume, the snapshots are incremental\-only the blocks on the device that have changed after your last snapshot are saved in the new snapshot\. Even though snapshots are saved incrementally, the snapshot deletion process is designed so that you need to retain only the most recent snapshot in order to restore the entire volume\.
 
 Snapshots occur asynchronously; the point\-in\-time snapshot is created immediately, but the status of the snapshot is `pending` until the snapshot is complete \(when all of the modified blocks have been transferred to Amazon S3\), which can take several hours for large initial snapshots or subsequent snapshots where many blocks have changed\. While it is completing, an in\-progress snapshot is not affected by ongoing reads and writes to the volume\.
 
@@ -13,6 +15,9 @@ Snapshots that are taken from encrypted volumes are automatically encrypted\. Vo
 By default, only you can create volumes from snapshots that you own\. However, you can share your unencrypted snapshots with specific AWS accounts, or you can share them with the entire AWS community by making them public\. For more information, see [Sharing an Amazon EBS Snapshot](ebs-modifying-snapshot-permissions.md)\.
 
 You can share an encrypted snapshot only with specific AWS accounts\. For others to use your shared, encrypted snapshot, you must also share the CMK key that was used to encrypt it\. Users with access to your encrypted snapshot must create their own personal copy of it and then use that copy to restore the volume\. Your copy of a shared, encrypted snapshot can also be re\-encrypted with a different key\. For more information, see [Sharing an Amazon EBS Snapshot](ebs-modifying-snapshot-permissions.md)\.
+
+**Note**  
+If you copy a snapshot and encrypt it to a new CMK, a complete \(non\-incremental\) copy is always created, resulting in additional delay and storage costs\.
 
 When a snapshot is created from a volume with an AWS Marketplace product code, the product code is propagated to the snapshot\.
 
@@ -45,4 +50,4 @@ You can use one of the following commands\. For more information about these com
 + [New\-EC2Snapshot](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Snapshot.html) \(AWS Tools for Windows PowerShell\)
 
 **Note**  
-Using Systems Manager Run Command, you can take application\-consistent snapshots of all [Amazon Elastic Block Store \(Amazon EBS\)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EBSVolumes.html) volumes attached to your Amazon EC2 Windows instances\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications, including data from pending transactions between these applications and the disk\. Furthermore, you don't need to shut down your instances or disconnect them when you need to back up all attached volumes\. For more information, see [Using Run Command to Take VSS\-Enabled Snapshots of EBS Volumes](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-vss.html) in the *AWS Systems Manager User Guide*\.
+Using AWS Systems Manager Run Command, you can take application\-consistent snapshots of all [Amazon Elastic Block Store \(Amazon EBS\)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EBSVolumes.html) volumes attached to your Amazon EC2 Windows instances\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications, including data from pending transactions between these applications and the disk\. Furthermore, you don't need to shut down your instances or disconnect them when you need to back up all attached volumes\. For more information, see [Using Run Command to Take VSS\-Enabled Snapshots of EBS Volumes](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-vss.html) in the *AWS Systems Manager User Guide*\.

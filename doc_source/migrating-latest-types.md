@@ -6,8 +6,8 @@ For more information, see [Amazon EC2 Update — Additional Instance Types, Nitr
 
 **Contents**
 + [Part 1: Installing and Upgrading AWS PV Drivers](#upgrade-pv)
-+ [Part 2: Installing and upgrading ENA](#upgrade-ena)
-+ [Part 3: Upgrading AWS NVMe drivers](#upgrade-nvme)
++ [Part 2: Installing and Upgrading ENA](#upgrade-ena)
++ [Part 3: Upgrading AWS NVMe Drivers](#upgrade-nvme)
 + [Part 4: Updating EC2Config and EC2Launch](#upgdate-ec2config-ec2launch)
 + [Part 5: Installing the Serial Port Driver for Bare Metal Instances](#install-serial-port-bare-metal)
 + [Part 6: Updating Power Management Settings](#power-management)
@@ -52,7 +52,7 @@ After running the MSI, the instance automatically reboots and upgrades the drive
 
 After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)\. 
 
-## Part 2: Installing and upgrading ENA<a name="upgrade-ena"></a>
+## Part 2: Installing and Upgrading ENA<a name="upgrade-ena"></a>
 
 Upgrade to the latest Elastic Network Adapter driver to ensure that all network features are supported\. If you launched your instance and it does not have enhanced networking already enabled, you must download and install the required network adapter driver on your instance\. Then, set the enaSupport instance attribute to **activate enhanced networking**\. You can only enable this attribute on supported instance types and only if the ENA driver is installed\. For more information, see [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
 
@@ -66,7 +66,7 @@ To avoid installation errors, run the `install.ps1` script as an administrator\.
 
 1.  Check if your AMI has enaSupport activated\. If not, continue by following the documentation at [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
 
-## Part 3: Upgrading AWS NVMe drivers<a name="upgrade-nvme"></a>
+## Part 3: Upgrading AWS NVMe Drivers<a name="upgrade-nvme"></a>
 
 AWS NVMe drivers are used to interact with Amazon EBS and SSD instance store volumes that are exposed as NVMe block devices in the Nitro system for better performance\. 
 
@@ -85,7 +85,7 @@ The following instructions are modified specifically for when you install or upg
 **Note**  
 This command only runs sysprep on the driver devices\. It does not run the full sysprep preparation\.
 
-1. For Windows Server 2008 R2 and Windows Server 2012 RTM, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type any time after the device sysprep\.
+1. For Windows Server 2008 R2 and Windows Server 2012 RTM, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type anytime after the device sysprep\.
 
 ## Part 4: Updating EC2Config and EC2Launch<a name="upgdate-ec2config-ec2launch"></a>
 
@@ -131,7 +131,7 @@ The `i3.metal` instance type uses a PCI\-based serial device rather than an I/O 
 
 ## Part 6: Updating Power Management Settings<a name="power-management"></a>
 
-The following update to power management settings will set displays to never turn off, which allows for graceful OS shutdowns on the Nitro system\. All Windows AMIs provided by Amazon as of 2018\.11\.28 already have this default configuration\.
+The following update to power management settings sets displays to never turn off, which allows for graceful OS shutdowns on the Nitro system\. All Windows AMIs provided by Amazon as of 2018\.11\.28 already have this default configuration\.
 
 1. Open a command prompt or PowerShell session\.
 
@@ -163,7 +163,7 @@ The `u-6tb1.metal`, `u-9tb1.metal`, and `u-12tb1.metal` instance types use hardw
 
 The `AWSSupport-UpgradeWindowsAWSDrivers` automation document automates the steps described in Part 1, Part 2, and Part 3\. This method can also repair an instance where the driver upgrades have failed\. 
 
-The `AWSSupport-UpgradeWindowsAWSDrivers` automation document upgrades or repairs storage and network AWS drivers on the specified EC2 instance\. The document attempts to install the latest versions of AWS drivers online by calling the AWS Systems Manager Agent \(SSM Agent\)\. If the SSM Agent is not contactable, the document can perform an offline installation of the AWS drivers if explicitly requested\.
+The `AWSSupport-UpgradeWindowsAWSDrivers` automation document upgrades or repairs storage and network AWS drivers on the specified EC2 instance\. The document attempts to install the latest versions of AWS drivers online by calling the AWS Systems Manager Agent \(SSM Agent\)\. If SSM Agent is not contactable, the document can perform an offline installation of the AWS drivers if explicitly requested\.
 
 **Note**  
 This procedure will fail on a domain controller\. To update drivers on a domain controller, see [Upgrade a Domain Controller \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade-dc)\.
@@ -186,9 +186,9 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 Online and offline upgrades create an AMI before attempting the upgrade operations\. The AMI persists after the automation completes\. Secure your access to the AMI, or delete it if it is no longer needed\.  
 SubnetId  
 \(Optional\) Enter one of the following values:  
-   + `SelectedInstanceSubnet` — \(Default\) The upgrade process launches the *helper* instance into the same subnet as the instance that is to be upgraded\. The subnet must allow communication to the SSM endpoints\.
-   + `CreateNewVPC` — The upgrade process launches the *helper* instance into a new VPC\. Use this option if you're not sure whether the target instance's subnet allows communication to the SSM endpoints\. Your IAM user must have permission to create a VPC\.
-   + A specific subnet ID — Specify the ID of a specific subnet into which to launch the *helper* instance\. The subnet must be in the same Availability Zone as the instance that is to be upgraded, and it must allow communication with the SSM endpoints\.
+   + `SelectedInstanceSubnet` — \(Default\) The upgrade process launches the *helper* instance into the same subnet as the instance that is to be upgraded\. The subnet must allow communication to the Systems Manager endpoints \(`ssm.*`\)\.
+   + `CreateNewVPC` — The upgrade process launches the *helper* instance into a new VPC\. Use this option if you're not sure whether the target instance's subnet allows communication to the `ssm.*` endpoints\. Your IAM user must have permission to create a VPC\.
+   + A specific subnet ID — Specify the ID of a specific subnet into which to launch the *helper* instance\. The subnet must be in the same Availability Zone as the instance that is to be upgraded, and it must allow communication with the `ssm.*` endpoints\.
 
 1. Choose **Execute automation**\.
 

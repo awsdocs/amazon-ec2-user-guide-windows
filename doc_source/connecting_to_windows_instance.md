@@ -26,7 +26,9 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
   If you've assigned an IPv6 address to your instance, you can optionally connect to the instance using its IPv6 address instead of a public IPv4 address or public IPv4 DNS hostname\. Your local computer must have an IPv6 address and must be configured to use IPv6\. You can get the IPv6 address of your instance using the Amazon EC2 console\. Check the **IPv6 IPs** field\. If you prefer, you can use the [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\) or [Get\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(AWS Tools for Windows PowerShell\) command\. For more information about IPv6, see [IPv6 Addresses](using-instance-addressing.md#ipv6-addressing)\.
 + **Locate the private key**
 
-  Get the fully\-qualified path to the location on your computer of the `.pem` file for the key pair that you specified when you launched the instance\.
+  Get the fully\-qualified path to the location on your computer of the `.pem` file for the key pair that you specified when you launched the instance\. For more information about how you created your key pair, see [Creating a Key Pair Using Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)\.
+
+  
 + **Enable inbound RDP traffic from your IP address to your instance**
 
   Ensure that the security group associated with your instance allows incoming RDP traffic from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorizing Inbound Traffic for Your Windows Instances](authorizing-access-to-an-instance.md)\.
@@ -128,7 +130,7 @@ To make local devices and resources available to a remote session on Windows, ma
 
 1. Choose **Show Options**\.
 
-1. Select the **Local Resources**tab\.
+1. Select the **Local Resources** tab\.
 
 1. Under the Local Devices and resources section, choose **More\. \. \.**
 

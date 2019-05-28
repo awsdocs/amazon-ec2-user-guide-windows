@@ -63,7 +63,7 @@ To apply updated settings to your instance, you can stop and restart the service
 
 1. In the list of services, right\-click **EC2Config**, and select **Restart**\.
 
-If you don't need to update the configuration settings, create your own AMI, or use Amazon EC2 Systems Manager \(SSM\), you can delete and uninstall the service\. Deleting a service removes its registry subkey\. Uninstalling a service removes the files, the registry subkey, and any shortcuts to the service\.
+If you don't need to update the configuration settings, create your own AMI, or use AWS Systems Manager, you can delete and uninstall the service\. Deleting a service removes its registry subkey\. Uninstalling a service removes the files, the registry subkey, and any shortcuts to the service\.
 
 **To delete the EC2Config service**
 
@@ -91,7 +91,7 @@ The EC2Config service processes Systems Manager requests on instances created fr
 
 Instances created from AMIs for versions of Windows Server prior to Windows Server 2016 that were published after November 2016 include the EC2Config service *and* SSM Agent\. EC2Config performs all of the tasks described earlier, and SSM Agent processes requests for Systems Manager capabilities like Run Command and State Manager\.
 
-You can use Run Command to upgrade your existing instances to use to the latest version of the EC2Config service and SSM Agent\. For more information, see [Example: Update the SSM Agent ](https://docs.aws.amazon.com/systems-manager/latest/userguide/rc-console.html#rc-console-agentexample) in the *AWS Systems Manager User Guide*\.
+You can use Run Command to upgrade your existing instances to use to the latest version of the EC2Config service and SSM Agent\. For more information, see [Update SSM Agent by using Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/rc-console.html#rc-console-agentexample) in the *AWS Systems Manager User Guide*\.
 
 ## EC2Config and Sysprep<a name="ec2config-sysprep"></a>
 

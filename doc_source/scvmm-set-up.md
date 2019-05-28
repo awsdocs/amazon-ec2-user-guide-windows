@@ -16,17 +16,15 @@ If you have an AWS account already, skip to the next task\. If you don't have an
 
 **To sign up for an AWS account**
 
-1. Open [https://aws\.amazon\.com/](https://aws.amazon.com/), and then choose **Create an AWS Account**\.
-**Note**  
-If you previously signed in to the AWS Management Console using AWS account root user credentials, choose **Sign in to a different account**\. If you previously signed in to the console using IAM credentials, choose **Sign\-in using root account credentials**\. Then choose **Create a new AWS account**\.
+1. Open [https://portal\.aws\.amazon\.com/billing/signup](https://portal.aws.amazon.com/billing/signup)\.
 
 1. Follow the online instructions\.
 
-   Part of the sign\-up procedure involves receiving a phone call and entering a verification code using the phone keypad\.
+   Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
 ## Set Up Access for Users<a name="create-users"></a>
 
-The first time that you use AWS Systems Manager, you must provide AWS credentials\. To enable multiple users to access the same AWS account using unique credentials and permissions, create an IAM user for each user\. You can create one or more groups with policies that grant permissions to perform limited tasks\. Then you can create one or more IAM users, and add each user to the appropriate group\.
+The first time that you use Systems Manager, you must provide AWS credentials\. To enable multiple users to access the same AWS account using unique credentials and permissions, create an IAM user for each user\. You can create one or more groups with policies that grant permissions to perform limited tasks\. Then you can create one or more IAM users, and add each user to the appropriate group\.
 
 **To create an Administrators group**
 
@@ -170,7 +168,7 @@ Add\-ins for System Center VMM are distributed as `.zip` files\. To deploy the a
 
 ## Provide Your AWS Credentials<a name="provide-credentials"></a>
 
-When you use the AWS Systems Manager for the first time, you must provide your AWS credentials\. Your access keys identify you to AWS\. There are two types of access keys: access key IDs \(for example, AKIAIOSFODNN7EXAMPLE\) and secret access keys \(for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\)\. You should have stored your access keys in a safe place when you received them\.
+When you use the Systems Manager for the first time, you must provide your AWS credentials\. Your access keys identify you to AWS\. There are two types of access keys: access key IDs \(for example, AKIAIOSFODNN7EXAMPLE\) and secret access keys \(for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\)\. You should have stored your access keys in a safe place when you received them\.
 
 **To provide your AWS credentials**
 

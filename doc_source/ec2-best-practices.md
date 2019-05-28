@@ -7,7 +7,7 @@ This list of practices will help you get the best results from running Windows o
 Maintain the latest drivers on all Windows EC2 instances to ensure the latest issue fixes and performance enhancements are applied across your fleet\. Depending on your instance type, you should update AWS PV, ENA, and NVMe drivers\.
 + Leverage [Trusted Advisor](https://aws.amazon.com/premiumsupport/trustedadvisor/best-practices) to keep Amazon EC2 Windows up to date with AWS\-provided Windows drivers\.
 + Use [SNS topics](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html#drivers-subscribe-notifications) to receive updates for new driver releases\.
-+ Use the public [AWSSupport\-UpgradeWindowsAWSDrivers](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awssupport-upgradewindowsawsdrivers.html) SSM document to easily apply the updates across your instances\.
++ Use the AWS Systems Manager SSM document [AWSSupport\-UpgradeWindowsAWSDrivers](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awssupport-upgradewindowsawsdrivers.html) to easily apply the updates across your instances\.
 
 **Launch New Instances with the Latest Windows AMIs**
 

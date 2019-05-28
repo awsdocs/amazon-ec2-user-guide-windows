@@ -69,7 +69,7 @@ Try the following to resolve issues related to connecting to your instance:
 + If you copied the password but get the error `Your credentials did not work`, try typing them manually when prompted\. It's possible that you missed a character or got an extra whitespace character when you copied the password\.
 + Verify that the instance has passed status checks\. For more information, see [Status Checks for Your Instances](monitoring-system-instance-status-check.md) and [Troubleshooting Instances with Failed Status Checks](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html) \(*Amazon EC2 User Guide for Linux Instances*\)\.
 + Verify that the route table for the subnet has a route that sends all traffic destined outside the VPC to the Internet gateway for the VPC\. For more information, see [Creating a Custom Route Table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html#Add_IGW_Routing) \(Internet Gateways\) in the *Amazon VPC User Guide*\.
-+ Verify that Windows Firewall, or other firewall software, is not blocking RDP traffic to the instance\. We recommend that you disable Windows Firewall and control access to your instance using security group rules\. You can use [AWSSupport\-TroubleshootRDP](#AWSSupport-TroubleshootRDP) to [disable the Windows Firewall profiles using the SSM agent](#disable-firewall) \. To disable Windows Firewall on a Windows instance that is not configured for SSM, use [AWSSupport\-ExecuteEC2Rescue](#AWSSupport-ExecuteEC2Rescue), or use the following manual steps: 
++ Verify that Windows Firewall, or other firewall software, is not blocking RDP traffic to the instance\. We recommend that you disable Windows Firewall and control access to your instance using security group rules\. You can use [AWSSupport\-TroubleshootRDP](#AWSSupport-TroubleshootRDP) to [disable the Windows Firewall profiles using SSM Agent](#disable-firewall) \. To disable Windows Firewall on a Windows instance that is not configured for AWS Systems Manager, use [AWSSupport\-ExecuteEC2Rescue](#AWSSupport-ExecuteEC2Rescue), or use the following manual steps: 
 
 ### <a name="manual-steps"></a>
 
@@ -206,7 +206,7 @@ For information about troubleshooting a Windows Server 2012 R2 instance that is 
 
 The AWSSupport\-TroubleshootRDP automation document allows the user to check or modify common settings on the target instance that can impact Remote Desktop Protocol \(RDP\) connections, such as the **RDP Port**, **Network Layer Authentication \(NLA\)**, and **Windows Firewall** profiles\. By default, the document reads and outputs the values of these settings\.
 
-The AWSSupport\-TroubleshootRDP automation document can be used only with instances that are enabled for [AWS Systems Manager](https://aws.amazon.com/systems-manager/), also referred to as a [managed instance](https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html)\. Your instance must have the SSM agent installed and have an IAM role attached with permissions to Systems Manager\. You must change the default parameter values to modify the common RDP settings on the target instance\.
+The AWSSupport\-TroubleshootRDP automation document can be used only with instances that are enabled for use with AWS Systems Manager\. These instances also referred to as *managed instances*\. For more information, see [Setting Up AWS Systems Manager for Hybrid Environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html) in the *AWS Systems Manager User Guide*\. Your instance must have the AWS Systems Manager SSM Agent installed and have an IAM role attached with permissions to Systems Manager\. You must change the default parameter values to modify the common RDP settings on the target instance\.
 
 1. Log in to the [Systems Manager Console](https://console.aws.amazon.com/systems-manager/)\.
 
@@ -218,7 +218,9 @@ The AWSSupport\-TroubleshootRDP automation document can be used only with instan
 
 1. In **Input parameters**, in the **InstanceId** field, enable **Show interactive instance picker**\.
 
-1. Choose your Amazon EC2 instance\. **Note:** If you don't see your instance in the list, it's not enabled for Systems Manager\. To configure AWS Identity and Access Management \(IAM\) for SSM Agent, see [Create an Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-configuring-access-role.html)\.
+1. Choose your Amazon EC2 instance\.
+**Note**  
+If you don't see your instance in the list, it's not enabled for Systems Manager\. For information, see [Create an Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) and [Attach an IAM Instance Profile to an Amazon EC2 Instance](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html) in the *AWS Systems Manager User Guide*\.
 
 1. Review the [examples](#AWSSupport-TroubleshootRDP-Examples), then choose **Execute automation**\.
 

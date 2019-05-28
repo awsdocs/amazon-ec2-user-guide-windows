@@ -171,7 +171,7 @@ If you do not see the uninstaller dialog box, choose **Red Hat Paravirtualize** 
 If you are using Citrix PV drivers on Windows Server, you can upgrade the Citrix Xen guest agent service\. This Windows service handles tasks such as shutdown and restart events from the API\. You can run this upgrade package on any version of Windows Server, as long as the instance is running Citrix PV drivers\.
 
 **Important**  
-Do not perform these steps on Windows Server 2012 or 2012 R2 instances that are running AWS PV drivers\.
+For Windows Server 2008 R2 and later, we recommend you upgrade to AWS PV drivers that include the Guest Agent update\.
 
 Before you start upgrading your drivers, make sure you back up your important information on the instance, or create an AMI from the instance\. For more information about creating an AMI, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. If you create an AMI, make sure you do the following:
 + Do not enable the Sysprep tool in the EC2Config service\.

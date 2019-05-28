@@ -82,6 +82,9 @@ Verify that you provided your access keys." -ForegroundColor Yellow
 }
 
 Get-disk | ForEach-Object {
+  $DriveLetter = $null
+  $VolumeName = $null
+
   $DiskDrive = $_
   $Disk = $_.Number
   $Partitions = $_.NumberOfPartitions

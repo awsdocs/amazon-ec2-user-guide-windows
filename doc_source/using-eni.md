@@ -121,6 +121,13 @@ The following table lists the maximum number of network interfaces per instance 
 | `i3.8xlarge` | 8 | 30 | 30 | 
 | `i3.16xlarge` | 15 | 50 | 50 | 
 | `i3.metal` | 15 | 50 | 50 | 
+| i3en\.large | 3 | 10 | 10 | 
+| i3en\.xlarge | 4 | 15 | 15 | 
+| i3en\.2xlarge | 4 | 15 | 15 | 
+| i3en\.3xlarge | 4 | 15 | 15 | 
+| i3en\.6xlarge | 8 | 30 | 30 | 
+| i3en\.12xlarge | 8 | 30 | 30 | 
+| i3en\.24xlarge | 15 | 50 | 50 | 
 |  `m1.small`  |  2  |  4  | IPv6 not supported | 
 |  `m1.medium`  |  2  |  6  | IPv6 not supported | 
 |  `m1.large`  |  3  |  10  | IPv6 not supported | 
@@ -223,6 +230,13 @@ The following table lists the maximum number of network interfaces per instance 
 |  `t3.large`  |  3  |  12  | 12 | 
 |  `t3.xlarge`  |  4  |  15  |  15  | 
 |  `t3.2xlarge`  |  4  |  15  |  15  | 
+|  `t3a.nano`  |  2  |  2  | 2 | 
+|  `t3a.micro`  |  2  |  2  | 2 | 
+|  `t3a.small`  |  3  |  4  | 4 | 
+|  `t3a.medium`  |  3  |  6  | 6 | 
+|  `t3a.large`  |  3  |  12  | 12 | 
+|  `t3a.xlarge`  |  4  |  15  |  15  | 
+|  `t3a.2xlarge`  |  4  |  15  |  15  | 
 | `u-6tb1.metal` | 5 | 30 | 30 | 
 | `u-9tb1.metal` | 5 | 30 | 30 | 
 | `u-12tb1.metal` | 5 | 30 | 30 | 

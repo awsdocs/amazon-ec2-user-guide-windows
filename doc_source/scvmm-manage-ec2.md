@@ -1,6 +1,6 @@
 # Managing EC2 Instances Using AWS Systems Manager for Microsoft SCVMM<a name="scvmm-manage-ec2"></a>
 
-After you log in to the AWS Systems Manager using your AWS credentials, you can manage your EC2 instances\.
+After you log in to the Systems Manager console using your AWS credentials, you can manage your EC2 instances\.
 
 **Topics**
 + [Creating an EC2 Instance](#create-instances)
@@ -49,7 +49,7 @@ The permissions that you've been granted by your administrator determine whether
 
 After you've created your instance, it appears in the list of instances for the region in which you launched it\. Initially, the status of the instance is `pending`\. After the status changes to `running`, your instance is ready for use\.
 
-You can manage the lifecycle of your instance using AWS Systems Manager, as described on this page\. To perform other tasks, such as the following, you must use the AWS Management Console:
+You can manage the lifecycle of your instance using Systems Manager, as described on this page\. To perform other tasks, such as the following, you must use the AWS Management Console:
 + [Attach an Amazon EBS volume to your instance](ebs-attaching-volume.md)
 + [Associate an Elastic IP address with your instance](elastic-ip-addresses-eip.md#using-instance-addressing-eips-associating)
 + [Enable termination protection](terminating-instances.md#Using_ChangingDisableAPITermination)
@@ -60,7 +60,7 @@ The permissions that your administrator grants you determine whether you can vie
 
 **To view your instances and get detailed information**
 
-1. Open AWS Systems Manager\.
+1. Open the [AWS Systems Manager console](https://console.aws.amazon.com/systems-manager)\.
 
 1. From the region list, select a region\.
 

@@ -66,7 +66,7 @@ The following procedure describes how to view the JSON for this document in the 
 
 **To view the JSON for the Systems Manager Run Command document**
 
-1. Open the SSM console at [https://console\.aws\.amazon\.com/systems\-manager/home](https://console.aws.amazon.com/systems-manager/home)\.
+1. Open the Systems Manager console at [https://console\.aws\.amazon\.com/systems\-manager/home](https://console.aws.amazon.com/systems-manager/home)\.
 
 1. In the navigation pane, expand **Shared Services** and choose **Documents**\.
 

@@ -1,6 +1,6 @@
 # AWS Systems Manager for Microsoft System Center VMM<a name="scvmm"></a>
 
-Amazon Web Services \(AWS\) Systems Manager for Microsoft System Center Virtual Machine Manager \(SCVMM\) provides a simple, easy\-to\-use interface for managing AWS resources, such as EC2 instances, from Microsoft SCVMM\. It is implemented as an add\-in for the VMM console\. For more information, see [AWS Add\-ins for Microsoft System Center](https://aws.amazon.com/windows/system-center/)\.
+AWS Systems Manager for Microsoft System Center Virtual Machine Manager \(SCVMM\) provides a simple, easy\-to\-use interface for managing AWS resources, such as EC2 instances, from Microsoft SCVMM\. It is implemented as an add\-in for the VMM console\. For more information, see [AWS Add\-ins for Microsoft System Center](https://aws.amazon.com/windows/system-center/)\.
 
 ![\[AWS Systems Manager add-in\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_scvmm.png)
 

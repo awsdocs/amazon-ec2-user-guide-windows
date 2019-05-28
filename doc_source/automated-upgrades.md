@@ -1,8 +1,8 @@
 # Performing an Automated Upgrade<a name="automated-upgrades"></a>
 
-You can perform an automated upgrade on your Windows Server 2008 R2 and SQL Server 2008 R2 with Service Pack 3 instances on AWS with AWS Systems Manager documents\. 
+You can perform an automated upgrade on your Windows Server 2008 R2 and SQL Server 2008 R2 with Service Pack 3 instances on AWS with AWS Systems Manager SSM documents\. 
 
-The Systems Manager automation documents provide two upgrade paths:
+The Systems Manager Automation documents provide two upgrade paths:
 + Windows Server 2008 R2 to Windows Server 2012 R2 
 + SQL Server 2008 R2 on Windows Server 2012 R2 to SQL Server 2016
 
@@ -15,19 +15,19 @@ The Systems Manager automation documents provide two upgrade paths:
 ## Related Services<a name="automated-related"></a>
 
 The following AWS services are used in the automated upgrade process:
-+ ** AWS Systems Manager**\. AWS Systems Manager is a powerful, unified interface for centrally managing your AWS resources\. For more information, see [What is AWS Systems Manager?](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html)
-+ **AWS Systems Manager Agent \(SSM Agent\)**\. The SSM Agent is software that runs on your EC2 instances and processes requests from the Systems Manager service in the cloud to configure your machine\. SSM Agent sends status and execution information back to the Systems Manager service with EC2 messaging\. For more information, see [Installing and Configuring SSM Agent\.](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html)
-+ **AWS Systems Manager documents**\. An SSM document defines the actions that Systems Manager performs on your managed instances\. Documents use JavaScript Object Notation \(JSON\) or YAML, and they include steps and parameters that you specify\. This topic uses two AWS Systems Manager automation documents\. For more information, see [AWS Systems Manager Documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html)\.
++ **AWS Systems Manager**\. AWS Systems Manager is a powerful, unified interface for centrally managing your AWS resources\. For more information, see the *[AWS Systems Manager User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/)*\.
++ AWS Systems Manager Agent \(SSM Agent\) is Amazon software that can be installed and configured on an Amazon EC2 instance, an on\-premises server, or a virtual machine \(VM\)\. SSM Agent makes it possible for Systems Manager to update, manage, and configure these resources\. The agent processes requests from the Systems Manager service in the AWS Cloud, and then runs them as specified in the request\. SSM Agent then sends status and execution information back to the Systems Manager service by using the Amazon Message Delivery Service \(service prefix: `ec2messages`\)\. For more information, see [Working with SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) in the *AWS Systems Manager User Guide*\.
++ **AWS Systems Manager SSM documents**\. An SSM document defines the actions that Systems Manager performs on your managed instances\. SSM documents use JavaScript Object Notation \(JSON\) or YAML, and they include steps and parameters that you specify\. This topic uses two Systems Manager automation documents\. For more information, see [AWS Systems Manager Documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html) in the *AWS Systems Manager User Guide*\.
 
 ## Prerequisites<a name="automated-prereq"></a>
 
-In order to automate your upgrade with AWS Systems Manager documents, you must perform the following tasks:
-+ [Create an IAM role with the specified IAM policies](#automated-iam) to allow AWS Systems Manager to perform automation tasks on your Amazon EC2 instances and verify that you meet the prerequisites to use AWS Systems Manager\.
+In order to automate your upgrade with AWS Systems Manager SSM documents, you must perform the following tasks:
++ [Create an IAM role with the specified IAM policies](#automated-iam) to allow Systems Manager to perform automation tasks on your Amazon EC2 instances and verify that you meet the prerequisites to use Systems Manager\.
 + [Select the option for how you want the automation to be executed](#automated-execution-option)\. The options for execution are **Simple execution**, **Rate control**, **Multi\-account and Region**, and **Manual execution**\. 
 
 ### Create IAM Role with Specified Permissions<a name="automated-iam"></a>
 
-For steps on how to create an IAM role in order to allow AWS Systems Manager to access resources on your behalf, see [Creating a Role to Delegate Permissions to an AWS Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html)\. This topic also contains information on how to verify that your account meets the prerequisites to use AWS Systems Manager\.
+For steps on how to create an IAM role in order to allow AWS Systems Manager to access resources on your behalf, see [Creating a Role to Delegate Permissions to an AWS Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html)\. This topic also contains information on how to verify that your account meets the prerequisites to use Systems Manager\.
 
 ### Select Execution Option<a name="automated-execution-option"></a>
 
@@ -97,11 +97,11 @@ There are two upgrade paths, which use two different AWS Systems Manager Automat
 
 ### Upgrade Windows 2008 R2 to 2012 R2<a name="2008R2-2012R2"></a>
 
-This upgrade path requires additional prerequisites to work successfully\. These prerequisites can be found in the automation document details for [AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html) in the *Systems Manager User Guide*\. 
+This upgrade path requires additional prerequisites to work successfully\. These prerequisites can be found in the automation document details for [AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html) in the *AWS Systems Manager User Guide*\. 
 
 After you have verified the additional prerequisite tasks, follow these steps to upgrade your Windows 2008 R2 instance to Windows 2012 R2 by using the automation document on AWS Systems Manager\. 
 
-1. Open AWS Systems Manager from the **AWS Management Console**\.
+1. Open Systems Manager from the **AWS Management Console**\.
 
 1. From the left navigation pane, choose **Automation**\.
 
@@ -123,7 +123,7 @@ After you have verified the additional prerequisite tasks, follow these steps to
 
      **Type:** String
 
-     \(Required\) The IAM instance profile\. This is the IAM role used to perform the AWS Systems Manager automation against the Amazon EC2 instance and AWS AMIs\. For more information, see [ Create an Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-configuring-access-role.html) in the *Systems Manager User Guide*\.
+     \(Required\) The IAM instance profile\. This is the IAM role used to perform the Systems Manager automation against the Amazon EC2 instance and AWS AMIs\. For more information, see [Create an IAM Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\.
    + `SubnetId`
 
      **Type:** String
@@ -138,20 +138,20 @@ After you have verified the additional prerequisite tasks, follow these steps to
 
      **Type:** String
 
-     \(Optional\) The default is `false` \(no reboot\)\. If this parameter is set to `true`, AWS Systems Manager reboots the instance before creating an AMI for the upgrade\.
+     \(Optional\) The default is `false` \(no reboot\)\. If this parameter is set to `true`, Systems Manager reboots the instance before creating an AMI for the upgrade\.
 
 1. After you have entered the parameters, select **Execute**\. When the automation begins, you can monitor the execution progress\.
 
 1. When the automation completes, you will see the AMI ID\. You can launch the AMI to verify that the Windows OS is upgraded\.
 **Note**  
-It is not necessary for the automation to run all of the steps\. The steps are conditional based on the behavior of the automation and instance\. AWS Systems Manager might skip some steps that are not required\.  
-Additionally, some steps may time out\. AWS Systems Manager attempts to upgrade and install all of the latest patches\. Sometimes, however, patches time out based on a definable timeout setting for the given step\. When this happens, the AWS Systems Manager automation continues to the next step to ensure that the internal OS is upgraded to Windows Server 2012 R2\.
+It is not necessary for the automation to run all of the steps\. The steps are conditional based on the behavior of the automation and instance\. Systems Manager might skip some steps that are not required\.  
+Additionally, some steps may time out\. Systems Manager attempts to upgrade and install all of the latest patches\. Sometimes, however, patches time out based on a definable timeout setting for the given step\. When this happens, the Systems Manager automation continues to the next step to ensure that the internal OS is upgraded to Windows Server 2012 R2\.
 
 1. After the automation completes, you can launch an Amazon EC2 instance using the AMI ID to review your upgrade\. For more information about how to create an Amazon EC2 instance from an AWS AMI, see [ How do I launch an EC2 instance from a custom Amazon Machine Image \(AMI\)?](https://aws.amazon.com/premiumsupport/knowledge-center/launch-instance-custom-ami/)
 
 ### Upgrade SQL Server 2008 R2 to SQL Server 2016<a name="SQL2008R2-SQL2016"></a>
 
-This upgrade path requires additional prerequisites to work successfully\. These prerequisites can be found in the automation document details for [AWSEC2\-CloneInstanceAndUpgradeSQLServer](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeSQLServer.html) in the *Systems Manager User Guide*\.
+This upgrade path requires additional prerequisites to work successfully\. These prerequisites can be found in the automation document details for [AWSEC2\-CloneInstanceAndUpgradeSQLServer](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeSQLServer.html) in the *AWS Systems Manager User Guide*\.
 
 After you have verified the additional prerequisite tasks, follow these steps to upgrade your SQL Server 2008 R2 database engine to SQL Server 2016 using the automation document on AWS Systems Manager\. 
 
@@ -161,9 +161,9 @@ After you have verified the additional prerequisite tasks, follow these steps to
 
 1. Take an EBS snapshot of the volume and copy the snapshot ID onto a clipboard for later use\. For more information about creating an EBS snapshot, see [Creating an EBS Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-creating-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*\.
 
-1. Attach the instance profile to the EC2 source instance\. This allows Systems Manager to communicate with the EC2 instance and run commands on it after it is added to the AWS Systems Manager service\. For this example, we named the role `SSM-EC2-Profile-Role` with the `AmazonEc2RoleSSM` policy attached to the role\. See [ Create an Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-configuring-access-role.html)\.
+1. Attach the instance profile to the EC2 source instance\. This allows Systems Manager to communicate with the EC2 instance and run commands on it after it is added to the AWS Systems Manager service\. For this example, we named the role `SSM-EC2-Profile-Role` with the `AmazonEC2RoleForSSM` policy attached to the role\. See [Create an IAM Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\.
 
-1. From the Systems Manager console, select **Managed Instances** under **Shared Resources** in the left navigation pane\. Verify that your EC2 instance is visible\. If you don't see your instance, wait a few minutes and it should appear\. Otherwise, reconfirm that the AWS Systems Manager prerequisites have been met\.
+1. From the AWS Systems Manager console, select **Managed Instances** under **Shared Resources** in the left navigation pane\. Verify that your EC2 instance is visible\. If you don't see your instance, wait a few minutes and it should appear\. Otherwise, reconfirm that the Systems Manager prerequisites have been met\.
 
 1. In the left navigation pane under **Actions**, select **Automation**\.
 
@@ -203,7 +203,7 @@ After you have verified the additional prerequisite tasks, follow these steps to
 
      **Type:** String
 
-     \(Optional\) The default is `false` \(no reboot\)\. If this parameter is set to `true`, AWS Systems Manager reboots the instance before creating an AMI for the upgrade\.
+     \(Optional\) The default is `false` \(no reboot\)\. If this parameter is set to `true`, Systems Manager reboots the instance before creating an AMI for the upgrade\.
 
 1. After you have entered the parameters, select **Execute**\. When the automation begins, you can monitor the execution progress\.
 

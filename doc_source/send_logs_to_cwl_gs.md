@@ -3,8 +3,8 @@
 Complete the following preliminary tasks to configure integration with CloudWatch\. These tasks apply to all methods for configuring instances to send logs, events, and performance counters to CloudWatch\. 
 
 **Important**  
-The unified CloudWatch Agent has replaced the SSM Agent as the tool for sending log data to Amazon CloudWatch Logs\. Support for using the SSM Agent to send log data will be deprecated in the near future\. We recommend that you begin using the unified CloudWatch Agent for your log collection processes as soon as possible\. For more information, see the following topics:  
-[Send Logs to CloudWatch Logs \(CloudWatch Agent\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
+The unified CloudWatch Agent has replaced SSM Agent as the tool for sending log data to Amazon CloudWatch Logs\. Support for using SSM Agent to send log data will be deprecated in the near future\. We recommend that you begin using the unified CloudWatch Agent for your log collection processes as soon as possible\. For more information, see the following topics:  
+[Sending Logs to CloudWatch Logs \(CloudWatch agent\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html) in the *AWS Systems Manager User Guide*
 [ Migrate Windows Server Instance Log Collection to the CloudWatch Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-cloudwatch-agent.html#monitoring-cloudwatch-agent-migrate) in the *AWS Systems Manager User Guide*
 [Collect Metrics from Amazon Elastic Compute Cloud Instances and On\-Premises Servers with the CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html) in the *Amazon CloudWatch User Guide*
 
@@ -149,7 +149,7 @@ You can send performance counters, event log data, Event Tracing for Windows \(E
 1. \(Optional\) To specify a dimension for your metric, type a dimension name and value for `DimensionName` and `DimensionValue`\. These parameters provide another view when listing metrics\. You can also use the same dimension for multiple metrics so that you can view all metrics belonging to a specific dimension\.
 
 **Note**  
-If the SSM Agent or the CloudWatch plugin is stopped, performance counter data is not logged in CloudWatch\. This behavior is different than custom logs or Windows Event logs\. Custom logs and Windows Event logs preserve performance counter data and upload it to CloudWatch after the SSM Agent or the CloudWatch plugin is available\.
+If SSM Agent or the CloudWatch plugin is stopped, performance counter data is not logged in CloudWatch\. This behavior is different than custom logs or Windows Event logs\. Custom logs and Windows Event logs preserve performance counter data and upload it to CloudWatch after SSM Agent or the CloudWatch plugin is available\.
 
 **To send Windows application event log data to CloudWatch Logs**
 
@@ -381,13 +381,13 @@ Note that you can send the same performance counter or log file to more than one
 
 If you plan to use a local configuration file with local credentials, then you can skip this task\.
 
-An IAM role for instance credentials is required when you use Systems Manager Run Command or State Manager and optional when you use a local configuration file\. This role enables Systems Manager to perform actions on the instance\. You can optionally create a unique IAM user account for configuring and running Systems Manager\. For more information, see [Configuring Access to Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-access.html) in the *AWS Systems Manager User Guide*\. For information about how to attach an IAM role to an existing instance, see [Attaching an IAM Role to an Instance](iam-roles-for-amazon-ec2.md#attach-iam-role)\.
+An IAM role for instance credentials is required when you use Systems Manager Run Command or State Manager and optional when you use a local configuration file\. This role enables Systems Manager to perform actions on the instance\. You can optionally create a unique IAM user account for configuring and running Systems Manager\. For more information, see [Create Non\-Admin IAM Users and Groups for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-create-iam-user.html) in the *AWS Systems Manager User Guide*\. For information about how to attach an IAM role to an existing instance, see [Attaching an IAM Role to an Instance](iam-roles-for-amazon-ec2.md#attach-iam-role)\.
 
 ## Verify Systems Manager Prerequisites<a name="send_logs_cwl_syspre"></a>
 
 If you plan to use a local configuration file, then you can skip this task\.
 
-Before you use either Systems Manager Run Command or State Manager to configure integration with CloudWatch, verify that your instances meet the minimum requirements\. For more information, see [Systems Manager Prerequisites](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
+Before you use either Systems Manager Run Command or State Manager to configure integration with CloudWatch, verify that your instances meet the minimum requirements\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 
 ## Verify Internet Access<a name="send_logs_cwl_internet"></a>
 

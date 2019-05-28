@@ -36,7 +36,7 @@ Windows instances are set to the UTC time zone by default\. you can change the t
 
 ## Configuring Network Time Protocol \(NTP\)<a name="windows-configuring-ntp"></a>
 
-Windows instances use the time\.windows\.com NTP server to configure the system time\. We recommend that you configure your instance to use the Amazon Time Sync Service\. This service uses a fleet of satellite\-connected and atomic reference clocks in each AWS Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. This service is available at the `169.254.169.123` IP address for any instance running in a VPC, and your instance does not require internet access to use this service\.
+Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 instances, and is also used by other AWS services\. We recommend that you configure your instance to use the Amazon Time Sync Service\. This service uses a fleet of satellite\-connected and atomic reference clocks in each AWS Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. This service is available at the `169.254.169.123` IP address for any instance running in a VPC, and your instance does not require internet access to use it\. Starting with the August 2018 release, Windows AMIs use the Amazon Time Sync Service by default\.
 
 **To verify the NTP configuration**
 
@@ -96,8 +96,8 @@ You can change the instance to use a different set of NTP servers if you need to
 
 Amazon Machine Images \(AMIs\) generally adhere to the out\-of\-the\-box defaults except in cases where changes are required to function on EC2 infrastructure\. The following settings have been determined to work well in a virtualized environment, as well as to keep any clock drift to within one second of accuracy: 
 + **Update Interval** – governs how frequently the time service will adjust system time towards accuracy\. AWS configures the update interval to occur once every two minutes\.
-+ **NTP Server** – starting with the August 2018 release, AMIs will now use the AWS time service by default\. This time service is accessible from any EC2 region at the 169\.254\.169\.123 endpoint\. Additionally, the 0x9 flag indicates that the time service is acting as a client, and to use “SpecialPollInterval” to determine how frequently to check in with the configured time server\.
-+ **Type** – “NTP” means that the service will act as a standalone NTP client as opposed to acting as part of a domain\.
++ **NTP Server** – starting with the August 2018 release, AMIs will now use the Amazon Time Sync Service by default\. This time service is accessible from any EC2 Region at the 169\.254\.169\.123 endpoint\. Additionally, the 0x9 flag indicates that the time service is acting as a client, and to use SpecialPollInterval to determine how frequently to check in with the configured time server\.
++ **Type** – "NTP" means that the service acts as a standalone NTP client instead of acting as part of a domain\.
 + **Enabled and InputProvider** – the time service is enabled and provides time to the operating system\.
 + **Special Poll Interval** – checks against the configured NTP Server every 900 seconds, or 15 minutes\. 
 

@@ -43,7 +43,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
    1. Install the EC2Launch service\. For more information, see [Installing the Latest Version of EC2Launch](ec2launch-download.md)\.
 
-   1. Install the Amazon SSM Agent\. For more information, see [Installing SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html)\.
+   1. Install the AWS Systems Manager SSM Agent\. For more information, see [Working with SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) in the *AWS Systems Manager User Guide*\.
 
 1. Create a new volume from a Windows Server installation media snapshot\.
 
@@ -51,7 +51,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
    1. Add the **Owner** filter and choose **Amazon images**\.
 
-   1. Add the **Description** filter and type **Windows**\. Press Enter\.
+   1. Add the **Description** filter and enter **Windows**\. Press Enter\.
 
    1. Select the snapshot that matches the system architecture and language preference you are upgrading to\. For example, select **Windows 2019 English Installation Media** to upgrade to Windows Server 2019\.
 
@@ -63,7 +63,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 1. Choose **Actions**, **Attach Volume**\.
 
-1. In the **Attach Volume** dialog box, type the instance ID and choose **Attach**\.
+1. In the **Attach Volume** dialog box, enter the instance ID and choose **Attach**\.
 
 1. Begin the upgrade by using Windows PowerShell to open the installation media volume you attached to the instance\.
 
@@ -135,7 +135,7 @@ To complete the upgrade, you must attach the installation media volume to your E
 
    1. Add the **Owner** filter and choose **Amazon images**\.
 
-   1. Add the **Description** filter and type **Windows**\. Press Enter\.
+   1. Add the **Description** filter and enter **Windows**\. Press Enter\.
 
    1. Select the snapshot that matches the system architecture of your instance\. For example, **Windows 2008 64\-bit Installation Media**\.
 
@@ -147,7 +147,7 @@ To complete the upgrade, you must attach the installation media volume to your E
 
 1. Choose **Actions**, **Attach Volume**\.
 
-1. In the **Attach Volume** dialog box, type the instance ID and choose **Attach**\.
+1. In the **Attach Volume** dialog box, enter the instance ID and choose **Attach**\.
 
 1. On your Windows instance, on the `C:\` drive, create a folder named `temp`\.
 **Important**  

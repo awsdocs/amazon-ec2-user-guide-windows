@@ -7,5 +7,7 @@ Microsoft has traditionally recommended migrating to a newer version of Windows 
 **Topics**
 + [Performing a Server Migration](os-migration.md)
 + [Performing an In\-Place Upgrade](os-inplaceupgrade.md)
++ [Performing an Automated Upgrade](automated-upgrades.md)
 + [Migrating to Latest Generation Instance Types](migrating-latest-types.md)
++ [Windows to Linux Replatforming Assistant for Microsoft SQL Server Databases](replatform-sql-server.md)
 + [Troubleshooting an Upgrade](os-upgrade-trbl.md)

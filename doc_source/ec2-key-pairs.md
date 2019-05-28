@@ -1,8 +1,8 @@
 # Amazon EC2 Key Pairs and Windows Instances<a name="ec2-key-pairs"></a>
 
-Amazon EC2 uses public–key cryptography to encrypt and decrypt login information\. Public–key cryptography uses a public key to encrypt a piece of data, such as a password, then the recipient uses the private key to decrypt the data\. The public and private keys are known as a *key pair*\.
+Amazon EC2 uses public–key cryptography to encrypt and decrypt login information\. Public–key cryptography uses a public key to encrypt a piece of data, and then the recipient uses the private key to decrypt the data\. The public and private keys are known as a *key pair*\. Public\-key cryptography enables you to securely access your instances using a private key instead of a password\.
 
-To log in to your instance, you must create a key pair, specify the name of the key pair when you launch the instance, and provide the private key when you connect to the instance\. With Windows instances, you use the private key to obtain the administrator password and then log in using RDP\. For more information about key pairs and Linux instances, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+When you launch an instance, you specify the key pair\. You can specify an existing key pair or a new key pair that you create at launch\. With Windows instances, you use the private key to obtain the administrator password and then log in using RDP\. For more information about key pairs and Linux instances, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Creating a Key Pair**  
 You can use Amazon EC2 to create your key pair\. For more information, see [Creating a Key Pair Using Amazon EC2](#having-ec2-create-your-key-pair)\.

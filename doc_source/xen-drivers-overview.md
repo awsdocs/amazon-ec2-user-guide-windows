@@ -42,7 +42,7 @@ AWS PV drivers also have a Windows service named LiteAgent, which runs in user\-
 Amazon Windows AMIs contain a set of drivers to permit access to virtualized hardware\. These drivers are used by Amazon EC2 to map instance store and Amazon EBS volumes to their devices\. We recommend that you install the latest drivers to improve stability and performance of your EC2 Windows instances\.
 
 **Installation Options**
-+ You can use AWS Systems Manager to automatically update the PV drivers\. For more information, see [Automatically Update PV Drivers on EC2 Windows Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-walk.html#sysman-state-pvdriver) in the *AWS Systems Manager User Guide*\.
++ You can use AWS Systems Manager to automatically update the PV drivers\. For more information, see [Walkthrough: Automatically Update PV Drivers on EC2 Windows Instances \(Console\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-pvdriver.html) in the *AWS Systems Manager User Guide*\.
 + You can download the setup package and run the install program manually\. For information about downloading and installing the AWS PV drivers, see [Upgrade Windows Server Instances \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade)\.
 
 ### AWS PV Driver Version History<a name="pv-driver-history"></a>
@@ -52,7 +52,7 @@ The following table shows the changes to AWS PV drivers for each driver release\
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
-| 8\.3\.0 |  Performance and robustness improvements to storage component\.  | 25 March 2019 | 
+| 8\.2\.7 |  Improved efficiency to support migrating to latest generation instance types\.  | 20 May 2019 | 
 | 8\.2\.6 |  Improved efficiency of crash dump path\.  | 15 January 2019 | 
 | 8\.2\.5 |  Additional security enhancements\. PowerShell installer now available in package\.  | 12 December 2018 | 
 | 8\.2\.4 |  Reliability improvements\.  | 2 October 2018 | 

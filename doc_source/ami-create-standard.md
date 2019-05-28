@@ -142,7 +142,7 @@ EC2Config then performs the following actions:
 1. Runs all “After Windows is ready” plug\-ins at the same time\.
    + AWS CloudWatch logs 
    + UserData
-   + Simple Systems Manager \(SSM\) 
+   + AWS Systems Manager \(Systems Manager\) 
 
 For more information about Windows plug\-ins, see [Configuring a Windows Instance Using the EC2Config Service](ec2config-service.md)\.
 
