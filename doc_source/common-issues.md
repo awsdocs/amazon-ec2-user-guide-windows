@@ -5,7 +5,9 @@ The following are troubleshooting tips to help you solve common issues with EC2 
 **Topics**
 + [EBS volumes don't initialize on Windows Server 2016 and later AMIs](#init-disks-win2k16)
 + [Boot an EC2 Windows Instance into Directory Services Restore Mode \(DSRM\)](#boot-dsrm)
-+ [Unable to remotely log on to an instance with a user account that is not an Administrator](#remote-failure)
++ [Instance loses network connectivity or scheduled tasks don't run when expected](#instance-loses-network-connectivity)
++ [Unable to get console output](#no-console-output)
++ [Windows Server 2012 R2 not available on the network](#server-2012-network-loss)
 
 ## EBS volumes don't initialize on Windows Server 2016 and later AMIs<a name="init-disks-win2k16"></a>
 
@@ -119,6 +121,30 @@ If you do not create the instance in the same Availability Zone as the affected 
 
 1. \(Optional\) Delete or stop the temporary instance you created in this procedure\.
 
-## Unable to remotely log on to an instance with a user account that is not an Administrator<a name="remote-failure"></a>
+## Instance loses network connectivity or scheduled tasks don't run when expected<a name="instance-loses-network-connectivity"></a>
 
-If you are not able to remotely log on to a Windows Server EC2 instance from a user account that is not an administrator account, ensure that you have granted the user the right to log on locally\. See [Grant a user or group the right to log on locally to the domain controllers in the domain](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee957044(v=ws.10)#grant-a-user-or-group-the-right-to-log-on-locally-to-the-domain-controllers-in-the-domain)\. 
+If you restart your instance and it loses network connectivity, it's possible that the instance has the wrong time\.
+
+By default, Windows instances use Coordinated Universal Time \(UTC\)\. If you set the time for your instance to a different time zone and then restart it, the time becomes offset and the instance temporarily loses its IP address\. The instance regains network connectivity eventually, but this can take several hours\. The amount of time that it takes for the instance to regain network connectivity depends on the difference between UTC and the other time zone\.
+
+This same time issue can also result in scheduled tasks not running when you expect them to\. In this case, the scheduled tasks do not run when expected because the instance has the incorrect time\.
+
+To use a time zone other than UTC persistently, you must set the **RealTimeIsUniversal** registry key\. Without this key, an instance uses UTC after you restart it\.
+
+**To resolve time issues that cause a loss of network connectivity**
+
+1. Ensure that you are running the recommended PV drivers\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
+
+1. Verify that the following registry key exists and is set to `1`: **HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation\\RealTimeIsUniversal**
+
+## Unable to get console output<a name="no-console-output"></a>
+
+For Windows instances, the instance console displays the output from tasks performed during the Windows boot process\. If Windows boots successfully, the last message logged is `Windows is Ready to use`\. Note that you can also display event log messages in the console, but this feature is not enabled by default\. For more information, see [EC2 Service Properties](ec2config-service.md#UsingConfigInterface_WinAMI)\.
+
+To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, **Instance Settings**, and then **Get System Log**\. To get the console output using the command line, use one of the following commands: [get\-console\-output](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-output.html) \(AWS CLI\) or [Get\-EC2ConsoleOutput](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ConsoleOutput.html) \(AWS Tools for Windows PowerShell\)\.
+
+For instances running Windows Server 2012 R2 and earlier, if the console output is empty, it could indicate an issue with the EC2Config service, such as a misconfigured configuration file, or that Windows failed to boot properly\. To fix the issue, download and install the latest version of EC2Config\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
+
+## Windows Server 2012 R2 not available on the network<a name="server-2012-network-loss"></a>
+
+For information about troubleshooting a Windows Server 2012 R2 instance that is not available on the network, see [Windows Server 2012 R2 loses network and storage connectivity after an instance reboot](pvdrivers-troubleshooting.md#server2012R2-instance-unavailable)\.

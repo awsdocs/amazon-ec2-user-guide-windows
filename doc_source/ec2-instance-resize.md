@@ -86,7 +86,7 @@ If the current configuration of your instance is incompatible with the new insta
 
 **To migrate your application to a compatible instance**
 
-1. Back up any data on your instance store volumes that you need to keep to persistent storage\. To migrate data on your EBS volumes that you need to keep, create a snapshot of the volumes \(see [Creating an Amazon EBS Snapshot](ebs-creating-snapshot.md)\) or detach the volume from the instance so that you can attach it to the new instance later \(see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\)\.
+1. Back up any data on your instance store volumes that you need to keep to persistent storage\. To migrate data on your EBS volumes that you need to keep, create a snapshot of the volumes \(see [Creating Amazon EBS Snapshots](ebs-creating-snapshot.md)\) or detach the volume from the instance so that you can attach it to the new instance later \(see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\)\.
 
 1. Launch a new instance, selecting the following:
    + If you are using an Elastic IP address, select the VPC that the original instance is currently running in\.

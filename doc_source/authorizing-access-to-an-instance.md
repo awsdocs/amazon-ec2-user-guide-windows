@@ -19,7 +19,7 @@ If you use `0.0.0.0/0`, you enable all IPv4 addresses to access your instance us
 
 For more information about security groups, see [Amazon EC2 Security Groups for Windows Instances](using-network-security.md)\.
 
-Windows Firewall may also block incoming traffic\. If you're having trouble setting up access to your instance, you may have to disable Windows Firewall\. For more information, see [Remote Desktop can't connect to the remote computer](troubleshooting-windows-instances.md#rdp-issues)\.
+Windows Firewall may also block incoming traffic\. If you're having trouble setting up access to your instance, you may have to disable Windows Firewall\. For more information, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
 
 ## Adding a Rule for Inbound RDP Traffic to a Windows Instance<a name="add-rule-authorize-access"></a>
 

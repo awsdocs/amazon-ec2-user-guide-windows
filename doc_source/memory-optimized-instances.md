@@ -225,7 +225,7 @@ For more information, see the following:
 
 X1 instances support Single Device Data Correction \(SDDC \+1\), which detects and corrects multi\-bit errors\. SDDC \+1 uses error checking and correction code to identify and disable a failed single DRAM device\.
 
-In addition, you can implement high availability \(HA\) and disaster recovery \(DR\) solutions to meet recovery point objective \(RPO\), recovery time objective \(RTO\), and cost requirements by leveraging [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) and [Recover Your Instance](ec2-instance-recover.md)\. For more information about implementing HA and DR solutions, see the [Using AWS for Disaster Recovery](http://media.amazonwebservices.com/AWS_Disaster_Recovery.pdf) whitepaper\.
+In addition, you can implement high availability \(HA\) and disaster recovery \(DR\) solutions to meet recovery point objective \(RPO\), recovery time objective \(RTO\), and cost requirements by leveraging [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) and [Recover Your Instance](ec2-instance-recover.md)\. 
 
 If you run an SAP HANA production environment, you also have the option of using HANA System Replication \(HSR\) on X1 instances\. For more information about architecting HA and DR solutions on X1 instances, see [SAP HANA on the Amazon Web Services Cloud: Quick Start Reference Deployment](http://aws.amazon.com/quickstart/architecture/sap-hana/)\.
 

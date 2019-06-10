@@ -1,14 +1,14 @@
 # Troubleshoot an Unreachable Instance<a name="screenshot-service"></a>
 
-If you are unable to reach your instance via SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility as to the status of the instance, and allows for quicker troubleshooting\.
-
-There is no data transfer cost for this screenshot\. The image is generated in JPG format, no larger than 100kb\.
+If you are unable to reach your instance through SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility as to the status of the instance, and allows for quicker troubleshooting\.
 + [How to Take a Screenshot of an Unreachable Instance](#how-to-ics)
 + [Common Screenshots](#ics-common)
 
 ## How to Take a Screenshot of an Unreachable Instance<a name="how-to-ics"></a>
 
-**To access the instance console**
+There is no data transfer cost for this screenshot\. The image is generated in JPG format, no larger than 100kb\.
+
+**To get a screenshot of a running instance using the console**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -18,11 +18,9 @@ There is no data transfer cost for this screenshot\. The image is generated in J
 
 1. Choose **Actions**, **Instance Settings**\.
 
-1. Choose **Get Instance Screenshot**\.
+1. Choose **Get Instance Screenshot**\. Right\-click the image to download and save it\.
 
-Right\-click on the image to download and save it\.
-
-**To capture a screenshot using the command line**
+**To get a screenshot of a running instance using the command line**
 
 You can use one of the following commands\. The returned output is base64\-encoded\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
 + [get\-console\-screenshot](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-screenshot.html) \(AWS CLI\)
@@ -58,7 +56,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 
 | Configuration | Verify | 
 | --- | --- | 
-| Security group configuration | Verify that port 3389 is open for your security group\. Verify you are connecting to the right public IP address\. If the instance was not associated with an Elastic IP, the public IP changes after the instance stops/starts\. For more information, see [Remote Desktop can't connect to the remote computer](troubleshooting-windows-instances.md#rdp-issues)\. | 
+| Security group configuration | Verify that port 3389 is open for your security group\. Verify you are connecting to the right public IP address\. If the instance was not associated with an Elastic IP, the public IP changes after the instance stops/starts\. For more information, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\. | 
 | VPC configuration \(Network ACLs\) | Verify that the access control list \(ACL\) for your Amazon VPC is not blocking access\. For information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the Amazon VPC User Guide\. | 
 | VPN configuration | If you are connecting to your VPC using a virtual private network \(VPN\), verify VPN tunnel connectivity\. For more information, see [How do I troubleshoot VPN tunnel connectivity to an Amazon VPC?](https://aws.amazon.com/premiumsupport/knowledge-center/vpn-tunnel-troubleshooting/) | 
 
@@ -67,7 +65,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 
 | Configuration | Verify | 
 | --- | --- | 
-| Windows Firewall | Verify that Windows Firewall isn't blocking connections to your instance\. Disable Windows Firewall as described in bullet 7 of the remote desktop troubleshooting section, [Remote Desktop can't connect to the remote computer](troubleshooting-windows-instances.md#rdp-issues)\.  | 
+| Windows Firewall | Verify that Windows Firewall isn't blocking connections to your instance\. Disable Windows Firewall as described in bullet 7 of the remote desktop troubleshooting section, [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.  | 
 | Advanced TCP/IP configuration \(Use of static IP\) | The instance may be unresponsive because you configured a static IP address\. For a VPC, [Create a network interface](using-eni.md#create_eni) and [attach it to the instance](using-eni.md#attach_eni_running_stopped)\. For EC2 Classic, enable DHCP\. | 
 
 **Local or On\-Premises Network Configuration**
@@ -94,7 +92,7 @@ Check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon
 + Custom Startup Script
 + Task Scheduler
 
-For more information, see [Get Statistics for a Specific Resource](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. For additional troubleshooting tips, see [High CPU usage shortly after Windows starts](troubleshooting-windows-instances.md#high-cpu-issue)\.
+For more information, see [Get Statistics for a Specific Resource](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. For additional troubleshooting tips, see [High CPU usage shortly after Windows starts](troubleshooting-launch.md#high-cpu-issue)\.
 
 ### Recovery Console Screen<a name="recovery-console-screen"></a>
 
@@ -112,7 +110,7 @@ By default, the policy configuration for AWS\-provided public Windows AMIs is se
 
    Detach the root volume from the unreachable instance, take a snapshot of the volume or create an AMI from it, and attach it to another instance in the same Availability Zone as a secondary volume\. For more information, see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\.
 **Warning**  
-If your temporary instance is based on the same AMI that the original instance is based on, you must complete additional steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\. Alternatively, select a different AMI for the temporary instance\. For example, if the original instance uses an AMI for Windows Server 2008 R2, launch the temporary instance using an AMI for Windows Server 2012\. If you must create a temporary instance based on the same AMI, see Step 6 in [Remote Desktop can't connect to the remote computer](troubleshooting-windows-instances.md#rdp-issues) to avoid a disk signature collision\.
+If your temporary instance is based on the same AMI that the original instance is based on, you must complete additional steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\. Alternatively, select a different AMI for the temporary instance\. For example, if the original instance uses an AMI for Windows Server 2008 R2, launch the temporary instance using an AMI for Windows Server 2012\. If you must create a temporary instance based on the same AMI, see Step 6 in [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues) to avoid a disk signature collision\.
 
 1. Log in to the instance and execute the following command from a command prompt to change the `bootstatuspolicy` configuration to `ignoreallfailures`:
 

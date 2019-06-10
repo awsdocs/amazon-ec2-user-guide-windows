@@ -14,6 +14,7 @@ Don't use Sysprep to create an instance backup\. Sysprep removes system\-specifi
 + [Troubleshooting Sysprep](#sysprep-troubleshoot)
 
 ## Before You Begin<a name="sysprep-begin"></a>
++ Before performing Sysprep, we recommend that you remove all local user accounts and all account profiles other than a single administrator account under which Sysprep will be executed\. If you perform Sysprep with additional accounts and profiles, unexpected behavior could result, including loss of profile data or failure to complete Sysprep\.
 + Learn more about [Sysprep](https://technet.microsoft.com/en-us/library/cc721940.aspx) on Microsoft TechNet\.
 + Learn which [server roles are supported for Sysprep](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)\.
 + The procedures on this page apply to E2Config\. With Windows Server 2016 and later, see [Using Sysprep with EC2Launch](ec2launch.md#ec2launch-sysprep)\.
@@ -69,6 +70,8 @@ Sysprep and the EC2Config service perform the following actions when preparing a
 
 The system generates OS specific requirements such as a computer name and a SID\. The system also performs the following actions based on configurations that you specify in the sysprep2008\.xml answer file\.
 + **CopyProfile**: Sysprep can be configured to delete all user profiles, including the built\-in Administrator profile\. This setting retains the built\-in Administrator account so that any customizations you made to that account are carried over to the new image\. The default value is True\.
+
+  **CopyProfile** replaces the default profile with the existing local administrator profile\. All accounts logged into after running Sysprep will receive a copy of that profile and its contents at first login\. 
 
   If you don’t have specific user\-profile customizations that you want to carry over to the new image then change this setting to False\. Sysprep will remove all user profiles; this saves time and disk space\. 
 + **TimeZone**: The time zone is set to Coordinate Universal Time \(UTC\) by default\.

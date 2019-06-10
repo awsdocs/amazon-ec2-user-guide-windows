@@ -46,7 +46,7 @@ Please wait at least 4 minutes after launching an instance before trying to retr
 auto-generated password.
 ```
 
-If it's been longer than four minutes and you still can't get the password, it's possible that EC2Config is disabled\. Verify by checking whether the console output is empty\. For more information, see [No console output](troubleshooting-windows-instances.md#no-console-output)\.
+If it's been longer than four minutes and you still can't get the password, it's possible that EC2Config is disabled\. Verify by checking whether the console output is empty\. For more information, see [Unable to get console output](common-issues.md#no-console-output)\.
 
 Also verify that the AWS Identity and Access Management \(IAM\) account being used to access the Management Portal has the `ec2:GetPasswordData` action allowed\. For more information about IAM permissions, see [What is IAM?](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html)\.
 

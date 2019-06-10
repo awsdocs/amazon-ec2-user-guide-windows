@@ -145,7 +145,7 @@ Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The f
 | --- | --- | --- | 
 |  [1\.5\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.5.0/AwsEnaNetworkDriver.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | October 2018 | 
 |  [1\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.2.3/AwsEnaNetworkDriver.zip)  |  Includes reliability fixes and unifies support for Windows Server 2008 R2 through Windows Server 2016\.  | February 2018 | 
-|  1\.0\.9  |  Includes some reliability fixes\. Applies only to Windows Server 2008 R2\. Not recommended for other versions of Windows Server\.  | December 2016 | 
+|  [1\.0\.9](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.0.8/AwsEnaNetworkDriver.zip)  |  Includes some reliability fixes\. Applies only to Windows Server 2008 R2\. Not recommended for other versions of Windows Server\.  | December 2016 | 
 |  [1\.0\.8](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.0.8/AwsEnaNetworkDriver.zip)  |  The initial release\. Included in AMIs for Windows Server 2008 R2, Windows Server 2012 RTM, Windows Server 2012 R2, and Windows Server 2016\.  | July 2016 | 
 
 ## Subscribing to Notifications<a name="drivers-subscribe-notifications"></a>
