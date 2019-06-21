@@ -52,6 +52,7 @@ The following table shows the changes to AWS PV drivers for each driver release\
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+| 8\.3\.1 |  Improved performance and robustness of storage component\.  | 12 June 2019 | 
 | 8\.2\.7 |  Improved efficiency to support migrating to latest generation instance types\.  | 20 May 2019 | 
 | 8\.2\.6 |  Improved efficiency of crash dump path\.  | 15 January 2019 | 
 | 8\.2\.5 |  Additional security enhancements\. PowerShell installer now available in package\.  | 12 December 2018 | 

@@ -53,7 +53,7 @@ This download is available to AWS customers only\. By downloading, you agree tha
 
 1. \(Optional\) To enable NVIDIA GRID Virtual Applications, complete the GRID activation steps in [Activate NVIDIA GRID Virtual Applications \(G3 Instances Only\)](activate_grid.md) \(NVIDIA GRID Virtual Workstation is enabled by default\)\.
 
-1. Complete the optimization steps in [Optimizing GPU Settings \(P2, P3, and G3 Instances\)](optimize_gpu.md) to achieve the best performance from your GPU\.
+1. Complete the optimization steps in [Optimizing GPU Settings](optimize_gpu.md) to achieve the best performance from your GPU\.
 
 ## Public NVIDIA Drivers \(G2, P2, P3\)<a name="nvidia-drivers-public"></a>
 
@@ -70,4 +70,4 @@ For instance types other than G3, or if you are not using NVIDIA GRID capabiliti
 
 1. To verify that the GPU is working correctly, check Device Manager\.
 
-1. \[P2, P3, and G3\] Complete the optimization steps in [Optimizing GPU Settings \(P2, P3, and G3 Instances\)](optimize_gpu.md) to achieve the best performance from your GPU\.
+1. \[P2, P3, and G3\] Complete the optimization steps in [Optimizing GPU Settings](optimize_gpu.md) to achieve the best performance from your GPU\.

@@ -3,8 +3,8 @@
 You can perform an automated upgrade on your Windows Server 2008 R2 and SQL Server 2008 R2 with Service Pack 3 instances on AWS with AWS Systems Manager SSM documents\. 
 
 The Systems Manager Automation documents provide two upgrade paths:
-+ Windows Server 2008 R2 to Windows Server 2012 R2 
-+ SQL Server 2008 R2 on Windows Server 2012 R2 to SQL Server 2016
++ Windows Server 2008 R2 to Windows Server 2012 R2 using the SSM document for Automation named [AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html)
++ SQL Server 2008 R2 on Windows Server 2012 R2 to SQL Server 2016 using the SSM document for Automation named [AWSEC2\-CloneInstanceAndUpgradeSQLServer](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeSQLServer.html) 
 
 **Topics**
 + [Related Services](#automated-related)
@@ -17,7 +17,7 @@ The Systems Manager Automation documents provide two upgrade paths:
 The following AWS services are used in the automated upgrade process:
 + **AWS Systems Manager**\. AWS Systems Manager is a powerful, unified interface for centrally managing your AWS resources\. For more information, see the *[AWS Systems Manager User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/)*\.
 + AWS Systems Manager Agent \(SSM Agent\) is Amazon software that can be installed and configured on an Amazon EC2 instance, an on\-premises server, or a virtual machine \(VM\)\. SSM Agent makes it possible for Systems Manager to update, manage, and configure these resources\. The agent processes requests from the Systems Manager service in the AWS Cloud, and then runs them as specified in the request\. SSM Agent then sends status and execution information back to the Systems Manager service by using the Amazon Message Delivery Service \(service prefix: `ec2messages`\)\. For more information, see [Working with SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) in the *AWS Systems Manager User Guide*\.
-+ **AWS Systems Manager SSM documents**\. An SSM document defines the actions that Systems Manager performs on your managed instances\. SSM documents use JavaScript Object Notation \(JSON\) or YAML, and they include steps and parameters that you specify\. This topic uses two Systems Manager automation documents\. For more information, see [AWS Systems Manager Documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html) in the *AWS Systems Manager User Guide*\.
++ **AWS Systems Manager SSM documents**\. An SSM document defines the actions that Systems Manager performs on your managed instances\. SSM documents use JavaScript Object Notation \(JSON\) or YAML, and they include steps and parameters that you specify\. This topic uses two Systems Manager SSM documents for Automation\. For more information, see [AWS Systems Manager Documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-ssm-docs.html) in the *AWS Systems Manager User Guide*\.
 
 ## Prerequisites<a name="automated-prereq"></a>
 
@@ -31,7 +31,7 @@ For steps on how to create an IAM role in order to allow AWS Systems Manager to 
 
 ### Select Execution Option<a name="automated-execution-option"></a>
 
-When you select **Automation** on the Systems Manager console, select **Execute**\. You are then prompted to choose an automation execution option\. You choose from the following options\. In the steps for the paths provided in this topic, we use the Simple execution option\.
+When you select **Automation** on the Systems Manager console, select **Execute**\. After you select an SSM document, you are then prompted to choose an automation execution option\. You choose from the following options\. In the steps for the paths provided later in this topic, we use the **Simple execution** option\.
 
 **Simple Execution**  
 Choose this option if you want to update a single instance but do not want to go through each automation step to audit the results\. This option is explained in further detail in the upgrade steps that follow\.
@@ -74,10 +74,10 @@ This option is similar to **Simple execution**, but allows you to step through e
 ## Upgrade Paths<a name="upgrade-paths"></a>
 
 There are two upgrade paths, which use two different AWS Systems Manager Automation documents\.
-+ **AWSEC2\-CloneInstanceAndUpgradeWindows**\. This script creates an Amazon Machine Image \(AMI\) from a Windows Server 2008 R2 instance in your account and upgrades this AMI to Windows Server 2012 R2\. This multi\-step process can take up to two hours to complete\. 
++ `[AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html)`\. This script creates an Amazon Machine Image \(AMI\) from a Windows Server 2008 R2 instance in your account and upgrades this AMI to Windows Server 2012 R2\. This multi\-step process can take up to two hours to complete\. 
 
   In this workflow, the automation creates an AMI from the instance and then launches the new AMI in the VPC and subnet you provide\. The automation workflow performs an in\-place upgrade from Windows Server 2008 R2 to Windows Server 2012 R2\. It also updates or installs the AWS drivers required by the upgraded instance\. After the upgrade is complete, the workflow creates a new AMI and terminates the upgraded instance\.
-+ **AWSEC2\-CloneInstanceAndUpgradeSQLServer**\. This script creates an AMI from an Amazon EC2 instance running SQL Server 2008 R2 SP3 in your account, and then upgrades the AMI to SQL Server 2016 SP2\. This multi\-step process can take up to two hours to complete\.
++ `[AWSEC2\-CloneInstanceAndUpgradeSQLServer](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeSQLServer.html)`\. This script creates an AMI from an Amazon EC2 instance running SQL Server 2008 R2 SP3 in your account, and then upgrades the AMI to SQL Server 2016 SP2\. This multi\-step process can take up to two hours to complete\.
 
   In this workflow, the automation creates an AMI from the instance and then launches the new AMI in the subnet you provide\. The automation then performs an in\-place upgrade of SQL Server 2008 R2 to SQL Server 2016 SP2\. After the upgrade is complete, the automation creates a new AMI before terminating the upgraded instance\. 
 
@@ -161,17 +161,17 @@ After you have verified the additional prerequisite tasks, follow these steps to
 
 1. Take an EBS snapshot of the volume and copy the snapshot ID onto a clipboard for later use\. For more information about creating an EBS snapshot, see [Creating an EBS Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-creating-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*\.
 
-1. Attach the instance profile to the EC2 source instance\. This allows Systems Manager to communicate with the EC2 instance and run commands on it after it is added to the AWS Systems Manager service\. For this example, we named the role `SSM-EC2-Profile-Role` with the `AmazonEC2RoleForSSM` policy attached to the role\. See [Create an IAM Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\.
+1. Attach the instance profile to the EC2 source instance\. This allows Systems Manager to communicate with the EC2 instance and run commands on it after it is added to the AWS Systems Manager service\. For this example, we named the role `SSM-EC2-Profile-Role` with the `AmazonSSMManagedInstanceCore ` policy attached to the role\. See [Create an IAM Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\.
 
-1. From the AWS Systems Manager console, select **Managed Instances** under **Shared Resources** in the left navigation pane\. Verify that your EC2 instance is visible\. If you don't see your instance, wait a few minutes and it should appear\. Otherwise, reconfirm that the Systems Manager prerequisites have been met\.
+1. In the AWS Systems Manager console, in the left navigation pane, choose **Managed Instances**\. Verify that your EC2 instance is in the list of managed instance\. If you don't see your instance after a few minutes, see [Where Are My Instances?](https://docs.aws.amazon.com/systems-manager/latest/userguide/troubleshooting-remote-commands.html#where-are-instances) in the *AWS Systems Manager User Guide*\.
 
-1. In the left navigation pane under **Actions**, select **Automation**\.
+1. In the left navigation pane, choose **Automation**\.
 
-1. In the upper right corner, select **Execute automations**\.
+1. Choose **Execute automation**\.
 
-1. Search for the `AWSEC2-CloneInstanceAndUpgradeSQLServer` document\.
+1. Choose the button beside the `AWSEC2-CloneInstanceAndUpgradeSQLServer` SSM document, and then choose **Next**\. 
 
-1. Select the document and choose **Next**\. 
+1. Ensure that the **Simple execution **option is selected\.
 
 1. Enter the requested parameters based on the following guidance\.
    + `InstanceId` 
@@ -205,21 +205,21 @@ After you have verified the additional prerequisite tasks, follow these steps to
 
      \(Optional\) The default is `false` \(no reboot\)\. If this parameter is set to `true`, Systems Manager reboots the instance before creating an AMI for the upgrade\.
 
-1. After you have entered the parameters, select **Execute**\. When the automation begins, you can monitor the execution progress\.
+1. After you have entered the parameters, choose **Execute**\. When the automation begins, you can monitor the execution progress\.
 
-1. When the **Execution Status** shows **Success**, choose the **Outputs** list to view the AMI information\. You can use the AMI ID to launch your SQL Server 2016 instance for the VPC of your choice\.
+1. When **Execution status** shows **Success**, expand **Outputs** to view the AMI information\. You can use the AMI ID to launch your SQL Server 2016 instance for the VPC of your choice\.
 
-1. From the EC2 console, under **Images** in the left navigation pane, select **AMIs**\. You should see the new AMI\.
+1. Open the EC2 console\. In the left navigation pane, choose **AMIs**\. You should see the new AMI\.
 
-1. To verify that SQL Server 2016 has been successfully installed, select the new AMI and choose **Launch**\.
+1. To verify that SQL Server 2016 has been successfully installed, choose the new AMI and choose **Launch**\.
 
-1. Choose the type of instance that you want for the AMI, the VPC and subnet that you want to deploy to, and the storage that you want to use\. Because you are launching the new instance from an AMI, the volumes are presented to you as an option to include within the new EC2 instance you are launching\. You can remove any of these volumes, or you can add volumes\.
+1. Choose the type of instance that you want for the AMI, the VPC and subnet that you want to deploy to, and the storage that you want to use\. Because you're launching the new instance from an AMI, the volumes are presented to you as an option to include within the new EC2 instance you are launching\. You can remove any of these volumes, or you can add volumes\.
 
 1. Add a tag to help you identify your instance\.
 
 1. Add the security group or groups to the instance\.
 
-1. Select **Launch Instance**\.
+1. Choose **Launch Instance**\.
 
 1. Choose the tag name for the instance and select **Connect** under the **Actions** dropdown\. 
 

@@ -1,6 +1,6 @@
 # Creating Amazon EBS Snapshots<a name="ebs-creating-snapshot"></a>
 
-To create an application\-consistent snapshot, see [Creating a VSS Application\-Consistent SnapshotRestoring Volumes from VSS\-Enabled EBS Snapshots](application-consistent-snapshots.md)\.
+To create an application\-consistent snapshot, see [Creating a VSS Application\-Consistent SnapshotRestoring Volumes from VSS\-Enabled EBS snapshots](application-consistent-snapshots.md)\.
 
 A point\-in\-time snapshot of an EBS volume, can be used as a baseline for new volumes or for data backup\. If you make periodic snapshots of a volume, the snapshots are incremental\-only the blocks on the device that have changed after your last snapshot are saved in the new snapshot\. Even though snapshots are saved incrementally, the snapshot deletion process is designed so that you need to retain only the most recent snapshot in order to restore the entire volume\.
 

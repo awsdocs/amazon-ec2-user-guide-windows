@@ -30,7 +30,7 @@ The following example shows how to move a database named `AdventureDB` to an EC2
 ```
 PS C:\> ./MigrateSQLServerToEC2Linux.ps1 - SQLServerInstanceName MSSQLSERVER -EC2InstanceId i-
 024689abcdef -DBNames AdventureDB -PathForBackup D:\\Backup -AWSRegion us-east-2 -
-IamInstanceProfileName AmazonEC2RoleForSSM
+IamInstanceProfileName AmazonSSMManagedInstanceCore
 ```
 
 **Example 2: Move a database to an EC2 instance using the AWS credentials profile**  
@@ -39,7 +39,7 @@ The following example shows how to move the database in Example 1 using the AWS 
 ```
 PS C:\> ./MigrateSQLServerToEC2Linux.ps1 - SQLServerInstanceName MSSQLSERVER -EC2InstanceId i-
 024689abcdef -DBNames AdventureDB -PathForBackup D:\\Backup -AWSRegion us-east-2 -AWSProfileName
-DBMigration -IamInstanceProfileName AmazonEC2RoleForSSM
+DBMigration -IamInstanceProfileName AmazonSSMManagedInstanceCore
 ```
 
 **Example 3: Move a database to a new m5\.large type instance**  
@@ -48,7 +48,7 @@ The following example shows how to create an `m5.large` type EC2 Linux instance 
 ```
 PS C:\> ./MigrateSQLServerToEC2Linux.ps1 -EC2InstanceType m5.large -SubnetId subnet-abc127 -EC2KeyPair
 customer-ec2-keypair -DBNames AdventureDB,TestDB -PathForBackup D:\\Backup -AWSRegion us-east-2 -
-AWSProfileName DBMigration -IamInstanceProfileName AmazonEC2RoleForSSM
+AWSProfileName DBMigration -IamInstanceProfileName AmazonSSMManagedInstanceCore
 ```
 
 **Example 4: Move all databases to a new m5\.large type instance**  
@@ -57,7 +57,7 @@ The following example shows how to create an `m5.large` type EC2 Linux instance 
 ```
 PS C:\> ./MigrateSQLServerToEC2Linux.ps1 -EC2InstanceType m5.large -SubnetId subnet-abc127 -EC2KeyPair
 customer-ec2-keypair -MigrateAllDBs -PathForBackup D:\\Backup -AWSRegion us-east-2 -AWSProfileName
-DBMigration -IamInstanceProfileName AmazonEC2RoleForSSM
+DBMigration -IamInstanceProfileName AmazonSSMManagedInstanceCore
 ```
 
 ## Parameters<a name="replatform-sql-server-parameters"></a>

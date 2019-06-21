@@ -7,5 +7,5 @@ The following tutorials show you how to perform common tasks using EC2 instances
 + [Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md)
 + [Tutorial: Installing a WIMP Server on an Amazon EC2 Instance Running Windows Server](install-WIMP.md)
 + [Tutorial: Increase the Availability of Your Application on Amazon EC2](ec2-increase-availability.md)
-+ [Tutorial: Remotely Manage Your Amazon EC2 Instances](tutorial_run_command.md)
++ [Tutorial: Remotely Manage Your Amazon EC2 Instances Using Systems Manager](tutorial_run_command.md)
 + [Tutorial: Setting Up a Windows HPC Cluster on Amazon EC2](ConfigWindowsHPC.md)

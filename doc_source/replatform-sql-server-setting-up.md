@@ -8,7 +8,7 @@ This section covers the steps necessary to run the Windows to Linux replatformin
 
 ## Prerequisites<a name="replatform-sql-server-prerequisites"></a>
 
-In order to run the Windows to Linux replatforming assistant for Microsoft SQL Server Databases script, you must:
+In order to run the Windows to Linux replatforming assistant for Microsoft SQL Server Databases script, you must do the following:
 
 1. 
 
@@ -73,8 +73,12 @@ In order to run the Windows to Linux replatforming assistant for Microsoft SQL S
 
 To replatform to an existing instance running Microsoft SQL Server 2017 on Linux, you must: 
 
-1. Configure the EC2 instance with an AWS Identity and Access Management \(IAM\) profile and attach the `AmazonEC2RoleForSSM` managed policy\. For more information about how to attach a policy to a role, see [Create an Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\.
+1. Configure the EC2 instance with an AWS Identity and Access Management \(IAM\) instance profile and attach the `AmazonSSMManagedInstanceCore ` managed policy\. 
 
-1. Verify that SSM Agent is installed on your EC2 instance\. For more information, see [Installing and Configuring SSM Agent on Amazon EC2 Linux Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-agent.html) in the *AWS Systems Manager User Guide*\.
+   For information about creating an IAM instance profile for Systems Manager and attaching it to an instance, see the following topics in the *AWS Systems Manager User Guide*:
+   + [Create an Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html)
+   + [Attach an IAM Instance Profile to an Amazon EC2 Instance](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html)
+
+1. Verify that SSM Agent is installed on your EC2 instance\. For more information, see [Installing and Configuring SSM Agent on Windows Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html) in the *AWS Systems Manager User Guide*\.
 
 1. Verify that the EC2 instance has enough free disk space to download and restore the Microsoft SQL Server backups\.
