@@ -3,7 +3,7 @@
 EBS volumes are exposed as NVMe block devices on [Nitro\-based instances](instance-types.md#ec2-nitro-instances)\. 
 
 **Note**  
-The EBS performance guarantees stated in [Amazon EBS Product Details](https://aws.amazon.com/ebs/details/) are valid regardless of the block\-device interface\.
+The EBS performance guarantees stated in [Amazon EBS Product Details](http://aws.amazon.com/ebs/details/) are valid regardless of the block\-device interface\.
 
 **Topics**
 + [Install or Upgrade the NVMe Driver](#install-nvme-driver)
@@ -23,7 +23,7 @@ EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachmen
 
 You can also run the **ebsnvme\-id** command to map the NVMe device disk number to an EBS volume ID and device name\. By default, all EBS NVMe devices are enumerated\. You can pass a disk number to enumerate information for a specific device\. Ebsnvme\-id is included in the latest AWS provided Windows Server AMIs located in C:\\PROGRAMDATA\\AMAZON\\Tools\.
 
-You can also download [ebsnvme\-id\.zip](https://s3.amazonaws.com/ec2-windows-drivers-downloads/EBSNVMeID/Latest/ebsnvme-id.zip) and extract the contents to your Amazon EC2 instance to get access to ebsnvme\-id\.exe\.
+You can also download [ebsnvme\-id\.zip](https://s3.amazonaws.com/ec2-windows-drivers-downloads/EBSNVMeID/Latest/ebsnvme-id.zip) and extract the contents to your Amazon EC2 instance to get access to `ebsnvme-id.exe`\.
 
 ```
 PS C:\Users\Administrator\Desktop> ebsnvme-id.exe
