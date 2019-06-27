@@ -391,7 +391,7 @@ Before you use either Systems Manager Run Command or State Manager to configure 
 
 ## Verify Internet Access<a name="send_logs_cwl_internet"></a>
 
-Your Amazon EC2 Windows Server instances and managed instances must have outbound internet access in order to send log and event data to CloudWatch\. For more information about how to configure internet access, see [Internet Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) in the *Amazon VPC User Guide*\.
+Your Amazon EC2 Windows Server instances and managed instances must have outbound internet access in order to send logs, event data, and performance counters to CloudWatch\. For more information about how to configure internet access, see [Internet Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html) in the *Amazon VPC User Guide*\.
 
 ## Next Step<a name="send_longs_cwl_next_step"></a>
 
