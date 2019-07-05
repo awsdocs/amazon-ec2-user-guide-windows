@@ -33,7 +33,7 @@ PS C:\> [DateTime]::FromFileTimeUTC((gwmi -n root\wmi -cl AWSXenStoreBase).XenTi
 11:17:00
 ```
 
-The AWS PV driver components are listed in the Windows registry under `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services`\. These driver components are as follows: `XENBUS`, xeniface, xennet, xenvbd, and xenvif\.
+The AWS PV driver components are listed in the Windows registry under `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services`\. These driver components are as follows: xenbus, xeniface, xennet, xenvbd, and xenvif\.
 
 AWS PV drivers also have a Windows service named LiteAgent, which runs in user\-mode\. It handles tasks such as shutdown and restart events from AWS APIs on Xen generation instances\. You can access and manage services by running `Services.msc` from the command line\. When running on Nitro generation instances, the AWS PV drivers are not used and the LiteAgent service will self\-stop starting with driver version 8\.2\.4\. Updating to the latest AWS PV driver also updates the LiteAgent and improves reliability on all instance generations\.
 
@@ -45,12 +45,12 @@ Amazon Windows AMIs contain a set of drivers to permit access to virtualized har
 + You can use AWS Systems Manager to automatically update the PV drivers\. For more information, see [Walkthrough: Automatically Update PV Drivers on EC2 Windows Instances \(Console\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-pvdriver.html) in the *AWS Systems Manager User Guide*\.
 + You can download the setup package and run the install program manually\. For information about downloading and installing the AWS PV drivers, see [Upgrade Windows Server Instances \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade)\.
 
-### AWS PV Driver Version History<a name="pv-driver-history"></a>
+### AWS PV Driver Package History<a name="pv-driver-history"></a>
 
 The following table shows the changes to AWS PV drivers for each driver release\.
 
 
-| Driver version | Details | Release date | 
+| Package version | Details | Release date | 
 | --- | --- | --- | 
 | 8\.3\.1 |  Improved performance and robustness of storage component\.  | 12 June 2019 | 
 | 8\.2\.7 |  Improved efficiency to support migrating to latest generation instance types\.  | 20 May 2019 | 
@@ -63,10 +63,10 @@ The following table shows the changes to AWS PV drivers for each driver release\
 | 7\.4\.3 |  Added support for Windows Server 2016\. Stability fixes for all supported Windows OS versions\. \*AWS PV driver version 7\.4\.3's signature expires on March 29, 2019\. We recommend updating to the latest AWS PV driver\.   | 18 Nov 2016 | 
 | 7\.4\.2 | Stability fixes for support of X1 instance type\. | 2 Aug 2016 | 
 | 7\.4\.1 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 12 July 2016 | 
-| [7\.3\.2](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverSetup7.3.2.zip) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 24 June 2015 | 
+| 7\.3\.2 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 24 June 2015 | 
 | 7\.3\.1 |  TRIM update: Fix related to TRIM requests\. This fix stabilizes instances and improves instance performance when managing large numbers of TRIM requests\.  |  | 
 | 7\.3\.0 |  TRIM support: The AWS PV driver now sends TRIM requests to the hypervisor\. Ephemeral disks will properly process TRIM requests given the underlying storage supports TRIM \(SSD\)\. Note that EBS\-based storage does not support TRIM as of March 2015\.  |  | 
-| [7\.2\.5](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/AWSPVDriverSetup7.2.5.zip) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
+| 7\.2\.5 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
 | 7\.2\.4 |  Device ID persistence: This driver fix masks the platform PCI device ID and forces the system to always surface the same device ID, even if the instance is moved\. More generally, the fix affects how the hypervisor surfaces virtual devices\. The fix also includes modifications to the co\-installer for the AWS PV drivers so the system persists mapped virtual devices\.  |  | 
 | 7\.2\.2 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
 | 7\.2\.1 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 

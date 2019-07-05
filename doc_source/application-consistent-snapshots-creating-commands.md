@@ -18,7 +18,7 @@ Use the following procedure to download and install the `AwsVssComponents` packa
 
 1. Install and configure the AWS CLI, if you have not already\.
 
-   For information, see [Install or Upgrade and then Configure the AWS CLI](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-cli) in the *AWS Systems Manager User Guide*\.
+   For information, see [Install or Upgrade and then Configure the AWS CLI](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-cli.html) in the *AWS Systems Manager User Guide*\.
 
 1. Run the following command to download and install the required VSS components for Systems Manager\.
 
@@ -68,7 +68,7 @@ Use the following procedure to create VSS\-enabled EBS snapshots by using the AW
 
 1. Install and configure the AWS CLI, if you have not already\.
 
-   For information, see [Install or Upgrade and then Configure the AWS CLI](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-cli) in the *AWS Systems Manager User Guide*\.
+   For information, see [Install or Upgrade and then Configure the AWS CLI](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-cli.html) in the *AWS Systems Manager User Guide*\.
 
 1. Run the following command to create VSS\-enabled EBS snapshots\.
 

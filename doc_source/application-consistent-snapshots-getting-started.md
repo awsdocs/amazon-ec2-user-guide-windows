@@ -1,6 +1,6 @@
 # Getting Started<a name="application-consistent-snapshots-getting-started"></a>
 
-This section includes instructions on how to install the VSS components and perform an application\-consistent snapshot of the EBS volumes attached to a Windows on EC2 instance\. For more information about how to launch a Windows on EC2 instance, see [Getting Started with Amazon EC2 Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html)\.
+These instructions describe how to install the VSS components and perform an application\-consistent snapshot of the EBS volumes attached to an EC2 Windows instance\. For more information, see [Getting Started with Amazon EC2 Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html)\.
 
 **Topics**
 + [Create an IAM Role for VSS\-Enabled Snapshots](#run-command-vss-role)
@@ -9,9 +9,9 @@ This section includes instructions on how to install the VSS components and perf
 
 ## Create an IAM Role for VSS\-Enabled Snapshots<a name="run-command-vss-role"></a>
 
-This section includes a procedure for creating an IAM policy and a procedure for creating an IAM role that uses the policy you create\. The policy enables Systems Manager to create snapshots, tags snapshots, and attach metadata like a device ID to the default snapshot tags the system creates\. 
+The following procedures describes how to work with IAM policies and IAM roles\. The policy enables Systems Manager to create snapshots, tags snapshots, and attach metadata like a device ID to the default snapshot tags that the system creates\.
 
-**To create an IAM policy for VSS\-enable snapshots**
+**To create an IAM policy for VSS\-enabled snapshots**
 
 1. Open the IAM console at [https://console\.aws\.amazon\.com/iam/](https://console.aws.amazon.com/iam/)\.
 
@@ -86,11 +86,11 @@ Use the following procedure to create an IAM role for VSS\-enabled snapshots\. T
 
 ## Download and Install VSS Components to the Windows on EC2 Instance<a name="run-command-vss-package"></a>
 
-Systems Manager requires VSS components to be installed on your instances\. Use the following procedure to install the components using the `AWSVssComponents` package\.The package installs two components: a VSS requestor and a VSS provider\. 
+Systems Manager requires VSS components to be installed on your instances\. Use the following procedure to install the components using the `AWSVssComponents` package\. The package installs two components: a VSS requestor and a VSS provider\. 
 
-1. Open the EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/systems-manager/)\.
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. Choose **Run Command** from the Actions menu, and then choose **Run a Command**\.
+1. Choose **Run Command** from the **Actions** menu, and then choose **Run a Command**\.
 
 1. Choose **AWS\-ConfigureAWSPackage**\.
 

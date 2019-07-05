@@ -96,7 +96,7 @@ The administrator password will reset when you enable the initialize instance EC
       + [Windows Server 2012](https://downloadcenter.intel.com/download/21694/Network-Adapter-Driver-for-Windows-Server-2012-)
       + [Windows Server 2012 R2](https://downloadcenter.intel.com/download/23073/Network-Adapter-Driver-for-Windows-Server-2012-R2-)
       + [Windows Server 2016](https://downloadcenter.intel.com/download/26092/Ethernet-Intel-Network-Adapter-Driver-for-Windows-Server-2016-?product=83418)
-      + [Windows Server 2019](https://downloadcenter.intel.com/download/26092/Ethernet-Intel-Network-Adapter-Driver-for-Windows-Server-2016-?product=83418) \(download the 2016 driver\)
+      + [Windows Server 2019](https://downloadcenter.intel.com/download/28396/Intel-Network-Adapter-Driver-for-Windows-Server-2019-?product=36773) 
 
    1. In the **Download** folder, locate the `PROWinx64.exe` file\. Rename this file `PROWinx64.zip`\.
 

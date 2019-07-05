@@ -51,7 +51,7 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 
    After running the MSI, the instance automatically reboots and then upgrades the drivers\. The instance will not be available for up to 15 minutes\. 
 
-1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new drivers were installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)\.
+1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new drivers were installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history)\.
 
 1. Stop the instance and change the instance back to its original instance type\.
 
@@ -128,7 +128,7 @@ If you do not create the instance in the same Availability Zone as the affected 
 
    After running the MSI, the instance automatically reboots and then upgrades the drivers\. The instance will not be available for up to 15 minutes\. 
 
-1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new drivers were installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)\.
+1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new drivers were installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history)\.
 
 1. Delete or stop the temporary instance you created in this procedure\.
 

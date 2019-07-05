@@ -50,7 +50,7 @@ Use the following procedure to perform an in\-place upgrade of AWS PV drivers, o
 
 After running the MSI, the instance automatically reboots and upgrades the driver\. The instance may not be available for up to 15 minutes\. 
 
-After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)\. 
+After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history)\. 
 
 ## Part 2: Installing and Upgrading ENA<a name="upgrade-ena"></a>
 

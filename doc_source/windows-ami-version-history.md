@@ -168,7 +168,7 @@ The following changes are applied to each AWS Windows AMI\.
 
 ### What to Expect in an Official AWS Windows AMI<a name="windows-ami-creation-standards"></a>
 
-AWS provides AMIs with a variety of configurations for all supported Windows Operating System versions from 2003 R2 to 2019\. For each of these images, AWS:
+AWS provides AMIs with a variety of configurations for all supported Windows Operating System versions\. For each of these images, AWS:
 + Installs all Microsoft recommended Windows security patches\. We release images shortly after the monthly Microsoft patches are made available\.
 + Installs the latest drivers for AWS hardware, including network and disk drivers, EC2WinUtil for troubleshooting, as well as GPU drivers in selected AMIs\.
 + Includes AWS helper software, like [EC2 Config](ec2config-service.md) for Server 2012 R2 and earlier, or [EC2 Launch](ec2launch.md) for Server 2016 and later\.
@@ -228,7 +228,7 @@ For more information about components included in these AMIs, see the following:
 + [EC2Launch Version History](ec2launch-version-details.md)
 + [Systems Manager SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/master/RELEASENOTES.md)
 + [Amazon ENA Driver Versions](enhanced-networking-ena.md#ena-adapter-driver-versions)
-+ [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)
++ [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history)
 
 ### Monthly AMI Updates for 2019 \(to date\)<a name="amis-2019"></a>
 
@@ -237,7 +237,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
-| 2019\.06\.12 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
+| 2019\.06\.12 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) Previous versions of AMIs have been marked private\.  | 
 | 2019\.05\.21 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.05\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.04\.26 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 

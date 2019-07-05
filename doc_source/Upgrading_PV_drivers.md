@@ -46,7 +46,7 @@ After running the MSI, the instance automatically reboots and then upgrades the 
 Get-ItemProperty HKLM:\SOFTWARE\Amazon\PVDriver
 ```
 
-Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history) Open Disk Management to review any offline secondary volumes and bring them online corresponding to the drive letters noted in Step 6\.
+Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history) Open Disk Management to review any offline secondary volumes and bring them online corresponding to the drive letters noted in Step 6\.
 
 If you previously disabled [TCP Offloading](pvdrivers-troubleshooting.md#citrix-tcp-offloading) using Netsh for Citrix PV drivers we recommend that you re\-enable this feature after upgrading to AWS PV drivers\. TCP Offloading issues with Citrix drivers are not present in the AWS PV drivers\. As a result, TCP Offloading provides better performance with AWS PV drivers\.
 
@@ -106,7 +106,7 @@ You must connect to the instance by specifying the user name in the following fo
 
 1. Reboot the instance\.
 
-1. To complete the upgrade process, verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Version History](xen-drivers-overview.md#pv-driver-history)\.
+1. To complete the upgrade process, verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history)\.
 
 1. Run the following command to delete **DisableDCCheck** from the registry:
 

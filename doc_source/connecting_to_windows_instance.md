@@ -8,6 +8,7 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
 + [Prerequisites](#rdp-prereqs)
 + [Connect to Your Windows Instance](#connect-rdp)
 + [Connect to a Windows Instance Using Its IPv6 Address](#connecting-to-windows-ipv6)
++ [Connecting to a Windows Instance Using AWS Systems Manager Session Manager](#session-manager)
 + [Transfer Files to Windows Instances](#AccessingInstancesWindowsFileTransfer)
 
 ## Prerequisites<a name="rdp-prereqs"></a>
@@ -119,6 +120,10 @@ If you've enabled your VPC for IPv6 and assigned an IPv6 address to your Windows
 1. Due to the nature of self\-signed certificates, you may get a warning that the security certificate could not be authenticated\. Use the following steps to verify the identity of the remote computer, or simply choose **Yes** or **Continue** to continue if you trust the certificate\.
 
 1. When prompted, enter the password that you recorded or copied previously\.
+
+## Connecting to a Windows Instance Using AWS Systems Manager Session Manager<a name="session-manager"></a>
+
+AWS Systems Manager Session Manager is a fully managed AWS Systems Manager capability that lets you manage your Amazon EC2 instances through an interactive one\-click browser\-based shell or through the AWS CLI\. For more information about how to connect to your instance with SSM Session Manager, see [AWS Systems Manager Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) in the *Systems Manager User Guide*\. 
 
 ## Transfer Files to Windows Instances<a name="AccessingInstancesWindowsFileTransfer"></a>
 
