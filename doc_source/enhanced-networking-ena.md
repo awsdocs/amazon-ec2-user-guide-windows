@@ -155,7 +155,7 @@ Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\
 
 **To subscribe to EC2 notifications**
 
-1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v2/home](https://console.aws.amazon.com/sns/v2/home)\.
+1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
 
 1. In the navigation bar, change the region to **US East \(N\. Virginia\)**, if necessary\. You must select this region because the SNS notifications that you are subscribing to are in this region\.
 
@@ -181,7 +181,7 @@ Whenever new EC2 Windows drivers are released, we send notifications to subscrib
 
 **To unsubscribe from Amazon EC2 Windows driver notification**
 
-1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v2/home](https://console.aws.amazon.com/sns/v2/home)\.
+1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
 
 1. In the navigation pane, choose **Subscriptions**\.
 

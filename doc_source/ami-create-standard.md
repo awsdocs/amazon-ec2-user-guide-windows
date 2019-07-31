@@ -49,7 +49,7 @@ Sysprep and the EC2Config service perform the following actions when preparing a
 1. The system executes `BeforeSysprep.cmd`\. This command creates a registry key as follows:
 
    ```
-   reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f"
+   reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
    ```
 
    The registry key disables RDP connections until they are re\-enabled\. Disabling RDP connections is a necessary security measure because, during the first boot session after Sysprep has run, there is a short period of time where RDP allows connections and the Administrator password is blank\.

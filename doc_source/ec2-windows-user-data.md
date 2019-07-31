@@ -239,3 +239,26 @@ New-Item $file -ItemType file
 </powershell>
 <persist>true</persist>
 ```
+
+**Example: Rename the Instance to Match the Tag Value**  
+To read the tag value, rename the instance on first boot to match the tag value, and reboot, use the [Get\-EC2Tag](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Tag.html) command\. To run this command successfully, you must have a role with `ec2:DescribeTags` permissions because tag information is unavailable in the metadata and must be retrieved by API call\. For more information on how to attach a role to an instance, see [Attaching an IAM Role to an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role)\.
+
+**Note**  
+This script fails on Windows Server versions prior to 2008\.
+
+```
+<powershell>
+$instanceId = (invoke-webrequest http://169.254.169.254/latest/meta-data/instance-id -UseBasicParsing).content
+$nameValue = (get-ec2tag -filter @{Name="resource-id";Value=$instanceid},@{Name="key";Value="Name"}).Value
+$pattern = "^(?![0-9]{1,15}$)[a-zA-Z0-9-]{1,15}$"
+##Verify Name Value satisfies best practices for Windows hostnames
+If ($nameValue -match $pattern) 
+    {Try
+        {Rename-Computer -NewName $nameValue -Restart -ErrorAction Stop} 
+    Catch
+        {$ErrorMessage = $_.Exception.Message
+        Write-Output "Rename failed: $ErrorMessage"}}
+Else
+    {Throw "Provided name not a valid hostname. Please ensure Name value is between 1 and 15 characters in length and contains only alphanumeric or hyphen characters"}
+</powershell>
+```

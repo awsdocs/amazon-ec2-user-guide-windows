@@ -15,4 +15,4 @@ Amazon EC2 provides different instance types to enable you to choose the CPU, me
 Amazon EC2 supports On\-Demand instances \(the default\), Spot instances, and Reserved Instances\. For more information, see [Instance Purchasing Options](instance-purchasing-options.md)\.
 
 **Q\. Can I remotely manage a fleet of EC2 instances *and* machines in my hybrid environment?**  
-AWS Systems Manager lets you remotely and securely manage the configuration of your Amazon EC2 instances, and your on\-premises instances and virtual machines \(VMs\) in hybrid environments, including VMs from other cloud providers\. For more information, see the *[AWS Systems Manager User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/)*\.
+AWS Systems Manager enables you to remotely and securely manage the configuration of your Amazon EC2 instances, and your on\-premises instances and virtual machines \(VMs\) in hybrid environments, including VMs from other cloud providers\. For more information, see the *[AWS Systems Manager User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/)*\.

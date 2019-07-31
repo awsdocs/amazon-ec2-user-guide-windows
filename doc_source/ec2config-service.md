@@ -147,7 +147,7 @@ After you specify a drive letter mapping and attach a volume with same label as 
 
 The settings files control the operation of the EC2Config service\. These files are located in the `C:\Program Files\Amazon\Ec2ConfigService\Settings` directory:
 + `ActivationSettings.xml`—Controls product activation using a key management server \(KMS\)\.
-+ `AWS.EC2.Windows.CloudWatch.json`—Controls which performance counters to send to CloudWatch and which logs to send to CloudWatch Logs\. For more information about how to change the settings in this file, see [Sending Logs, Events, and Performance Counters to Amazon CloudWatch](send_logs_to_cwl.md)\.
++ `AWS.EC2.Windows.CloudWatch.json`—Controls which performance counters to send to CloudWatch and which logs to send to CloudWatch Logs\.
 + `BundleConfig.xml`—Controls how EC2Config prepares an instance store\-backed instance for AMI creation\.
 + `Config.xml`—Controls the primary settings\.
 + `DriveLetterConfig.xml`—Controls drive letter mappings\.

@@ -104,6 +104,12 @@ The administrator password will reset when you enable the initialize instance EC
 
    1. Open a command prompt window, go to the folder with the extracted files, and use the `pnputil` utility to add and install the INF file in the driver store\. 
 
+      **Windows Server 2019**
+
+      ```
+      pnputil -i -a PROXGB\Winx64\NDIS68\vxn68x64.inf 
+      ```
+
       **Windows Server 2016**
 
       ```

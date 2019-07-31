@@ -236,7 +236,7 @@ If this does not resolve the activation issue, follow these additional steps\.
   C:\Windows\System32\slmgr.vbs /dlv
   ```
 
-  If the output contains Error: product key not found, the KMS client key isn't set\. If the KMS client key isn't set, look up the client key as described in this Microsoft article: [KMS Client Setup Keys](http://technet.microsoft.com/en-us/library/jj612867.aspx), and then run the following command to set the KMS client key\.
+  If the output contains Error: product key not found, the KMS client key isn't set\. If the KMS client key isn't set, look up the client key as described in this Microsoft article: [KMS Client Setup Keys](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys), and then run the following command to set the KMS client key\.
 
   ```
   C:\Windows\System32\slmgr.vbs /ipk client_key

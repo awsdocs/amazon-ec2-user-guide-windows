@@ -87,7 +87,7 @@ Sometimes copying and pasting content can corrupt data\. If you encounter a "Pas
 
 After you connect, we recommend that you do the following:
 + Change the administrator password from the default value\. You change the password while logged on to the instance itself, just as you would on any other Windows Server\.
-+ Create another user account with administrator privileges on the instance\. Another account with administrator privileges is a safeguard if you forget the administrator password or have a problem with the administrator account\. The user account must have permission to access the instance remotely\. Open **System Properties**, choose **Remote**, and add the user to the **Remote Desktop Users** group\.
++ Create another user account with administrator privileges on the instance\. Another account with administrator privileges is a safeguard if you forget the administrator password or have a problem with the administrator account\. The user account must have permission to access the instance remotely\. Open **System Properties** by right\-clicking on the **This PC** icon on your Windows desktop or File Explorer and selecting **Properties**\. Choose **Remote settings**, and choose **Select Users** to add the user to the **Remote Desktop Users** group\.
 
 ## Connect to a Windows Instance Using Its IPv6 Address<a name="connecting-to-windows-ipv6"></a>
 

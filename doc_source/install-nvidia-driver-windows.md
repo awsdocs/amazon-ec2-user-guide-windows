@@ -71,3 +71,5 @@ For instance types other than G3, or if you are not using NVIDIA GRID capabiliti
 1. To verify that the GPU is working correctly, check Device Manager\.
 
 1. \[P2, P3, and G3\] Complete the optimization steps in [Optimizing GPU Settings](optimize_gpu.md) to achieve the best performance from your GPU\.
+
+When you use P3 and P3dn instances for graphics applications, you can use [AMIs published by NVIDIA](http://aws.amazon.com/marketplace/search/results?x=0&y=0&searchTerms=Quadro+NVIDIA) that enable NVIDIA Quadro Virtual Workstation\.
