@@ -141,7 +141,7 @@ The NIC in the OS can keep using DHCP as long as the DNS servers that are being 
 For all instance types, you can increase the MTU on the network adapter to 9001 to support [Jumbo Frames](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/network_mtu.html)\. This configuration reduces fragmentation of packets wherever Jumbo Frames are supported\. The following example shows how to use PowerShell to configure Jumbo Frames for an Elastic Network Adapter\.
 
 ```
-Get-NetAdapater | Set-NetAdapterAdvancedProperty -DisplayName "MTU" -DisplayValue 9001
+Get-NetAdapter | Set-NetAdapterAdvancedProperty -DisplayName "MTU" -DisplayValue 9001
 ```
 
 ## IPv6<a name="sql-clustering-ipv6"></a>
