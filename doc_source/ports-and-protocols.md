@@ -1,6 +1,6 @@
 # Ports and Protocols for Windows Amazon Machine Images \(AMIs\)<a name="ports-and-protocols"></a>
 
-The following tables list the ports, protocols, and directions by workload for Windows Amazon machine images\. 
+The following tables list the ports, protocols, and directions by workload for Windows Amazon Machine Images\. 
 
 **Topics**
 + [AllJoyn Router](#alljoyntcpin-ports)

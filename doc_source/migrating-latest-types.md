@@ -85,7 +85,7 @@ The following instructions are modified specifically for when you install or upg
 **Note**  
 This command only runs sysprep on the driver devices\. It does not run the full sysprep preparation\.
 
-1. For Windows Server 2008 R2 and Windows Server 2012 RTM, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type anytime after the device sysprep\.
+1. For Windows Server 2008 R2 and Windows Server 2012, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type anytime after the device sysprep\.
 
 ## Part 4: Updating EC2Config and EC2Launch<a name="upgdate-ec2config-ec2launch"></a>
 

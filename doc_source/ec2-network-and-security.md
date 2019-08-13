@@ -14,4 +14,5 @@ Amazon EC2 provides the following network and security features\.
 + [Placement Groups](placement-groups.md)
 + [Network Maximum Transmission Unit \(MTU\) for Your EC2 Instance](network_mtu.md)
 + [Virtual Private Clouds](using-vpc.md)
++ [Ports and Protocols for Windows Amazon Machine Images \(AMIs\)](ports-and-protocols.md)
 + [EC2\-Classic](ec2-classic-platform.md)

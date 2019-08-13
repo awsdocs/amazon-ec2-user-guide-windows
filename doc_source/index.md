@@ -193,6 +193,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Placement Groups](placement-groups.md)
    + [Network Maximum Transmission Unit (MTU) for Your EC2 Instance](network_mtu.md)
    + [Virtual Private Clouds](using-vpc.md)
+   + [Ports and Protocols for Windows Amazon Machine Images (AMIs)](ports-and-protocols.md)
    + [EC2-Classic](ec2-classic-platform.md)
       + [ClassicLink](vpc-classiclink.md)
       + [Migrating from a Windows Instance in EC2-Classic to a Windows Instance in a VPC](vpc-migrate.md)

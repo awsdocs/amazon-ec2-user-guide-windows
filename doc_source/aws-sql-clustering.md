@@ -21,7 +21,6 @@ When nodes are deployed in different Availability Zones, or in different subnets
 + [Logging](#sql-clustering-logging)
 + [NetBIOS over TCP](#sql-clustering-2012r2-netbios)
 + [NetFT Virtual Adapter](#sql-clustering-2012r2-netft)
-+ [Quality of Service \(QoS\) Policies](#sql-clustering-2012r2-qos)
 + [Setting Possible Owners](#sql-owners)
 + [Tuning the Failover Thresholds](#sql-failover-thresholds)
 + [Witness Importance and Dynamic Quorum Architecture](#sql-clustering-file-share-witness)
@@ -106,16 +105,10 @@ Set-NetAdapterAdvancedProperty -Name (Get-NetAdapter | Where-Object {$_.Interfac
 
 For instances with more than 16 vCPUs, we recommend preventing RSS from running on CPU 0\.
 
-For Nitro\-based instances, run the following command\.
+Run the following command\.
 
 ```
-Set-NetAdapterRss -name (Get-NetAdapter | Where-Object {$_.InterfaceDescription -like '*Elastic*'}).Name -Baseprocessorgroup 0 -BaseProcessorNumber 1
-```
-
-For Xen\-based instances, run the following command\.
-
-```
-Set-NetAdapterRss -name (Get-NetAdapter | Where-Object {$_.InterfaceDescription -like '*Elastic*'}).Name -Baseprocessorgroup 0 -BaseProcessorNumber 2
+Set-NetAdapterRss -name (Get-NetAdapter | Where-Object {$_.InterfaceDescription -like 'Elastic'}).Name -Baseprocessorgroup 0 -BaseProcessorNumber 1
 ```
 
 ## Multi\-Site Clusters and EC2 Instance Placement<a name="sql-multi-site-clusters"></a>
@@ -190,14 +183,6 @@ For Windows Server versions earlier than 2016 and non\-Hyper\-V workloads, Micro
 
 ```
 Get-NetAdapter | Set-NetAdapterBinding –ComponentID ms_netftflt –Enable $true
-```
-
-## Quality of Service \(QoS\) Policies<a name="sql-clustering-2012r2-qos"></a>
-
-Configuring a QoS Priority Flow Control policy can help reduce the latency to which heartbeat networks and intra\-cluster communication are sensitive\. For more information, see [Configuring Windows Failover Cluster Networks](https://blogs.technet.microsoft.com/askcore/2014/02/19/configuring-windows-failover-cluster-networks/)\. The following is an example command for setting cluster heartbeat and intra\-node communication to the highest priority traffic\.
-
-```
-New-NetQosPolicy “Cluster” -Cluster –Priority 6 
 ```
 
 ## Setting Possible Owners<a name="sql-owners"></a>
