@@ -3,13 +3,13 @@
 The following are troubleshooting tips to help you solve common issues with EC2 instance running Windows Server\.
 
 **Topics**
-+ [EBS volumes don't initialize on Windows Server 2016 and later AMIs](#init-disks-win2k16)
++ [EBS Volumes Don't Initialize on Windows Server 2016 and Later AMIs](#init-disks-win2k16)
 + [Boot an EC2 Windows Instance into Directory Services Restore Mode \(DSRM\)](#boot-dsrm)
 + [Instance loses network connectivity or scheduled tasks don't run when expected](#instance-loses-network-connectivity)
 + [Unable to get console output](#no-console-output)
 + [Windows Server 2012 R2 not available on the network](#server-2012-network-loss)
 
-## EBS volumes don't initialize on Windows Server 2016 and later AMIs<a name="init-disks-win2k16"></a>
+## EBS Volumes Don't Initialize on Windows Server 2016 and Later AMIs<a name="init-disks-win2k16"></a>
 
 Instances created from Windows Server 2016 and later Amazon Machine Images \(AMIs\) use the EC2Launch service for a variety of startup tasks, including initializing EBS volumes\. By default, EC2Launch does not initialize secondary volumes\. You can configure EC2Launch to initialize these disks automatically\.
 
@@ -50,13 +50,13 @@ If an instance running Microsoft Active Directory experiences a system failure o
 
 ### Driver Support for DSRM<a name="boot-dsrm-driver"></a>
 
-How you enable DSRM and boot into the instance depends on the drivers the instance is running\. In the EC2 console you can view driver version details for an instance from the System Log\. The following tables shows which drivers are supported for DSRM\.
+How you enable DSRM and boot into the instance depends on the drivers the instance is running\. In the EC2 console you can view driver version details for an instance from the System Log\. The following table shows which drivers are supported for DSRM\.
 
 
 | Driver Versions | DSRM Supported? | Next Steps | 
 | --- | --- | --- | 
 | Citrix PV 5\.9 | No | Restore the instance from a backup\. You cannot enable DSRM\. | 
-| AWS PV 7\.2\.0 | No | Though DSRM is not supported for this driver, you can still detach the root volume from the instance, take a snapshot of the volume or create an AMI from it, and attach it to another instance in the same availability zone as a secondary volume\. You can then enable DSRM \(as described in this section\)\. | 
+| AWS PV 7\.2\.0 | No | Though DSRM is not supported for this driver, you can still detach the root volume from the instance, take a snapshot of the volume or create an AMI from it, and attach it to another instance in the same Availability Zone as a secondary volume\. You can then enable DSRM \(as described in this section\)\. | 
 | AWS PV 7\.2\.2 and later | Yes | Detach the root volume, attach it to another instance, and enable DSRM \(as described in this section\)\. | 
 | Enhanced Networking | Yes | Detach the root volume, attach it to another instance, and enable DSRM \(as described in this section\)\. | 
 

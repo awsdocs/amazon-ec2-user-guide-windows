@@ -45,7 +45,7 @@ Console Screenshot Service returned the following\.
 
 ![\[Log on screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-1.png)
 
-If an instance becomes unreachable during log on, there could be a problem with your network configuration or Windows Remote Desktop Services\. An instance can also be unresponsive if a process is using large amounts of CPU\. 
+If an instance becomes unreachable during logon, there could be a problem with your network configuration or Windows Remote Desktop Services\. An instance can also be unresponsive if a process is using large amounts of CPU\. 
 
 #### Network Configuration<a name="network-config"></a>
 
@@ -56,7 +56,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 
 | Configuration | Verify | 
 | --- | --- | 
-| Security group configuration | Verify that port 3389 is open for your security group\. Verify you are connecting to the right public IP address\. If the instance was not associated with an Elastic IP, the public IP changes after the instance stops/starts\. For more information, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\. | 
+| Security group configuration | Verify that port 3389 is open for your security group\. Verify you are connecting to the right public IP address\. If the instance was not associated with an Elastic IP, the public IP changes after the instance stops/starts\. For more information, see [Remote Desktop Can't onnect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\. | 
 | VPC configuration \(Network ACLs\) | Verify that the access control list \(ACL\) for your Amazon VPC is not blocking access\. For information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the Amazon VPC User Guide\. | 
 | VPN configuration | If you are connecting to your VPC using a virtual private network \(VPN\), verify VPN tunnel connectivity\. For more information, see [How do I troubleshoot VPN tunnel connectivity to an Amazon VPC?](https://aws.amazon.com/premiumsupport/knowledge-center/vpn-tunnel-troubleshooting/) | 
 
@@ -65,7 +65,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 
 | Configuration | Verify | 
 | --- | --- | 
-| Windows Firewall | Verify that Windows Firewall isn't blocking connections to your instance\. Disable Windows Firewall as described in bullet 7 of the remote desktop troubleshooting section, [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.  | 
+| Windows Firewall | Verify that Windows Firewall isn't blocking connections to your instance\. Disable Windows Firewall as described in bullet 7 of the remote desktop troubleshooting section, [Remote Desktop Can't onnect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.  | 
 | Advanced TCP/IP configuration \(Use of static IP\) | The instance may be unresponsive because you configured a static IP address\. For a VPC, [Create a network interface](using-eni.md#create_eni) and [attach it to the instance](using-eni.md#attach_eni_running_stopped)\. For EC2 Classic, enable DHCP\. | 
 
 **Local or On\-Premises Network Configuration**
@@ -74,14 +74,14 @@ Verify that a local network configuration isn't blocking access\. Try to connect
 
 #### Remote Desktop Services Issue<a name="rds-issue"></a>
 
-If the instance can't be reached during log on, there could a problem with Remote Desktop Services \(RDS\) on the instance\.
+If the instance can't be reached during logon, there could a problem with Remote Desktop Services \(RDS\) on the instance\.
 
 
 **Remote Desktop Services Configuration**  
 
 | Configuration | Verify | 
 | --- | --- | 
-| RDS is running | Verify that RDS is running on the instance\. Connect to the instance using the Microsoft Management Console \(MMC\) Services snap\-in \(services\.msc\)\. In the list of services, verify that Remote Desktop Services is Running\. If it isn't, start it and then set the startup type to Automatic\. If you can't connect to the instance by using the Services snap\-in, detach the root volume from the instance, take a snapshot of the volume or create an AMI from it, attach the original volume to another instance in the same availability zone as a secondary volume, and modify the [Start](https://technet.microsoft.com/en-us/library/cc959920.aspx) registry key\. When you are finished, reattach the root volume to the original instance\. For more information about detaching volumes, see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\. | 
+| RDS is running | Verify that RDS is running on the instance\. Connect to the instance using the Microsoft Management Console \(MMC\) Services snap\-in \(services\.msc\)\. In the list of services, verify that Remote Desktop Services is Running\. If it isn't, start it and then set the startup type to Automatic\. If you can't connect to the instance by using the Services snap\-in, detach the root volume from the instance, take a snapshot of the volume or create an AMI from it, attach the original volume to another instance in the same Availability Zone as a secondary volume, and modify the [Start](https://technet.microsoft.com/en-us/library/cc959920.aspx) registry key\. When you are finished, reattach the root volume to the original instance\. For more information about detaching volumes, see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\. | 
 | RDS is enabled |  Even if the service is started, it might be disabled\. Detach the root volume from the instance, take a snapshot of the volume or create an AMI from it, attach the original volume to another instance in the same Availability Zone as a secondary volume, and enable the service by modifying the **Terminal Server** registry key as described in the following article: [Enable Remote Desktop Remotely By Using Remote Registry](http://silentcrash.com/2013/07/enable-remote-desktop-remotely-by-using-the-registry/)\. When you are finished, reattach the root volume to the original instance\. For more information, see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\.  | 
 
 #### High CPU<a name="high-cpu"></a>
@@ -92,7 +92,7 @@ Check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon
 + Custom Startup Script
 + Task Scheduler
 
-For more information, see [Get Statistics for a Specific Resource](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. For additional troubleshooting tips, see [High CPU usage shortly after Windows starts](troubleshooting-launch.md#high-cpu-issue)\.
+For more information, see [Get Statistics for a Specific Resource](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SingleMetricPerInstance.html) in the *Amazon CloudWatch User Guide*\. For additional troubleshooting tips, see [High CPU Usage Shortly After Windows Starts](troubleshooting-launch.md#high-cpu-issue)\.
 
 ### Recovery Console Screen<a name="recovery-console-screen"></a>
 
@@ -110,7 +110,7 @@ By default, the policy configuration for AWS\-provided public Windows AMIs is se
 
    Detach the root volume from the unreachable instance, take a snapshot of the volume or create an AMI from it, and attach it to another instance in the same Availability Zone as a secondary volume\. For more information, see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\.
 **Warning**  
-If your temporary instance is based on the same AMI that the original instance is based on, you must complete additional steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\. Alternatively, select a different AMI for the temporary instance\. For example, if the original instance uses an AMI for Windows Server 2008 R2, launch the temporary instance using an AMI for Windows Server 2012\. If you must create a temporary instance based on the same AMI, see Step 6 in [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues) to avoid a disk signature collision\.
+If your temporary instance is based on the same AMI that the original instance is based on, you must complete additional steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\. Alternatively, select a different AMI for the temporary instance\. For example, if the original instance uses an AMI for Windows Server 2008 R2, launch the temporary instance using an AMI for Windows Server 2012\. If you must create a temporary instance based on the same AMI, see Step 6 in [Remote Desktop Can't onnect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues) to avoid a disk signature collision\.
 
 1. Log in to the instance and execute the following command from a command prompt to change the `bootstatuspolicy` configuration to `ignoreallfailures`:
 

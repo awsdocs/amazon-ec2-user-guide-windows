@@ -281,7 +281,7 @@ To remove this warning, follow these steps:
 
 1. In a command prompt, update group policy with **gpupdate /force**\.
 
-1. Close and reopen the Windows Update Settings\. You will see the above message about your settings being managed by your organization, followed by “We’ll automatically download updates, except on metered connections \(where charges may apply\)\. In that case, we’ll automatically download those updates required to keep Windows running smoothly\.”
+1. Close and reopen the Windows Update Settings\. You will see the above message about your settings being managed by your organization, followed by "We'll automatically download updates, except on metered connections \(where charges may apply\)\. In that case, we'll automatically download those updates required to keep Windows running smoothly\.
 
 1. Return to gpedit\.msc in Step 1 and set the group policy back to **not configured**\. Do another **gpupdate /force**\.
 

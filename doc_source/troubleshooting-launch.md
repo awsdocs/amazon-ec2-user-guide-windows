@@ -6,7 +6,7 @@ The following issues prevent you from launching an instance\.
 + [Instance Limit Exceeded](#troubleshooting-launch-limit)
 + [Insufficient Instance Capacity](#troubleshooting-launch-capacity)
 + [Instance Terminates Immediately](#troubleshooting-launch-internal)
-+ [High CPU usage shortly after Windows starts](#high-cpu-issue)
++ [High CPU Usage Shortly After Windows Starts](#high-cpu-issue)
 
 ## Instance Limit Exceeded<a name="troubleshooting-launch-limit"></a>
 
@@ -94,7 +94,7 @@ Take one of the following actions depending on the termination reason you noted:
 + If the reason is **`Client.VolumeLimitExceeded: Volume limit exceeded`**, you have reached your EBS volume limit\. For more information, see [Instance Volume Limits](volume_limits.md)\. To submit a request to increase your Amazon EBS volume limit, complete the AWS Support Center [Create Case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-ebs) form\. For more information, see [Amazon EC2 Service Limits](ec2-resource-limits.md)\.
 + If the reason is **`Client.InternalError: Client error on launch`**, that typically indicates that the root volume is encrypted and that you do not have permissions to access the KMS key for decryption\. To get permissions to access the required KMS key, add the appropriate KMS permissions to your IAM user\. For more information, see [Using Key Policies in AWS KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html) in the *AWS Key Management Service Developer Guide*\.
 
-## High CPU usage shortly after Windows starts<a name="high-cpu-issue"></a>
+## High CPU Usage Shortly After Windows Starts<a name="high-cpu-issue"></a>
 
 If Windows Update is set to **Check for updates but let me choose whether to download and install them** \(the default instance setting\) this check can consume anywhere from 50 \- 99% of the CPU on the instance\. If this CPU consumption causes problems for your applications, you can manually change Windows Update settings in **Control Panel** or you can use the following script in the Amazon EC2 user data field:
 
@@ -108,7 +108,7 @@ When you execute this script specify a value for /d\. The default value is 3\. P
 + Download updates but let me choose whether to install them
 + Install updates automatically
 
-**To modify the user data for a Amazon EBS\-backed instance**
+**To modify the user data for an Amazon EBS\-backed instance**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 

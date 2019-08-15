@@ -2,7 +2,7 @@
 
 An Amazon EBS–optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O\. This optimization provides the best performance for your EBS volumes by minimizing contention between Amazon EBS I/O and other traffic from your instance\.
 
-EBS–optimized instances deliver dedicated bandwidth to Amazon EBS, with options between 425 Mbps and 14,000 Mbps, depending on the instance type you use\. When attached to an EBS–optimized instance, General Purpose SSD \(`gp2`\) volumes are designed to deliver within 10% of their baseline and burst performance 99% of the time in a given year, and Provisioned IOPS SSD \(`io1`\) volumes are designed to deliver within 10% of their provisioned performance 99\.9% of the time in a given year\. Both Throughput Optimized HDD \(`st1`\) and Cold HDD \(`sc1`\) guarantee performance consistency of 90% of burst throughput 99% of the time in a given year\. Non\-compliant periods are approximately uniformly distributed, targeting 99% of expected total throughput each hour\. For more information, see [Amazon EBS Volume Types](EBSVolumeTypes.md)\.
+EBS–optimized instances deliver dedicated bandwidth to Amazon EBS, with options between 425 Mib/s and 14,000 Mib/s, depending on the instance type you use\. When attached to an EBS–optimized instance, General Purpose SSD \(`gp2`\) volumes are designed to deliver within 10% of their baseline and burst performance 99% of the time in a given year, and Provisioned IOPS SSD \(`io1`\) volumes are designed to deliver within 10% of their provisioned performance 99\.9% of the time in a given year\. Both Throughput Optimized HDD \(`st1`\) and Cold HDD \(`sc1`\) guarantee performance consistency of 90% of burst throughput 99% of the time in a given year\. Non\-compliant periods are approximately uniformly distributed, targeting 99% of expected total throughput each hour\. For more information, see [Amazon EBS Volume Types](EBSVolumeTypes.md)\.
 
 **Topics**
 + [Instance Types that Support EBS Optimization](#ebs-optimization-support)
@@ -11,7 +11,7 @@ EBS–optimized instances deliver dedicated bandwidth to Amazon EBS, with option
 
 ## Instance Types that Support EBS Optimization<a name="ebs-optimization-support"></a>
 
-The following tables show which instance types support EBS optimization, the dedicated bandwidth to Amazon EBS, the maximum number of IOPS the instance can support if you are using a 16 KB I/O size, and the typical maximum aggregate throughput that can be achieved on that connection in MiB/s with a streaming read workload and 128 KB I/O size\. Choose an EBS–optimized instance that provides more dedicated Amazon EBS throughput than your application needs; otherwise, the connection between Amazon EBS and Amazon EC2 can become a performance bottleneck\.
+The following tables show which instance types support EBS optimization, the dedicated bandwidth to Amazon EBS, the maximum number of IOPS the instance can support if you are using a 16 KiB I/O size, and the typical maximum aggregate throughput that can be achieved on that connection in Mib/s with a streaming read workload and 128 KiB I/O size\. Choose an EBS–optimized instance that provides more dedicated Amazon EBS throughput than your application needs; otherwise, the connection between Amazon EBS and Amazon EC2 can become a performance bottleneck\.
 
 For instance types that are EBS–optimized by default, there is no need to enable EBS optimization and no effect if you disable EBS optimization\. For instances that are not EBS–optimized by default, you can enable EBS optimization when you launch the instances, or enable EBS optimization after the instances are running\. Instances must have EBS optimization enabled to achieve the level of performance described in the table below\.
 
@@ -24,7 +24,7 @@ The `i2.8xlarge`, `c3.8xlarge`, and `r3.8xlarge` instances do not have dedicated
 The following table lists current\-generation instance types that support EBS optimization\.
 
 
-| Instance type | EBS\-optimized by default | Maximum bandwidth \(Mbps\) | Maximum throughput \(MB/s, 128 KB I/O\) | Maximum IOPS \(16 KB I/O\) | 
+| Instance type | EBS\-optimized by default | Maximum bandwidth \(Mib/s\) | Maximum throughput \(Mib/s, 128 KiB I/O\) | Maximum IOPS \(16 KiB I/O\) | 
 | --- | --- | --- | --- | --- | 
 | c4\.large | Yes | 500 | 62\.5 | 4,000 | 
 | c4\.xlarge | Yes | 750 | 93\.75 | 6,000 | 
@@ -199,10 +199,10 @@ The following table lists current\-generation instance types that support EBS op
 | z1d\.12xlarge | Yes | 14,000 | 1,750 | 80,000 | 
 | z1d\.metal | Yes | 14,000 | 1,750 | 80,000 | 
 
-\* These instance types can support maximum performance for 30 minutes at least once every 24 hours\. For example, `c5.large` instances can deliver 437\.5 MB/s for 30 minutes at least once every 24 hours\. If you have a workload that requires sustained maximum performance for longer than 30 minutes, select an instance type according to baseline performance as shown in the following table:
+\* These instance types can support maximum performance for 30 minutes at least once every 24 hours\. For example, `c5.large` instances can deliver 437\.5 Mib/s for 30 minutes at least once every 24 hours\. If you have a workload that requires sustained maximum performance for longer than 30 minutes, select an instance type according to baseline performance as shown in the following table:
 
 
-| Instance type | Baseline bandwidth \(Mbps\) | Baseline throughput \(MB/s, 128 KB I/O\) | Baseline IOPS \(16 KB I/O\) | 
+| Instance type | Baseline bandwidth \(Mib/s\) | Baseline throughput \(Mib/s, 128 KiB I/O\) | Baseline IOPS \(16 KiB I/O\) | 
 | --- | --- | --- | --- | 
 | c5\.large | 525 | 65\.625 | 4,000 | 
 | c5\.xlarge | 800 | 100 | 6,000 | 
@@ -267,7 +267,7 @@ The following table lists previous\-generation instance types that support EBS o
 
 **Previous Generation Instances**  
 
-| Instance type | EBS\-optimized by default | Maximum bandwidth \(Mbps\) | Maximum throughput \(MB/s, 128 KB I/O\) | Maximum IOPS \(16 KB I/O\) | 
+| Instance type | EBS\-optimized by default | Maximum bandwidth \(Mib/s\) | Maximum throughput \(Mib/s, 128 KiB I/O\) | Maximum IOPS \(16 KiB I/O\) | 
 | --- | --- | --- | --- | --- | 
 | c1\.xlarge | No | 1,000 | 125 | 8,000 | 
 | c3\.xlarge | No | 500 | 62\.5 | 4,000 | 

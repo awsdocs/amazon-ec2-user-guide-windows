@@ -288,6 +288,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Resetting the Windows Administrator Password Using EC2Launch](ResettingAdminPassword_EC2Launch.md)
    + [Troubleshooting Stopping Your Instance](TroubleshootingInstancesStopping.md)
    + [Troubleshooting Terminating (Shutting Down) Your Instance](TroubleshootingInstancesShuttingDown.md)
+   + [Sending a Diagnostic Interrupt (Advanced Users Only)](diagnostic-interrupt.md)
    + [Common Issues](common-issues.md)
    + [Common Messages](common-messages.md)
 + [Document History](DocumentHistory.md)

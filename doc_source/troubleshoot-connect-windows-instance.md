@@ -3,27 +3,27 @@
 The following are possible problems you may have and error messages you may see while trying to connect to your Windows instance\.
 
 **Topics**
-+ [Remote Desktop can't connect to the remote computer](#rdp-issues)
++ [Remote Desktop Can't onnect to the Remote Computer](#rdp-issues)
 + [Error Using macOS RDP Client](#troubleshoot-instance-connect-mac-rdp)
-+ [RDP displays a black screen instead of the desktop](#rdp-black-screen)
-+ [Unable to remotely log on to an instance with a user account that is not an Administrator](#remote-failure)
++ [RDP Displays a Black Screen Instead of the Desktop](#rdp-black-screen)
++ [Unable to Remotely Log On to an Instance with a User Account That Is Not an Administrator](#remote-failure)
 + [Troubleshooting Remote Desktop Issues Using AWS Systems Manager](#Troubleshooting-Remote-Desktop-Connection-issues-using-AWS-Systems-Manager)
 
-## Remote Desktop can't connect to the remote computer<a name="rdp-issues"></a>
+## Remote Desktop Can't onnect to the Remote Computer<a name="rdp-issues"></a>
 
 Try the following to resolve issues related to connecting to your instance:
 + Verify that you're using the correct public DNS hostname\. \(In the Amazon EC2 console, select the instance and check **Public DNS \(IPv4\)** in the details pane\.\) If your instance is in a VPC and you do not see a public DNS name, you must enable DNS hostnames\. For more information, see [Using DNS with Your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html) in the *Amazon VPC User Guide*\.
 + Verify that your instance has a public IPv4 address\. If not, you can associate an Elastic IP address with your instance\. For more information, see [Elastic IP Addresses](elastic-ip-addresses-eip.md)\. 
 + To connect to your instance using an IPv6 address, check that your local computer has an IPv6 address and is configured to use IPv6\. If you launched an instance from a Windows Server 2008 SP2 AMI or earlier, your instance is not automatically configured to recognize an IPv6 address assigned to the instance\. For more information, see [Configure IPv6 on Your Instances](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-migrate-ipv6.html#vpc-migrate-ipv6-dhcpv6) in the *Amazon VPC User Guide*\.
 + Verify that your security group has a rule that allows RDP access\. For more information, see [Create a Security Group](get-set-up-for-amazon-ec2.md#create-a-base-security-group)\.
-+ If you copied the password but get the error `Your credentials did not work`, try typing them manually when prompted\. It's possible that you missed a character or got an extra whitespace character when you copied the password\.
++ If you copied the password but get the error `Your credentials did not work`, try typing them manually when prompted\. It's possible that you missed a character or got an extra white space character when you copied the password\.
 + Verify that the instance has passed status checks\. For more information, see [Status Checks for Your Instances](monitoring-system-instance-status-check.md) and [Troubleshooting Instances with Failed Status Checks](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html) \(*Amazon EC2 User Guide for Linux Instances*\)\.
-+ Verify that the route table for the subnet has a route that sends all traffic destined outside the VPC to the Internet gateway for the VPC\. For more information, see [Creating a Custom Route Table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html#Add_IGW_Routing) \(Internet Gateways\) in the *Amazon VPC User Guide*\.
++ Verify that the route table for the subnet has a route that sends all traffic destined outside the VPC to the internet gateway for the VPC\. For more information, see [Creating a Custom Route Table](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html#Add_IGW_Routing) \(Internet Gateways\) in the *Amazon VPC User Guide*\.
 + Verify that Windows Firewall, or other firewall software, is not blocking RDP traffic to the instance\. We recommend that you disable Windows Firewall and control access to your instance using security group rules\. You can use [AWSSupport\-TroubleshootRDP](#AWSSupport-TroubleshootRDP) to [disable the Windows Firewall profiles using SSM Agent](#disable-firewall) \. To disable Windows Firewall on a Windows instance that is not configured for AWS Systems Manager, use [AWSSupport\-ExecuteEC2Rescue](#AWSSupport-ExecuteEC2Rescue), or use the following manual steps: 
 
 ### <a name="manual-steps"></a>
 
-#### Manual steps<a name="Manual-steps-disable-firewall"></a>
+#### Manual Steps<a name="Manual-steps-disable-firewall"></a>
 
 1. Stop the affected instance and detach its root volume\.
 
@@ -116,7 +116,7 @@ Remote Desktop Connection cannot verify the identity of the computer that you wa
 
 Download the Microsoft Remote Desktop app from the Mac App Store and use the app to connect to your instance\.
 
-## RDP displays a black screen instead of the desktop<a name="rdp-black-screen"></a>
+## RDP Displays a Black Screen Instead of the Desktop<a name="rdp-black-screen"></a>
 
 Try the following to resolve this issue:
 + Check the console output for additional information\. To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, select **Instance Settings**, and then choose **Get System Log**\.
@@ -130,7 +130,7 @@ Try the following to resolve this issue:
 + If the server is running a full\-screen application, it might have stopped responding\. Use Ctrl\+Shift\+Esc to start Windows Task Manager, and then close the application\.
 + If the server is over\-utilized, it might have stopped responding\. To monitor the instance using the Amazon EC2 console, select the instance and then select the **Monitoring** tab\. If you need to change the instance type to a larger size, see [Changing the Instance Type](ec2-instance-resize.md)\.
 
-## Unable to remotely log on to an instance with a user account that is not an Administrator<a name="remote-failure"></a>
+## Unable to Remotely Log On to an Instance with a User Account That Is Not an Administrator<a name="remote-failure"></a>
 
 If you are not able to remotely log on to a Windows instance from a user account that is not an administrator account, ensure that you have granted the user the right to log on locally\. See [Grant a user or group the right to log on locally to the domain controllers in the domain](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee957044(v=ws.10)#grant-a-user-or-group-the-right-to-log-on-locally-to-the-domain-controllers-in-the-domain)\. 
 
@@ -148,7 +148,7 @@ The AWSSupport\-TroubleshootRDP automation document can be used only with instan
 
 1. Log in to the [Systems Manager Console](https://console.aws.amazon.com/systems-manager/)\.
 
-1.  Verify that you are in the same region as the impaired instance\.
+1.  Verify that you are in the same Region as the impaired instance\.
 
 1. Open the [AWSSupport\-TroubleshootRDP](https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-TroubleshootRDP) document\.
 
@@ -250,7 +250,7 @@ The AWSSupport\-ExecuteEC2Rescue automation document requires a stop and restart
 
 1. Open the [Systems Manager console](https://console.aws.amazon.com/systems-manager/)\.
 
-1. Verify that you are in the same region as the impaired Amazon EC2 instance\.
+1. Verify that you are in the same Region as the impaired Amazon EC2 instance\.
 
 1.  Open the [AWSSupport\-ExecuteEC2Rescue](https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-ExecuteEC2Rescue) document\.
 

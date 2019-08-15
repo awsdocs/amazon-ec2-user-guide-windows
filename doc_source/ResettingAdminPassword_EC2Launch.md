@@ -14,12 +14,12 @@ If you have disabled the local administrator account on the instance and your in
 There is an AWS Systems Manager Automation document that automatically applies the manual steps necessary to reset the local administrator password\. For more information, see [Reset Passwords and SSH Keys on Amazon EC2 Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
 
 To reset your Windows administrator password using EC2Launch, you need to do the following:
-+ [Step 1: Detach the root volume from the instance](#resetting-password-ec2launch-step1)
-+ [Step 2: Attach the volume to a temporary instance](#resetting-password-ec2launch-step2)
-+ [Step 3: Reset the administrator password](#resetting-password-ec2launch-step3)
-+ [Step 4: Restart the original instance](#resetting-password-ec2launch-step4)
++ [Step 1: Detach the Root Volume from the Instance](#resetting-password-ec2launch-step1)
++ [Step 2: Attach the Volume to a Temporary Instance](#resetting-password-ec2launch-step2)
++ [Step 3: Reset the Administrator Password](#resetting-password-ec2launch-step3)
++ [Step 4: Restart the Original Instance](#resetting-password-ec2launch-step4)
 
-## Step 1: Detach the root volume from the instance<a name="resetting-password-ec2launch-step1"></a>
+## Step 1: Detach the Root Volume from the Instance<a name="resetting-password-ec2launch-step1"></a>
 
 You can't use EC2Launch to reset an administrator password if the volume on which the password is stored is attached to an instance as the root volume\. You must detach the volume from the original instance before you can attach it to a temporary instance as a secondary volume\.
 
@@ -57,7 +57,7 @@ You can't use EC2Launch to reset an administrator password if the volume on whic
 
    1. In the list of volumes, select the volume noted in the previous step, and choose **Actions**, **Detach Volume**\. After the volume status changes to **available**, continue with the next step\.
 
-## Step 2: Attach the volume to a temporary instance<a name="resetting-password-ec2launch-step2"></a>
+## Step 2: Attach the Volume to a Temporary Instance<a name="resetting-password-ec2launch-step2"></a>
 
 Next, launch a temporary instance and attach the volume to it as a secondary volume\. This is the instance you use to run EC2Launch\.
 
@@ -87,7 +87,7 @@ The temporary instance must be in the same Availability Zone as the original ins
 
    1. For **Device**, type **xvdf** \(if it isn't already there\), and choose **Attach**\.
 
-## Step 3: Reset the administrator password<a name="resetting-password-ec2launch-step3"></a>
+## Step 3: Reset the Administrator Password<a name="resetting-password-ec2launch-step3"></a>
 
 Next, connect to the temporary instance and use EC2Launch to reset the administrator password\.
 
@@ -131,7 +131,7 @@ Next, connect to the temporary instance and use EC2Launch to reset the administr
 
    1. In the list of volumes, select the volume noted in the previous step, and choose **Actions**, **Detach Volume**\. After the volume status changes to **available**, continue with the next step\.
 
-## Step 4: Restart the original instance<a name="resetting-password-ec2launch-step4"></a>
+## Step 4: Restart the Original Instance<a name="resetting-password-ec2launch-step4"></a>
 
 After you have reset the administrator password using EC2Launch, reattach the volume to the original instance as the root volume and connect to the instance using its key pair to retrieve the administrator password\.
 
