@@ -67,7 +67,7 @@ Instead of using Amazon EC2 to create your key pair, you can create an RSA key p
   + SSH public key file format as specified in [RFC4716](http://tools.ietf.org/html/rfc4716)
   + SSH private key file format must be PEM \(for example, use `ssh-keygen -m PEM` to convert the OpenSSH key into the PEM format\)
 + Create an RSA key\. Amazon EC2 does not accept DSA keys\.
-+ The supported lengths are 1024, 2048, and 4096\.
++ The supported lengths are 1024, 2048, and 4096\. 
 
 **To create a key pair using a third\-party tool**
 

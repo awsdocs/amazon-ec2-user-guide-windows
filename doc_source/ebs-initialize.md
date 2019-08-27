@@ -84,7 +84,7 @@ Complete the following procedures to install and use fio to initialize a volume\
 
 The fio for Windows program provides a similar experience to the fio program that is commonly available for Linux and Unix systems, and it allows you to initialize Amazon EBS volumes that have been restored from snapshots\. Full documentation for the program is available at [https://github\.com/axboe/fio](https://github.com/axboe/fio)\.
 
-1. Download the [fio MSI](https://bluestop.org/fio/) installer\.
+1. Download the [fio MSI](https://ci.appveyor.com/project/axboe/fio) installer \(select the latest x86 or x64 build, then select **Artifacts**\)\. 
 
 1. Install fio\.
 
