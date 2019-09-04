@@ -11,7 +11,7 @@ A consistent and accurate time reference is crucial for many server tasks and pr
 
 ## Changing the Time Zone<a name="windows-changing-time-zone"></a>
 
-Windows instances are set to the UTC time zone by default\. you can change the time to correspond to your local time zone or a time zone for another part of your network\.
+Windows instances are set to the UTC time zone by default\. You can change the time to correspond to your local time zone or a time zone for another part of your network\.
 
 **To change the time zone on an instance**
 
@@ -74,7 +74,7 @@ Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 i
 
    In the output that's returned, verify that `NtpServer` displays the `169.254.169.123` IP address\.
 
-You can change the instance to use a different set of NTP servers if you need to\. For example, if you have Windows instances that do not have internet access, you can configure them to use an NTP server located within your private network\. Your instance's security group must allow outbound UDP traffic on port 123 \(NTP\)\.
+You can change the instance to use a different set of NTP servers if required\. For example, if you have Windows instances that do not have internet access, you can configure them to use an NTP server located within your private network\. If your instance is within a domain, you should change the settings to use the domain controllers as the time source to avoid time skew\. The security group of your instance must be configured to allow outbound UDP traffic on port 123 \(NTP\)\.
 
 **To change the NTP servers**
 
@@ -94,7 +94,7 @@ You can change the instance to use a different set of NTP servers if you need to
 
 ## Default Network Time Protocol \(NTP\) Settings for Amazon Windows AMIs<a name="default-ntp-settings"></a>
 
-Amazon Machine Images \(AMIs\) generally adhere to the out\-of\-the\-box defaults except in cases where changes are required to function on EC2 infrastructure\. The following settings have been determined to work well in a virtualized environment, as well as to keep any clock drift to within one second of accuracy: 
+Amazon Machine Images \(AMIs\) generally adhere to the out\-of\-the\-box defaults except in cases where changes are required to function on EC2 infrastructure\. The following settings have been determined to work well in a virtual environment, as well as to keep any clock drift to within one second of accuracy: 
 + **Update Interval** – governs how frequently the time service will adjust system time towards accuracy\. AWS configures the update interval to occur once every two minutes\.
 + **NTP Server** – starting with the August 2018 release, AMIs will now use the Amazon Time Sync Service by default\. This time service is accessible from any EC2 Region at the 169\.254\.169\.123 endpoint\. Additionally, the 0x9 flag indicates that the time service is acting as a client, and to use SpecialPollInterval to determine how frequently to check in with the configured time server\.
 + **Type** – "NTP" means that the service acts as a standalone NTP client instead of acting as part of a domain\.

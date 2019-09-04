@@ -56,7 +56,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 
 | Configuration | Verify | 
 | --- | --- | 
-| Security group configuration | Verify that port 3389 is open for your security group\. Verify you are connecting to the right public IP address\. If the instance was not associated with an Elastic IP, the public IP changes after the instance stops/starts\. For more information, see [Remote Desktop Can't onnect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\. | 
+| Security group configuration | Verify that port 3389 is open for your security group\. Verify you are connecting to the right public IP address\. If the instance was not associated with an Elastic IP, the public IP changes after the instance stops/starts\. For more information, see [Remote Desktop Can't Connect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\. | 
 | VPC configuration \(Network ACLs\) | Verify that the access control list \(ACL\) for your Amazon VPC is not blocking access\. For information, see [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the Amazon VPC User Guide\. | 
 | VPN configuration | If you are connecting to your VPC using a virtual private network \(VPN\), verify VPN tunnel connectivity\. For more information, see [How do I troubleshoot VPN tunnel connectivity to an Amazon VPC?](https://aws.amazon.com/premiumsupport/knowledge-center/vpn-tunnel-troubleshooting/) | 
 
@@ -65,7 +65,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 
 | Configuration | Verify | 
 | --- | --- | 
-| Windows Firewall | Verify that Windows Firewall isn't blocking connections to your instance\. Disable Windows Firewall as described in bullet 7 of the remote desktop troubleshooting section, [Remote Desktop Can't onnect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.  | 
+| Windows Firewall | Verify that Windows Firewall isn't blocking connections to your instance\. Disable Windows Firewall as described in bullet 7 of the remote desktop troubleshooting section, [Remote Desktop Can't Connect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.  | 
 | Advanced TCP/IP configuration \(Use of static IP\) | The instance may be unresponsive because you configured a static IP address\. For a VPC, [Create a network interface](using-eni.md#create_eni) and [attach it to the instance](using-eni.md#attach_eni_running_stopped)\. For EC2 Classic, enable DHCP\. | 
 
 **Local or On\-Premises Network Configuration**
@@ -110,7 +110,7 @@ By default, the policy configuration for AWS\-provided public Windows AMIs is se
 
    Detach the root volume from the unreachable instance, take a snapshot of the volume or create an AMI from it, and attach it to another instance in the same Availability Zone as a secondary volume\. For more information, see [Detaching an Amazon EBS Volume from an Instance](ebs-detaching-volume.md)\.
 **Warning**  
-If your temporary instance is based on the same AMI that the original instance is based on, you must complete additional steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\. Alternatively, select a different AMI for the temporary instance\. For example, if the original instance uses an AMI for Windows Server 2008 R2, launch the temporary instance using an AMI for Windows Server 2012\. If you must create a temporary instance based on the same AMI, see Step 6 in [Remote Desktop Can't onnect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues) to avoid a disk signature collision\.
+If your temporary instance is based on the same AMI that the original instance is based on, you must complete additional steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\. Alternatively, select a different AMI for the temporary instance\. For example, if the original instance uses an AMI for Windows Server 2008 R2, launch the temporary instance using an AMI for Windows Server 2012\. If you must create a temporary instance based on the same AMI, see Step 6 in [Remote Desktop Can't Connect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues) to avoid a disk signature collision\.
 
 1. Log in to the instance and execute the following command from a command prompt to change the `bootstatuspolicy` configuration to `ignoreallfailures`:
 

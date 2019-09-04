@@ -1,6 +1,6 @@
 # Troubleshooting PV Drivers<a name="pvdrivers-troubleshooting"></a>
 
-This topic describes solutions to common issues that you might encounter with Amazon EC2 PV drivers\.
+The following are solutions to issues that you might encounter with older Amazon EC2 images and PV drivers\.
 
 **Topics**
 + [Windows Server 2012 R2 loses network and storage connectivity after an instance reboot](#server2012R2-instance-unavailable)
@@ -9,15 +9,18 @@ This topic describes solutions to common issues that you might encounter with Am
 
 ## Windows Server 2012 R2 loses network and storage connectivity after an instance reboot<a name="server2012R2-instance-unavailable"></a>
 
-Windows Server 2012 R2 Amazon Machine Images \(AMIs\) made available *before* September 10, 2014 can lose network and storage connectivity after an instance reboot\. The error in the AWS Management Console system log states: “Difficulty detecting PV driver details for Console Output\.” The connectivity loss is caused by the Windows Server 2012 R2 Plug and Play Cleanup feature\. This features scans for and disables inactive system devices every 30 days\. The feature incorrectly identifies the EC2 network device as inactive and removes it from the system\. When this happens, the instance loses network connectivity after a reboot\.
+**Important**  
+This issue occurs only with AMIs made available before September 2014\.
 
-For systems that you suspect could be affected by this issue, you can download and run an in\-place driver upgrade\. If you are unable to perform the in\-place driver upgrade, you can run a helper script\. The script determines if your instance is affected\. If it is affected, and the Amazon EC2 network device has *not* been removed, the script disables the Plug and Play Cleanup scan\. If the Amazon EC2 network device has been removed, the script repairs the device, disables the Plug and Play Cleanup scan, and allows your instance to reboot with network connectivity enabled\.
+Windows Server 2012 R2 Amazon Machine Images \(AMIs\) made available before September 10, 2014 can lose network and storage connectivity after an instance reboot\. The error in the AWS Management Console system log states: “Difficulty detecting PV driver details for Console Output\.” The connectivity loss is caused by the Plug and Play Cleanup feature\. This features scans for and disables inactive system devices every 30 days\. The feature incorrectly identifies the EC2 network device as inactive and removes it from the system\. When this happens, the instance loses network connectivity after a reboot\.
 
- **In this section** 
-+  [Choose How You Want to Fix This Problem](#choose-fix) 
-+  [Method 1 \- Enhanced Networking](#plug-n-play-fix-method1) 
-+  [Method 2 \- Registry configuration](#plug-n-play-fix-method2) 
-+  [Run the Remediation Script](#plug-n-play-script) 
+For systems that you suspect could be affected by this issue, you can download and run an in\-place driver upgrade\. If you are unable to perform the in\-place driver upgrade, you can run a helper script\. The script determines if your instance is affected\. If it is affected, and the Amazon EC2 network device has not been removed, the script disables the Plug and Play Cleanup scan\. If the network device was removed, the script repairs the device, disables the Plug and Play Cleanup scan, and enables your instance to reboot with network connectivity enabled\.
+
+**Topics**
++ [Choose How You Want to Fix This Problem](#choose-fix)
++ [Method 1 \- Enhanced Networking](#plug-n-play-fix-method1)
++ [Method 2 \- Registry configuration](#plug-n-play-fix-method2)
++ [Run the Remediation Script](#plug-n-play-script)
 
 ### Choose How You Want to Fix This Problem<a name="choose-fix"></a>
 
@@ -158,10 +161,12 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 
 ## TCP Offloading<a name="citrix-tcp-offloading"></a>
 
+**Important**  
+This issue does not apply to instances running AWS PV or Intel network drivers\.
+
 By default, TCP offloading is enabled for the Citrix PV drivers in Windows AMIs\. If you encounter transport\-level errors or packet transmission errors \(as visible on the Windows Performance Monitor\)—for example, when you're running certain SQL workloads—you may need to disable this feature\.
 
-**Important**  
-You do not need to perform this procedure on instances running AWS PV or Intel network drivers\.  
+**Warning**  
 Disabling TCP offloading may reduce the network performance of your instance\.
 
 **To disable TCP offloading for Windows Server 2012 and 2008**

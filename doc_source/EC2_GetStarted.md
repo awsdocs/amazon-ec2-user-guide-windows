@@ -124,7 +124,7 @@ Sometimes copying and pasting content can corrupt data\. If you encounter a "Pas
 
       \[Mac OS\] Log in as prompted, using the default administrator account and the default administrator password that you recorded or copied previously\. Note that you might need to switch spaces to see the login screen\. For more information about spaces, see [support\.apple\.com/en\-us/HT204100](https://support.apple.com/en-us/HT204100)\.
 
-   1. If you receive an error while attempting to connect to your instance, see [Remote Desktop Can't onnect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
+   1. If you receive an error while attempting to connect to your instance, see [Remote Desktop Can't Connect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
 
 ## Step 3: Clean Up Your Instance<a name="ec2-clean-up-your-instance"></a>
 
