@@ -6,7 +6,22 @@ If you are unable to reach your instance through SSH or RDP, you can capture a s
 
 ## How to Take a Screenshot of an Unreachable Instance<a name="how-to-ics"></a>
 
-There is no data transfer cost for this screenshot\. The image is generated in JPG format, no larger than 100kb\.
+If you are unable to reach your instance via SSH or RDP, you can capture a screenshot of your instance and view it as an image\. The image can provide visibility as to the status of the instance, and allows for quicker troubleshooting\. You can generate screenshots while the instance is running or after it has crashed\. There is no data transfer cost for this screenshot\. The image is generated in JPG format and is no larger than 100 kb\. This feature is not supported when the instance is using an NVIDIA GRID driver\. This feature is available in the following Regions: 
++ US East \(N\. Virginia\) Region
++ US East \(Ohio\) Region
++ US West \(Oregon\) Region
++ US West \(N\. California\) Region
++ EU \(Ireland\) Region
++ EU \(Frankfurt\) Region
++  Asia Pacific \(Tokyo\) Region
++ Asia Pacific \(Seoul\) Region
++ Asia Pacific \(Singapore\) Region
++ Asia Pacific \(Sydney\) Region\)
++ South America \(São Paulo\) Region\)
++ Asia Pacific \(Mumbai\) Region
++ Canada \(Central\) Region\)
++ EU \(London\) Region
++ EU \(Paris\) Region
 
 **To get a screenshot of a running instance using the console**
 

@@ -35,6 +35,10 @@ For information about other customizations, see [Configuration Changes for AWS W
 + [Changes in Windows Server 2016 and Later AMIs](#win2k16-amis)
 + [Docker Container Conflict on Windows Server 2016 Instances](#ec2launch-docker)
 + [Issue with the Hibernate Agent \(2018\.03\.16 AMIs\)](#ec2hibernateagent-2018-03-16)
++ [AMIs for STIG Compliance](ami-windows-stig.md)
+  + [Core and Base Operating System](ami-windows-stig.md#base-os-stig)
+  + [Internet Explorer \(IE\) 11 Using STIG V1 Release 17](ami-windows-stig.md#ie-os-stig)
+  + [Microsoft \.NET Framework 4\.0 Using STIG V1 Release 8: STIGS Not Applied](ami-windows-stig.md#dotnet-os-stig)
 
 ## Updating Your Windows Instance<a name="update-windows-instance"></a>
 
@@ -237,6 +241,8 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2019\.09\.12 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) \.NET Core 2\.2, Mono 5\.18, and PowerShell 6\.2 pre\-installed to run your \.NET applications on Amazon Linux 2 with Long Term Support \(LTS\)  | 
+| 2019\.09\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) Previous versions of AMIs have been marked private\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  NLA is now enabled on all 2012 RTM, 2012 R2, and 2016 AMIs to increase default RDP security posture\. NLA remains enabled on 2019 AMIs\.  | 
 | 2019\.08\.16 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.07\.19 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.07\.12 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 

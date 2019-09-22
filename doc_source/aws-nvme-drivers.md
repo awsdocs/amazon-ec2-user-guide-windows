@@ -27,6 +27,7 @@ The following table describes the released versions of the AWS NVMe driver\.
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+| 1\.3\.2 |  Fixed issue with modifying EBS volumes actively processing IO, which may result in data corruption\. Customers who do not modify online EBS volumes \(for example, resizing or changing type\) are not impacted\.  | 10 September 2019 | 
 | 1\.3\.1 |  Reliability Improvements | 21 May 2019 | 
 | 1\.3\.0 | Device optimization improvements | 31 August 2018 | 
 | 1\.2\.0 | Performance and reliability improvements for AWS NVMe devices on all supported instances, including bare metal instances | 13 June 2018 | 
@@ -36,7 +37,7 @@ The following table describes the released versions of the AWS NVMe driver\.
 
 Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use the following procedure to subscribe to these notifications\.
 
-**To subscribe to EC2 notifications**
+**To subscribe to EC2 notifications from the console**
 
 1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
 
@@ -69,3 +70,17 @@ Whenever new EC2 Windows drivers are released, we send notifications to subscrib
 1. In the navigation pane, choose **Subscriptions**\.
 
 1. Select the checkbox for the subscription and then choose **Actions**, **Delete subscriptions**\. When prompted for confirmation, choose **Delete**\.
+
+**To subscribe to EC2 notifications using the AWS CLI**  
+To subscribe to EC2 notifications with the AWS CLI, use the following command\. 
+
+```
+aws sns subscribe --topic-arn arn:aws:sns:us-east-1:801119661308:ec2-windows-drivers --protocol email --notification-endpoint YourUserName@YourDomainName.ext
+```
+
+**To subscribe to EC2 notifications using AWS Tools for Windows PowerShell**  
+To subscribe to EC2 notifications with AWS Tools for Windows PowerShell, use the following command\. 
+
+```
+Connect-SNSNotification -TopicArn 'arn:aws:sns:us-east-1:801119661308:ec2-windows-drivers' -Protocol email -Region us-east-1 -Endpoint 'YourUserName@YourDomainName.ext'
+```

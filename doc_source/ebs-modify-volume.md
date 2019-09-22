@@ -8,4 +8,4 @@ There is no charge to modify the configuration of a volume\. You are charged for
 + [Requirements When Modifying Volumes](modify-volume-requirements.md)
 + [Requesting Modifications to Your EBS Volumes](requesting-ebs-volume-modifications.md)
 + [Monitoring the Progress of Volume Modifications](monitoring-volume-modifications.md)
-+ [Extending a Windows File System after Resizing a Volume](recognize-expanded-volume-windows.md)
++ [Extending a Windows File System After Resizing a Volume](recognize-expanded-volume-windows.md)

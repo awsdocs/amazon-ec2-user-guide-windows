@@ -23,7 +23,7 @@ Use the following procedure to download and install the `AwsVssComponents` packa
 1. Run the following command to download and install the required VSS components for Systems Manager\.
 
    ```
-   aws ssm send-command ()document-name "AWS-ConfigureAWSPackage" -instance-ids "i-12345678" -parameters '{"action":["Install"],"name":["AwsVssComponents"]}'
+   aws ssm send-command --document-name "AWS-ConfigureAWSPackage" --instance-ids "i-12345678" --parameters '{"action":["Install"],"name":["AwsVssComponents"]}'
    ```
 
 ### Install the VSS Package by Using Tools for Windows PowerShell<a name="application-consistent-snapshots-vss-package-powershell"></a>
@@ -73,7 +73,7 @@ Use the following procedure to create VSS\-enabled EBS snapshots by using the AW
 1. Run the following command to create VSS\-enabled EBS snapshots\.
 
    ```
-   aws ssm send-command -document-name "AWSEC2-CreateVssSnapshot" -instance-ids "i-12345678" -parameters '{"ExcludeBootVolume":["False"],"description":["Description"],"tags":["Key=key_name,Value=tag_value"]}'
+   aws ssm send-command --document-name "AWSEC2-CreateVssSnapshot" --instance-ids "i-12345678" --parameters '{"ExcludeBootVolume":["False"],"description":["Description"],"tags":["Key=key_name,Value=tag_value"]}'
    ```
 
 If successful, the command populates the list of EBS snapshots with the new snapshots\. You can locate these snapshots in the list of EBS snapshots by searching for the tags you specified, or by searching for `AppConsistent`\. If the command execution failed, view the command output for details about why the execution failed\.

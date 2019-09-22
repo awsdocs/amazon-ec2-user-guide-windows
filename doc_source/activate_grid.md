@@ -1,4 +1,4 @@
-# Activate NVIDIA GRID Virtual Applications \(G3 Instances Only\)<a name="activate_grid"></a>
+# Activate NVIDIA GRID Virtual Applications on G3 Instances<a name="activate_grid"></a>
 
 To activate the GRID Virtual Applications on G3 instances \(NVIDIA GRID Virtual Workstation is enabled by default\), you must define the product type for the driver in the registry\.
 

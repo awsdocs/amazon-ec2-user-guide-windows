@@ -217,7 +217,7 @@ After increasing the `SameSubnetThreshold` or `CrossSubnetThreshold`, we recomme
 
 ## Witness Importance and Dynamic Quorum Architecture<a name="sql-clustering-file-share-witness"></a>
 
-There is a difference between Disk Witness and File Share Witness\. Disk Witness keeps a backup of the cluster database while File Share Witness does not\. Both add a [vote to the cluster](#sql-clustering-quorum)\. You can use Disk Witness with Storage Spaces Direct on Windows Server 2016 DC edition, or if you use iSCSI\-based storage\. For a tutorial on deploying Storage Spaces Direct, see [Deploy Storage Spaces Direct \(S2D\) on Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-tutorial-s2d.html)\. For more about witness options, see [File Share witness vs Disk witness for local clusters](https://blogs.technet.microsoft.com/mspfe/2012/11/05/file-share-witness-vs-disk-witness-for-local-clusters/)\.
+There is a difference between Disk Witness and File Share Witness\. Disk Witness keeps a backup of the cluster database while File Share Witness does not\. Both add a [vote to the cluster](#sql-clustering-quorum)\. You can use Disk Witness if you use iSCSI\-based storage\. For more about witness options, see [File Share witness vs Disk witness for local clusters](https://blogs.technet.microsoft.com/mspfe/2012/11/05/file-share-witness-vs-disk-witness-for-local-clusters/)\.
 
 ## Troubleshooting<a name="sql-troubleshooting"></a>
 

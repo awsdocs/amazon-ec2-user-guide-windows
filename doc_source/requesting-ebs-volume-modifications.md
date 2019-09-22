@@ -10,7 +10,7 @@ Use the following process when modifying a volume:
 
 1. Monitor the progress of the volume modification\. For more information, see [Monitoring the Progress of Volume Modifications](monitoring-volume-modifications.md)\.
 
-1. If the size of the volume was modified, extend the volume's file system to take advantage of the increased storage capacity\. For more information, see [Extending a Windows File System after Resizing a Volume](recognize-expanded-volume-windows.md)\.
+1. If the size of the volume was modified, extend the volume's file system to take advantage of the increased storage capacity\. For more information, see [Extending a Windows File System After Resizing a Volume](recognize-expanded-volume-windows.md)\.
 
 **Topics**
 + [Modifying an EBS Volume Using Elastic Volumes \(Console\)](#modify-ebs-volume)
@@ -35,7 +35,7 @@ Use the following procedure to modify an EBS volume\.<a name="console-modify-siz
 
 1. After you have finished changing the volume settings, choose **Modify**\. When prompted for confirmation, choose **Yes**\.
 
-1. Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extending a Windows File System after Resizing a Volume](recognize-expanded-volume-windows.md)\.
+1. Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extending a Windows File System After Resizing a Volume](recognize-expanded-volume-windows.md)\.
 
 1. If you increase the size of an NVMe volume on an instance that does not have the AWS NVMe drivers, you must reboot the instance to enable Windows to see the new volume size\. For more information about installing the AWS NVMe drivers, see [AWS NVMe Drivers for Windows Instances](aws-nvme-drivers.md)\.
 
@@ -66,7 +66,7 @@ The following is example output:
 }
 ```
 
-Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extending a Windows File System after Resizing a Volume](recognize-expanded-volume-windows.md)\.
+Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extending a Windows File System After Resizing a Volume](recognize-expanded-volume-windows.md)\.
 
 ## Initializing Elastic Volumes Support \(If Needed\)<a name="initialize-modification-support"></a>
 
@@ -116,6 +116,6 @@ If you cannot use Elastic Volumes but you need to modify the root \(boot\) volum
 
 After the instance has started, you can check the file system size to see if your instance recognizes the larger volume space\. 
 
-If the size does not reflect your newly expanded volume, you must extend the file system of your device so that your instance can use the new space\. For more information, see [Extending a Windows File System after Resizing a Volume](recognize-expanded-volume-windows.md)\.
+If the size does not reflect your newly expanded volume, you must extend the file system of your device so that your instance can use the new space\. For more information, see [Extending a Windows File System After Resizing a Volume](recognize-expanded-volume-windows.md)\.
 
 You may have to bring the volume online in order to use it\. For more information, see [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\. You do not need to reformat the volume\.

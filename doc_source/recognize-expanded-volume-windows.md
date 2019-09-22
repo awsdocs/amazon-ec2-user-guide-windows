@@ -1,8 +1,8 @@
-# Extending a Windows File System after Resizing a Volume<a name="recognize-expanded-volume-windows"></a>
+# Extending a Windows File System After Resizing a Volume<a name="recognize-expanded-volume-windows"></a>
 
 After you increase the size of an EBS volume, use the Windows Disk Management utility to extend the disk size to the new size of the volume\. You can begin resizing the file system as soon as the volume enters the `optimizing` state\.
 
-For more information about extending a file system on Linux, see [Extending a Linux File System after Resizing a Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For more information about extending a file system on Linux, see [Extending a Linux File System After Resizing a Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **To extend a Windows file system**
 

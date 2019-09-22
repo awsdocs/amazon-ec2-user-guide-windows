@@ -17,8 +17,6 @@ Decide who requires access to your instance; for example, a single host or a spe
 **Warning**  
 If you use `0.0.0.0/0`, you enable all IPv4 addresses to access your instance using RDP\. If you use `::/0`, you enable all IPv6 address to access your instance\. This is acceptable for a short time in a test environment, but it's unsafe for production environments\. In production, you authorize only a specific IP address or range of addresses to access your instance\.
 
-For more information about security groups, see [Amazon EC2 Security Groups for Windows Instances](using-network-security.md)\.
-
 Windows Firewall may also block incoming traffic\. If you're having trouble setting up access to your instance, you may have to disable Windows Firewall\. For more information, see [Remote Desktop Can't Connect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
 
 ## Adding a Rule for Inbound RDP Traffic to a Windows Instance<a name="add-rule-authorize-access"></a>

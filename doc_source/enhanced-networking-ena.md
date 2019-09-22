@@ -14,7 +14,7 @@ Amazon EC2 provides enhanced networking capabilities through the Elastic Network
 ## Requirements<a name="ena-requirements"></a>
 
 To prepare for enhanced networking using the ENA, set up your instance as follows:
-+ Select from the following supported instance types: C5, C5d, C5n, F1, G3, H1, I3, I3en, `m4.16xlarge`, M5, M5a, M5ad, M5d, P2, P3, R4, R5, R5a, R5ad, R5d, T3, T3a, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, X1, X1e, and z1d\.
++ Select from the following supported instance types: C5, C5d, C5n, F1, G3, G4, H1, I3, I3en, `m4.16xlarge`, M5, M5a, M5ad, M5d P2, P3, R4, R5, R5a, R5ad, R5d, T3, T3a, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, X1, X1e, and z1d\.
 + Ensure that the instance has internet connectivity\.
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable; if you have a recent backup, your data will still be retained if this happens\.
@@ -143,6 +143,7 @@ Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The f
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+|  [2\.1\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.1/AwsEnaNetworkDriver.zip)  | Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | September 2019 | 
 |  [2\.1\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.0/AwsEnaNetworkDriver.zip)  | ENA Windows driver v2\.1 introduces new ENA device capabilities, provides a performance boost, adds new features, and includes multiple stability improvements\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | July 2019 | 
 |  [1\.5\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.5.0/AwsEnaNetworkDriver.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | October 2018 | 
 |  [1\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.2.3/AwsEnaNetworkDriver.zip)  |  Includes reliability fixes and unifies support for Windows Server 2008 R2 through Windows Server 2016\.  | February 2018 | 
