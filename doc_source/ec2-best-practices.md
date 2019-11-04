@@ -28,7 +28,7 @@ Update to the latest EC2Config \(2012 R2 and earlier\) or EC2Launch \(2016 and l
 
 **Security and Network**
 + Manage access to AWS resources and APIs using identity federation, IAM users, and IAM roles\. Establish credential management policies and procedures for creating, distributing, rotating, and revoking AWS access credentials\. For more information, see [IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html) in the *IAM User Guide*\.
-+ Implement the least permissive rules for your security group\. For more information, see [Security Group Rules](using-network-security.md#security-group-rules)\.
++ Implement the least permissive rules for your security group\. For more information, see [Security Group Rules](ec2-security-groups.md#security-group-rules)\.
 + Regularly patch, update, and secure the operating system and applications on your instance\. For more information about updating Amazon Linux 2 or the Amazon Linux AMI, see [Managing Software on Your Linux Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/managing-software.html) in the *Amazon EC2 User Guide for Linux Instances*\. For more information about updating your Windows instance, see [Updating Your Windows Instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html#update-windows-instance)\.
 
 **Storage**

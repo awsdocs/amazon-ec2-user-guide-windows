@@ -18,7 +18,7 @@ The following table summarizes the theoretical and implemented storage capacitie
 | Partitioning Scheme | Max addressable blocks  | Theoretical max size \(blocks × block size\) | Ext4 implemented max size\* | XFS implemented max size\*\* | NTFS implemented max size | Max supported by EBS | 
 | --- | --- | --- | --- | --- | --- | --- | 
 | MBR | 232 | 2 TiB | 2 TiB | 2 TiB | 2 TiB | 2 TiB | 
-| GPT | 264 | 8 ZiB = 8 ×10243 TiB | 1 EiB =10242 TiB \(50 TiB certified on RHEL7\) |  500 TiB \(certified on RHEL7\)  | 256 TiB | 16 TiB | 
+| GPT | 264 |  64 ZiB  | 1 EiB =10242 TiB \(50 TiB certified on RHEL7\) |  500 TiB \(certified on RHEL7\)  | 256 TiB | 16 TiB | 
 
 \* [https://ext4.wiki.kernel.org/index.php/Ext4_Howto](https://ext4.wiki.kernel.org/index.php/Ext4_Howto) and [https://access.redhat.com/solutions/1532](https://access.redhat.com/solutions/1532)
 
@@ -64,7 +64,11 @@ GPT uses a 64\-bit data structure to store block addresses\. This means that eac
 The block size for GPT volumes is commonly 4,096 bytes\. Therefore:
 
 ```
-(264 - 1) × 4,096 bytes = 8 ZiB - 4,096 bytes = 8 billion TiB - 4,096 bytes
+(264 - 1) × 4,096 bytes
+   = 264 x 4,096 bytes - 1 x 4,096 bytes
+   = 264 x 212 bytes - 4,096 bytes
+   = 270 x 26 bytes - 4,096 bytes
+   = 64 ZiB - 4,096 bytes
 ```
 
 Real\-world computer systems don't support anything close to this theoretical maximum\. Implemented file\-system size is currently limited to 50 TiB for ext4 and 256 TiB for NTFS—both of which exceed the 16\-TiB limit imposed by AWS\.

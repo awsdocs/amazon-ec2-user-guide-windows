@@ -175,12 +175,12 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 
 1. Log in to the instance to initiate an upgrade for the \.NET Framework and reboot the system when prompted\.
 
-1. Install the latest version of the EC2Config service\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
+1. Install the latest version of the EC2Config service \(Windows 2012 R2 and earlier\) or EC2Launch \(Windows 2016 and later\)\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md) or [Installing the Latest Version of EC2Launch](ec2launch-download.md)\.
 
 1. Install Microsoft hotfix [KB2800213](http://support2.microsoft.com/default.aspx?scid=kb;EN-US;2800213)\.
 
 1. Install Microsoft hotfix [KB2922223](http://support.microsoft.com/en-us/kb/2922223)\.
 
-1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/)\.
+1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance , we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Installing or Upgrading AWS NVMe Drivers](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
 
 1. Re\-enable antivirus and anti\-spyware software and firewalls\.

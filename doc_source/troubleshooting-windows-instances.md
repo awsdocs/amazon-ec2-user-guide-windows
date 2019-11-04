@@ -9,6 +9,7 @@ The following procedures and tips can help you troubleshoot problems with your A
 + [Resetting a Lost or Expired Windows Administrator Password](ResettingAdminPassword.md)
 + [Troubleshooting Stopping Your Instance](TroubleshootingInstancesStopping.md)
 + [Troubleshooting Terminating \(Shutting Down\) Your Instance](TroubleshootingInstancesShuttingDown.md)
++ [Using EC2Rescue for Windows Server](Windows-Server-EC2Rescue.md)
 + [Sending a Diagnostic Interrupt \(Advanced Users Only\)](diagnostic-interrupt.md)
 + [Common Issues](common-issues.md)
 + [Common Messages](common-messages.md)

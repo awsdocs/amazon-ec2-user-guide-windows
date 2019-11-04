@@ -2,7 +2,7 @@
 
 General purpose instances provide a balance of compute, memory, and networking resources, and can be used for a variety of workloads\.
 
-**M5, M5a, M5ad, M5d Instances**
+**M5, M5a, M5ad, M5d, M5dn, and M5n Instances**
 
 These instances provide an ideal cloud infrastructure, offering a balance of compute, memory, and networking resources for a broad range of applications that are deployed in the cloud\. M5 instances are well\-suited for the following applications:
 + Web and application servers
@@ -81,6 +81,22 @@ The following is a summary of the hardware specifications for general purpose in
 | m5d\.16xlarge | 64 | 256 | 
 | m5d\.24xlarge | 96 | 384 | 
 | m5d\.metal | 96 | 384 | 
+| m5dn\.large | 2 | 8 | 
+| m5dn\.xlarge | 4 | 16 | 
+| m5dn\.2xlarge | 8 | 32 | 
+| m5dn\.4xlarge | 16 | 64 | 
+| m5dn\.8xlarge | 32 | 128 | 
+| m5dn\.12xlarge | 48 | 192 | 
+| m5dn\.16xlarge | 64 | 256 | 
+| m5dn\.24xlarge | 96 | 384 | 
+| m5n\.large | 2 | 8 | 
+| m5n\.xlarge | 4 | 16 | 
+| m5n\.2xlarge | 8 | 32 | 
+| m5n\.4xlarge | 16 | 64 | 
+| m5n\.8xlarge | 32 | 128 | 
+| m5n\.12xlarge | 48 | 192 | 
+| m5n\.16xlarge | 64 | 256 | 
+| m5n\.24xlarge | 96 | 384 | 
 | t2\.nano | 1 | 0\.5 | 
 | t2\.micro | 1 | 1 | 
 | t2\.small | 1 | 2 | 
@@ -131,7 +147,11 @@ The following is a summary of network performance for general purpose instances 
 |  `m5.8xlarge` \| `m5.12xlarge` \| `m5a.12xlarge` \| `m5ad.12xlarge` \| `m5d.8xlarge` \| `m5d.12xlarge`  |  10 Gbps  | [ENA](enhanced-networking-ena.md) | 
 |  `m5a.16xlarge` \| `m5ad.16xlarge`  |  12 Gbps  | [ENA](enhanced-networking-ena.md) | 
 |  `m5.16xlarge` \| `m5a.24xlarge` \| `m5ad.24xlarge` \| `m5d.16xlarge`  |  20 Gbps  | [ENA](enhanced-networking-ena.md) | 
-|  `m4.16xlarge` \| `m5.24xlarge` \| `m5.metal` \| `m5d.24xlarge` \| `m5d.metal`  |  25 Gbps  | [ENA](enhanced-networking-ena.md) | 
+|  `m5dn.4xlarge` and smaller \| `m5n.4xlarge` and smaller   |  Up to 25 Gbps  | [ENA](enhanced-networking-ena.md) | 
+|  `m4.16xlarge` \| `m5.24xlarge` \| `m5.metal` \| `m5d.24xlarge` \| `m5d.metal` \| m5dn\.8xlarge \| m5n\.8xlarge  |  25 Gbps  | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.12xlarge \| m5n\.12xlarge  |  50 Gbps  | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.16xlarge \| m5n\.16xlarge  |  75 Gbps  | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.24xlarge \| m5n\.24xlarge  |  100 Gbps  | [ENA](enhanced-networking-ena.md) | 
 
 ## SSD I/O Performance<a name="general-purpose-ssd-perf"></a>
 
@@ -155,6 +175,14 @@ If you use all the SSD\-based instance store volumes available to your instance,
 |  `m5d.16xlarge`  |  933,333  |  466,666  | 
 |  `m5d.24xlarge`  |  1,400,000  |  680,000  | 
 |  `m5d.metal`  |  1,400,000  |  680,000  | 
+|  `m5dn.large` \*  |  30,000  |  15,000  | 
+|  `m5dn.xlarge` \*  |  59,000  |  29,000  | 
+|  `m5dn.2xlarge` \*  |  117,000  |  57,000  | 
+|  `m5dn.4xlarge` \*  |  234,000  |  114,000  | 
+|  `m5dn.8xlarge`  |  466,666  |  233,333  | 
+|  `m5dn.12xlarge`  |  700,000  |  340,000  | 
+|  `m5dn.16xlarge`  |  933,333  |  466,666  | 
+|  `m5dn.24xlarge`  |  1,400,000  |  680,000  | 
 
 \* For these instances, you can get up to the specified performance\.
 
@@ -176,6 +204,8 @@ The following is a summary of features for general purpose instances:
 | M5a | Yes | Yes | No | Yes | 
 | M5ad | No | Yes | NVMe \* | Yes | 
 | M5d | No | Yes | NVMe \* | Yes | 
+| M5dn | No | Yes | NVMe \* | Yes | 
+| M5n | Yes | Yes | No | Yes | 
 | T2 | Yes | No | No | No | 
 | T3 | Yes | Yes | No | No | 
 | T3a | Yes | Yes | No | No | 
@@ -191,19 +221,19 @@ For more information, see the following:
 + M5, M5d, and T3 instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor\.
 + M5a, M5ad, and T3a instances feature a 2\.5 GHz AMD EPYC 7000 series processor\.
 + M4, M5, M5a, M5ad, M5d, `t2.large` and larger, and `t3.large` and larger, and `t3a.large` and larger instance types require 64\-bit HVM AMIs\. They have high\-memory, and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
-+ M5, M5a, M5ad, M5d, T3, and T3a instances have the following requirements:
++ M5, M5a, M5ad, M5d, M5dn, M5n, T3, and T3a instances have the following requirements:
   + NVMe drivers must be installed\. EBS volumes are exposed as [NVMe block devices](nvme-ebs-volumes.md)\.
   + Elastic Network Adapter \([ENA](enhanced-networking-ena.md)\) drivers must be installed\.
 
   The following AMIs meet these requirements:
   + Amazon Linux 2
   + Amazon Linux AMI 2018\.03
-  + Ubuntu 14\.04 or later
+  + Ubuntu 14\.04 \(with `linux-aws` kernel\) or later
   + Red Hat Enterprise Linux 7\.4 or later
   + SUSE Linux Enterprise Server 12 SP2 or later
-  + CentOS 7 or later
+  + CentOS 7\.4\.1708 or later
   + FreeBSD 11\.1 or later
-+ M5, M5a, M5ad, M5d, T3, and T3a instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. Every instance has at least one network interface attachment\. For example, if you have no additional network interface attachments on an EBS\-only instance, you could attach 27 EBS volumes to that instance\.
++ M5, M5a, M5ad, M5d, M5dn, M5n, T3, and T3a instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. Every instance has at least one network interface attachment\. For example, if you have no additional network interface attachments on an EBS\-only instance, you could attach 27 EBS volumes to that instance\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.
 + Bare metal instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The upstream Linux kernel and the latest Amazon Linux AMIs support this device\. Bare metal instances also provide an ACPI SPCR table to enable the system to automatically use the PCI\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device\.

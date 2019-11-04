@@ -6,7 +6,7 @@ The EC2Rescue for Windows Server tool has two execution modes:
 + **/online**—This allows you to take action on the instance that EC2Rescue for Windows Server is installed on, such as collect log files\.
 + **/offline:<device\_id>**—This allows you to take action on the offline root volume that is attached to a separate Amazon EC2 Windows instance, on which you have installed EC2Rescue for Windows Server\.
 
-Download the [EC2Rescue for Windows Server](https://s3.amazonaws.com/ec2rescue/windows/EC2Rescue_latest.zip?x-download-source=docs) tool to your Windows instance and extract the files\. You can view the help file with the following command:
+Download the [EC2Rescue for Windows Server](https://s3.amazonaws.com/ec2rescue/windows/EC2Rescue_latest.zip?x-download-source=docs) tool to your Windows instance and extract the files\. You can view the help file using the following command:
 
 ```
 EC2RescueCmd.exe /help

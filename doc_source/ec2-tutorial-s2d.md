@@ -202,7 +202,7 @@ When the cluster is ready, enable S2D on one of the nodes using [Enable\-Cluster
 1. If you are using m5d or r5d instance types with NVMe and EBS, use NVMe disks as cache disks\. The command would look like this:
 
    ```
-   Enable-ClusterS2D -PoolFriendlyName S2DPool -CacheDeviceModel "NVMe Amazon EC2 NVMe" -Confirm:$false -SkipEligibilityChecks:$true -CimSession $nodes[0]
+   Enable-ClusterS2D -PoolFriendlyName S2DPool -CacheDeviceModel "Amazon EC2 NVMe" -Confirm:$false -SkipEligibilityChecks:$true -CimSession $nodes[0]
    ```
 
 ## Step 5: Provision Storage<a name="ec2-s2d-provision-storage"></a>

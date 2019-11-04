@@ -36,7 +36,7 @@ If you use the Amazon EC2 console to launch your instance with an Elastic Graphi
 
 1. Choose **Create**\.
 
-For more information, see [Amazon EC2 Security Groups for Windows Instances](using-network-security.md)\.
+For more information, see [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)\.
 
 ## Launching an Instance with an Elastic Graphics accelerator<a name="attach-elastic-graphics-launch"></a>
 

@@ -39,13 +39,14 @@ The **Offline Instance** option is useful for debugging boot issues with Windows
 **To perform an action on an offline instance**
 
 1. From a working Windows Server instance, download the [EC2Rescue for Windows Server](https://s3.amazonaws.com/ec2rescue/windows/EC2Rescue_latest.zip?x-download-source=docs) tool and extract the files\.
-**Note**  
-You can run the following PowerShell command to download EC2Rescue without changing your Internet Explorer Enhanced Security Configuration \(ESC\):  
+
+   You can run the following PowerShell command to download EC2Rescue without changing your Internet Explorer Enhanced Security Configuration \(ESC\):
 
    ```
    PS C:\> Invoke-WebRequest https://s3.amazonaws.com/ec2rescue/windows/EC2Rescue_latest.zip -OutFile $env:USERPROFILE\Desktop\EC2Rescue_latest.zip
    ```
-This command will download the EC2Rescue \.zip file to the desktop of the currently logged in user\.
+
+   This command will download the EC2Rescue \.zip file to the desktop of the currently logged in user\.
 
 1. Stop the faulty instance, if it is not stopped already\.
 
@@ -70,13 +71,14 @@ You can collect logs and other data from an active instance\.
 1. Connect to your Windows instance\.
 
 1. Download the [EC2Rescue for Windows Server](https://s3.amazonaws.com/ec2rescue/windows/EC2Rescue_latest.zip?x-download-source=docs) tool to your Windows instance and extract the files\.
-**Note**  
-You can run the following PowerShell command to download EC2Rescue without changing your Internet Explorer Enhanced Security Configuration \(ESC\):  
+
+   You can run the following PowerShell command to download EC2Rescue without changing your Internet Explorer Enhanced Security Configuration \(ESC\):
 
    ```
    PS C:\> Invoke-WebRequest https://s3.amazonaws.com/ec2rescue/windows/EC2Rescue_latest.zip -OutFile $env:USERPROFILE\Desktop\EC2Rescue_latest.zip
    ```
-This command will download the EC2Rescue \.zip file to the desktop of the currently logged in user\.
+
+   This command will download the EC2Rescue \.zip file to the desktop of the currently logged in user\.
 
 1. Open the EC2Rescue for Windows Server application and accept the license agreement\.
 

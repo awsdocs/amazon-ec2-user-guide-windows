@@ -92,7 +92,7 @@ https://your_account_alias.signin.aws.amazon.com/console/
 
 To verify the sign\-in link for IAM users for your account, open the IAM console and check under **IAM users sign\-in link** on the dashboard\.
 
-For more information about IAM, see [IAM and Amazon EC2](UsingIAM.md#intro-to-iam)\.
+For more information about IAM, see [IAM and Amazon EC2](security-iam.md#intro-to-iam)\.
 
 ## Create a Key Pair<a name="create-a-key-pair"></a>
 
@@ -175,4 +175,4 @@ Alternatively, you can use the Amazon VPC console to create a security group\. H
 **Warning**  
 For security reasons, we don't recommend that you allow RDP access from all IPv4 addresses \(`0.0.0.0/0`\) to your instance, except for testing purposes and only for a short time\.
 
-For more information, see [Amazon EC2 Security Groups for Windows Instances](using-network-security.md)\.
+For more information, see [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)\.

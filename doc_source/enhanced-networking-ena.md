@@ -14,14 +14,14 @@ Amazon EC2 provides enhanced networking capabilities through the Elastic Network
 ## Requirements<a name="ena-requirements"></a>
 
 To prepare for enhanced networking using the ENA, set up your instance as follows:
-+ Select from the following supported instance types: C5, C5d, C5n, F1, G3, G4, H1, I3, I3en, `m4.16xlarge`, M5, M5a, M5ad, M5d P2, P3, R4, R5, R5a, R5ad, R5d, T3, T3a, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, X1, X1e, and z1d\.
++ Select from the following supported instance types: C5, C5d, C5n, F1, G3, G4, H1, I3, I3en, `m4.16xlarge`, M5, M5a, M5ad, M5d, M5dn, M5n P2, P3, R4, R5, R5a, R5ad, R5d, R5dn, R5n, T3, T3a, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, X1, X1e, and z1d\.
 + Ensure that the instance has internet connectivity\.
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
-+ If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable; if you have a recent backup, your data will still be retained if this happens\.
++ If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable\. If you have a recent backup, your data will still be retained if this happens\.
 
 ## Data Encryption<a name="ena-data-encryption-in-transit"></a>
 
-AWS provides secure and private connectivity between EC2 instances\. In addition, we automatically encrypt in\-transit traffic between C5n, I3en, and P3dn instances in the same VPC or in peered VPCs, using AEAD algorithms with 256\-bit encryption\. This encryption feature uses the offload capabilities of the underlying hardware, and there is no impact on network performance\.
+AWS provides secure and private connectivity between EC2 instances\. In addition, we automatically encrypt in\-transit traffic between supported instances in the same VPC or in peered VPCs, using AEAD algorithms with 256\-bit encryption\. This encryption feature uses the offload capabilities of the underlying hardware, and there is no impact on network performance\. The supported instances are: C5n, G4, I3en, M5dn, M5n, P3dn, R5dn, and R5n\.
 
 ## Testing Whether Enhanced Networking Is Enabled<a name="test-enhanced-networking-ena"></a>
 
@@ -75,6 +75,8 @@ If you launched your instance and it does not have enhanced networking enabled a
    1. Extract the zip archive\.
 
    1. Install the driver by running the `install.ps1` PowerShell script\.
+**Note**  
+If you get an execution policy error, set the policy to `Unrestricted` \(by default it is set to `Restricted` or `RemoteSigned`\)\. In a command line, run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`, and then run the `install.ps1` PowerShell script again\.
 
 1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
 
@@ -143,6 +145,7 @@ Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The f
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+|  [2\.1\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.2/AwsEnaNetworkDriver.zip)  | New Features [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | November 2019 | 
 |  [2\.1\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.1/AwsEnaNetworkDriver.zip)  | Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | September 2019 | 
 |  [2\.1\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.0/AwsEnaNetworkDriver.zip)  | ENA Windows driver v2\.1 introduces new ENA device capabilities, provides a performance boost, adds new features, and includes multiple stability improvements\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | July 2019 | 
 |  [1\.5\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.5.0/AwsEnaNetworkDriver.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | October 2018 | 
@@ -158,7 +161,7 @@ Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\
 
 1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
 
-1. In the navigation bar, change the region to **US East \(N\. Virginia\)**, if necessary\. You must select this region because the SNS notifications that you are subscribing to are in this region\.
+1. In the navigation bar, change the Region to **US East \(N\. Virginia\)**, if necessary\. You must select this Region because the SNS notifications that you are subscribing to are in this Region\.
 
 1. In the navigation pane, choose **Subscriptions**\.
 
@@ -172,7 +175,7 @@ Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\
 
    1. For **Protocol**, choose `Email`\.
 
-   1. For **Endpoint**, type an email address that you can use to receive the notifications\.
+   1. For **Endpoint**, enter an email address that you can use to receive the notifications\.
 
    1. Choose **Create subscription**\.
 
@@ -186,4 +189,4 @@ Whenever new EC2 Windows drivers are released, we send notifications to subscrib
 
 1. In the navigation pane, choose **Subscriptions**\.
 
-1. Select the checkbox for the subscription and then choose **Actions**, **Delete subscriptions**\. When prompted for confirmation, choose **Delete**\.
+1. Select the check box for the subscription and then choose **Actions**, **Delete subscriptions**\. When prompted for confirmation, choose **Delete**\.

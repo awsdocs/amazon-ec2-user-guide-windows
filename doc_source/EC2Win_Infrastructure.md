@@ -107,7 +107,7 @@ By default, an instance is assigned public IPv4 address only if it's launched in
 
 Instances can fail or terminate for reasons outside of your control\. If one fails and you launch a replacement instance, the replacement has a different public IPv4 address than the original\. However, if your application needs a static IPv4 address, Amazon EC2 offers *Elastic IP addresses*\. For more information, see [Amazon EC2 Instance IP Addressing](using-instance-addressing.md)\.
 
-You can use *security groups* to control who can access your instances\. These are analogous to an inbound network firewall that enables you to specify the protocols, ports, and source IP ranges that are allowed to reach your instances\. You can create multiple security groups and assign different rules to each group\. You can then assign each instance to one or more security groups, and we use the rules to determine which traffic is allowed to reach the instance\. You can configure a security group so that only specific IP addresses or specific security groups have access to the instance\. For more information, see [Amazon EC2 Security Groups for Windows Instances](using-network-security.md)\. 
+You can use *security groups* to control who can access your instances\. These are analogous to an inbound network firewall that enables you to specify the protocols, ports, and source IP ranges that are allowed to reach your instances\. You can create multiple security groups and assign different rules to each group\. You can then assign each instance to one or more security groups, and we use the rules to determine which traffic is allowed to reach the instance\. You can configure a security group so that only specific IP addresses or specific security groups have access to the instance\. For more information, see [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)\. 
 
 ## AWS Identity and Access Management<a name="EC2Win_IAM"></a>
 
@@ -122,7 +122,7 @@ AWS Identity and Access Management \(IAM\) enables you to do the following:
 By using IAM with Amazon EC2, you can control whether users in your organization can perform a task using specific Amazon EC2 API actions and whether they can use specific AWS resources\.
 
 For more information about IAM, see the following:
-+ [Creating an IAM Group and Users](UsingIAM.md#creating-an-iam-group)
++ [Creating an IAM Group and Users](security-iam.md#creating-an-iam-group)
 + [IAM Policies for Amazon EC2](iam-policies-for-amazon-ec2.md)
 + [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)
 + [Identity and Access Management \(IAM\)](https://aws.amazon.com/iam)

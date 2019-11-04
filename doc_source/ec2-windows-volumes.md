@@ -217,4 +217,4 @@ The following table describes how the Citrix PV and AWS PV drivers map non\-NVME
 
 ### NVMe EBS Volumes<a name="ebs-nvme-volume-map"></a>
 
-With C5 and M5 instances, EBS volumes are exposed as NVMe devices\. You can use the [Get\-Disk](https://docs.microsoft.com/en-us/powershell/module/storage/get-disk) command to map Windows disk numbers to EBS volume IDs\. For more information, see [Identifying the EBS Device](nvme-ebs-volumes.md#identify-nvme-ebs-device)\.
+With [Nitro\-based instances](instance-types.md#ec2-nitro-instances), EBS volumes are exposed as NVMe devices\. You can use the [Get\-Disk](https://docs.microsoft.com/en-us/powershell/module/storage/get-disk) command to map Windows disk numbers to EBS volume IDs\. For more information, see [Identifying the EBS Device](nvme-ebs-volumes.md#identify-nvme-ebs-device)\.

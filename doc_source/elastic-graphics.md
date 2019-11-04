@@ -20,13 +20,13 @@ To use Elastic Graphics, launch a Windows instance and specify an accelerator ty
 Bare metal instances are not supported\.
 
 The following instance types support Elastic Graphics accelerators:
-+ C3 \| C4 \| C5 \| C5d
++ C3 \| C4 \| C5 \| C5d \| C5n
 + D2
 + H1
 + I3 \| I3en
-+ M3 \| M4 \| M5 \| M5d
-+ P2 \| P3
-+ R3 \| R4 \| R5 \| R5d
++ M3 \| M4 \| M5 \| M5d \| M5dn \| M5n
++ P2 \| P3 \| P3dn
++ R3 \| R4 \| R5 \| R5d \| R5dn \| R5n
 + `t2.medium` or larger \| `t3.medium` or larger 
 + X1 \| X1e
 + z1d

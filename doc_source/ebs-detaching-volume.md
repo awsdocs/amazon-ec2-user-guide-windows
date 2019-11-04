@@ -15,7 +15,15 @@ You can reattach a volume that you detached \(without unmounting it\), but it mi
 
 **To detach an EBS volume using the console**
 
-1. Unmount the volume\. Choose **Disk Management**, right\-click the volume, and then choose **Change Drive Letter and Path**\. Select the mount point and choose **Remove**\.
+1. From your Windows instance, unmount the volume\.
+
+   1. Log in to your Windows instance using Remote Desktop\. For more information, see, [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+
+   1. Start the Disk Management utility\.
+
+      On Windows Server 2012 and later, on the taskbar, right\-click the Windows logo, and then choose **Disk Management**\. On Windows Server 2008, choose **Start**, **Administrative Tools**, **Computer Management**, **Disk Management**\.
+
+   1. Right\-click the disk \(for example, right\-click **Disk 1**\) and then choose **Offline**\. Wait for the disk status to change to **Offline** before opening the Amazon EC2 console\.
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 

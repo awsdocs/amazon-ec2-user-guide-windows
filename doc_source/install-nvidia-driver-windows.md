@@ -32,19 +32,53 @@ When you use P3 instances for graphics applications, you can use [AMIs published
 
 There are two ways that you can use NVIDIA GRID software for graphics applications on G4 instances\. You can use AMIs with GRID preinstalled or download the NVIDIA GRID vGaming driver from Amazon S3 and install it on your G4 instances\.
 
+If you own GRID licenses, you should be able to use those licenses on your G4 instances\. For more information, see [NVIDIA GRID Software Quick Start Guide](https://docs.nvidia.com/grid/latest/grid-software-quick-start-guide/)\.
+
 **Option 1: Use an AMI with GRID for your G4 instances**
 
 There are two types of AMIs available\.
 + NVIDIA Marketplace offerings featuring NVIDIA Quadro Virtual Workstation software\. These AMIs support running up to four 4K displays per GPU on a G4 instance\. To find these AMIs, use this link: [NVIDIA Marketplace offerings](http://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=g4dn.xlarge&searchTerms=NVIDIA%20Quadro)\.
 + NVIDIA Marketplace offerings featuring NVIDIA Gaming drivers\. These AMIs support running a single 4K display per GPU on a G4 instance\. To find these AMIs, use this link: [NVIDIA Marketplace offerings](http://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=g4dn.xlarge&searchTerms=NVIDIA%20Gaming)\.
 
-**Option 2: Download the NVIDIA GRID vGaming driver**  
-You can download the NVIDIA GRID driver from Amazon S3 using this link: [NVIDIA Windows Gaming Driver for G4 Instances](https://s3.amazonaws.com/nvidia-gaming/GRID-436.30-vGaming-Windows-Guest-Drivers.zip)\.
+**Option 2: Use the NVIDIA GRID vGaming driver**
 
-**Important**  
-This download is available to AWS customers only\. By downloading, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](http://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
+This driver is available to AWS customers only\. By downloading, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](http://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
 If you own GRID licenses, you should be able to use those licenses on your G4 instances\. For more information, see [NVIDIA GRID Software Quick Start Guide](https://docs.nvidia.com/grid/latest/grid-software-quick-start-guide/)\.
+
+Use the following procedure to install this driver\.
+
+1. Connect to your Windows instance\.
+
+1. Download and install the NVIDIA GRID driver from Amazon S3 using this link: [NVIDIA Windows Gaming Driver for G4 Instances](https://s3.amazonaws.com/nvidia-gaming/GRID-436.30-vGaming-Windows-Guest-Drivers.zip)\.
+
+1. Use the following steps to create the required configuration\.
+
+   1. Open the registry editor\.
+
+   1. In the left pane, navigate to **HKEY\_LOCAL\_MACHINE\\SOFTWARE\\NVIDIA Corporation\\Global**\.
+
+   1. In the right pane, right\-click and choose **New**, **DWORD \(32\-bit\) value**\.
+
+   1. Set the name to **vGamingMarketplace** and the value to 2\.
+
+1. Download the [certification file](https://s3.amazonaws.com/nvidia-gaming/GridSwCert-Windows.cert), rename the file `GridSwCert.txt`, and move the file to the Public Documents folder on your system drive\. Typically, the folder path is C:\\Users\\Public\\Public Documents \(Windows Explorer\) or C:\\Users\\Public\\Documents \(Command Prompt window\)\.
+
+1. Reboot your instance\.
+
+1. Verify the vGaming license using the following command\.
+
+   ```
+   "C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe" -q
+   ```
+
+   The output should be similar to the following\.
+
+   ```
+   GRID Licensed Product
+       Product Name              : GRID vGaming
+       License Status            : Licensed
+   ```
 
 ## NVIDIA GRID Drivers for G3 Instances<a name="nvidia-grid-g3"></a>
 
