@@ -241,6 +241,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2019\.11\.05 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.10\.09 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.09\.12 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) \.NET Core 2\.2, Mono 5\.18, and PowerShell 6\.2 pre\-installed to run your \.NET applications on Amazon Linux 2 with Long Term Support \(LTS\)  | 
 | 2019\.09\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) Previous versions of AMIs have been marked private\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  NLA is now enabled on all 2012 RTM, 2012 R2, and 2016 AMIs to increase default RDP security posture\. NLA remains enabled on 2019 AMIs\.  | 

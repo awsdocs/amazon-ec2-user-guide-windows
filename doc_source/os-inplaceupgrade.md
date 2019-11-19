@@ -177,7 +177,7 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 
 1. Install the latest version of the EC2Config service \(Windows 2012 R2 and earlier\) or EC2Launch \(Windows 2016 and later\)\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md) or [Installing the Latest Version of EC2Launch](ec2launch-download.md)\.
 
-1. Install Microsoft hotfix [KB2800213](http://support2.microsoft.com/default.aspx?scid=kb;EN-US;2800213)\.
+1. Install Microsoft hotfix [KB2800213](https://support.microsoft.com/en-us/help/2800213/high-cpu-usage-during-dst-changeover-in-windows-server-2008-windows-7)\.
 
 1. Install Microsoft hotfix [KB2922223](http://support.microsoft.com/en-us/kb/2922223)\.
 

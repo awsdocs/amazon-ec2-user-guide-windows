@@ -14,7 +14,7 @@ Amazon EC2 provides enhanced networking capabilities through the Elastic Network
 ## Requirements<a name="ena-requirements"></a>
 
 To prepare for enhanced networking using the ENA, set up your instance as follows:
-+ Select from the following supported instance types: C5, C5d, C5n, F1, G3, G4, H1, I3, I3en, `m4.16xlarge`, M5, M5a, M5ad, M5d, M5dn, M5n P2, P3, R4, R5, R5a, R5ad, R5d, R5dn, R5n, T3, T3a, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, X1, X1e, and z1d\.
++ Select from the following supported instance types: C5, C5d, C5n, F1, G3, G4, H1, I3, I3en, `m4.16xlarge`, M5, M5a, M5ad, M5d, M5dn, M5n, P2, P3, R4, R5, R5a, R5ad, R5d, R5dn, R5n, T3, T3a, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, X1, X1e, and z1d\.
 + Ensure that the instance has internet connectivity\.
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable\. If you have a recent backup, your data will still be retained if this happens\.
