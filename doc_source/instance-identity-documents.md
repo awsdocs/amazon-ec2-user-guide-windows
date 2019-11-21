@@ -1,6 +1,6 @@
 # Instance Identity Documents<a name="instance-identity-documents"></a>
 
-An instance identity document is a JSON file that describes an instance\. The instance identity document is accompanied by a signature and a PKCS7 signature which can be used to verify the accuracy, origin, and authenticity of the information provided in the document\. 
+An instance identity document is a JSON file that describes an instance\. The instance identity document is accompanied by a signature and a PKCS7 signature, which can be used to verify the accuracy, origin, and authenticity of the information provided in the document\. 
 
 The instance identity document is generated when the instance is launched, and exposed to the instance through [instance metadata](ec2-instance-metadata.md)\. It validates the attributes of the instances, such as the instance size, instance type, operating system, and AMI\. 
 
@@ -9,13 +9,13 @@ Due to the dynamic nature of instance identity documents and signatures, we reco
 
 ## Obtaining the Instance Identity Document and Signatures<a name="instance-identity-signatures"></a>
 
-To retrieve the instance identity document, use the following command from your running instance:
+To retrieve the instance identity document, use the following command from your running instance\.
 
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/dynamic/instance-identity/document
 ```
 
-The following is example output:
+The following is example output\.
 
 ```
 privateIp          : 10.0.2.174
@@ -34,13 +34,13 @@ pendingTime        : 2017-03-13T17:13:27Z
 region             : us-west-2
 ```
 
-To retrieve the instance identity signature, use the following command from your running instance:
+To retrieve the instance identity signature, use the following command from your running instance\.
 
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/dynamic/instance-identity/signature
 ```
 
-The following is example output:
+The following is example output\.
 
 ```
 dExamplesjNQhhJan7pORLpLSr7lJEF4V2DhKGlyoYVBoUYrY9njyBCmhEayaGrhtS/AWY+LPx
@@ -48,13 +48,13 @@ lVSQURF5n0gwPNCuO6ICT0fNrm5IH7w9ydyaexamplejJw8XvWPxbuRkcN0TAA1p4RtCAqm4ms
 x2oALjWSCBExample=
 ```
 
-To retrieve the PKCS7 signature, use the following command from your running instance:
+To retrieve the PKCS7 signature, use the following command from your running instance\.
 
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/dynamic/instance-identity/pkcs7
 ```
 
-The following is example output:
+The following is example output\.
 
 ```
 MIICiTCCAfICCQD6m7oRw0uXOjANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMC
