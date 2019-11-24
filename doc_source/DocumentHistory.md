@@ -7,6 +7,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Feature | API Version | Description | Release Date | 
 | --- | --- | --- | --- | 
+| Dedicated Host | 2016\-11\-15 | You can configure a Dedicated Host to support multiple instance types in an instance family\. For more information, see [Working with Dedicated Hosts](how-dedicated-hosts-work.md)\. | 21 November 2019 | 
 | Amazon EBS fast snapshot restore | 2016\-11\-15 | You can enable fast snapshot restores on an EBS snapshot to ensure that EBS volumes created from the snapshot are fully\-initialized at creation and instantly deliver all of their provisioned performance\. For more information, see [Amazon EBS Fast Snapshot Restore](ebs-fast-snapshot-restore.md)\. | 20 November 2019 | 
 | Instance Metadata Service Version 2 | 2016\-11\-15 | You can use Instance Metadata Service Version 2, which is a session\-oriented method for requesting instance metadata\. For more information, see [Configuring the Instance Metadata Service](ec2-instance-metadata.md#configuring-instance-metadata-service)\. | 19 November 2019 | 
 | Hibernation support for On\-Demand Windows instances | 2016\-11\-15 | You can hibernate On\-Demand Windows instances\. For more information about supported Windows AMIs, see [Hibernation Prerequisites](Hibernate.md#hibernating-prerequisites)\. | 14 October 2019 | 

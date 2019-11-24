@@ -6,7 +6,7 @@ For more information about EBS and NVMe, see [Amazon EBS and NVMe on Windows Ins
 
 ## Installing or Upgrading AWS NVMe Drivers<a name="install-nvme-drivers"></a>
 
-If you are not using the latest AWS Windows AMIs provided by Amazon, use the following procedure to install the current AWS NVMe driver\.
+If you are not using the latest AWS Windows AMIs provided by Amazon, use the following procedure to install the current AWS NVMe driver\. You should perform this update at a time when it is convenient to reboot your instance\. Either the install script will reboot your instance or you must reboot it as the final step\.
 
 **To download and install the latest AWS NVMe driver**
 
@@ -18,7 +18,7 @@ If you are not using the latest AWS Windows AMIs provided by Amazon, use the fol
 
 1. Install the driver by running the `install.ps1` PowerShell script\.
 
-1. If the installer does not reboot your instance for you, restart the instance\.
+1. If the installer does not reboot your instance, reboot the instance\.
 
 ## AWS NVMe Driver Version History<a name="nvme-driver-version-history"></a>
 

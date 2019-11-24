@@ -1,11 +1,8 @@
-# Network and Security<a name="ec2-network-and-security"></a>
+# Networking in Amazon EC2<a name="ec2-networking"></a>
 
-Amazon EC2 provides the following network and security features\.
+Amazon EC2 provides the following networking features\.
 
 **Topics**
-+ [Amazon EC2 Key Pairs and Windows Instances](ec2-key-pairs.md)
-+ [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)
-+ [Identity and Access Management for Amazon EC2](security-iam.md)
 + [Amazon EC2 Instance IP Addressing](using-instance-addressing.md)
 + [Bring Your Own IP Addresses \(BYOIP\)](ec2-byoip.md)
 + [Elastic IP Addresses](elastic-ip-addresses-eip.md)
