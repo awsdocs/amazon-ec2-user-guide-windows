@@ -127,7 +127,7 @@ Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure y
   PS C:\> $PSVersionTable.PSVersion
   ```
 
-  If you need to install version 2\.0, see [Windows Management Framework \(Windows PowerShell 2\.0, WinRM 2\.0, and BITS 4\.0\)](http://support2.microsoft.com/kb/968929/en-us) from Microsoft Support\.
+  If you need to install version 2\.0, see [Windows Management Framework Core Package \(Windows PowerShell 2\.0 and WinRM\)](http://support2.microsoft.com/kb/968929/en-us) from Microsoft Support\.
 + Back up your important information on the instance, or create an AMI from the instance\. For more information about creating an AMI, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. If you create an AMI, make sure that you do the following:
   + Write down your password\.
   + Do not run the Sysprep tool manually or using the EC2Config service\.

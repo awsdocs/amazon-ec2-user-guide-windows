@@ -21,6 +21,7 @@ Each instance type provides higher or lower minimum performance from a shared re
 + [Windows Accelerated Computing Instances](accelerated-computing-instances.md)
 + [Finding an Instance Type](instance-discovery.md)
 + [Changing the Instance Type](ec2-instance-resize.md)
++ [Getting Recommendations for an Instance Type](ec2-instance-recommendations.md)
 
 ## Available Instance Types<a name="AvailableInstanceTypes"></a>
 

@@ -140,6 +140,7 @@ Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The f
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+|  [2\.1\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.4/AwsEnaNetworkDriver.zip)  |  Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | November 2019 | 
 |  [2\.1\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.2/AwsEnaNetworkDriver.zip)  | New Features [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | November 2019 | 
 |  [2\.1\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.1/AwsEnaNetworkDriver.zip)  | Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | September 2019 | 
 |  [2\.1\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.0/AwsEnaNetworkDriver.zip)  | ENA Windows driver v2\.1 introduces new ENA device capabilities, provides a performance boost, adds new features, and includes multiple stability improvements\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | July 2019 | 

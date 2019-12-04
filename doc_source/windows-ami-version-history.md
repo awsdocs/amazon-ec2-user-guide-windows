@@ -37,7 +37,7 @@ For information about other customizations, see [Configuration Changes for AWS W
 + [Issue with the Hibernate Agent \(2018\.03\.16 AMIs\)](#ec2hibernateagent-2018-03-16)
 + [AMIs for STIG Compliance](ami-windows-stig.md)
   + [Core and Base Operating System](ami-windows-stig.md#base-os-stig)
-  + [Internet Explorer \(IE\) 11 Using STIG V1 Release 17](ami-windows-stig.md#ie-os-stig)
+  + [Internet Explorer \(IE\) 11 Using STIG V1 Release 18](ami-windows-stig.md#ie-os-stig)
   + [Microsoft \.NET Framework 4\.0 Using STIG V1 Release 8: STIGS Not Applied](ami-windows-stig.md#dotnet-os-stig)
 
 ## Updating Your Windows Instance<a name="update-windows-instance"></a>

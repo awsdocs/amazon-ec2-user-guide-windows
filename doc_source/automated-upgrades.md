@@ -118,7 +118,7 @@ After you have verified the additional prerequisite tasks, follow these steps to
 
      **Type:** String
 
-     \(Required\) The instance running Windows Server 2012 R2\.
+     \(Required\) The instance running Windows Server 2008 R2\.
    + `InstanceProfile`\. 
 
      **Type:** String
