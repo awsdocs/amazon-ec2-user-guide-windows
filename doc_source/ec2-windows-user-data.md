@@ -166,7 +166,7 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 
 ## User Data and the Tools for Windows PowerShell<a name="user-data-powershell"></a>
 
-You can use the Tools for Windows PowerShell to specify, modify, and view the user data for your instance\. For information about viewing user data from your instance using instance metadata, see [Retrieve Instance User Data](ec2-instance-metadata.md#instancedata-user-data-retrieval)\. For information about user data and the AWS CLI, see [User Data and the AWS CLI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-api-cli) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can use the Tools for Windows PowerShell to specify, modify, and view the user data for your instance\. For information about viewing user data from your instance using instance metadata, see [Retrieve Instance User Data](instancedata-add-user-data.md#instancedata-user-data-retrieval)\. For information about user data and the AWS CLI, see [User Data and the AWS CLI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-api-cli) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Example: Specify Instance User Data at Launch**  
 Create a text file with the instance user data\. To execute user data scripts every time you reboot or start the instance, add `<persist>true</persist>`, as shown in the following example:

@@ -106,7 +106,7 @@ For more information about specifying CPU options, see [Optimizing CPU Options](
 
 ## Instance Performance<a name="gpu-instance-performance"></a>
 
-EBS\-optimized instances enable you to get consistently high performance for your EBS volumes by eliminating contention between Amazon EBS I/O and other network traffic from your instance\. Some accelerated computing instances are EBS\-optimized by default at no additional cost\. For more information, see [Amazon EBS–Optimized Instances](EBSOptimized.md)\.
+EBS\-optimized instances enable you to get consistently high performance for your EBS volumes by eliminating contention between Amazon EBS I/O and other network traffic from your instance\. Some accelerated computing instances are EBS\-optimized by default at no additional cost\. For more information, see [Amazon EBS–Optimized Instances](ebs-optimized.md)\.
 
 ## Network Performance<a name="gpu-network-performance"></a>
 

@@ -11,8 +11,8 @@ You can generate screenshots while the instance is running or after it has crash
 + US East \(Ohio\) Region
 + US West \(Oregon\) Region
 + US West \(N\. California\) Region
-+ EU \(Ireland\) Region
-+ EU \(Frankfurt\) Region
++ Europe \(Ireland\) Region
++ Europe \(Frankfurt\) Region
 +  Asia Pacific \(Tokyo\) Region
 + Asia Pacific \(Seoul\) Region
 + Asia Pacific \(Singapore\) Region
@@ -20,8 +20,8 @@ You can generate screenshots while the instance is running or after it has crash
 + South America \(São Paulo\) Region\)
 + Asia Pacific \(Mumbai\) Region
 + Canada \(Central\) Region\)
-+ EU \(London\) Region
-+ EU \(Paris\) Region
++ Europe \(London\) Region
++ Europe \(Paris\) Region
 
 **To get a screenshot of a running instance using the console**
 

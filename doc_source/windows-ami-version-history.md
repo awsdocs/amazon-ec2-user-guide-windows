@@ -38,7 +38,9 @@ For information about other customizations, see [Configuration Changes for AWS W
 + [AMIs for STIG Compliance](ami-windows-stig.md)
   + [Core and Base Operating System](ami-windows-stig.md#base-os-stig)
   + [Internet Explorer \(IE\) 11 Using STIG V1 Release 18](ami-windows-stig.md#ie-os-stig)
-  + [Microsoft \.NET Framework 4\.0 Using STIG V1 Release 8: STIGS Not Applied](ami-windows-stig.md#dotnet-os-stig)
+  + [Microsoft \.NET Framework 4\.0 Using STIG V1 Release 9: STIGS Not Applied](ami-windows-stig.md#dotnet-os-stig)
+  + [Windows Firewall STIG V1 Release 7](ami-windows-stig.md#windows-firewall-stig)
+  + [Version History](ami-windows-stig.md#stig-version-history)
 
 ## Updating Your Windows Instance<a name="update-windows-instance"></a>
 

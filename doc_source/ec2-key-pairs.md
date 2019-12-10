@@ -161,7 +161,7 @@ BQoQzd8v7yeb7OzlPnWOyN0qFU0XA246RA8QFYiCNYwI3f05p6KLxEXAMPLE my-key-pair
 
 If you change the key pair that you use to connect to the instance, we don't update the instance metadata to show the new public key; you'll continue to see the public key for the key pair you specified when you launched the instance in the instance metadata\.
 
-For more information, see [Retrieving Instance Metadata](ec2-instance-metadata.md#instancedata-data-retrieval)\.
+For more information, see [Retrieving Instance Metadata](instancedata-data-retrieval.md)\.
 
 ## Verifying Your Key Pair's Fingerprint<a name="verify-key-pair-fingerprints"></a>
 

@@ -1,10 +1,10 @@
-# Amazon EBS Volume Types<a name="EBSVolumeTypes"></a>
+# Amazon EBS Volume Types<a name="ebs-volume-types"></a>
 
 Amazon EBS provides the following volume types, which differ in performance characteristics and price, so that you can tailor your storage performance and cost to the needs of your applications\. The volumes types fall into two categories:
 + SSD\-backed volumes optimized for transactional workloads involving frequent read/write operations with small I/O size, where the dominant performance attribute is IOPS
 + HDD\-backed volumes optimized for large streaming workloads where throughput \(measured in MiB/s\) is a better performance measure than IOPS
 
-There are several factors that can affect the performance of EBS volumes, such as instance configuration, I/O characteristics, and workload demand\. For more information about getting the most out of your EBS volumes, see [Amazon EBS Volume Performance on Linux Instances](EBSPerformance.md)\.
+There are several factors that can affect the performance of EBS volumes, such as instance configuration, I/O characteristics, and workload demand\. For more information about getting the most out of your EBS volumes, see [Amazon EBS Volume Performance on Windows Instances](EBSPerformance.md)\.
 
 For more information about pricing, see [Amazon EBS Pricing](http://aws.amazon.com/ebs/pricing/)\.
 
@@ -17,7 +17,7 @@ The following table describes the use cases and performance characteristics for 
 | --- | --- | --- | 
 | Volume Type | General Purpose SSD \(gp2\) | Provisioned IOPS SSD \(io1\) | Throughput Optimized HDD \(st1\) | Cold HDD \(sc1\) | 
 | Description | General purpose SSD volume that balances price and performance for a wide variety of workloads | Highest\-performance SSD volume for mission\-critical low\-latency or high\-throughput workloads  | Low\-cost HDD volume designed for frequently accessed, throughput\-intensive workloads | Lowest cost HDD volume designed for less frequently accessed workloads | 
-| Use Cases |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)  | 
+| Use Cases |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-volume-types.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-volume-types.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-volume-types.html)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-volume-types.html)  | 
 | API Name | gp2 | io1 | st1 | sc1 | 
 | Volume Size | 1 GiB \- 16 TiB  | 4 GiB \- 16 TiB  | 500 GiB \- 16 TiB | 500 GiB \- 16 TiB  | 
 | Max IOPS per Volume | 16,000 \(16 KiB I/O\) \* | 64,000 \(16 KiB I/O\) † | 500 \(1 MiB I/O\) | 250 \(1 MiB I/O\) | 
@@ -30,7 +30,7 @@ The following table describes the use cases and performance characteristics for 
 
 † Maximum IOPS and throughput are guaranteed only on [Nitro\-based Instances](instance-types.md#ec2-nitro-instances)\. Other instances guarantee up to 32,000 IOPS and 500 MiB/s\. Older `io1` volumes might not reach full performance unless you modify the volume\. For more information, see [Amazon EBS Elastic Volumes](ebs-modify-volume.md)\.
 
-†† To achieve this throughput, you must have an instance that supports [EBS optimization](EBSOptimized.md)\.
+†† To achieve this throughput, you must have an instance that supports [EBS optimization](ebs-optimized.md)\.
 
 ### Previous Generation Volume Types<a name="ebs-previous-generation-volumes"></a>
 
@@ -57,11 +57,11 @@ General Purpose SSD \(`gp2`\) volumes offer cost\-effective storage that is idea
 
 The performance of `gp2` volumes is tied to volume size, which determines the baseline performance level of the volume and how quickly it accumulates I/O credits; larger volumes have higher baseline performance levels and accumulate I/O credits faster\. I/O credits represent the available bandwidth that your `gp2` volume can use to burst large amounts of I/O when more than the baseline performance is needed\. The more credits your volume has for I/O, the more time it can burst beyond its baseline performance level and the better it performs when more performance is needed\. The following diagram shows the burst\-bucket behavior for `gp2`\.
 
-![\[gp2 burst bucket\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/gp2-burst-bucket.png)
+![\[gp2 burst bucket\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/gp2-burst-bucket.png)
 
 Each volume receives an initial I/O credit balance of 5\.4 million I/O credits, which is enough to sustain the maximum burst performance of 3,000 IOPS for 30 minutes\. This initial credit balance is designed to provide a fast initial boot cycle for boot volumes and to provide a good bootstrapping experience for other applications\. Volumes earn I/O credits at the baseline performance rate of 3 IOPS per GiB of volume size\. For example, a 100 GiB `gp2` volume has a baseline performance of 300 IOPS\.
 
-![\[Comparing baseline performance and burst IOPS\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/gp2_iops_1.png)
+![\[Comparing baseline performance and burst IOPS\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/gp2_iops_1.png)
 
 When your volume requires more than the baseline performance I/O level, it draws on I/O credits in the credit balance to burst to the required performance level, up to a maximum of 3,000 IOPS\. When your volume uses fewer I/O credits than it earns in a second, unused I/O credits are added to the I/O credit balance\. The maximum I/O credit balance for a volume is equal to the initial credit balance \(5\.4 million I/O credits\)\.
 
@@ -147,7 +147,7 @@ An `io1` volume can range in size from 4 GiB to 16 TiB\. You can provision from 
 
 An `io1` volume provisioned with up to 32,000 IOPS supports a maximum I/O size of 256 KiB and yields as much as 500 MiB/s of throughput\. With the I/O size at the maximum, peak throughput is reached at 2,000 IOPS\. A volume provisioned with more than 32,000 IOPS \(up to the cap of 64,000 IOPS\) supports a maximum I/O size of 16 KiB and yields as much as 1,000 MiB/s of throughput\. The following graph illustrates these performance characteristics:
 
-![\[Throughput limits for io1 volumes\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/io1_throughput.png)
+![\[Throughput limits for io1 volumes\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/io1_throughput.png)
 
 Your per\-I/O latency experience depends on the IOPS provisioned and your workload pattern\. For the best per\-I/O latency experience, we recommend that you provision an IOPS\-to\-GiB ratio greater than 2:1\. For example, a 2,000 IOPS volume should be smaller than 1,000 GiB\.
 
@@ -168,7 +168,7 @@ Like `gp2`, `st1` uses a burst\-bucket model for performance\. Volume size deter
 
 The following diagram shows the burst\-bucket behavior for `st1`\.
 
-![\[st1 burst bucket\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/st1-burst-bucket.png)
+![\[st1 burst bucket\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/st1-burst-bucket.png)
 
 Subject to throughput and throughput\-credit caps, the available throughput of an `st1` volume is expressed by the following formula:
 
@@ -222,7 +222,7 @@ The following table states the full range of base and burst throughput values fo
 
 The following diagram plots the table values:
 
-![\[Comparing st1 base and burst throughput\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/st1_base_v_burst.png)
+![\[Comparing st1 base and burst throughput\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/st1_base_v_burst.png)
 
 **Note**  
 When you create a snapshot of a Throughput Optimized HDD \(`st1`\) volume, performance may drop as far as the volume's baseline value while the snapshot is in progress\.
@@ -242,7 +242,7 @@ This volume type is optimized for workloads involving large, sequential I/O, and
 
 Like `gp2`, `sc1` uses a burst\-bucket model for performance\. Volume size determines the baseline throughput of your volume, which is the rate at which the volume accumulates throughput credits\. Volume size also determines the burst throughput of your volume, which is the rate at which you can spend credits when they are available\. Larger volumes have higher baseline and burst throughput\. The more credits your volume has, the longer it can drive I/O at the burst level\.
 
-![\[sc1 burst bucket\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/sc1-burst-bucket.png)
+![\[sc1 burst bucket\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/sc1-burst-bucket.png)
 
 Subject to throughput and throughput\-credit caps, the available throughput of an `sc1` volume is expressed by the following formula:
 
@@ -296,7 +296,7 @@ The following table states the full range of base and burst throughput values fo
 
 The following diagram plots the table values:
 
-![\[Comparing sc1 base and burst throughput\]](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/sc1_base_v_burst.png)
+![\[Comparing sc1 base and burst throughput\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/sc1_base_v_burst.png)
 
 **Note**  
 When you create a snapshot of a Cold HDD \(`sc1`\) volume, performance may drop as far as the volume's baseline value while the snapshot is in progress\.
@@ -394,7 +394,7 @@ Throughput for `st1` and `sc1` volumes is always determined by the smaller of th
 + Throughput limits of the volume
 + Throughput limits of the instance
 
-As for all Amazon EBS volumes, we recommend that you select an appropriate EBS\-optimized EC2 instance in order to avoid network bottlenecks\. For more information, see [Amazon EBS–Optimized Instances](EBSOptimized.md)\.
+As for all Amazon EBS volumes, we recommend that you select an appropriate EBS\-optimized EC2 instance in order to avoid network bottlenecks\. For more information, see [Amazon EBS–Optimized Instances](ebs-optimized.md)\.
 
 ## Monitoring the Burst Bucket Balance for `gp2`, `st1`, and `sc1` Volumes<a name="monitoring_burstbucket"></a>
 

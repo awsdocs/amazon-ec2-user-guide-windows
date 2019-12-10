@@ -25,7 +25,7 @@ EC2Config runs initial startup tasks when the instance is first started and then
 + Set a random, encrypted password for the administrator account\.
 + Generate and install the host certificate used for Remote Desktop Connection\.
 + Dynamically extend the operating system partition to include any unpartitioned space\.
-+ Execute the specified user data \(and Cloud\-Init, if it's installed\)\. For more information about specifying user data, see [Working with Instance User Data](ec2-instance-metadata.md#instancedata-add-user-data)\.
++ Execute the specified user data \(and Cloud\-Init, if it's installed\)\. For more information about specifying user data, see [Working with Instance User Data](instancedata-add-user-data.md)\.
 
 EC2Config performs the following tasks every time the instance starts:
 + Change the host name to match the private IP address in Hex notation \(this task is disabled by default and must be enabled in order to run at instance start\)\.

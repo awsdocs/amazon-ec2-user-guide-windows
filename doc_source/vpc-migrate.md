@@ -64,7 +64,7 @@ For more information, see [Creating a Custom Windows AMI](Creating_EBSbacked_Win
 You can create an Amazon EBS volume and use it to back up and store the data on your instance—like you would use a physical hard drive\. Amazon EBS volumes can be attached and detached from any instance in the same Availability Zone\. You can detach a volume from your instance in EC2\-Classic, and attach it to a new instance that you launch into your VPC in the same Availability Zone\. 
 
 For more information about Amazon EBS volumes, see the following topics:
-+ [Amazon EBS Volumes](EBSVolumes.md)
++ [Amazon EBS Volumes](ebs-volumes.md)
 + [Creating an Amazon EBS Volume](ebs-creating-volume.md)
 + [Attaching an Amazon EBS Volume to an Instance](ebs-attaching-volume.md)
 
@@ -216,7 +216,7 @@ For more information, see [Creating a Custom Windows AMI](Creating_EBSbacked_Win
 You can create an Amazon EBS volume and use it to back up and store the data on your instance—like you would use a physical hard drive\. Amazon EBS volumes can be attached and detached from any instance in the same Availability Zone\. You can detach a volume from your instance in EC2\-Classic, and attach it to a new instance that you launch into your VPC in the same Availability Zone\. 
 
 For more information about Amazon EBS volumes, see the following topics:
-+ [Amazon EBS Volumes](EBSVolumes.md)
++ [Amazon EBS Volumes](ebs-volumes.md)
 + [Creating an Amazon EBS Volume](ebs-creating-volume.md)
 + [Attaching an Amazon EBS Volume to an Instance](ebs-attaching-volume.md)
 
