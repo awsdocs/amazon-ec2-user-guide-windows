@@ -4,7 +4,7 @@ Windows AMIs starting with Windows Server 2016 include a set of Windows Powershe
 
 To download and install the latest version of EC2Launch, see [Installing the Latest Version of EC2Launch](ec2launch-download.md)\.
 
-The following table describes the released versions of EC2Launch\.
+The following table describes the released versions of EC2Launch\. Note that the version format changed after version 1\.3\.610\.
 
 
 | Version | Details | 

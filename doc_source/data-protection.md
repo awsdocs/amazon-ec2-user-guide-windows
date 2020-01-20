@@ -17,6 +17,8 @@ For more information about data protection, see the [AWS Shared Responsibility M
 
 Amazon EBS encryption is an encryption solution for your EBS volumes and snapshots\. It uses AWS Key Management Service \(AWS KMS\) customer master keys \(CMK\)\. For more information, see [Amazon EBS Encryption](EBSEncryption.md)\.
 
+Customers can also use Microsoft EFS and NTFS permissions for folder\- and file\-level encryption\.
+
 The data on NVMe instance store volumes is encrypted using an XTS\-AES\-256 cipher implemented on a hardware module on the instance\. The encryption keys are generated using the hardware module and are unique to each NVMe instance storage device\. All encryption keys are destroyed when the instance is stopped or terminated and cannot be recovered\. You cannot disable this encryption and you cannot provide your own encryption key\.
 
 ## Encryption in Transit<a name="encryption-transit"></a>
@@ -26,3 +28,5 @@ AWS provides secure and private connectivity between EC2 instances\. In addition
 RDP provides a secure communications channel for remote access to your Windows instances\. Remote access to your instances using AWS Systems Manager Session Manager and Run Command is encrypted using TLS 1\.2, and requests to create a connection are signed using SigV4\.
 
 Use an encryption protocol such as Transport Layer Security \(TLS\) to encrypt sensitive data in transit between clients and your instances\.
+
+Make sure to allow only encrypted connections between EC2 instances and the AWS API endpoints or other sensitive remote network services\. This can be enforced through the use of outbound security group or [Windows Firewall](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) rules\.

@@ -134,19 +134,13 @@ For more information, see the following:
 + [Placement Groups](placement-groups.md)
 
 ## Release Notes<a name="compute-instance-limits"></a>
++ C5 and C5d instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor from either the first generation \(Skylake\-SP\) or second generation \(Cascade Lake\)\.
 + C4, C5, C5d, and C5n instances require 64\-bit EBS\-backed HVM AMIs\. They have high\-memory and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
 + C5, C5d, and C5n instances have the following requirements:
-  + NVMe drivers must be installed\. EBS volumes are exposed as [NVMe block devices](nvme-ebs-volumes.md)\.
-  + Elastic Network Adapter \([ENA](enhanced-networking-ena.md)\) drivers must be installed\.
+  + [NVMe drivers](nvme-ebs-volumes.md) must be installed
+  + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
-  The following AMIs meet these requirements:
-  + Amazon Linux 2
-  + Amazon Linux AMI 2018\.03
-  + Ubuntu 14\.04 \(with `linux-aws` kernel\) or later
-  + Red Hat Enterprise Linux 7\.4 or later
-  + SUSE Linux Enterprise Server 12 SP2 or later
-  + CentOS 7\.4\.1708 or later
-  + FreeBSD 11\.1 or later
+  The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
 + C5, C5d, and C5n instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. Every instance has at least one network interface attachment\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.

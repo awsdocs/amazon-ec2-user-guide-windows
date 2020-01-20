@@ -36,7 +36,7 @@ To check whether an instance has the enhanced networking `sriovNetSupport` attri
   Get-EC2InstanceAttribute -InstanceId instance-id -Attribute sriovNetSupport
   ```
 
-If the attribute isn't set, `SriovNetSupport` is empty\. Otherwise, it is set as shown in the following\.
+If the attribute isn't set, `SriovNetSupport` is empty\. If the attribute is set, the value is simple, as shown in the following example output\.
 
 ```
 "SriovNetSupport": {
@@ -46,26 +46,18 @@ If the attribute isn't set, `SriovNetSupport` is empty\. Otherwise, it is set as
 
 **Image Attribute \(sriovNetSupport\)**  
 To check whether an AMI already has the enhanced networking `sriovNetSupport` attribute set, use one of the following commands:
-+ [describe\-image\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html) \(AWS CLI\)
++ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI\)
 
   ```
-  aws ec2 describe-image-attribute --image-id ami_id --attribute sriovNetSupport
+  aws ec2 describe-images --image-id ami_id --query "Images[].SriovNetSupport"
   ```
-
-  This command only works for images that you own\. You receive an `AuthFailure` error for images that do not belong to your account\.
-+ [Get\-EC2ImageAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ImageAttribute.html) \(AWS Tools for Windows PowerShell\)
++ [Get\-EC2Image](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Image.html) \(AWS Tools for Windows PowerShell\)
 
   ```
-  Get-EC2ImageAttribute -ImageId ami-id -Attribute sriovNetSupport
+  (Get-EC2Image -ImageId ami-id).SriovNetSupport
   ```
 
-If the attribute isn't set, `SriovNetSupport` is empty; otherwise, it is set as follows:
-
-```
-"SriovNetSupport": {
-    "Value": "simple"
-},
-```
+If the attribute isn't set, `SriovNetSupport` is empty\. If the attribute is set, the value is simple\.
 
 ## Enabling Enhanced Networking on Windows<a name="enable-enhanced-networking"></a>
 

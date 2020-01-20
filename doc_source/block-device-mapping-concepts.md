@@ -333,6 +333,23 @@ The `ami` device is the root device as seen by the instance\. The instance store
 
 To get details about an individual block device in the block device mapping, append its name to the previous query, as shown here\.
 
+------
+#### [ IMDSv2 ]
+
+```
+[ec2-user ~]$ TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
+&& curl -H "X-aws-ec2-metadata-token: $TOKEN" –v http://169.254.169.254/latest/meta-data/block-device-mapping/ephemeral0
+```
+
+------
+#### [ IMDSv1 ]
+
+```
+[ec2-user ~]$ curl http://169.254.169.254/latest/meta-data/block-device-mapping/ephemeral0
+```
+
+------
+
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/block-device-mapping/ephemeral0
 ```

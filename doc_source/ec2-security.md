@@ -8,6 +8,8 @@ Security is a shared responsibility between AWS and you\. The [shared responsibi
 
 This documentation helps you understand how to apply the shared responsibility model when using Amazon EC2\. It shows you how to configure Amazon EC2 to meet your security and compliance objectives\. You also learn how to use other AWS services that help you to monitor and secure your Amazon EC2 resources\.
 
+For security best practices for Amazon EC2 running Windows Server, see **Security and Network** under [Best Practices for Windows on Amazon EC2](ec2-best-practices.md)\.
+
 **Topics**
 + [Infrastructure Security in Amazon EC2](infrastructure-security.md)
 + [Resilience in Amazon EC2](disaster-recovery-resiliency.md)
@@ -15,5 +17,8 @@ This documentation helps you understand how to apply the shared responsibility m
 + [Identity and Access Management for Amazon EC2](security-iam.md)
 + [Amazon EC2 Key Pairs and Windows Instances](ec2-key-pairs.md)
 + [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)
++ [Configuration Management in Amazon EC2](configuration-management.md)
 + [Update Management in Amazon EC2](update-management.md)
++ [Change Management in Amazon EC2](change-management.md)
 + [Compliance Validation for Amazon EC2](compliance-validation.md)
++ [Audit and Accountability in Amazon EC2](audit-accountabilityt.md)

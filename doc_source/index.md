@@ -1,7 +1,7 @@
 # Amazon Elastic Compute Cloud User Guide for Windows Instances
 
 -----
-*****Copyright &copy; 2019 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2020 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -56,8 +56,8 @@ Amazon's trademarks and trade dress may not be used in
       + [Memory Optimized Instances](memory-optimized-instances.md)
       + [Storage Optimized Instances](storage-optimized-instances.md)
       + [Windows Accelerated Computing Instances](accelerated-computing-instances.md)
-         + [Installing the NVIDIA Driver on Windows](install-nvidia-driver-windows.md)
-         + [Activate NVIDIA GRID Virtual Applications on G3 Instances](activate_grid.md)
+         + [Installing NVIDIA Drivers on Windows Instances](install-nvidia-driver.md)
+         + [Activate NVIDIA GRID Virtual Applications](activate_grid.md)
          + [Optimizing GPU Settings](optimize_gpu.md)
       + [Finding an Instance Type](instance-discovery.md)
       + [Changing the Instance Type](ec2-instance-resize.md)
@@ -211,8 +211,11 @@ Amazon's trademarks and trade dress may not be used in
    + [Amazon EC2 Key Pairs and Windows Instances](ec2-key-pairs.md)
    + [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)
       + [Security Group Rules Reference](security-group-rules-reference.md)
+   + [Configuration Management in Amazon EC2](configuration-management.md)
    + [Update Management in Amazon EC2](update-management.md)
+   + [Change Management in Amazon EC2](change-management.md)
    + [Compliance Validation for Amazon EC2](compliance-validation.md)
+   + [Audit and Accountability in Amazon EC2](audit-accountabilityt.md)
 + [Storage](Storage.md)
    + [Amazon Elastic Block Store (Amazon EBS)](AmazonEBS.md)
       + [Amazon EBS Volumes](ebs-volumes.md)

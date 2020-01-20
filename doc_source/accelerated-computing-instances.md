@@ -1,15 +1,10 @@
 # Windows Accelerated Computing Instances<a name="accelerated-computing-instances"></a>
 
-If you require high processing capability, you'll benefit from using accelerated computing instances, which provide access to hardware\-based compute accelerators such as Graphics Processing Units \(GPUs\) or Field Programmable Gate Arrays \(FPGAs\)\. Accelerated computing instances enable more parallelism for higher throughput on compute\-intensive workloads\.
+If you require high processing capability, you'll benefit from using accelerated computing instances, which provide access to hardware\-based compute accelerators such as Graphics Processing Units \(GPUs\)\. Accelerated computing instances enable more parallelism for higher throughput on compute\-intensive workloads\.
 
 GPU\-based instances provide access to NVIDIA GPUs with thousands of compute cores\. You can use GPU\-based accelerated computing instances to accelerate scientific, engineering, and rendering applications by leveraging the CUDA or Open Computing Language \(OpenCL\) parallel computing frameworks\. You can also use them for graphics applications, including game streaming, 3\-D application streaming, and other graphics workloads\.
 
 If your application needs a small amount of additional graphics acceleration, but is better suited for an instance type with different compute, memory, or storage specifications, use an Elastic Graphics accelerator instead\. For more information, see [Amazon Elastic Graphics](elastic-graphics.md)\.
-
-FPGA\-based instances provide access to large FPGAs with millions of parallel system logic cells\. You can use FPGA\-based accelerated computing instances to accelerate workloads such as genomics, financial analysis, real\-time video processing, big data analysis, and security workloads by leveraging custom hardware accelerations\. You can develop these accelerations using hardware description languages such as Verilog or VHDL, or by using higher\-level languages such as OpenCL parallel computing frameworks\. You can either develop your own hardware acceleration code or purchase hardware accelerations through the [AWS Marketplace](https://aws.amazon.com/marketplace/)\.
-
-**Important**  
-FPGA\-based instances do not support Microsoft Windows\.
 
 You can cluster accelerated computing instances into a cluster placement group\. Cluster placement groups provide low latency and high\-bandwidth connectivity between the instances within a single Availability Zone\. For more information, see [Placement Groups](placement-groups.md)\.
 
@@ -20,9 +15,8 @@ You can cluster accelerated computing instances into a cluster placement group\.
 + [Network Performance](#gpu-network-performance)
 + [Instance Features](#gpu-instances-features)
 + [Release Notes](#gpu-instance-current-limitations)
-+ [AMIs for GPU\-Based Accelerated Computing Instances](#gpu-operating-systems)
-+ [Installing the NVIDIA Driver on Windows](install-nvidia-driver-windows.md)
-+ [Activate NVIDIA GRID Virtual Applications on G3 Instances](activate_grid.md)
++ [Installing NVIDIA Drivers on Windows Instances](install-nvidia-driver.md)
++ [Activate NVIDIA GRID Virtual Applications](activate_grid.md)
 + [Optimizing GPU Settings](optimize_gpu.md)
 
 For information about Linux accelerated computing instances, see [Linux Accelerated Computing Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/accelerated-computing-instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
@@ -65,7 +59,7 @@ G4 instances support NVIDIA GRID Virtual Workstation\. For more information, see
 **G3 Instances**  
 G3 instances use NVIDIA Tesla M60 GPUs and provide a cost\-effective, high\-performance platform for graphics applications using DirectX or OpenGL\. G3 instances also provide NVIDIA GRID Virtual Workstation features, such as support for four monitors with resolutions up to 4096x2160, and NVIDIA GRID Virtual Applications\. G3 instances are well\-suited for applications such as 3D visualizations, graphics\-intensive remote workstations, 3D rendering, video encoding, virtual reality, and other server\-side graphics workloads requiring massively parallel processing power\. 
 
-G3 instances support NVIDIA GRID Virtual Workstation and NVIDIA GRID Virtual Applications\. To activate either of these features, see [Activate NVIDIA GRID Virtual Applications on G3 Instances](activate_grid.md)\.
+G3 instances support NVIDIA GRID Virtual Workstation and NVIDIA GRID Virtual Applications\. To activate either of these features, see [Activate NVIDIA GRID Virtual Applications](activate_grid.md)\.
 <a name="g2-instances"></a>
 **G2 Instances**  
 G2 instances use NVIDIA GRID K520 GPUs and provide a cost\-effective, high\-performance platform for graphics applications using DirectX or OpenGL\. NVIDIA GRID GPUs also support NVIDIA’s fast capture and encode API operations\. Example applications include video creation services, 3D visualizations, streaming graphics\-intensive applications, and other server\-side graphics workloads\.
@@ -152,38 +146,12 @@ For more information, see the following:
 ## Release Notes<a name="gpu-instance-current-limitations"></a>
 + You must launch the instance using an HVM AMI\.
 + The following are requirements for G4 instances:
-  + NVMe drivers must be installed\. EBS volumes are exposed as [NVMe block devices](nvme-ebs-volumes.md)\.
-  + Elastic Network Adapter \([ENA](enhanced-networking-ena.md)\) drivers must be installed\.
+  + [NVMe drivers](nvme-ebs-volumes.md) must be installed
+  + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
-  The following AMIs meet these requirements:
-  + Amazon Linux 2
-  + Amazon Linux AMI 2018\.03
-  + Ubuntu 14\.04 \(with `linux-aws` kernel\) or later
-  + Red Hat Enterprise Linux 7\.4 or later
-  + SUSE Linux Enterprise Server 12 SP2 or later
-  + CentOS 7\.4\.1708 or later
-  + FreeBSD 11\.1 or later
-+ GPU\-based instances can't access the GPU unless the NVIDIA drivers are installed\. For more information, see [Installing the NVIDIA Driver on Windows](install-nvidia-driver-windows.md)\.
+  The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
++ GPU\-based instances can't access the GPU unless the NVIDIA drivers are installed\. For more information, see [Installing NVIDIA Drivers on Windows Instances](install-nvidia-driver.md)\.
 + There is a limit of 100 AFIs per region\.
 + There is a limit on the number of instances that you can run\. For more information, see [How many instances can I run in Amazon EC2?](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ\. To request an increase in these limits, use the following form: [Request to Increase Amazon EC2 Instance Limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-ec2-instances)\.
 + If you launch a multi\-GPU instance with a Windows AMI that was created on a single\-GPU instance, Windows does not automatically install the NVIDIA driver for all GPUs\. You must authorize the driver installation for the new GPU hardware\. You can correct this manually in the Device Manager by opening the **Other** device category \(the inactive GPUs do not appear under **Display Adapters**\)\. For each inactive GPU, open the context \(right\-click\) menu, choose **Update Driver Software**, and then choose the default **Automatic Update** option\.
 + When using Microsoft Remote Desktop Protocol \(RDP\), GPUs that use the WDDM driver model are replaced with a non\-accelerated Remote Desktop display driver\. To access your GPU hardware, you must use a different remote access tool, such as [Teradici Cloud Access Software](http://www.teradici.com/products/cloud-access/cloud-access-software), [NICE Desktop Cloud Visualization \(DCV\)](https://docs.aws.amazon.com/dcv/latest/userguide/getting-started.html), or VNC\. You can also use one of the GPU AMIs from the AWS Marketplace because they provide remote access tools that support 3D acceleration\.
-
-## AMIs for GPU\-Based Accelerated Computing Instances<a name="gpu-operating-systems"></a>
-
-To help you get started, NVIDIA and others provide AMIs for GPU\-based accelerated computing instances\. These reference AMIs include the NVIDIA driver, which enables full functionality and performance of the NVIDIA GPUs\.
-
-For a list of AMIs with the NVIDIA driver, search AWS Marketplace as follows:
-+ [NVIDIA P3 AMIs](http://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=p3.2xlarge&searchTerms=NVIDIA)
-+ [NVIDIA Quadro Virtual Workstation P3 AMIs](http://aws.amazon.com/marketplace/search/results?x=0&y=0&searchTerms=Quadro+NVIDIA)
-+ [NVIDIA P2 AMIs](http://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=p2.xlarge&searchTerms=NVIDIA)
-+ [NVIDIA GRID G4 AMIs](http://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=g4dn.xlarge&searchTerms=NVIDIA%20GRID)
-+ [NVIDIA GRID G3 AMIs](http://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=g3.4xlarge&searchTerms=NVIDIAGRID)
-+ [NVIDIA GRID G2 AMIs](http://aws.amazon.com/marketplace/search/results/?page=1&filters=instance_types&instance_types=g2.2xlarge&searchTerms=NVIDIAGRID)
-
-You can launch accelerated computing instances using any HVM AMI\.
-
-**Important**  
-These AMIs include drivers, software, or toolkits that are developed, owned, or provided by NVIDIA Corporation\. By using these AMIs, you agree to use these NVIDIA drivers, software, or toolkits only on Amazon EC2 instances that include NVIDIA hardware\.
-
-You can also install the NVIDIA driver\. For more information, see [Installing the NVIDIA Driver on Windows](install-nvidia-driver-windows.md)\.

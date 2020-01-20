@@ -146,7 +146,7 @@ The following is an example of the event for Spot Instance interruption\. The po
 
 ### instance\-action<a name="instance-action-metadata"></a>
 
-If your Spot Instance is marked to be stopped or terminated by the Spot service, the `instance-action` item is present in your instance metadata\. Otherwise, it is not present\. You can retrieve `instance-action` as follows\.
+If your Spot Instance is marked to be stopped or terminated by the Spot service, the `instance-action` item is present in your [instance metadata](ec2-instance-metadata.md)\. Otherwise, it is not present\. You can retrieve `instance-action` as follows\.
 
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/spot/instance-action

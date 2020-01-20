@@ -23,7 +23,8 @@ For information about other customizations, see [Configuration Changes for AWS W
   + [How AWS Decides Which Windows AMIs to Offer](#windows-ami-creation-standards-AMI-type)
   + [Patches, Security Updates, and AMI IDs](#ami-patches-security-ID)
   + [Semiannual Channel Releases](#channel-releases)
-  + [Monthly AMI Updates for 2019 \(to date\)](#amis-2019)
+  + [Monthly AMI Updates for 2020 \(to date\)](#amis-2020)
+  + [Monthly AMI Updates for 2019](#amis-2019)
   + [Monthly AMI Updates for 2018](#amis-2018)
   + [Monthly AMI Updates for 2017](#amis-2017)
   + [Monthly AMI Updates for 2016](#amis-2016)
@@ -219,7 +220,8 @@ The following tables summarize the changes to each release of the AWS Windows AM
 + [How AWS Decides Which Windows AMIs to Offer](#windows-ami-creation-standards-AMI-type)
 + [Patches, Security Updates, and AMI IDs](#ami-patches-security-ID)
 + [Semiannual Channel Releases](#channel-releases)
-+ [Monthly AMI Updates for 2019 \(to date\)](#amis-2019)
++ [Monthly AMI Updates for 2020 \(to date\)](#amis-2020)
++ [Monthly AMI Updates for 2019](#amis-2019)
 + [Monthly AMI Updates for 2018](#amis-2018)
 + [Monthly AMI Updates for 2017](#amis-2017)
 + [Monthly AMI Updates for 2016](#amis-2016)
@@ -236,13 +238,23 @@ For more information about components included in these AMIs, see the following:
 + [Amazon ENA Driver Versions](enhanced-networking-ena.md#ena-adapter-driver-versions)
 + [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history)
 
-### Monthly AMI Updates for 2019 \(to date\)<a name="amis-2019"></a>
+### Monthly AMI Updates for 2020 \(to date\)<a name="amis-2020"></a>
 
-For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2019](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv)\.
+For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2020](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv-2020)\.
 
 
 | Release | Changes | 
 | --- | --- | 
+| 2020\.1\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) **Microsoft Windows Server 2008 SP2 and Windows Server 2008 R2 ** Windows Server 2008 SP2 and Window Server 2008 R2 reached End of Support \(EOS\) on 01/14/20 and will no longer receive regular security updates from Microsoft\. AWS will no longer publish or distribute Windows Server 2008 SP2 or Windows Server 2008 R2 AMIs\. Existing 2008 SP2/R2 instances and custom AMIs in your account are not impacted, and you can continue to use them after the EOS date\.  For more information about Microsoft End of Service on AWS, including upgrade and import options, as well as a full list of AMIs that are no longer published as of 01/14/2020, see [End of Support \(EOS\) for Microsoft Products](https://aws.amazon.com/windows/faq/#eos-microsoft-products)\.  | 
+
+### Monthly AMI Updates for 2019<a name="amis-2019"></a>
+
+For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2019](https://support.microsoft.com/en-us/help/4538374/software-update-services-and-windows-server-update-services-2019)\.
+
+
+| Release | Changes | 
+| --- | --- | 
+| 2019\.12\.16 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) **Microsoft Windows Server 2008 SP2 and Windows Server 2008 R2 ** Microsoft will end mainstream support for Windows Server 2008 SP2 and Windows Server 2008 R2 on January 14, 2020\. On this date, AWS will no longer publish or distribute Windows Server 2008 SP2 or Windows Server 2008 R2 AMIs\. Existing 2008 SP2/R2 instances and custom AMIs in your account will not be impacted and you can continue to use them after the end\-of\-service \(EOS\) date\.  For more information about Microsoft EOS on AWS, including upgrade and import options, along with a full list of AMIS that will no longer be published or distributed on January 14, 2020, see [End of Support \(EOS\) for Microsoft Products](https://aws.amazon.com/windows/faq/#eos-microsoft-products)\.  | 
 | 2019\.11\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) Previous versions of AMIs have been marked private\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.11\.05 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 
 | 2019\.10\.09 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html)  | 

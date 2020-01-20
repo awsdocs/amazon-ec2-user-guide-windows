@@ -18,7 +18,7 @@ The following example uses a PowerShell shell script and IMDSv2 to retrieve the 
 + Requests the top\-level metadata items using the token
 
 ```
-PS C:\> $token = Invoke-RestMethod-Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```

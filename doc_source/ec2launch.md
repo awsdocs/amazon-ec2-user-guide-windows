@@ -276,13 +276,9 @@ You are logged off the instance and the instance shuts down\. If you check the *
 
 ### Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI<a name="update-metadata-KMS"></a>
 
-**To update metadata/KMS routes for Server 2016 and later when launching a custom AMI**
-
-1. Use EC2LaunchSettings GUI \(C:\\ProgramData\\Amazon\\EC2\-Windows\\Launch\\Settings\\Ec2LaunchSettings\.exe\) to shut down with Sysprep\.
-
-1. Or, shut down without Sysprep before creating an AMI\. This sets the EC2 Launch Initialize tasks to run at the next boot, which will set routes based on the subnet being launched into\. 
-
-1. Or, manually reschedule EC2 Launch initialize tasks before creating an AMI from [PowerShell](#ec2launch-inittasks)\. 
-
+To update metadata/KMS routes for Server 2016 and later when launching a custom AMI, do one of the following:
++ Run the EC2LaunchSettings GUI \(C:\\ProgramData\\Amazon\\EC2\-Windows\\Launch\\Settings\\Ec2LaunchSettings\.exe\) and select the option to shut down with Sysprep\.
++ Run EC2LaunchSettings and shut down without Sysprep before creating the AMI\. This sets the EC2 Launch Initialize tasks to run at the next boot, which will set routes based on the subnet for the instance\.
++ Manually reschedule EC2 Launch initialize tasks before creating an AMI from [PowerShell](#ec2launch-inittasks)\. 
 **Important**  
-Please take note of the default password reset behavior before rescheduling tasks\.
+Take note of the default password reset behavior before rescheduling tasks\.

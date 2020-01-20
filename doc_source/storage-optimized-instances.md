@@ -159,17 +159,10 @@ For more information, see the following:
 ## Release Notes<a name="storage-instance-release-notes"></a>
 + You must launch storage optimized instances using an HVM AMI\. 
 + The following are requirements for I3en and `i3.metal` instances:
-  + NVMe drivers must be installed\. EBS volumes are exposed as [NVMe block devices](nvme-ebs-volumes.md)\.
-  + Elastic Network Adapter \([ENA](enhanced-networking-ena.md)\) drivers must be installed\.
+  + [NVMe drivers](nvme-ebs-volumes.md) must be installed
+  + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
-  The following AMIs meet these requirements:
-  + Amazon Linux 2
-  + Amazon Linux AMI 2018\.03
-  + Ubuntu 14\.04 \(with `linux-aws` kernel\) or later
-  + Red Hat Enterprise Linux 7\.4 or later
-  + SUSE Linux Enterprise Server 12 SP2 or later
-  + CentOS 7\.4\.1708 or later
-  + FreeBSD 11\.1 or later
+  The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
 + Launching an `i3.metal` instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.
 + Bare metal instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The upstream Linux kernel and the latest Amazon Linux AMIs support this device\. Bare metal instances also provide an ACPI SPCR table to enable the system to automatically use the PCI\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device\.

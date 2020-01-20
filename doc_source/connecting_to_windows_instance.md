@@ -8,7 +8,7 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
 + [Prerequisites](#rdp-prereqs)
 + [Connect to Your Windows Instance](#connect-rdp)
 + [Connect to a Windows Instance Using Its IPv6 Address](#connecting-to-windows-ipv6)
-+ [Connecting to a Windows Instance Using AWS Systems Manager Session Manager](#session-manager)
++ [Connecting to a Windows Instance Using Session Manager](#session-manager)
 + [Transfer Files to Windows Instances](#AccessingInstancesWindowsFileTransfer)
 
 ## Prerequisites<a name="rdp-prereqs"></a>
@@ -121,30 +121,46 @@ If you've enabled your VPC for IPv6 and assigned an IPv6 address to your Windows
 
 1. When prompted, enter the password that you recorded or copied previously\.
 
-## Connecting to a Windows Instance Using AWS Systems Manager Session Manager<a name="session-manager"></a>
+## Connecting to a Windows Instance Using Session Manager<a name="session-manager"></a>
 
-AWS Systems Manager Session Manager is a fully managed AWS Systems Manager capability that lets you manage your Amazon EC2 instances through an interactive one\-click browser\-based shell or through the AWS CLI\. For more information about how to connect to your instance with SSM Session Manager, see [AWS Systems Manager Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) in the *Systems Manager User Guide*\. 
+Session Manager is a fully managed AWS Systems Manager capability that lets you manage your Amazon EC2 instances through an interactive one\-click browser\-based shell or through the AWS CLI\. You can use Session Manager to start a session with an instance in your account\. After the session is started, you can run Powershell commands as you would through any other connection type\. For more information about Session Manager, see [AWS Systems Manager Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) in the *AWS Systems Manager User Guide*\. 
+
+Before attempting to connect to an instance using Session Manager, ensure that the necessary setup steps have been completed\. For more information, see [Getting Started with Session Manager\.](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started.html)
+
+**To connect to a Windows instance using Session Manager using the Amazon EC2 console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Instances**\.
+
+1. Select the instance and choose **Connect**\.
+
+1. For **Connection method**, choose **Session Manager**\.
+
+1. Choose **Connect**\.
+**Note**  
+If you receive an error that you’re not authorized to perform one or more Systems Manager actions \(`ssm:command-name`\), then you must update your policies to allow you to start sessions from the Amazon EC2 console\. For more information and instructions, see [ Quickstart Default IAM Policies for Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-restrict-access-quickstart.html) in the *AWS Systems Manager User Guide*\.
 
 ## Transfer Files to Windows Instances<a name="AccessingInstancesWindowsFileTransfer"></a>
 
 You can work with your Windows instance the same way that you would work with any Windows server\. For example, you can transfer files between a Windows instance and your local computer using the local file sharing feature of the Microsoft Remote Desktop Connection software\. If you enable this option, you can access your local files from your Windows instances\. You can access local files on hard disk drives, DVD drives, portable media drives, and mapped network drives\. 
 
-To make local devices and resources available to a remote session on Windows, map the remote session drive to your local drive: 
+To make local devices and resources available to a remote session on Windows, map the remote session drive to your local drive\.
+
+**To map the remote session drive to your local drive**
 
 1. Open the Remote Desktop Connection client\.
 
 1. Choose **Show Options**\.
 
-1. Select the **Local Resources** tab\.
+1. Choose the **Local Resources** tab\.
 
-1. Under the Local Devices and resources section, choose **More\. \. \.**
+1. Under **Local Devices and resources**, choose **More\.\.\.**
 
-1. Open Drives and select the local drive to map to your Windows instance\.
+1. Open **Drives** and select the local drive to map to your Windows instance\.
 
 1. Choose **OK**\.
 
 1. Choose **Connect** to connect to your Windows instance\.
 
-For more information on making local devices available to a remote session on a Mac computer, see:
-
-[Get Started with Remote Desktop on Mac](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)
+For more information on making local devices available to a remote session on a Mac computer, see [Get Started with Remote Desktop on Mac](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)\.

@@ -1,8 +1,8 @@
-# Activate NVIDIA GRID Virtual Applications on G3 Instances<a name="activate_grid"></a>
+# Activate NVIDIA GRID Virtual Applications<a name="activate_grid"></a>
 
-To activate the GRID Virtual Applications on G3 instances \(NVIDIA GRID Virtual Workstation is enabled by default\), you must define the product type for the driver in the registry\.
+To activate the GRID Virtual Applications on G3 and G4 instances \(NVIDIA GRID Virtual Workstation is enabled by default\), you must define the product type for the driver in the registry\.
 
-**To activate GRID Virtual Applications on G3 Windows instances**
+**To activate GRID Virtual Applications on Windows instances**
 
 1. Run regedit\.exe to open the registry editor\.
 

@@ -8,6 +8,14 @@ We recommend that you use On\-Demand Instances for applications with short\-term
 
 For significant savings over On\-Demand Instances, use [AWS Savings Plans](http://aws.amazon.com/savingsplans/), [Spot Instances](using-spot-instances.md), or [Reserved Instances](ec2-reserved-instances.md)\.
 
+**Contents**
++ [Working With On\-Demand Instances](#working-with-on-demand-instances)
++ [On\-Demand Instance Limits](#ec2-on-demand-instances-limits)
+  + [Calculating How Many vCPUs You Need](#vcpu-limits-calculator)
+  + [Requesting a Limit Increase](#vcpu-limits-request-increase)
+  + [Monitoring On\-Demand Instance Limits and Usage](#monitoring-on-demand-limits)
++ [Querying the Prices of AWS Services](#query-aws-price-list)
+
 ## Working With On\-Demand Instances<a name="working-with-on-demand-instances"></a>
 
 You can work with On\-Demand Instances in the following ways:
@@ -27,9 +35,6 @@ If you're new to Amazon EC2, see [How to Get Started with Amazon EC2](concepts.m
 ## On\-Demand Instance Limits<a name="ec2-on-demand-instances-limits"></a>
 
 There is a limit on the number of running On\-Demand Instances per AWS account per Region\. On\-Demand Instance limits are managed in terms of the *number of virtual central processing units \(vCPUs\)* that your running On\-Demand Instances are using, regardless of the instance type\.
-
-**Note**  
-On\-Demand Instance count\-based limits, managed in terms of the number of instances per instance type, are no longer available\. For more information, see [EC2 On\-Demand Instance limits](http://aws.amazon.com/ec2/faqs/#EC2_On-Demand_Instance_limits)\.
 
 There are five On\-Demand Instance limits, listed in the following table\. Each limit specifies the vCPU limit for one or more instance families\. For information about the different instance families, generations, and sizes, see [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/)\.
 
@@ -51,6 +56,8 @@ With vCPU limits, you can use your limit in terms of the number of vCPUs require
 
 You can use the vCPU limits calculator to determine the number of vCPUs that you require for your application needs\.
 
+When using the calculator, keep the following in mind: The calculator assumes that you have reached your current limit\. The value that you enter for **Instance Count** is the number of instances that you need to launch *in addition* to what is permitted by your current limit\. The calculator adds your current limit to the **Instance Count** to arrive at a new limit\.
+
 The following screenshot shows the vCPU limits calculator\.
 
 ![\[The vCPU limit calculator in the Amazon EC2 console.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/vCPU-limit-calculator.png)
@@ -58,21 +65,21 @@ The following screenshot shows the vCPU limits calculator\.
 You can view and use the following controls and information:
 + **Instance type** – The instance types that you add to the vCPU limits calculator\.
 + **Instance count** – The number of instances that you require for the selected instance type\.
-+ **vCPU count** – The number of vCPUs that correspond to the **Instance count**\.
++ **vCPU count** – The number of vCPUs that corresponds to the **Instance count**\.
 + **Current limit** – Your current limit for the limit type to which the instance type belongs\. The limit applies to all instance types of the same limit type\. For example, in the preceding screenshot, the current limit for `m5.2xlarge` and `c5.4xlarge` is 1,920 vCPUs, which is the limit for all the instance types that belong to the All Standard instances limit\.
-+ **New limit** – The new limit, in number of vCPUs, that is required to launch the number of instances that you specified\.
++ **New limit** – The new limit, in number of vCPUs, which is calculated by adding **vCPU count** and **Current limit**\.
 + **X** – Choose the **X** to remove the row\.
 + **Add instance type** – Choose **Add instance type** to add another instance type to the calculator\.
 + **Limits calculation** – Displays the current limit, vCPUs needed, and new limit for the limit types\.
   + **Instance limit name** – The limit type for the instance types that you selected\.
   + **Current limit** – The current limit for the limit type\.
-  + **vCPUs needed** – The number of vCPUs that correspond to the number of instances that you specified\. For the All Standard instances limit type, the vCPUs needed is calculated by adding the values for **vCPU count** for all the instance types of this limit type\.
-  + **New limit** – The new limit is calculated by adding the values for **Current limit** and **vCPUs needed**\.
+  + **vCPUs needed** – The number of vCPUs that corresponds to the number of instances that you specified in **Instance count**\. For the All Standard instances limit type, the vCPUs needed is calculated by adding the values for **vCPU count** for all the instance types of this limit type\.
+  + **New limit** – The new limit is calculated by adding **Current limit** and **vCPUs needed**\.
   + **Options** – Choose **Request limit increase** to request a limit increase for the corresponding limit type\.
 
 **To calculate the number of required vCPUs**
 
-1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\. 
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
 1. From the navigation bar, select a Region\.
 
@@ -95,3 +102,7 @@ You can request a limit increase for each On\-Demand Instance limit type from th
 You can view and manage your On\-Demand Instance limits from the [Limits page](https://console.aws.amazon.com/ec2/#Limits) in the Amazon EC2 console, from the Amazon EC2 [Services quotas page](https://console.aws.amazon.com/servicequotas/#!/services/ec2/quotas) in the Service Quotas console, and from the [Service Limits page](https://console.aws.amazon.com/trustedadvisor/home?#/category/service-limits) in the AWS Trusted Advisor console\. For more information, see [Amazon EC2 Service Limits](ec2-resource-limits.md) in the *Amazon EC2 User Guide for Linux Instances*, [Viewing a Service Quota](https://docs.aws.amazon.com/servicequotas/latest/userguide/gs-request-quota.html) in the *Service Quotas User Guide*, and [AWS Trusted Advisor](http://aws.amazon.com/premiumsupport/technology/trusted-advisor/)\.
 
 With Amazon CloudWatch metrics integration, you can monitor EC2 usage against limits\. You can also configure alarms to warn about approaching limits\. For more information, see [Using Amazon CloudWatch Alarms](https://docs.aws.amazon.com/servicequotas/latest/userguide/configure-cloudwatch.html) in the *Service Quotas User Guide*\.
+
+## Querying the Prices of AWS Services<a name="query-aws-price-list"></a>
+
+You can use the Price List Service API or the AWS Price List API to query the prices of On\-Demand Instances\. For more information, see [Using the AWS Price List API](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html) in the *AWS Billing and Cost Management User Guide*\.

@@ -54,23 +54,30 @@ The following table describes the Amazon EC2 resources that can be tagged, and t
 |  Client VPN route  |  No  |  No  | 
 |  Customer gateway  |  Yes  | No | 
 |  Dedicated Host  |  Yes  |  Yes  | 
+|  Dedicated Host Reservation  |  Yes  | No | 
 |  DHCP option  |  Yes  | No | 
 |  EBS snapshot  |  Yes  | Yes | 
 |  EBS volume  |  Yes  | Yes | 
 |  EC2 Fleet  |  Yes  |  Yes  | 
-|  Egress\-only internet gateway  |  No  | No | 
+|  Egress\-only internet gateway  |  Yes  | No | 
 |  Elastic IP address  |  Yes  | No | 
-|  Dedicated Host Reservation  |  Yes  | No | 
+|  Elastic Graphics accelerator  |  Yes  | No | 
 |  Instance  |  Yes  | Yes | 
 |  Instance store volume  |  N/A  | N/A | 
 |  Internet gateway  |  Yes  | No | 
-|  Key pair  |  No  | No | 
+|  Key pair  |  Yes  | No | 
 |  Launch template  |  Yes  |  Yes  | 
 |  Launch template version  |  No  |  No  | 
+|   Local gateway  |  Yes  |  No  | 
+|  Local gateway route table  |  Yes  |  No  | 
+|  Local gateway virtual interface  |  Yes  |  No  | 
+|  Local gateway virtual interface group  |  Yes  |  No  | 
+|  Local gateway route table VPC association  |  Yes  |  No  | 
+|  Local gateway route table virtual interface group association  |  Yes  |  No  | 
 |  NAT gateway  |  Yes  | No | 
 |  Network ACL  |  Yes  | No | 
 |  Network interface  |  Yes  | No | 
-|  Placement group  |  No  | No | 
+|  Placement group  |  Yes  | No | 
 |  Reserved Instance  |  Yes  | No | 
 |  Reserved Instance listing  |  No  | No | 
 | Route table |  Yes  | No | 

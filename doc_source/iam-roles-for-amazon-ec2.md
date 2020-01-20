@@ -45,9 +45,25 @@ If you use services that use instance metadata with IAM roles, ensure that you d
 
 The following command retrieves the security credentials for an IAM role named `s3access`\.
 
+------
+#### [ IMDSv2 ]
+
 ```
-curl http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
+PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
+
+```
+PS C:\> Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token" = $token} -Method GET -Uri http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
+```
+
+------
+#### [ IMDSv1 ]
+
+```
+PS C:\> Invoke-RestMethod –uri http://169.254.169.254/latest/meta-data/iam/security-credentials/s3access
+```
+
+------
 
 The following is example output\.
 
@@ -63,7 +79,7 @@ The following is example output\.
 }
 ```
 
-For applications, AWS CLI, and Tools for Windows PowerShell commands that run on the instance, you do not have to explicitly get the temporary security credentials — the AWS SDKs, AWS CLI, and Tools for Windows PowerShell automatically get the credentials from the EC2 instance metadata service and use them\. To make a call outside of the instance using temporary security credentials \(for example, to test IAM policies\), you must provide the access key, secret key, and the session token\. For more information, see [Using Temporary Security Credentials to Request Access to AWS Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) in the *IAM User Guide*\.
+For applications, AWS CLI, and Tools for Windows PowerShell commands that run on the instance, you do not have to explicitly get the temporary security credentials—the AWS SDKs, AWS CLI, and Tools for Windows PowerShell automatically get the credentials from the EC2 instance metadata service and use them\. To make a call outside of the instance using temporary security credentials \(for example, to test IAM policies\), you must provide the access key, secret key, and the session token\. For more information, see [Using Temporary Security Credentials to Request Access to AWS Resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) in the *IAM User Guide*\.
 
 For more information about instance metadata, see [Instance Metadata and User Data](ec2-instance-metadata.md)\. 
 
@@ -246,9 +262,25 @@ The **IAM role** list displays the name of the instance profile that you created
 
 1. If you are using the Amazon EC2 API actions in your application, retrieve the AWS security credentials made available on the instance and use them to sign the requests\. The AWS SDK does this for you\.
 
+------
+#### [ IMDSv2 ]
+
    ```
-   curl http://169.254.169.254/latest/meta-data/iam/security-credentials/role_name
+   PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
    ```
+
+   ```
+   PS C:\> Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token" = $token} -Method GET -Uri http://169.254.169.254/latest/meta-data/iam/security-credentials/role_name
+   ```
+
+------
+#### [ IMDSv1 ]
+
+   ```
+   PS C:\> Invoke-RestMethod –uri http://169.254.169.254/latest/meta-data/iam/security-credentials/role_name
+   ```
+
+------
 
 Alternatively, you can use the AWS CLI to associate a role with an instance during launch\. You must specify the instance profile in the command\.<a name="launch-instance-with-role-cli"></a>
 

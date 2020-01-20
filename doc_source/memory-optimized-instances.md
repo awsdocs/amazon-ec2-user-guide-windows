@@ -292,20 +292,13 @@ The following AMIs support launching memory optimized instances:
 + Windows Server 2008 SP2 64\-bit
 
 ## Release Notes<a name="memory-instance-limits"></a>
-+ R5 and R5d instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor\.
++ R5 and R5d instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor from either the first generation \(Skylake\-SP\) or second generation \(Cascade Lake\)\.
 + R5a and R5ad instances feature a 2\.5 GHz AMD EPYC 7000 series processor\.
 + The following are requirements for high memory, R5, R5a, R5ad, R5d, R5dn, R5n, and z1d instances:
-  + NVMe drivers must be installed\. EBS volumes are exposed as [NVMe block devices](nvme-ebs-volumes.md)\.
-  + Elastic Network Adapter \([ENA](enhanced-networking-ena.md)\) drivers must be installed\.
+  + [NVMe drivers](nvme-ebs-volumes.md) must be installed
+  + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
-  The following AMIs meet these requirements:
-  + Amazon Linux 2
-  + Amazon Linux AMI 2018\.03
-  + Ubuntu 14\.04 \(with `linux-aws` kernel\) or later
-  + Red Hat Enterprise Linux 7\.4 or later
-  + SUSE Linux Enterprise Server 12 SP2 or later
-  + CentOS 7\.4\.1708 or later
-  + FreeBSD 11\.1 or later
+  The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
 + R5, R5a, R5ad, R5d, R5dn, R5n, and z1d instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. Every instance has at least one network interface attachment\. For example, if you have no additional network interface attachments on an EBS\-only instance, you could attach 27 EBS volumes to that instance\.
 + `u-6tb1.metal`, `u-9tb1.metal`, and `u-12tb1.metal` instances support a maximum of 13 EBS volumes\. `u-18tb1.metal` and `u-24tb1.metal` instances support a maximum of 19 EBS volumes\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.

@@ -31,7 +31,7 @@ This example returns user data that was provided as comma\-separated text\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod-Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -56,7 +56,7 @@ This example returns user data that was provided as a script\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod-Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
