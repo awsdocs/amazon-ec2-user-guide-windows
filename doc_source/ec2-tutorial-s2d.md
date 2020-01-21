@@ -77,7 +77,7 @@ Each role deployed on this cluster, such as a SQL Failover Cluster instance or f
    We use the following configuration:    
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-tutorial-s2d.html)
 
-1. You can use seamless domain join at creation time to join instances to the domain\. If you want to join them to the domain after they are launched, use the [Add\-Computer](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/add-computer?view=powershell-5.1) command\. We recommend using AWS Systems Manager and [AWS Directory Service](https://aws.amazon.com//directoryservice/) to [seamlessly join EC2 instances to a domain](https://aws.amazon.com/blogs/aws/seamlessly-join-ec2-instances-to-a-domain/)\. 
+1. You can use seamless domain join at creation time to join instances to the domain\. If you want to join them to the domain after they are launched, use the [Add\-Computer](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/add-computer?view=powershell-5.1) command\. We recommend using AWS Systems Manager and [AWS Directory Service](https://aws.amazon.com/directoryservice/) to [seamlessly join EC2 instances to a domain](https://aws.amazon.com/blogs/aws/seamlessly-join-ec2-instances-to-a-domain/)\. 
 
    The steps in the remainder of this tutorial require execution with a domain account with local administrative privileges on each instance\. Rename the instances as you want them before moving to the configuration\. Ensure that your security groups and Windows firewalls are properly configured to allow remote PowerShell connection and cluster communications on these nodes\. 
 

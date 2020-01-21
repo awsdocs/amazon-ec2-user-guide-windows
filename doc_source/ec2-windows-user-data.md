@@ -2,7 +2,7 @@
 
 When you launch a Windows instance in Amazon EC2, you can pass user data to the instance\. Instance user data is treated as opaque data; it is up to the instance to interpret it\. For example, you can specify data to be used by automated configuration tasks or specify scripts that are run after the instance starts\. User data is processed by [EC2Config](ec2config-service.md) on Windows Server 2012 R2 and earlier and by [EC2Launch](ec2launch.md) on Windows Server 2016 and later\.
 
-For examples of the assembly of a UserData property in a AWS CloudFormation template, see [Base64 Encoded UserData Property](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64) and [Base64 Encoded UserData Property with AccessKey and SecretKey](https://docs.aws.amazon.com/https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64-with-keys)\.
+For examples of the assembly of a UserData property in a AWS CloudFormation template, see [Base64 Encoded UserData Property](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64) and [Base64 Encoded UserData Property with AccessKey and SecretKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64-with-keys)\.
 
 **Topics**
 + [User Data Scripts](#user-data-scripts)

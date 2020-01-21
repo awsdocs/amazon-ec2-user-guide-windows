@@ -7,8 +7,7 @@ When you create an EBS volume based on a snapshot, the new volume begins as an e
 **Note**  
 Using Systems Manager Run Command, you can take application\-consistent snapshots of all EBS volumes attached to your Amazon EC2 Windows instances\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications, including data from pending transactions between these applications and the disk\. You don't need to shut down your instances or disconnect them when you back up all attached volumes\. For more information, see [Using Run Command to Take VSS\-Enabled Snapshots of EBS Volumes](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-vss.html) in the *AWS Systems Manager User Guide*\.
 
- **Multi\-Volume Snapshots**
-
+**Multi\-Volume Snapshots**  
 Snapshots can be used to create a backup of critical workloads, such as a large database or a file system that spans across multiple EBS volumes\. Multi\-volume snapshots allow you to take exact point\-in\-time, data coordinated, and crash\-consistent snapshots across multiple EBS volumes attached to an EC2 instance\. You are no longer required to stop your instance or to coordinate between volumes to ensure crash consistency, because snapshots are automatically taken across multiple EBS volumes\. For more information, see the steps for creating a multi\-volume EBS snapshot under [Creating Amazon EBS Snapshots](ebs-creating-snapshot.md)\.
 
 You can track the status of your EBS snapshots through CloudWatch Events\. For more information, see [Amazon CloudWatch Events for Amazon EBS](ebs-cloud-watch-events.md)\.
