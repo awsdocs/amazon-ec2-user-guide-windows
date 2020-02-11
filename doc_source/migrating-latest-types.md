@@ -40,6 +40,8 @@ Though AWS PV drivers are not used in the Nitro system, you should still upgrade
 
 Use the following procedure to perform an in\-place upgrade of AWS PV drivers, or to upgrade from Citrix PV drivers to AWS PV drivers on Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\. 
 
+To upgrade a Domain Controller, see [Upgrade a Domain Controller \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade-dc)\.
+
 **To perform an upgrade of or to AWS PV drivers**
 
 1. Connect to the instance using Remote Desktop and prepare the instance for upgrade\. Take all non\-system disks offline before you perform the upgrade\. If you are performing an in\-place update of AWS PV drivers, this step is not required\. Set non\-essential services to **Manual** start\-up in the Services console\. 
@@ -168,7 +170,7 @@ The `AWSSupport-UpgradeWindowsAWSDrivers` automation document upgrades or repair
 **Note**  
 This procedure will fail on a domain controller\. To update drivers on a domain controller, see [Upgrade a Domain Controller \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade-dc)\.
 
-**To automatically upgrade the AWS PV ENA, and NVMe drivers using AWS Systems Manager**
+**To automatically upgrade the AWS PV, ENA, and NVMe drivers using AWS Systems Manager**
 
 1. Open the Systems Manager console at [https://console\.aws\.amazon\.com/systems\-manager](https://console.aws.amazon.com/systems-manager)\.
 

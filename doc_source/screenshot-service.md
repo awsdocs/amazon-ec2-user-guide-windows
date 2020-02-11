@@ -1,6 +1,6 @@
 # Troubleshoot an Unreachable Instance<a name="screenshot-service"></a>
 
-If you are unable to reach your instance through SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility as to the status of the instance, and allows for quicker troubleshooting\.
+If you are unable to reach your instance through SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility into the status of the instance, and allows for quicker troubleshooting\. You can also use [EC2 Rescue](Windows-Server-EC2Rescue.md) on instances running Windows Server 2008 or later to gather and analyze date from offline instances\. 
 + [How to Take a Screenshot of an Unreachable Instance](#how-to-ics)
 + [Common Screenshots](#ics-common)
 

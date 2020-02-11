@@ -62,6 +62,8 @@ Some drivers are configured to use jumbo frames, and others are configured to us
 
 ### ENA Driver<a name="set-mtu-windows-ena-driver"></a>
 
+**For Driver Versions 1\.5 and Earlier**
+
 You can change the MTU setting using Device Manager or the Set\-NetAdapterAdvancedProperty command\.
 
 To get the current MTU setting using the Get\-NetAdapterAdvancedProperty command, use the following command\. Check the entry for the interface name `MTU`\. A value of 9001 indicates that Jumbo frames are enabled\. Jumbo frames are disabled by default\.
@@ -80,6 +82,36 @@ Disable jumbo frames as follows:
 
 ```
 Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "MTU" -RegistryValue 1500
+```
+
+**For Driver Versions 2\.1\.0 and Later**
+
+You can change the MTU setting using Device Manager or the Set\-NetAdapterAdvancedProperty command\.
+
+To get the current MTU setting using the Get\-NetAdapterAdvancedProperty command, use the following command\. Check the entry for the interface name `*JumboPacket`\. A value of 9015 indicates that Jumbo frames are enabled\. Jumbo frames are disabled by default\.
+
+Run Get\-NetAdapterAdvancedProperty or use wildcard \(asterisk\) to detect all corresponding Ethernet names\. 
+
+```
+Get-NetAdapterAdvancedProperty -Name "Ethernet*"
+```
+
+Run the following commands and include the Ethernet name you want to query\.
+
+```
+Get-NetAdapterAdvancedProperty -Name "Ethernet"
+```
+
+Enable jumbo frames as follows\.
+
+```
+Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*JumboPacket" -RegistryValue 9015"
+```
+
+Disable jumbo frames as follows:
+
+```
+Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*JumboPacket" -RegistryValue 1514
 ```
 
 ### Intel SRIOV 82599 Driver<a name="set-mtu-windows-sriov-driver"></a>

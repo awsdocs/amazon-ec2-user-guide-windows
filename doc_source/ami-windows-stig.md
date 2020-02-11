@@ -4,6 +4,14 @@ Security Technical Implementation Guides \(STIGs\) are the configuration standar
 
 Amazon EC2 Windows Server AMIs for STIG compliance are available in all public AWS and GovCloud regions\. You can launch instances from these AMIs directly from the Amazon EC2 console\. They are billed using standard Windows pricing\.
 
+The STIG\-compliant Amazon EC2 AMIs for Windows Server can be found in the Community AMIs when you create an instance\. The AMI names are: 
++ Windows\_Server\-2019\-English\-STIG\-Full\-YYYY\.MM\.DD
++ Windows\_Server\-2019\-English\-STIG\-Core\-YYYY\.MM\.DD
++ Windows\_Server\-2016\-English\-STIG\-Full\-YYYY\.MM\.DD
++ Windows\_Server\-2016\-English\-STIG\-Core\-YYYY\.MM\.DD
++ Windows\_Server\-2012\-R2\-English\-STIG\-Full\-YYYY\.MM\.DD
++ Windows\_Server\-2012\-R2\-English\-STIG\-Core\-YYYY\.MM\.DD
+
 The following lists and tables show the STIGs that have *not* been applied to each Operating System, by category, unless otherwise indicated\. 
 
 **Topics**
@@ -15,7 +23,7 @@ The following lists and tables show the STIGs that have *not* been applied to ea
 
 ## Core and Base Operating System<a name="base-os-stig"></a>
 
-The following STIG settings have *not* been applied\. All other applicable STIGs have been applied\. For complete list, see [2019](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_Windows_Server_2019_V1R2_STIG.zip), [2016](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_Windows_Server_2016_V1R9_STIG.zip), and [2012](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_Windows_2012_and_2012_R2_MS_V2R17_STIG.zip)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
+The following STIG settings have *not* been applied\. All other applicable STIGs have been applied\. For complete list, see [2019](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_Windows_Server_2019_V1R3_STIG.zip), [2016](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_Windows_Server_2016_V1R11_STIG.zip), and [2012](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_Windows_2012_and_2012_R2_MS_V2R17_STIG.zip)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
 
 ------
 #### [ Windows Server 2019 STIG V1 Release 2 ]
