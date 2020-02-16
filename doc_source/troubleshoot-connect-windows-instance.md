@@ -8,6 +8,7 @@ The following are possible problems you may have and error messages you may see 
 + [RDP Displays a Black Screen Instead of the Desktop](#rdp-black-screen)
 + [Unable to Remotely Log On to an Instance with a User Account That Is Not an Administrator](#remote-failure)
 + [Troubleshooting Remote Desktop Issues Using AWS Systems Manager](#Troubleshooting-Remote-Desktop-Connection-issues-using-AWS-Systems-Manager)
++ [Enable Remote Desktop on an EC2 Instance With Remote Registry](#troubleshooting-windows-rdp-remote-registry)
 
 ## Remote Desktop Can't Connect to the Remote Computer<a name="rdp-issues"></a>
 
@@ -152,7 +153,7 @@ The AWSSupport\-TroubleshootRDP automation document can be used only with instan
 
 1. Open the [AWSSupport\-TroubleshootRDP](https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-TroubleshootRDP) document\.
 
-1. In **Execution Mode**, choose **Execute the entire automation at once**\.
+1. In **Execution Mode**, choose **Simple execution**\.
 
 1. In **Input parameters**, in the **InstanceId** field, enable **Show interactive instance picker**\.
 
@@ -160,7 +161,7 @@ The AWSSupport\-TroubleshootRDP automation document can be used only with instan
 **Note**  
 If you don't see your instance in the list, it's not enabled for Systems Manager\. For information, see [Create an Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) and [Attach an IAM Instance Profile to an Amazon EC2 Instance](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html) in the *AWS Systems Manager User Guide*\.
 
-1. Review the [examples](#AWSSupport-TroubleshootRDP-Examples), then choose **Execute automation**\.
+1. Review the [examples](#AWSSupport-TroubleshootRDP-Examples), then choose **Execute**\.
 
 1. To monitor the execution progress, in **Execution** status, wait for the status to change from **Pending** to **Success**\. Expand **Outputs** to view the results\. To view the output of individual steps, in **Executed Steps**, choose the **Step ID\.**
 
@@ -254,12 +255,66 @@ The AWSSupport\-ExecuteEC2Rescue automation document requires a stop and restart
 
 1.  Open the [AWSSupport\-ExecuteEC2Rescue](https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-ExecuteEC2Rescue) document\.
 
-1. In **Execution Mode**, choose **Execute the entire automation at once**\.
+1. In **Execution Mode**, choose **Simple execution**\.
 
 1.  In the **Input parameters** section, for **UnreachableInstanceId**, enter the Amazon EC2 instance ID of the unreachable instance\.
 
 1.  \(Optional\) For **LogDestination**, enter the Amazon Simple Storage Service \(Amazon S3\) bucket name if you want to collect operating system logs for troubleshooting your Amazon EC2 instance\. Logs are automatically uploaded to the specified bucket\.
 
-1. Choose **Execute automation**\.
+1. Choose **Execute**\.
 
 1.  To monitor the execution progress, in **Execution status**, wait for the status to change from **Pending** to **Success**\. Expand **Outputs** to view the results\. To view the output of individual steps, in **Executed Steps**, choose the **Step ID**\.
+
+## Enable Remote Desktop on an EC2 Instance With Remote Registry<a name="troubleshooting-windows-rdp-remote-registry"></a>
+
+If your unreachable instance is not managed by AWS Systems Manager Session Manager, then you can use remote registry to enable Remote Desktop\. 
+
+1. From the EC2 console, stop the unreachable instance\.
+
+1. Attach the root volume of the unreachable instance to another instance in the same Availability Zone\.
+
+1. On the instance to which you attached the root volume, open Disk Management\. To open Disk Management, run
+
+   ```
+   diskmgmt.msc
+   ```
+
+1. Right click on the root volume of the affected instance and choose **Online**\.
+
+1. Open the Windows Registry Editor by running the following command:
+
+   ```
+   regedit
+   ```
+
+1. In the left navigation pane of the Registry Editor, choose **HKEY\_LOCAL\_MACHINE**, then select **File**>**Load Hive**\.
+
+1. Navigate to the drive of the attached volume\.
+
+1. Save with a key name\.
+
+1. In the Registry Editor console tree, navigate to the location of the file you just saved: `HKEY_LOCAL_MACHINE\your key name\ControlSet001\Control\Terminal Server`\.
+
+1. Back up the registry hive before making any changes to the registry\. 
+
+   1. Navigate to the hive\.
+
+   1. Choose **File**>**Export**\.
+
+   1. In the Export Registry File dialog box, choose the location to which you want to save the backup copy, and then type a name for the backup file in the **File name** field\.
+
+   1. Choose **Save**\.
+
+1. In the Registry Editor console tree, choose **Terminal Server** and then, in the details pane, double\-click on **fDenyTSConnections**\.
+
+1. In the **Edit DWORD** value box, enter `0` in the **Value data** field\. 
+
+1. Choose **OK**\.
+**Note**  
+If the value in the **Value data** field is `1`, then the instance will deny remote desktop connections\. A value of `0` allows remote desktop connections\.
+
+1. Close the Registry Editor and the Disk Management consoles\.
+
+1. From the EC2 console, detach the root volume from the instance to which you attached it and reattach it to the unreachable instance\. When attaching the volume to the unreachable instance, enter `/dev/sda1` in the **device** field\.
+
+1. Restart the unreachable instance\. 

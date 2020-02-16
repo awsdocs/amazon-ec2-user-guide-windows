@@ -45,6 +45,7 @@ Amazon EC2 processes your modification request if there is sufficient capacity f
 + The Reserved Instance is not listed in the Reserved Instance Marketplace
 + The input Reserved Instances are all Standard Reserved Instances or all Convertible Reserved Instances, not some of each type
 + The input Reserved Instances must expire within the same hour, if they are Standard Reserved Instances
++ The Reserved Instance is not a G4 instance\.
 
 ## Submitting Modification Requests<a name="ri-modification-process"></a>
 

@@ -70,3 +70,4 @@ Before you start using Elastic Graphics accelerators, be aware of the following 
 + The Elastic Graphics accelerator is not visible or accessible through the device manager of your instance\.
 + You can't reserve or schedule accelerator capacity\.
 + You can't attach accelerators to instances in EC2\-Classic\.
++ You can't attach accelerators to instances that are configured to use Instance Metadata Service v2 \(IMDSv2\)\. 

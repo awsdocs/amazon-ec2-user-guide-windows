@@ -29,8 +29,6 @@ To create an EBS\-optimized instance, choose **Launch as an EBS\-Optimized insta
 
 To create an `io1` volume, choose **Provisioned IOPS SSD** when creating the volume using the Amazon EC2 console, or, at the command line, specify \-\-type io1 \-\-iops *n* where *n* is an integer between 100 and 64,000\. For more detailed EBS\-volume specifications, see [Amazon EBS Volume Types](ebs-volume-types.md)\. For information about creating an EBS volume, see [Creating an Amazon EBS Volume](ebs-creating-volume.md)\. For information about attaching a volume to an instance, see [Attaching an Amazon EBS Volume to an Instance](ebs-attaching-volume.md)\.
 
-For the example tests, we recommend that you create a RAID array with 6 volumes, which offers a high level of performance\. Because you are charged by gigabytes provisioned \(and the number of provisioned IOPS for `io1` volumes\), not the number of volumes, there is no additional cost for creating multiple, smaller volumes and using them to create a stripe set\. If you're using Oracle Orion to benchmark your volumes, it can simulate striping the same way that Oracle ASM does, so we recommend that you let Orion do the striping\. If you are using a different benchmarking tool, you need to stripe the volumes yourself\.
-
 ### Setting up Throughput Optimized HDD \(`st1`\) or Cold HDD \(`sc1`\) volumes<a name="set_up_hdd"></a>
 
 To create an `st1` volume, choose **Throughput Optimized HDD** when creating the volume using the Amazon EC2 console, or specify \-\-type `st1` when using the command line\. To create an `sc1` volume, choose Cold HDD when creating the volume using the Amazon EC2 console, or specify \-\-type `sc1` when using the command line\. For information about creating EBS volumes, see [Creating an Amazon EBS Volume](ebs-creating-volume.md)\. For information about attaching these volumes to your instance, see [Attaching an Amazon EBS Volume to an Instance](ebs-attaching-volume.md)\.
@@ -42,8 +40,8 @@ The following table lists some of the possible tools you can use to benchmark th
 
 | Tool | Description | 
 | --- | --- | 
-|  fio  |  For benchmarking I/O performance\. \(Note that fio has a dependency on `libaio-devel`\.\) To install fio on Amazon Linux, run the following command: <pre>[ec2-user ~]$ sudo yum install -y fio</pre> To install fio on Ubuntu, run the following command: <pre>sudo apt-get install -y fio</pre>  | 
-|  [Oracle Orion Calibration Tool](https://docs.oracle.com/cd/E18283_01/server.112/e16638/iodesign.htm#BABFCFBC)  |  For calibrating the I/O performance of storage systems to be used with Oracle databases\.  | 
+| [DiskSpd](https://gallery.technet.microsoft.com/DiskSpd-A-Robust-Storage-6ef84e62) | DiskSpd is a storage performance tool from the Windows, Windows Server, and Cloud Server Infrastructure engineering teams at Microsoft\. It is available for download at [https://gallery\.technet\.microsoft\.com/DiskSpd\-A\-Robust\-Storage\-6ef84e62/file/199535/2/DiskSpd\-2\.0\.21a\.zip]( https://gallery.technet.microsoft.com/DiskSpd-A-Robust-Storage-6ef84e62/file/199535/2/DiskSpd-2.0.21a.zip)\. After you download the `diskspd.exe` executable file, open a command prompt with administrative rights \(by choosing "Run as Administrator"\), and then navigate to the directory where you copied the `diskspd.exe` file\.  Copy the desired `diskspd.exe` executable file from the appropriate executable folder \(`amd64fre`, `armfre` or `x86fre)` to a short, simple path like `C:\DiskSpd`\. In most cases you will want the 64\-bit version of DiskSpd from the `amd64fre` folder\.  The source code for DiskSpd is hosted on GitHub at: [https://github\.com/Microsoft/diskspd](https://github.com/Microsoft/diskspd)\. | 
+|  CrystalDiskMark  | CrystalDiskMark is a simple disk benchmark software\. It is available for download at [https://crystalmark\.info/en/software/crystaldiskmark/](https://crystalmark.info/en/software/crystaldiskmark/)\. | 
 
 These benchmarking tools support a wide variety of test parameters\. You should use commands that approximate the workloads your volumes will support\. These commands provided below are intended as examples to help you get started\.
 
@@ -115,78 +113,12 @@ When you are finished testing your volumes, see the following topics for help cl
 
 ### Benchmarking io1 Volumes<a name="piops_benchmarking"></a>
 
-Run fio on the stripe set that you created\.
+Run DiskSpd on the volume that you created\.
 
-The following command performs 16 KB random write operations\.
-
-```
-[ec2-user ~]$ sudo fio --directory=/mnt/p_iops_vol0 --name fio_test_file --direct=1 --rw=randwrite --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap
-```
-
-The following command performs 16 KB random read operations\.
+The following command will run a 30 second random I/O test using a 20GB test file located on the `T:` drive, with a 25% write and 75% read ratio, and an 8K block size\. It will use eight worker threads, each with four outstanding I/Os, and a write entropy value seed of 1GB\. The results of the test will be saved to a text file called `DiskSpeedResults.txt`\. These parameters simulate a SQL Server OLTP workload\.
 
 ```
-[ec2-user ~]$ sudo fio --directory=/mnt/p_iops_vol0 --name fio_test_file --direct=1 --rw=randread --bs=16k --size=1G --numjobs=16 --time_based --runtime=180 --group_reporting --norandommap 
+diskspd –b8K –d30 –o4 –t8 –h –r –w25 –L –Z1G –c20G T:\iotest.dat > DiskSpeedResults.txt
 ```
 
-For more information about interpreting the results, see this tutorial: [Inspecting disk IO performance with fio](https://www.linux.com/tutorials/inspecting-disk-io-performance-fio/)\.
-
-### Benchmarking `st1` and `sc1` Volumes<a name="hdd_benchmarking"></a>
-
-Run fio on your `st1` or `sc1` volume\.
-
-The following command performs 1 MiB sequential read operations against an attached `st1` block device \(e\.g\., `/dev/xvdf`\):
-
-```
-[ec2-user ~]$ sudo fio --filename=/dev/<device> --direct=1 --rw=read --randrepeat=0 --ioengine=libaio --bs=1024k --iodepth=8 --time_based=1 --runtime=180 --name=fio_direct_read_test
-```
-
-The following command performs 1 MiB sequential write operations against an attached `st1` block device:
-
-```
-[ec2-user ~]$ sudo fio --filename=/dev/<device> --direct=1 --rw=write --randrepeat=0 --ioengine=libaio --bs=1024k --iodepth=8 --time_based=1 --runtime=180 --name=fio_direct_write_test 
-```
-
-Some workloads perform a mix of sequential reads and sequential writes to different parts of the block device\. To benchmark such a workload, we recommend that you use separate, simultaneous fio jobs for reads and writes, and use the fio `offset_increment` option to target different block device locations for each job\. 
-
-Running this workload is a bit more complicated than a sequential\-write or sequential\-read workload\. Use a text editor to create a fio job file, called `fio_rw_mix.cfg` in this example, that contains the following:
-
-```
-[global] 
-clocksource=clock_gettime
-randrepeat=0
-runtime=180
-offset_increment=100g
- 
-[sequential-write]
-bs=1M
-ioengine=libaio
-direct=1
-iodepth=8
-filename=/dev/<device>
-do_verify=0
-rw=write
-rwmixread=0
-rwmixwrite=100 
-
-[sequential-read] 
-bs=1M
-ioengine=libaio
-direct=1
-iodepth=8
-filename=/dev/<device>
-do_verify=0
-rw=read
-rwmixread=100
-rwmixwrite=0
-```
-
-Then run the following command: 
-
-```
-[ec2-user ~]$ sudo fio fio_rw_mix.cfg
-```
-
-For more information about interpreting the results, see this tutorial: [Inspecting disk I/O performance with fio](https://www.linux.com/tutorials/inspecting-disk-io-performance-fio/)\.
-
-Multiple fio jobs for direct I/O, even though using sequential read or write operations, can result in lower than expected throughput for `st1` and `sc1` volumes\. We recommend that you use one direct I/O job and use the `iodepth` parameter to control the number of concurrent I/O operations\. 
+For more information about interpreting the results, see this tutorial: [Inspecting disk IO performance with DiskSPd](https://sqlperformance.com/2015/08/io-subsystem/diskspd-test-storage)\.

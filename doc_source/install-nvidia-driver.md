@@ -151,11 +151,11 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
    1. For **Value data**, type `1` and choose **OK**\.
 
-1. \(Optional\) To enable NVIDIA GRID Virtual Applications, complete the GRID activation steps in [Activate NVIDIA GRID Virtual Applications](activate_grid.md)\.
+1. To achieve the best performance from your GPU, complete the optimization steps in [Optimizing GPU Settings](optimize_gpu.md)\.
+
+1. \(Optional\) NVIDIA Quadro Virtual Workstation mode is enabled by default\. To activate NVIDIA GRID Virtual Applications, complete the GRID vApps activation steps in [Activate NVIDIA GRID Virtual Applications](activate_grid.md)\.
 
 1. \(Optional\) To help take advantage of the four displays of up to 4K resolution, set up the high\-performance display protocol, [NICE DCV](https://docs.aws.amazon.com/dcv/)\.
-
-1. To achieve the best performance from your GPU, complete the optimization steps in [Optimizing GPU Settings](optimize_gpu.md)\.
 
 ### Option 4: NVIDIA Gaming Drivers \(G4 Instances\)<a name="nvidia-gaming-driver"></a>
 
