@@ -19,6 +19,8 @@ To use Elastic Graphics, launch a Windows instance and specify an accelerator ty
 **Note**  
 Bare metal instances are not supported\.
 
+Elastic Graphics accelerators are available in the following AWS Regions: `us-east-1`, `us-east-2`, `us-west-2`, `ap-northeast-1`, `ap-southeast-1`, `ap-southeast-2`, `eu-central-1`, and `eu-west-1`\.
+
 The following instance types support Elastic Graphics accelerators:
 + C3 \| C4 \| C5 \| C5d \| C5n
 + D2
