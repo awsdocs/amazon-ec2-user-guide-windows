@@ -1,6 +1,6 @@
 # Reboot Your Instance<a name="ec2-instance-reboot"></a>
 
-An instance reboot is equivalent to an operating system reboot\. In most cases, it takes only a few minutes to reboot your instance\. When you reboot an instance, it remains on the same physical host, so your instance keeps its public DNS name \(IPv4\), private IPv4 address, IPv6 address \(if applicable\), and any data on its instance store volumes\.
+An instance reboot is equivalent to an operating system reboot\. In most cases, it takes only a few minutes to reboot your instance\. When you reboot an instance, it keeps its public DNS name \(IPv4\), private IPv4 address, IPv6 address \(if applicable\), and any data on its instance store volumes\.
 
 Rebooting an instance doesn't start a new instance billing hour, unlike stopping and starting your instance\.
 
@@ -18,7 +18,7 @@ If Windows is installing updates on your instance, we recommend that you do not 
 
 1. Select the instance and choose **Actions**, **Instance State**, **Reboot**\.
 
-1. Choose **Yes, Reboot** when prompted for confirmation\.
+1. Choose **Yes, Reboot** when prompted for confirmation\. The instance will remain in a "running" state\. 
 
 **To reboot an instance using the command line**
 

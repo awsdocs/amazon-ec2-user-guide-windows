@@ -4,13 +4,13 @@ Security Technical Implementation Guides \(STIGs\) are the configuration standar
 
 Amazon EC2 Windows Server AMIs for STIG compliance are available in all public AWS and GovCloud regions\. You can launch instances from these AMIs directly from the Amazon EC2 console\. They are billed using standard Windows pricing\.
 
-The STIG\-compliant Amazon EC2 AMIs for Windows Server can be found in the Community AMIs when you create an instance\. The AMI names are: 
-+ Windows\_Server\-2019\-English\-STIG\-Full\-YYYY\.MM\.DD
-+ Windows\_Server\-2019\-English\-STIG\-Core\-YYYY\.MM\.DD
-+ Windows\_Server\-2016\-English\-STIG\-Full\-YYYY\.MM\.DD
-+ Windows\_Server\-2016\-English\-STIG\-Core\-YYYY\.MM\.DD
-+ Windows\_Server\-2012\-R2\-English\-STIG\-Full\-YYYY\.MM\.DD
-+ Windows\_Server\-2012\-R2\-English\-STIG\-Core\-YYYY\.MM\.DD
+The STIG\-compliant Amazon EC2 AMIs for Windows Server can be found in the Community AMIs when you create an instance\. The AMI names are as follows \(**YYYY\.MM\.DD** denotes the latest version\. You can search for the version without the date suffix\.\) 
++ Windows\_Server\-2019\-English\-STIG\-Full\-**YYYY\.MM\.DD**
++ Windows\_Server\-2019\-English\-STIG\-Core\-**YYYY\.MM\.DD**
++ Windows\_Server\-2016\-English\-STIG\-Full\-**YYYY\.MM\.DD**
++ Windows\_Server\-2016\-English\-STIG\-Core\-**YYYY\.MM\.DD**
++ Windows\_Server\-2012\-R2\-English\-STIG\-Full\-**YYYY\.MM\.DD**
++ Windows\_Server\-2012\-R2\-English\-STIG\-Core\-**YYYY\.MM\.DD**
 
 The following lists and tables show the STIGs that have *not* been applied to each Operating System, by category, unless otherwise indicated\. 
 

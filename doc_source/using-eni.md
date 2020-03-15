@@ -117,7 +117,7 @@ The following table lists the maximum number of network interfaces per instance 
 | `g4dn.4xlarge` | 3 | 10 | 10 | 
 | `g4dn.8xlarge` | 4 | 15 | 15 | 
 | `g4dn.12xlarge` | 8 | 30 | 30 | 
-| `g4dn.16xlarge` | 15 | 50 | 50 | 
+| `g4dn.16xlarge` | 4 | 15 | 15 | 
 | h1\.2xlarge | 4 | 15 | 15 | 
 | h1\.4xlarge | 8 | 30 | 30 | 
 | h1\.8xlarge | 8 | 30 | 30 | 

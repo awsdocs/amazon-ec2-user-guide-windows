@@ -23,11 +23,19 @@ To purchase and modify Reserved Instances, ensure that your IAM user account has
 
 ## Choosing a Platform<a name="ri-choosing-platform"></a>
 
+Amazon EC2 supports the following Windows platforms for Reserved Instances:
++ Windows
++ Windows with SQL Server Standard
++ Windows with SQL Server Web
++ Windows with SQL Server Enterprise
+
 When you purchase a Reserved Instance, you must choose an offering for a *platform* that represents the operating system for your instance\.
++ For Windows with SQL Standard, Windows with SQL Server Enterprise, and Windows with SQL Server Web, you must choose offerings for those specific platforms\.
++ For all other Windows versions, choose an offering for the **Windows** platform\.
 
-For Windows with SQL Standard, Windows with SQL Server Enterprise, and Windows with SQL Server Web, you must choose offerings for those specific platforms\. For all other Windows versions, choose an offering for the **Windows** platform\.
+For information about the supported platforms for Linux, see [Choosing a Platform](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-concepts-buying.html#ri-choosing-platform) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-If you purchase a Reserved Instance to apply to an On\-Demand Instance that was launched from an AMI with a billing product code, make sure that the Reserved Instance has the matching billing product code\. If you purchase a Reserved Instance without the matching billing product code, the Reserved Instance will not be applied to the On\-Demand Instance\.
+If you purchase a Reserved Instance to apply to an On\-Demand Instance that was launched from an AMI with a billing product code, make sure that the Reserved Instance has the matching billing product code\. If you purchase a Reserved Instance without the matching billing product code, the Reserved Instance will not be applied to the On\-Demand Instance\. For more information about how to obtain the AMI billing code, see [Obtaining Billing Information](ami-billing-info.md)\.
 
 ## Queuing Your Purchase<a name="ri-queued-purchase"></a>
 
@@ -41,11 +49,11 @@ You can view your queued purchases in the Amazon EC2 console\. The status of a q
 
 You can buy Standard Reserved Instances in a specific Availability Zone and get a capacity reservation\. Alternatively, you can forego the capacity reservation and purchase a regional Standard Reserved Instance\.
 
-**To buy Standard Reserved Instances using the Amazon EC2 console**
+**To buy Standard Reserved Instances using the console**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Reserved Instances**, **Purchase Reserved Instances**\.
+1. In the navigation pane, choose **Reserved Instances**, and then choose **Purchase Reserved Instances**\.
 
 1. For **Offering Class**, choose **Standard** to display Standard Reserved Instances\.
 
@@ -121,11 +129,11 @@ For examples of how Reserved Instances are applied to your running instances, se
 
 You can buy Convertible Reserved Instances in a specific Availability Zone and get a capacity reservation\. Alternatively, you can forego the capacity reservation and purchase a regional Convertible Reserved Instance\.
 
-**To buy Convertible Reserved Instances using the Amazon EC2 console**
+**To buy Convertible Reserved Instances using the console**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Reserved Instances**, **Purchase Reserved Instances**\.
+1. In the navigation pane, choose **Reserved Instances**, and then choose **Purchase Reserved Instances**\.
 
 1. For **Offering Class**, choose **Convertible** to display Convertible Reserved Instances\.
 

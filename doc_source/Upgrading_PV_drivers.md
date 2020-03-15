@@ -38,6 +38,13 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 
 1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/Latest/AWSPVDriver.zip) the latest driver package to the instance\.
 
+    Or, run the following PowerShell command:
+
+   ```
+   PS C:\>invoke-webrequest https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/Latest/AWSPVDriver.zip -outfile $env:USERPROFILE\pv_driver.zip
+   expand-archive $env:userprofile\pv_driver.zip -DestinationPath $env:userprofile\pv_drivers
+   ```
+
 1. Extract the contents of the folder and then run `AWSPVDriverSetup.msi`\.
 
 After running the MSI, the instance automatically reboots and then upgrades the driver\. The instance will not be available for up to 15 minutes\. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, you can verify that the new driver was installed by connecting to the instance using Remote Desktop and then running the following PowerShell command:
