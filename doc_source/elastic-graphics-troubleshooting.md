@@ -82,7 +82,7 @@ If the Elastic Graphics accelerator is in an unhealthy state, use the following 
 
 ### Stop and Start the Instance<a name="elastic-graphics-start-and-stop"></a>
 
-If your Elastic Graphics accelerator is in an unhealthy state, stopping the instance and starting it again is the simplest option\. For more information, see [Stopping and Starting Your Instances](Stop_Start.md#starting-stopping-instances)\.
+If your Elastic Graphics accelerator is in an unhealthy state, stopping the instance and starting it again is the simplest option\. For more information, see [Stopping and starting your instances](Stop_Start.md#starting-stopping-instances)\.
 
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.

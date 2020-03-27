@@ -105,7 +105,7 @@ Get-NetAdapterAdvancedProperty -Name "Ethernet"
 Enable jumbo frames as follows\.
 
 ```
-Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*JumboPacket" -RegistryValue 9015"
+Set-NetAdapterAdvancedProperty -Name "Ethernet" -RegistryKeyword "*JumboPacket" -RegistryValue 9015
 ```
 
 Disable jumbo frames as follows:

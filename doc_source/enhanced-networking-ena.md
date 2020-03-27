@@ -1,6 +1,6 @@
 # Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances<a name="enhanced-networking-ena"></a>
 
-Amazon EC2 provides enhanced networking capabilities through the Elastic Network Adapter \(ENA\)\.
+Amazon EC2 provides enhanced networking capabilities through the Elastic Network Adapter \(ENA\)\. To use enhanced networking, you must install the required ENA module and enable ENA support\.
 
 **Topics**
 + [Requirements](#ena-requirements)

@@ -27,6 +27,9 @@ These drivers contain optimizations for gaming and are updated frequently to pro
 **Configured Mode**  
 On Windows, the Tesla drivers are configured to run in Tesla Compute Cluster \(TCC\) mode\. The GRID and gaming drivers are configured to run in Windows Display Driver Model \(WDDM\) mode\. In TCC mode, the card is dedicated to compute workloads\. In WDDM mode, the card supports both compute and graphics workloads\.
 
+**NVIDIA Control Panel**  
+The NVIDIA control panel is supported with GRID and Gaming drivers\. It is not supported with Tesla drivers\.
+
 **Supported APIs for Tesla Drivers**
 + OpenCL
 + NVIDIA CUDA and related libraries \(for example, cuDNN, TensorRT, nvJPEG, and cuBLAS\)
@@ -98,13 +101,13 @@ Log on to your Windows instance and download the 64\-bit NVIDIA driver appropria
 
 ### Option 3: GRID Drivers \(G3 and G4 Instances\)<a name="nvidia-GRID-driver"></a>
 
-These downloads are available to AWS customers only\. By downloading, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 or NVIDIA Tesla M60 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](http://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
+These downloads are available to AWS customers only\. By downloading, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 or NVIDIA Tesla M60 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
 **To install the NVIDIA GRID driver on your Windows instance**
 
 1. Connect to your Windows instance and open a PowerShell window\.
 
-1. Download the drivers and the [NVIDIA GRID Cloud End User License Agreement](http://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX) to your desktop using the following PowerShell commands\.
+1. Download the drivers and the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX) from Amazon S3 to your desktop using the following PowerShell commkiniands\. If you are an IAM user, you must have read\-only access to Amazon S3 actions\.
 
    For G3 instances:
 
@@ -159,13 +162,13 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
 ### Option 4: NVIDIA Gaming Drivers \(G4 Instances\)<a name="nvidia-gaming-driver"></a>
 
-These drivers are available to AWS customers only\. By downloading them, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](http://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
+These drivers are available to AWS customers only\. By downloading them, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
 **To install the NVIDIA gaming driver on your Windows instance**
 
 1. Connect to your Windows instance and open a PowerShell window\.
 
-1. Download and install the gaming driver using the following PowerShell commands\.
+1. Download and install the gaming driver using the following PowerShell commands\. If you are an IAM user, you must have read\-only access to Amazon S3 actions\.
 
    ```
    $Bucket = "nvidia-gaming"

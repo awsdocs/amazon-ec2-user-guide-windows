@@ -20,7 +20,7 @@ In order to run the Windows to Linux replatforming assistant for Microsoft SQL S
 
 **Install the Windows to Linux Replatforming Assistant PowerShell Backup Script**
 
-   In order to run the Windows to Linux replatforming assistant, download the PowerShell backup script: [https://s3-us-west-1.amazonaws.com/awsec2-server-upgrade-prod/MigrateSQLServerToEC2Linux.ps1](https://s3-us-west-1.amazonaws.com/awsec2-server-upgrade-prod/MigrateSQLServerToEC2Linux.ps1)\.
+   To run the Windows to Linux replatforming assistant, download the PowerShell backup script: [MigrateSQLServerToEC2Linux\.ps1](https://awsec2-server-upgrade-prod.s3.us-west-1.amazonaws.com/MigrateSQLServerToEC2Linux.ps1)\.
 
 1. 
 

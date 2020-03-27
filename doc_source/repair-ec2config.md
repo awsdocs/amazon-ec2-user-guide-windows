@@ -50,7 +50,7 @@ If you do not create the instance in the same Availability Zone as the affected 
 
 1. In the Amazon EC2 console, detach the affected volume from the temporary instance and reattach it to your instance with the device name `/dev/sda1`\. You must specify this device name to designate the volume as a root volume\.
 
-1. [Stop and Start Your Instance](Stop_Start.md) the instance\.
+1. [Stop and start your instance](Stop_Start.md) the instance\.
 
 1. After the instance starts, check the system log and verify that you see the message Windows is ready to use\.
 

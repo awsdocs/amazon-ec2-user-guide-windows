@@ -23,7 +23,7 @@ The following lists and tables show the STIGs that have *not* been applied to ea
 
 ## Core and Base Operating System<a name="base-os-stig"></a>
 
-The following STIG settings have *not* been applied\. All other applicable STIGs have been applied\. For complete list, see [2019](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_Windows_Server_2019_V1R3_STIG.zip), [2016](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_Windows_Server_2016_V1R11_STIG.zip), and [2012](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_Windows_2012_and_2012_R2_MS_V2R17_STIG.zip)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
+The following STIG settings have *not* been applied\. All other applicable STIGs have been applied\. For a complete list, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
 
 ------
 #### [ Windows Server 2019 STIG V1 Release 2 ]
@@ -44,14 +44,14 @@ V\-1072, V\-1074, V\-1076, V\-1089, V\-1112, V\-1114, V\-1115, V\-1127, V\-1145,
 
 ## Internet Explorer \(IE\) 11 STIG V1 Release 18<a name="ie-os-stig"></a>
 
-All STIG settings related to Internet Explorer have been applied\. For complete list, see [https://dl\.dod\.cyber\.mil/wp\-content/uploads/stigs/zip/U\_MS\_IE11\_V1R18\_STIG\.zip](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_IE11_V1R18_STIG.zip)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
+All STIG settings related to Internet Explorer have been applied\. For a complete list, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=app-security%2Cbrowser-guidance)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
 
 **Windows Server 2019, 2016, and 2012 R2**  
 All STIG settings applied\.
 
 ## Microsoft \.NET Framework 4\.0 STIG V1 Release 9: STIGS Not Applied<a name="dotnet-os-stig"></a>
 
-The following STIGs have *not* been applied\. All other applicable STIG settings have been applied\. For complete list, see [https://dl\.dod\.cyber\.mil/wp\-content/uploads/stigs/zip/U\_MS\_DotNet\_Framework\_4\-0\_V1R9\_STIG\.zip](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_DotNet_Framework_4-0_V1R9_STIG.zip)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
+The following STIGs have *not* been applied\. All other applicable STIG settings have been applied\. For a complete list, see [STIGs U\_MS\_DotNet\_Framework\_4\-0\_V1R9\_STIG\.zip](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_DotNet_Framework_4-0_V1R9_STIG.zip)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
 
 **Windows Server 2019, 2016, and 2012 R2**  
 V\-7055, V\-7061, V\-7063, V\-7067, V\-7069, V\-7070, V\-18395, V\-30926, V\-30935, V\-30937, V\-30968, V\-30972, V\-30986, V\-31026, and V\-32025

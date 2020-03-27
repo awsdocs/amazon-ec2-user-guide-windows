@@ -12,10 +12,11 @@ For security best practices for Amazon EC2 running Windows Server, see **Securit
 
 **Topics**
 + [Infrastructure Security in Amazon EC2](infrastructure-security.md)
++ [Amazon EC2 and Interface VPC Endpoints](interface-vpc-endpoints.md)
 + [Resilience in Amazon EC2](disaster-recovery-resiliency.md)
 + [Data Protection in Amazon EC2](data-protection.md)
 + [Identity and Access Management for Amazon EC2](security-iam.md)
-+ [Amazon EC2 Key Pairs and Windows Instances](ec2-key-pairs.md)
++ [Amazon EC2 key pairs and Windows instances](ec2-key-pairs.md)
 + [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)
 + [Configuration Management in Amazon EC2](configuration-management.md)
 + [Update Management in Amazon EC2](update-management.md)

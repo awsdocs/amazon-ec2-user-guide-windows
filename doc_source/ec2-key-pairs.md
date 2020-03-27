@@ -1,13 +1,13 @@
-# Amazon EC2 Key Pairs and Windows Instances<a name="ec2-key-pairs"></a>
+# Amazon EC2 key pairs and Windows instances<a name="ec2-key-pairs"></a>
 
 Amazon EC2 uses public key cryptography to encrypt and decrypt login information\. Public key cryptography uses a public key to encrypt a piece of data, and then the recipient uses the private key to decrypt the data\. The public and private keys are known as a *key pair*\. Public key cryptography enables you to securely access your instances using a private key instead of a password\.
 
 When you launch an instance, you specify the key pair\. You can specify an existing key pair or a new key pair that you create at launch\. With Windows instances, you use the private key to obtain the administrator password and then log in using RDP\. For more information about key pairs and Linux instances, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Creating a Key Pair**  
-You can use Amazon EC2 to create your key pair\. For more information, see [Creating a Key Pair Using Amazon EC2](#having-ec2-create-your-key-pair)\.
+You can use Amazon EC2 to create your key pair\. For more information, see [Creating a key pair using Amazon EC2](#having-ec2-create-your-key-pair)\.
 
-Alternatively, you can use a third\-party tool and then import the public key to Amazon EC2\. For more information, see [Importing Your Own Public Key to Amazon EC2](#how-to-generate-your-own-key-and-import-it-to-aws)\.
+Alternatively, you can use a third\-party tool and then import the public key to Amazon EC2\. For more information, see [Importing your own public key to Amazon EC2](#how-to-generate-your-own-key-and-import-it-to-aws)\.
 
 Each key pair requires a name\. Be sure to choose a name that is easy to remember\. Amazon EC2 associates the public key with the name that you specify as the key name\.
 
@@ -19,16 +19,16 @@ The keys that Amazon EC2 uses are 2048\-bit SSH\-2 RSA keys\. You can have up to
 When you launch an instance, you should specify the name of the key pair that you plan to use to connect to the instance\. If you don't specify the name of an existing key pair when you launch an instance, you won't be able to connect to the instance\. When you connect to the instance, you must specify the private key that corresponds to the key pair that you specified when you launched the instance\.
 
 **Topics**
-+ [Creating a Key Pair Using Amazon EC2](#having-ec2-create-your-key-pair)
-+ [Importing Your Own Public Key to Amazon EC2](#how-to-generate-your-own-key-and-import-it-to-aws)
-+ [Retrieving the Public Key for Your Key Pair on Linux](#retrieving-the-public-key)
-+ [Retrieving the Public Key for Your Key Pair on Windows](#retrieving-the-public-key-windows)
-+ [Retrieving the Public Key for Your Key Pair from Your Instance](#retrieving-the-public-key-instance)
-+ [Verifying Your Key Pair's Fingerprint](#verify-key-pair-fingerprints)
-+ [Deleting Your Key Pair](#delete-key-pair)
-+ [Connecting to Your Windows Instance If You Lose Your Private Key](#replacing-lost-key-pair-windows)
++ [Creating a key pair using Amazon EC2](#having-ec2-create-your-key-pair)
++ [Importing your own public key to Amazon EC2](#how-to-generate-your-own-key-and-import-it-to-aws)
++ [Retrieving the public key for your key pair on Linux](#retrieving-the-public-key)
++ [Retrieving the public key for your key pair on Windows](#retrieving-the-public-key-windows)
++ [Retrieving the public key for your key pair from your instance](#retrieving-the-public-key-instance)
++ [Verifying your key pair's fingerprint](#verify-key-pair-fingerprints)
++ [Deleting your key pair](#delete-key-pair)
++ [Connecting to your Windows instance if you lose your private key](#replacing-lost-key-pair-windows)
 
-## Creating a Key Pair Using Amazon EC2<a name="having-ec2-create-your-key-pair"></a>
+## Creating a key pair using Amazon EC2<a name="having-ec2-create-your-key-pair"></a>
 
 After you create a key pair, you can specify it when you launch your instance\.
 
@@ -84,7 +84,7 @@ Use the [New\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/referenc
 
 ------
 
-## Importing Your Own Public Key to Amazon EC2<a name="how-to-generate-your-own-key-and-import-it-to-aws"></a>
+## Importing your own public key to Amazon EC2<a name="how-to-generate-your-own-key-and-import-it-to-aws"></a>
 
 Instead of using Amazon EC2 to create your key pair, you can create an RSA key pair using a third\-party tool and then import the public key to Amazon EC2\. For example, you can use ssh\-keygen \(a tool provided with the standard OpenSSH installation\) to create a key pair\. Alternatively, Java, Ruby, Python, and many other programming languages provide standard libraries that you can use to create an RSA key pair\.
 
@@ -163,7 +163,7 @@ Use the [Get\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/referenc
 
 ------
 
-## Retrieving the Public Key for Your Key Pair on Linux<a name="retrieving-the-public-key"></a>
+## Retrieving the public key for your key pair on Linux<a name="retrieving-the-public-key"></a>
 
 On your local Linux or macOS computer, you can use the ssh\-keygen command to retrieve the public key for your key pair\. Specify the path where you downloaded your private key \(the `.pem` file\)\.
 
@@ -187,13 +187,13 @@ If the command fails, run the following command to ensure that you've changed th
 chmod 400 my-key-pair.pem
 ```
 
-## Retrieving the Public Key for Your Key Pair on Windows<a name="retrieving-the-public-key-windows"></a>
+## Retrieving the public key for your key pair on Windows<a name="retrieving-the-public-key-windows"></a>
 
 On your local Windows computer, you can use PuTTYgen to get the public key for your key pair\.
 
 Start PuTTYgen and choose **Load**\. Select the `.ppk` or `.pem` file\. PuTTYgen displays the public key under **Public key for pasting into OpenSSH authorized\_keys file**\. You can also view the public key by choosing **Save public key**, specifying a name for the file, saving the file, and then opening the file\.
 
-## Retrieving the Public Key for Your Key Pair from Your Instance<a name="retrieving-the-public-key-instance"></a>
+## Retrieving the public key for your key pair from your instance<a name="retrieving-the-public-key-instance"></a>
 
 The public key that you specified when you launched an instance is also available to you through its instance metadata\. To view the public key that you specified when launching the instance, use the following command from your instance:
 
@@ -213,7 +213,7 @@ BQoQzd8v7yeb7OzlPnWOyN0qFU0XA246RA8QFYiCNYwI3f05p6KLxEXAMPLE my-key-pair
 
 If you change the key pair that you use to connect to the instance, we don't update the instance metadata to show the new public key\. Instead, the instance metadata continues to show the public key for the key pair that you specified when you launched the instance\. For more information, see [Retrieving Instance Metadata](instancedata-data-retrieval.md)\.
 
-## Verifying Your Key Pair's Fingerprint<a name="verify-key-pair-fingerprints"></a>
+## Verifying your key pair's fingerprint<a name="verify-key-pair-fingerprints"></a>
 
 On the **Key Pairs** page in the Amazon EC2 console, the **Fingerprint** column displays the fingerprints generated from your key pairs\. AWS calculates the fingerprint differently depending on whether the key pair was generated by AWS or a third\-party tool\. If you created the key pair using AWS, the fingerprint is calculated using an SHA\-1 hash function\. If you created the key pair with a third\-party tool and uploaded the public key to AWS, or if you generated a new public key from an existing AWS\-created private key and uploaded it to AWS, the fingerprint is calculated using an MD5 hash function\.
 
@@ -237,7 +237,7 @@ If you created an OpenSSH key pair using OpenSSH 7\.8 or later and uploaded the 
 C:\> ssh-keygen -ef path_to_private_key -m PEM | openssl rsa -RSAPublicKey_in -outform DER | openssl md5 -c
 ```
 
-## Deleting Your Key Pair<a name="delete-key-pair"></a>
+## Deleting your key pair<a name="delete-key-pair"></a>
 
 When you delete a key pair, you are only deleting the Amazon EC2 copy of the public key\. Deleting a key pair doesn't affect the private key on your computer or the public key on any instances that already launched using that key pair\. You can't launch a new instance using a deleted key pair, but you can continue to connect to any instances that you launched using a deleted key pair, as long as you still have the private key \(`.pem`\) file\.
 
@@ -286,7 +286,7 @@ Use the [Remove\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/refer
 
 ------
 
-## Connecting to Your Windows Instance If You Lose Your Private Key<a name="replacing-lost-key-pair-windows"></a>
+## Connecting to your Windows instance if you lose your private key<a name="replacing-lost-key-pair-windows"></a>
 
 When you connect to a newly launched Windows instance, you decrypt the password for the Administrator account using the private key for the key pair that you specified when you launched the instance\.
 

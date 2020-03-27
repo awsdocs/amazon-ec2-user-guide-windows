@@ -57,7 +57,7 @@ If you haven't created a key pair already, you can create one using the Amazon E
 **Important**  
 This is the only chance for you to save the private key file\. You'll need to provide the name of your key pair when you launch an instance and the corresponding private key each time you connect to the instance\.
 
-For more information, see [Amazon EC2 Key Pairs and Windows Instances](ec2-key-pairs.md)\.
+For more information, see [Amazon EC2 key pairs and Windows instances](ec2-key-pairs.md)\.
 
 ## Create a Security Group<a name="create-a-base-security-group"></a>
 

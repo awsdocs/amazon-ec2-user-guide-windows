@@ -287,17 +287,15 @@ If your unreachable instance is not managed by AWS Systems Manager Session Manag
    regedit
    ```
 
-1. In the left navigation pane of the Registry Editor, choose **HKEY\_LOCAL\_MACHINE**, then select **File**>**Load Hive**\.
+1. In the Registry Editor console tree, choose **HKEY\_LOCAL\_MACHINE**, then select **File**>**Load Hive**\.
 
-1. Navigate to the drive of the attached volume\.
+1. Select the drive of the attached volume, navigate to `\Windows\System32\config\`, select `SYSTEM`, and then choose **Open**\.
 
-1. Save with a key name\.
-
-1. In the Registry Editor console tree, navigate to the location of the file you just saved: `HKEY_LOCAL_MACHINE\your key name\ControlSet001\Control\Terminal Server`\.
+1. For **Key Name**, enter a unique name for the hive and choose **OK**\.
 
 1. Back up the registry hive before making any changes to the registry\. 
 
-   1. Navigate to the hive\.
+   1. In the Registry Editor console tree, select the hive that you loaded: `HKEY_LOCAL_MACHINE\your key name`\.
 
    1. Choose **File**>**Export**\.
 
@@ -305,7 +303,7 @@ If your unreachable instance is not managed by AWS Systems Manager Session Manag
 
    1. Choose **Save**\.
 
-1. In the Registry Editor console tree, choose **Terminal Server** and then, in the details pane, double\-click on **fDenyTSConnections**\.
+1. In the Registry Editor console tree, navigate to `HKEY_LOCAL_MACHINE\your key name\ControlSet001\Control\Terminal Server`, and then, in the details pane, double\-click on **fDenyTSConnections**\.
 
 1. In the **Edit DWORD** value box, enter `0` in the **Value data** field\. 
 
