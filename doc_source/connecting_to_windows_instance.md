@@ -15,7 +15,7 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
 + **Install an RDP client**
   + \[Windows\] Windows includes an RDP client by default\. To verify, type mstsc at a Command Prompt window\. If your computer doesn't recognize this command, see the [Windows home page](https://windows.microsoft.com) and search for the download for the Microsoft Remote Desktop app\.
   + \[Mac OS X\] Download the Microsoft Remote Desktop app from the Mac App Store\.
-  + \[Linux\] Use [rdesktop](http://www.rdesktop.org/)\.
+  + \[Linux\] Use [remmina](https://remmina.org/)\.
 + **Get the ID of the instance\.**
 
   You can get the ID of your instance using the Amazon EC2 console \(from the **Instance ID** column\)\. If you prefer, you can use the [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\) or [Get\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(AWS Tools for Windows PowerShell\) command\.
