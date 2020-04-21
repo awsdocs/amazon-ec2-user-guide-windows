@@ -1,4 +1,4 @@
-# Amazon EC2 Windows Server AMIs for STIG Compliance<a name="ami-windows-stig"></a>
+# Amazon EC2 Windows Server AMIs for STIG compliance<a name="ami-windows-stig"></a>
 
 Security Technical Implementation Guides \(STIGs\) are the configuration standards created by the Defense Information Systems Agency \(DISA\) to secure information systems and software\. To make your systems compliant with STIG standards, you must install, configure, and test a variety of security settings\. Amazon EC2 Windows Server AMIs for STIG Compliance are pre\-configured with over 160 required security settings\. STIG\-compliant operating systems include Windows Server 2012 R2, Windows Server 2016, and Windows Server 2019\. The STIG\-compliant AMIs include updated Department of Defense \(DoD\) certificates to help you get started and achieve STIG compliance\. There are no additional charges for using STIG\-compliant AMIs\.
 
@@ -15,13 +15,13 @@ The STIG\-compliant Amazon EC2 AMIs for Windows Server can be found in the Commu
 The following lists and tables show the STIGs that have *not* been applied to each Operating System, by category, unless otherwise indicated\. 
 
 **Topics**
-+ [Core and Base Operating System](#base-os-stig)
++ [Core and base operating system](#base-os-stig)
 + [Internet Explorer \(IE\) 11 STIG V1 Release 18](#ie-os-stig)
-+ [Microsoft \.NET Framework 4\.0 STIG V1 Release 9: STIGS Not Applied](#dotnet-os-stig)
++ [Microsoft \.NET Framework 4\.0 STIG V1 Release 9: STIGS not applied](#dotnet-os-stig)
 + [Windows Firewall STIG V1 Release 7](#windows-firewall-stig)
-+ [Version History](#stig-version-history)
++ [Version history](#stig-version-history)
 
-## Core and Base Operating System<a name="base-os-stig"></a>
+## Core and base operating system<a name="base-os-stig"></a>
 
 The following STIG settings have *not* been applied\. All other applicable STIGs have been applied\. For a complete list, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
 
@@ -49,7 +49,7 @@ All STIG settings related to Internet Explorer have been applied\. For a complet
 **Windows Server 2019, 2016, and 2012 R2**  
 All STIG settings applied\.
 
-## Microsoft \.NET Framework 4\.0 STIG V1 Release 9: STIGS Not Applied<a name="dotnet-os-stig"></a>
+## Microsoft \.NET Framework 4\.0 STIG V1 Release 9: STIGS not applied<a name="dotnet-os-stig"></a>
 
 The following STIGs have *not* been applied\. All other applicable STIG settings have been applied\. For a complete list, see [STIGs U\_MS\_DotNet\_Framework\_4\-0\_V1R9\_STIG\.zip](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_MS_DotNet_Framework_4-0_V1R9_STIG.zip)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
 
@@ -60,7 +60,7 @@ V\-7055, V\-7061, V\-7063, V\-7067, V\-7069, V\-7070, V\-18395, V\-30926, V\-309
 
 All STIG settings related to Windows Firewall have been applied\. For complete list, see [https://dl\.dod\.cyber\.mil/wp\-content/uploads/stigs/zip/U\_Windows\_Firewall\_V1R7\_STIG\.zip](https://dl.dod.cyber.mil/wp-content/uploads/stigs/zip/U_Windows_Firewall_V1R7_STIG.zip)\. For instructions on how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
 
-## Version History<a name="stig-version-history"></a>
+## Version history<a name="stig-version-history"></a>
 
 The following table shows STIG AMI version history updates\.
 

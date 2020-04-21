@@ -1,4 +1,4 @@
-# Configuration Management in Amazon EC2<a name="configuration-management"></a>
+# Configuration management in Amazon EC2<a name="configuration-management"></a>
 
 Amazon Machine Images \(AMIs\) provide an initial configuration for an Amazon EC2 instance, which includes the Windows OS and optional customer\-specific customizations, such as applications and security controls\. Create an AMI catalog containing customized security configuration baselines to ensure all Windows instances are launched with standard security controls\. Security baselines can be baked into an AMI, bootstrapped dynamically when an EC2 instance is launched, or packaged as a product for uniform distribution through AWS Service Catalog portfolios\. For more information on securing an AMI, see [Best Practices for Building an AMI](https://docs.aws.amazon.com/marketplace/latest/userguide/best-practices-for-building-your-amis.html)\.
 

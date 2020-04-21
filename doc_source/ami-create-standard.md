@@ -1,4 +1,4 @@
-# Create a Standard Amazon Machine Image Using Sysprep<a name="ami-create-standard"></a>
+# Create a standard Amazon Machine Image using Sysprep<a name="ami-create-standard"></a>
 
 The Microsoft System Preparation \(Sysprep\) tool simplifies the process of duplicating a customized installation of Windows\. We recommend that you use Sysprep to create a standardized Amazon Machine Image \(AMI\)\. You can then create new Amazon EC2 instances for Windows from this standardized image\.
 
@@ -8,22 +8,22 @@ We also recommend that you run Sysprep with EC2Launch \(Windows Server 2016 and 
 Don't use Sysprep to create an instance backup\. Sysprep removes system\-specific information; removing this information might have unintended consequences for an instance backup\.
 
 **Topics**
-+ [Before You Begin](#sysprep-begin)
-+ [Using Sysprep with the EC2Config Service](#sysprep-using)
-+ [Run Sysprep with the EC2Config Service](#sysprep-gui-procedure)
++ [Before you begin](#sysprep-begin)
++ [Using Sysprep with the EC2Config service](#sysprep-using)
++ [Run Sysprep with the EC2Config service](#sysprep-gui-procedure)
 + [Troubleshooting Sysprep](#sysprep-troubleshoot)
 
-## Before You Begin<a name="sysprep-begin"></a>
+## Before you begin<a name="sysprep-begin"></a>
 + Before performing Sysprep, we recommend that you remove all local user accounts and all account profiles other than a single administrator account under which Sysprep will be executed\. If you perform Sysprep with additional accounts and profiles, unexpected behavior could result, including loss of profile data or failure to complete Sysprep\.
 + Learn more about [Sysprep](https://technet.microsoft.com/en-us/library/cc721940.aspx) on Microsoft TechNet\.
 + Learn which [server roles are supported for Sysprep](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)\.
 + The procedures on this page apply to E2Config\. With Windows Server 2016 and later, see [Using Sysprep with EC2Launch](ec2launch.md#ec2launch-sysprep)\.
 
-## Using Sysprep with the EC2Config Service<a name="sysprep-using"></a>
+## Using Sysprep with the EC2Config service<a name="sysprep-using"></a>
 
 Learn the details of the different Sysprep execution phases and the tasks performed by the EC2Config service as the image is prepared\. 
 
-### Sysprep Phases<a name="sysprep-phases"></a>
+### Sysprep phases<a name="sysprep-phases"></a>
 
 Sysprep runs through the following phases:
 + **Generalize**: The tool removes image\-specific information and configurations\. For example, Sysprep removes the security identifier \(SID\), the computer name, the event logs, and specific drivers, to name a few\. After this phase is completed, the operating system \(OS\) is ready to create an AMI\. 
@@ -32,7 +32,7 @@ When you run Sysprep with the EC2Config service, the system prevents drivers fro
 + **Specialize**: Plug and Play scans the computer and installs drivers for any detected devices\. The tool generates OS requirements like the computer name and SID\. Optionally, you can execute commands in this phase\. 
 + **Out\-of\-Box Experience \(OOBE\)**: The system runs an abbreviated version of Windows Setup and asks the user to enter information such as a system language, the time zone, and a registered organization\. When you run Sysprep with EC2Config, the answer file automates this phase\. 
 
-### Sysprep Actions<a name="sysprep-actions"></a>
+### Sysprep actions<a name="sysprep-actions"></a>
 
 Sysprep and the EC2Config service perform the following actions when preparing an image\.
 
@@ -60,13 +60,13 @@ Sysprep and the EC2Config service perform the following actions when preparing a
    sysprep.exe /unattend: "C:\Program Files\Amazon\Ec2ConfigService\sysprep2008.xml" /oobe /generalize /shutdown
    ```
 
-#### Generalize Phase<a name="sysprep-generalize"></a>
+#### Generalize phase<a name="sysprep-generalize"></a>
 + The tool removes image\-specific information and configurations such as the computer name and the SID\. If the instance is a member of a domain, it is removed from the domain\. The `sysprep2008.xml` answer file includes the following settings which affect this phase: 
   + **PersistAllDeviceInstalls**: This setting prevents Windows Setup from removing and reconfiguring devices, which speeds up the image preparation process because Amazon AMIs require certain drivers to run and re\-detection of those drivers would take time\.
   + **DoNotCleanUpNonPresentDevices**: This setting retains Plug and Play information for devices that are not currently present\.
 + Sysprep shuts down the OS as it prepares to create the AMI\. The system either launches a new instance or starts the original instance\.
 
-#### Specialize Phase<a name="sysprep-specialize"></a>
+#### Specialize phase<a name="sysprep-specialize"></a>
 
 The system generates OS specific requirements such as a computer name and a SID\. The system also performs the following actions based on configurations that you specify in the sysprep2008\.xml answer file\.
 + **CopyProfile**: Sysprep can be configured to delete all user profiles, including the built\-in Administrator profile\. This setting retains the built\-in Administrator account so that any customizations you made to that account are carried over to the new image\. The default value is True\.
@@ -89,7 +89,7 @@ The system generates OS specific requirements such as a computer name and a SID\
 
   reg add "HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server" /v fDenyTSConnections /t REG\_DWORD /d 0 /f
 
-#### OOBE Phase<a name="sysprep-oobe"></a>
+#### OOBE phase<a name="sysprep-oobe"></a>
 
 1. Using the EC2Config service answer file, the system specifies the following configurations:
    + <InputLocale>en\-US</InputLocale>
@@ -149,11 +149,11 @@ EC2Config then performs the following actions:
 
 For more information about Windows plug\-ins, see [Configuring a Windows Instance Using the EC2Config Service](ec2config-service.md)\.
 
-## Run Sysprep with the EC2Config Service<a name="sysprep-gui-procedure"></a>
+## Run Sysprep with the EC2Config service<a name="sysprep-gui-procedure"></a>
 
 Use the following procedure to create a standardized AMI using Sysprep and the EC2Config service\.
 
-1. In the Amazon EC2 console locate or [create](Creating_EBSbacked_WinAMI.md) an AMI that you want to duplicate\.
+1. In the Amazon EC2 console, locate or [create](Creating_EBSbacked_WinAMI.md) an AMI that you want to duplicate\.
 
 1. Launch and connect to your Windows instance\.
 
@@ -196,7 +196,7 @@ If you experience problems or receive error messages during image preparations, 
 
 If you receive an error message during image preparation with Sysprep, the OS might not be reachable\. To review the log files, you must stop the instance, attach its root volume to another healthy instance as a secondary volume, and then review the logs mentioned earlier on the secondary volume\. For more information about the purpose of the log files by name, see [Windows Setup\-Related Log Files](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/deployment-troubleshooting-and-log-files#windows-setup-related-log-files) in the Microsoft documentation\.
 
-If you locate errors in the Unattendgc log file, use the [Microsoft Error Lookup Tool](https://www.microsoft.com/en-us/download/details.aspx?id=985) to get more details about the error\. The following issue reported in the Unattendgc log file is typically the result of one or more corrupted user profiles on the instance:
+If you locate errors in the Unattendgc log file, use the [Microsoft Error Lookup Tool](https://www.microsoft.com/en-us/download/details.aspx?id=100432) to get more details about the error\. The following issue reported in the Unattendgc log file is typically the result of one or more corrupted user profiles on the instance:
 
 ```
 Error [Shell Unattend] _FindLatestProfile failed (0x80070003) [gle=0x00000003]

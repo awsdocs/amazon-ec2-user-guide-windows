@@ -20,11 +20,11 @@ There is no fee for modification, and you do not receive any new bills or invoic
 You can modify your reservations as frequently as you like, but you cannot change or cancel a pending modification request after you submit it\. After the modification has completed successfully, you can submit another modification request to roll back any changes you made, if needed\.
 
 **Topics**
-+ [Requirements and Restrictions for Modification](#ri-modification-limits)
-+ [Submitting Modification Requests](#ri-modification-process)
-+ [Troubleshooting Modification Requests](#ri-modification-process-messages)
++ [Requirements and restrictions for modification](#ri-modification-limits)
++ [Submitting modification requests](#ri-modification-process)
++ [Troubleshooting modification requests](#ri-modification-process-messages)
 
-## Requirements and Restrictions for Modification<a name="ri-modification-limits"></a>
+## Requirements and restrictions for modification<a name="ri-modification-limits"></a>
 
 You can modify these attributes as follows\.
 
@@ -32,8 +32,8 @@ You can modify these attributes as follows\.
 | Modifiable attribute | Supported platforms | Limitations | 
 | --- | --- | --- | 
 |  Change **Availability Zones** within the same Region  |  Linux and Windows  | \- | 
-|  Change the **scope** from Availability Zone to Region and vice versa  |  Linux and Windows  |  If you change the scope from Availability Zone to Region, you lose the capacity reservation benefit\. If you change the scope from Region to Availability Zone, you lose Availability Zone flexibility and instance size flexibility \(if applicable\)\. For more information, see [How Reserved Instances Are Applied](apply_ri.md)\.  | 
-|  Change the **instance size** within the same instance family  |  Linux/UNIX only Instance size flexibility is not available for Reserved Instances on the other platforms, which include Linux with SQL Server Standard, Linux with SQL Server Web, Linux with SQL Server Enterprise, Red Hat Enterprise Linux, SUSE Linux, Windows, Windows with SQL Standard, Windows with SQL Server Enterprise, and Windows with SQL Server Web\.  |  The reservation must use default tenancy\. Some instance families are not supported, because there are no other sizes available\. For more information, see [Support for Modifying Instance Sizes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ri-modifying.html#ri-modification-instancemove) in the *Amazon EC2 User Guide for Linux Instances*\.  | 
+|  Change the **scope** from Availability Zone to Region and vice versa  |  Linux and Windows  |  If you change the scope from Availability Zone to Region, you lose the capacity reservation benefit\. If you change the scope from Region to Availability Zone, you lose Availability Zone flexibility and instance size flexibility \(if applicable\)\. For more information, see [How Reserved Instances are applied](apply_ri.md)\.  | 
+|  Change the **instance size** within the same instance family  |  Linux/UNIX only Instance size flexibility is not available for Reserved Instances on the other platforms, which include Linux with SQL Server Standard, Linux with SQL Server Web, Linux with SQL Server Enterprise, Red Hat Enterprise Linux, SUSE Linux, Windows, Windows with SQL Standard, Windows with SQL Server Enterprise, and Windows with SQL Server Web\.  |  The reservation must use default tenancy\. Some instance families are not supported, because there are no other sizes available\. For more information, see [Support for modifying instance sizes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ri-modifying.html#ri-modification-instancemove) in the *Amazon EC2 User Guide for Linux Instances*\.  | 
 |  Change the **network** from EC2\-Classic to Amazon VPC and vice versa  |  Linux and Windows  |  The network platform must be available in your AWS account\. If you created your AWS account after 2013\-12\-04, it does not support EC2\-Classic\.  | 
 
 **Requirements**
@@ -47,7 +47,7 @@ Amazon EC2 processes your modification request if there is sufficient capacity f
 + The input Reserved Instances must expire within the same hour, if they are Standard Reserved Instances
 + The Reserved Instance is not a G4 instance\.
 
-## Submitting Modification Requests<a name="ri-modification-process"></a>
+## Submitting modification requests<a name="ri-modification-process"></a>
 
 Before you modify your Reserved Instances, ensure that you have read the applicable [restrictions](#ri-modification-limits)\.
 
@@ -84,7 +84,7 @@ If your Reserved Instances are not in the active state or cannot be modified, **
    + [describe\-reserved\-instances\-modifications](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-reserved-instances-modifications.html) \(AWS CLI\)
    + [Get\-EC2ReservedInstancesModification](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ReservedInstancesModification.html) \(AWS Tools for Windows PowerShell\)
 
-## Troubleshooting Modification Requests<a name="ri-modification-process-messages"></a>
+## Troubleshooting modification requests<a name="ri-modification-process-messages"></a>
 
 If the target configuration settings that you requested were unique, you receive a message that your request is being processed\. At this point, Amazon EC2 has only determined that the parameters of your modification request are valid\. Your modification request can still fail during processing due to unavailable capacity\.
 

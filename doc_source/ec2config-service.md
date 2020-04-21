@@ -3,7 +3,7 @@
 Windows AMIs for Windows Server 2012 R2 and earlier include an optional service, the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. EC2Config can also perform tasks on demand\. Some of these tasks are automatically enabled, while others must be enabled manually\. Although optional, this service provides access to advanced features that aren't otherwise available\. This service runs in the LocalSystem account\.
 
 **Note**  
-EC2Launch replaces EC2Config on Windows AMIs for Windows Server 2016 and later\. For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\.
+EC2Launch replaces EC2Config on Windows AMIs for Windows Server 2016 and later\. For more information, see [Configuring a Windows instance using EC2Launch](ec2launch.md)\.
 
 EC2Config uses settings files to control its operation\. You can update these settings files using either a graphical tool or by directly editing XML files\. The service binaries and additional files are contained in the `%ProgramFiles%\Amazon\EC2ConfigService` directory\.
 
@@ -25,7 +25,7 @@ EC2Config runs initial startup tasks when the instance is first started and then
 + Set a random, encrypted password for the administrator account\.
 + Generate and install the host certificate used for Remote Desktop Connection\.
 + Dynamically extend the operating system partition to include any unpartitioned space\.
-+ Execute the specified user data \(and Cloud\-Init, if it's installed\)\. For more information about specifying user data, see [Working with Instance User Data](instancedata-add-user-data.md)\.
++ Execute the specified user data \(and Cloud\-Init, if it's installed\)\. For more information about specifying user data, see [Working with instance user data](instancedata-add-user-data.md)\.
 
 EC2Config performs the following tasks every time the instance starts:
 + Change the host name to match the private IP address in Hex notation \(this task is disabled by default and must be enabled in order to run at instance start\)\.
@@ -39,7 +39,7 @@ EC2Config performs the following task every time a user logs in:
 + Display wallpaper information to the desktop background\.
 
 While the instance is running, you can request that EC2Config perform the following task on demand:
-+ Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a Standard Amazon Machine Image Using Sysprep](ami-create-standard.md)\.
++ Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a standard Amazon Machine Image using Sysprep](ami-create-standard.md)\.
 
 ## Stopping, Restarting, Deleting, or Uninstalling EC2Config<a name="UsingConfig_StopDelete"></a>
 
@@ -97,7 +97,7 @@ You can use Run Command to upgrade your existing instances to use to the latest 
 
 The EC2Config service runs Sysprep, a Microsoft tool that enables you to create a customized Windows AMI that can be reused\. When EC2Config calls Sysprep, it uses the files in `%ProgramFiles%\Amazon\EC2ConfigService\Settings` to determine which operations to perform\. You can edit these files indirectly using the **Ec2 Service Properties** dialog box, or directly using an XML editor or a text editor\. However, there are some advanced settings that aren't available in the **Ec2 Service Properties** dialog box, so you must edit those entries directly\.
 
-If you create an AMI from an instance after updating its settings, the new settings are applied to any instance that's launched from the new AMI\. For information about creating an AMI, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+If you create an AMI from an instance after updating its settings, the new settings are applied to any instance that's launched from the new AMI\. For information about creating an AMI, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 ## EC2 Service Properties<a name="UsingConfigInterface_WinAMI"></a>
 
@@ -116,7 +116,7 @@ If this setting is enabled \(it is disabled by default\), the host name is compa
  **User Data**   
 User data execution enables you to specify scripts in the instance metadata\. By default, these scripts are run during the initial launch\. You can also configure them to run the next time you reboot or start the instance, or every time you reboot or start the instance\.  
 If you have a large script, we recommend that you use user data to download the script, and then execute it\.  
-For more information, see [User Data Execution](ec2-windows-user-data.md#user-data-execution)\.  
+For more information, see [User data execution](ec2-windows-user-data.md#user-data-execution)\.  
  **Event Log**   
 Use this setting to display event log entries on the console during boot for easy monitoring and debugging\.  
 Click **Settings** to specify filters for the log entries sent to the console\. The default filter sends the three most recent error entries from the system event log to the console\.   
@@ -141,7 +141,7 @@ To choose the drive letters for your volumes, click **Mappings**\. In the **Driv
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_driver_letter_mapping.png)
 After you specify a drive letter mapping and attach a volume with same label as one of the volume names that you specified, EC2Config automatically assigns your specified drive letter to that volume\. However, the drive letter mapping fails if the drive letter is already in use\. Note that EC2Config doesn't change the drive letters of volumes that were already mounted when you specified the drive letter mapping\.
 
-1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a Standard Amazon Machine Image Using Sysprep](ami-create-standard.md)\.
+1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a standard Amazon Machine Image using Sysprep](ami-create-standard.md)\.
 
 ## EC2Config Settings Files<a name="UsingConfigXML_WinAMI"></a>
 
@@ -158,7 +158,7 @@ The settings files control the operation of the EC2Config service\. These files 
 
 This file contains settings that control product activation\. When Windows boots, the EC2Config service checks whether Windows is already activated\. If Windows is not already activated, it attempts to activate Windows by searching for the specified KMS server\.
 + `SetAutodiscover`—Indicates whether to detect a KMS automatically\.
-+ `TargetKMSServer`—Stores the private IP address of a KMS\. The KMS must be in the same region as your instance\.
++ `TargetKMSServer`—Stores the private IP address of a KMS\. The KMS must be in the same Region as your instance\.
 + `DiscoverFromZone`—Discovers the KMS server from the specified DNS zone\.
 + `ReadFromUserData`—Gets the KMS server from UserData\.
 + `LegacySearchZones`—Discovers the KMS server from the specified DNS zone\.

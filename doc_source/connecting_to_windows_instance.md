@@ -15,7 +15,7 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
 + **Install an RDP client**
   + \[Windows\] Windows includes an RDP client by default\. To verify, type mstsc at a Command Prompt window\. If your computer doesn't recognize this command, see the [Windows home page](https://windows.microsoft.com) and search for the download for the Microsoft Remote Desktop app\.
   + \[Mac OS X\] Download the Microsoft Remote Desktop app from the Mac App Store\.
-  + \[Linux\] Use [rdesktop](http://www.rdesktop.org/)\.
+  + \[Linux\] Use [Remmina](https://remmina.org/)\.
 + **Get the ID of the instance\.**
 
   You can get the ID of your instance using the Amazon EC2 console \(from the **Instance ID** column\)\. If you prefer, you can use the [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\) or [Get\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) \(AWS Tools for Windows PowerShell\) command\.
@@ -32,7 +32,7 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
   
 + **Enable inbound RDP traffic from your IP address to your instance**
 
-  Ensure that the security group associated with your instance allows incoming RDP traffic from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorizing Inbound Traffic for Your Windows Instances](authorizing-access-to-an-instance.md)\.
+  Ensure that the security group associated with your instance allows incoming RDP traffic from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorizing inbound traffic for your Windows instances](authorizing-access-to-an-instance.md)\.
 + For the best experience using Internet Explorer, run the latest version\.
 
 ## Connect to Your Windows Instance<a name="connect-rdp"></a>
@@ -83,7 +83,7 @@ Sometimes copying and pasting content can corrupt data\. If you encounter a "Pas
 
       \[Mac OS\] Log in as prompted, using the default administrator account and the default administrator password that you recorded or copied previously\. Note that you might need to switch spaces to see the login screen\. For more information about spaces, see [support\.apple\.com/en\-us/HT204100](https://support.apple.com/en-us/HT204100)\.
 
-   1. If you receive an error while attempting to connect to your instance, see [Remote Desktop Can't Connect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
+   1. If you receive an error while attempting to connect to your instance, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
 
 After you connect, we recommend that you do the following:
 + Change the administrator password from the default value\. You change the password while logged on to the instance itself, just as you would on any other Windows Server\.

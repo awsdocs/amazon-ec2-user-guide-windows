@@ -10,15 +10,15 @@ Before you can launch an instance, you must select an AMI to use\. As you select
 If you need to find a Linux AMI, see [Finding a Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
-+ [Finding a Windows AMI Using the Amazon EC2 Console](#finding-an-ami-console)
-+ [Finding an AMI Using the AWS Tools for Windows PowerShell](#finding-an-ami-psh)
-+ [Finding an AMI Using the AWS CLI](#finding-an-ami-aws-cli)
++ [Finding a Windows AMI using the Amazon EC2 console](#finding-an-ami-console)
++ [Finding an AMI using the AWS Tools for Windows PowerShell](#finding-an-ami-psh)
++ [Finding an AMI using the AWS CLI](#finding-an-ami-aws-cli)
 
-## Finding a Windows AMI Using the Amazon EC2 Console<a name="finding-an-ami-console"></a>
+## Finding a Windows AMI using the Amazon EC2 console<a name="finding-an-ami-console"></a>
 
-You can find Windows AMIs using the Amazon EC2 console\. You can search through all available AMIs using the **Images** page, or select from commonly used AMIs on the **Quick Start** tab when you use the console to launch an instance\. AMI IDs are unique to each region\.
+You can find Windows AMIs using the Amazon EC2 console\. You can select from the list of AMIs when you use the launch wizard to launch an instance, or you can search through all available AMIs using the **Images** page\. AMI IDs are unique to each AWS Region\.
 
-**To find a Windows AMI using the Choose AMI page**
+**To find a Windows AMI using the launch wizard**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -40,9 +40,9 @@ You can find Windows AMIs using the Amazon EC2 console\. You can search through 
 
 1. \(Optional\) Choose the **Show/Hide Columns** icon to select which image attributes to display, such as the root device type\. Alternatively, you can select an AMI from the list and view its properties in the **Details** tab\.
 
-1. To launch an instance from this AMI, select it and then choose **Launch**\. For more information about launching an instance using the console, see [Launching Your Instance from an AMI](launching-instance.md#choose-an-instance-type-page)\. If you're not ready to launch the instance now, make note of the AMI ID for later\.
+1. To launch an instance from this AMI, select it and then choose **Launch**\. For more information about launching an instance using the console, see [Launching your instance from an AMI](launching-instance.md#choose-an-instance-type-page)\. If you're not ready to launch the instance now, make note of the AMI ID for later\.
 
-## Finding an AMI Using the AWS Tools for Windows PowerShell<a name="finding-an-ami-psh"></a>
+## Finding an AMI using the AWS Tools for Windows PowerShell<a name="finding-an-ami-psh"></a>
 
 You can use cmdlets for Amazon EC2 or AWS Systems Manager to list only the Windows AMIs that meet your needs\. After locating an AMI that meets your needs, make note of its ID so that you can use it to launch instances\. For more information, see [Launch an Instance Using Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-launch.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 
@@ -52,7 +52,7 @@ For information and examples, see [Find an AMI Using Windows PowerShell](https:/
 **Systems Manager Parameter Store**  
 For information and examples, see [Query for the Latest Windows AMI Using Systems Manager Parameter Store](https://aws.amazon.com/blogs/mt/query-for-the-latest-windows-ami-using-systems-manager-parameter-store/)\.
 
-## Finding an AMI Using the AWS CLI<a name="finding-an-ami-aws-cli"></a>
+## Finding an AMI using the AWS CLI<a name="finding-an-ami-aws-cli"></a>
 
 You can use AWS CLI commands for Amazon EC2 or AWS Systems Manager to list only the Windows AMIs that meet your needs\. After locating an AMI that meets your needs, make note of its ID so that you can use it to launch instances\. For more information, see [Launching an Instance Using the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-launch.html#launching-instances) in the *AWS Command Line Interface User Guide*\.
 

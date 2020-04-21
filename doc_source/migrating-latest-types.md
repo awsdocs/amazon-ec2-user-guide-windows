@@ -1,6 +1,6 @@
 # Migrating to Latest Generation Instance Types<a name="migrating-latest-types"></a>
 
-The AWS Windows AMIs are configured with the default settings used by the Microsoft installation media with some customizations, including drivers and configurations, that support the latest generation instance types\. However, if you are launching instances from custom Windows AMIs or from Windows AMIs provided by Amazon created before August 2018, we recommend that you follow the steps in this topic when migrating to the latest generation of EC2 instances, Nitro instances, including bare metal instances\. 
+The AWS Windows AMIs are configured with the default settings used by the Microsoft installation media with some customizations, including drivers and configurations, that support the latest generation instance types\. However, if you are launching instances from custom Windows AMIs or from Windows AMIs provided by Amazon created before August 2018, we recommend that you follow the steps in this topic when migrating to the latest generation of EC2 instances and Nitro instances, including bare metal instances\. 
 
 For more information, see [Amazon EC2 Update — Additional Instance Types, Nitro System, and CPU Options](https://aws.amazon.com/blogs/aws/amazon-ec2-update-additional-instance-types-nitro-system-and-cpu-options/)\. 
 
@@ -20,6 +20,8 @@ Alternatively, you can use the `AWSSupport-UpgradeWindowsAWSDrivers` automation 
 **Before you begin** 
 
 This procedure assumes that you are currently running on a previous generation Xen\-based instance type, such as an M4 or C4, and you are migrating to a latest generation instance type, such as an M5 or C5\. 
+
+You must use PowerShell version 3\.0 or later to successfully perform the upgrade\. 
 
 **Note**  
 When migrating to the latest generation instances, the static IP or custom DNS network settings on the existing ENI may be lost as the instance will default to a new Enhanced Networking Adapter device\.
@@ -56,7 +58,7 @@ After the upgrade is complete and the instance passes both health checks in the 
 
 ## Part 2: Installing and Upgrading ENA<a name="upgrade-ena"></a>
 
-Upgrade to the latest Elastic Network Adapter driver to ensure that all network features are supported\. If you launched your instance and it does not have enhanced networking already enabled, you must download and install the required network adapter driver on your instance\. Then, set the enaSupport instance attribute to **activate enhanced networking**\. You can only enable this attribute on supported instance types and only if the ENA driver is installed\. For more information, see [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
+Upgrade to the latest Elastic Network Adapter driver to ensure that all network features are supported\. If you launched your instance and it does not have enhanced networking already enabled, you must download and install the required network adapter driver on your instance\. Then, set the enaSupport instance attribute to **activate enhanced networking**\. You can only enable this attribute on supported instance types and only if the ENA driver is installed\. For more information, see [Enabling enhanced networking with the Elastic Network Adapter \(ENA\) on Windows instances](enhanced-networking-ena.md)\. 
 
 1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/Latest/AwsEnaNetworkDriver.zip) the latest driver to the instance\.
 
@@ -66,7 +68,7 @@ Upgrade to the latest Elastic Network Adapter driver to ensure that all network 
 **Note**  
 To avoid installation errors, run the `install.ps1` script as an administrator\.
 
-1.  Check if your AMI has enaSupport activated\. If not, continue by following the documentation at [Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances](enhanced-networking-ena.md)\. 
+1.  Check if your AMI has enaSupport activated\. If not, continue by following the documentation at [Enabling enhanced networking with the Elastic Network Adapter \(ENA\) on Windows instances](enhanced-networking-ena.md)\. 
 
 ## Part 3: Upgrading AWS NVMe Drivers<a name="upgrade-nvme"></a>
 
@@ -117,7 +119,7 @@ To avoid installation errors, run the `install.ps1` script as an administrator\.
 
 1. If you made a backup of the EC2Launch configuration file, copy it to the `C:\ProgramData\Amazon\EC2-Windows\Launch\Config` directory\. 
 
-For more information, see [Configuring a Windows Instance Using EC2Launch](ec2launch.md)\.
+For more information, see [Configuring a Windows instance using EC2Launch](ec2launch.md)\.
 
 ## Part 5: Installing the Serial Port Driver for Bare Metal Instances<a name="install-serial-port-bare-metal"></a>
 

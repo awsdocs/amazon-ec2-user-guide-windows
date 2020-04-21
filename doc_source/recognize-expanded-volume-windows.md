@@ -1,4 +1,4 @@
-# Extending a Windows File System After Resizing a Volume<a name="recognize-expanded-volume-windows"></a>
+# Extending a Windows file system after resizing a volume<a name="recognize-expanded-volume-windows"></a>
 
 After you increase the size of an EBS volume, use the Windows Disk Management utility to extend the disk size to the new size of the volume\. You can begin resizing the file system as soon as the volume enters the `optimizing` state\. For more information about this utility, see [Extend a basic volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/extend-a-basic-volume) on the Microsoft Docs website\.
 

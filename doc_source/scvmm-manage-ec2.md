@@ -26,7 +26,7 @@ The permissions that you've been granted by your administrator determine whether
 
 1. Complete the **Create Amazon EC2 Instance** dialog box as follows:
 
-   1. Select a region for your instance\. By default, we select the region that you configured as your default region\.
+   1. Select a Region for your instance\. By default, we select the Region that you configured as your default Region\.
 
    1. Select a template \(known as an AMI\) for your instance\. To use an AMI provided by Amazon, select **Windows** or **Linux** and then select an AMI from **Image**\. To use an AMI that you created, select **My images** and then select the AMI from **Image**\.
 
@@ -36,7 +36,7 @@ The permissions that you've been granted by your administrator determine whether
 
    1. \(Optional\) Under **Advanced settings**, specify a display name for the instance\.
 
-   1. \(Optional\) Under **Advanced settings**, select a VPC from **Network \(VPC\)**\. Note that this list includes all VPCs for the region, including VPCs created using the Amazon VPC console and the default VPC \(if it exists\)\. If you have a default VPC in this region, we select it by default\. If the text is "There is no VPC available for launch or import operations in this region", then you must create a VPC in this region using the Amazon VPC console\.
+   1. \(Optional\) Under **Advanced settings**, select a VPC from **Network \(VPC\)**\. Note that this list includes all VPCs for the region, including VPCs created using the Amazon VPC console and the default VPC \(if it exists\)\. If you have a default VPC in this region, we select it by default\. If the text is "There is no VPC available for launch or import operations in this region", then you must create a VPC in this Region using the Amazon VPC console\.
 
    1. \(Optional\) Under **Advanced settings**, select a subnet from **Subnet**\. Note that this list includes all subnets for the selected VPC, including any default subnets\. If this list is empty, you must add a subnet to the VPC using the Amazon VPC console, or select a different VPC\. Otherwise, we select a subnet for you\.
 
@@ -47,7 +47,7 @@ The permissions that you've been granted by your administrator determine whether
 
 1. Click **Create**\. If you are creating a key pair, you are prompted to save the `.pem` file\. Save this file in a secure place; you'll need it to log in to your instance\. You'll receive confirmation that the instance has launched\. Click **Close**\.
 
-After you've created your instance, it appears in the list of instances for the region in which you launched it\. Initially, the status of the instance is `pending`\. After the status changes to `running`, your instance is ready for use\.
+After you've created your instance, it appears in the list of instances for the Region in which you launched it\. Initially, the status of the instance is `pending`\. After the status changes to `running`, your instance is ready for use\.
 
 You can manage the lifecycle of your instance using Systems Manager, as described on this page\. To perform other tasks, such as the following, you must use the AWS Management Console:
 + [Attach an Amazon EBS volume to your instance](ebs-attaching-volume.md)
@@ -62,7 +62,7 @@ The permissions that your administrator grants you determine whether you can vie
 
 1. Open the [AWS Systems Manager console](https://console.aws.amazon.com/systems-manager)\.
 
-1. From the region list, select a region\.
+1. From the list of Regions, select a Region\.
 
 1. From the list of instances, select one or more instances\.
 

@@ -1,17 +1,17 @@
-# Configuring a Windows Instance Using EC2Launch<a name="ec2launch"></a>
+# Configuring a Windows instance using EC2Launch<a name="ec2launch"></a>
 
 EC2Launch is a set of Windows PowerShell scripts that replaces the EC2Config service on Windows Server 2016 and later AMIs\.
 
 **Topics**
-+ [EC2Launch Tasks](#ec2launch-tasks)
-+ [Installing the Latest Version of EC2Launch](ec2launch-download.md)
-+ [Verify the EC2Launch Version](#ec2launch-verify-version)
-+ [EC2Launch Directory Structure](#ec2launch-directories)
++ [EC2Launch tasks](#ec2launch-tasks)
++ [Installing the latest version of EC2Launch](ec2launch-download.md)
++ [Verify the EC2Launch version](#ec2launch-verify-version)
++ [EC2Launch directory structure](#ec2launch-directories)
 + [Configuring EC2Launch](#ec2launch-config)
 + [Using Sysprep with EC2Launch](#ec2launch-sysprep)
-+ [EC2Launch Version History](ec2launch-version-details.md)
++ [EC2Launch version history](ec2launch-version-details.md)
 
-## EC2Launch Tasks<a name="ec2launch-tasks"></a>
+## EC2Launch tasks<a name="ec2launch-tasks"></a>
 
 EC2Launch performs the following tasks by default during the initial instance boot:
 + Sets up new wallpaper that renders information about the instance\.
@@ -21,7 +21,7 @@ EC2Launch performs the following tasks by default during the initial instance bo
 + Sets a random password for the administrator account\.
 + Adds DNS suffixes\.
 + Dynamically extends the operating system partition to include any unpartitioned space\.
-+ Executes user data \(if specified\)\. For more information about specifying user data, see [Working with Instance User Data](instancedata-add-user-data.md)\.
++ Executes user data \(if specified\)\. For more information about specifying user data, see [Working with instance user data](instancedata-add-user-data.md)\.
 +  Sets persistent static routes to reach the metadata service and KMS servers\. 
 **Important**  
  If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI](#update-metadata-KMS)\. 
@@ -33,7 +33,7 @@ The following tasks help to maintain backward compatibility with the EC2Config s
 
 For more information about Windows Server 2019, see [Compare Features in Windows Server Versions](https://www.microsoft.com/en-us/cloud-platform/windows-server-comparison) on Microsoft\.com\.
 
-## Verify the EC2Launch Version<a name="ec2launch-verify-version"></a>
+## Verify the EC2Launch version<a name="ec2launch-verify-version"></a>
 
 Use the following Windows PowerShell command to verify the installed version of EC2Launch\.
 
@@ -41,7 +41,7 @@ Use the following Windows PowerShell command to verify the installed version of 
 PS C:\> Test-ModuleManifest -Path "C:\ProgramData\Amazon\EC2-Windows\Launch\Module\Ec2Launch.psd1" | Select Version
 ```
 
-## EC2Launch Directory Structure<a name="ec2launch-directories"></a>
+## EC2Launch directory structure<a name="ec2launch-directories"></a>
 
 EC2Launch is installed by default on Windows Server 2016 and later AMIs in the root directory `C:\ProgramData\Amazon\EC2-Windows\Launch`\.
 
@@ -61,13 +61,13 @@ The `Launch` directory contains the following subdirectories\.
 After your instance has been initialized the first time, you can configure EC2Launch to run again and perform different start\-up tasks\.
 
 **Topics**
-+ [Configure Initialization Tasks](#ec2launch-inittasks)
-+ [Schedule EC2Launch to Run on Every Boot](#run-on-every-boot)
-+ [Initialize Drives and Map Drive Letters](#ec2launch-mapping)
-+ [Send Windows Event Logs to the EC2 Console](#ec2launch-sendlogs)
-+ [Send Windows Is Ready Message After A Successful Boot](#ec2launch-sendwinisready)
++ [Configure initialization tasks](#ec2launch-inittasks)
++ [Schedule EC2Launch to run on every boot](#run-on-every-boot)
++ [Initialize drives and map drive letters](#ec2launch-mapping)
++ [Send Windows event logs to the EC2 console](#ec2launch-sendlogs)
++ [Send Windows is ready message after a successful boot](#ec2launch-sendwinisready)
 
-### Configure Initialization Tasks<a name="ec2launch-inittasks"></a>
+### Configure initialization tasks<a name="ec2launch-inittasks"></a>
 
 Specify settings in the `LaunchConfig.json` file to enable or disable the following initialization tasks:
 + Set the computer name\.
@@ -108,7 +108,7 @@ EC2Launch uses the password you specify in the `unattend.xml` file\. If you don'
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
    ```
 
-### Schedule EC2Launch to Run on Every Boot<a name="run-on-every-boot"></a>
+### Schedule EC2Launch to run on every boot<a name="run-on-every-boot"></a>
 
 You can schedule EC2Launch to run on every boot instead of only the initial boot\.
 
@@ -134,7 +134,7 @@ When you enable EC2Launch to run on every boot, the following changes will be ma
 `HandleUserData` will be set back to `false` unless the user data has `persist` set to `true`\. For more information about user data scripts, see [User Data Scripts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html#user-data-scripts) in the Amazon EC2 User Guide\.
 Similarly, if you do not want your password reset on the next boot, you should set `AdminPasswordType` to `DoNothing` before rebooting\.
 
-### Initialize Drives and Map Drive Letters<a name="ec2launch-mapping"></a>
+### Initialize drives and map drive letters<a name="ec2launch-mapping"></a>
 
 Specify settings in the `DriveLetterMappingConfig.json` file to map drive letters to volumes on your EC2 instance\. The script performs this operation if the drives have not already been initialized and partitioned\.
 
@@ -167,7 +167,7 @@ Specify settings in the `DriveLetterMappingConfig.json` file to map drive letter
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeDisks.ps1 -Schedule
    ```
 
-### Send Windows Event Logs to the EC2 Console<a name="ec2launch-sendlogs"></a>
+### Send Windows event logs to the EC2 console<a name="ec2launch-sendlogs"></a>
 
 Specify settings in the `EventLogConfig.json` file to send Windows Event logs to EC2 console logs\.
 
@@ -198,13 +198,9 @@ Specify settings in the `EventLogConfig.json` file to send Windows Event logs to
 
    The logs can take three minutes or more to appear in the EC2 console logs\.
 
-### Send Windows Is Ready Message After A Successful Boot<a name="ec2launch-sendwinisready"></a>
+### Send Windows is ready message after a successful boot<a name="ec2launch-sendwinisready"></a>
 
-The EC2Config service sent the "Windows is ready" message to the EC2 console after every boot\. EC2Launch sends this message only after the initial boot\. For backwards compatibility with the EC2Config service, you can schedule EC2Launch to send this message after every boot\. On the instance, open Windows PowerShell and run the following command\. The system schedules the script to run as a Windows Scheduled Task\.
-
-```
-PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\SendWindowsIsReady.ps1 -Schedule
-```
+The EC2Config service sent the "Windows is ready" message to the EC2 console after every boot\. EC2Launch sends this message only after the initial boot because it runs only on the initial boot\. To have "Windows is ready" printed on every boot, schedule EC2Launch to run on every boot\. For instructions, see [Schedule EC2Launch to run on every boot](#run-on-every-boot)\.
 
 ## Using Sysprep with EC2Launch<a name="ec2launch-sysprep"></a>
 

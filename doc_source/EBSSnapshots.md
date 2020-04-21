@@ -4,13 +4,17 @@ You can back up the data on your Amazon EBS volumes to Amazon S3 by taking point
 
 When you create an EBS volume based on a snapshot, the new volume begins as an exact replica of the original volume that was used to create the snapshot\. The replicated volume loads data in the background so that you can begin using it immediately\. If you access data that hasn't been loaded yet, the volume immediately downloads the requested data from Amazon S3, and then continues loading the rest of the volume's data in the background\. For more information, see [Creating Amazon EBS Snapshots](ebs-creating-snapshot.md)\.
 
-**Note**  
+**Snapshot Events**  
+You can track the status of your EBS snapshots through CloudWatch Events\. For more information, see [EBS Snapshot Events](ebs-cloud-watch-events.md#snapshot-events)\.
+
+**Application\-Consistent Snapshots**  
 Using Systems Manager Run Command, you can take application\-consistent snapshots of all EBS volumes attached to your Amazon EC2 Windows instances\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications, including data from pending transactions between these applications and the disk\. You don't need to shut down your instances or disconnect them when you back up all attached volumes\. For more information, see [Using Run Command to Take VSS\-Enabled Snapshots of EBS Volumes](https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-vss.html) in the *AWS Systems Manager User Guide*\.
 
 **Multi\-Volume Snapshots**  
 Snapshots can be used to create a backup of critical workloads, such as a large database or a file system that spans across multiple EBS volumes\. Multi\-volume snapshots allow you to take exact point\-in\-time, data coordinated, and crash\-consistent snapshots across multiple EBS volumes attached to an EC2 instance\. You are no longer required to stop your instance or to coordinate between volumes to ensure crash consistency, because snapshots are automatically taken across multiple EBS volumes\. For more information, see the steps for creating a multi\-volume EBS snapshot under [Creating Amazon EBS Snapshots](ebs-creating-snapshot.md)\.
 
-You can track the status of your EBS snapshots through CloudWatch Events\. For more information, see [Amazon CloudWatch Events for Amazon EBS](ebs-cloud-watch-events.md)\.
+**Snapshot Pricing**  
+Charges for your snapshots are based on the amount of data stored\. Because snapshots are incremental, deleting a snapshot might not reduce your data storage costs\. Data referenced exclusively by a snapshot is removed when that snapshot is deleted, but data referenced by other snapshots is preserved\. For more information, see [Amazon Elastic Block Store Volumes and Snapshots](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/checklistforunwantedcharges.html#checkebsvolumes) in the *AWS Billing and Cost Management User Guide*\.
 
 **Topics**
 + [How Incremental Snapshots Work](#how_snapshots_work)
@@ -22,7 +26,7 @@ You can track the status of your EBS snapshots through CloudWatch Events\. For m
 + [Copying an Amazon EBS Snapshot](ebs-copy-snapshot.md)
 + [Viewing Amazon EBS Snapshot Information](ebs-describing-snapshots.md)
 + [Sharing an Amazon EBS Snapshot](ebs-modifying-snapshot-permissions.md)
-+ [Accessing the Contents of an EBS Snapshot](ebs-accessing-snapshot.md)
++ [Accessing the contents of an EBS snapshot](ebs-accessing-snapshot.md)
 + [Automating the Amazon EBS Snapshot Lifecycle](snapshot-lifecycle.md)
 
 ## How Incremental Snapshots Work<a name="how_snapshots_work"></a>
@@ -66,4 +70,4 @@ If you copy a snapshot and encrypt it to a new CMK, a complete \(non\-incrementa
 
 Complete documentation of possible snapshot encryption scenarios is provided in [Creating Amazon EBS Snapshots](ebs-creating-snapshot.md) and in [Copying an Amazon EBS Snapshot](ebs-copy-snapshot.md)\.
 
-For more information, see [Amazon EBS Encryption](EBSEncryption.md)\.
+For more information, see [Amazon EBS encryption](EBSEncryption.md)\.

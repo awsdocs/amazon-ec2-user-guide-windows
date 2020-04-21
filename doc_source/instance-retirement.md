@@ -16,10 +16,10 @@ If your instance is scheduled for retirement, you'll receive an email prior to t
 
 1. Open the Amazon EC2 console\.
 
-1. In the navigation pane, choose **EC2 Dashboard**\. Under **Scheduled Events**, you can see the events associated with your Amazon EC2 instances and volumes, organized by region\.  
+1. In the navigation pane, choose **EC2 Dashboard**\. Under **Scheduled Events**, you can see the events associated with your Amazon EC2 instances and volumes, organized by Region\.  
 ![\[Scheduled events\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/sched-events-instance.png)
 
-1. If you have an instance with a scheduled event listed, select its link below the region name to go to the **Events** page\.
+1. If you have an instance with a scheduled event listed, select its link below the Region name to go to the **Events** page\.
 
 1. The **Events** page lists all resources with events associated with them\. To view instances that are scheduled for retirement, select **Instance resources** from the first filter list, and then **Instance stop or retirement** from the second filter list\.
 
@@ -55,4 +55,4 @@ You can use one of the following commands\. For more information about these com
 
 You can perform one of the actions listed below in order to preserve the data on your retiring instance\. It's important that you take this action before the instance retirement date to prevent unforeseen downtime and data loss\. For your EBS\-backed instance, you can perform one of the following actions\.
 + Create an EBS\-backed AMI from your instance so that you have a backup\. Wait for the scheduled retirement date \- when the instance is stopped \- or stop the instance yourself before the retirement date\. You can start the instance again at any time\. For more information about stopping and starting your instance, and what to expect when your instance is stopped, such as the effect on public, private, and Elastic IP addresses associated with your instance, see [Stop and start your instance](Stop_Start.md)\.
-+ Create an EBS\-backed AMI from your instance, and launch a replacement instance\. For more information, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
++ Create an EBS\-backed AMI from your instance, and launch a replacement instance\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.

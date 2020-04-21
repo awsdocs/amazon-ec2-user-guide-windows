@@ -25,7 +25,7 @@ This tutorial assumes that you have already done the following:
 
 1. Tested your application on your instance to ensure that your instance is configured correctly\.
 
-1. Created a custom Amazon Machine Image \(AMI\) from your instance\. For more information, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+1. Created a custom Amazon Machine Image \(AMI\) from your instance\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 1. \(Optional\) Terminated the instance if you no longer need it\.
 

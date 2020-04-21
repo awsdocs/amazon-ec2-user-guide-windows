@@ -1,4 +1,4 @@
-# Getting Started with Amazon EC2 Windows Instances<a name="EC2_GetStarted"></a>
+# Getting started with Amazon EC2 Windows instances<a name="EC2_GetStarted"></a>
 
 Let's get started with Amazon Elastic Compute Cloud \(Amazon EC2\) by launching, connecting to, and using a Windows instance\. An *instance* is a virtual server in the AWS cloud\. With Amazon EC2, you can set up and configure the operating system and applications that run on your instance\.
 
@@ -9,10 +9,10 @@ For step\-by\-step tutorials on specific use cases for EC2 instances running Win
 **Topics**
 + [Overview](#ec2-get-started-overview)
 + [Prerequisites](#ec2-getstarted-prereqs)
-+ [Step 1: Launch an Instance](#ec2-launch-instance)
-+ [Step 2: Connect to Your Instance](#ec2-connect-to-instance-windows)
-+ [Step 3: Clean Up Your Instance](#ec2-clean-up-your-instance)
-+ [Next Steps](#ec2-next-steps)
++ [Step 1: Launch an instance](#ec2-launch-instance)
++ [Step 2: Connect to your instance](#ec2-connect-to-instance-windows)
++ [Step 3: Clean up your instance](#ec2-clean-up-your-instance)
++ [Next steps](#ec2-next-steps)
 
 ## Overview<a name="ec2-get-started-overview"></a>
 
@@ -30,15 +30,15 @@ To complete this tutorial, perform the following tasks:
 
 1. [Clean Up Your Instance](#ec2-clean-up-your-instance)
 
-**Related Tutorials**
+**Related tutorials**
 + If you'd prefer to launch a Linux instance, see this tutorial in the *Amazon EC2 User Guide for Linux Instances*: [Getting Started with Amazon EC2 Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\.
 + If you'd prefer to use the command line, see this tutorial in the *AWS Command Line Interface User Guide*: [Using Amazon EC2 through the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-ec2.html)\.
 
 ## Prerequisites<a name="ec2-getstarted-prereqs"></a>
 
-Before you begin, be sure that you've completed the steps in [Setting Up with Amazon EC2](get-set-up-for-amazon-ec2.md)\.
+Before you begin, be sure that you've completed the steps in [Setting up with Amazon EC2](get-set-up-for-amazon-ec2.md)\.
 
-## Step 1: Launch an Instance<a name="ec2-launch-instance"></a>
+## Step 1: Launch an instance<a name="ec2-launch-instance"></a>
 
 You can launch a Windows instance using the AWS Management Console as described in the following procedure\. This tutorial is intended to help you launch your first instance quickly, so it doesn't cover all possible options\. For more information about the advanced options, see [Launching an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launching-instance.html)\.
 
@@ -78,7 +78,7 @@ Don't select the **Proceed without a key pair** option\. If you launch your inst
 
 1. It can take a few minutes for the instance to be ready so that you can connect to it\. Check that your instance has passed its status checks; you can view this information in the **Status Checks** column\.
 
-## Step 2: Connect to Your Instance<a name="ec2-connect-to-instance-windows"></a>
+## Step 2: Connect to your instance<a name="ec2-connect-to-instance-windows"></a>
 
 To connect to a Windows instance, you must retrieve the initial administrator password \(see step 2 below\) and then specify this password when you connect to your instance using Remote Desktop\.
 
@@ -126,11 +126,11 @@ Sometimes copying and pasting content can corrupt data\. If you encounter a "Pas
 
       \[Mac OS\] Log in as prompted, using the default administrator account and the default administrator password that you recorded or copied previously\. Note that you might need to switch spaces to see the login screen\. For more information about spaces, see [support\.apple\.com/en\-us/HT204100](https://support.apple.com/en-us/HT204100)\.
 
-   1. If you receive an error while attempting to connect to your instance, see [Remote Desktop Can't Connect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
+   1. If you receive an error while attempting to connect to your instance, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
 
-## Step 3: Clean Up Your Instance<a name="ec2-clean-up-your-instance"></a>
+## Step 3: Clean up your instance<a name="ec2-clean-up-your-instance"></a>
 
-After you've finished with the instance that you created for this tutorial, you should clean up by terminating the instance\. If you want to do more with this instance before you clean up, see [Next Steps](#ec2-next-steps)\.
+After you've finished with the instance that you created for this tutorial, you should clean up by terminating the instance\. If you want to do more with this instance before you clean up, see [Next steps](#ec2-next-steps)\.
 
 **Important**  
 Terminating an instance effectively deletes it; you can't reconnect to an instance after you've terminated it\.
@@ -147,7 +147,7 @@ If you launched an instance that is not within the [AWS Free Tier](https://aws.a
 
    Amazon EC2 shuts down and terminates your instance\. After your instance is terminated, it remains visible on the console for a short while, and then the entry is deleted\.
 
-## Next Steps<a name="ec2-next-steps"></a>
+## Next steps<a name="ec2-next-steps"></a>
 
 After you start your instance, you might want to try some of the following exercises:
 + Learn how to remotely manage your EC2 instance using Run Command\. For more information, see [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html) in the *AWS Systems Manager User Guide*\.

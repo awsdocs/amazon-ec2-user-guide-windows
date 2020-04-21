@@ -1,22 +1,22 @@
-# Storage Optimized Instances<a name="storage-optimized-instances"></a>
+# Storage optimized instances<a name="storage-optimized-instances"></a>
 
 Storage optimized instances are designed for workloads that require high, sequential read and write access to very large data sets on local storage\. They are optimized to deliver tens of thousands of low\-latency, random I/O operations per second \(IOPS\) to applications\.<a name="d2-instances"></a>
 
-**D2 Instances**
+**D2 instances**
 
 D2 instances are well suited for the following applications:
 + Massive parallel processing \(MPP\) data warehouse
 + MapReduce and Hadoop distributed computing
 + Log or data processing applications<a name="h1-instances"></a>
 
-**H1 Instances**
+**H1 instances**
 
 H1 instances are well suited for the following applications:
 + Data\-intensive workloads such as MapReduce and distributed file systems
 + Applications requiring sequential access to large amounts of data on direct\-attached instance storage
 + Applications that require high\-throughput access to large quantities of data<a name="i3-instances"></a>
 
-**I3 and I3en Instances**
+**I3 and I3en instances**
 
 These instances are well suited for the following applications:
 + High frequency online transaction processing \(OLTP\) systems
@@ -33,14 +33,14 @@ Bare metal instances provide your applications with direct access to physical re
 For more information, see [Amazon EC2 I3 Instances](https://aws.amazon.com/ec2/instance-types/i3)\.
 
 **Topics**
-+ [Hardware Specifications](#storage-instances-hardware)
-+ [Instance Performance](#storage-performance)
-+ [Network Performance](#storage-network-performance)
-+ [SSD I/O Performance](#i2-instances-diskperf)
-+ [Instance Features](#storage-instances-features)
-+ [Release Notes](#storage-instance-release-notes)
++ [Hardware specifications](#storage-instances-hardware)
++ [Instance performance](#storage-performance)
++ [Network performance](#storage-network-performance)
++ [SSD I/O performance](#i2-instances-diskperf)
++ [Instance features](#storage-instances-features)
++ [Release notes](#storage-instance-release-notes)
 
-## Hardware Specifications<a name="storage-instances-hardware"></a>
+## Hardware specifications<a name="storage-instances-hardware"></a>
 
 The primary data storage for D2 instances is HDD instance store volumes\. The primary data storage for I3 instances is non\-volatile memory express \(NVMe\) SSD instance store volumes\.
 
@@ -79,26 +79,24 @@ For more information about the hardware specifications for each Amazon EC2 insta
 
 For more information about specifying CPU options, see [Optimizing CPU Options](instance-optimize-cpu.md)\.
 
-## Instance Performance<a name="storage-performance"></a>
+## Instance performance<a name="storage-performance"></a>
 
 For instances with NVMe instance store volumes, be sure to use the AWS NVMe driver\. For more information, see [AWS NVMe Drivers for Windows Instances](aws-nvme-drivers.md)\.
 
-EBS\-optimized instances enable you to get consistently high performance for your EBS volumes by eliminating contention between Amazon EBS I/O and other network traffic from your instance\. Some storage optimized instances are EBS\-optimized by default at no additional cost\. For more information, see [Amazon EBS–Optimized Instances](ebs-optimized.md)\.
+EBS\-optimized instances enable you to get consistently high performance for your EBS volumes by eliminating contention between Amazon EBS I/O and other network traffic from your instance\. Some storage optimized instances are EBS\-optimized by default at no additional cost\. For more information, see [Amazon EBS–optimized instances](ebs-optimized.md)\.
 
-## Network Performance<a name="storage-network-performance"></a>
+## Network performance<a name="storage-network-performance"></a>
 
-You can enable enhanced networking capabilities on supported instance types\. Enhanced networking provides significantly higher packet\-per\-second \(PPS\) performance, lower network jitter, and lower latencies\. For more information, see [Enhanced Networking on Windows](enhanced-networking.md)\.
-
-Instance types that use the Elastic Network Adapter \(ENA\) for enhanced networking deliver high packet per second performance with consistently low latencies\. Most applications do not consistently need a high level of network performance, but can benefit from having access to increased bandwidth when they send or receive data\. Instance sizes that use the ENA and are documented with network performance of "Up to 10 Gbps" or "Up to 25 Gbps" use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. These instances accrue credits when their network bandwidth is below their baseline limits, and can use these credits when they perform network data transfers\.
+You can enable enhanced networking on supported instance types to provide lower latencies, lower network jitter, and higher packet\-per\-second \(PPS\) performance\. Most applications do not consistently need a high level of network performance, but can benefit from access to increased bandwidth when they send or receive data\. For more information, see [Enhanced networking on Windows](enhanced-networking.md)\.
 
 The following is a summary of network performance for storage optimized instances that support enhanced networking\.
 
 
 | Instance type | Network performance | Enhanced networking | 
 | --- | --- | --- | 
-|  `i3.4xlarge` and smaller  |  Up to 10 Gbps, use network I/O credit mechanism  | [ENA](enhanced-networking-ena.md) | 
+|  `i3.4xlarge` and smaller  |  Up to 10 Gbps †  | [ENA](enhanced-networking-ena.md) | 
 |  `i3.8xlarge` \| `h1.8xlarge`  |  10 Gbps  | [ENA](enhanced-networking-ena.md) | 
-|  `i3en.3xlarge` and smaller  |  Up to 25 Gbps, use network I/O credit mechanism  | [ENA](enhanced-networking-ena.md) | 
+|  `i3en.3xlarge` and smaller  |  Up to 25 Gbps †  | [ENA](enhanced-networking-ena.md) | 
 |  `i3.16xlarge` \| `i3.metal` \| `i3en.6xlarge \| ``h1.16xlarge`  |  25 Gbps  | [ENA](enhanced-networking-ena.md) | 
 |  `i3en.12xlarge`  |  50 Gbps  | [ENA](enhanced-networking-ena.md) | 
 |  `i3en.24xlarge`  |  100 Gbps  | [ENA](enhanced-networking-ena.md) | 
@@ -106,7 +104,9 @@ The following is a summary of network performance for storage optimized instance
 | d2\.2xlarge \| d2\.4xlarge |  High  | [Intel 82599 VF](sriov-networking.md) | 
 | d2\.8xlarge |  10 Gbps  | [Intel 82599 VF](sriov-networking.md) | 
 
-## SSD I/O Performance<a name="i2-instances-diskperf"></a>
+† These instances use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. They accrue credits when their bandwidth is below their baseline bandwidth, and can use these credits when they perform network data transfers\. For more information, open a support case and ask about baseline bandwidth for the specific instance types that you are interested in\.
+
+## SSD I/O performance<a name="i2-instances-diskperf"></a>
 
 If you use all the SSD\-based instance store volumes available to your instance, you get the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
 
@@ -137,7 +137,7 @@ SSD controllers can use several strategies to reduce the impact of write amplifi
 
 For instance store volumes that support TRIM, you can use the TRIM command to notify the SSD controller whenever you no longer need data that you've written\. This provides the controller with more free space, which can reduce write amplification and increase performance\. For more information, see [Instance Store Volume TRIM Support](ssd-instance-store.md#InstanceStoreTrimSupport)\.
 
-## Instance Features<a name="storage-instances-features"></a>
+## Instance features<a name="storage-instances-features"></a>
 
 The following is a summary of features for storage optimized instances:
 
@@ -156,14 +156,14 @@ For more information, see the following:
 + [Amazon EC2 Instance Store](InstanceStorage.md)
 + [Placement Groups](placement-groups.md)
 
-## Release Notes<a name="storage-instance-release-notes"></a>
+## Release notes<a name="storage-instance-release-notes"></a>
 + You must launch storage optimized instances using an HVM AMI\. 
-+ The following are requirements for I3en and `i3.metal` instances:
++ Instances built on the [Nitro System](instance-types.md#ec2-nitro-instances) have the following requirements:
   + [NVMe drivers](nvme-ebs-volumes.md) must be installed
   + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
   The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
-+ Launching an `i3.metal` instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
++ Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.
 + Bare metal instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The upstream Linux kernel and the latest Amazon Linux AMIs support this device\. Bare metal instances also provide an ACPI SPCR table to enable the system to automatically use the PCI\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device\.
-+ There is a limit on the total number of instances that you can launch in a region, and there are additional limits on some instance types\. For more information, see [How many instances can I run in Amazon EC2?](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2)\. To request a limit increase, use the [Amazon EC2 Instance Request Form](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-ec2-instances)\.
++ There is a limit on the total number of instances that you can launch in a Region, and there are additional limits on some instance types\. For more information, see [How many instances can I run in Amazon EC2?](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ\.

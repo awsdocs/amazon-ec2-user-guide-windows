@@ -1,17 +1,17 @@
-# Common Issues<a name="common-issues"></a>
+# Common issues with Windows instances<a name="common-issues"></a>
 
 The following are troubleshooting tips to help you solve common issues with EC2 instance running Windows Server\.
 
 **Topics**
-+ [EBS Volumes Don't Initialize on Windows Server 2016 and Later AMIs](#init-disks-win2k16)
-+ [Boot an EC2 Windows Instance into Directory Services Restore Mode \(DSRM\)](#boot-dsrm)
++ [EBS volumes don't initialize on Windows Server 2016 and later](#init-disks-win2k16)
++ [Boot an EC2 Windows instance into Directory Services Restore Mode \(DSRM\)](#boot-dsrm)
 + [Instance loses network connectivity or scheduled tasks don't run when expected](#instance-loses-network-connectivity)
 + [Unable to get console output](#no-console-output)
 + [Windows Server 2012 R2 not available on the network](#server-2012-network-loss)
 
-## EBS Volumes Don't Initialize on Windows Server 2016 and Later AMIs<a name="init-disks-win2k16"></a>
+## EBS volumes don't initialize on Windows Server 2016 and later<a name="init-disks-win2k16"></a>
 
-Instances created from Windows Server 2016 and later Amazon Machine Images \(AMIs\) use the EC2Launch service for a variety of startup tasks, including initializing EBS volumes\. By default, EC2Launch does not initialize secondary volumes\. You can configure EC2Launch to initialize these disks automatically\.
+Instances created from Amazon Machine Images \(AMIs\) for Windows Server 2016 and later use the EC2Launch service for a variety of startup tasks, including initializing EBS volumes\. By default, EC2Launch does not initialize secondary volumes\. You can configure EC2Launch to initialize these disks automatically\.
 
 **To map drive letters to volumes**
 
@@ -44,11 +44,11 @@ Instances created from Windows Server 2016 and later Amazon Machine Images \(AMI
    PS C:\>  C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeDisks.ps1 -Schedule
    ```
 
-## Boot an EC2 Windows Instance into Directory Services Restore Mode \(DSRM\)<a name="boot-dsrm"></a>
+## Boot an EC2 Windows instance into Directory Services Restore Mode \(DSRM\)<a name="boot-dsrm"></a>
 
 If an instance running Microsoft Active Directory experiences a system failure or other critical issues you can troubleshoot the instance by booting into a special version of Safe Mode called *Directory Services Restore Mode* \(DSRM\)\. In DSRM you can repair or recover Active Directory\.
 
-### Driver Support for DSRM<a name="boot-dsrm-driver"></a>
+### Driver support for DSRM<a name="boot-dsrm-driver"></a>
 
 How you enable DSRM and boot into the instance depends on the drivers the instance is running\. In the EC2 console you can view driver version details for an instance from the System Log\. The following table shows which drivers are supported for DSRM\.
 
@@ -62,7 +62,7 @@ How you enable DSRM and boot into the instance depends on the drivers the instan
 
 For information about how to enable Enhanced Networking, see [Enabling Enhanced Networking on Windows Instances in a VPC](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking.html)\. For more information about upgrading AWS PV drivers, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
 
-### Configure an Instance to Boot into DSRM<a name="configure-boot-dsrm"></a>
+### Configure an instance to boot into DSRM<a name="configure-boot-dsrm"></a>
 
 EC2 Windows instances do not have network connectivity before the operating system is running\. For this reason, you cannot press the F8 button on your keyboard to select a boot option\. You must use one of the following procedures to boot an EC2 Windows Server instance into DSRM\.
 

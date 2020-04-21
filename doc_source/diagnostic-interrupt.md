@@ -1,4 +1,4 @@
-# Sending a Diagnostic Interrupt \(Advanced Users Only\)<a name="diagnostic-interrupt"></a>
+# Sending a diagnostic interrupt \(for advanced users\)<a name="diagnostic-interrupt"></a>
 
 **Warning**  
 Diagnostic interrupts are intended for use by advanced users\. Incorrect usage could negatively impact your instance\. Sending a diagnostic interrupt to an instance could trigger an instance to crash and reboot, which could lead to the loss of data\.
@@ -12,13 +12,13 @@ The memory dump data is generated locally by the operating system on the instanc
 Before sending a diagnostic interrupt to your instance, we recommend that you consult the documentation for your operating system and then make the necessary configuration changes\.
 
 **Topics**
-+ [Supported Instance Types](#diagnostic-interrupt-instances)
++ [Supported instance types](#diagnostic-interrupt-instances)
 + [Prerequisites](#diagnostic-interrupt-prereqs)
-+ [Sending a Diagnostic Interrupt](#diagnostic-interrupt-use)
++ [Sending a diagnostic interrupt](#diagnostic-interrupt-use)
 
-## Supported Instance Types<a name="diagnostic-interrupt-instances"></a>
+## Supported instance types<a name="diagnostic-interrupt-instances"></a>
 
-Diagnostic interrupt is supported on all Nitro\-based instance types, except A1\. For more information, see [Nitro\-based Instances](instance-types.md#ec2-nitro-instances)\.
+Diagnostic interrupt is supported on all Nitro\-based instance types, except A1\. For more information, see [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances)\.
 
 ## Prerequisites<a name="diagnostic-interrupt-prereqs"></a>
 
@@ -38,7 +38,7 @@ Before using a diagnostic interrupt, you should configure your instance's operat
 
 For more information about configuring Windows stop errors, see [ Overview of memory dump file options for Windows](https://support.microsoft.com/en-us/help/254649/overview-of-memory-dump-file-options-for-windows)\.
 
-## Sending a Diagnostic Interrupt<a name="diagnostic-interrupt-use"></a>
+## Sending a diagnostic interrupt<a name="diagnostic-interrupt-use"></a>
 
 After you have completed the necessary configuration changes, you can send a diagnostic interrupt to your instance using the AWS CLI or Amazon EC2 API\.
 

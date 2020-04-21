@@ -1,11 +1,10 @@
-# Finding Shared AMIs<a name="usingsharedamis-finding"></a>
+# Finding shared AMIs<a name="usingsharedamis-finding"></a>
 
 You can use the Amazon EC2 console or the command line to find shared AMIs\. 
 
-**Note**  
-AMIs are a regional resource\. Therefore, when searching for a shared AMI \(public or private\), you must search for it from within the region from which it is being shared\. To make an AMI available in a different region, copy the AMI to the region and then share it\. For more information, see [Copying an AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html)\.
+AMIs are a regional resource\. Therefore, when searching for a shared AMI \(public or private\), you must search for it from within the Region from which it is being shared\. To make an AMI available in a different Region, copy the AMI to the Region and then share it\. For more information, see [Copying an AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/CopyingAMIs.html)\.
 
-## Finding a Shared AMI \(Console\)<a name="usingsharedamis-finding-console"></a>
+## Finding a shared AMI \(console\)<a name="usingsharedamis-finding-console"></a>
 
 **To find a shared private AMI using the console**
 
@@ -25,7 +24,7 @@ AMIs are a regional resource\. Therefore, when searching for a shared AMI \(publ
 
 1. Use filters to list only the types of AMIs that interest you\. For example, choose **Owner :** and then choose **Amazon images** to display only Amazon's public images\.
 
-## Finding a Shared AMI \(Tools for Windows PowerShell\)<a name="find-shared-ami-powershell"></a>
+## Finding a shared AMI \(Tools for Windows PowerShell\)<a name="find-shared-ami-powershell"></a>
 
 Use the [Get\-EC2Image](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Image.html) command \(Tools for Windows PowerShell\) to list AMIs\. You can scope the list to the types of AMIs that interest you, as shown in the following examples\.
 
@@ -64,7 +63,7 @@ To reduce the number of displayed AMIs, use a filter to list only the types of A
 -Filter @{ Name="root-device-type"; Values="ebs" }
 ```
 
-## Finding a Shared AMI \(AWS CLI\)<a name="usingsharedamis-finding-cli"></a>
+## Finding a shared AMI \(AWS CLI\)<a name="usingsharedamis-finding-cli"></a>
 
 Use the [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) command \(AWS CLI\) to list AMIs\. You can scope the list to the types of AMIs that interest you, as shown in the following examples\.
 

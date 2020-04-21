@@ -7,23 +7,23 @@ An AMI includes the following:
 + Launch permissions that control which AWS accounts can use the AMI to launch instances\.
 + A block device mapping that specifies the volumes to attach to the instance when it's launched\.
 
-## Creating Your Own AMI<a name="creating-an-ami"></a>
+## Creating your own AMI<a name="creating-an-ami"></a>
 
 You can launch an instance from an existing AMI, customize the instance, and then save this updated configuration as a custom AMI\. Instances launched from this new custom AMI include the customizations that you made when you created the AMI\.
 
-For more information, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
-To help categorize and manage your AMIs, you can assign custom *tags* to them\. For more information, see [Tagging Your Amazon EC2 Resources](Using_Tags.md)\.
+To help categorize and manage your AMIs, you can assign custom *tags* to them\. For more information, see [Tagging your Amazon EC2 resources](Using_Tags.md)\.
 
-## Buying, Sharing, and Selling AMIs<a name="buy-share-sell"></a>
+## Buying, sharing, and selling AMIs<a name="buy-share-sell"></a>
 
 After you create an AMI, you can keep it private so that only you can use it, or you can share it with a specified list of AWS accounts\. You can also make your custom AMI public so that the community can use it\. Building a safe, secure, usable AMI for public consumption is a fairly straightforward process, if you follow a few simple guidelines\. For information about how to create and use shared AMIs, see [Shared AMIs](sharing-amis.md)\.
 
 You can purchase AMIs from a third party, including AMIs that come with service contracts from organizations such as Red Hat\. You can also create an AMI and sell it to other Amazon EC2 users\. For more information about buying or selling AMIs, see [Paid AMIs](paid-amis.md)\.
 
-## Deregistering Your AMI<a name="deregistering"></a>
+## Deregistering your AMI<a name="deregistering"></a>
 
-You can deregister an AMI when you have finished with it\. After you deregister an AMI, it can't be used to launch new instances\. Existing instances launched from the AMI are not affected\. For more information, see [Deregistering Your Windows AMI](deregister-ami.md)\.
+You can deregister an AMI when you have finished with it\. After you deregister an AMI, it can't be used to launch new instances\. Existing instances launched from the AMI are not affected\. For more information, see [Deregistering your Windows AMI](deregister-ami.md)\.
 
 ## AWS Windows AMIs<a name="aws-windows-ami"></a>
 
@@ -33,7 +33,7 @@ Some Windows AMIs include an edition of Microsoft SQL Server \(SQL Enterprise Ed
 
 Microsoft no longer supports Windows Server 2003 \(see [Microsoft Windows Server 2003 End\-of\-Support](https://aws.amazon.com/windows/products/ec2/server2003/)\)\. We recommend that you launch new EC2 instances using a supported version of Windows Server\. If you have existing EC2 instances that are running an unsupported version of Windows Server, we recommend that you upgrade those instances to a supported version of Windows Server\. For more information, see [Upgrading an Amazon EC2 Windows Instance to a Newer Version of Windows Server](serverupgrade.md)\.
 
-### Selecting an Initial Windows AMI<a name="select-windows-ami"></a>
+### Selecting an initial Windows AMI<a name="select-windows-ami"></a>
 
 To view the Windows AMIs provided by AWS, you can use the Amazon EC2 console or [AWS Marketplace](https://aws.amazon.com/marketplace/)\. For more information, see [Finding a Windows AMI](finding-an-ami.md)\.
 
@@ -41,13 +41,13 @@ You can also create an AMI from your own Windows computer\. For more information
 + [AWS Server Migration Service](https://docs.aws.amazon.com/server-migration-service/latest/userguide/)
 + [VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/)
 
-### Keeping Your AMIs Up\-to\-Date<a name="WinAMI_Updating"></a>
+### Keeping your AMIs up\-to\-date<a name="WinAMI_Updating"></a>
 
-AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. For more information, see [Details About AWS Windows AMI Versions](windows-ami-version-history.md#windows-ami-versions)\.
+AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. For more information, see [Details about AWS Windows AMI versions](windows-ami-versions.md)\.
 
-The AWS Windows AMIs contain the latest security updates available at the time they were created\. For more information, see [Updating Your Windows Instance](windows-ami-version-history.md#update-windows-instance)\.
+The AWS Windows AMIs contain the latest security updates available at the time they were created\. For more information, see [Updating your Windows instance](windows-ami-version-history.md#update-windows-instance)\.
 
-### Virtualization Types<a name="virtualization-types"></a>
+### Virtualization types<a name="virtualization-types"></a>
 
 AMIs use one of two types of virtualization: paravirtual \(PV\) or hardware virtual machine \(HVM\)\. The main differences between PV and HVM AMIs are the way in which they boot and whether they can take advantage of special hardware extensions for better performance\. Windows AMIs are HVM AMIs\.
 

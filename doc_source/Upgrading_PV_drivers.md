@@ -135,7 +135,7 @@ Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure y
   ```
 
   If you need to install version 2\.0, see [Windows Management Framework Core Package \(Windows PowerShell 2\.0 and WinRM\)](https://support.microsoft.com/en-us/help/968930/windows-management-framework-core-package-windows-powershell-2-0-and-w) from Microsoft Support\.
-+ Back up your important information on the instance, or create an AMI from the instance\. For more information about creating an AMI, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. If you create an AMI, make sure that you do the following:
++ Back up your important information on the instance, or create an AMI from the instance\. For more information about creating an AMI, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. If you create an AMI, make sure that you do the following:
   + Write down your password\.
   + Do not run the Sysprep tool manually or using the EC2Config service\.
   + Set your Ethernet adapter to obtain an IP address automatically using DHCP\. For more information, see [Configure TCP/IP Settings](https://technet.microsoft.com/en-us/library/cc731673.aspx) in the Microsoft TechNet Library\.
@@ -180,7 +180,7 @@ If you are using Citrix PV drivers on Windows Server, you can upgrade the Citrix
 **Important**  
 For Windows Server 2008 R2 and later, we recommend you upgrade to AWS PV drivers that include the Guest Agent update\.
 
-Before you start upgrading your drivers, make sure you back up your important information on the instance, or create an AMI from the instance\. For more information about creating an AMI, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. If you create an AMI, make sure you do the following:
+Before you start upgrading your drivers, make sure you back up your important information on the instance, or create an AMI from the instance\. For more information about creating an AMI, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. If you create an AMI, make sure you do the following:
 + Do not enable the Sysprep tool in the EC2Config service\.
 + Write down your password\.
 + Set your Ethernet adapter to DHCP\. 

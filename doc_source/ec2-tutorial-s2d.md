@@ -22,7 +22,7 @@ A basic understanding of Windows Server computing as well as how to create and m
 + Install and configure the AWS Tools for Windows PowerShell on your computer\. For more information, see the [AWS Tools for Windows PowerShell User Guide](https://docs.aws.amazon.com/powershell/latest/userguide/)\.
 
 **Important considerations**
-+ Stopping instances with [Instance Store Volumes](InstanceStorage.md) can cause data loss if the data is not backed up or replicated\. The data in an instance store persists only during the lifetime of its associated instance\. If an instance reboots \(intentionally or unintentionally\), data in the instance store persists\. However, data in the instance store is lost under the following circumstances: 
++ Stopping instances with [instance store volumes](InstanceStorage.md) can cause data loss if the data is not backed up or replicated\. The data in an instance store persists only during the lifetime of its associated instance\. If an instance reboots \(intentionally or unintentionally\), data in the instance store persists\. However, data in the instance store is lost under the following circumstances: 
   + The underlying disk drive fails\.
   + The instance stops\.
   + The instance terminates\.

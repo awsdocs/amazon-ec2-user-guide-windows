@@ -1,4 +1,4 @@
-# Common Messages<a name="common-messages"></a>
+# Common messages troubleshooting Windows instances<a name="common-messages"></a>
 
 This section includes tips to help you troubleshoot issues based on common messages\.
 
@@ -10,7 +10,7 @@ This section includes tips to help you troubleshoot issues based on common messa
 + ["Unable to activate Windows"](#activate-windows)
 + ["Windows is not genuine \(0x80070005\)"](#windows-not-genuine)
 + ["No Terminal Server License Servers available to provide a license"](#no-license-servers)
-+ ["Some settings are managed by your organization" \(Windows 2019\)](#some-settings-managed-by-org)
++ ["Some settings are managed by your organization" \(Windows Server 2019\)](#some-settings-managed-by-org)
 
 ## "Password is not available"<a name="password-not-available"></a>
 
@@ -62,7 +62,7 @@ You can terminate this instance and launch a new instance using the same AMI, ma
 
 ## "Waiting for the metadata service"<a name="metadata-unavailable"></a>
 
-A Windows instance must obtain information from its instance metadata before it can activate itself\. By default, the `WaitForMetaDataAvailable` setting ensures that the EC2Config service waits for the instance metadata to be accessible before continuing with the boot process\. For more information, see [Instance Metadata and User Data](ec2-instance-metadata.md)\.
+A Windows instance must obtain information from its instance metadata before it can activate itself\. By default, the `WaitForMetaDataAvailable` setting ensures that the EC2Config service waits for the instance metadata to be accessible before continuing with the boot process\. For more information, see [Instance metadata and user data](ec2-instance-metadata.md)\.
 
 If the instance is failing the instance reachability test, try the following to resolve this issue\.
 + Check the CIDR block for your VPC\. A Windows instance cannot boot correctly if it's launched into a VPC that has an IP address range from `224.0.0.0` to `255.255.255.255` \(Class D and Class E IP address ranges\)\. These IP address ranges are reserved, and should not be assigned to host devices\. We recommend that you create a VPC with a CIDR block from the private \(non\-publicly routable\) IP address ranges as specified in [RFC 1918](http://www.faqs.org/rfcs/rfc1918.html)\.
@@ -271,7 +271,7 @@ Check for the following issues:
     For more information, see the following Microsoft article: [Access Remote Desktop Via Command Line](https://social.technet.microsoft.com/wiki/contents/articles/4487.access-remote-desktop-via-commandline.aspx)\.
   + Stop the instance, detach its Amazon EBS volumes, and attach them to another instance in the same Availability Zone to recover your data\.
 
-## "Some settings are managed by your organization" \(Windows 2019\)<a name="some-settings-managed-by-org"></a>
+## "Some settings are managed by your organization" \(Windows Server 2019\)<a name="some-settings-managed-by-org"></a>
 
 Instances launched from the latest Windows Server 2019 AMIs may show a Windows Update dialog message stating "Some settings are managed by your organization\." This message appears as a result of changes in Windows Server 2019 and does not impact the behavior of Windows Update or your ability to manage update settings\.
 

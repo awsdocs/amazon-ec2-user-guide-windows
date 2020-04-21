@@ -31,7 +31,7 @@ Before you attempt to reset the administrator password, verify that the EC2Confi
 
 1. Locate the EC2 Agent entry, for example, **EC2 Agent: Ec2Config service v3\.18\.1118**\. If you see this entry, the EC2Config service is running\.
 
-   If the system log output is empty, or if the EC2Config service is not running, troubleshoot the instance using the Instance Console Screenshot service\. For more information, see [Troubleshoot an Unreachable Instance](screenshot-service.md)\.
+   If the system log output is empty, or if the EC2Config service is not running, troubleshoot the instance using the Instance Console Screenshot service\. For more information, see [Troubleshoot an unreachable instance](screenshot-service.md)\.
 
 ## Step 2: Detach the Root Volume from the Instance<a name="resetting-password-ec2config-step2"></a>
 

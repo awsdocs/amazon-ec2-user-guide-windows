@@ -35,7 +35,7 @@ To start using a VPC, ensure that you have one in your account\. You can create 
 You cannot use the same security groups between EC2\-Classic and a VPC\. However, if you want your instances in your VPC to have the same security group rules as your EC2\-Classic instances, you can use the Amazon EC2 console to copy your existing EC2\-Classic security group rules to a new VPC security group\. 
 
 **Important**  
-You can only copy security group rules to a new security group in the same AWS account in the same region\. If you've created a new AWS account, you cannot use this method to copy your existing security group rules to your new account\. You'll have to create a new security group, and add the rules yourself\. For more information about creating a new security group, see [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)\.
+You can only copy security group rules to a new security group in the same AWS account in the same Region\. If you've created a new AWS account, you cannot use this method to copy your existing security group rules to your new account\. You'll have to create a new security group, and add the rules yourself\. For more information about creating a new security group, see [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)\.
 
 **To copy your security group rules to a new security group**
 
@@ -57,7 +57,7 @@ If you've defined a rule in your EC2\-Classic security group that references ano
 
 An AMI is a template for launching your instance\. You can create your own AMI based on an existing EC2\-Classic instance, then use that AMI to launch instances into your VPC\.
 
-For more information, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 #### \(Optional\) Store Your Data on Amazon EBS Volumes<a name="vpc-migrate-create-volumes"></a>
 
@@ -209,7 +209,7 @@ After you've created a VPC, you can enable it for ClassicLink\. For more informa
 
 An AMI is a template for launching your instance\. You can create your own AMI based on an existing EC2\-Classic instance, then use that AMI to launch instances into your VPC\.
 
-For more information, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 #### \(Optional\) Store Your Data on Amazon EBS Volumes<a name="classiclink-migrate-create-volumes"></a>
 

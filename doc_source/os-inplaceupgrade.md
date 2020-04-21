@@ -16,7 +16,7 @@ Complete the following tasks and note the following important details before you
   + [Upgrade and conversion options for Windows Server 2016](https://docs.microsoft.com/en-us/windows-server/get-started/supported-upgrade-paths)
   + [Upgrade and conversion options for Windows Server 2019](https://docs.microsoft.com/en-us/windows-server/get-started-19/install-upgrade-migrate-19)
   + [Windows Server Upgrade Center](https://www.microsoft.com/upgradecenter)
-+  We recommend performing an operating system upgrade on instances with at least 2 vCPUs and 4GB of RAM\. If needed, you can change the instance to a larger size of the same type \(t2\.small to t2\.large, for example\), perform the upgrade, and then resize it back to the original size\. If you are required to retain the instance size, you can monitor the progress using the [Instance Console Screenshot](screenshot-service.md)\. For more information, see [Changing the Instance Type](ec2-instance-resize.md)\.
++  We recommend performing an operating system upgrade on instances with at least 2 vCPUs and 4GB of RAM\. If needed, you can change the instance to a larger size of the same type \(t2\.small to t2\.large, for example\), perform the upgrade, and then resize it back to the original size\. If you are required to retain the instance size, you can monitor the progress using the [instance console screenshot](screenshot-service.md)\. For more information, see [Changing the instance type](ec2-instance-resize.md)\.
 + Verify that the root volume on your Windows instance has enough free disk space\. The Windows Setup process might not warn you of insufficient disk space\. For information about how much disk space is required to upgrade a specific operating system, see the Microsoft documentation\. If the volume does not have enough space, it can be expanded\. For more information, see [Amazon EBS Elastic Volumes](ebs-modify-volume.md)\.
 + Determine your upgrade path\. You must upgrade the operating system to the same architecture\. For example, you must upgrade a 32\-bit system to a 32\-bit system\. Windows Server 2008 R2 and later are 64\-bit only\.
 + Disable antivirus and anti\-spyware software and firewalls\. These types of software can conflict with the upgrade process\. Re\-enable antivirus and anti\-spyware software and firewalls after the upgrade completes\.
@@ -29,7 +29,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 **To perform the in\-place upgrade**
 
-1. Create an AMI of the system you plan to upgrade for either backup or testing purposes\. You can then perform the upgrade on the copy to simulate a test environment\. If the upgrade completes, you can switch traffic to this instance with little downtime\. If the upgrade fails, you can revert to the backup\. For more information, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+1. Create an AMI of the system you plan to upgrade for either backup or testing purposes\. You can then perform the upgrade on the copy to simulate a test environment\. If the upgrade completes, you can switch traffic to this instance with little downtime\. If the upgrade fails, you can revert to the backup\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 1. Ensure that your Windows Server instance is using the latest network drivers\. See [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md) for information on upgrading your AWS PV driver\.
 
@@ -41,7 +41,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
    1. Uninstall the EC2Config service\. For more information, see [Stopping, Restarting, Deleting, or Uninstalling EC2Config](ec2config-service.md#UsingConfig_StopDelete)\.
 
-   1. Install the EC2Launch service\. For more information, see [Installing the Latest Version of EC2Launch](ec2launch-download.md)\.
+   1. Install the EC2Launch service\. For more information, see [Installing the latest version of EC2Launch](ec2launch-download.md)\.
 
    1. Install the AWS Systems Manager SSM Agent\. For more information, see [Working with SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) in the *AWS Systems Manager User Guide*\.
 
@@ -175,7 +175,7 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 
 1. Log in to the instance to initiate an upgrade for the \.NET Framework and reboot the system when prompted\.
 
-1. Install the latest version of the EC2Config service \(Windows 2012 R2 and earlier\) or EC2Launch \(Windows 2016 and later\)\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md) or [Installing the Latest Version of EC2Launch](ec2launch-download.md)\.
+1. Install the latest version of the EC2Config service \(Windows 2012 R2 and earlier\) or EC2Launch \(Windows 2016 and later\)\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md) or [Installing the latest version of EC2Launch](ec2launch-download.md)\.
 
 1. Install Microsoft hotfix [KB2800213](https://support.microsoft.com/en-us/help/2800213/high-cpu-usage-during-dst-changeover-in-windows-server-2008-windows-7)\.
 

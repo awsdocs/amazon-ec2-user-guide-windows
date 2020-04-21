@@ -1,8 +1,7 @@
 # Amazon EBS and NVMe on Windows Instances<a name="nvme-ebs-volumes"></a>
 
-EBS volumes are exposed as NVMe block devices on [Nitro\-based instances](instance-types.md#ec2-nitro-instances)\. 
+EBS volumes are exposed as NVMe block devices on instances built on the [Nitro System](instance-types.md#ec2-nitro-instances)\. 
 
-**Note**  
 The EBS performance guarantees stated in [Amazon EBS Product Details](http://aws.amazon.com/ebs/details/) are valid regardless of the block\-device interface\.
 
 **Topics**

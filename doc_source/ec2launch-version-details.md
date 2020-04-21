@@ -1,14 +1,15 @@
-# EC2Launch Version History<a name="ec2launch-version-details"></a>
+# EC2Launch version history<a name="ec2launch-version-details"></a>
 
 Windows AMIs starting with Windows Server 2016 include a set of Windows Powershell scripts called EC2Launch\. EC2Launch performs tasks during the initial instance boot\. For information about the EC2Launch versions included in the Windows AMIs, see see [Managed AWS Windows AMIs](windows-ami-version-history.md)\.
 
-To download and install the latest version of EC2Launch, see [Installing the Latest Version of EC2Launch](ec2launch-download.md)\.
+To download and install the latest version of EC2Launch, see [Installing the latest version of EC2Launch](ec2launch-download.md)\.
 
 The following table describes the released versions of EC2Launch\. Note that the version format changed after version 1\.3\.610\.
 
 
 | Version | Details | 
 | --- | --- | 
+| 1\.3\.2003040 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)  | 
 |  1\.3\.2002730  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)  | 
 |  1\.3\.2002240   |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)  | 
 |  1\.3\.2001660  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)  | 

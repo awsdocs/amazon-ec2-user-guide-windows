@@ -1,13 +1,14 @@
-# Enabling Enhanced Networking with the Elastic Network Adapter \(ENA\) on Windows Instances<a name="enhanced-networking-ena"></a>
+# Enabling enhanced networking with the Elastic Network Adapter \(ENA\) on Windows instances<a name="enhanced-networking-ena"></a>
 
 Amazon EC2 provides enhanced networking capabilities through the Elastic Network Adapter \(ENA\)\. To use enhanced networking, you must install the required ENA module and enable ENA support\.
 
 **Topics**
 + [Requirements](#ena-requirements)
-+ [Testing Whether Enhanced Networking Is Enabled](#test-enhanced-networking-ena)
-+ [Enabling Enhanced Networking on Windows](#enable-enhanced-networking-ena-WIN)
-+ [Amazon ENA Driver Versions](#ena-adapter-driver-versions)
-+ [Subscribing to Notifications](#drivers-subscribe-notifications)
++ [Enhanced networking performance](#ena-performance)
++ [Testing whether enhanced networking is enabled](#test-enhanced-networking-ena)
++ [Enabling enhanced networking on Windows](#enable-enhanced-networking-ena-WIN)
++ [Amazon ENA driver versions](#ena-adapter-driver-versions)
++ [Subscribing to notifications](#drivers-subscribe-notifications)
 + [Operating System Optimizations](enhanced-networking-os.md)
 
 ## Requirements<a name="ena-requirements"></a>
@@ -18,11 +19,20 @@ To prepare for enhanced networking using the ENA, set up your instance as follow
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable\. If you have a recent backup, your data will still be retained if this happens\.
 
-## Testing Whether Enhanced Networking Is Enabled<a name="test-enhanced-networking-ena"></a>
+## Enhanced networking performance<a name="ena-performance"></a>
+
+The following documentation provides a summary of the network performance for the instance types that support ENA enhanced networking:
++ [Network Performance for Accelerated Computing Instances](accelerated-computing-instances.md#gpu-network-performance)
++ [Network Performance for Compute Optimized Instances](compute-optimized-instances.md#compute-network-performance)
++ [Network Performance for General Purpose Instances](general-purpose-instances.md#general-purpose-network-performance)
++ [Network Performance for Memory Optimized Instances](memory-optimized-instances.md#memory-network-perf)
++ [Network Performance for Storage Optimized Instances](storage-optimized-instances.md#storage-network-performance)
+
+## Testing whether enhanced networking is enabled<a name="test-enhanced-networking-ena"></a>
 
 To test whether enhanced networking is already enabled, verify that the driver is installed on your instance and that the `enaSupport` attribute is set\. 
 
-**Instance Attribute \(enaSupport\)**
+**Instance attribute \(enaSupport\)**
 
 To check whether an instance has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
 + [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
@@ -36,7 +46,7 @@ To check whether an instance has the enhanced networking `enaSupport` attribute 
   (Get-EC2Instance -InstanceId instance-id).Instances.EnaSupport
   ```
 
-**Image Attribute \(enaSupport\)**  
+**Image attribute \(enaSupport\)**  
 To check whether an AMI has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
 + [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI\)
 
@@ -49,9 +59,9 @@ To check whether an AMI has the enhanced networking `enaSupport` attribute set, 
   (Get-EC2Image -ImageId ami_id).EnaSupport
   ```
 
-## Enabling Enhanced Networking on Windows<a name="enable-enhanced-networking-ena-WIN"></a>
+## Enabling enhanced networking on Windows<a name="enable-enhanced-networking-ena-WIN"></a>
 
-If you launched your instance and it does not have enhanced networking enabled already, you must download and install the required network adapter driver on your instance, and then set the `enaSupport` instance attribute to activate enhanced networking\. You can only enable this attribute on supported instance types and only if the ENA driver is installed\. For more information, see [Enhanced Networking Types](enhanced-networking.md#supported_instances)\.
+If you launched your instance and it does not have enhanced networking enabled already, you must download and install the required network adapter driver on your instance, and then set the `enaSupport` instance attribute to activate enhanced networking\. You can only enable this attribute on supported instance types and only if the ENA driver is installed\. For more information, see [Enhanced networking types](enhanced-networking.md#supported_instances)\.
 
 **To enable enhanced networking**
 
@@ -131,9 +141,9 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
 
    1. Choose **Details**\. For **Network Connection Details**, check that **Description** is **Amazon Elastic Network Adapter**\.
 
-1. \(Optional\) Create an AMI from the instance\. The AMI inherits the `enaSupport` attribute from the instance\. Therefore, you can use this AMI to launch another instance with ENA enabled by default\. For more information, see [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+1. \(Optional\) Create an AMI from the instance\. The AMI inherits the `enaSupport` attribute from the instance\. Therefore, you can use this AMI to launch another instance with ENA enabled by default\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
-## Amazon ENA Driver Versions<a name="ena-adapter-driver-versions"></a>
+## Amazon ENA driver versions<a name="ena-adapter-driver-versions"></a>
 
 Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The following table summarizes the changes for each release\.
 
@@ -149,7 +159,7 @@ Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The f
 |  [1\.0\.9](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.0.8/AwsEnaNetworkDriver.zip)  |  Includes some reliability fixes\. Applies only to Windows Server 2008 R2\. Not recommended for other versions of Windows Server\.  | December 2016 | 
 |  [1\.0\.8](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.0.8/AwsEnaNetworkDriver.zip)  |  The initial release\. Included in AMIs for Windows Server 2008 R2, Windows Server 2012 RTM, Windows Server 2012 R2, and Windows Server 2016\.  | July 2016 | 
 
-## Subscribing to Notifications<a name="drivers-subscribe-notifications"></a>
+## Subscribing to notifications<a name="drivers-subscribe-notifications"></a>
 
 Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use the following procedure to subscribe to these notifications\.
 

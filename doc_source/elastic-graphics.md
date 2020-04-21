@@ -2,7 +2,7 @@
 
 Amazon Elastic Graphics provides flexible, low\-cost, and high performance graphics acceleration for your Windows instances\. Elastic Graphics accelerators come in multiple sizes and are a low\-cost alternative to using GPU graphics instance types \(such as G2 and G3\)\. You have the flexibility to choose an instance type that meets the compute, memory, and storage needs of your application\. Then, choose the accelerator for your instance that meets the graphics requirements of your workload\.
 
-Elastic Graphics is suited for applications that require a small or intermittent amount of additional graphics acceleration, and that use OpenGL graphics support\. If you need access to full, directly attached GPUs and use of DirectX, CUDA, or Open Computing Language \(OpenCL\) parallel computing frameworks, use an accelerated computing instance type instance instead\. For more information, see [Windows Accelerated Computing Instances](accelerated-computing-instances.md)\.
+Elastic Graphics is suited for applications that require a small or intermittent amount of additional graphics acceleration, and that use OpenGL graphics support\. If you need access to full, directly attached GPUs and use of DirectX, CUDA, or Open Computing Language \(OpenCL\) parallel computing frameworks, use an accelerated computing instance type instance instead\. For more information, see [Windows accelerated computing instances](accelerated-computing-instances.md)\.
 
 **Topics**
 + [Elastic Graphics Basics](#elastic-graphics-basics)

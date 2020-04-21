@@ -7,7 +7,7 @@ If you'd prefer to host your WordPress blog on a Linux instance, see [Tutorial: 
 ## Prerequisites<a name="EC2Win_PrerequisiteWordPressBlog"></a>
 
 Before you get started, be sure that you do the following:
-+ Launch an Amazon EC2 instance from a Windows Server AMI\. For information, see [Getting Started with Amazon EC2 Windows Instances](EC2_GetStarted.md)\.
++ Launch an Amazon EC2 instance from a Windows Server AMI\. For information, see [Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)\.
 + Use the AWS free usage tier \(if eligible\) to launch and use the free Windows `t2.micro` instance for 12 months\. You can use the AWS free usage tier for launching new applications, testing existing applications, or simply gaining hands\-on experience with AWS\. For more information about eligibility and the highlights, see the [AWS Free Usage Tier](https://aws.amazon.com/free/) product page\.
 **Important**  
 If you've launched a regular instance and use it to deploy the WordPress website, you will incur the standard Amazon EC2 usage fees for the instance until you terminate it\. For more information about Amazon EC2 usage rates, go to the [Amazon EC2 product page](https://aws.amazon.com/ec2)\.
@@ -154,12 +154,12 @@ Congratulations\! You have just deployed a WordPress site on a Windows instance\
 
 ## Next Steps<a name="WordPress-next-steps"></a>
 
-If you no longer need this instance, you can remove it to avoid incurring charges\. For more information, see [Clean Up Your Instance](EC2_GetStarted.md#ec2-clean-up-your-instance)\.
+If you no longer need this instance, you can remove it to avoid incurring charges\. For more information, see [Clean up your instance](EC2_GetStarted.md#ec2-clean-up-your-instance)\.
 
 If your WordPress blog becomes popular and you need more compute power or storage, consider the following steps:
 + Expand the storage space on your instance\. For more information, see [Amazon EBS Elastic Volumes](ebs-modify-volume.md)\.
 + Move your MySQL database to [Amazon RDS](https://aws.amazon.com/rds) to take advantage of the service's ability to scale automatically\.
-+ Migrate to a larger instance type\. For more information, see [Changing the Instance Type](ec2-instance-resize.md)\.
++ Migrate to a larger instance type\. For more information, see [Changing the instance type](ec2-instance-resize.md)\.
 + Add additional instances\. For more information, see [Tutorial: Increase the Availability of Your Application on Amazon EC2](ec2-increase-availability.md)\.
 
 For information about WordPress, see the WordPress Codex help documentation at [http://codex\.wordpress\.org/](http://codex.wordpress.org/)\. For more information about troubleshooting your installation, see [http://codex\.wordpress\.org/Installing\_WordPress\#Common\_Installation\_Problems](http://codex.wordpress.org/Installing_WordPress#Common_Installation_Problems)\. For information about making your WordPress blog more secure, see [http://codex\.wordpress\.org/Hardening\_WordPress](http://codex.wordpress.org/Hardening_WordPress)\. For information about keeping your WordPress blog up\-to\-date, see [http://codex\.wordpress\.org/Updating\_WordPress](http://codex.wordpress.org/Updating_WordPress)\.

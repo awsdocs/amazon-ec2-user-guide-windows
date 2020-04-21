@@ -10,7 +10,7 @@ You can make an EBS volume available for use using the Disk Management utility a
 
 **To make an EBS volume available for use using the Disk Management utility**
 
-1. Log in to your Windows instance using Remote Desktop\. For more information, see, [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+1. Log in to your Windows instance using Remote Desktop\. For more information, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
 
 1. Start the Disk Management utility\. On the taskbar, open the context \(right\-click\) menu for the Windows logo and choose **Disk Management**\.
 **Note**  

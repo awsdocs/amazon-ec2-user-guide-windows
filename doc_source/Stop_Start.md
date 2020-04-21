@@ -80,8 +80,8 @@ You can use one of the following commands\. For more information about these com
 You can change the instance type, user data, and EBS\-optimization attributes of a stopped instance using the AWS Management Console or the command line interface\. You can't use the AWS Management Console to modify the `DeleteOnTermination`, kernel, or RAM disk attributes\.
 
 **To modify an instance attribute**
-+ To change the instance type, see [Changing the Instance Type](ec2-instance-resize.md)\.
-+ To change the user data for your instance, see [Working with Instance User Data](instancedata-add-user-data.md)\.
++ To change the instance type, see [Changing the instance type](ec2-instance-resize.md)\.
++ To change the user data for your instance, see [Working with instance user data](instancedata-add-user-data.md)\.
 + To enable or disable EBS–optimization for your instance, see [Modifying EBS–Optimization](ebs-optimized.md#modify-ebs-optimized-attribute)\.
 + To change the `DeleteOnTermination` attribute of the root volume for your instance, see [Updating the Block Device Mapping of a Running Instance](block-device-mapping-concepts.md#update-instance-bdm)\.
 
@@ -93,4 +93,4 @@ You can use one of the following commands\. For more information about these com
 
 ## Troubleshooting<a name="troubleshoot-instance-stop"></a>
 
-If you have stopped your Amazon EBS\-backed instance and it appears "stuck" in the `stopping` state, you can forcibly stop it\. For more information, see [Troubleshooting Stopping Your Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+If you have stopped your Amazon EBS\-backed instance and it appears "stuck" in the `stopping` state, you can forcibly stop it\. For more information, see [Troubleshooting stopping your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html) in the *Amazon EC2 User Guide for Linux Instances*\.

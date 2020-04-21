@@ -1,4 +1,4 @@
-# Compliance Validation for Amazon EC2<a name="compliance-validation"></a>
+# Compliance validation for Amazon EC2<a name="compliance-validation"></a>
 
 Third\-party auditors assess the security and compliance of Amazon EC2 as part of multiple AWS compliance programs\. These include SOC, PCI, FedRAMP, HIPAA, and others\.
 
@@ -6,7 +6,7 @@ For a list of AWS services in scope of specific compliance programs, see [AWS Se
 
 You can download third\-party audit reports using AWS Artifact\. For more information, see [Downloading Reports in AWS Artifact](https://docs.aws.amazon.com/artifact/latest/ug/downloading-documents.html)\.
 
-Amazon EC2 provides Amazon Machine Images \(AMI\) for Microsoft Windows Server to help you meet the compliance standards of the Security Technical Implementation Guide \(STIG\)\. These AMIs are pre\-configured with a number of STIG standards to help you get started with your deployments while meeting STIG compliance standards\. For more information, see [Amazon EC2 Windows Server AMIs for STIG Compliance](ami-windows-stig.md)\.
+Amazon EC2 provides Amazon Machine Images \(AMI\) for Microsoft Windows Server to help you meet the compliance standards of the Security Technical Implementation Guide \(STIG\)\. These AMIs are pre\-configured with a number of STIG standards to help you get started with your deployments while meeting STIG compliance standards\. For more information, see [Amazon EC2 Windows Server AMIs for STIG compliance](ami-windows-stig.md)\.
 
 Your compliance responsibility when using Amazon EC2 is determined by the sensitivity of your data, your company's compliance objectives, and applicable laws and regulations\. AWS provides the following resources to help with compliance:
 + [Security and Compliance Quick Start Guides](http://aws.amazon.com/quickstart/?awsf.quickstart-homepage-filter=categories%23security-identity-compliance) – These deployment guides discuss architectural considerations and provide steps for deploying security\- and compliance\-focused baseline environments on AWS\.

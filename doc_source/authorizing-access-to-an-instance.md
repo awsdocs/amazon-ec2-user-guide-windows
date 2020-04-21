@@ -1,4 +1,4 @@
-# Authorizing Inbound Traffic for Your Windows Instances<a name="authorizing-access-to-an-instance"></a>
+# Authorizing inbound traffic for your Windows instances<a name="authorizing-access-to-an-instance"></a>
 
 Security groups enable you to control traffic to your instance, including the kind of traffic that can reach your instance\. For example, you can allow computers from only your home network to access your instance using RDP\. If your instance is a web server, you can allow all IP addresses to access your instance using HTTP or HTTPS, so that external users can browse the content on your web server\.
 
@@ -10,16 +10,16 @@ If you've enabled your VPC for IPv6 and launched your instance with an IPv6 addr
 
 If you need to enable network access to a Linux instance, see [Authorizing Inbound Traffic for Your Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-## Before You Start<a name="authorizing-access-prereqs"></a>
+## Before you start<a name="authorizing-access-prereqs"></a>
 
 Decide who requires access to your instance; for example, a single host or a specific network that you trust such as your local computer's public IPv4 address\. The security group editor in the Amazon EC2 console can automatically detect the public IPv4 address of your local computer for you\. Alternatively, you can use the search phrase "what is my IP address" in an internet browser, or use the following service: [Check IP](http://checkip.amazonaws.com/)\. If you are connecting through an ISP or from behind your firewall without a static IP address, you need to find out the range of IP addresses used by client computers\.
 
 **Warning**  
 If you use `0.0.0.0/0`, you enable all IPv4 addresses to access your instance using RDP\. If you use `::/0`, you enable all IPv6 address to access your instance\. This is acceptable for a short time in a test environment, but it's unsafe for production environments\. In production, you authorize only a specific IP address or range of addresses to access your instance\.
 
-Windows Firewall may also block incoming traffic\. If you're having trouble setting up access to your instance, you may have to disable Windows Firewall\. For more information, see [Remote Desktop Can't Connect to the Remote Computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
+Windows Firewall may also block incoming traffic\. If you're having trouble setting up access to your instance, you may have to disable Windows Firewall\. For more information, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
 
-## Adding a Rule for Inbound RDP Traffic to a Windows Instance<a name="add-rule-authorize-access"></a>
+## Adding a rule for inbound RDP traffic to a Windows instance<a name="add-rule-authorize-access"></a>
 
 Security groups act as a firewall for associated instances, controlling both inbound and outbound traffic at the instance level\. You must add rules to a security group that enable you to connect to your Windows instance from your IP address using RDP\.
 
@@ -33,7 +33,7 @@ Security groups act as a firewall for associated instances, controlling both inb
 
 1. In the **Source** field, choose **My IP** to automatically populate the field with the public IPv4 address of your local computer\. Alternatively, choose **Custom** and specify the public IPv4 address of your computer or network in CIDR notation\. For example, if your IPv4 address is `203.0.113.25`, specify `203.0.113.25/32` to list this single IPv4 address in CIDR notation\. If your company allocates addresses from a range, specify the entire range, such as `203.0.113.0/24`\.
 
-   For information about finding your IP address, see [Before You Start](#authorizing-access-prereqs)\.
+   For information about finding your IP address, see [Before you start](#authorizing-access-prereqs)\.
 
 1. Choose **Save**\.
 
@@ -90,7 +90,7 @@ Be sure to run the following commands on your local system, not on the instance 
      PS C:\> Grant-EC2SecurityGroupIngress -GroupId security_group_id -IpPermission @($ip1)
      ```
 
-## Assigning a Security Group to an Instance<a name="assign-security-group-to-instance"></a>
+## Assigning a security group to an instance<a name="assign-security-group-to-instance"></a>
 
 You can assign a security group to an instance when you launch the instance\. When you add or remove rules, those changes are automatically applied to all instances to which you've assigned the security group\.
 

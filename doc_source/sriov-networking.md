@@ -1,11 +1,11 @@
-# Enabling Enhanced Networking with the Intel 82599 VF Interface on Windows Instances<a name="sriov-networking"></a>
+# Enabling enhanced networking with the Intel 82599 VF interface on Windows instances<a name="sriov-networking"></a>
 
 Amazon EC2 provides enhanced networking capabilities through the Intel 82599 VF interface, which uses the Intel `ixgbevf` driver\.
 
 **Topics**
 + [Requirements](#ixgbevf-requirements)
-+ [Testing Whether Enhanced Networking Is Enabled](#test-enhanced-networking)
-+ [Enabling Enhanced Networking on Windows](#enable-enhanced-networking)
++ [Testing whether enhanced networking is enabled](#test-enhanced-networking)
++ [Enabling enhanced networking on Windows](#enable-enhanced-networking)
 
 ## Requirements<a name="ixgbevf-requirements"></a>
 
@@ -16,14 +16,14 @@ To prepare for enhanced networking using the Intel 82599 VF interface, set up yo
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `sriovNetSupport` attribute, might render incompatible instances or operating systems unreachable\. If you have a recent backup, your data will still be retained if this happens\.
 
-## Testing Whether Enhanced Networking Is Enabled<a name="test-enhanced-networking"></a>
+## Testing whether enhanced networking is enabled<a name="test-enhanced-networking"></a>
 
 Enhanced networking with the Intel 82599 VF interface is enabled if the driver is installed on your instance and the `sriovNetSupport` attribute is set\. 
 
 **Driver**  
 To verify that the driver is installed, connect to your instance and open Device Manager\. You should see "Intel\(R\) 82599 Virtual Function" listed under **Network adapters**\.
 
-**Instance Attribute \(sriovNetSupport\)**  
+**Instance attribute \(sriovNetSupport\)**  
 To check whether an instance has the enhanced networking `sriovNetSupport` attribute set, use one of the following commands:
 + [describe\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html) \(AWS CLI\)
 
@@ -44,7 +44,7 @@ If the attribute isn't set, `SriovNetSupport` is empty\. If the attribute is set
 },
 ```
 
-**Image Attribute \(sriovNetSupport\)**  
+**Image attribute \(sriovNetSupport\)**  
 To check whether an AMI already has the enhanced networking `sriovNetSupport` attribute set, use one of the following commands:
 + [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI\)
 
@@ -59,12 +59,12 @@ To check whether an AMI already has the enhanced networking `sriovNetSupport` at
 
 If the attribute isn't set, `SriovNetSupport` is empty\. If the attribute is set, the value is simple\.
 
-## Enabling Enhanced Networking on Windows<a name="enable-enhanced-networking"></a>
+## Enabling enhanced networking on Windows<a name="enable-enhanced-networking"></a>
 
-If you launched your instance and it does not have enhanced networking enabled already, you must download and install the required network adapter driver on your instance, and then set the `sriovNetSupport` instance attribute to activate enhanced networking\. You can only enable this attribute on supported instance types\. For more information, see [Enhanced Networking Types](enhanced-networking.md#supported_instances)\. 
+If you launched your instance and it does not have enhanced networking enabled already, you must download and install the required network adapter driver on your instance, and then set the `sriovNetSupport` instance attribute to activate enhanced networking\. You can only enable this attribute on supported instance types\. For more information, see [Enhanced networking types](enhanced-networking.md#supported_instances)\. 
 
 **Important**  
- To view the latest version of the Intel driver in the Windows AMIs, see [Details About AWS Windows AMI Versions](windows-ami-version-history.md#windows-ami-versions)\.
+ To view the latest version of the Intel driver in the Windows AMIs, see [Details about AWS Windows AMI versions](windows-ami-versions.md)\.
 
 **Warning**  
 There is no way to disable the enhanced networking attribute after you've enabled it\.
@@ -79,7 +79,7 @@ There is no way to disable the enhanced networking attribute after you've enable
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
    ```
 **Important**  
-The administrator password will reset when you enable the initialize instance EC2Launch script\. You can modify the configuration file to disable the administrator password reset by specifying it in the settings for the initialization tasks\. For steps on how to disable password reset, see [Configure Initialization Tasks](ec2launch.md#ec2launch-inittasks)\.
+The administrator password will reset when you enable the initialize instance EC2Launch script\. You can modify the configuration file to disable the administrator password reset by specifying it in the settings for the initialization tasks\. For steps on how to disable password reset, see [Configure initialization tasks](ec2launch.md#ec2launch-inittasks)\.
 
 1. From the instance, install the driver as follows:
 
@@ -142,6 +142,6 @@ The administrator password will reset when you enable the initialize instance EC
      Edit-EC2InstanceAttribute -InstanceId instance_id -SriovNetSupport "simple"
      ```
 
-1. \(Optional\) Create an AMI from the instance, as described in [Creating a Custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. The AMI inherits the enhanced networking attribute from the instance\. Therefore, you can use this AMI to launch another instance with enhanced networking enabled by default\.
+1. \(Optional\) Create an AMI from the instance, as described in [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. The AMI inherits the enhanced networking attribute from the instance\. Therefore, you can use this AMI to launch another instance with enhanced networking enabled by default\.
 
 1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\), [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance in the AWS OpsWorks console so that the instance state remains in sync\.

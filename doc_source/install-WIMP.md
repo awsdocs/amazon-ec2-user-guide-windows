@@ -10,7 +10,7 @@ A WIMP stack is designed for easy installation to help developers get up and run
 You can, however, create a WIMP stack on an EC2 instance to prototype a web project in a controlled test environment\. For example, you can host a static website or deploy a dynamic PHP application that reads and writes information to a database\.
 
 ## Prerequisites<a name="wimp-prerequisites"></a>
-+ Provision a Windows Server 2008 R2 or 2012 R2 base instance\. You must configure the base instance with a public domain name system \(DNS\) name that is reachable from the Internet\. For more information, see [Getting Started with Amazon EC2 Windows Instances](EC2_GetStarted.md)\.
++ Provision a Windows Server 2008 R2 or 2012 R2 base instance\. You must configure the base instance with a public domain name system \(DNS\) name that is reachable from the Internet\. For more information, see [Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)\.
 + Verify that the security group for your instance has the following ports open:
   + Port 80 \(HTTP inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTP\. 
   + Port 443 \(HTTPS inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTPS\.

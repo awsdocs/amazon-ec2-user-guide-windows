@@ -1,4 +1,4 @@
-# What Is Amazon EC2?<a name="concepts"></a>
+# What is Amazon EC2?<a name="concepts"></a>
 
 Amazon Elastic Compute Cloud \(Amazon EC2\) provides scalable computing capacity in the Amazon Web Services \(AWS\) cloud\. Using Amazon EC2 eliminates your need to invest in hardware up front, so you can develop and deploy applications faster\. You can use Amazon EC2 to launch as many or as few virtual servers as you need, configure security and networking, and manage storage\. Amazon EC2 enables you to scale up or down to handle changes in requirements or spikes in popularity, reducing your need to forecast traffic\.
 
@@ -25,38 +25,38 @@ Amazon EC2 enables you to run any compatible Windows\-based solution on our high
 
 For more information about running your website on AWS, see [Web Hosting](https://aws.amazon.com/websites/)\.
 
-## How to Get Started with Amazon EC2<a name="how-to-get-started"></a>
+## How to get started with Amazon EC2<a name="how-to-get-started"></a>
 
 First, you need to get set up to use Amazon EC2\. After you are set up, you are ready to complete the Getting Started tutorial for Amazon EC2\. Whenever you need more information about an Amazon EC2 feature, you can read the technical documentation\.
 
-**Get Up and Running**
-+ [Setting Up with Amazon EC2](get-set-up-for-amazon-ec2.md)
-+ [Getting Started with Amazon EC2 Windows Instances](EC2_GetStarted.md)
+**Get up and running**
++ [Setting up with Amazon EC2](get-set-up-for-amazon-ec2.md)
++ [Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)
 
 **Basics**
-+ [Amazon EC2 Basic Infrastructure for Windows](EC2Win_Infrastructure.md)
-+ [Instance Types](instance-types.md)
++ [Amazon EC2 basic infrastructure for Windows](EC2Win_Infrastructure.md)
++ [Instance types](instance-types.md)
 + [Tags](Using_Tags.md)
 
-**Networking and Security**
+**Networking and security**
 + [Amazon EC2 key pairs and Windows instances](ec2-key-pairs.md)
 + [Security Groups](ec2-security-groups.md)
-+ [Elastic IP Addresses](elastic-ip-addresses-eip.md)
++ [Elastic IP addresses](elastic-ip-addresses-eip.md)
 + [Amazon EC2 and Amazon VPC](using-vpc.md)
 
 **Storage**
 + [Amazon EBS](AmazonEBS.md)
 + [Instance Store](InstanceStorage.md)
 
-**Working with Windows Instances**
+**Working with Windows instances**
 + [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html) in the *AWS Systems Manager User Guide*
-+ [Differences between Windows Server and an Amazon EC2 Windows Instance](EC2Win_Infrastructure.md#EC2InstanceAndWindowsServer)
-+ [Designing Your Applications to Run on Amazon EC2 Windows Instances](EC2Win_Infrastructure.md#Win_AppDesign)
++ [Differences between Windows Server and an Amazon EC2 Windows instance](EC2Win_Infrastructure.md#EC2InstanceAndWindowsServer)
++ [Designing your applications to run on Amazon EC2 Windows instances](EC2Win_Infrastructure.md#Win_AppDesign)
 + [Getting Started with AWS: Hosting a \.NET Web App](https://docs.aws.amazon.com/gettingstarted/latest/wah/)
 
 If you have questions about whether AWS is right for you, [contact AWS Sales](https://aws.amazon.com/contact-us/)\. If you have technical questions about Amazon EC2, use the [Amazon EC2 forum](https://forums.aws.amazon.com/forum.jspa?forumID=30)\. 
 
-## Related Services<a name="related-services"></a>
+## Related services<a name="related-services"></a>
 
 You can provision Amazon EC2 resources, such as instances and volumes, directly using Amazon EC2\. You can also provision Amazon EC2 resources using other services in AWS\. For more information, see the following documentation:
 + [Amazon EC2 Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/)
@@ -120,6 +120,6 @@ If you have questions concerning AWS billing, accounts, and events, [contact AWS
 
 For an overview of Trusted Advisor, a service that helps you optimize the costs, security, and performance of your AWS environment, see [AWS Trusted Advisor](https://aws.amazon.com/premiumsupport/trustedadvisor/)\.
 
-## PCI DSS Compliance<a name="pci-compliance"></a>
+## PCI DSS compliance<a name="pci-compliance"></a>
 
 Amazon EC2 supports the processing, storage, and transmission of credit card data by a merchant or service provider, and has been validated as being compliant with Payment Card Industry \(PCI\) Data Security Standard \(DSS\)\. For more information about PCI DSS, including how to request a copy of the AWS PCI Compliance Package, see [PCI DSS Level 1](https://aws.amazon.com/compliance/pci-dss-level-1-faqs/)\. 

@@ -1,4 +1,4 @@
-# Change Management in Amazon EC2<a name="change-management"></a>
+# Change management in Amazon EC2<a name="change-management"></a>
 
 After initial security baselines are applied to Amazon EC2 instances at launch, control ongoing Amazon EC2 changes to maintain the security of your virtual machines\. Establish a change management process to authorize and incorporate changes to AWS resources \(such as security groups, route tables, and network ACLs\) as well as to OS and application configurations \(such as Windows or application patching, software upgrades, or configuration file updates\)\.
 

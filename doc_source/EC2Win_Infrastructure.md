@@ -1,18 +1,18 @@
-# Amazon EC2 Basic Infrastructure for Windows<a name="EC2Win_Infrastructure"></a>
+# Amazon EC2 basic infrastructure for Windows<a name="EC2Win_Infrastructure"></a>
 
 As you get started with Amazon EC2, you'll benefit from understanding the components of its basic infrastructure and how they compare or contrast with your own data centers\.
 
 **Topics**
-+ [Amazon Machine Images and Instances](#AMISandInstances)
++ [Amazon Machine Images and instances](#AMISandInstances)
 + [Regions and Availability Zones](#EC2Win_Regions)
 + [Storage](#EC2Win_Storage)
-+ [Root Device Volume](#RootDevice_WinAMI)
-+ [Networking and Security](#EC2Win_Sec)
++ [Root device volume](#RootDevice_WinAMI)
++ [Networking and security](#EC2Win_Sec)
 + [AWS Identity and Access Management](#EC2Win_IAM)
-+ [Differences between Windows Server and an Amazon EC2 Windows Instance](#EC2InstanceAndWindowsServer)
-+ [Designing Your Applications to Run on Amazon EC2 Windows Instances](#Win_AppDesign)
++ [Differences between Windows Server and an Amazon EC2 Windows instance](#EC2InstanceAndWindowsServer)
++ [Designing your applications to run on Amazon EC2 Windows instances](#Win_AppDesign)
 
-## Amazon Machine Images and Instances<a name="AMISandInstances"></a>
+## Amazon Machine Images and instances<a name="AMISandInstances"></a>
 
 An *Amazon Machine Image \(AMI\)* is a template that contains a software configuration \(for example, an operating system, an application server, and applications\)\. From an AMI, you launch *instances*, which are copies of the AMI running as virtual servers in the cloud\.
 
@@ -26,7 +26,7 @@ Your Windows instances keep running until you stop or terminate them, or until t
 
 Your AWS account has a limit on the number of instances that you can have running\. For more information about this limit, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
 
-### Bare Metal Instances<a name="bare-metal-instances"></a>
+### Bare metal instances<a name="bare-metal-instances"></a>
 
 Amazon now offers EC2 bare metal instances which are available with the EC2 Storage Optimized [Amazon EC2 I3 instance family](https://aws.amazon.com/ec2/instance-types/i3) in the form of i3\.metal instances\. Bare metal instances allow you to run applications that benefit from deep performance analysis tools, specialized workloads that require direct access to bare metal infrastructure, legacy workloads not supported in virtual environments, licensing\-restricted Tier 1 business critical applications, as well as virtualization\-secured containers\.
 
@@ -51,7 +51,7 @@ The following figure shows the relationship between these types of storage\.
 
 ![\[Storage options for Amazon EC2\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/architecture_storage_windows.png)
 
-### Amazon EBS Volumes<a name="EC2Win_StorageEBS"></a>
+### Amazon EBS volumes<a name="EC2Win_StorageEBS"></a>
 
 Amazon EBS volumes are the recommended storage option for the majority of use cases\. Amazon EBS provides your instances with persistent, block\-level storage\. Amazon EBS volumes are essentially hard disks that you can attach to a running instance\.
 
@@ -63,7 +63,7 @@ As illustrated in the previous figure, you can attach multiple volumes to an ins
 
 For more information about Amazon EBS volumes, see [Amazon Elastic Block Store \(Amazon EBS\)](AmazonEBS.md)\.
 
-### Instance Store<a name="EC2Win_InstanceStore"></a>
+### Instance store<a name="EC2Win_InstanceStore"></a>
 
 *Instance store* provides your instances with temporary, block\-level storage\. This is storage that is physically attached to the host computer\. The data on an instance store volume doesn't persist when the associated instance is stopped or terminated\. For a list of instance store volumes available on each supported instance type, see [Instance Store Volumes](InstanceStorage.md#instance-store-volumes)\. 
 
@@ -73,25 +73,25 @@ Instance store is an option for inexpensive temporary storage\. You can use inst
 
 Amazon S3 is storage for the Internet\. It provides a simple web service interface that enables you to store and retrieve any amount of data from anywhere on the web\. For more information about Amazon S3, see the [Amazon S3 product page](https://aws.amazon.com/s3)\.
 
-## Root Device Volume<a name="RootDevice_WinAMI"></a>
+## Root device volume<a name="RootDevice_WinAMI"></a>
 
 When you launch an instance, the *root device volume* contains the image used to boot the instance\. When you launch a Windows instance, a root EBS volume is created from an EBS snapshot and attached to the instance\.
 
-By default, the root volume is deleted when the instance terminates \(the `DeleteOnTermination` attribute is `true`\)\. Using the console, you can change `DeleteOnTermination` when you launch an instance\. To change this attribute for a running instance, you must use the command line\.
+By default, the root volume is deleted when the instance terminates \(the `DeleteOnTermination` attribute is `true`\)\. Using the console, you can change `DeleteOnTermination` when you launch an instance\. To change this attribute for an existing instance, you must use the command line\.
 
 **To change the root device volume of an instance to persist at launch using the console**
 
 1. Open the Amazon EC2 console\.
 
-1. From the Amazon EC2 console dashboard, click **Launch Instance**\.
+1. From the Amazon EC2 console dashboard, choose **Launch Instance**\.
 
-1. On the **Choose an Amazon Machine Image \(AMI\)** page, choose the AMI to use and click **Select**\.
+1. On the **Choose an Amazon Machine Image \(AMI\)** page, choose the AMI to use and then choose **Select**\.
 
 1. Follow the wizard to complete the **Choose an Instance Type** and **Configure Instance Details** pages\.
 
 1. On the **Add Storage** page, deselect the **Delete On Termination** check box for the root volume\.
 
-1. Complete the remaining wizard pages, and then click **Launch**\.
+1. Complete the remaining wizard pages, and then choose **Launch**\.
 
 You can verify the setting by viewing details for the root device volume on the instance's details pane\. Next to **Block devices**, choose the entry for the root device volume\. By default, **Delete on termination** is `True`\. If you change the default behavior, **Delete on termination** is `False`\.
 
@@ -101,7 +101,7 @@ You can use one of the following commands\. For more information about these com
 + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
 + [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
-## Networking and Security<a name="EC2Win_Sec"></a>
+## Networking and security<a name="EC2Win_Sec"></a>
 
 By default, an instance is assigned public IPv4 address only if it's launched into a default VPC\. An instance that's launched into a nondefault VPC must be specifically assigned a public IPv4 address at launch, or you must modify your subnet's default public IPv4 addressing behavior\.
 
@@ -122,13 +122,13 @@ AWS Identity and Access Management \(IAM\) enables you to do the following:
 By using IAM with Amazon EC2, you can control whether users in your organization can perform a task using specific Amazon EC2 API actions and whether they can use specific AWS resources\.
 
 For more information about IAM, see the following:
-+ [Creating an IAM Group and Users](security-iam.md#creating-an-iam-group)
-+ [IAM Policies for Amazon EC2](iam-policies-for-amazon-ec2.md)
-+ [IAM Roles for Amazon EC2](iam-roles-for-amazon-ec2.md)
-+ [Identity and Access Management \(IAM\)](https://aws.amazon.com/iam)
++ [Creating an IAM group and users](security-iam.md#creating-an-iam-group)
++ [IAM policies for Amazon EC2](iam-policies-for-amazon-ec2.md)
++ [IAM roles for Amazon EC2](iam-roles-for-amazon-ec2.md)
++ [AWS Identity and Access Management \(IAM\)](https://aws.amazon.com/iam)
 + [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)
 
-## Differences between Windows Server and an Amazon EC2 Windows Instance<a name="EC2InstanceAndWindowsServer"></a>
+## Differences between Windows Server and an Amazon EC2 Windows instance<a name="EC2InstanceAndWindowsServer"></a>
 
 After you launch your Amazon EC2 Windows instance, it behaves like a traditional server running Windows Server\. For example, both Windows Server and an Amazon EC2 instance can be used to run your web applications, conduct batch processing, or manage applications requiring large\-scale computations\. However, there are important differences between the server hardware model and the cloud computing model\. The way an Amazon EC2 instance runs is not the same as the way a traditional server running Windows Server runs\.
 
@@ -154,7 +154,7 @@ An Amazon EC2 Windows instance is similar to the traditional Windows Server, as 
 
 ![\[Instance and AMI lifecycle\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_lifecycle.png)
 
-## Designing Your Applications to Run on Amazon EC2 Windows Instances<a name="Win_AppDesign"></a>
+## Designing your applications to run on Amazon EC2 Windows instances<a name="Win_AppDesign"></a>
 
 It is important that you consider the differences mentioned in the previous section when you design your applications to run on Amazon EC2 Windows instances\.
 

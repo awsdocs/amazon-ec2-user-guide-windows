@@ -1,15 +1,15 @@
 # Amazon EC2 Instances<a name="Instances"></a>
 
 If you're new to Amazon EC2, see the following topics to get started:
-+ [What Is Amazon EC2?](concepts.md)
-+ [Setting Up with Amazon EC2](get-set-up-for-amazon-ec2.md)
-+ [Getting Started with Amazon EC2 Windows Instances](EC2_GetStarted.md)
++ [What is Amazon EC2?](concepts.md)
++ [Setting up with Amazon EC2](get-set-up-for-amazon-ec2.md)
++ [Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)
 + [Instance Lifecycle](ec2-instance-lifecycle.md)
 
 Before you launch a production environment, you need to answer the following questions\.
 
 **Q\. What instance type best meets my needs?**  
-Amazon EC2 provides different instance types to enable you to choose the CPU, memory, storage, and networking capacity that you need to run your applications\. For more information, see [Instance Types](instance-types.md)\.
+Amazon EC2 provides different instance types to enable you to choose the CPU, memory, storage, and networking capacity that you need to run your applications\. For more information, see [Instance types](instance-types.md)\.
 
 **Q\. What purchasing option best meets my needs?**  
 Amazon EC2 supports On\-Demand Instances \(the default\), Spot Instances, and Reserved Instances\. For more information, see [Instance Purchasing Options](instance-purchasing-options.md)\.

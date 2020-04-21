@@ -1,17 +1,17 @@
-# Installing NVIDIA Drivers on Windows Instances<a name="install-nvidia-driver"></a>
+# Installing NVIDIA drivers on Windows instances<a name="install-nvidia-driver"></a>
 
 An instance with an attached GPU, such as a P3 or G4 instance, must have the appropriate NVIDIA driver installed\. Depending on the instance type, you can either download a public NVIDIA driver, download a driver from Amazon S3 that is available only to AWS customers, or use an AMI with the driver pre\-installed\.
 
 **Contents**
-+ [Types of NVIDIA Drivers](#nvidia-driver-types)
-+ [Available Drivers by Instance Type](#nvidia-driver-instance-type)
-+ [Installation Options](#nvidia-installation-options)
-  + [Option 1: AMIs with the NVIDIA Drivers Installed](#preinstalled-nvidia-driver)
-  + [Option 2: Public NVIDIA Tesla Drivers](#public-nvidia-driver)
-  + [Option 3: GRID Drivers \(G3 and G4 Instances\)](#nvidia-GRID-driver)
-  + [Option 4: NVIDIA Gaming Drivers \(G4 Instances\)](#nvidia-gaming-driver)
++ [Types of NVIDIA drivers](#nvidia-driver-types)
++ [Available drivers by instance type](#nvidia-driver-instance-type)
++ [Installation options](#nvidia-installation-options)
+  + [Option 1: AMIs with the NVIDIA drivers installed](#preinstalled-nvidia-driver)
+  + [Option 2: Public NVIDIA Tesla drivers](#public-nvidia-driver)
+  + [Option 3: GRID drivers \(G3 and G4 instances\)](#nvidia-GRID-driver)
+  + [Option 4: NVIDIA gaming drivers \(G4 instances\)](#nvidia-gaming-driver)
 
-## Types of NVIDIA Drivers<a name="nvidia-driver-types"></a>
+## Types of NVIDIA drivers<a name="nvidia-driver-types"></a>
 
 The following are the main types of NVIDIA drivers that can be used with GPU\-based instances\.
 
@@ -24,29 +24,29 @@ These drivers are certified to provide optimal performance for professional visu
 Gaming drivers  
 These drivers contain optimizations for gaming and are updated frequently to provide performance enhancements\. They support a single 4K display per GPU\.
 
-**Configured Mode**  
+**Configured mode**  
 On Windows, the Tesla drivers are configured to run in Tesla Compute Cluster \(TCC\) mode\. The GRID and gaming drivers are configured to run in Windows Display Driver Model \(WDDM\) mode\. In TCC mode, the card is dedicated to compute workloads\. In WDDM mode, the card supports both compute and graphics workloads\.
 
-**NVIDIA Control Panel**  
+**NVIDIA control panel**  
 The NVIDIA control panel is supported with GRID and Gaming drivers\. It is not supported with Tesla drivers\.
 
-**Supported APIs for Tesla Drivers**
+**Supported APIs for Tesla drivers**
 + OpenCL
 + NVIDIA CUDA and related libraries \(for example, cuDNN, TensorRT, nvJPEG, and cuBLAS\)
 + NVENC for video encoding and NVDEC for video decoding
 
-**Supported APIs for GRID and Gaming Drivers**
+**Supported APIs for GRID and gaming drivers**
 + DirectX, Direct2D, DirectX Video Acceleration, DirectX Raytracing
 + OpenCL, OpenGL, and Vulkan
 + NVIDIA CUDA and related libraries \(for example, cuDNN, TensorRT, nvJPEG, and cuBLAS\)
 + NVENC for video encoding and NVDEC for video decoding
 
-## Available Drivers by Instance Type<a name="nvidia-driver-instance-type"></a>
+## Available drivers by instance type<a name="nvidia-driver-instance-type"></a>
 
 The following table summarizes the supported NVIDIA drivers for each GPU instance type\.
 
 
-| Instance Type | Tesla Driver | GRID Driver | Gaming Driver | 
+| Instance type | Tesla driver | GRID driver | Gaming driver | 
 | --- | --- | --- | --- | 
 | G2 | Yes | No | No | 
 | G3 | Yes | Yes | No | 
@@ -56,24 +56,24 @@ The following table summarizes the supported NVIDIA drivers for each GPU instanc
 
 † Using Marketplace AMIs only
 
-## Installation Options<a name="nvidia-installation-options"></a>
+## Installation options<a name="nvidia-installation-options"></a>
 
 Use one of the following options to get the NVIDIA drivers required for your GPU instance\.
 
 **Topics**
-+ [Option 1: AMIs with the NVIDIA Drivers Installed](#preinstalled-nvidia-driver)
-+ [Option 2: Public NVIDIA Tesla Drivers](#public-nvidia-driver)
-+ [Option 3: GRID Drivers \(G3 and G4 Instances\)](#nvidia-GRID-driver)
-+ [Option 4: NVIDIA Gaming Drivers \(G4 Instances\)](#nvidia-gaming-driver)
++ [Option 1: AMIs with the NVIDIA drivers installed](#preinstalled-nvidia-driver)
++ [Option 2: Public NVIDIA Tesla drivers](#public-nvidia-driver)
++ [Option 3: GRID drivers \(G3 and G4 instances\)](#nvidia-GRID-driver)
++ [Option 4: NVIDIA gaming drivers \(G4 instances\)](#nvidia-gaming-driver)
 
-### Option 1: AMIs with the NVIDIA Drivers Installed<a name="preinstalled-nvidia-driver"></a>
+### Option 1: AMIs with the NVIDIA drivers installed<a name="preinstalled-nvidia-driver"></a>
 
 AWS and NVIDIA offer different Amazon Machine Images \(AMI\) that come with the NVIDIA drivers installed\.
 + [Marketplace offerings with the Tesla driver](http://aws.amazon.com/marketplace/search/results?page=1&filters=VendorId&VendorId=e6a5002c-6dd0-4d1e-8196-0a1d1857229b%2Cc568fe05-e33b-411c-b0ab-047218431da9&searchTerms=tesla+driver)
 + [Marketplace offerings with the GRID driver](http://aws.amazon.com/marketplace/search/results?&searchTerms=NVIDIA+quadro)
 + [Marketplace offerings with the Gaming driver](http://aws.amazon.com/marketplace/search/results?searchTerms=NVIDIA+gaming)
 
-### Option 2: Public NVIDIA Tesla Drivers<a name="public-nvidia-driver"></a>
+### Option 2: Public NVIDIA Tesla drivers<a name="public-nvidia-driver"></a>
 
 **To download the NVIDIA driver**  
 Log on to your Windows instance and download the 64\-bit NVIDIA driver appropriate for the instance type from [http://www\.nvidia\.com/Download/Find\.aspx](http://www.nvidia.com/Download/Find.aspx)\.
@@ -97,17 +97,20 @@ Log on to your Windows instance and download the 64\-bit NVIDIA driver appropria
 
 1. Check Device Manager to verify that the GPU is working correctly\.
 
-1. To achieve the best performance from your GPU, complete the optimization steps in [Optimizing GPU Settings](optimize_gpu.md)\.
+1. To achieve the best performance from your GPU, complete the optimization steps in [Optimizing GPU settings](optimize_gpu.md)\.
 
-### Option 3: GRID Drivers \(G3 and G4 Instances\)<a name="nvidia-GRID-driver"></a>
+### Option 3: GRID drivers \(G3 and G4 instances\)<a name="nvidia-GRID-driver"></a>
 
 These downloads are available to AWS customers only\. By downloading, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 or NVIDIA Tesla M60 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
+
+**Prerequisites**  
+Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 
 **To install the NVIDIA GRID driver on your Windows instance**
 
 1. Connect to your Windows instance and open a PowerShell window\.
 
-1. Download the drivers and the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX) from Amazon S3 to your desktop using the following PowerShell commkiniands\. If you are an IAM user, you must have read\-only access to Amazon S3 actions\.
+1. Download the drivers and the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX) from Amazon S3 to your desktop using the following PowerShell commands\. If you are an IAM user, you must have read\-only access to Amazon S3 actions\.
 
    For G3 instances:
 
@@ -125,7 +128,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
    ```
    $Bucket = "ec2-windows-nvidia-drivers"
-   $LocalPath = "C:\Users\Administrator\Desktop\NVIDIA"
+   $LocalPath = "$home\Desktop\NVIDIA"
    $Objects = Get-S3Object -BucketName $Bucket -KeyPrefix $KeyPrefix -Region us-east-1
    foreach ($Object in $Objects) {
        $LocalFileName = $Object.Key
@@ -140,29 +143,22 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
 1. Navigate to the desktop and double\-click the installation file to launch it \(choose the driver version that corresponds to your instance OS version\)\. Follow the instructions to install the driver and reboot your instance as required\. To verify that the GPU is working properly, check Device Manager\.
 
-1. \(Optional\) Disable the licensing page in the control panel to prevent users from accidentally changing the product type \(NVIDIA GRID Virtual Workstation is enabled by default\)\. For more information, see the [GRID Licensing User Guide](http://docs.nvidia.com/grid/4.6/grid-licensing-user-guide/index.html)\.
+1. \(Optional\) Use the following command to disable the licensing page in the control panel to prevent users from accidentally changing the product type \(NVIDIA GRID Virtual Workstation is enabled by default\)\. For more information, see the [GRID Licensing User Guide](http://docs.nvidia.com/grid/4.6/grid-licensing-user-guide/index.html)\.
 
-   1. Run regedit\.exe to open the registry editor\.
-
-   1. Navigate to `HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global\GridLicensing`\.
-
-   1. Open the context \(right\-click\) menu on the right pane and choose **New**, **DWORD**\.
-
-   1. For **Name**, enter **NvCplDisableManageLicensePage** and type `Enter`\.
-
-   1. Open the context \(right\-click\) menu on **NvCplDisableManageLicensePage** and choose **Modify**\.
-
-   1. For **Value data**, type `1` and choose **OK**\.
+   ```
+   New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global\GridLicensing" -Name "NvCplDisableManageLicensePage" -PropertyType "DWord" -Value "1"
+   ```
 
 1. \(Optional\) To help take advantage of the four displays of up to 4K resolution, set up the high\-performance display protocol, [NICE DCV](https://docs.aws.amazon.com/dcv/)\.
 
 1. \(Optional\) NVIDIA Quadro Virtual Workstation mode is enabled by default\. To activate GRID Virtual Applications for RDSH Application hosting capabilities, complete the GRID Virtual Application activation steps in [Activate NVIDIA GRID Virtual Applications](activate_grid.md)\.
 
-1. \(Optional\) NVIDIA Quadro Virtual Workstation mode is enabled by default\. To activate NVIDIA GRID Virtual Applications, complete the GRID vApps activation steps in [Activate NVIDIA GRID Virtual Applications](activate_grid.md)\.
-
-### Option 4: NVIDIA Gaming Drivers \(G4 Instances\)<a name="nvidia-gaming-driver"></a>
+### Option 4: NVIDIA gaming drivers \(G4 instances\)<a name="nvidia-gaming-driver"></a>
 
 These drivers are available to AWS customers only\. By downloading them, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
+
+**Prerequisites**  
+Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 
 **To install the NVIDIA gaming driver on your Windows instance**
 
@@ -173,7 +169,7 @@ These drivers are available to AWS customers only\. By downloading them, you agr
    ```
    $Bucket = "nvidia-gaming"
    $KeyPrefix = "windows/latest"
-   $LocalPath = "C:\Users\Administrator\Desktop\NVIDIA"
+   $LocalPath = "$home\Desktop\NVIDIA"
    $Objects = Get-S3Object -BucketName $Bucket -KeyPrefix $KeyPrefix -Region us-east-1
    foreach ($Object in $Objects) {
        $LocalFileName = $Object.Key
@@ -186,24 +182,26 @@ These drivers are available to AWS customers only\. By downloading them, you agr
 
    Multiple versions of the NVIDIA GRID driver are stored in this S3 bucket\. You can download all of the available versions in the bucket by removing the `-KeyPrefix $KeyPrefix` option\.
 
-1. Use the following steps to create the required configuration\.
+1. Navigate to the desktop and double\-click the installation file to launch it \(choose the driver version that corresponds to your instance OS version\)\. Follow the instructions to install the driver and reboot your instance as required\. To verify that the GPU is working properly, check Device Manager\.
 
-   1. Open the registry editor\.
+1. Use the following command to create the required configuration\.
 
-   1. In the left pane, navigate to **HKEY\_LOCAL\_MACHINE\\SOFTWARE\\NVIDIA Corporation\\Global**\.
+   ```
+   New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global" -Name "vGamingMarketplace" -PropertyType "DWord" -Value "2"
+   ```
 
-   1. In the right pane, right\-click and choose **New**, **DWORD \(32\-bit\) value**\.
+1. Use the following command to download the certification file, rename the file `GridSwCert.txt`, and move the file to the Public Documents folder on your system drive\. Typically, the folder path is C:\\Users\\Public\\Public Documents \(Windows Explorer\) or C:\\Users\\Public\\Documents \(Command Prompt window\)\.
 
-   1. Set the name to **vGamingMarketplace** and the value to 2\.
-
-1. Download the [certification file](https://s3.amazonaws.com/nvidia-gaming/GridSwCert-Windows.cert), rename the file `GridSwCert.txt`, and move the file to the Public Documents folder on your system drive\. Typically, the folder path is C:\\Users\\Public\\Public Documents \(Windows Explorer\) or C:\\Users\\Public\\Documents \(Command Prompt window\)\.
+   ```
+   Invoke-WebRequest -Uri "https://s3.amazonaws.com/nvidia-gaming/GridSwCert-Windows.cert" -OutFile "$Env:PUBLIC\Documents\GridSwCert.txt"
+   ```
 
 1. Reboot your instance\.
 
 1. Verify the NVIDIA Gaming license using the following command\.
 
    ```
-   "C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe" -q
+   'C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe' -q
    ```
 
    The output should be similar to the following\.
