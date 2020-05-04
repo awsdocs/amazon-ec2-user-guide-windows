@@ -118,4 +118,4 @@ After the instance has started, you can check the file system size to see if you
 
 If the size does not reflect your newly expanded volume, you must extend the file system of your device so that your instance can use the new space\. For more information, see [Extending a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
 
-You may have to bring the volume online in order to use it\. For more information, see [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\. You do not need to reformat the volume\.
+You may have to bring the volume online in order to use it\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\. You do not need to reformat the volume\.

@@ -3,19 +3,19 @@
 The following are common errors and troubleshooting steps\.
 
 **Contents**
-+ [Investigating Application Performance Issues](#elastic-graphics-troubleshooting_performance)
-  + [OpenGL Rendering Performance Issues](#elastic-graphics-opengl-performance)
-  + [Remote Access Performance Issues](#elastic-graphics-remote-performance)
-+ [Resolving Unhealthy Status Issues](#elastic-graphics-troubleshooting_unhealthy_status)
-  + [Stop and Start the Instance](#elastic-graphics-start-and-stop)
-  + [Verify the Installed Components](#elastic-graphics-verify)
-  + [Check the Elastic Graphics Logs](#elastic-graphics-check-logs)
++ [Investigating application performance issues](#elastic-graphics-troubleshooting_performance)
+  + [OpenGL rendering performance issues](#elastic-graphics-opengl-performance)
+  + [Remote access performance issues](#elastic-graphics-remote-performance)
++ [Resolving unhealthy status issues](#elastic-graphics-troubleshooting_unhealthy_status)
+  + [Stop and start the instance](#elastic-graphics-start-and-stop)
+  + [Verify the installed components](#elastic-graphics-verify)
+  + [Check the Elastic Graphics logs](#elastic-graphics-check-logs)
 
-## Investigating Application Performance Issues<a name="elastic-graphics-troubleshooting_performance"></a>
+## Investigating application performance issues<a name="elastic-graphics-troubleshooting_performance"></a>
 
 Elastic Graphics uses the instance network to send OpenGL commands to a remotely attached graphics card\. In addition, a desktop running an OpenGL application with an Elastic Graphics accelerator is usually accessed using a remote access technology\. It is important to distinguish between a performance problem related to the OpenGL rendering or the desktop remote access technology\.
 
-### OpenGL Rendering Performance Issues<a name="elastic-graphics-opengl-performance"></a>
+### OpenGL rendering performance issues<a name="elastic-graphics-opengl-performance"></a>
 
 The OpenGL rendering performance is determined by the number of OpenGL commands and frames generated on the remote instance\.
 
@@ -61,7 +61,7 @@ If the FPS number is lower than 15, you can try the following:
 + Improve CPU performance:
   + Applications may require a lot of CPU resources in addition to what the Elastic Graphics accelerator requires\. If Windows Task Manager is reporting a high usage of CPU resources, try using an instance with more CPU power\.
 
-### Remote Access Performance Issues<a name="elastic-graphics-remote-performance"></a>
+### Remote access performance issues<a name="elastic-graphics-remote-performance"></a>
 
 An instance with an attached Elastic Graphics accelerator can be accessed using different remote access technologies\. Performance and quality may vary depending on:
 + The remote access technology
@@ -76,27 +76,27 @@ Possible choices for the remote access protocol include:
 
 For more information about optimization, see the specific protocol\.
 
-## Resolving Unhealthy Status Issues<a name="elastic-graphics-troubleshooting_unhealthy_status"></a>
+## Resolving unhealthy status issues<a name="elastic-graphics-troubleshooting_unhealthy_status"></a>
 
 If the Elastic Graphics accelerator is in an unhealthy state, use the following troubleshooting steps to resolve the issue\.
 
-### Stop and Start the Instance<a name="elastic-graphics-start-and-stop"></a>
+### Stop and start the instance<a name="elastic-graphics-start-and-stop"></a>
 
 If your Elastic Graphics accelerator is in an unhealthy state, stopping the instance and starting it again is the simplest option\. For more information, see [Stopping and starting your instances](Stop_Start.md#starting-stopping-instances)\.
 
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
-### Verify the Installed Components<a name="elastic-graphics-verify"></a>
+### Verify the installed components<a name="elastic-graphics-verify"></a>
 
 Open the Windows Control Panel and confirm that the following components are installed:
 + Amazon Elastic Graphics Manager
 + Amazon Elastic Graphics OpenGL Library
 + Amazon EC2 Elastic GPUs OpenGL Redirector
 
-If any of these items are missing, you must install them manually\. For more information, see [Installing the Required Software for Elastic Graphics](working-with-elastic-graphics.md#elastic-graphics-install-libraries)\.
+If any of these items are missing, you must install them manually\. For more information, see [Installing the required software for Elastic Graphics](working-with-elastic-graphics.md#elastic-graphics-install-libraries)\.
 
-### Check the Elastic Graphics Logs<a name="elastic-graphics-check-logs"></a>
+### Check the Elastic Graphics logs<a name="elastic-graphics-check-logs"></a>
 
 Open the Windows Event Viewer, expand the **Application and Services Logs** section, and search for errors in the following event logs:
 + EC2ElasticGPUs

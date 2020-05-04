@@ -78,11 +78,11 @@ Create a new launch template using parameters that you define, or use an existin
    + **Security groups**: One or more security groups to associate with the instance\. For more information, see [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)\.
 
 1. For **Storage \(volumes\)**, specify volumes to attach to the instance besides the volumes specified by the AMI \(**Volume 1 \(AMI Root\)**\)\. To add a new volume, choose **Add new volume**\.
-   + **Volume type**: The instance store or Amazon EBS volumes with which to associate your instance\. The type of volume depends on the instance type that you've chosen\. For more information, see [Amazon EC2 Instance Store](InstanceStorage.md) and [Amazon EBS Volumes](ebs-volumes.md)\.
+   + **Volume type**: The instance store or Amazon EBS volumes with which to associate your instance\. The type of volume depends on the instance type that you've chosen\. For more information, see [Amazon EC2 Instance Store](InstanceStorage.md) and [Amazon EBS volumes](ebs-volumes.md)\.
    + **Device name**: A device name for the volume\.
    + **Snapshot**: The ID of the snapshot from which to create the volume\.
    + **Size**: For Amazon EBS volumes, the storage size\.
-   + **Volume type**: For Amazon EBS volumes, the volume type\. For more information, see [Amazon EBS Volume Types](ebs-volume-types.md)\.
+   + **Volume type**: For Amazon EBS volumes, the volume type\. For more information, see [Amazon EBS volume types](ebs-volume-types.md)\.
    + **IOPS**: For the Provisioned IOPS SSD volume type, the number of I/O operations per second \(IOPS\) that the volume can support\.
    + **Delete on termination**: For Amazon EBS volumes, whether to delete the volume when the instance is terminated\. For more information, see [Preserving Amazon EBS Volumes on Instance Termination](terminating-instances.md#preserving-volumes-on-termination)\.
    + **Encrypted**: If the instance type supports EBS encryption, you can enable encryption for the volume\. If you have enabled encryption by default in this Region, encryption is enabled for you\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
@@ -106,7 +106,7 @@ Create a new launch template using parameters that you define, or use an existin
    + **Purchasing option**: The purchasing model\. Choose **Request Spot Instances** to request Spot Instances at the Spot price, capped at the On\-Demand price, and choose **Customize** to change the default Spot Instance settings\. If you do not request a Spot Instance, EC2 launches an On\-Demand Instance by default\. For more information, see [Spot Instances](using-spot-instances.md)\.
    + **IAM instance profile**: An AWS Identity and Access Management \(IAM\) instance profile to associate with the instance\. For more information, see [IAM roles for Amazon EC2](iam-roles-for-amazon-ec2.md)\.
    + **Shutdown behavior**: Whether the instance should stop or terminate when shut down\. For more information, see [Changing the Instance Initiated Shutdown Behavior](terminating-instances.md#Using_ChangingInstanceInitiatedShutdownBehavior)\.
-   + **Stop \- Hibernate behavior**: Whether the instance is enabled for hibernation\. This field is only valid for instances that meet the hibernation prerequisites\. For more information, see [Hibernate Your Windows Instance](Hibernate.md)\.
+   + **Stop \- Hibernate behavior**: Whether the instance is enabled for hibernation\. This field is only valid for instances that meet the hibernation prerequisites\. For more information, see [Hibernate your Windows instance](Hibernate.md)\.
    + **Termination protection**: Whether to prevent accidental termination\. For more information, see [Enabling Termination Protection for an Instance](terminating-instances.md#Using_ChangingDisableAPITermination)\.
    + **Detailed CloudWatch monitoring**: Whether to enable detailed monitoring of the instance using Amazon CloudWatch\. Additional charges apply\. For more information, see [Monitoring Your Instances Using CloudWatch](using-cloudwatch.md)\.
    + **Elastic GPU**: An Elastic Graphics accelerator to attach to the instance\. Not all instance types support Elastic Graphics\. For more information, see [Amazon Elastic Graphics](elastic-graphics.md)\.
@@ -159,11 +159,11 @@ Create a new launch template using parameters that you define, or use an existin
    + **Delete on termination**: Whether the network interface is deleted when the instance is deleted\.
 
 1. For **Storage \(Volumes\)**, specify volumes to attach to the instance besides the volumes specified by the AMI\.
-   + **Volume type**: The instance store or Amazon EBS volumes with which to associate your instance\. The type of volume depends on the instance type that you've chosen\. For more information, see [Amazon EC2 Instance Store](InstanceStorage.md) and [Amazon EBS Volumes](ebs-volumes.md)\.
+   + **Volume type**: The instance store or Amazon EBS volumes with which to associate your instance\. The type of volume depends on the instance type that you've chosen\. For more information, see [Amazon EC2 Instance Store](InstanceStorage.md) and [Amazon EBS volumes](ebs-volumes.md)\.
    + **Device name**: A device name for the volume\.
    + **Snapshot**: The ID of the snapshot from which to create the volume\.
    + **Size**: For Amazon EBS volumes, the storage size\.
-   + **Volume type**: For Amazon EBS volumes, the volume type\. For more information, see [Amazon EBS Volume Types](ebs-volume-types.md)\.
+   + **Volume type**: For Amazon EBS volumes, the volume type\. For more information, see [Amazon EBS volume types](ebs-volume-types.md)\.
    + **IOPS**: For the Provisioned IOPS SSD volume type, the number of I/O operations per second \(IOPS\) that the volume can support\.
    + **Delete on termination**: For Amazon EBS volumes, whether to delete the volume when the instance is terminated\. For more information, see [Preserving Amazon EBS Volumes on Instance Termination](terminating-instances.md#preserving-volumes-on-termination)\.
    + **Encrypted**: If the instance type supports EBS encryption, you can enable encryption for the volume\. If you have enabled encryption by default in this Region, encryption is enabled for you\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
@@ -175,7 +175,7 @@ Create a new launch template using parameters that you define, or use an existin
    + **Purchasing option**: The purchasing model\. Choose **Request Spot instances** to request Spot Instances at the Spot price, capped at the On\-Demand price, and choose **Customize Spot parameters** to change the default Spot Instance settings\. If you do not request a Spot Instance, EC2 launches an On\-Demand Instance by default\. For more information, see [Spot Instances](using-spot-instances.md)\.
    + **IAM instance profile**: An AWS Identity and Access Management \(IAM\) instance profile to associate with the instance\. For more information, see [IAM roles for Amazon EC2](iam-roles-for-amazon-ec2.md)\.
    + **Shutdown behavior**: Whether the instance should stop or terminate when shut down\. For more information, see [Changing the Instance Initiated Shutdown Behavior](terminating-instances.md#Using_ChangingInstanceInitiatedShutdownBehavior)\.
-   + **Stop \- Hibernate behavior**: Whether the instance is enabled for hibernation\. This field is only valid for instances that meet the hibernation prerequisites\. For more information, see [Hibernate Your Windows Instance](Hibernate.md)\.
+   + **Stop \- Hibernate behavior**: Whether the instance is enabled for hibernation\. This field is only valid for instances that meet the hibernation prerequisites\. For more information, see [Hibernate your Windows instance](Hibernate.md)\.
    + **Termination protection**: Whether to prevent accidental termination\. For more information, see [Enabling Termination Protection for an Instance](terminating-instances.md#Using_ChangingDisableAPITermination)\.
    + **Monitoring**: Whether to enable detailed monitoring of the instance using Amazon CloudWatch\. Additional charges apply\. For more information, see [Monitoring Your Instances Using CloudWatch](using-cloudwatch.md)\.
    + **Elastic Graphics**: An Elastic Graphics accelerator to attach to the instance\. Not all instance types support Elastic Graphics\. For more information, see [Amazon Elastic Graphics](elastic-graphics.md)\.

@@ -38,7 +38,7 @@ Use the following procedure to use the AWS Management Console to add Windows com
 
 1. In the **Attach Volume** dialog box, type the instance ID and the name of the device for the attachment, and choose **Attach**\. If you need help with the device name, see [Device Naming](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html)\. 
 
-1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\.
+1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 **Important**  
 Do not initialize the volume\.
 
@@ -106,7 +106,7 @@ Use the following procedure to use the Tools for Windows PowerShell to add Windo
    PS C:\> Add-EC2Volume -InstanceId i-087711ddaf98f9489 -VolumeId vol-06aa9e1fbf8b82ed1 -Device xvdh
    ```
 
-1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\.
+1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 **Important**  
 Do not initialize the volume\.
 
@@ -175,7 +175,7 @@ Use the following procedure to use the AWS CLI to add Windows components to your
    aws ec2 attach-volume --volume-id vol-0c98b37f30bcbc290 --instance-id i-01474ef662b89480 --device xvdg 
    ```
 
-1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS Volume Available for Use on Windows](ebs-using-volumes.md)\.
+1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 **Important**  
 Do not initialize the volume\.
 

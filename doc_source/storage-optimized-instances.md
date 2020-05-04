@@ -42,7 +42,7 @@ For more information, see [Amazon EC2 I3 Instances](https://aws.amazon.com/ec2/i
 
 ## Hardware specifications<a name="storage-instances-hardware"></a>
 
-The primary data storage for D2 instances is HDD instance store volumes\. The primary data storage for I3 instances is non\-volatile memory express \(NVMe\) SSD instance store volumes\.
+The primary data storage for D2 instances is HDD instance store volumes\. The primary data storage for I3 and I3en instances is non\-volatile memory express \(NVMe\) SSD instance store volumes\.
 
 Instance store volumes persist only for the life of the instance\. When you stop or terminate an instance, the applications and data in its instance store volumes are erased\. We recommend that you regularly back up or replicate important data in your instance store volumes\. For more information, see [Amazon EC2 Instance Store](InstanceStorage.md) and [SSD Instance Store Volumes](ssd-instance-store.md)\.
 
@@ -77,7 +77,7 @@ The following is a summary of the hardware specifications for storage optimized 
 
 For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
-For more information about specifying CPU options, see [Optimizing CPU Options](instance-optimize-cpu.md)\.
+For more information about specifying CPU options, see [Optimizing CPU options](instance-optimize-cpu.md)\.
 
 ## Instance performance<a name="storage-performance"></a>
 
@@ -94,15 +94,15 @@ The following is a summary of network performance for storage optimized instance
 
 | Instance type | Network performance | Enhanced networking | 
 | --- | --- | --- | 
-|  `i3.4xlarge` and smaller  |  Up to 10 Gbps †  | [ENA](enhanced-networking-ena.md) | 
-|  `i3.8xlarge` \| `h1.8xlarge`  |  10 Gbps  | [ENA](enhanced-networking-ena.md) | 
-|  `i3en.3xlarge` and smaller  |  Up to 25 Gbps †  | [ENA](enhanced-networking-ena.md) | 
-|  `i3.16xlarge` \| `i3.metal` \| `i3en.6xlarge \| ``h1.16xlarge`  |  25 Gbps  | [ENA](enhanced-networking-ena.md) | 
-|  `i3en.12xlarge`  |  50 Gbps  | [ENA](enhanced-networking-ena.md) | 
-|  `i3en.24xlarge`  |  100 Gbps  | [ENA](enhanced-networking-ena.md) | 
-|  `d2.xlarge`  |  Moderate  | [Intel 82599 VF](sriov-networking.md) | 
-| d2\.2xlarge \| d2\.4xlarge |  High  | [Intel 82599 VF](sriov-networking.md) | 
-| d2\.8xlarge |  10 Gbps  | [Intel 82599 VF](sriov-networking.md) | 
+| i3\.4xlarge and smaller | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| i3\.8xlarge \| h1\.8xlarge | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
+| i3en\.3xlarge and smaller | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| i3\.16xlarge \| i3\.metal \| i3en\.6xlarge \| h1\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+| i3en\.12xlarge | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+| i3en\.24xlarge | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+| d2\.xlarge | Moderate | [Intel 82599 VF](sriov-networking.md) | 
+| d2\.2xlarge \| d2\.4xlarge | High | [Intel 82599 VF](sriov-networking.md) | 
+| d2\.8xlarge | 10 Gbps | [Intel 82599 VF](sriov-networking.md) | 
 
 † These instances use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. They accrue credits when their bandwidth is below their baseline bandwidth, and can use these credits when they perform network data transfers\. For more information, open a support case and ask about baseline bandwidth for the specific instance types that you are interested in\.
 
@@ -113,21 +113,21 @@ If you use all the SSD\-based instance store volumes available to your instance,
 
 | Instance Size | 100% Random Read IOPS | Write IOPS | 
 | --- | --- | --- | 
-|  `i3.large` \*  |  100,125  |  35,000  | 
-|  `i3.xlarge` \*  |  206,250  |  70,000  | 
-|  `i3.2xlarge`  |  412,500  |  180,000  | 
-|  `i3.4xlarge`  |  825,000  |  360,000  | 
-|  `i3.8xlarge`  |  1\.65 million  |  720,000  | 
-|  `i3.16xlarge`  |  3\.3 million  |  1\.4 million  | 
-|  `i3.metal`  |  3\.3 million  |  1\.4 million  | 
-| `i3en.large` \* | 42,500 | 32,500 | 
-| `i3en.xlarge` \* | 85,000 | 65,000 | 
-| `i3en.2xlarge` \* | 170,000 | 130,000 | 
-| `i3en.3xlarge` | 250,000 | 200,000 | 
-| `i3en.6xlarge` | 500,000 | 400,000 | 
-| `i3en.12xlarge` | 1 million | 800,000 | 
-| `i3en.24xlarge` | 2 million | 1\.6 million | 
-| `i3en.metal` | 2 million | 1\.6 million | 
+| i3\.large \* |  100,125  |  35,000  | 
+| i3\.xlarge \* |  206,250  |  70,000  | 
+| i3\.2xlarge |  412,500  |  180,000  | 
+| i3\.4xlarge |  825,000  |  360,000  | 
+| i3\.8xlarge |  1\.65 million  |  720,000  | 
+| i3\.16xlarge |  3\.3 million  |  1\.4 million  | 
+| i3\.metal |  3\.3 million  |  1\.4 million  | 
+| i3en\.large \* | 42,500 | 32,500 | 
+| i3en\.xlarge \* | 85,000 | 65,000 | 
+| i3en\.2xlarge \* | 170,000 | 130,000 | 
+| i3en\.3xlarge | 250,000 | 200,000 | 
+| i3en\.6xlarge | 500,000 | 400,000 | 
+| i3en\.12xlarge | 1 million | 800,000 | 
+| i3en\.24xlarge | 2 million | 1\.6 million | 
+| i3en\.metal | 2 million | 1\.6 million | 
 
 \* For these instances, you can get up to the specified performance\.
 

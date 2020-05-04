@@ -2,7 +2,7 @@
 
 You can deregister a Windows AMI when you have finished using it\. After you deregister an AMI, you can't use it to launch new instances\.
 
-When you deregister an AMI, it doesn't affect any instances that you've already launched from the AMI or any snapshots created for the EBS root volume during the AMI creation process\. You'll continue to incur usage costs for these instances and storage costs for the snapshot\. Therefore, you should terminate any instances that you finished with and delete any snapshots that you are finished with\.
+When you deregister an AMI, it doesn't affect any instances that you've already launched from the AMI or any snapshots created during the AMI creation process\. You'll continue to incur usage costs for these instances and storage costs for the snapshot\. Therefore, you should terminate any instances that you finished with and delete any snapshots that you are finished with\.
 
 The following diagram illustrates the process for cleaning up your Windows AMI\.
 

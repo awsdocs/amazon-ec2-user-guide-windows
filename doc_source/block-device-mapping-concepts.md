@@ -1,6 +1,6 @@
 # Block Device Mapping<a name="block-device-mapping-concepts"></a>
 
-Each instance that you launch has an associated root device volume, either an Amazon EBS volume or an instance store volume\. You can use block device mapping to specify additional EBS volumes or instance store volumes to attach to an instance when it's launched\. You can also attach additional EBS volumes to a running instance; see [Attaching an Amazon EBS Volume to an Instance](ebs-attaching-volume.md)\. However, the only way to attach instance store volumes to an instance is to use block device mapping to attach them as the instance is launched\.
+Each instance that you launch has an associated root device volume, either an Amazon EBS volume or an instance store volume\. You can use block device mapping to specify additional EBS volumes or instance store volumes to attach to an instance when it's launched\. You can also attach additional EBS volumes to a running instance; see [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)\. However, the only way to attach instance store volumes to an instance is to use block device mapping to attach them as the instance is launched\.
 
 For more information about root device volumes, see [Root device volume](EC2Win_Infrastructure.md#RootDevice_WinAMI)\.
 

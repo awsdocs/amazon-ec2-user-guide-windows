@@ -5,14 +5,14 @@ Amazon Elastic Graphics provides flexible, low\-cost, and high performance graph
 Elastic Graphics is suited for applications that require a small or intermittent amount of additional graphics acceleration, and that use OpenGL graphics support\. If you need access to full, directly attached GPUs and use of DirectX, CUDA, or Open Computing Language \(OpenCL\) parallel computing frameworks, use an accelerated computing instance type instance instead\. For more information, see [Windows accelerated computing instances](accelerated-computing-instances.md)\.
 
 **Topics**
-+ [Elastic Graphics Basics](#elastic-graphics-basics)
++ [Elastic Graphics basics](#elastic-graphics-basics)
 + [Pricing for Elastic Graphics](#elastic-graphics-pricing)
-+ [Elastic Graphics Limitations](#elastic-graphics-limitations)
++ [Elastic Graphics limitations](#elastic-graphics-limitations)
 + [Working with Elastic Graphics](working-with-elastic-graphics.md)
-+ [Using CloudWatch Metrics to Monitor Elastic Graphics](elastic-graphics-cloudwatch.md)
++ [Using CloudWatch metrics to monitor Elastic Graphics](elastic-graphics-cloudwatch.md)
 + [Troubleshooting](elastic-graphics-troubleshooting.md)
 
-## Elastic Graphics Basics<a name="elastic-graphics-basics"></a>
+## Elastic Graphics basics<a name="elastic-graphics-basics"></a>
 
 To use Elastic Graphics, launch a Windows instance and specify an accelerator type for the instance during launch\. AWS finds available Elastic Graphics capacity and establishes a network connection between your instance and the Elastic Graphics accelerator\.
 
@@ -23,7 +23,7 @@ Elastic Graphics accelerators are available in the following AWS Regions: `us-ea
 
 The following instance types support Elastic Graphics accelerators:
 + C3 \| C4 \| C5 \| C5d \| C5n
-+ D2
++ D2 
 + H1
 + I3 \| I3en
 + M3 \| M4 \| M5 \| M5d \| M5dn \| M5n
@@ -51,7 +51,7 @@ The Elastic Graphics network interface is created in the same subnet and VPC as 
 
 Elastic Graphics accelerators support the API standards for OpenGL 4\.3 API and earlier, which can be used for batch applications or 3D\-graphics acceleration\. An Amazon\-optimized OpenGL library on your instance detects the attached accelerator\. It directs OpenGL API calls from your instance to the accelerator, which then processes the requests and returns the results\. Traffic between the instance and the accelerator uses the same bandwidth as the instance's network traffic so we recommend that you have adequate network bandwidth available\. Consult your software vendor for any OpenGL compliance and version questions\.
 
-By default, the default security group for your VPC is associated with the Elastic Graphics network interface\. The Elastic Graphics network traffic uses the TCP protocol and port 2007\. Ensure that the security group for your instance allows for this\. For more information, see [Configuring Your Security Groups](working-with-elastic-graphics.md#elastic-graphics-security)\.
+By default, the default security group for your VPC is associated with the Elastic Graphics network interface\. The Elastic Graphics network traffic uses the TCP protocol and port 2007\. Ensure that the security group for your instance allows for this\. For more information, see [Configuring your security groups](working-with-elastic-graphics.md#elastic-graphics-security)\.
 
 ## Pricing for Elastic Graphics<a name="elastic-graphics-pricing"></a>
 
@@ -61,7 +61,7 @@ Pricing for accelerators is available at On\-Demand rates only\. You can attach 
 
 For more information, see [Amazon Elastic Graphics Pricing](https://aws.amazon.com/ec2/elastic-graphics/pricing/)\.
 
-## Elastic Graphics Limitations<a name="elastic-graphics-limitations"></a>
+## Elastic Graphics limitations<a name="elastic-graphics-limitations"></a>
 
 Before you start using Elastic Graphics accelerators, be aware of the following limitations:
 + You can attach accelerators only to Windows instances with Microsoft Windows Server 2012 R2 or later\. Linux instances are currently not supported\.

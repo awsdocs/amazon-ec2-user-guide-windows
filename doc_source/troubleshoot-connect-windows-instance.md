@@ -143,7 +143,7 @@ You can use AWS Systems Manager to troubleshoot issues connecting to your Window
 
 The AWSSupport\-TroubleshootRDP automation document allows the user to check or modify common settings on the target instance that can impact Remote Desktop Protocol \(RDP\) connections, such as the **RDP Port**, **Network Layer Authentication \(NLA\)**, and **Windows Firewall** profiles\. By default, the document reads and outputs the values of these settings\.
 
-The AWSSupport\-TroubleshootRDP automation document can be used only with instances that are enabled for use with AWS Systems Manager\. These instances also referred to as *managed instances*\. For more information, see [Setting Up AWS Systems Manager for Hybrid Environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html) in the *AWS Systems Manager User Guide*\. Your instance must have the AWS Systems Manager SSM Agent installed and have an IAM role attached with permissions to Systems Manager\. You must change the default parameter values to modify the common RDP settings on the target instance\.
+The AWSSupport\-TroubleshootRDP automation document can be used with EC2 instances, on\-premises instances, and virtual machines \(VMs\) that are enabled for use with AWS Systems Manager \(managed instances\)\. In addition, it can also be used with EC2 instances for Windows Server that are *not* enabled for use with Systems Manager\. For information about enabling instances for use with AWS Systems Manager, see [AWS Systems Manager Managed Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/managed_instances.html) in the *AWS Systems Manager User Guide*\.
 
 **To troubleshoot using the AWSSupport\-TroubleshootRDP document**
 
@@ -158,8 +158,6 @@ The AWSSupport\-TroubleshootRDP automation document can be used only with instan
 1. For **Input parameters**, **InstanceId**, enable **Show interactive instance picker**\.
 
 1. Choose your Amazon EC2 instance\.
-**Note**  
-If you don't see your instance in the list, it's not enabled for Systems Manager\. For information, see [Create an instance profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) and [Attach an IAM instance profile to an Amazon EC2 instance](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html) in the *AWS Systems Manager User Guide*\.
 
 1. Review the [examples](#AWSSupport-TroubleshootRDP-Examples), then choose **Execute**\.
 

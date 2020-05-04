@@ -1,4 +1,4 @@
-# Hibernate Your Windows Instance<a name="Hibernate"></a>
+# Hibernate your Windows instance<a name="Hibernate"></a>
 
 When you hibernate an instance, we signal the operating system to perform hibernation \(suspend\-to\-disk\)\. Hibernation saves the contents from the instance memory \(RAM\) to your Amazon EBS root volume\. We persist the instance's Amazon EBS root volume and any attached Amazon EBS data volumes\. When you start your instance:
 + The Amazon EBS root volume is restored to its previous state
@@ -24,15 +24,15 @@ If you no longer need an instance, you can terminate it at any time, including w
 For information about using hibernation on Linux instances, see [Hibernate your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
-+ [Overview of Hibernation](#instance_hibernate)
-+ [Hibernation Prerequisites](#hibernating-prerequisites)
++ [Overview of hibernation](#instance_hibernate)
++ [Hibernation prerequisites](#hibernating-prerequisites)
 + [Limitations](#hibernating-not-supported)
-+ [Enabling Hibernation for an Instance](#enabling-hibernation)
-+ [Hibernating an Instance](#hibernating-instances)
-+ [Starting a Hibernated Instance](#hibernating-resuming)
-+ [Troubleshooting Hibernation](#troubleshoot-instance-hibernate)
++ [Enabling hibernation for an instance](#enabling-hibernation)
++ [Hibernating an instance](#hibernating-instances)
++ [Starting a hibernated instance](#hibernating-resuming)
++ [Troubleshooting hibernation](#troubleshoot-instance-hibernate)
 
-## Overview of Hibernation<a name="instance_hibernate"></a>
+## Overview of hibernation<a name="instance_hibernate"></a>
 
 The following diagram shows a basic overview of the hibernation process\.
 
@@ -50,7 +50,7 @@ When you hibernate a running instance, the following happens:
 
 For information about how hibernation differs from reboot, stop, and terminate, see [Differences Between Reboot, Stop, Hibernate, and Terminate](ec2-instance-lifecycle.md#lifecycle-differences)\.
 
-## Hibernation Prerequisites<a name="hibernating-prerequisites"></a>
+## Hibernation prerequisites<a name="hibernating-prerequisites"></a>
 
 To hibernate an instance, the following prerequisites must be in place:
 + **Supported instance families** \- C3, C4, C5, M3, M4, M5, R3, R4, R5, and T2\.
@@ -69,7 +69,7 @@ To hibernate an instance, the following prerequisites must be in place:
   + EBS “single\-step” encryption: In a single run\-instances API call, you can launch encrypted EBS\-backed EC2 instances from an unencrypted AMI and also enable hibernation at the same time\. For more information, see [Using encryption with EBS\-backed AMIs](AMIEncryption.md)\.
   + EBS encryption by default: You can enable EBS encryption by default to ensure all new EBS volumes created in your AWS account are encrypted\. This way, you can enable hibernation for your instances without specifying encryption intent at instance launch\. For more information, see [Encryption by default](EBSEncryption.md#encryption-by-default)\.
   + Encrypted AMI: You can enable EBS encryption by using an encrypted AMI to launch your instance\. If your AMI does not have an encrypted root snapshot, you can copy it to a new AMI and request encryption\. For more information, see [Encrypt an unencrypted image during copy](AMIEncryption.md#copy-unencrypted-to-encrypted) and [Copying an AMI](CopyingAMIs.md#ami-copy-steps)\.
-+ **Enable hibernation at launch** \- You cannot enable hibernation on an existing instance \(running or stopped\)\. For more information, see [Enabling Hibernation for an Instance](#enabling-hibernation)\.
++ **Enable hibernation at launch** \- You cannot enable hibernation on an existing instance \(running or stopped\)\. For more information, see [Enabling hibernation for an instance](#enabling-hibernation)\.
 + **Purchasing options** \- This feature is available for On\-Demand Instances and Reserved Instances\. It is not available for Spot Instances\. For more information, see [Hibernating interrupted Spot Instances](spot-interruptions.md#hibernate-spot-instances)\.
 
 ## Limitations<a name="hibernating-not-supported"></a>
@@ -85,7 +85,7 @@ To hibernate an instance, the following prerequisites must be in place:
 
 \*For C3 and R3 instances that are enabled for hibernation, do not use instance store volumes\.
 
-## Enabling Hibernation for an Instance<a name="enabling-hibernation"></a>
+## Enabling hibernation for an instance<a name="enabling-hibernation"></a>
 
 To hibernate an instance, it must first be enabled for hibernation\. To enable hibernation, you must do it while launching the instance\.
 
@@ -99,9 +99,9 @@ You can't enable or disable hibernation for an instance after you launch it\.
 
 1. Follow the [Launching an instance using the Launch Instance Wizard](launching-instance.md) procedure\.
 
-1. On the **Choose an Amazon Machine Image \(AMI\)** page, select an AMI that supports hibernation\. For more information about supported AMIs, see [Hibernation Prerequisites](#hibernating-prerequisites)\.
+1. On the **Choose an Amazon Machine Image \(AMI\)** page, select an AMI that supports hibernation\. For more information about supported AMIs, see [Hibernation prerequisites](#hibernating-prerequisites)\.
 
-1. On the **Choose an Instance Type** page, select a supported instance type, and choose **Next: Configure Instance Details**\. For information about supported instance types, see [Hibernation Prerequisites](#hibernating-prerequisites)\.
+1. On the **Choose an Instance Type** page, select a supported instance type, and choose **Next: Configure Instance Details**\. For information about supported instance types, see [Hibernation prerequisites](#hibernating-prerequisites)\.
 
 1. On the **Configure Instance Details** page, for **Stop \- Hibernate Behavior**, select the **Enable hibernation as an additional stop behavior** check box\.
 
@@ -174,7 +174,7 @@ The output lists the EC2 instances that are enabled for hibernation\.
 
 ------
 
-## Hibernating an Instance<a name="hibernating-instances"></a>
+## Hibernating an instance<a name="hibernating-instances"></a>
 
 You can hibernate an instance if the instance is [enabled for hibernation](#enabling-hibernation) and meets the [hibernation prerequisites](#hibernating-prerequisites)\. If an instance cannot hibernate successfully, a normal shutdown occurs\.
 
@@ -187,7 +187,7 @@ You can hibernate an instance if the instance is [enabled for hibernation](#enab
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Select an instance, and choose **Actions**, **Instance State**, **Stop \- Hibernate**\. If **Stop \- Hibernate** is disabled, the instance is already hibernated or stopped, or it can't be hibernated\. For more information, see [Hibernation Prerequisites](#hibernating-prerequisites)\.
+1. Select an instance, and choose **Actions**, **Instance State**, **Stop \- Hibernate**\. If **Stop \- Hibernate** is disabled, the instance is already hibernated or stopped, or it can't be hibernated\. For more information, see [Hibernation prerequisites](#hibernating-prerequisites)\.
 
 1. In the confirmation dialog box, choose **Yes, Stop \- Hibernate**\. It can take a few minutes for the instance to hibernate\. The **Instance State** changes to **Stopping** while the instance is hibernating, and then **Stopped** when the instance has hibernated\.
 
@@ -258,7 +258,7 @@ The output lists the EC2 instances on which hibernation was initiated\.
 
 ------
 
-## Starting a Hibernated Instance<a name="hibernating-resuming"></a>
+## Starting a hibernated instance<a name="hibernating-resuming"></a>
 
 Start a hibernated instance by starting it in the same way that you would start a stopped instance\.
 
@@ -295,7 +295,7 @@ Start-EC2Instance -InstanceId i-1234567890abcdef0
 
 ------
 
-## Troubleshooting Hibernation<a name="troubleshoot-instance-hibernate"></a>
+## Troubleshooting hibernation<a name="troubleshoot-instance-hibernate"></a>
 
 Use this information to help diagnose and fix issues that you might encounter when hibernating an instance\.
 
@@ -334,8 +334,8 @@ For example, the following message indicates that the instance root volume is no
 
 If the log line is `SetHibernateOnSleep: HibernationEnabled: true`, hibernation was successfully configured\.
 
-If you do not see any logs from these processes, your AMI might not support hibernation\. For information about supported AMIs, see [Hibernation Prerequisites](#hibernating-prerequisites)\. 
+If you do not see any logs from these processes, your AMI might not support hibernation\. For information about supported AMIs, see [Hibernation prerequisites](#hibernating-prerequisites)\. 
 
-### Instance "stuck" in the `stopping` state<a name="hibernate-troubleshooting-3"></a>
+### Instance "stuck" in the stopping state<a name="hibernate-troubleshooting-3"></a>
 
 If you hibernated your instance and it appears "stuck" in the `stopping` state, you can forcibly stop it\. For more information, see [Troubleshooting stopping your instance](TroubleshootingInstancesStopping.md)\.

@@ -1,6 +1,6 @@
 # Getting started with Amazon EC2 Windows instances<a name="EC2_GetStarted"></a>
 
-Let's get started with Amazon Elastic Compute Cloud \(Amazon EC2\) by launching, connecting to, and using a Windows instance\. An *instance* is a virtual server in the AWS cloud\. With Amazon EC2, you can set up and configure the operating system and applications that run on your instance\.
+Let's get started with Amazon Elastic Compute Cloud \(Amazon EC2\) by launching, connecting to, and using a Windows instance\. To get started with a Linux instance, see [Getting started with Amazon EC2 Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\. An *instance* is a virtual server in the AWS cloud\. With Amazon EC2, you can set up and configure the operating system and applications that run on your instance\.
 
 When you sign up for AWS, you can get started with Amazon EC2 using the [AWS Free Tier](https://aws.amazon.com/free/)\. If you created your AWS account less than 12 months ago, and have not already exceeded the free tier benefits for Amazon EC2, it will not cost you anything to complete this tutorial, because we help you select options that are within the free tier benefits\. Otherwise, you'll incur the standard Amazon EC2 usage fees from the time that you launch the instance until you terminate the instance \(which is the final task of this tutorial\), even if it remains idle\.
 
@@ -152,5 +152,5 @@ If you launched an instance that is not within the [AWS Free Tier](https://aws.a
 After you start your instance, you might want to try some of the following exercises:
 + Learn how to remotely manage your EC2 instance using Run Command\. For more information, see [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html) in the *AWS Systems Manager User Guide*\.
 + Configure a CloudWatch alarm to notify you if your usage exceeds the Free Tier\. For more information, see [Create a Billing Alarm](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-alarms.html) in the *AWS Billing and Cost Management User Guide*\.
-+ Add an EBS volume\. For more information, see [Creating an Amazon EBS Volume](ebs-creating-volume.md) and [Attaching an Amazon EBS Volume to an Instance](ebs-attaching-volume.md)\.
++ Add an EBS volume\. For more information, see [Creating an Amazon EBS volume](ebs-creating-volume.md) and [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
 + Install the WAMP or WIMP stack\. For more information, see [Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md) and [Tutorial: Installing a WIMP Server on an Amazon EC2 Instance Running Windows Server](install-WIMP.md)\.

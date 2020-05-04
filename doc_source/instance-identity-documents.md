@@ -1,74 +1,90 @@
-# Instance identity documents<a name="instance-identity-documents"></a>
+# Instance Identity Documents<a name="instance-identity-documents"></a>
 
-An instance identity document is a JSON file that describes an instance\. The instance identity document is accompanied by a signature and a PKCS7 signature, which can be used to verify the accuracy, origin, and authenticity of the information provided in the document\. 
+Each instance that you launch has an instance identity document that provides information about the instance itself\. You can use the instance identity document to validate the attributes of the instance\.
 
-The instance identity document is generated when the instance is launched, and exposed to the instance through [instance metadata](ec2-instance-metadata.md)\. It validates the attributes of the instances, such as the instance size, instance type, operating system, and AMI\. 
+The instance identity document is generated when the instance is launched and it is exposed \(in plaintext JSON format\) through the Instance Metadata Service\. You can retrieve the instance identity document from a running instance at any time\. The instance identity document includes the following information:
+
+
+| Data | Description | 
+| --- | --- | 
+| devpayProductCodes | Deprecated\. | 
+| marketplaceProductCodes | The AWS Marketplace product code of the AMI used to launch the instance\. | 
+| availabilityZone | The Availability Zone in which the instance is running\. | 
+| privateIp | The private IPv4 address of the instance\. | 
+| version | The version of the instance identity document format\. | 
+| instanceId | The ID of the instance\. | 
+| billingProducts | The billing product code of the AMI used to launch the instance\. | 
+| instanceType | The instance type of the instance\. | 
+| accountId | The ID of the AWS account that launched the instance\. | 
+| imageId | The ID of the AMI used to launch the instance\. | 
+| pendingTime | The date and time that the instance was launched\. | 
+| architecture | The architecture of the AMI used to launch the instance \(i386 \| x86\_64 \| arm64\)\. | 
+| kernelId | The ID of the kernel associated with the instance, if applicable\. | 
+| ramdiskId | The ID of the RAM disk associated with the instance, if applicable\. | 
+| region | The Region in which the instance is running\. | 
+
+## Retrieve the Plaintext instance identity document<a name="retrieve-iid"></a>
+
+**To retrieve the plaintext instance identity document**  
+Connect to the instance and run one of the following commands depending on the Instance Metadata Service \(IMDS\) version used by the instance\.
+
+------
+#### [ IMDSv2 ]
+
+```
+PS C:\> $Token = (Invoke-WebRequest -Method Put -Headers @{'X-aws-ec2-metadata-token-ttl-seconds' = '21600'} http://169.254.169.254/latest/api/token).Content
+```
+
+```
+PS C:\> (Invoke-WebRequest -Headers @{'X-aws-ec2-metadata-token' = $Token} http://169.254.169.254/latest/dynamic/instance-identity/document).Content
+```
+
+------
+#### [ IMDSv1 ]
+
+```
+PS C:\> (Invoke-WebRequest http://169.254.169.254/latest/dynamic/instance-identity/document).Content
+```
+
+------
+
+The following is example output\.
+
+```
+{
+    "devpayProductCodes" : null,
+    "marketplaceProductCodes" : [ "1abc2defghijklm3nopqrs4tu" ], 
+    "availabilityZone" : "us-west-2b",
+    "privateIp" : "10.158.112.84",
+    "version" : "2017-09-30",
+    "instanceId" : "i-1234567890abcdef0",
+    "billingProducts" : null,
+    "instanceType" : "t2.micro",
+    "accountId" : "123456789012",
+    "imageId" : "ami-5fb8c835",
+    "pendingTime" : "2016-11-19T16:32:11Z",
+    "architecture" : "x86_64",
+    "kernelId" : null,
+    "ramdiskId" : null,
+    "region" : "us-west-2"
+}
+```
+
+## Verifying the Instance Identity Document<a name="verify-iid"></a>
+
+If you intend to use the contents of the instance identity document for an important purpose, you should verify its contents and authenticity before using it\.
+
+The plaintext instance identity document is accompanied by three hashed and encrypted signatures\. You can use these signatures to verify the origin and authenticity of the instance identity document and the information that it includes\. The following signatures are provided:
++ Base64\-encoded signature—This is a base64\-encoded SHA256 hash of the instance identity document that is encrypted using an RSA key pair\.
++ PKCS7 signature—This is a SHA1 hash of the instance identity document that is encrypted using a DSA key pair\.
++ RSA\-2048 signature—This is a SHA256 hash of the instance identity document that is encrypted using an RSA\-2048 key pair\.
+
+Each signature is available at a different endpoint in the instance metadata\. You can use any one of these signatures depending on your hashing and encryption requirements\. To verify the signatures, you must use the corresponding AWS public certificate\.
 
 **Important**  
-Due to the dynamic nature of instance identity documents and signatures, we recommend retrieving the instance identity document and signature regularly\.
+To validate the instance identity document using the base64\-encoded signature or RSA2048 signature, you must request the corresponding AWS public certificate from [ AWS Support](https://console.aws.amazon.com/support/home#/)\. 
 
-## Obtaining the instance identity document and signatures<a name="instance-identity-signatures"></a>
-
-To retrieve the instance identity document, use the following command from your running instance\.
-
-```
-PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/dynamic/instance-identity/document
-```
-
-The following is example output\.
-
-```
-privateIp          : 10.0.2.174
-availabilityZone   : us-west-2a
-devpayProductCodes :
-version            : 2010-08-31
-instanceId         : i-1234567890abcdef0
-billingProducts    : {bp-6ba54002}
-instanceType       : m3.medium
-architecture       : x86_64
-accountId          : 123456789012
-kernelId           :
-ramdiskId          :
-imageId            : ami-1562d075
-pendingTime        : 2017-03-13T17:13:27Z
-region             : us-west-2
-```
-
-To retrieve the instance identity signature, use the following command from your running instance\.
-
-```
-PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/dynamic/instance-identity/signature
-```
-
-The following is example output\.
-
-```
-dExamplesjNQhhJan7pORLpLSr7lJEF4V2DhKGlyoYVBoUYrY9njyBCmhEayaGrhtS/AWY+LPx
-lVSQURF5n0gwPNCuO6ICT0fNrm5IH7w9ydyaexamplejJw8XvWPxbuRkcN0TAA1p4RtCAqm4ms
-x2oALjWSCBExample=
-```
-
-To retrieve the PKCS7 signature, use the following command from your running instance\.
-
-```
-PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/dynamic/instance-identity/pkcs7
-```
-
-The following is example output\.
-
-```
-MIICiTCCAfICCQD6m7oRw0uXOjANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMC
-VVMxCzAJBgNVBAgTAldBMRAwDgYDVQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6
-b24xFDASBgNVBAsTC0lBTSBDb25zb2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAd
-BgkqhkiG9w0BCQEWEG5vb25lQGFtYXpvbi5jb20wHhcNMTEwNDI1MjA0NTIxWhcN
-MTIwNDI0MjA0NTIxWjCBiDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAwDgYD
-VQQHEwdTZWF0dGxlMQ8wDQYDVQQKEwZBbWF6b24xFDASBgNVBAsTC0lBTSBDb25z
-b2xlMRIwEAYDVQQDEwlUZXN0Q2lsYWMxHzAdBgkqhkiG9w0BCQEWEG5vb25lQGFt
-YXpvbi5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMaK0dn+a4GmWIWJ
-21uUSfwfEvySWtC2XADZ4nB+BLYgVIk60CpiwsZ3G93vUEIO3IyNoH/f0wYK8m9T
-rDHudUZg3qX4waLG5M43q7Wgc/MbQITxOUSQv7c7ugFFDzQGBzZswY6786m86gpE
-Ibb3OhjZnzcvQAaRHhdlQWIMm2nrAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAtCu4
-nUhVVxYUntneD9+h8Mg9q6q+auNKyExzyLwaxlAoo7TJHidbtS4J5iNmZgXL0Fkb
-FFBjvSfpJIlJ00zbhNYS5f6GuoEDmFJl0ZxBHjJnyp378OD8uTs7fLvjx79LjSTb
-NYiytVbZPQUQ5Yaxu2jXnimvw3rrszlaEXAMPLE
-```
+The following topics provide detailed steps for validating the instance identity document using each signature\.
++ [Using the PKCS7 Signature to Verify the Instance Identity Document](verify-pkcs7.md)
++ [Using the Base64\-Encoded Signature to Verify the Instance Identity Document](verify-signature.md)
++ [Using the RSA\-2048 Signature to Verify the Instance Identity Document](verify-rsa2048.md)

@@ -32,7 +32,7 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
   
 + **Enable inbound RDP traffic from your IP address to your instance**
 
-  Ensure that the security group associated with your instance allows incoming RDP traffic from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorizing inbound traffic for your Windows instances](authorizing-access-to-an-instance.md)\.
+  Ensure that the security group associated with your instance allows incoming RDP traffic \(port 3389\) from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorizing inbound traffic for your Windows instances](authorizing-access-to-an-instance.md)\.
 + For the best experience using Internet Explorer, run the latest version\.
 
 ## Connect to Your Windows Instance<a name="connect-rdp"></a>

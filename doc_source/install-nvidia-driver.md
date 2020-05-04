@@ -191,17 +191,23 @@ Configure default credentials for the AWS Tools for Windows PowerShell on your W
    ```
 
 1. Use the following command to download the certification file, rename the file `GridSwCert.txt`, and move the file to the Public Documents folder on your system drive\. Typically, the folder path is C:\\Users\\Public\\Public Documents \(Windows Explorer\) or C:\\Users\\Public\\Documents \(Command Prompt window\)\.
+   + For version 445\.87 or later:
 
-   ```
-   Invoke-WebRequest -Uri "https://s3.amazonaws.com/nvidia-gaming/GridSwCert-Windows.cert" -OutFile "$Env:PUBLIC\Documents\GridSwCert.txt"
-   ```
+     ```
+     Invoke-WebRequest -Uri "https://nvidia-gaming.s3.amazonaws.com/GridSwCert-Archive/GridSwCert-Windows_2020_04.cert" -OutFile "$Env:PUBLIC\Documents\GridSwCert.txt"
+     ```
+   + For earlier versions:
+
+     ```
+     Invoke-WebRequest -Uri "https://nvidia-gaming.s3.amazonaws.com/GridSwCert-Archive/GridSwCert-Windows_2019_09.cert" -OutFile "$Env:PUBLIC\Documents\GridSwCert.txt"
+     ```
 
 1. Reboot your instance\.
 
 1. Verify the NVIDIA Gaming license using the following command\.
 
    ```
-   'C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe' -q
+   "C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe" -q
    ```
 
    The output should be similar to the following\.

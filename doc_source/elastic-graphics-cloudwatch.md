@@ -1,4 +1,4 @@
-# Using CloudWatch Metrics to Monitor Elastic Graphics<a name="elastic-graphics-cloudwatch"></a>
+# Using CloudWatch metrics to monitor Elastic Graphics<a name="elastic-graphics-cloudwatch"></a>
 
 You can monitor your Elastic Graphics accelerator using Amazon CloudWatch, which collects metrics about your accelerator performance\. These statistics are recorded for a period of two weeks, so that you can access historical information and gain a better perspective on how your service is performing\.
 
@@ -6,7 +6,7 @@ By default, Elastic Graphics accelerators send metric data to CloudWatch in 5\-m
 
 For more information about Amazon CloudWatch, see the [Amazon CloudWatch User Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/)\.
 
-## Elastic Graphics Metrics<a name="elastic-graphics-metrics"></a>
+## Elastic Graphics metrics<a name="elastic-graphics-metrics"></a>
 
 The `AWS/ElasticGPUs` namespace includes the following metrics for Elastic Graphics\.
 
@@ -17,17 +17,17 @@ The `AWS/ElasticGPUs` namespace includes the following metrics for Elastic Graph
 |  GPUHealthCheckFailed  |  Reports whether the Elastic Graphics accelerator has passed a status health check in the last minute\. A value of zero \(0\) indicates that the status check passed\. A value of one \(1\) indicates a status check failure\. Units: Count  | 
 | GPUMemoryUtilization |  The GPU memory used\. Units: MiB  | 
 
-## Elastic Graphics Dimensions<a name="elastic-graphics-dimensions"></a>
+## Elastic Graphics dimensions<a name="elastic-graphics-dimensions"></a>
 
 You can filter the metrics data for your Elastic Graphics accelerators using the following dimensions\.
 
 
 | Dimension | Description | 
 | --- | --- | 
-| `EGPUId` |  Filters the data by the Elastic Graphics accelerator\.  | 
-| `InstanceId` |  Filters the data by the instance to which the Elastic Graphics accelerator is attached\.  | 
+| EGPUId | Filters the data by the Elastic Graphics accelerator\. | 
+| InstanceId | Filters the data by the instance to which the Elastic Graphics accelerator is attached\. | 
 
-## Viewing CloudWatch Metrics for Elastic Graphics<a name="viewing-elastic-graphics-metrics"></a>
+## Viewing CloudWatch metrics for Elastic Graphics<a name="viewing-elastic-graphics-metrics"></a>
 
 Metrics are grouped first by the service namespace, and then by the supported dimensions\. You can use the following procedures to view the metrics for your Elastic Graphics accelerators\.
 
@@ -48,7 +48,7 @@ Use the following [list\-metrics](https://docs.aws.amazon.com/cli/latest/referen
 aws cloudwatch list-metrics --namespace "AWS/ElasticGPUs"
 ```
 
-## Creating CloudWatch Alarms to Monitor Elastic Graphics<a name="elastic-graphics-cloudwatch-alarms"></a>
+## Creating CloudWatch alarms to monitor Elastic Graphics<a name="elastic-graphics-cloudwatch-alarms"></a>
 
 You can create a CloudWatch alarm that sends an Amazon SNS message when the alarm changes state\. An alarm watches a single metric over a time period you specify, and sends a notification to an Amazon SNS topic based on the value of the metric relative to a given threshold over a number of time periods\. 
 

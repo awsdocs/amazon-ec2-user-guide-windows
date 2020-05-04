@@ -27,11 +27,11 @@ To create an EBS\-optimized instance, choose **Launch as an EBS\-Optimized insta
 
 ### Setting up Provisioned IOPS SSD \(`io1`\) volumes<a name="setupPIOPS"></a>
 
-To create an `io1` volume, choose **Provisioned IOPS SSD** when creating the volume using the Amazon EC2 console, or, at the command line, specify \-\-type io1 \-\-iops *n* where *n* is an integer between 100 and 64,000\. For more detailed EBS\-volume specifications, see [Amazon EBS Volume Types](ebs-volume-types.md)\. For information about creating an EBS volume, see [Creating an Amazon EBS Volume](ebs-creating-volume.md)\. For information about attaching a volume to an instance, see [Attaching an Amazon EBS Volume to an Instance](ebs-attaching-volume.md)\.
+To create an `io1` volume, choose **Provisioned IOPS SSD** when creating the volume using the Amazon EC2 console, or, at the command line, specify \-\-type io1 \-\-iops *n* where *n* is an integer between 100 and 64,000\. For more detailed EBS\-volume specifications, see [Amazon EBS volume types](ebs-volume-types.md)\. For information about creating an EBS volume, see [Creating an Amazon EBS volume](ebs-creating-volume.md)\. For information about attaching a volume to an instance, see [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
 
 ### Setting up Throughput Optimized HDD \(`st1`\) or Cold HDD \(`sc1`\) volumes<a name="set_up_hdd"></a>
 
-To create an `st1` volume, choose **Throughput Optimized HDD** when creating the volume using the Amazon EC2 console, or specify \-\-type `st1` when using the command line\. To create an `sc1` volume, choose Cold HDD when creating the volume using the Amazon EC2 console, or specify \-\-type `sc1` when using the command line\. For information about creating EBS volumes, see [Creating an Amazon EBS Volume](ebs-creating-volume.md)\. For information about attaching these volumes to your instance, see [Attaching an Amazon EBS Volume to an Instance](ebs-attaching-volume.md)\.
+To create an `st1` volume, choose **Throughput Optimized HDD** when creating the volume using the Amazon EC2 console, or specify \-\-type `st1` when using the command line\. To create an `sc1` volume, choose Cold HDD when creating the volume using the Amazon EC2 console, or specify \-\-type `sc1` when using the command line\. For information about creating EBS volumes, see [Creating an Amazon EBS volume](ebs-creating-volume.md)\. For information about attaching these volumes to your instance, see [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
 
 ## Install Benchmark Tools<a name="install_tools"></a>
 
@@ -109,7 +109,7 @@ The following procedures describe benchmarking commands for various EBS volume t
 
 Run the following commands on an EBS\-optimized instance with attached EBS volumes\. If the EBS volumes were restored from snapshots, be sure to initialize them before benchmarking\. For more information, see [Initializing Amazon EBS Volumes](ebs-initialize.md)\.
 
-When you are finished testing your volumes, see the following topics for help cleaning up: [Deleting an Amazon EBS Volume](ebs-deleting-volume.md) and [Terminate Your Instance](terminating-instances.md)\.
+When you are finished testing your volumes, see the following topics for help cleaning up: [Deleting an Amazon EBS volume](ebs-deleting-volume.md) and [Terminate Your Instance](terminating-instances.md)\.
 
 ### Benchmarking io1 Volumes<a name="piops_benchmarking"></a>
 
