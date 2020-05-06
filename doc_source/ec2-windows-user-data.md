@@ -14,7 +14,7 @@ For information about running commands on your Linux instance at launch, see [Ru
 
 ## User data scripts<a name="user-data-scripts"></a>
 
-For EC2Config or EC2Launch to execute scripts, you must enclose the script within a special tag when you add it to user data\. The tag you use depends on whether the commands run in a Command Prompt window \(batch commands\) or use Windows PowerShell\.
+For EC2Config or EC2Launch to execute scripts, you must enclose the script within a special tag when you add it to user data\. The tag that you use depends on whether the commands run in a Command Prompt window \(batch commands\) or use Windows PowerShell\.
 
 If you specify both a batch script and a Windows PowerShell script, the batch script runs first and the Windows PowerShell script runs next, regardless of the order in which they appear in the instance user data\.
 
@@ -95,7 +95,7 @@ With EC2Launch, the log file is `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\Us
 **Note**  
 The `C:\ProgramData` folder might be hidden\. To view the folder, you must show hidden files and folders\.
 
-The following information is logged when the user data is executed\.
+The following information is logged when the user data is executed:
 + `Userdata execution begins` – The start of user data execution
 + `<persist> tag was provided: true` – If the persist tag is found
 + `Running userdata on every boot` – If the persist tag is found
@@ -103,7 +103,7 @@ The following information is logged when the user data is executed\.
 + `<script> tag was provided.. running script content` – If the script tag is found
 + `Message: The output from user scripts` – If user data scripts are executed, their output is logged
 
-With EC2Config, the log file is `C:\Program Files\Amazon\Ec2ConfigService\Logs\Ec2Config.log`\. The following information is logged when the user data is executed\.
+With EC2Config, the log file is `C:\Program Files\Amazon\Ec2ConfigService\Logs\Ec2Config.log`\. The following information is logged when the user data is executed:
 + `Ec2HandleUserData: Message: Start running user scripts` – The start of user data execution
 + `Ec2HandleUserData: Message: Re-enabled userdata execution` – If the persist tag is found
 + `Ec2HandleUserData: Message: Could not find <persist> and </persist>` – If the persist tag is not found

@@ -1,6 +1,8 @@
 # Migrating to Latest Generation Instance Types<a name="migrating-latest-types"></a>
 
-The AWS Windows AMIs are configured with the default settings used by the Microsoft installation media with some customizations, including drivers and configurations, that support the latest generation instance types\. However, if you are launching instances from custom Windows AMIs or from Windows AMIs provided by Amazon created before August 2018, we recommend that you follow the steps in this topic when migrating to the latest generation of EC2 instances and Nitro instances, including bare metal instances\. 
+The AWS Windows AMIs are configured with the default settings used by the Microsoft installation media, with some customizations, The customizations include drivers and configurations that support the latest generation instance types\. However, when migrating to the latest generation of EC2 instances and Nitro instances, including bare metal instances, we recommend that you follow the steps in this topic in the following cases:
++ If you are launching instances from custom Windows AMIs
++ If you are launching instances from Windows AMIs provided by Amazon that were created before August 2018
 
 For more information, see [Amazon EC2 Update — Additional Instance Types, Nitro System, and CPU Options](https://aws.amazon.com/blogs/aws/amazon-ec2-update-additional-instance-types-nitro-system-and-cpu-options/)\. 
 

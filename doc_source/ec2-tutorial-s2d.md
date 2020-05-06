@@ -41,7 +41,7 @@ A basic understanding of Windows Server computing as well as how to create and m
 
 The following diagram shows the architecture of a two node EC2 Windows S2D Cluster using a file share witness hosted on an existing bastion machine on AWS\.
 
-![\[Two Node EC2 S2D Cluster\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/2 Nodes EC2 Windows S2D Cluster.jpg)
+![\[Two Node EC2 S2D Cluster\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/2_Nodes_EC2_Windows_S2D_Cluster.jpg)
 
 ## Step 1: Launch and Domain Join Instances<a name="ec2-s2d-launch-instances"></a>
 
@@ -70,7 +70,7 @@ We will deploy a two node cluster architecture using a file share witness hosted
    ```
 
    We use the following S2D\-node1 network interface configuration:  
-![\[S2D-node1 Network Interface Configuration\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/s2d node1 nic.png)
+![\[S2D-node1 Network Interface Configuration\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/s2d_node1_nic.png)
 **Note**  
 Each role deployed on this cluster, such as a SQL Failover Cluster instance or file server, will require additional secondary IP addresses on each node\. The exception is the Scale\-Out File Server role, which does not require an access point\. 
 
