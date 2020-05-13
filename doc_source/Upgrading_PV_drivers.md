@@ -142,7 +142,7 @@ Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure y
 
 **To upgrade Redhat drivers**
 
-1. Connect to your instance and log in as the local administrator\. For more information about connecting to your instance, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+1. Connect to your instance and log in as the local administrator\. For more information about connecting to your instance, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. In your instance, [download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/Citrix-Win_PV.zip) the Citrix PV upgrade package\.
 
@@ -187,7 +187,7 @@ Before you start upgrading your drivers, make sure you back up your important in
 
 **To upgrade your Citrix Xen guest agent service**
 
-1. Connect to your instance and log in as the local administrator\. For more information about connecting to your instance, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+1. Connect to your instance and log in as the local administrator\. For more information about connecting to your instance, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. On your instance, [download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/Citrix-Win_PV.zip) the Citrix upgrade package\.
 

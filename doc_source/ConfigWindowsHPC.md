@@ -165,7 +165,7 @@ Connect to the instance you created, and configure the server as a domain contro
 
 **To configure your instance as a domain controller**
 
-1. Connect to your `Domain Controller` instance\. For more information, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+1. Connect to your `Domain Controller` instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Open **Server Manager**, and add the **Active Directory Domain Services** role\. 
 

@@ -1,11 +1,11 @@
-# Configuring a Secondary Private IPv4 Address for Your Windows Instance<a name="config-windows-multiple-ip"></a>
+# Configuring a secondary private IPv4 address for your Windows instance<a name="config-windows-multiple-ip"></a>
 
 You can specify multiple private IPv4 addresses for your instances\. After you assign a secondary private IPv4 address to an instance, you must configure the operating system on the instance to recognize the secondary private IPv4 address\.
 
 Configuring the operating system on a Windows instance to recognize a secondary private IPv4 address requires the following:
-+ [Step 1: Configure Static IP Addressing on Your Windows Instance ](#step1)
-+ [Step 2: Configure a Secondary Private IP Address for Your Windows Instance ](#step2)
-+ [Step 3: Configure Applications to Use the Secondary Private IP Address](#step3)
++ [Step 1: Configure static IP addressing on your instance](#step1)
++ [Step 2: Configure a secondary private IP address for your instance](#step2)
++ [Step 3: Configure applications to Use the secondary private IP address](#step3)
 
 **Note**  
 These instructions are based on Windows Server 2008 R2\. The implementation of these steps may vary based on the operating system of the Windows instance\.
@@ -17,7 +17,7 @@ Before you begin, make sure you meet the following requirements:
 + After you launch your instance in your VPC, add a secondary private IP address\. For more information, see [Assigning a Secondary Private IPv4 Address](MultipleIP.md#ManageMultipleIP)\.
 + To allow Internet requests to your website after you complete the tasks in these steps, you must configure an Elastic IP address and associate it with the secondary private IP address\. For more information, see [Associating an Elastic IP Address with the Secondary Private IPv4 Address](MultipleIP.md#StepThreeEIP)\.
 
-## Step 1: Configure Static IP Addressing on Your Windows Instance<a name="step1"></a>
+## Step 1: Configure static IP addressing on your instance<a name="step1"></a>
 
 To enable your Windows instance to use multiple IP addresses, you must configure your instance to use static IP addressing rather than a DHCP server\.
 
@@ -71,11 +71,11 @@ If you set the IP address to any value other than the current IP address, you wi
 
 You will lose RDP connectivity to the Windows instance for a few seconds while the instance converts from using DHCP to static addressing\. The instance retains the same IP address information as before, but now this information is static and not managed by DHCP\.
 
-## Step 2: Configure a Secondary Private IP Address for Your Windows Instance<a name="step2"></a>
+## Step 2: Configure a secondary private IP address for your instance<a name="step2"></a>
 
 After you have set up static IP addressing on your Windows instance, you are ready to prepare a second private IP address\.
 
-**To configure a secondary IP address for a Windows instance**
+**To configure a secondary IP address**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -95,7 +95,7 @@ After you have set up static IP addressing on your Windows instance, you are rea
 
 1. Choose **Add**\.
 
-1. In the **TCP/IP Address** dialog box, type the secondary private IP address for **IP address**\. For **Subnet mask**, type the same subnet mask that you entered for the primary private IP address in [Step 1: Configure Static IP Addressing on Your Windows Instance ](#step1), and then choose **Add**\.   
+1. In the **TCP/IP Address** dialog box, type the secondary private IP address for **IP address**\. For **Subnet mask**, type the same subnet mask that you entered for the primary private IP address in [Step 1: Configure static IP addressing on your instance](#step1), and then choose **Add**\.   
 ![\[TCP/IP Address dialog box\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/WinOSAddSPIP.png)
 
 1. Verify the IP address settings and choose **OK**\.  
@@ -105,7 +105,7 @@ After you have set up static IP addressing on your Windows instance, you are rea
 
 1. To confirm that the secondary IP address has been added to the operating system, at a command prompt, run the command ipconfig /all\.
 
-## Step 3: Configure Applications to Use the Secondary Private IP Address<a name="step3"></a>
+## Step 3: Configure applications to Use the secondary private IP address<a name="step3"></a>
 
 You can configure any applications to use the secondary private IP address\. For example, if your instance is running a website on IIS, you can configure IIS to use the secondary private IP address\.
 
@@ -126,12 +126,12 @@ You can configure any applications to use the secondary private IP address\. For
 
 1. Choose **OK**, **Close**\.
 
-## Configure a Secondary Elastic Network Interface<a name="config-windows-multiple-eni"></a>
+## Configure a secondary network interface<a name="config-windows-multiple-eni"></a>
 
 You can attach a second elastic network interface to the instance\.
 
 **To configure a second network interface**
 
-1. Configure the static IP addressing for the primary elastic network interface as per the procedures above in [Step 1: Configure Static IP Addressing on Your Windows Instance ](#step1)\. 
+1. Configure the static IP addressing for the primary elastic network interface as per the procedures above in [Step 1: Configure static IP addressing on your instance](#step1)\.
 
 1. Configure the static IP addressing for the secondary elastic network interface as per the same procedures\.

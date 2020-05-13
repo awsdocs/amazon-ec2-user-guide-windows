@@ -107,10 +107,10 @@ When you select an instance type, this determines the networking and storage fea
 + Current generation instance types that are enabled for enhanced networking have the following networking performance attributes:
   + Traffic within the same Region over private IPv4 or IPv6 can support 5 Gbps for single\-flow traffic and up to 25 Gbps for multi\-flow traffic \(depending on the instance type\)\.
   + Traffic to and from Amazon S3 buckets within the same Region over the public IP address space or through a VPC endpoint can use all available instance aggregate bandwidth\.
-+ The maximum supported MTU varies across instance types\. All Amazon EC2 instance types support standard Ethernet V2 1500 MTU frames\. All current generation instances support 9001 MTU, or jumbo frames, and some previous generation instances support them as well\. For more information, see [Network Maximum Transmission Unit \(MTU\) for Your EC2 Instance](network_mtu.md)\.
++ The maximum supported MTU varies across instance types\. All Amazon EC2 instance types support standard Ethernet V2 1500 MTU frames\. All current generation instances support 9001 MTU, or jumbo frames, and some previous generation instances support them as well\. For more information, see [Network maximum transmission unit \(MTU\) for your EC2 instance](network_mtu.md)\.
 
 **Storage features**
-+ Some instance types support EBS volumes and instance store volumes, while other instance types support only EBS volumes\. Some instance types that support instance store volumes use solid state drives \(SSD\) to deliver very high random I/O performance\. Some instance types support NVMe instance store volumes\. Some instance types support NVMe EBS volumes\. For more information, see [Amazon EBS and NVMe on Windows Instances](nvme-ebs-volumes.md) and [NVMe SSD Volumes](ssd-instance-store.md#nvme-ssd-volumes)\.
++ Some instance types support EBS volumes and instance store volumes, while other instance types support only EBS volumes\. Some instance types that support instance store volumes use solid state drives \(SSD\) to deliver very high random I/O performance\. Some instance types support NVMe instance store volumes\. Some instance types support NVMe EBS volumes\. For more information, see [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md) and [NVMe SSD Volumes](ssd-instance-store.md#nvme-ssd-volumes)\.
 + To obtain additional, dedicated capacity for Amazon EBS I/O, you can launch some instance types as EBS–optimized instances\. Some instance types are EBS–optimized by default\. For more information, see [Amazon EBS–optimized instances](ebs-optimized.md)\.
 
 ### Summary of networking and storage features<a name="instance-type-summary-table"></a>
@@ -131,7 +131,7 @@ The following table summarizes the networking and storage features supported by 
 |  HS1  | No | No |  HDD \*  |  Yes  | ENA | 
 |  I3  | No | No |  NVMe \*  |  Yes  | ENA | 
 |  I3en  | No | Yes |  NVMe \*  |  Yes  | ENA | 
-|  M4  |  Yes  | No | No |  Yes  |  `m4.16xlarge`: ENA All other sizes: Intel 82599 VF  | 
+|  M4  |  Yes  | No | No |  Yes  |  m4\.16xlarge: ENA All other sizes: Intel 82599 VF  | 
 |  M5  |  Yes  | Yes | No |  Yes  | ENA | 
 |  M5a  |  Yes  | Yes | No |  Yes  | ENA | 
 | M5ad | No | Yes | NVMe \* | Yes | ENA | 

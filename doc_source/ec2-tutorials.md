@@ -1,4 +1,4 @@
-# Tutorials for Amazon EC2 Instances Running Windows Server<a name="ec2-tutorials"></a>
+# Tutorials for Amazon EC2 instances running Windows Server<a name="ec2-tutorials"></a>
 
 The following tutorials show you how to perform common tasks using EC2 instances running Windows Server\.
 

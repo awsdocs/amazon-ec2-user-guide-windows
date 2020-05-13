@@ -14,7 +14,7 @@ The AWS Free Tier is available for new AWS accounts\. If you are using the AWS F
 
 ## Usage billing<a name="hourly-billing"></a>
 
-Reserved Instances are billed for every clock\-hour during the term that you select, regardless of whether an instance is running\. Each clock\-hour starts on the hour \(zero minutes and zero seconds past the hour\) of a standard 24\-hour clock\. For example, 1:00:00 to 1:59:59 is one clock\-hour\. For more information about instance states, see [Instance Lifecycle](ec2-instance-lifecycle.md)\.
+Reserved Instances are billed for every clock\-hour during the term that you select, regardless of whether an instance is running\. Each clock\-hour starts on the hour \(zero minutes and zero seconds past the hour\) of a standard 24\-hour clock\. For example, 1:00:00 to 1:59:59 is one clock\-hour\. For more information about instance states, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
 
 Reserved Instance billing benefits only apply to one instance\-hour per clock\-hour\. An instance\-hour begins when an instance is started and continues for 60 minutes or until the instance is stopped or terminated—whichever happens first\.
 

@@ -1,14 +1,14 @@
-# Adding Windows Components Using Installation Media<a name="windows-optional-components"></a>
+# Adding Windows components Using installation media<a name="windows-optional-components"></a>
 
 Windows Server operating systems include many optional components\. Including all optional components in each Amazon EC2 Windows Server AMI is not practical\. Instead, we provide you with installation media EBS snapshots that have the necessary files to configure or install components on your Windows instance\.
 
 To access and install the optional components, you must find the correct EBS snapshot for your version of Windows Server, create a volume from the snapshot, and attach the volume to your instance\.
 
-## Before You Begin<a name="adding-windows-components-prereq"></a>
+## Before you begin<a name="adding-windows-components-prereq"></a>
 
 Use the AWS Management Console or a command line tool to get the instance ID and Availability Zone of your instance\. You must create your EBS volume in the same Availability Zone as your instance\.
 
-## Adding Windows Components Using the Console<a name="adding-windows-components-console"></a>
+## Adding Windows components using the console<a name="adding-windows-components-console"></a>
 
 Use the following procedure to use the AWS Management Console to add Windows components to your instance\.
 
@@ -44,7 +44,7 @@ Do not initialize the volume\.
 
 1. Open **Control Panel**, **Programs and Features**\. Choose **Turn Windows features on or off**\. If you are prompted for installation media, specify the EBS volume with the installation media\.
 
-## Adding Windows Components Using the Tools for Windows PowerShell<a name="adding-windows-components-powershell"></a>
+## Adding Windows components using the Tools for Windows PowerShell<a name="adding-windows-components-powershell"></a>
 
 Use the following procedure to use the Tools for Windows PowerShell to add Windows components to your instance\.
 
@@ -112,7 +112,7 @@ Do not initialize the volume\.
 
 1. Open **Control Panel**, **Programs and Features**\. Choose **Turn Windows features on or off**\. If you are prompted for installation media, specify the EBS volume with the installation media\.
 
-## Adding Windows Components Using the AWS CLI<a name="adding-windows-components-cli"></a>
+## Adding Windows components using the AWS CLI<a name="adding-windows-components-cli"></a>
 
 Use the following procedure to use the AWS CLI to add Windows components to your instance\.
 

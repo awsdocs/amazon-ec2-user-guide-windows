@@ -17,7 +17,7 @@ You can find the disks on your Windows instance using Windows Disk Management\.
 
 **To find the disks on your Windows instance**
 
-1. Log in to your Windows instance using Remote Desktop\. For more information, see, [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+1. Log in to your Windows instance using Remote Desktop\. For more information, see, [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Start the Disk Management utility\.
 
@@ -217,4 +217,4 @@ The following table describes how the Citrix PV and AWS PV drivers map non\-NVME
 
 ### NVMe EBS Volumes<a name="ebs-nvme-volume-map"></a>
 
-With instances built on the [Nitro System](instance-types.md#ec2-nitro-instances), EBS volumes are exposed as NVMe devices\. You can use the [Get\-Disk](https://docs.microsoft.com/en-us/powershell/module/storage/get-disk) command to map Windows disk numbers to EBS volume IDs\. For more information, see [Identifying the EBS Device](nvme-ebs-volumes.md#identify-nvme-ebs-device)\.
+With instances built on the [Nitro System](instance-types.md#ec2-nitro-instances), EBS volumes are exposed as NVMe devices\. You can use the [Get\-Disk](https://docs.microsoft.com/en-us/powershell/module/storage/get-disk) command to map Windows disk numbers to EBS volume IDs\. For more information, see [Identifying the EBS device](nvme-ebs-volumes.md#identify-nvme-ebs-device)\.

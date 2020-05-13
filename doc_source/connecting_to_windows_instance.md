@@ -1,4 +1,4 @@
-# Connecting to Your Windows Instance<a name="connecting_to_windows_instance"></a>
+# Connecting to your Windows instance<a name="connecting_to_windows_instance"></a>
 
 Amazon EC2 instances created from most Windows Amazon Machine Images \(AMIs\) enable you to connect using Remote Desktop\. Remote Desktop uses the Remote Desktop Protocol \(RDP\) and enables you to connect to and use your instance in the same way you use a computer sitting in front of you\. It is available on most editions of Windows and available for Mac OS\.
 
@@ -6,10 +6,10 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
 
 **Topics**
 + [Prerequisites](#rdp-prereqs)
-+ [Connect to Your Windows Instance](#connect-rdp)
-+ [Connect to a Windows Instance Using Its IPv6 Address](#connecting-to-windows-ipv6)
-+ [Connecting to a Windows Instance Using Session Manager](#session-manager)
-+ [Transfer Files to Windows Instances](#AccessingInstancesWindowsFileTransfer)
++ [Connect to your Windows instance](#connect-rdp)
++ [Connect to a Windows instance using its IPv6 address](#connecting-to-windows-ipv6)
++ [Connect to a Windows instance using Session Manager](#session-manager)
++ [Transfer files to Windows instances](#AccessingInstancesWindowsFileTransfer)
 
 ## Prerequisites<a name="rdp-prereqs"></a>
 + **Install an RDP client**
@@ -28,14 +28,12 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
 + **Locate the private key**
 
   Get the fully\-qualified path to the location on your computer of the `.pem` file for the key pair that you specified when you launched the instance\. For more information about how you created your key pair, see [Creating a Key Pair Using Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)\.
-
-  
 + **Enable inbound RDP traffic from your IP address to your instance**
 
   Ensure that the security group associated with your instance allows incoming RDP traffic \(port 3389\) from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorizing inbound traffic for your Windows instances](authorizing-access-to-an-instance.md)\.
 + For the best experience using Internet Explorer, run the latest version\.
 
-## Connect to Your Windows Instance<a name="connect-rdp"></a>
+## Connect to your Windows instance<a name="connect-rdp"></a>
 
 To connect to a Windows instance, you must retrieve the initial administrator password \(see step 2 below\) and then specify this password when you connect to your instance using Remote Desktop\.
 
@@ -89,7 +87,7 @@ After you connect, we recommend that you do the following:
 + Change the administrator password from the default value\. You change the password while logged on to the instance itself, just as you would on any other Windows Server\.
 + Create another user account with administrator privileges on the instance\. Another account with administrator privileges is a safeguard if you forget the administrator password or have a problem with the administrator account\. The user account must have permission to access the instance remotely\. Open **System Properties** by right\-clicking on the **This PC** icon on your Windows desktop or File Explorer and selecting **Properties**\. Choose **Remote settings**, and choose **Select Users** to add the user to the **Remote Desktop Users** group\.
 
-## Connect to a Windows Instance Using Its IPv6 Address<a name="connecting-to-windows-ipv6"></a>
+## Connect to a Windows instance using its IPv6 address<a name="connecting-to-windows-ipv6"></a>
 
 If you've enabled your VPC for IPv6 and assigned an IPv6 address to your Windows instance, you can use an RDP client to connect to your instance using its IPv6 address instead of a public IPv4 address or public DNS hostname\. For more information, see [IPv6 Addresses](using-instance-addressing.md#ipv6-addressing)\. 
 
@@ -121,7 +119,7 @@ If you've enabled your VPC for IPv6 and assigned an IPv6 address to your Windows
 
 1. When prompted, enter the password that you recorded or copied previously\.
 
-## Connecting to a Windows Instance Using Session Manager<a name="session-manager"></a>
+## Connect to a Windows instance using Session Manager<a name="session-manager"></a>
 
 Session Manager is a fully managed AWS Systems Manager capability that lets you manage your Amazon EC2 instances through an interactive one\-click browser\-based shell or through the AWS CLI\. You can use Session Manager to start a session with an instance in your account\. After the session is started, you can run Powershell commands as you would through any other connection type\. For more information about Session Manager, see [AWS Systems Manager Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) in the *AWS Systems Manager User Guide*\. 
 
@@ -141,7 +139,7 @@ Before attempting to connect to an instance using Session Manager, ensure that t
 **Note**  
 If you receive an error that you’re not authorized to perform one or more Systems Manager actions \(`ssm:command-name`\), then you must update your policies to allow you to start sessions from the Amazon EC2 console\. For more information and instructions, see [ Quickstart Default IAM Policies for Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-restrict-access-quickstart.html) in the *AWS Systems Manager User Guide*\.
 
-## Transfer Files to Windows Instances<a name="AccessingInstancesWindowsFileTransfer"></a>
+## Transfer files to Windows instances<a name="AccessingInstancesWindowsFileTransfer"></a>
 
 You can work with your Windows instance the same way that you would work with any Windows server\. For example, you can transfer files between a Windows instance and your local computer using the local file sharing feature of the Microsoft Remote Desktop Connection software\. If you enable this option, you can access your local files from your Windows instances\. You can access local files on hard disk drives, DVD drives, portable media drives, and mapped network drives\. 
 

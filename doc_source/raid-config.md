@@ -45,7 +45,7 @@ Create volumes with identical size and IOPS performance values for your array\. 
 
 1. Attach the Amazon EBS volumes to the instance that you want to host the array\. For more information, see [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
 
-1. Connect to your Windows instance\. For more information, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+1. Connect to your Windows instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Open a command prompt and type the diskpart command\.
 

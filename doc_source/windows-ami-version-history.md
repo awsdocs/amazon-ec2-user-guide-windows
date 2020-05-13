@@ -64,7 +64,7 @@ For Windows instances, you can install updates to the following services or appl
 + [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell)
 + [AWS CloudFormation helper scripts](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html)
 
-You can reboot a Windows instance after installing updates\. For more information, see [Reboot Your Instance](ec2-instance-reboot.md)\.
+You can reboot a Windows instance after installing updates\. For more information, see [Reboot your instance](ec2-instance-reboot.md)\.
 
 ## Upgrading or migrating to a newer version of Windows Server<a name="WinAMI_Upgrading"></a>
 

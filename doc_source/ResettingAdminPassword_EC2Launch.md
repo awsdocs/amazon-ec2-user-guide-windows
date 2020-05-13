@@ -149,6 +149,6 @@ After you have reset the administrator password using EC2Launch, reattach the vo
 
 1. In the navigation pane, choose **Instances**\. Select the original instance and choose **Actions**, **Instance State**, **Start**\. When prompted for confirmation, choose **Yes, Start**\. After the instance state changes to `running`, continue to the next step\.
 
-1. Retrieve your new Windows administrator password using the private key for the new key pair and connect to the instance\. For more information, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+1. Retrieve your new Windows administrator password using the private key for the new key pair and connect to the instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. \(Optional\) If you have no further use for the temporary instance, you can terminate it\. Select the temporary instance, and choose **Actions**, **Instance State**, **Terminate**\.

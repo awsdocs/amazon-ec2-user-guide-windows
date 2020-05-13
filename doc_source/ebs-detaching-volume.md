@@ -19,7 +19,7 @@ You can get directions for volumes on a Linux instance from [Detaching a volume 
 
 1. From your Windows instance, unmount the volume\.
 
-   1. Log in to your Windows instance using Remote Desktop\. For more information, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+   1. Log in to your Windows instance using Remote Desktop\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
    1. Start the Disk Management utility\.
 

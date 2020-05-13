@@ -110,7 +110,7 @@ Alternatively, you can assign a secondary private IPv4 address to an instance\. 
 
 After you assign a secondary private IPv4 address to your instance, you need to configure the operating system on your instance to recognize the secondary private IP address\.
 
-For information about configuring a Windows instance, see [Configuring a Secondary Private IPv4 Address for Your Windows Instance](config-windows-multiple-ip.md)\.
+For information about configuring a Windows instance, see [Configuring a secondary private IPv4 address for your Windows instance](config-windows-multiple-ip.md)\.
 
 ### Associating an Elastic IP Address with the Secondary Private IPv4 Address<a name="StepThreeEIP"></a>
 

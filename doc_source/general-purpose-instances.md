@@ -1,15 +1,16 @@
 # General purpose instances<a name="general-purpose-instances"></a>
 
-General purpose instances provide a balance of compute, memory, and networking resources, and can be used for a variety of workloads\.
+General purpose instances provide a balance of compute, memory, and networking resources, and can be used for a wide range of workloads\.
 
-These instances provide an ideal cloud infrastructure, offering a balance of compute, memory, and networking resources for a broad range of applications that are deployed in the cloud\. They are well\-suited for the following applications:
-+ Web and application servers
-+ Small and medium databases
-+ Gaming servers
+**M5 and M5a instances**
+
+These instances provide an ideal cloud infrastructure, offering a balance of compute, memory, and networking resources for a broad range of applications that are deployed in the cloud\. They are well\-suited for the following:
++ Small and midsize databases
++ Data processing tasks that require additional memory
 + Caching fleets
-+ Running backend servers for SAP, Microsoft SharePoint, cluster computing, and other enterprise applications
++ Backend servers for SAP, Microsoft SharePoint, cluster computing, and other enterprise applications
 
-For more information, see [Amazon EC2 M5 Instances](https://aws.amazon.com/ec2/instance-types/m5)\.
+For more information, see [Amazon EC2 M5 and M5a Instances](https://aws.amazon.com/ec2/instance-types/m5)\.
 
 Bare metal instances, such as `m5.metal`, provide your applications with direct access to physical resources of the host server, such as processors and memory\. These instances are well suited for the following:
 + Workloads that require access to low\-level hardware features \(for example, Intel VT\) that are not available or fully supported in virtualized environments
@@ -17,7 +18,7 @@ Bare metal instances, such as `m5.metal`, provide your applications with direct 
 
 **T2, T3, and T3a instances**
 
-These instances provide a baseline level of CPU performance with the ability to burst to a higher level when required by your workload\. An Unlimited instance can sustain high CPU performance for any period of time whenever required\. For more information, see [Burstable performance instances](burstable-performance-instances.md)\. These instances are well\-suited for the following applications:
+These instances provide a baseline level of CPU performance with the ability to burst to a higher level when required by your workload\. An Unlimited instance can sustain high CPU performance for any period of time whenever required\. For more information, see [Burstable performance instances](burstable-performance-instances.md)\. These instances are well\-suited for the following:
 + Websites and web applications
 + Code repositories
 + Development, build, test, and staging environments
@@ -215,7 +216,7 @@ The following is a summary of features for general purpose instances:
 **\*** The root device volume must be an Amazon EBS volume\.
 
 For more information, see the following:
-+ [Amazon EBS and NVMe on Windows Instances](nvme-ebs-volumes.md)
++ [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)
 + [Amazon EC2 Instance Store](InstanceStorage.md)
 + [Placement Groups](placement-groups.md)
 

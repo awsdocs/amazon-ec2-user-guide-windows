@@ -20,7 +20,7 @@ There are many third\-party solutions that you can use to install a WAMP stack; 
 
 **To install a WAMP server**
 
-1. Connect to your instance using Microsoft Remote Desktop\. For more information, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+1. Connect to your instance using Microsoft Remote Desktop\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Disable Internet Explorer Enhanced Security Configuration so that you can download and install required software from the web\.
 

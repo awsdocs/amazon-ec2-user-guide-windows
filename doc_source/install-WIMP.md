@@ -21,7 +21,7 @@ You can, however, create a WIMP stack on an EC2 instance to prototype a web proj
 
 **To prepare your instance**
 
-1. Connect to your instance using Microsoft Remote Desktop\. For more information, see [Connecting to Your Windows Instance](connecting_to_windows_instance.md)\.
+1. Connect to your instance using Microsoft Remote Desktop\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Disable Internet Explorer Enhanced Security Configuration so that you can download and install required software from the web\.
 **Note**  

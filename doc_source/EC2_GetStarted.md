@@ -4,7 +4,7 @@ Let's get started with Amazon Elastic Compute Cloud \(Amazon EC2\) by launching,
 
 When you sign up for AWS, you can get started with Amazon EC2 using the [AWS Free Tier](https://aws.amazon.com/free/)\. If you created your AWS account less than 12 months ago, and have not already exceeded the free tier benefits for Amazon EC2, it will not cost you anything to complete this tutorial, because we help you select options that are within the free tier benefits\. Otherwise, you'll incur the standard Amazon EC2 usage fees from the time that you launch the instance until you terminate the instance \(which is the final task of this tutorial\), even if it remains idle\.
 
-For step\-by\-step tutorials on specific use cases for EC2 instances running Windows Server, see [Tutorials for Amazon EC2 Instances Running Windows Server](ec2-tutorials.md)\.
+For step\-by\-step tutorials on specific use cases for EC2 instances running Windows Server, see [Tutorials for Amazon EC2 instances running Windows Server](ec2-tutorials.md)\.
 
 **Topics**
 + [Overview](#ec2-get-started-overview)

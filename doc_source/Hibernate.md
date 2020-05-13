@@ -18,7 +18,7 @@ If an instance or application takes a long time to bootstrap and build a memory 
 
 We don't charge usage for a hibernated instance when it is in the `stopped` state\. We do charge for instance usage while the instance is in the `stopping` state, when the contents of the RAM are transferred to the Amazon EBS root volume\. \(This is different from when you [stop an instance](Stop_Start.md) without hibernating it\.\) We don't charge usage for data transfer fees\. However, we do charge for storage of any Amazon EBS volumes, including storage for the RAM contents\.
 
-If you no longer need an instance, you can terminate it at any time, including when it is in a `stopped` \(hibernated\) state\. For more information, see [Terminate Your Instance](terminating-instances.md)\.
+If you no longer need an instance, you can terminate it at any time, including when it is in a `stopped` \(hibernated\) state\. For more information, see [Terminate your instance](terminating-instances.md)\.
 
 **Note**  
 For information about using hibernation on Linux instances, see [Hibernate your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the *Amazon EC2 User Guide for Linux Instances*\.
@@ -48,7 +48,7 @@ When you hibernate a running instance, the following happens:
 + The instance retains its associated Elastic IP addresses\. You're charged for any Elastic IP addresses associated with a hibernated instance\. With EC2\-Classic, an Elastic IP address is disassociated from your instance when you hibernate it\. For more information, see [EC2\-Classic](ec2-classic-platform.md)\.
 + When you hibernate a ClassicLink instance, it's unlinked from the VPC to which it was linked\. You must link the instance to the VPC again after starting it\. For more information, see [ClassicLink](vpc-classiclink.md)\.
 
-For information about how hibernation differs from reboot, stop, and terminate, see [Differences Between Reboot, Stop, Hibernate, and Terminate](ec2-instance-lifecycle.md#lifecycle-differences)\.
+For information about how hibernation differs from reboot, stop, and terminate, see [Differences between reboot, stop, hibernate, and terminate](ec2-instance-lifecycle.md#lifecycle-differences)\.
 
 ## Hibernation prerequisites<a name="hibernating-prerequisites"></a>
 

@@ -20,13 +20,13 @@ For significant savings over On\-Demand Instances, use [AWS Savings Plans](http:
 
 You can work with On\-Demand Instances in the following ways:
 + [Launch your instance](LaunchingAndUsingInstances.md)
-+ [Connecting to Your Windows Instance](connecting_to_windows_instance.md)
++ [Connecting to your Windows instance](connecting_to_windows_instance.md)
 + [Stop and start your instance](Stop_Start.md)
 + [Hibernate your Windows instance](Hibernate.md)
-+ [Reboot Your Instance](ec2-instance-reboot.md)
-+ [Instance Retirement](instance-retirement.md)
-+ [Terminate Your Instance](terminating-instances.md)
-+ [Recover Your Instance](ec2-instance-recover.md)
++ [Reboot your instance](ec2-instance-reboot.md)
++ [Instance retirement](instance-retirement.md)
++ [Terminate your instance](terminating-instances.md)
++ [Recover your instance](ec2-instance-recover.md)
 + [Configuring your Windows instance](ec2-windows-instances.md)
 + [Identify EC2 Windows Instances](identify_ec2_instances.md)
 

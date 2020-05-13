@@ -2,7 +2,9 @@
 
 Memory optimized instances are designed to deliver fast performance for workloads that process large data sets in memory\.
 
-These instances are well suited for the following applications:
+**R5, R5a, and R5n instances**
+
+These instances are well suited for the following:
 + High\-performance, relational \(MySQL\) and NoSQL \(MongoDB, Cassandra\) databases\.
 + Distributed web scale cache stores that provide in\-memory caching of key\-value type data \(Memcached and Redis\)\.
 + In\-memory databases using optimized data storage formats and analytics for business intelligence \(for example, SAP HANA\)\.
@@ -16,11 +18,11 @@ Bare metal instances, such as `r5.metal`, provide your applications with direct 
 For more information, see [Amazon EC2 R5 Instances](https://aws.amazon.com/ec2/instance-types/r5)\.
 
 **High memory instances**  
-High memory instances \(`u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, and `u-24tb1.metal`\) offer 6 TiB, 9 TiB, 12 TiB, 18 TiB, and 24 TiB of memory per instance\. These instances are designed to run large in\-memory databases, including production installations of SAP HANA\. They offer bare metal performance with direct access to host hardware\. For more information, see [Amazon EC2 High Memory Instances](http://aws.amazon.com/ec2/instance-types/high-memory/)\.
+High memory instances \(`u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, and `u-24tb1.metal`\) offer 6 TiB, 9 TiB, 12 TiB, 18 TiB, and 24 TiB of memory per instance\. These instances are designed to run large in\-memory databases, including production deployments of the SAP HANA in\-memory database, in the cloud\. They offer bare metal performance with direct access to host hardware\. For more information, see [Amazon EC2 High Memory Instances](http://aws.amazon.com/ec2/instance-types/high-memory/) and [Storage Configuration for SAP HANA](https://docs.aws.amazon.com/quickstart/latest/sap-hana/storage.html)\.
 
 **X1 instances**
 
-These instances are well suited for the following applications:
+These instances are well suited for the following:
 + In\-memory databases such as SAP HANA, including SAP\-certified support for Business Suite S/4HANA, Business Suite on HANA \(SoH\), Business Warehouse on HANA \(BW\), and Data Mart Solutions on HANA\. For more information, see [SAP HANA on the AWS Cloud](https://aws.amazon.com/sap/solutions/saphana/)\.
 + Big\-data processing engines such as Apache Spark or Presto\.
 + High\-performance computing \(HPC\) applications\.
@@ -29,7 +31,7 @@ For more information, see [Amazon EC2 X1 Instances](https://aws.amazon.com/ec2/i
 
 **X1e instances**
 
-These instances are well suited for the following applications:
+These instances are well suited for the following:
 + High\-performance databases\.
 + In\-memory databases such as SAP HANA\. For more information, see [SAP HANA on the AWS Cloud](https://aws.amazon.com/sap/solutions/saphana/)\.
 + Memory\-intensive enterprise applications\.
@@ -38,7 +40,7 @@ For more information, see [Amazon EC2 X1e Instances](https://aws.amazon.com/ec2/
 
 **z1d instances**
 
-These instances deliver both high compute and high memory and are well\-suited for the following applications:
+These instances deliver both high compute and high memory and are well\-suited for the following:
 + Electronic Design Automation \(EDA\)
 + Relational database workloads
 
@@ -181,10 +183,12 @@ The following is a summary of network performance for memory optimized instances
 |  r5a\.16xlarge \| r5ad\.16xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  r5\.16xlarge \| r5a\.24xlarge \| r5ad\.24xlarge \| r5d\.16xlarge  | 20 Gbps | [ENA](enhanced-networking-ena.md) | 
 | r5dn\.4xlarge and smaller \| r5n\.4xlarge and smaller | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
-|  r4\.16xlarge \| r5\.24xlarge \| r5\.metal \| r5d\.24xlarge \| r5d\.metal \| r5dn\.8xlarge \| r5n\.8xlarge \| u\-6tb1\.metal \| u\-9tb1\.metal \| u\-12tb1\.metal \| x1\.32xlarge \| x1e\.32xlarge \| z1d\.12xlarge \| z1d\.metal  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  r4\.16xlarge \| r5\.24xlarge \| r5\.metal \| r5d\.24xlarge \| r5d\.metal \| r5dn\.8xlarge \| r5n\.8xlarge \| x1\.32xlarge \| x1e\.32xlarge \| z1d\.12xlarge \| z1d\.metal  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
 | r5dn\.12xlarge \| r5n\.12xlarge | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 | r5dn\.16xlarge \| r5n\.16xlarge | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  r5dn\.24xlarge \| r5n\.24xlarge \| u\-18tb1\.metal \| u\-24tb1\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  r5dn\.24xlarge \| r5n\.24xlarge \| u\-6tb1\.metal † \| u\-9tb1\.metal † \| u\-12tb1\.metal † \| u\-18tb1\.metal \| u\-24tb1\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+
+† Instances of this type launched after March 12, 2020 provide network performance of 100 Gbps\. Instances of this type launched before March 12, 2020 might only provide network performance of 25 Gbps\. To ensure that instances launched before March 12, 2020 have a network performance of 100 Gbps, contact your account team to upgrade your instance at no additional cost\.
 
 † These instances use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. They accrue credits when their bandwidth is below their baseline bandwidth, and can use these credits when they perform network data transfers\. For more information, open a support case and ask about baseline bandwidth for the specific instance types that you are interested in\.
 
@@ -260,7 +264,7 @@ The following is a summary of features for memory optimized instances\.
 **\*** The root device volume must be an Amazon EBS volume\.
 
 For more information, see the following:
-+ [Amazon EBS and NVMe on Windows Instances](nvme-ebs-volumes.md)
++ [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)
 + [Amazon EC2 Instance Store](InstanceStorage.md)
 + [Placement Groups](placement-groups.md)
 
@@ -268,7 +272,7 @@ For more information, see the following:
 
 X1 instances support Single Device Data Correction \(SDDC \+1\), which detects and corrects multi\-bit errors\. SDDC \+1 uses error checking and correction code to identify and disable a failed single DRAM device\.
 
-In addition, you can implement high availability \(HA\) and disaster recovery \(DR\) solutions to meet recovery point objective \(RPO\), recovery time objective \(RTO\), and cost requirements by leveraging [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) and [Recover Your Instance](ec2-instance-recover.md)\. 
+In addition, you can implement high availability \(HA\) and disaster recovery \(DR\) solutions to meet recovery point objective \(RPO\), recovery time objective \(RTO\), and cost requirements by leveraging [Amazon CloudFormation](https://aws.amazon.com/cloudformation/) and [Recover your instance](ec2-instance-recover.md)\. 
 
 If you run an SAP HANA production environment, you also have the option of using HANA System Replication \(HSR\) on X1 instances\. For more information about architecting HA and DR solutions on X1 instances, see [SAP HANA on the Amazon Web Services Cloud: Quick Start Reference Deployment](http://aws.amazon.com/quickstart/architecture/sap-hana/)\.
 
