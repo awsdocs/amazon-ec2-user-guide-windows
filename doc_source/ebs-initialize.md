@@ -1,4 +1,4 @@
-# Initializing Amazon EBS Volumes<a name="ebs-initialize"></a>
+# Initializing Amazon EBS volumes<a name="ebs-initialize"></a>
 
 New EBS volumes receive their maximum performance the moment that they are available and do not require initialization \(formerly known as pre\-warming\)\.
 
@@ -8,10 +8,10 @@ For volumes that were restored from snapshots, the storage blocks must be pulled
 While initializing `io1` volumes that were restored from snapshots, the performance of the volume may drop below 50 percent of its expected level, which causes the volume to display a `warning` state in the **I/O Performance** status check\. This is expected, and you can ignore the `warning` state on `io1` volumes while you are initializing them\. For more information, see [EBS volume status checks](monitoring-volume-status.md#monitoring-volume-checks)\.
 
 For most applications, amortizing the initialization cost over the lifetime of the volume is acceptable\. To avoid this initial performance hit in a production environment, you can use one of the following options:
-+ Force the immediate initialization of the entire volume\. For more information, see [Initializing Amazon EBS Volumes on Windows](#ebs-initialize-windows)\.
++ Force the immediate initialization of the entire volume\. For more information, see [Initializing Amazon EBS volumes on Windows](#ebs-initialize-windows)\.
 + Enable fast snapshot restore on a snapshot to ensure that the EBS volumes created from it are fully\-initialized at creation and instantly deliver all of their provisioned performance\. For more information, see [Amazon EBS fast snapshot restore](ebs-fast-snapshot-restore.md)\.
 
-## Initializing Amazon EBS Volumes on Windows<a name="ebs-initialize-windows"></a>
+## Initializing Amazon EBS volumes on Windows<a name="ebs-initialize-windows"></a>
 
 New EBS volumes receive their maximum performance the moment that they are available and do not require initialization \(formerly known as pre\-warming\)\. For volumes that have been restored from snapshots, use dd or fio for Windows to read from all of the blocks on a volume\. All existing data on the volume will be preserved\.
 
@@ -66,7 +66,7 @@ The following steps don't update the environment variables in your current comma
 
    1. Choose **OK** to close the **Edit System Variable ** window\.
 
-**Initialize a volume using dd for Windows**
+**To initialize a volume using dd for Windows**
 
 1. <a name="prewarm_snapshot_command"></a>Execute the following command to read all blocks on the specified device \(and send the output to the `/dev/null` virtual device\)\. This command safely initializes your existing data\.
 **Important**  
@@ -84,7 +84,7 @@ You may see an error if dd attempts to read beyond the end of the volume\. This 
 
 Complete the following procedures to install and use fio to initialize a volume\.
 
-**Install fio for Windows**
+**To install fio for Windows**
 
 The fio for Windows program provides a similar experience to the fio program that is commonly available for Linux and Unix systems, and it allows you to initialize Amazon EBS volumes that have been restored from snapshots\. Full documentation for the program is available at [https://github\.com/axboe/fio](https://github.com/axboe/fio)\.
 
@@ -92,7 +92,7 @@ The fio for Windows program provides a similar experience to the fio program tha
 
 1. Install fio\.
 
-**Initialize a volume using fio for Windows**
+**To initialize a volume using fio for Windows**
 
 1. Run a command similar to the following to initialize a volume:
 

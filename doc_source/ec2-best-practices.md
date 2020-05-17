@@ -49,7 +49,7 @@ Windows instances in AWS should adhere to the following high\-level best practic
 **Backup and recovery**
 + Regularly back up your EBS volumes using [Amazon EBS snapshots](EBSSnapshots.md), and create an [Amazon Machine Image \(AMI\)](AMIs.md) from your instance to save the configuration as a template for launching future instances\.
 + Deploy critical components of your application across multiple Availability Zones, and replicate your data appropriately\.
-+ Design your applications to handle dynamic IP addressing when your instance restarts\. For more information, see [Amazon EC2 Instance IP Addressing](using-instance-addressing.md)\.
++ Design your applications to handle dynamic IP addressing when your instance restarts\. For more information, see [Amazon EC2 instance IP addressing](using-instance-addressing.md)\.
 + Monitor and respond to events\. For more information, see [Monitoring Amazon EC2](monitoring_ec2.md)\.
-+ Ensure that you are prepared to handle failover\. For a basic solution, you can manually attach a network interface or Elastic IP address to a replacement instance\. For more information, see [Elastic Network Interfaces](using-eni.md)\. For an automated solution, you can use Amazon EC2 Auto Scaling\. For more information, see the [Amazon EC2 Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/latest/userguide/)\.
++ Ensure that you are prepared to handle failover\. For a basic solution, you can manually attach a network interface or Elastic IP address to a replacement instance\. For more information, see [Elastic network interfaces](using-eni.md)\. For an automated solution, you can use Amazon EC2 Auto Scaling\. For more information, see the [Amazon EC2 Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/latest/userguide/)\.
 + Regularly test the process of recovering your instances and Amazon EBS volumes if they fail\.

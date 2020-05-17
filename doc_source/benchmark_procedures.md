@@ -1,4 +1,4 @@
-# Benchmark EBS Volumes<a name="benchmark_procedures"></a>
+# Benchmark EBS volumes<a name="benchmark_procedures"></a>
 
 You can test the performance of Amazon EBS volumes by simulating I/O workloads\. The process is as follows:
 
@@ -19,7 +19,7 @@ You can test the performance of Amazon EBS volumes by simulating I/O workloads\.
 **Important**  
 Some of the procedures result in the destruction of existing data on the EBS volumes you benchmark\. The benchmarking procedures are intended for use on volumes specially created for testing purposes, not production volumes\.
 
-## Set Up Your Instance<a name="set_up_instance"></a>
+## Set up your instance<a name="set_up_instance"></a>
 
 To get optimal performance from EBS volumes, we recommend that you use an EBS\-optimized instance\. EBS\-optimized instances deliver dedicated throughput between Amazon EC2 and Amazon EBS, with instance\. EBS\-optimized instances deliver dedicated bandwidth between Amazon EC2 and Amazon EBS, with specifications depending on the instance type\. For more information, see [Amazon EBS–optimized instances](ebs-optimized.md)\.
 
@@ -33,7 +33,7 @@ To create an `io1` volume, choose **Provisioned IOPS SSD** when creating the vol
 
 To create an `st1` volume, choose **Throughput Optimized HDD** when creating the volume using the Amazon EC2 console, or specify \-\-type `st1` when using the command line\. To create an `sc1` volume, choose Cold HDD when creating the volume using the Amazon EC2 console, or specify \-\-type `sc1` when using the command line\. For information about creating EBS volumes, see [Creating an Amazon EBS volume](ebs-creating-volume.md)\. For information about attaching these volumes to your instance, see [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
 
-## Install Benchmark Tools<a name="install_tools"></a>
+## Install benchmark tools<a name="install_tools"></a>
 
 The following table lists some of the possible tools you can use to benchmark the performance of EBS volumes\.
 
@@ -45,25 +45,25 @@ The following table lists some of the possible tools you can use to benchmark th
 
 These benchmarking tools support a wide variety of test parameters\. You should use commands that approximate the workloads your volumes will support\. These commands provided below are intended as examples to help you get started\.
 
-## Choosing the Volume Queue Length<a name="UnderstandingQueueLength"></a>
+## Choosing the volume queue length<a name="UnderstandingQueueLength"></a>
 
 Choosing the best volume queue length based on your workload and volume type\.
 
-### Queue Length on SSD\-backed Volumes<a name="SSD_queue"></a>
+### Queue length on SSD\-backed volumes<a name="SSD_queue"></a>
 
 To determine the optimal queue length for your workload on SSD\-backed volumes, we recommend that you target a queue length of 1 for every 1000 IOPS available \(baseline for `gp2` volumes and the provisioned amount for `io1` volumes\)\. Then you can monitor your application performance and tune that value based on your application requirements\.
 
 Increasing the queue length is beneficial until you achieve the provisioned IOPS, throughput or optimal system queue length value, which is currently set to 32\. For example, a volume with 3,000 provisioned IOPS should target a queue length of 3\. You should experiment with tuning these values up or down to see what performs best for your application\.
 
-### Queue Length on HDD\-backed Volumes<a name="HDD_queue"></a>
+### Queue length on HDD\-backed volumes<a name="HDD_queue"></a>
 
 To determine the optimal queue length for your workload on HDD\-backed volumes, we recommend that you target a queue length of at least 4 while performing 1MiB sequential I/Os\. Then you can monitor your application performance and tune that value based on your application requirements\. For example, a 2 TiB `st1` volume with burst throughput of 500 MiB/s and IOPS of 500 should target a queue length of 4, 8, or 16 while performing 1,024 KiB, 512 KiB, or 256 KiB sequential I/Os respectively\. You should experiment with tuning these values value up or down to see what performs best for your application\.
 
-## Disable C\-States<a name="cstates"></a>
+## Disable C\-states<a name="cstates"></a>
 
 Before you run benchmarking, you should disable processor C\-states\. Temporarily idle cores in a supported CPU can enter a C\-state to save power\. When the core is called on to resume processing, a certain amount of time passes until the core is again fully operational\. This latency can interfere with processor benchmarking routines\. For more information about C\-states and which EC2 instance types support them, see [Processor State Control for Your EC2 Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/processor_state_control.html)\.
 
-### Disabling C\-States on a Windows System<a name="windows-cstates"></a>
+### Disabling C\-states on Windows<a name="windows-cstates"></a>
 
 You can disable C\-states on Windows as follows:
 
@@ -103,15 +103,15 @@ You can disable C\-states on Windows as follows:
    C:\> powercfg /setactive <power_scheme_guid>
    ```
 
-## Perform Benchmarking<a name="perform_benchmarking"></a>
+## Perform benchmarking<a name="perform_benchmarking"></a>
 
 The following procedures describe benchmarking commands for various EBS volume types\. 
 
-Run the following commands on an EBS\-optimized instance with attached EBS volumes\. If the EBS volumes were restored from snapshots, be sure to initialize them before benchmarking\. For more information, see [Initializing Amazon EBS Volumes](ebs-initialize.md)\.
+Run the following commands on an EBS\-optimized instance with attached EBS volumes\. If the EBS volumes were restored from snapshots, be sure to initialize them before benchmarking\. For more information, see [Initializing Amazon EBS volumes](ebs-initialize.md)\.
 
 When you are finished testing your volumes, see the following topics for help cleaning up: [Deleting an Amazon EBS volume](ebs-deleting-volume.md) and [Terminate your instance](terminating-instances.md)\.
 
-### Benchmarking io1 Volumes<a name="piops_benchmarking"></a>
+### Benchmarking io1 volumes<a name="piops_benchmarking"></a>
 
 Run DiskSpd on the volume that you created\.
 

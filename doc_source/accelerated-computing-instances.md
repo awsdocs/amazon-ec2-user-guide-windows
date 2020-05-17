@@ -6,7 +6,7 @@ GPU\-based instances provide access to NVIDIA GPUs with thousands of compute cor
 
 If your application needs a small amount of additional graphics acceleration, but is better suited for an instance type with different compute, memory, or storage specifications, use an Elastic Graphics accelerator instead\. For more information, see [Amazon Elastic Graphics](elastic-graphics.md)\.
 
-You can cluster accelerated computing instances into a cluster placement group\. Cluster placement groups provide low latency and high\-bandwidth connectivity between the instances within a single Availability Zone\. For more information, see [Placement Groups](placement-groups.md)\.
+You can cluster accelerated computing instances into a cluster placement group\. Cluster placement groups provide low latency and high\-bandwidth connectivity between the instances within a single Availability Zone\. For more information, see [Placement groups](placement-groups.md)\.
 
 **Topics**
 + [Accelerated computing instance families](#gpu-instance-families)
@@ -139,7 +139,7 @@ The following is a summary of features for accelerated computing instances\.
 For more information, see the following:
 + [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)
 + [Amazon EC2 Instance Store](InstanceStorage.md)
-+ [Placement Groups](placement-groups.md)
++ [Placement groups](placement-groups.md)
 
 ## Release notes<a name="gpu-instance-current-limitations"></a>
 + You must launch the instance using an HVM AMI\.

@@ -160,4 +160,4 @@ Use one of the following commands:
 
 ------
 
-For more information, see [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)\.
+For more information, see [Amazon EC2 security groups for Windows instances](ec2-security-groups.md)\.

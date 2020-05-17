@@ -424,7 +424,7 @@ The following PowerShell example uses the built\-in Windows firewall to prevent 
 ```
 PS C:\> $blockPrincipal = New-Object -TypeName System.Security.Principal.NTAccount ("NT AUTHORITY\IUSR")
 PS C:\> $BlockPrincipalSID = $blockPrincipal.Translate([System.Security.Principal.SecurityIdentifier]).Value
-PS C:\> $BlockPrincipalSDDL = "D:(A;;CC;;;$PrincipalSID)"
+PS C:\> $BlockPrincipalSDDL = "D:(A;;CC;;;$BlockPrincipalSID)"
 PS C:\> New-NetFirewallRule -DisplayName "Block metadata service from IIS" -Action block -Direction out `
 -Protocol TCP -RemoteAddress 169.254.169.254 -LocalUser $BlockPrincipalSDDL
 ```

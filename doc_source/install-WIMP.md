@@ -103,7 +103,7 @@ IIS is a feature of Windows Server and is installed by using Server Manager\. Th
 After setup completes, verify that the IIS web server is configured properly and running by going to the IIS welcome page\. Open a web browser on a different computer and enter either the public DNS address of the WIMP server or the public IP address\. The public DNS address for your instance is listed on the Amazon EC2 console in the **Public DNS** column\. If this column is hidden, click the **Show/Hide** icon and select **Public DNS**\.
 
 **Important**  
-If you do not see the Bitnami test page, use Windows Firewall with Advanced Security to create a custom rule that allows the HTTP protocol through port 80 and the HTTPS protocol through port 443\. For more information, see [Network Security](https://technet.microsoft.com/en-us/library/cc725616.aspx) on Microsoft TechNet\. Also verify that the security group for your instances contains a rule to allow connections on HTTP \(port 80\)\. For more information, see [Adding Rules to a Security Group](working-with-security-groups.md#adding-security-group-rule)\.
+If you do not see the Bitnami test page, use Windows Firewall with Advanced Security to create a custom rule that allows the HTTP protocol through port 80 and the HTTPS protocol through port 443\. For more information, see [Network Security](https://technet.microsoft.com/en-us/library/cc725616.aspx) on Microsoft TechNet\. Also verify that the security group for your instances contains a rule to allow connections on HTTP \(port 80\)\. For more information, see [Adding rules to a security group](working-with-security-groups.md#adding-security-group-rule)\.
 
 ## Install MySQL and PHP<a name="wimp-mysql-php"></a>
 

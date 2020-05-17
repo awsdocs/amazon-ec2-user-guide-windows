@@ -266,7 +266,7 @@ The following is a summary of features for memory optimized instances\.
 For more information, see the following:
 + [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)
 + [Amazon EC2 Instance Store](InstanceStorage.md)
-+ [Placement Groups](placement-groups.md)
++ [Placement groups](placement-groups.md)
 
 ## High availability and reliability \(X1\)<a name="x1-windows-high-avail"></a>
 

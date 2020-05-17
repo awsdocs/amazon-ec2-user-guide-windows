@@ -6,7 +6,7 @@ For more information about extending a file system on Linux, see [Extending a Li
 
 **To extend a Windows file system**
 
-1. Before extending a file system that contains valuable data, it is a best practice to create a snapshot of the volume that contains it in case you need to roll back your changes\. For more information, see [Creating Amazon EBS Snapshots](ebs-creating-snapshot.md)\.
+1. Before extending a file system that contains valuable data, it is a best practice to create a snapshot of the volume that contains it in case you need to roll back your changes\. For more information, see [Creating Amazon EBS snapshots](ebs-creating-snapshot.md)\.
 
 1. Log in to your Windows instance using Remote Desktop\.
 

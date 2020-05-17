@@ -17,7 +17,7 @@ For security best practices for Amazon EC2 running Windows Server, see **Securit
 + [Data protection in Amazon EC2](data-protection.md)
 + [Identity and access management for Amazon EC2](security-iam.md)
 + [Amazon EC2 key pairs and Windows instances](ec2-key-pairs.md)
-+ [Amazon EC2 Security Groups for Windows Instances](ec2-security-groups.md)
++ [Amazon EC2 security groups for Windows instances](ec2-security-groups.md)
 + [Configuration management in Amazon EC2](configuration-management.md)
 + [Update management in Amazon EC2](update-management.md)
 + [Change management in Amazon EC2](change-management.md)
