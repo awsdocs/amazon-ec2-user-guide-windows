@@ -1,14 +1,14 @@
-# Windows to Linux Replatforming Assistant for Microsoft SQL Server Databases<a name="replatform-sql-server"></a>
+# Windows to Linux replatforming assistant for Microsoft SQL Server Databases<a name="replatform-sql-server"></a>
 
 The Windows to Linux replatforming assistant for Microsoft SQL Server Databases service is a scripting tool\. It helps you move existing Microsoft SQL Server workloads from a Windows to a Linux operating system\. You can use the replatforming assistant with any Windows Server virtual machines \(VMs\) hosted in the cloud, or with on\-premises environments running Microsoft SQL Server 2008 and later\. The tool checks for common incompatibilities, exports databases from the Windows VM, and imports into an EC2 instance running Microsoft SQL Server 2017 on Ubuntu 16\.04\. The automated process results in a ready\-to\-use Linux VM configured with your selected SQL Server databases that can be used for experimenting and testing\.
 
 **Topics**
 + [Concepts](#replatform-sql-server-concepts)
-+ [Related Services](#replatform-sql-server-related-services)
-+ [How Windows to Linux Replatforming Assistant for Microsoft SQL Server Works](#replatform-sql-server-how-it-works)
++ [Related services](#replatform-sql-server-related-services)
++ [How Windows to Linux replatforming assistant for Microsoft SQL Server works](#replatform-sql-server-how-it-works)
 + [Components](#replatform-sql-server-components)
-+ [Setting Up](replatform-sql-server-setting-up.md)
-+ [Getting Started](replatform-sql-server-getting-started.md)
++ [Setting up](replatform-sql-server-setting-up.md)
++ [Getting started](replatform-sql-server-getting-started.md)
 
 ## Concepts<a name="replatform-sql-server-concepts"></a>
 
@@ -26,11 +26,11 @@ A logical and meaningful sequence for restoring a set of Microsoft SQL Server ba
 
 A Microsoft SQL Server database can be replatformed from an EC2 Windows instance to an EC2 Linux instance running Microsoft SQL Server\. It can also be replatformed to the VMware Cloud running Microsoft SQL Server Linux on AWS\.
 
-## Related Services<a name="replatform-sql-server-related-services"></a>
+## Related services<a name="replatform-sql-server-related-services"></a>
 
 [AWS Systems Manager \(Systems Manager\)](https://aws.amazon.com/systems-manager) gives you visibility and control of your infrastructure on AWS\. The Windows to Linux replatforming assistant for Microsoft SQL Server Databases uses Systems Manager to move your Microsoft SQL databases to Microsoft SQL Server on EC2 Linux\. For more information about Systems Manager, see the *[AWS Systems Manager User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/)*\.
 
-## How Windows to Linux Replatforming Assistant for Microsoft SQL Server Works<a name="replatform-sql-server-how-it-works"></a>
+## How Windows to Linux replatforming assistant for Microsoft SQL Server works<a name="replatform-sql-server-how-it-works"></a>
 
 Windows to Linux replatforming assistant for Microsoft SQL Server Databases allows you to migrate your Microsoft SQL Server databases from an on\-premises environment or from an EC2 Windows instance to Microsoft SQL Server 2017 on EC2 Linux using backup and restore\. For the destination EC2 Linux instance, you provide either the EC2 instance ID or the EC2 instance type with the subnet ID and EC2 Key Pair\.
 

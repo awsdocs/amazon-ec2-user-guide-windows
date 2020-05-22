@@ -68,7 +68,7 @@ You can reboot a Windows instance after installing updates\. For more informatio
 
 ## Upgrading or migrating to a newer version of Windows Server<a name="WinAMI_Upgrading"></a>
 
-For information about how to upgrade or migrate a Windows instance to a newer version of Windows Server, see [Upgrading an Amazon EC2 Windows Instance to a Newer Version of Windows Server](serverupgrade.md)\.
+For information about how to upgrade or migrate a Windows instance to a newer version of Windows Server, see [Upgrading an Amazon EC2 Windows instance to a newer version of Windows Server](serverupgrade.md)\.
 
 ## Subscribing to Windows AMI notifications<a name="subscribe-notifications"></a>
 

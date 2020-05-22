@@ -70,6 +70,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2020\.5\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-versions.html)  | 
 | 2020\.4\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-versions.html)  | 
 | 2020\.3\.18 |  **Windows Server 2019 AMIs** Resolves an intermittent issue discovered in the 2020\.3\.11 release in which the Background Intelligent Transfer Service \(BITS\) may not start within the expected time after initial OS boot, potentially resulting in timeouts, BITS errors in the event log, or failures of cmdlets involving BITS invoked quickly after the initial boot\. Other Windows Server AMIs are not affected by this issue, and their latest version remains 2020\.03\.11\.  | 
 | 2020\.3\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-versions.html)  | 

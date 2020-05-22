@@ -12,4 +12,4 @@ If the instance does not pass both status checks after removing applications or 
 + Stop the instance and attach the root volume to another instance\. For more information, see the description of how to stop and attach the root volume to another instance in ["Waiting for the metadata service"](common-messages.md#metadata-unavailable)\.
 + Analyze Windows Setup log files and event logs for failures\. 
 
-For other issues or problems with an operating system upgrade or migration, we recommend reviewing the articles listed in [Before You Begin an In\-Place Upgrade](os-inplaceupgrade.md#os-upgrade-before)\.
+For other issues or problems with an operating system upgrade or migration, we recommend reviewing the articles listed in [Before you begin an in\-place upgrade](os-inplaceupgrade.md#os-upgrade-before)\.

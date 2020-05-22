@@ -1,12 +1,12 @@
-# Getting Started<a name="replatform-sql-server-getting-started"></a>
+# Getting started<a name="replatform-sql-server-getting-started"></a>
 
 This section contains the PowerShell parameter definitions and scripts for replatforming your databases\. For more information about how to use PowerShell scripts, see [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/overview)\.
 
 **Topics**
-+ [Running the Windows to Linux Replatforming Assistant for Microsoft SQL Server Script](#replatform-sql-server-script)
++ [Running the Windows to Linux replatforming assistant for Microsoft SQL Server script](#replatform-sql-server-script)
 + [Parameters](#replatform-sql-server-parameters)
 
-## Running the Windows to Linux Replatforming Assistant for Microsoft SQL Server Script<a name="replatform-sql-server-script"></a>
+## Running the Windows to Linux replatforming assistant for Microsoft SQL Server script<a name="replatform-sql-server-script"></a>
 
 The following common scenarios and example PowerShell scripts demonstrate how to replatform your Microsoft SQL Server databases using Windows to Linux replatforming assistant for Microsoft SQL Server Databases\.
 

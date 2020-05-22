@@ -1,18 +1,18 @@
-# Performing an Automated Upgrade<a name="automated-upgrades"></a>
+# Performing an automated upgrade<a name="automated-upgrades"></a>
 
-You can perform an automated upgrade on your Windows Server and SQL Server 2008 R2 with Service Pack 3 instances on AWS with AWS Systems Manager SSM documents\. 
+You can perform an automated upgrade on your Windows Server 2008 R2, Windows Server 2012 R2, Windows Server 2016, and SQL Server 2008 R2 with Service Pack 3 instances on AWS with AWS Systems Manager Automation documents\. 
 
 The Systems Manager Automation documents provide two upgrade paths:
-+ Using the SSM document for Automation named [AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html) in-place upgrade can be performed from Windows Server 2008 R2, 2012 R2 or 2016 to Windows Server 2012 R2, 2016 or 2019
-+ SQL Server 2008 R2 on Windows Server 2012 R2 to SQL Server 2016 using the SSM document for Automation named [AWSEC2\-CloneInstanceAndUpgradeSQLServer](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeSQLServer.html) 
++ Windows Server 2008 R2, 2012 R2, or 2016 to Windows Server 2012 R2, 2016, or 2019 using the Systems Manager document for Automation named [AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html)
++ SQL Server 2008 R2 on Windows Server 2012 R2 to SQL Server 2016 using the Systems Manager document for Automation named [AWSEC2\-CloneInstanceAndUpgradeSQLServer](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeSQLServer.html) 
 
 **Topics**
-+ [Related Services](#automated-related)
++ [Related services](#automated-related)
 + [Prerequisites](#automated-prereq)
-+ [Upgrade Paths](#upgrade-paths)
-+ [Steps for Performing an Automated Upgrade](#upgrade-steps-auto)
++ [Upgrade paths](#upgrade-paths)
++ [Steps for performing an automated upgrade](#upgrade-steps-auto)
 
-## Related Services<a name="automated-related"></a>
+## Related services<a name="automated-related"></a>
 
 The following AWS services are used in the automated upgrade process:
 + **AWS Systems Manager**\. AWS Systems Manager is a powerful, unified interface for centrally managing your AWS resources\. For more information, see the *[AWS Systems Manager User Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/)*\.
@@ -21,19 +21,19 @@ The following AWS services are used in the automated upgrade process:
 
 ## Prerequisites<a name="automated-prereq"></a>
 
-In order to automate your upgrade with AWS Systems Manager SSM documents, you must perform the following tasks:
+In order to automate your upgrade with AWS Systems Manager Automation documents, you must perform the following tasks:
 + [Create an IAM role with the specified IAM policies](#automated-iam) to allow Systems Manager to perform automation tasks on your Amazon EC2 instances and verify that you meet the prerequisites to use Systems Manager\.
 + [Select the option for how you want the automation to be executed](#automated-execution-option)\. The options for execution are **Simple execution**, **Rate control**, **Multi\-account and Region**, and **Manual execution**\. 
 
-### Create IAM Role with Specified Permissions<a name="automated-iam"></a>
+### Create IAM role with specified permissions<a name="automated-iam"></a>
 
-For steps on how to create an IAM role in order to allow AWS Systems Manager to access resources on your behalf, see [Creating a Role to Delegate Permissions to an AWS Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html)\. This topic also contains information on how to verify that your account meets the prerequisites to use Systems Manager\.
+For steps on how to create an IAM role in order to allow AWS Systems Manager to access resources on your behalf, see [Creating a Role to Delegate Permissions to an AWS Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html) in the *IAM User Guide*\. This topic also contains information on how to verify that your account meets the prerequisites to use Systems Manager\.
 
-### Select Execution Option<a name="automated-execution-option"></a>
+### Select execution option<a name="automated-execution-option"></a>
 
-When you select **Automation** on the Systems Manager console, select **Execute**\. After you select an SSM document, you are then prompted to choose an automation execution option\. You choose from the following options\. In the steps for the paths provided later in this topic, we use the **Simple execution** option\.
+When you select **Automation** on the Systems Manager console, select **Execute**\. After you select an Automation document, you are then prompted to choose an automation execution option\. You choose from the following options\. In the steps for the paths provided later in this topic, we use the **Simple execution** option\.
 
-**Simple Execution**  
+**Simple execution**  
 Choose this option if you want to update a single instance but do not want to go through each automation step to audit the results\. This option is explained in further detail in the upgrade steps that follow\.
 
 **Rate control**
@@ -68,15 +68,17 @@ In addition to the parameters specified under Rate Control that are also used in
 
   Specify multiple AWS Regions where you want to run the automation\.
 
-**Manual Execution**  
+**Manual execution**  
 This option is similar to **Simple execution**, but allows you to step through each automation step and audit the results\.
 
-## Upgrade Paths<a name="upgrade-paths"></a>
+## Upgrade paths<a name="upgrade-paths"></a>
 
 There are two upgrade paths, which use two different AWS Systems Manager Automation documents\.
-+ `[AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html)`\. This script creates an Amazon Machine Image \(AMI\) from a supported version instance \(Windows Server 2008 R2, 2012 R2 or 2016\) in your account and upgrades this AMI to a supported version of your choice \(Windows Server 2012 R2, 2016 or 2019\)\. This multi\-step process can take up to two hours to complete\. To upgrade your Windows Server 2008 R2 instance to Windows Server 2016 or 2019, an in\-place upgrade is performed twice because directly upgrading Windows Server 2008 R2 to Windows Server 2016 or 2019 is not supported\.
++ `[AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html)`\. This script creates an Amazon Machine Image \(AMI\) from a Windows Server 2008 R2, 2012 R2, or 2016 instance in your account and upgrades this AMI to a supported version of your choice \(Windows Server 2012 R2, 2016, or 2019\)\. This multi\-step process can take up to two hours to complete\.
 
-  In this workflow, the automation creates an AMI from the instance and then launches the new AMI in the subnet you provide\. The automation workflow performs an in\-place upgrade from a supported version to the selected one\. It also updates or installs the AWS drivers required by the upgraded instance\. After the upgrade is complete, the workflow creates a new AMI and terminates the upgraded instance\. When the in\-place upgrade is performed twice, the automation will create two AMIs\.
+  To upgrade your Windows Server 2008 R2 instance to Windows Server 2016 or 2019, an in\-place upgrade is performed twice, first from Windows Server 2008 R2 to Windows Server 2012 R2, and then from Windows Server 2012 R2 to Windows Server 2016 or 2019\. Directly upgrading Windows Server 2008 R2 to Windows Server 2016 or 2019 is not supported\. 
+
+  In this workflow, the automation creates an AMI from the instance and then launches the new AMI in the subnet you provide\. The automation workflow performs an in\-place upgrade from Windows Server 2008 R2, 2012 R2 or 2016 to the selected version \(Windows Server 2012 R2, 2016, or 2019\)\. It also updates or installs the AWS drivers required by the upgraded instance\. After the upgrade is complete, the workflow creates a new AMI and terminates the upgraded instance\. If you upgrade from Windows Server 2008 R2 to Windows Server 2016 or 2019, the automation creates two AMIs because the in\-place upgrade is performed twice\.
 + `[AWSEC2\-CloneInstanceAndUpgradeSQLServer](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeSQLServer.html)`\. This script creates an AMI from an Amazon EC2 instance running SQL Server 2008 R2 SP3 in your account, and then upgrades the AMI to SQL Server 2016 SP2\. This multi\-step process can take up to two hours to complete\.
 
   In this workflow, the automation creates an AMI from the instance and then launches the new AMI in the subnet you provide\. The automation then performs an in\-place upgrade of SQL Server 2008 R2 to SQL Server 2016 SP2\. After the upgrade is complete, the automation creates a new AMI before terminating the upgraded instance\. 
@@ -89,17 +91,17 @@ There are two upgrade paths, which use two different AWS Systems Manager Automat
 
   When the upgrade is complete, you can test your application functionality by launching the new AMI in your VPC\. After testing, and before you perform another upgrade, schedule application downtime before completely switching to the upgraded instance\.
 
-## Steps for Performing an Automated Upgrade<a name="upgrade-steps-auto"></a>
+## Steps for performing an automated upgrade<a name="upgrade-steps-auto"></a>
 
 **Topics**
-+ [Upgrade Windows](#WindowsUpgrade)
++ [Upgrade Windows Server 2008 R2, 2012 R2, or 2016 to Windows Server 2012 R2, 2016, or 2019](#2008R2-2012R2)
 + [Upgrade SQL Server 2008 R2 to SQL Server 2016](#SQL2008R2-SQL2016)
 
-### Upgrade Windows<a name="WindowsUpgrade"></a>
+### Upgrade Windows Server 2008 R2, 2012 R2, or 2016 to Windows Server 2012 R2, 2016, or 2019<a name="2008R2-2012R2"></a>
 
 This upgrade path requires additional prerequisites to work successfully\. These prerequisites can be found in the automation document details for [AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html) in the *AWS Systems Manager User Guide*\. 
 
-After you have verified the additional prerequisite tasks, follow these steps to upgrade your Windows instance to selected Windows version by using the automation document on AWS Systems Manager\. 
+After you have verified the additional prerequisite tasks, follow these steps to upgrade your Windows 2008 R2 instance to Windows 2012 R2 by using the automation document on AWS Systems Manager\. 
 
 1. Open Systems Manager from the **AWS Management Console**\.
 
@@ -118,16 +120,16 @@ After you have verified the additional prerequisite tasks, follow these steps to
 
      **Type:** String
 
-     \(Required\) The Instance running Windows Server 2008 R2, 2012 R2 or 2016 with the SSM agent installed\.
+     \(Required\) The instance running Windows Server 2008 R2, 2012 R2, or 2016 with the SSM agent installed\.
    + `InstanceProfile`\. 
 
      **Type:** String
 
      \(Required\) The IAM instance profile\. This is the IAM role used to perform the Systems Manager automation against the Amazon EC2 instance and AWS AMIs\. For more information, see [Create an IAM Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\.
    + `TargetWindowsVersion`
-     
+
      **Type:** String
-     
+
      \(Required\) Select the target Windows version\.
    + `SubnetId`
 
@@ -150,7 +152,7 @@ After you have verified the additional prerequisite tasks, follow these steps to
 1. When the automation completes, you will see the AMI ID\. You can launch the AMI to verify that the Windows OS is upgraded\.
 **Note**  
 It is not necessary for the automation to run all of the steps\. The steps are conditional based on the behavior of the automation and instance\. Systems Manager might skip some steps that are not required\.  
-Additionally, some steps may time out\. Systems Manager attempts to upgrade and install all of the latest patches\. Sometimes, however, patches time out based on a definable timeout setting for the given step\. When this happens, the Systems Manager automation continues to the next step to ensure that the internal OS is upgraded to the desired Windows Server version\.
+Additionally, some steps may time out\. Systems Manager attempts to upgrade and install all of the latest patches\. Sometimes, however, patches time out based on a definable timeout setting for the given step\. When this happens, the Systems Manager automation continues to the next step to ensure that the internal OS is upgraded to the target Windows Server version\.
 
 1. After the automation completes, you can launch an Amazon EC2 instance using the AMI ID to review your upgrade\. For more information about how to create an Amazon EC2 instance from an AWS AMI, see [ How do I launch an EC2 instance from a custom Amazon Machine Image \(AMI\)?](https://aws.amazon.com/premiumsupport/knowledge-center/launch-instance-custom-ami/)
 

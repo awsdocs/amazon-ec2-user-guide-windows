@@ -200,7 +200,11 @@ Specify settings in the `EventLogConfig.json` file to send Windows Event logs to
 
 ### Send Windows is ready message after a successful boot<a name="ec2launch-sendwinisready"></a>
 
-The EC2Config service sent the "Windows is ready" message to the EC2 console after every boot\. EC2Launch sends this message only after the initial boot because it runs only on the initial boot\. To have "Windows is ready" printed on every boot, schedule EC2Launch to run on every boot\. For instructions, see [Schedule EC2Launch to run on every boot](#run-on-every-boot)\.
+The EC2Config service sent the "Windows is ready" message to the EC2 console after every boot\. EC2Launch sends this message only after the initial boot\. For backwards compatibility with the EC2Config service, you can schedule EC2Launch to send this message after every boot\. On the instance, open Windows PowerShell and run the following command\. The system schedules the script to run as a Windows Scheduled Task\.
+
+```
+PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\SendWindowsIsReady.ps1 -Schedule
+```
 
 ## Using Sysprep with EC2Launch<a name="ec2launch-sysprep"></a>
 
