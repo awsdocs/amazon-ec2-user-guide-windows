@@ -247,7 +247,7 @@ Alternatively, you can assign multiple IPv6 addresses to an existing network int
 
 1. Choose **Yes, Update**\.
 
-**CLI Overview**
+**CLI overview**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
 + **Assign an IPv6 address during launch**:
@@ -277,7 +277,7 @@ You can view the IPv6 addresses for an instance or for a network interface\.
 
 1. Select your network interface\. In the details pane, review the **IPv6 IPs** field\.
 
-**CLI Overview**
+**CLI overview**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
 + **View the IPv6 addresses for an instance**:
@@ -315,7 +315,7 @@ You can unassign an IPv6 address from the primary network interface of an instan
 
 1. Choose **Save**\.
 
-**CLI Overview**
+**CLI overview**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
 + [unassign\-ipv6\-addresses](https://docs.aws.amazon.com/cli/latest/reference/ec2/unassign-ipv6-addresses.html) \(AWS CLI\)

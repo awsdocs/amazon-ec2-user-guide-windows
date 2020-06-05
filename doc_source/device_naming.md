@@ -1,23 +1,23 @@
-# Device Naming on Windows Instances<a name="device_naming"></a>
+# Device naming on Windows instances<a name="device_naming"></a>
 
 When you attach a volume to your instance, you include a device name for the volume\. This device name is used by Amazon EC2\. The block device driver for the instance assigns the actual volume name when mounting the volume, and the name assigned can be different from the name that Amazon EC2 uses\.
 
 The number of volumes that your instance can support is determined by the operating system\. For more information, see [Instance volume limits](volume_limits.md)\.
 
 **Topics**
-+ [Available Device Names](#available-ec2-device-names)
-+ [Device Name Considerations](#device-name-limits)
++ [Available device names](#available-ec2-device-names)
++ [Device name considerations](#device-name-limits)
 
-For information about device names on Linux instances, see [Device Naming on Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For information about device names on Linux instances, see [Device naming on Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/device_naming.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-## Available Device Names<a name="available-ec2-device-names"></a>
+## Available device names<a name="available-ec2-device-names"></a>
 
 Windows AMIs use one of the following sets of drivers to permit access to virtualized hardware: AWS PV, Citrix PV, and RedHat PV\. For more information, see [Paravirtual Drivers for Windows Instances](xen-drivers-overview.md)\.
 
 The following table lists the available device names that you can specify in a block device mapping or when attaching an EBS volume\.
 
 
-| Driver Type | Available | Reserved for Root | Recommended for EBS Volumes | Instance Store Volumes | 
+| Driver type | Available | Reserved for root | Recommended for EBS volumes | Instance store volumes | 
 | --- | --- | --- | --- | --- | 
 |  AWS PV, Citrix PV  |  xvd\[b\-z\] xvd\[b\-c\]\[a\-z\] /dev/sda1 /dev/sd\[b\-e\]  |  /dev/sda1  |  xvd\[f\-z\] \*  |  xvdc\[a\-x\]  xvd\[a\-e\] \*\*  | 
 |  Red Hat PV  |  xvd\[a\-z\] xvd\[b\-c\]\[a\-z\] /dev/sda1 /dev/sd\[b\-e\]  |  /dev/sda1  |  xvd\[f\-p\]  |  xvdc\[a\-x\]  xvd\[a\-e\]  | 
@@ -26,9 +26,9 @@ The following table lists the available device names that you can specify in a b
 
 \*\* NVMe instance store volumes are automatically enumerated and assigned a Windows drive letter\.
 
-For more information about instance store volumes, see [Amazon EC2 Instance Store](InstanceStorage.md)\. For more information about NVMe EBS volumes, see [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)\.
+For more information about instance store volumes, see [Amazon EC2 Instance Store](InstanceStorage.md)\. For more information about NVMe EBS volumes \(Nitro\-based instances\), including how to identify the EBS device, see [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)\.
 
-## Device Name Considerations<a name="device-name-limits"></a>
+## Device name considerations<a name="device-name-limits"></a>
 
 Keep the following in mind when selecting a device name:
 + Although you can attach your EBS volumes using the device names used to attach instance store volumes, we strongly recommend that you don't because the behavior can be unpredictable\.

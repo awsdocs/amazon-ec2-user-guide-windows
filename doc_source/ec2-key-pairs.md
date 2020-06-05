@@ -36,7 +36,7 @@ You can create a key pair using one of the following methods\.
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Key Pairs**\.
+1. In the navigation pane, under **NETWORK & SECURITY**, choose **Key Pairs**\.
 
 1. Choose **Create key pair**\.
 
@@ -46,6 +46,10 @@ You can create a key pair using one of the following methods\.
 
 1. Choose **Create key pair**\.
 
+1. The private key file is automatically downloaded by your browser\. The base file name is the name you specified as the name of your key pair, and the file name extension is determined by the file format you chose\. Save the private key file in a safe place\.
+**Important**  
+This is the only chance for you to save the private key file\.
+
 ------
 #### [ Old console ]
 
@@ -54,16 +58,14 @@ You can create a key pair using one of the following methods\.
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
 1. In the navigation pane, under **NETWORK & SECURITY**, choose **Key Pairs**\.
-**Note**  
-The navigation pane is on the left side of the Amazon EC2 console\. If you do not see the pane, it might be minimized; choose the arrow to expand the pane\. 
 
 1. Choose **Create Key Pair**\.
 
-1. For **Key pair name**, enter a name for the new key pair, and then choose **Create**\. The name can include up to 255 ASCII characters\. It can’t include leading or trailing spaces\.
+1. For **Key pair name**, enter a descriptive name for the key pair, and then choose **Create**\. A key name can include up to 255 ASCII characters\. It can’t include leading or trailing spaces\.
 
 1. The private key file is automatically downloaded by your browser\. The base file name is the name you specified as the name of your key pair, and the file name extension is `.pem`\. Save the private key file in a safe place\.
 **Important**  
-This is the only chance for you to save the private key file\. You'll need to provide the name of your key pair when you launch an instance and the corresponding private key each time you connect to the instance\.
+This is the only chance for you to save the private key file\.
 
 ------
 #### [ AWS CLI ]

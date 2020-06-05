@@ -108,7 +108,7 @@ For instances with more than 16 vCPUs, we recommend preventing RSS from running 
 Run the following command\.
 
 ```
-Set-NetAdapterRss -name (Get-NetAdapter | Where-Object {$_.InterfaceDescription -like 'Elastic'}).Name -Baseprocessorgroup 0 -BaseProcessorNumber 1
+Set-NetAdapterRss -name (Get-NetAdapter | Where-Object {$_.InterfaceDescription -like '*Elastic*'}).Name -Baseprocessorgroup 0 -BaseProcessorNumber 1
 ```
 
 ## Multi\-Site Clusters and EC2 Instance Placement<a name="sql-multi-site-clusters"></a>

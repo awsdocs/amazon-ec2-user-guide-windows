@@ -107,7 +107,7 @@ You can disable C\-states on Windows as follows:
 
 The following procedures describe benchmarking commands for various EBS volume types\. 
 
-Run the following commands on an EBS\-optimized instance with attached EBS volumes\. If the EBS volumes were restored from snapshots, be sure to initialize them before benchmarking\. For more information, see [Initializing Amazon EBS volumes](ebs-initialize.md)\.
+Run the following commands on an EBS\-optimized instance with attached EBS volumes\. If the EBS volumes were created from snapshots, be sure to initialize them before benchmarking\. For more information, see [Initializing Amazon EBS volumes](ebs-initialize.md)\.
 
 When you are finished testing your volumes, see the following topics for help cleaning up: [Deleting an Amazon EBS volume](ebs-deleting-volume.md) and [Terminate your instance](terminating-instances.md)\.
 

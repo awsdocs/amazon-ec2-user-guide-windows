@@ -26,10 +26,6 @@ Your Windows instances keep running until you stop or terminate them, or until t
 
 Your AWS account has a limit on the number of instances that you can have running\. For more information about this limit, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
 
-### Bare metal instances<a name="bare-metal-instances"></a>
-
-Amazon now offers EC2 bare metal instances which are available with the EC2 Storage Optimized [Amazon EC2 I3 instance family](https://aws.amazon.com/ec2/instance-types/i3) in the form of i3\.metal instances\. Bare metal instances allow you to run applications that benefit from deep performance analysis tools, specialized workloads that require direct access to bare metal infrastructure, legacy workloads not supported in virtual environments, licensing\-restricted Tier 1 business critical applications, as well as virtualization\-secured containers\.
-
 ## Regions and Availability Zones<a name="EC2Win_Regions"></a>
 
 Amazon has data centers in different areas of the world \(for example, North America, Europe, and Asia\)\. Correspondingly, Amazon EC2 is available to use in different *Regions*\. By launching instances in separate Regions, you can design your application to be closer to specific customers or to meet legal or other requirements\. Prices for Amazon EC2 usage vary by Region \(for more information about pricing by Region, see [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing)\)\. 

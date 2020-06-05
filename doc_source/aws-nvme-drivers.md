@@ -12,9 +12,18 @@ If you are not using the latest AWS Windows AMIs provided by Amazon, use the fol
 
 1. Connect to your instance and log in as the local administrator\.
 
-1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/Latest/AWSNVMe.zip) the latest driver package to the instance\.
+1. Download and extract the drivers using one of the following options:
+   + Using a browser:
 
-1. Extract the zip archive\.
+     1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/Latest/AWSNVMe.zip) the latest driver package to the instance\.
+
+     1. Extract the zip archive\.
+   + Using PowerShell:
+
+     ```
+     invoke-webrequest https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/Latest/AWSNVMe.zip -outfile $env:USERPROFILE\nvme_driver.zip
+     expand-archive $env:userprofile\nvme_driver.zip -DestinationPath $env:userprofile\nvme_driver
+     ```
 
 1. Install the driver by running the `install.ps1` PowerShell script\.
 

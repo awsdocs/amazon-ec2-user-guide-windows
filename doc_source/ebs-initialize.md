@@ -1,11 +1,11 @@
 # Initializing Amazon EBS volumes<a name="ebs-initialize"></a>
 
-New EBS volumes receive their maximum performance the moment that they are available and do not require initialization \(formerly known as pre\-warming\)\.
+Empty EBS volumes receive their maximum performance the moment that they are created and do not require initialization \(formerly known as pre\-warming\)\.
 
-For volumes that were restored from snapshots, the storage blocks must be pulled down from Amazon S3 and written to the volume before you can access them\. This preliminary action takes time and can cause a significant increase in the latency of I/O operations the first time each block is accessed\. Volume performance is achieved after all blocks have been downloaded and written to the volume\.
+For volumes that were created from snapshots, the storage blocks must be pulled down from Amazon S3 and written to the volume before you can access them\. This preliminary action takes time and can cause a significant increase in the latency of I/O operations the first time each block is accessed\. Volume performance is achieved after all blocks have been downloaded and written to the volume\.
 
 **Important**  
-While initializing `io1` volumes that were restored from snapshots, the performance of the volume may drop below 50 percent of its expected level, which causes the volume to display a `warning` state in the **I/O Performance** status check\. This is expected, and you can ignore the `warning` state on `io1` volumes while you are initializing them\. For more information, see [EBS volume status checks](monitoring-volume-status.md#monitoring-volume-checks)\.
+While initializing `io1` volumes that were created from snapshots, the performance of the volume may drop below 50 percent of its expected level, which causes the volume to display a `warning` state in the **I/O Performance** status check\. This is expected, and you can ignore the `warning` state on `io1` volumes while you are initializing them\. For more information, see [EBS volume status checks](monitoring-volume-status.md#monitoring-volume-checks)\.
 
 For most applications, amortizing the initialization cost over the lifetime of the volume is acceptable\. To avoid this initial performance hit in a production environment, you can use one of the following options:
 + Force the immediate initialization of the entire volume\. For more information, see [Initializing Amazon EBS volumes on Windows](#ebs-initialize-windows)\.
@@ -13,7 +13,7 @@ For most applications, amortizing the initialization cost over the lifetime of t
 
 ## Initializing Amazon EBS volumes on Windows<a name="ebs-initialize-windows"></a>
 
-New EBS volumes receive their maximum performance the moment that they are available and do not require initialization \(formerly known as pre\-warming\)\. For volumes that have been restored from snapshots, use dd or fio for Windows to read from all of the blocks on a volume\. All existing data on the volume will be preserved\.
+New EBS volumes receive their maximum performance the moment that they are available and do not require initialization \(formerly known as pre\-warming\)\. For volumes that have been created from snapshots, use dd or fio for Windows to read from all of the blocks on a volume\. All existing data on the volume will be preserved\.
 
 Before using either tool, gather information about the disks on your system as follows:
 
@@ -44,9 +44,9 @@ This step may take several minutes up to several hours, depending on your EC2 in
 
 **Install dd for Windows**
 
-The dd for Windows program provides a similar experience to the dd program that is commonly available for Linux and Unix systems, and it allows you to initialize Amazon EBS volumes that have been restored from snapshots\. At the time of this writing, the most recent beta version contains the `/dev/null` virtual device that is required to initialize volumes restored from snapshots\. Full documentation for the program is available at [http://www\.chrysocome\.net/dd](http://www.chrysocome.net/dd)\.
+The dd for Windows program provides a similar experience to the dd program that is commonly available for Linux and Unix systems, and it allows you to initialize Amazon EBS volumes that have been created from snapshots\. At the time of this writing, the most recent beta version contains the `/dev/null` virtual device that is required to initialize volumes created from snapshots\. Full documentation for the program is available at [http://www\.chrysocome\.net/dd](http://www.chrysocome.net/dd)\.
 
-1. Download the most recent binary version of dd for Windows from [http://www\.chrysocome\.net/dd](http://www.chrysocome.net/dd)\. You must use version 0\.6 beta 3 or newer to initialize restored volumes\.
+1. Download the most recent binary version of dd for Windows from [http://www\.chrysocome\.net/dd](http://www.chrysocome.net/dd)\. You must use version 0\.6 beta 3 or newer to initialize volumes\.
 
 1. \(Optional\) Create a folder for command line utilities that is easy to locate and remember, such as `C:\bin`\. If you already have a designated folder for command line utilities, you can use that folder instead in the following step\.
 
@@ -86,7 +86,7 @@ Complete the following procedures to install and use fio to initialize a volume\
 
 **To install fio for Windows**
 
-The fio for Windows program provides a similar experience to the fio program that is commonly available for Linux and Unix systems, and it allows you to initialize Amazon EBS volumes that have been restored from snapshots\. Full documentation for the program is available at [https://github\.com/axboe/fio](https://github.com/axboe/fio)\.
+The fio for Windows program provides a similar experience to the fio program that is commonly available for Linux and Unix systems, and it allows you to initialize Amazon EBS volumes created from snapshots\. For more information, see [https://github\.com/axboe/fio](https://github.com/axboe/fio)\.
 
 1. Download the [fio MSI](https://ci.appveyor.com/project/axboe/fio) installer \(select the latest x86 or x64 build, then select **Artifacts**\)\. 
 

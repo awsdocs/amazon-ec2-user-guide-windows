@@ -105,7 +105,7 @@ The system generates OS specific requirements such as a computer name and a SID\
    + <RegisteredOrganization>Amazon\.com</RegisteredOrganization>
    + <RegisteredOwner>Amazon</RegisteredOwner>
 **Note**  
-During the generalize and specialize phases the EC2Config service monitors the status of of the OS\. If EC2Config detects that the OS is in a Sysprep phase, then it publishes the following message the system log:
+During the generalize and specialize phases the EC2Config service monitors the status of the OS\. If EC2Config detects that the OS is in a Sysprep phase, then it publishes the following message the system log:
 
    EC2ConfigMonitorState: 0 Windows is being configured\. SysprepState=IMAGE\_STATE\_UNDEPLOYABLE
 
