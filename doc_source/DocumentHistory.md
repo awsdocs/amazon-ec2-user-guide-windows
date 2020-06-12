@@ -4,6 +4,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Bare metal instances for G4](#DocumentHistory) | New instances that provide your applications with direct access to the physical resources of the host server\. | June 5, 2020 | 
 | [C5a instances](#DocumentHistory) | New compute optimized instances featuring second\-generation AMD EYPC processors\. | June 4, 2020 | 
 | [Bring your own IPv6 addresses](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-byoip.html) | You can bring part or all of your IPv6 address range from your on\-premises network to your AWS account\. | May 21, 2020 | 
 | [Launch instances using a Systems Manager parameter](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html#using-systems-manager-parameter-to-find-AMI) | You can specify a AWS Systems Manager parameter instead of an AMI when you launch an instance\. | May 5, 2020 | 
