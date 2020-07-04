@@ -12,7 +12,7 @@ You can, however, create a WAMP stack on an EC2 instance to prototype a web proj
 There are many third\-party solutions that you can use to install a WAMP stack; this tutorial uses the Bitnami WAMP stack\. For more information, see [Review: WAMP stacks for Web developers](http://www.infoworld.com/d/application-development/review-wamp-stacks-web-developers-194346)\. 
 
 **Prerequisites**
-+ Provision a Windows Server 2008 R2 or 2012 R2 base instance\. You must configure the base instance with a public domain name system \(DNS\) name that is reachable from the Internet\. For more information, see [Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)\.
++ Provision a Windows Server 2008 R2 or 2012 R2 base instance\. You must configure the base instance with a public domain name system \(DNS\) name that is reachable from the Internet\. For more information, see [Tutorial: Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)\.
 + Verify that the security group for your instance has the following ports open:
   + Port 80 \(HTTP inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTP\. 
   + Port 443 \(HTTPS inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTPS\.

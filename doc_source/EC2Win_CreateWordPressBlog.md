@@ -7,7 +7,7 @@ If you'd prefer to host your WordPress blog on a Linux instance, see [Tutorial: 
 ## Prerequisites<a name="EC2Win_PrerequisiteWordPressBlog"></a>
 
 Before you get started, be sure that you do the following:
-+ Launch an Amazon EC2 instance from a Windows Server AMI\. For information, see [Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)\.
++ Launch an Amazon EC2 instance from a Windows Server AMI\. For information, see [Tutorial: Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)\.
 + Use the AWS free usage tier \(if eligible\) to launch and use the free Windows `t2.micro` instance for 12 months\. You can use the AWS free usage tier for launching new applications, testing existing applications, or simply gaining hands\-on experience with AWS\. For more information about eligibility and the highlights, see the [AWS Free Usage Tier](https://aws.amazon.com/free/) product page\.
 **Important**  
 If you've launched a regular instance and use it to deploy the WordPress website, you will incur the standard Amazon EC2 usage fees for the instance until you terminate it\. For more information about Amazon EC2 usage rates, go to the [Amazon EC2 product page](https://aws.amazon.com/ec2)\.

@@ -22,7 +22,7 @@ The following example shows how a Capacity Reservation is billed\. The Capacity 
 
 ## Billing Discounts<a name="capacity-reservations-discounts"></a>
 
-Billing discounts for Savings Plans and regional Reserved Instances apply to Capacity Reservations\. AWS automatically applies these discounts to Capacity Reservations that have matching attributes\. When a Capacity Reservation is used by an instance, the discount is applied to the instance\. Discounts are preferentially applied to instance usage before covering unused Capacity Reservations\. 
+Billing discounts for Savings Plans and regional Reserved Instances apply to Capacity Reservations\. AWS automatically applies these discounts to Capacity Reservations that have matching attributes\. When a Capacity Reservation is used by an instance, the discount is applied to the instance\. Discounts are preferentially applied to instance usage before covering unused Capacity Reservations\.
 
 Billing discounts for zonal Reserved Instances do not apply to Capacity Reservations\.
 

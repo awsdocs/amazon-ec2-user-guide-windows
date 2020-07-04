@@ -378,7 +378,7 @@ task: activateWindows
 
 ### enableJumboFrames<a name="ec2launch-v2-enablejumboframes"></a>
 
-Enables Jumbo Frames, which increase the MTU of the network adapter\. For more information, see [Jumbo frames \(9001 MTU\)](network_mtu.md#jumbo_frame_instances)\.
+Enables Jumbo Frames, which increase the maximum transmission unit \(MTU\) of the network adapter\. For more information, see [Jumbo frames \(9001 MTU\)](network_mtu.md#jumbo_frame_instances)\.
 
 *Frequency* — always
 

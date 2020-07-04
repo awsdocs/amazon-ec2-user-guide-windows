@@ -1,6 +1,8 @@
-# Getting started with Amazon EC2 Windows instances<a name="EC2_GetStarted"></a>
+# Tutorial: Getting started with Amazon EC2 Windows instances<a name="EC2_GetStarted"></a>
 
-Let's get started with Amazon Elastic Compute Cloud \(Amazon EC2\) by launching, connecting to, and using a Windows instance\. To get started with a Linux instance, see [Getting started with Amazon EC2 Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\. An *instance* is a virtual server in the AWS cloud\. With Amazon EC2, you can set up and configure the operating system and applications that run on your instance\.
+Use this tutorial to get started with Amazon Elastic Compute Cloud \(Amazon EC2\)\. You'll learn how to launch, connect to, and use a Windows instance\. An *instance* is a virtual server in the AWS cloud\. With Amazon EC2, you can set up and configure the operating system and applications that run on your instance\.
+
+To get started with a Linux instance, see [Getting started with Amazon EC2 Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\.\)
 
 When you sign up for AWS, you can get started with Amazon EC2 using the [AWS Free Tier](https://aws.amazon.com/free/)\. If you created your AWS account less than 12 months ago, and have not already exceeded the free tier benefits for Amazon EC2, it will not cost you anything to complete this tutorial, because we help you select options that are within the free tier benefits\. Otherwise, you'll incur the standard Amazon EC2 usage fees from the time that you launch the instance until you terminate the instance \(which is the final task of this tutorial\), even if it remains idle\.
 
@@ -50,7 +52,7 @@ You can launch a Windows instance using the AWS Management Console as described 
 
 1. The **Choose an Amazon Machine Image \(AMI\)** page displays a list of basic configurations, called *Amazon Machine Images \(AMIs\)*, that serve as templates for your instance\. Select the AMI for Windows Server 2016 Base or later\. Notice that these AMIs are marked "Free tier eligible\."
 
-1. On the **Choose an Instance Type** page, you can select the hardware configuration of your instance\. Select the `t2.micro` type, which is selected by default\. Notice that this instance type is eligible for the free tier\.
+1. On the **Choose an Instance Type** page, you can select the hardware configuration of your instance\. Select the `t2.micro` instance type, which is selected by default\. The `t2.micro` instance type is eligible for the free tier\. In Regions where `t2.micro` is unavailable, you can use a `t3.micro` instance under the free tier\. For more information, see [AWS Free Tier](https://aws.amazon.com/free/)\.
 
 1. Choose **Review and Launch** to let the wizard complete the other configuration settings for you\.
 
@@ -153,4 +155,4 @@ After you start your instance, you might want to try some of the following exerc
 + Learn how to remotely manage your EC2 instance using Run Command\. For more information, see [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html) in the *AWS Systems Manager User Guide*\.
 + Configure a CloudWatch alarm to notify you if your usage exceeds the Free Tier\. For more information, see [Create a Billing Alarm](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/free-tier-alarms.html) in the *AWS Billing and Cost Management User Guide*\.
 + Add an EBS volume\. For more information, see [Creating an Amazon EBS volume](ebs-creating-volume.md) and [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
-+ Install the WAMP or WIMP stack\. For more information, see [Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md) and [Tutorial: Installing a WIMP Server on an Amazon EC2 Instance Running Windows Server](install-WIMP.md)\.
++ Install the WAMP or WIMP stack\. For more information, see [Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md) and [Tutorial: Installing a WIMP server on an Amazon EC2 instance running Windows Server](install-WIMP.md)\.

@@ -23,10 +23,13 @@ The data on NVMe instance store volumes is encrypted using an XTS\-AES\-256 ciph
 
 ## Encryption in transit<a name="encryption-transit"></a>
 
-AWS provides secure and private connectivity between EC2 instances of all types\. In addition, we automatically encrypt in\-transit traffic between supported instances in the same VPC or in peered VPCs, using AEAD algorithms with 256\-bit encryption\. This encryption feature uses the offload capabilities of the underlying hardware, and there is no impact on network performance\. The following instances support the additional in\-transit traffic encryption: C5n, C5a, G4, I3en, M5dn, M5n, P3dn, R5dn, and R5n\.
-
 RDP provides a secure communications channel for remote access to your Windows instances\. Remote access to your instances using AWS Systems Manager Session Manager and Run Command is encrypted using TLS 1\.2, and requests to create a connection are signed using SigV4\.
 
 Use an encryption protocol such as Transport Layer Security \(TLS\) to encrypt sensitive data in transit between clients and your instances\.
 
-Make sure to allow only encrypted connections between EC2 instances and the AWS API endpoints or other sensitive remote network services\. This can be enforced through the use of outbound security group or [Windows Firewall](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) rules\.
+Make sure to allow only encrypted connections between EC2 instances and the AWS API endpoints or other sensitive remote network services\. You can enforce this through an outbound security group or [Windows Firewall](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) rules\.
+
+AWS provides secure and private connectivity between EC2 instances of all types\. In addition, some instance types use the offload capabilities of the underlying hardware to automatically encrypt in\-transit traffic between instances, using AEAD algorithms with 256\-bit encryption\. There is no impact on network performance\. The following requirements must be met to ensure the additional in\-transit traffic encryption:
++ The instances use the following instance types: C5n, C5a, G4, I3en, M5dn, M5n, P3dn, R5dn, and R5n\.
++ The instances are in the same Region\.
++ The instances are in the same VPC or peered VPCs, and the traffic does not pass through a virtual network device, such as a load balancer or a transit gateway\.

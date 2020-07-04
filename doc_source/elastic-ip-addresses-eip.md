@@ -417,6 +417,8 @@ To verify how many Elastic IP addresses are in use, open the Amazon EC2 console 
 
 To verify your current account limit for Elastic IP addresses, do one of the following:
 + Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/), choose **Limits** from the navigation pane, and enter **IP** in the search field\.
-+ Open the Service Quotas console at [https://console\.aws\.amazon\.com/servicequotas/](https://console.aws.amazon.com/servicequotas/), enter **Amazon EC2** in the search field, and choose **Amazon Elastic Compute Cloud \(Amazon EC2\)**\. Enter **IP** in the search field\.
++ Open the Service Quotas console at [https://console\.aws\.amazon\.com/servicequotas/](https://console.aws.amazon.com/servicequotas/)\. On the Dashboard, choose **Amazon Elastic Compute Cloud \(Amazon EC2\)**\. If Amazon Elastic Compute Cloud \(Amazon EC2\) is not listed on the Dashboard, choose **AWS services**, enter **EC2** in the search field, and then choose **Amazon Elastic Compute Cloud \(Amazon EC2\)**\.
+
+  On the Amazon EC2 service quotas screen, enter **Elastic IP** in the search field and then choose **Elastic IP addresses for EC2**\.
 
 If you feel your architecture warrants additional Elastic IP addresses, you can request a quota increase directly from the Service Quotas console\.

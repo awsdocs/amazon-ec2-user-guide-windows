@@ -7,21 +7,29 @@ If you are unable to reach your instance through SSH or RDP, you can capture a s
 ## How to get a screenshot of an unreachable instance<a name="how-to-ics"></a>
 
 You can get screenshots of an instance while it is running or after it has crashed\. There is no data transfer cost for the screenshot\. The image is generated in JPG format and is no larger than 100 kb\. This feature is not supported when the instance is using an NVIDIA GRID driver or on bare metal instances \(instances of type `*.metal`\)\. This feature is available in the following Regions: 
++ Asia Pacific \(Hong Kong\) Region
++ Asia Pacific \(Tokyo\) Region
++ Asia Pacific \(Seoul\) Region
++ Asia Pacific \(Singapore\) Region
++ Asia Pacific \(Sydney\) Region
++ Asia Pacific \(Mumbai\) Region
 + US East \(N\. Virginia\) Region
 + US East \(Ohio\) Region
 + US West \(Oregon\) Region
 + US West \(N\. California\) Region
 + Europe \(Ireland\) Region
 + Europe \(Frankfurt\) Region
-+  Asia Pacific \(Tokyo\) Region
-+ Asia Pacific \(Seoul\) Region
-+ Asia Pacific \(Singapore\) Region
-+ Asia Pacific \(Sydney\) Region\)
-+ South America \(São Paulo\) Region\)
-+ Asia Pacific \(Mumbai\) Region
-+ Canada \(Central\) Region\)
++ Europe \(Milan\) Region
 + Europe \(London\) Region
 + Europe \(Paris\) Region
++ Europe \(Stockholm\) Region
++ Europe \(Paris\) Region
++ South America \(São Paulo\) Region
++ Canada \(Central\) Region
++ Middle East \(Bahrain\) Region
++ Africa \(Capetown\) Region
++ China \(Beijing\) Region
++ China \(Ningxia\) Region
 
 **To get a screenshot of a running instance using the console**
 

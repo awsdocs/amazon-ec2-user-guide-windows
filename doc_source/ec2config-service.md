@@ -1,5 +1,7 @@
 # Configuring a Windows Instance Using the EC2Config Service<a name="ec2config-service"></a>
 
+The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
+
 Windows AMIs for Windows Server 2012 R2 and earlier include an optional service, the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. EC2Config can also perform tasks on demand\. Some of these tasks are automatically enabled, while others must be enabled manually\. Although optional, this service provides access to advanced features that aren't otherwise available\. This service runs in the LocalSystem account\.
 
 **Note**  

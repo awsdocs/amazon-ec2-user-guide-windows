@@ -6,10 +6,10 @@ The keys that Amazon EC2 uses are 2048\-bit SSH\-2 RSA keys\. You can have up to
 
 Because Amazon EC2 doesn't keep a copy of your private key, there is no way to recover a private key if you lose it\. However, there can still be a way to connect to instances that use a lost key pair\. For more information, see [Connecting to your Windows instance if you lose your private key](#replacing-lost-key-pair-windows)\.
 
-When you launch an instance, you are prompted for the name of a key pair\. If you plan to connect to the instance using RDP, you must specify a key pair\. With Windows instances, you use the private key to obtain the administrator password and then log in using RDP\. For more information about key pairs and Linux instances, see [Amazon EC2 Key Pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+When you launch an instance, you are prompted for the name of a key pair\. For more information, see [Step 7: Review Instance Launch and Select Key Pair](launching-instance.md#step-7-review-instance-launch)\. If you plan to connect to the instance using RDP, you must specify a key pair\. With Windows instances, you use the private key to obtain the administrator password and then log in using RDP\. For more information about connecting to your instance, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\. For more information about key pairs and Linux instances, see [Amazon EC2 key pairs and Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
-+ [Preparing a key pair](#prepare-key-pair)
++ [Creating or importing a key pair](#prepare-key-pair)
 + [Tagging a key pair](#tag-key-pair)
 + [Retrieving the public key for your key pair](#retrieving-the-public-key-windows)
 + [Retrieving the public key for your key pair through instance metadata](#retrieving-the-public-key-instance)
@@ -17,9 +17,9 @@ When you launch an instance, you are prompted for the name of a key pair\. If yo
 + [Connecting to your Windows instance if you lose your private key](#replacing-lost-key-pair-windows)
 + [Deleting your key pair](#delete-key-pair)
 
-## Preparing a key pair<a name="prepare-key-pair"></a>
+## Creating or importing a key pair<a name="prepare-key-pair"></a>
 
-You can use Amazon EC2 to create a new key pair or import an existing key pair\.
+You can use Amazon EC2 to create a new key pair, or you can import an existing key pair\.
 
 **Topics**
 + [Option 1: Create a key pair using Amazon EC2](#having-ec2-create-your-key-pair)

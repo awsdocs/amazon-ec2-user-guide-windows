@@ -1,4 +1,4 @@
-# Tutorial: Installing a WIMP Server on an Amazon EC2 Instance Running Windows Server<a name="install-WIMP"></a>
+# Tutorial: Installing a WIMP server on an Amazon EC2 instance running Windows Server<a name="install-WIMP"></a>
 
 This tutorial shows you how to install a Microsoft Internet Information Services \(IIS\) web server with PHP and MySQL on an EC2 instance running Windows Server\. This software configuration is sometimes called a WIMP server or WIMP stack \(Windows, IIS, MySQL, PHP\)\.
 
@@ -10,20 +10,30 @@ A WIMP stack is designed for easy installation to help developers get up and run
 You can, however, create a WIMP stack on an EC2 instance to prototype a web project in a controlled test environment\. For example, you can host a static website or deploy a dynamic PHP application that reads and writes information to a database\.
 
 ## Prerequisites<a name="wimp-prerequisites"></a>
-+ Provision a Windows Server 2008 R2 or 2012 R2 base instance\. You must configure the base instance with a public domain name system \(DNS\) name that is reachable from the Internet\. For more information, see [Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)\.
++ Provision a Windows Server 2008 R2 or 2012 R2 base instance\. You must configure the base instance with a public domain name system \(DNS\) name that is reachable from the Internet\. For more information, see [Tutorial: Getting started with Amazon EC2 Windows instances](EC2_GetStarted.md)\.
 + Verify that the security group for your instance has the following ports open:
   + Port 80 \(HTTP inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTP\. 
   + Port 443 \(HTTPS inbound and outbound\) \- Allows computers outside of the instance to connect by using HTTPS\.
   + Port 3389 \(RDP inbound only\) \- Allows you to connect to the instance using Remote Desktop Protocol \(RDP\)\. As a security best practice, restrict RDP access to a range of IP addresses in your organization\.
 + Read the best practices for installing PHP on the [Microsoft web platform](http://www.iis.net/learn/application-frameworks/running-php-applications-on-iis/best-practices-for-php-on-the-microsoft-web-platform)\.
 
-## Prepare Your Instance<a name="wimp-prepare-instance"></a>
+## Prepare your instance<a name="wimp-prepare-instance"></a>
 
 **To prepare your instance**
 
 1. Connect to your instance using Microsoft Remote Desktop\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Disable Internet Explorer Enhanced Security Configuration so that you can download and install required software from the web\.
+
+   1. From the instance, open Server Manager\.
+
+   1. \[Windows Server 2008 R2\] Under **Server Summary**, **Security Information**, choose **Configure IE ESC**\.
+
+      \[Windows Server 2012 R2\] Choose **Local Server** in the left pane\. In the **Properties** pane, locate **IE Enhanced Security Configuration**\. Choose **On**\.
+
+   1. Under **Administrators**, choose **Off**, and then choose **OK**\.
+
+   1. Close Server Manager\.
 **Note**  
 Make a note to re\-enable Internet Explorer Enhanced Security Configuration when you have finished installing software from the web\.
 
@@ -31,7 +41,7 @@ Make a note to re\-enable Internet Explorer Enhanced Security Configuration when
 
    1.  **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about how to install this service, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
 
-   1.  **Windows Update** \- Run Windows Update to ensure that the latest security and software updates are installed on the instance\. In Control Panel, click **System and Security**\. In the **Windows Update** section, click **Check for updates**\.
+   1.  **Windows Update** \- Run Windows Update to ensure that the latest security and software updates are installed on the instance\. In Control Panel, choose **System and Security**\. In the **Windows Update** section, choose **Check for updates**\.
 
 ## Install the IIS web server<a name="wimp-iis"></a>
 
@@ -39,23 +49,23 @@ IIS is a feature of Windows Server and is installed by using Server Manager\. Th
 
 **Install IIS on Windows Server 2012**
 
-1. In **Server Manager** click **Add roles and features**\.
+1. On your Windows instance, choose **Start**, **Server Manager**, and then choose **Add roles and features**\.
 
-1. On the **Before you begin** page, click **Next**\.
+1. On the **Before you begin** page, choose **Next**\.
 
-1. On the **Select installation type** page, select **Role\-based or feature\-based installation**, and then click **Next**\.
+1. On the **Select installation type** page, choose **Role\-based or feature\-based installation**, and then choose **Next**\.
 
-1. On the **Select destination server** page, select your instance from the server pool, and then click **Next**\.
+1. On the **Select destination server** page, select your instance from the server pool, and then choose **Next**\.
 
-1. On the **Select server roles** page, select **Web Server \(IIS\)**, click **Add features**, and then click **Next**\.
+1. On the **Select server roles** page, select **Web Server \(IIS\)**, choose **Add Features**, and then choose **Next**\.
 
-1. On the **Select features** page, retain the default features and expand **\.NET Framework 4\.5 Features**, select **ASP\.NET 4\.5**, and then click **Next**\.
+1. On the **Select features** page, retain the default features and expand **\.NET Framework 4\.5 Features**, choose **ASP\.NET 4\.5**, and then choose **Next**\.
 
-1. On the **Web Server Role \(IIS\)** page, click **Next**\.
+1. On the **Web Server Role \(IIS\)** page, choose **Next**\.
 
 1. On the **Select role services** page, retain the default services and select **Application Development**\.
 
-1. Expand **Application Development**, and then select the following features\. When selecting these features, if you are prompted, click **Add features**:
+1. Expand **Application Development**, and then select the following features\. When selecting these features, if prompted, choose **Add Features**:
 
    1. \.NET Extensibility 3\.5
 
@@ -69,38 +79,38 @@ IIS is a feature of Windows Server and is installed by using Server Manager\. Th
 
    1. CGI
 
-1. Click **Next**\.
+1. Choose **Next**\.
 
-1. On the **Confirm installation selections** page, select **Restart the destination server automatically if required**\. When prompted for confirmation, click **Yes**\. 
+1. On the **Confirm installation selections** page, select **Restart the destination server automatically if required**\. When prompted for confirmation, choose **Yes**\. 
 
-1. Click **Install**, and then after the installation is complete, click **Close**\.
+1. Choose **Install**, and then after the installation is complete, choose **Close**\.
 
 1. Run Windows update again\.
 
 **Install IIS on Windows Server 2008**
 
-1. In **Server Manager**, click **Roles**\.
+1. On your Windows instance, choose **Start**, **Server Manager**, and then choose **Roles**\.
 
-1. Click **Add Roles**\.
+1. Choose **Add Roles**\.
 
-1. On the **Before You Begin** page, click **Next**\.
+1. On the **Before You Begin** page, choose **Next**\.
 
-1. On the **Select Server Roles** page, click **Web Server \(IIS\)**\.
+1. On the **Select Server Roles** page, choose **Web Server \(IIS\)**\.
 
-1. On the **Select Role Services** page under **Application Development**, click **ASP\.NET**\. 
+1. On the **Select Role Services** page under **Application Development**, choose **ASP\.NET**\. 
 
-   1. When prompted, click **Add Required Role Services**\.
+   1. When prompted, choose **Add Required Role Services**\.
 
-   1. Click **CGI**\.
+   1. Choose **CGI**\.
 
-   1. Click **Next**\.
+   1. Choose **Next**\.
 
-1. On the **Confirm Installation Selections**, click **Install**\.
+1. On the **Confirm Installation Selections**, choose **Install**\.
 
 1. Run Windows update again\.
 
 **To verify that the web server is running**  
-After setup completes, verify that the IIS web server is configured properly and running by going to the IIS welcome page\. Open a web browser on a different computer and enter either the public DNS address of the WIMP server or the public IP address\. The public DNS address for your instance is listed on the Amazon EC2 console in the **Public DNS** column\. If this column is hidden, click the **Show/Hide** icon and select **Public DNS**\.
+After setup completes, verify that the IIS web server is configured properly and running by going to the IIS welcome page\. Open a web browser on a different computer and enter either the public DNS address of the WIMP server or the public IP address\. The public DNS address for your instance is listed on the Amazon EC2 console in the **Public DNS** column\. If this column is hidden, choose the **Show/Hide** icon and choose **Public DNS**\.
 
 **Important**  
 If you do not see the Bitnami test page, use Windows Firewall with Advanced Security to create a custom rule that allows the HTTP protocol through port 80 and the HTTPS protocol through port 443\. For more information, see [Network Security](https://technet.microsoft.com/en-us/library/cc725616.aspx) on Microsoft TechNet\. Also verify that the security group for your instances contains a rule to allow connections on HTTP \(port 80\)\. For more information, see [Adding rules to a security group](working-with-security-groups.md#adding-security-group-rule)\.
@@ -113,19 +123,19 @@ You can download and install MySQL and PHP using the Microsoft Web Platform Inst
 
 1. In your Windows Server instance, download and install the latest version of the [Microsoft Web Platform Installer 5\.0](http://www.iis.net/learn/install/web-platform-installer/web-platform-installer-direct-downloads)\.
 
-1. In the Microsoft Web Platform Installer, click the **Products** tab\.
+1. In the Microsoft Web Platform Installer, choose the **Products** tab\.
 
-1. Select **MySQL Windows 5\.5** and click **Add**\.
+1. Choose **MySQL Windows 5\.5** and then choose **Add**\.
 
-1. Select **PHP 5\.6\.0** and click **Add**\.
+1. Choose **PHP 5\.6\.0** and then choose **Add**\.
 
-1. Click **Install**\.
+1. Choose **Install**\.
 
-1. On the **Prerequisites** page, enter a password for the MySQL default database administrator account, and then click **Continue**\.
+1. On the **Prerequisites** page, enter a password for the MySQL default database administrator account, and then choose **Continue**\.
 
-1. When the installation is complete, click **Finish**, and then click **Exit** to close the Web Platform Installer\.
+1. When the installation is complete, choose **Finish**, and then choose **Exit** to close the Web Platform Installer\.
 
-## Test Your Server<a name="wimp-test-server"></a>
+## Test your server<a name="wimp-test-server"></a>
 
 Test your server by viewing a PHP file from the web\. You must be logged onto the instance as an administrator to perform the following steps\. 
 

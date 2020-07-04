@@ -181,6 +181,6 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 
 1. Install Microsoft hotfix [KB2922223](http://support.microsoft.com/en-us/kb/2922223)\.
 
-1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance , we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Installing or Upgrading AWS NVMe Drivers](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
+1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance , we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Installing or upgrading AWS NVMe drivers](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
 
 1. Re\-enable antivirus and anti\-spyware software and firewalls\.

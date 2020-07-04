@@ -26,7 +26,8 @@ Users don't have permission to perform any actions on the resources \(unless ano
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+    {
       "Effect": "Allow",
       "Action": "ec2:Describe*",
       "Resource": "*"
@@ -42,8 +43,8 @@ The following policy denies users permission to use all Amazon EC2 API actions u
 ```
 {
   "Version":"2012-10-17",
-  "Statement":[
-    {
+  "Statement": [
+       {
       "Effect": "Deny",
       "Action": "ec2:*",
       "Resource": "*",
@@ -62,8 +63,8 @@ Alternatively, you can use the condition key `ec2:Region`, which is specific to 
 ```
 {
   "Version":"2012-10-17",
-  "Statement":[
-    {
+  "Statement": [
+       {
       "Effect": "Deny",
       "Action": "ec2:*",
       "Resource": "*",
@@ -92,7 +93,8 @@ The users don't have permission to use any other API actions \(unless another st
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+    {
       "Effect": "Allow",
       "Action": [
         "ec2:DescribeInstances", 
@@ -172,7 +174,8 @@ The following policy allows users to attach volumes with the tag "`volume_user`=
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+       {
       "Effect": "Allow",
       "Action": [
         "ec2:AttachVolume",
@@ -210,7 +213,7 @@ The following policy allows users to use the [CreateVolume](https://docs.aws.ama
 {
   "Version": "2012-10-17", 
   "Statement": [
-    {
+         {
       "Effect": "Allow",
       "Action": [
          "ec2:CreateVolume"
@@ -239,7 +242,7 @@ For resource\-creating actions that apply tags, users must also have permissions
 {
   "Version": "2012-10-17",
   "Statement": [
-    {
+        {
       "Sid": "AllowCreateTaggedVolumes",
       "Effect": "Allow",
       "Action": "ec2:CreateVolume",
@@ -319,7 +322,7 @@ The following policy allows customers to use the [CreateSnapshot](https://docs.a
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
+   "Statement": [
       {
          "Effect":"Allow",
          "Action":"ec2:CreateSnapshot",
@@ -349,7 +352,7 @@ The following policy allows customers to use the [CreateSnapshots](https://docs.
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
+   "Statement": [
       {
          "Effect":"Allow",
          "Action":"ec2:CreateSnapshots",
@@ -382,7 +385,7 @@ For resource\-creating actions that apply tags, customers must also have permiss
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
+   "Statement": [
       {
          "Effect":"Allow",
          "Action":"ec2:CreateSnapshot",
@@ -427,7 +430,7 @@ The following policy includes the `aws:RequestTag` condition key that requires t
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
+   "Statement": [
       {
          "Effect":"Allow",
          "Action":"ec2:CreateSnapshots",
@@ -475,7 +478,7 @@ The following policy allows customers to create a snapshot without having to spe
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
+   "Statement": [
       {
          "Effect":"Allow",
          "Action":"ec2:CreateSnapshot",
@@ -502,7 +505,7 @@ The following policy allows customers to create a snapshot without having to spe
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
+   "Statement": [
       {
          "Effect":"Allow",
          "Action":"ec2:CreateSnapshots",
@@ -531,8 +534,8 @@ The following policy allows snapshots to be created only if the source volume is
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
-      {
+   "Statement": [
+           {
          "Effect":"Allow",
          "Action":"ec2:CreateSnapshot",
          "Resource":"arn:aws:ec2:us-east-1:123456789012:volume/*",
@@ -567,8 +570,8 @@ The following policy for `CreateSnapshots` allows snapshots to be created only i
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
-	{
+   "Statement": [
+      {
          "Effect":"Allow",
          "Action":"ec2:CreateSnapshots",
          "Resource":"arn:aws:ec2:us-east-1:*:instance/*",
@@ -608,8 +611,8 @@ The following policy allows deletion of a snapshot only if the snapshot is tagge
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
-      {
+   "Statement": [
+            {
          "Effect":"Allow",
          "Action":"ec2:DeleteSnapshot",
          "Resource":"arn:aws:ec2:us-east-1::snapshot/*",
@@ -628,7 +631,7 @@ The following policy allows a customer to create a snapshot but denies the actio
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
+   "Statement": [
       {
          "Effect":"Allow",
          "Action":[
@@ -656,7 +659,7 @@ The following policy allows a customer to create snapshots but denies the action
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
+   "Statement": [
       {
          "Effect":"Allow",
          "Action":[
@@ -684,8 +687,8 @@ The following policy allows you to combine multiple actions into a single policy
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
-      {
+   "Statement": [
+          {
          "Effect":"Allow",
          "Action":[
             "ec2:CreateSnapshots",
@@ -717,8 +720,8 @@ The following policy allows modification of a snapshot only if the snapshot is t
 ```
 {
    "Version":"2012-10-17",
-   "Statement":[
-      {
+   "Statement": [
+           {
          "Effect":"Allow",
          "Action":"ec2: ModifySnapshotAttribute",
          "Resource":"arn:aws:ec2:us-east-1::snapshot/*",
@@ -757,7 +760,8 @@ The following policy allows users to launch instances using only the specified A
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+   {
       "Effect": "Allow",
       "Action": "ec2:RunInstances",
       "Resource": [
@@ -780,7 +784,8 @@ Alternatively, the following policy allows users to launch instances from all AM
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+         {
       "Effect": "Allow",
       "Action": "ec2:RunInstances",
       "Resource": [ 
@@ -815,7 +820,8 @@ The following policy allows users to launch instances using only the `t2.micro` 
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+        {
       "Effect": "Allow",
       "Action": "ec2:RunInstances",
       "Resource": [
@@ -848,7 +854,8 @@ Alternatively, you can create a policy that denies users permissions to launch a
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+        { 
       "Effect": "Deny",
       "Action": "ec2:RunInstances",
       "Resource": [
@@ -884,7 +891,8 @@ The following policy allows users to launch instances using only the specified s
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+    {
       "Effect": "Allow",
       "Action": "ec2:RunInstances",
       "Resource": [
@@ -906,7 +914,8 @@ Alternatively, you could create a policy that denies users permissions to launch
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+         {
       "Effect": "Deny",
       "Action": "ec2:RunInstances",
       "Resource": [
@@ -943,7 +952,7 @@ The following policy allows users to launch instances only if the EBS volumes fo
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+                {
             "Effect": "Allow",
             "Action": "ec2:RunInstances",
             "Resource": [
@@ -1010,7 +1019,7 @@ The following policy includes the `aws:RequestTag` condition key that requires u
 {
   "Version": "2012-10-17", 
   "Statement": [
-    {
+   {
       "Effect": "Allow",
       "Action": [
          "ec2:RunInstances"
@@ -1064,7 +1073,7 @@ The following policy uses the `ForAnyValue` modifier on the `aws:TagKeys` condit
 {
   "Version": "2012-10-17", 
   "Statement": [
-    {
+   {
       "Effect": "Allow",
       "Action": [
          "ec2:RunInstances"
@@ -1149,7 +1158,7 @@ In the following example, users can launch instances, but only if they use a spe
 {
   "Version": "2012-10-17", 
   "Statement": [
-    {
+   {
       "Effect": "Allow",
       "Action": "ec2:RunInstances",
       "Resource": "*",
@@ -1188,7 +1197,7 @@ The `ec2:ElasticGpuType` condition key uses the `ForAnyValue` modifier to indica
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+             {
             "Effect": "Allow",
             "Action": [
                 "ec2:RunInstances"
@@ -1205,7 +1214,7 @@ The `ec2:ElasticGpuType` condition key uses the `ForAnyValue` modifier to indica
                         "eg1.medium",
                         "eg1.large"
                     ]
-                }
+                }  
             }
         },
         {
@@ -1233,7 +1242,7 @@ In the following example, users can launch instances, but only if they use a spe
 {
   "Version": "2012-10-17", 
   "Statement": [
-    {
+         {
       "Effect": "Allow",
       "Action": "ec2:RunInstances",
       "Resource": "*",
@@ -1253,7 +1262,7 @@ In this example, users can launch instances only if they use a launch template\.
 {
   "Version": "2012-10-17", 
   "Statement": [
-    {
+         {
       "Effect": "Allow",
       "Action": "ec2:RunInstances",
       "Resource": "*",
@@ -1276,7 +1285,7 @@ The following example policy allows user to launch instances, but only if they u
 {
   "Version": "2012-10-17", 
   "Statement": [
-    {
+        {
       "Effect": "Allow",
       "Action": "ec2:RunInstances",
       "NotResource": ["arn:aws:ec2:region:account:subnet/*",
@@ -1311,7 +1320,7 @@ The following example allows users to launch instances only if they use a launch
 {
   "Version": "2012-10-17", 
   "Statement": [
-    {
+        {
       "Effect": "Allow",
       "Action": "ec2:RunInstances",
       "NotResource": "arn:aws:ec2:region:account:launch-template/*",
@@ -1349,7 +1358,8 @@ The `Resource` element uses a \* wildcard to indicate that users can specify all
 ```
 {
    "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+    {
       "Effect": "Allow",
       "Action": [
         "ec2:DescribeReservedInstances", 
@@ -1369,7 +1379,8 @@ To allow users to view and modify the Reserved Instances in your account, but no
 ```
 {
   "Version": "2012-10-17",
-   "Statement": [{
+   "Statement": [
+    {
       "Effect": "Allow",
       "Action": [
         "ec2:DescribeReservedInstances", 
@@ -1390,7 +1401,7 @@ The following policy allows users to use the `CreateTags` action to apply tags t
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+              {
             "Effect": "Allow",
             "Action": [
                 "ec2:CreateTags"
@@ -1417,7 +1428,7 @@ The following policy allows users to tag any taggable resource that already has 
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+               {
             "Effect": "Allow",
             "Action": [
                 "ec2:CreateTags"
@@ -1427,7 +1438,7 @@ The following policy allows users to tag any taggable resource that already has 
                 "StringEquals": {
                     "aws:RequestTag/anycompany:environment-type": ["test","prod"],
                     "ec2:ResourceTag/owner": "${aws:username}"
-                }
+                } 
             }
         }
     ]
@@ -1443,7 +1454,7 @@ If you delete a resource, all tags associated with the resource are also deleted
 {
   "Version": "2012-10-17",
   "Statement": [
-    {
+       {
       "Effect": "Allow",
       "Action": "ec2:DeleteTags",
       "Resource": "arn:aws:ec2:us-east-1:123456789012:volume/*",
@@ -1463,7 +1474,7 @@ This policy allows users to delete only the `environment=prod` tag on any resour
 {
   "Version": "2012-10-17",
   "Statement": [
-    {
+      {
       "Effect": "Allow",
       "Action": [
         "ec2:DeleteTags"
@@ -1493,7 +1504,7 @@ IAM users must have permission to use the `iam:PassRole` action in order to pass
 {
   "Version": "2012-10-17",
   "Statement": [
-    {
+       {
       "Effect": "Allow",
       "Action": [
          "ec2:AssociateIamInstanceProfile",
@@ -1557,7 +1568,7 @@ The following policy allows users to add, remove, and replace routes for route t
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+              {
             "Effect": "Allow",
             "Action": [
                 "ec2:DeleteRoute",
@@ -1587,7 +1598,7 @@ The `ec2:SourceInstanceARN` key is an AWS\-wide condition key, therefore it can 
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+              {
             "Effect": "Allow",
             "Action": [
                 "ec2:DescribeVolumes",
@@ -1616,7 +1627,7 @@ The following policy allows users to create a launch template version and modify
 {
   "Version": "2012-10-17",
   "Statement": [
-    {
+   {
       "Action": [
         "ec2:CreateLaunchTemplateVersion",
         "ec2:ModifyLaunchTemplate"
@@ -1634,7 +1645,7 @@ The following policy allows users to delete any launch template and launch templ
 {
   "Version": "2012-10-17",
   "Statement": [
-    {
+       {
       "Action": [
         "ec2:DeleteLaunchTemplate",
         "ec2:DeleteLaunchTemplateVersions"
@@ -1682,7 +1693,7 @@ The following policy specifies that you can’t call the RunInstances API unless
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+               {
             "Sid": "RequireImdsV2",
             "Effect": "Deny",
             "Action": "ec2:RunInstances",
@@ -1708,7 +1719,7 @@ When the following policy and the preceding one are applied to an account via an
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+               {
             "Sid": "MaxImdsHopLimit",
             "Effect": "Deny",
             "Action": "ec2:RunInstances",
@@ -1731,7 +1742,7 @@ The following policy removes the ability for the general population of administr
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+               {
             "Sid": "AllowOnlyImdsAdminsToModifySettings",
             "Effect": "Deny",
             "Action": "ec2:ModifyInstanceMetadataOptions",
@@ -1754,7 +1765,7 @@ The following policy specifies that if this policy is applied to a role, and the
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
+               {
             "Sid": "RequireAllEc2RolesToUseV2",
             "Effect": "Deny",
             "Action": "*",

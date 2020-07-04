@@ -48,7 +48,7 @@ To track how your images are used in AWS, enable host recording in AWS Config\. 
 
 ## Dedicated Host instance capacity<a name="dedicated-hosts-limits"></a>
 
-Dedicated Hosts powered by the AWS Nitro System can support multiple instance types within the same instance family on a host\. For example, when you allocate an `r5` Dedicated Host, you can use a host with 2 sockets and 48 physical cores on which you can run different instance types, such as `r5.2xlarge` and `r5.4xlarge`\. You can run any number of instances up to the core capacity associated with the host\. For example, the table below shows the different instance type combinations you can run on a Dedicated Host\.
+Support for multiple instance types on the same Dedicated Host is available for the following instance families: `c5`, `m5`, `r5`, `c5n`, `r5n`, and `m5n`\. For example, when you allocate an `r5` Dedicated Host, you can use a host with 2 sockets and 48 physical cores on which you can run different instance types, such as `r5.2xlarge` and `r5.4xlarge`\. You can run any number of instances up to the core capacity associated with the host\. For example, the table below shows the different instance type combinations you can run on a Dedicated Host\.
 
 
 | Instance family | Example instance type combinations | 
@@ -57,7 +57,7 @@ Dedicated Hosts powered by the AWS Nitro System can support multiple instance ty
 | C5 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/dedicated-hosts-overview.html)  | 
 | M5 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/dedicated-hosts-overview.html)  | 
 
-For instance families that are not powered by the AWS Nitro System, you can configure the Dedicated Host only for a single instance type\. For more information about the instance families and instance type configurations supported on Dedicated Hosts see [Amazon EC2 Dedicated Host Pricing](http://aws.amazon.com/ec2/dedicated-hosts/pricing/)\.
+Other instance families support only a single instance type on the same Dedicated Host\. For more information about the instance families and instance type configurations supported on Dedicated Hosts see [Amazon EC2 Dedicated Host Pricing](http://aws.amazon.com/ec2/dedicated-hosts/pricing/)\.
 
 ## Dedicated Hosts restrictions<a name="dedicated-hosts-limitations"></a>
 

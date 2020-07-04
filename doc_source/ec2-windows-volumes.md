@@ -1,4 +1,4 @@
-# Mapping Disks to Volumes on Your Windows Instance<a name="ec2-windows-volumes"></a>
+# Mapping disks to volumes on your Windows instance<a name="ec2-windows-volumes"></a>
 
 Your Windows instance comes with an EBS volume that serves as the root volume\. If your Windows instance uses AWS PV or Citrix PV drivers, you can optionally add up to 25 volumes, making a total of 26 volumes\. For more information, see [Instance volume limits](volume_limits.md)
 
@@ -7,11 +7,11 @@ Depending on the instance type of your instance, you'll have from 0 to 24 possib
 When you add a volume to your instance, you specify the device name that Amazon EC2 uses\. For more information, see [Device naming on Windows instances](device_naming.md)\. AWS Windows Amazon Machine Images \(AMIs\) contain a set of drivers that are used by Amazon EC2 to map instance store and EBS volumes to Windows disks and drive letters\. If you launch an instance from a Windows AMI that uses AWS PV or Citrix PV drivers, you can use the relationships described on this page to map your Windows disks to your instance store and EBS volumes\. If your Windows AMI uses Red Hat PV drivers, you can update your instance to use the Citrix drivers\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
 
 **Topics**
-+ [Listing the Disks Using Windows Disk Management](#windows-disks)
-+ [Listing the Disks Using Windows PowerShell \(Windows Server 2012 and later\)](#windows-list-disks)
-+ [Disk Device to Device Name Mapping](#windows-volume-mapping)
++ [Listing the disks using Windows Disk Management](#windows-disks)
++ [Listing the disks using Windows PowerShell \(Windows Server 2012 and later\)](#windows-list-disks)
++ [Disk device to device name mapping](#windows-volume-mapping)
 
-## Listing the Disks Using Windows Disk Management<a name="windows-disks"></a>
+## Listing the disks using Windows Disk Management<a name="windows-disks"></a>
 
 You can find the disks on your Windows instance using Windows Disk Management\.
 
@@ -28,7 +28,7 @@ You can find the disks on your Windows instance using Windows Disk Management\.
    The following is an example that shows the disks that are available if you launch an `m3.medium` instance with an instance store volume \(Disk 2\) and an additional EBS volume \(Disk 1\)\.  
 ![\[Disk Management with a root volume, one instance store volume, and one EBS volume.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/disk_management.png)
 
-1. Right\-click the gray pane labeled Disk 1, and then select **Properties**\. Note the value of **Location** and look it up in the tables in [Disk Device to Device Name Mapping](#windows-volume-mapping)\. For example, the following disk has the location Bus Number 0, Target Id 9, LUN 0\. According to the table for EBS volumes, the device name for this location is `xvdj`\.  
+1. Right\-click the gray pane labeled Disk 1, and then select **Properties**\. Note the value of **Location** and look it up in the tables in [Disk device to device name mapping](#windows-volume-mapping)\. For example, the following disk has the location Bus Number 0, Target Id 9, LUN 0\. According to the table for EBS volumes, the device name for this location is `xvdj`\.  
 ![\[The location of an EBS volume.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/disk_1_location.png)
 
 1. To map the device name of an EBS volume to its volume ID, open the Amazon EC2 console on your computer\. In the navigation pane, select **Instances**, and then select your instance\. Under **Block devices** on the **Description** tab, click the device name, and locate **EBS ID**\. For this example, the volume ID is `vol-0a07f3e37b14708b9`\.  
@@ -38,7 +38,7 @@ You can find the disks on your Windows instance using Windows Disk Management\.
 
    Another way to access volume IDs from the console is to select **Volumes** under **Elastic Block Store** in the navigation pane\. Volumes will be listed by instance name and volume size\. Review or select the **Attachment Information** to verify the instance to which the volume is attached\. 
 
-## Listing the Disks Using Windows PowerShell \(Windows Server 2012 and later\)<a name="windows-list-disks"></a>
+## Listing the disks using Windows PowerShell \(Windows Server 2012 and later\)<a name="windows-list-disks"></a>
 
 The following PowerShell script lists each disk and its corresponding device name and volume\. 
 
@@ -152,21 +152,21 @@ Disk Partitions DriveLetter EbsVolumeId           Device    VirtualDevice Volume
 
 If you specified an IAM role with a policy that allows access to Amazon EC2 when you launched the instance, or if you set up your credentials on the Windows instance as described in [Using AWS Credentials](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html) in the *AWS Tools for Windows PowerShell User Guide*, you'll get the volume ID for the EBS volumes in the `VolumeId` column instead of `NA`\.
 
-## Disk Device to Device Name Mapping<a name="windows-volume-mapping"></a>
+## Disk device to device name mapping<a name="windows-volume-mapping"></a>
 
 The block device driver for the instance assigns the actual volume names when mounting volumes\.
 
 **Topics**
-+ [Instance Store Volumes](#instance-store-volume-map)
-+ [EBS Volumes](#ebs-volume-map)
-+ [NVMe EBS Volumes](#ebs-nvme-volume-map)
++ [Instance store volumes](#instance-store-volume-map)
++ [EBS volumes](#ebs-volume-map)
++ [NVMe EBS volumes](#ebs-nvme-volume-map)
 
-### Instance Store Volumes<a name="instance-store-volume-map"></a>
+### Instance store volumes<a name="instance-store-volume-map"></a>
 
 The following table describes how the Citrix PV and AWS PV drivers map non\-NVMe instance store volumes to Windows volumes\. The number of available instance store volumes is determined by the instance type\. For more information, see [Instance Store Volumes](InstanceStorage.md#instance-store-volumes)\.
 
 
-| Location | Device Name | 
+| Location | Device name | 
 | --- | --- | 
 | Bus Number 0, Target ID 78, LUN 0 | xvdca | 
 | Bus Number 0, Target ID 79, LUN 0 | xvdcb | 
@@ -181,12 +181,12 @@ The following table describes how the Citrix PV and AWS PV drivers map non\-NVMe
 | Bus Number 0, Target ID 88, LUN 0 | xvdck | 
 | Bus Number 0, Target ID 89, LUN 0 | xvdcl | 
 
-### EBS Volumes<a name="ebs-volume-map"></a>
+### EBS volumes<a name="ebs-volume-map"></a>
 
 The following table describes how the Citrix PV and AWS PV drivers map non\-NVME EBS volumes to Windows volumes\.
 
 
-| Location | Device Name | 
+| Location | Device name | 
 | --- | --- | 
 | Bus Number 0, Target ID 0, LUN 0 | /dev/sda1 | 
 | Bus Number 0, Target ID 1, LUN 0 | xvdb | 
@@ -215,6 +215,6 @@ The following table describes how the Citrix PV and AWS PV drivers map non\-NVME
 | Bus Number 0, Target ID 24, LUN 0 | xvdy | 
 | Bus Number 0, Target ID 25, LUN 0 | xvdz | 
 
-### NVMe EBS Volumes<a name="ebs-nvme-volume-map"></a>
+### NVMe EBS volumes<a name="ebs-nvme-volume-map"></a>
 
 With instances built on the [Nitro System](instance-types.md#ec2-nitro-instances), EBS volumes are exposed as NVMe devices\. You can use the [Get\-Disk](https://docs.microsoft.com/en-us/powershell/module/storage/get-disk) command to map Windows disk numbers to EBS volume IDs\. For more information, see [Identifying the EBS device](nvme-ebs-volumes.md#identify-nvme-ebs-device)\.

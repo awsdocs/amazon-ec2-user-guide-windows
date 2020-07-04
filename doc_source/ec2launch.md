@@ -1,6 +1,6 @@
 # Configuring a Windows instance using EC2Launch<a name="ec2launch"></a>
 
-EC2Launch is a set of Windows PowerShell scripts that replaces the EC2Config service on Windows Server 2016 and later AMIs\.
+EC2Launch is a set of Windows PowerShell scripts that replaced the EC2Config service on Windows Server 2016 and later AMIs\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
 **Topics**
 + [EC2Launch tasks](#ec2launch-tasks)

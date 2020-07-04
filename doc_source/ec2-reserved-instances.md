@@ -4,7 +4,7 @@ Reserved Instances provide you with significant savings on your Amazon EC2 costs
 
 Savings Plans also offer significant savings on your Amazon EC2 costs compared to On\-Demand Instance pricing\. With Savings Plans, you make a commitment to a consistent usage amount, measured in USD per hour\. This provides you with the flexibility to use the instance configurations that best meet your needs and continue to save money, instead of making a commitment to a specific instance configuration\. For more information, see the [AWS Savings Plans User Guide](https://docs.aws.amazon.com/savingsplans/latest/userguide/)\.
 
-## Reserved Instance Overview<a name="ri-overview"></a>
+## Reserved Instance overview<a name="ri-overview"></a>
 
 The following diagram shows a basic overview of purchasing and using Reserved Instances\.
 
@@ -19,7 +19,7 @@ The Reserved Instance pricing is determined by the following key variables\.
 ### Instance attributes<a name="ri-pricing-variable-instance-attributes"></a>
 
 A Reserved Instance has four instance attributes that determine its price\. The attributes also determine how the Reserved Instance is applied to a running instance in your account\.
-+ **Instance type**: For example, `m4.large`\. This is composed of the instance family \(`m4`\) and the instance size \(`large`\)\.
++ **Instance type**: For example, `m4.large`\. This is composed of the instance family \(for example, `m4`\) and the instance size \(for example, `large`\)\.
 + **Region**: The Region in which the Reserved Instance is purchased\.
 + **Tenancy**: Whether your instance runs on shared \(default\) or single\-tenant \(dedicated\) hardware\. For more information, see [Dedicated Instances](dedicated-instance.md)\. 
 + **Platform**: The operating system; for example, Windows or Linux/Unix\. For more information, see [Choosing a platform](ri-market-concepts-buying.md#ri-choosing-platform)\.

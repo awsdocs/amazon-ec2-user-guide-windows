@@ -378,7 +378,7 @@ When you create a launch template from an instance, the instance's network inter
 
 ## Managing launch template versions<a name="manage-launch-template-versions"></a>
 
-You can create launch template versions for a specific launch template, set the default version, and delete versions that you no longer require\.
+You can create launch template versions for a specific launch template, set the default version, describe a launch template version, and delete versions that you no longer require\.
 
 **Topics**
 + [Creating a launch template version](#create-launch-template-version)
@@ -490,7 +490,7 @@ You can set the default version for the launch template\. When you launch an ins
 
 ### Describing a launch template version<a name="describe-launch-template-version"></a>
 
-Using the console, you can view all the versions of the selected launch template, or get a list of the launch templates whose latest or default version matches a specific version number\. Using the AWS CLI, you can describe all versions, individual versions, or a range of versions of a specified launch template\.
+Using the console, you can view all the versions of the selected launch template, or get a list of the launch templates whose latest or default version matches a specific version number\. Using the AWS CLI, you can describe all versions, individual versions, or a range of versions of a specified launch template\. You can also describe all the latest versions or all the default versions of all the launch templates in your account\.
 
 ------
 #### [ New console ]
@@ -516,6 +516,14 @@ Using the console, you can view all the versions of the selected launch template
   aws ec2 describe-launch-template-versions \
       --launch-template-id lt-0abcd290751193123 \
       --versions 1 3
+  ```
+
+**To describe all the latest and default launch template versions in your account using the AWS CLI**
++ Use the [describe\-launch\-template\-versions](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-launch-template-versions.html) command and specify `$Latest`, `$Default`, or both\. You must omit the launch template ID and name in the call\. You cannot specify version numbers\.
+
+  ```
+  aws ec2 describe-launch-template-versions \
+      --versions "$Latest,$Default"
   ```
 
 ------

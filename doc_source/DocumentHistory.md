@@ -4,6 +4,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [ EC2Launch v2 ](ec2launch-v2.md) | You can use EC2Launch v2 to perform tasks during instance startup, if an instance is stopped and later started, if an instance is restarted, and on demand\. EC2Launch v2 supports all versions of Windows Server and replaces EC2Launch and EC2Config\. | June 30, 2020 | 
 | [Bare metal instances for G4](#DocumentHistory) | New instances that provide your applications with direct access to the physical resources of the host server\. | June 5, 2020 | 
 | [C5a instances](#DocumentHistory) | New compute optimized instances featuring second\-generation AMD EYPC processors\. | June 4, 2020 | 
 | [Bring your own IPv6 addresses](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-byoip.html) | You can bring part or all of your IPv6 address range from your on\-premises network to your AWS account\. | May 21, 2020 | 

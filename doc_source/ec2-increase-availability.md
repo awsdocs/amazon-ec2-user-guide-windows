@@ -21,7 +21,7 @@ This tutorial assumes that you have already done the following:
 
 1. Launched an instance in the VPC\.
 
-1. Connected to the instance and customized it\. For example, installing software and applications, copying data, and attaching additional EBS volumes\. For information about setting up a web server on your instance, see [Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md) or [Tutorial: Installing a WIMP Server on an Amazon EC2 Instance Running Windows Server](install-WIMP.md)\.
+1. Connected to the instance and customized it\. For example, installing software and applications, copying data, and attaching additional EBS volumes\. For information about setting up a web server on your instance, see [Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md) or [Tutorial: Installing a WIMP server on an Amazon EC2 instance running Windows Server](install-WIMP.md)\.
 
 1. Tested your application on your instance to ensure that your instance is configured correctly\.
 

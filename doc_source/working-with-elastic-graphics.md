@@ -1,6 +1,6 @@
 # Working with Elastic Graphics<a name="working-with-elastic-graphics"></a>
 
-You can launch an instance and associate it with an Elastic Graphics accelerator during launch\. You must then manually install the necessary libraries on your instance that enable communication with the accelerator\.
+You can launch an instance and associate it with an Elastic Graphics accelerator during launch\. You must then manually install the necessary libraries on your instance that enable communication with the accelerator\. For limitations, see [Elastic Graphics limitations](elastic-graphics.md#elastic-graphics-limitations)\.
 
 **Topics**
 + [Configuring your security groups](#elastic-graphics-security)

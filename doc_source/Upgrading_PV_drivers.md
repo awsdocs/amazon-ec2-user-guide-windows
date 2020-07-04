@@ -82,6 +82,12 @@ When you stop an instance, the data on any instance store volumes is erased\. To
    ```
    bcdedit /set {default} safeboot dsrepair
    ```
+
+   PowerShell:
+
+   ```
+   PS C:\> bcdedit /set "{default}" safeboot dsrepair
+   ```
 **Warning**  
 Before running this command, confirm that you know the DSRM password\. You'll need this information so that you can log in to your instance after the upgrade is complete and the instance automatically reboots\.
 

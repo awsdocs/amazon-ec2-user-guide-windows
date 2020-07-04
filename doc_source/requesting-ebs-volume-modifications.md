@@ -37,7 +37,7 @@ Use the following procedure to modify an EBS volume\.<a name="console-modify-siz
 
 1. Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extending a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
 
-1. If you increase the size of an NVMe volume on an instance that does not have the AWS NVMe drivers, you must reboot the instance to enable Windows to see the new volume size\. For more information about installing the AWS NVMe drivers, see [AWS NVMe Drivers for Windows Instances](aws-nvme-drivers.md)\.
+1. If you increase the size of an NVMe volume on an instance that does not have the AWS NVMe drivers, you must reboot the instance to enable Windows to see the new volume size\. For more information about installing the AWS NVMe drivers, see [AWS NVMe drivers for Windows instances](aws-nvme-drivers.md)\.
 
 ## Modifying an EBS volume using Elastic Volumes \(AWS CLI\)<a name="modify-ebs-volume-cli"></a>
 

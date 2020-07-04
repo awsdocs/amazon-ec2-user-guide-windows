@@ -74,6 +74,7 @@ Get-ClusterResource $cluster |Set-ClusterParameter HostRecordTTL 300
 Stop-ClusterResource $cluster
 Start-ClusterResource $cluster
 ```
+
 In addition to setting the Cluster Resource parameter to **0**, you must ensure that the cluster has permissions to modify the DNS entry for your cluster name\. 
 
 1. Log into the Domain Controller \(DC\) for the domain, or a server that hosts the forward lookup zone for the domain\.
@@ -130,7 +131,7 @@ Some Microsoft documentation recommends using a dedicated [heartbeat network](ht
 
 The NIC in the OS can keep using DHCP as long as the DNS servers that are being retrieved from the DHCP Options Set allow for the nodes to resolve each other\. You can set the NIC to be configured statically\. When completed, you then manually configure only the primary IP address for the elastic network interface\. Failover Clustering manages and assigns additional IP addresses, as needed\.
 
-For all instance types, you can increase the MTU on the network adapter to 9001 to support [Jumbo Frames](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/network_mtu.html)\. This configuration reduces fragmentation of packets wherever Jumbo Frames are supported\. The following example shows how to use PowerShell to configure Jumbo Frames for an Elastic Network Adapter\.
+For all instance types, you can increase the maximum transmission unit \(MTU\) on the network adapter to 9001 to support [Jumbo Frames](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/network_mtu.html)\. This configuration reduces fragmentation of packets wherever Jumbo Frames are supported\. The following example shows how to use PowerShell to configure Jumbo Frames for an Elastic Network Adapter\.
 
 ```
 Get-NetAdapter | Set-NetAdapterAdvancedProperty -DisplayName "MTU" -DisplayValue 9001
@@ -142,7 +143,7 @@ Microsoft does not recommend disabling IPv6 in a Windows Cluster\. While Failove
 
 ## Host Record TTL for SQL Availability Group Listeners<a name="sql-clustering-ttl"></a>
 
-Set the host record TTL to **300** seconds instead of the default 20 minutes \(1200 seconds\)\. For legacy client comparability, set `RegisterAllProvidersIP` to **0** for SQL Availability Group Listeners\. This is not required in all environments\. These settings are important because some legacy client applications cannot use `MultiSubnetFailover` in their connection strings\. See [HostRecordTTL Setting](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/create-or-configure-an-availability-group-listener-sql-server?view=sql-server-2017#HostRecordTTL) for more information\. When you change these settings, the Cluster Resource must be restarted\. The Cluster Group for the listener will stop when the Cluster Resource is restarted so it must be started - if you do not start the Cluster Group, the Availability Group will be offline in a Resolving state\. The following are example PowerShell scripts for changing the TTL and `RegisterAllProvidersIP` settings\.
+Set the host record TTL to **300** seconds instead of the default 20 minutes \(1200 seconds\)\. For legacy client comparability, set `RegisterAllProvidersIP` to **0** for SQL Availability Group Listeners\. This is not required in all environments\. These settings are important because some legacy client applications cannot use `MultiSubnetFailover` in their connection strings\. See [HostRecordTTL Setting](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/create-or-configure-an-availability-group-listener-sql-server?view=sql-server-2017#HostRecordTTL) for more information\. When you change these settings, the Cluster Resource must be restarted\. The Cluster Group for the listener stops when the Cluster Resource is restarted, so it must be started\. If you do not start the Cluster Group, the Availability Group remains offline in a `RESOLVING` state\. The following are example PowerShell scripts for changing the TTL and `RegisterAllProvidersIP` settings\.
 
 ```
 Get-ClusterResource yourListenerName | Set-ClusterParameter RegisterAllProvidersIP 0 

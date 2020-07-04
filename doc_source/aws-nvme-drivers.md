@@ -1,12 +1,16 @@
-# AWS NVMe Drivers for Windows Instances<a name="aws-nvme-drivers"></a>
+# AWS NVMe drivers for Windows instances<a name="aws-nvme-drivers"></a>
 
 EBS volumes and instance store volumes are exposed as NVMe block devices on [Nitro\-based instances](instance-types.md#ec2-nitro-instances)\. You must have the AWS NVMe driver installed in order to use an NVMe block device\. The latest AWS Windows AMIs for Windows Server 2008 R2 and later contain the required AWS NVMe driver\.
 
 For more information about EBS and NVMe, see [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)\. For more information about SSD instance store and NVMe, see [SSD Instance Store Volumes](ssd-instance-store.md)\.
 
-## Installing or Upgrading AWS NVMe Drivers<a name="install-nvme-drivers"></a>
+## Installing or upgrading AWS NVMe drivers<a name="install-nvme-drivers"></a>
 
 If you are not using the latest AWS Windows AMIs provided by Amazon, use the following procedure to install the current AWS NVMe driver\. You should perform this update at a time when it is convenient to reboot your instance\. Either the install script will reboot your instance or you must reboot it as the final step\.
+
+**Prerequisites**
+
+PowerShell 3\.0 or later
 
 **To download and install the latest AWS NVMe driver**
 
@@ -25,11 +29,11 @@ If you are not using the latest AWS Windows AMIs provided by Amazon, use the fol
      expand-archive $env:userprofile\nvme_driver.zip -DestinationPath $env:userprofile\nvme_driver
      ```
 
-1. Install the driver by running the `install.ps1` PowerShell script\.
+1. Install the driver by running the `install.ps1` PowerShell script\. If you get an error, make sure you are using PowerShell 3\.0 or later\.
 
 1. If the installer does not reboot your instance, reboot the instance\.
 
-## AWS NVMe Driver Version History<a name="nvme-driver-version-history"></a>
+## AWS NVMe driver version history<a name="nvme-driver-version-history"></a>
 
 The following table describes the released versions of the AWS NVMe driver\.
 
@@ -42,7 +46,7 @@ The following table describes the released versions of the AWS NVMe driver\.
 | 1\.2\.0 | Performance and reliability improvements for AWS NVMe devices on all supported instances, including bare metal instances | 13 June 2018 | 
 | 1\.0\.0 | AWS NVMe driver for supported instance types running Windows Server | 12 February 2018 | 
 
-## Subscribing to Notifications<a name="drivers-subscribe-notifications"></a>
+## Subscribing to notifications<a name="drivers-subscribe-notifications"></a>
 
 Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use the following procedure to subscribe to these notifications\.
 

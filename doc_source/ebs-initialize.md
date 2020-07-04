@@ -15,6 +15,8 @@ For most applications, amortizing the initialization cost over the lifetime of t
 
 New EBS volumes receive their maximum performance the moment that they are available and do not require initialization \(formerly known as pre\-warming\)\. For volumes that have been created from snapshots, use dd or fio for Windows to read from all of the blocks on a volume\. All existing data on the volume will be preserved\.
 
+For information about initializing Amazon EBS volumes on Linux, see [Initializing Amazon EBS volumes on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-initialize.html#ebs-initialize-windows)\.
+
 Before using either tool, gather information about the disks on your system as follows:
 
 1. Use the wmic command to list the available disks on your system:
