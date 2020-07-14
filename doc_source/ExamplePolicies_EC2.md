@@ -9,6 +9,7 @@ The following examples show policy statements that you could use to control the 
 + [Working with volumes](#iam-example-manage-volumes)
 + [Working with snapshots](#iam-example-manage-snapshots)
 + [Launching instances \(RunInstances\)](#iam-example-runinstances)
++ [Working with Spot Instances](#iam-example-spot-instances)
 + [Working with Reserved Instances](#iam-example-reservedinstances)
 + [Tagging resources](#iam-example-taggingresources)
 + [Working with IAM roles](#iam-example-iam-roles)
@@ -737,7 +738,7 @@ The following policy allows modification of a snapshot only if the snapshot is t
 
 ## Launching instances \(RunInstances\)<a name="iam-example-runinstances"></a>
 
-The [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-RunInstances.html) API action launches one or more instances\. `RunInstances` requires an AMI and creates an instance; and users can specify a key pair and security group in the request\. Launching into a VPC requires a subnet, and creates a network interface\. Launching from an Amazon EBS\-backed AMI creates a volume\. Therefore, the user must have permissions to use these Amazon EC2 resources\. You can create a policy statement that requires users to specify an optional parameter on `RunInstances`, or restricts users to particular values for a parameter\.
+The [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-RunInstances.html) API action launches one or more On\-Demand Instances or one or more Spot Instances\. `RunInstances` requires an AMI and creates an instance\. Users can specify a key pair and security group in the request\. Launching into a VPC requires a subnet, and creates a network interface\. Launching from an Amazon EBS\-backed AMI creates a volume\. Therefore, the user must have permissions to use these Amazon EC2 resources\. You can create a policy statement that requires users to specify an optional parameter on `RunInstances`, or restricts users to particular values for a parameter\.
 
 For more information about the resource\-level permissions that are required to launch an instance, see [Actions, Resources, and Condition Keys for Amazon EC2](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazonec2.html) in the *IAM User Guide*\.
 
@@ -982,6 +983,8 @@ The following policy allows users to launch instances only if the EBS volumes fo
 
 ### Tags<a name="iam-example-runinstances-tags"></a>
 
+**Tag instances on creation**
+
 The following policy allows users to launch instances and tag the instances during creation\. For resource\-creating actions that apply tags, users must have permissions to use the `CreateTags` action\. The second statement uses the `ec2:CreateAction` condition key to allow users to create tags only in the context of `RunInstances`, and only for instances\. Users cannot tag existing resources, and users cannot tag volumes using the `RunInstances` request\. 
 
 For more information, see [Granting permission to tag resources during creation](supported-iam-actions-tagging.md)\.
@@ -1012,6 +1015,8 @@ For more information, see [Granting permission to tag resources during creation]
   ]
 }
 ```
+
+**Tag instances and volumes on creation with specific tags**
 
 The following policy includes the `aws:RequestTag` condition key that requires users to tag any instances and volumes that are created by `RunInstances` with the tags `environment=production` and `purpose=webserver`\. The `aws:TagKeys` condition key uses the `ForAllValues` modifier to indicate that only the keys `environment` and `purpose` are allowed in the request \(no other tags can be specified\)\. If no tags are specified in the request, the request fails\. 
 
@@ -1067,6 +1072,8 @@ The following policy includes the `aws:RequestTag` condition key that requires u
 }
 ```
 
+**Tag instances and volumes on creation with at least one specific tag**
+
 The following policy uses the `ForAnyValue` modifier on the `aws:TagKeys` condition to indicate that at least one tag must be specified in the request, and it must contain the key `environment` or `webserver`\. The tag must be applied to both instances and volumes\. Any tag values can be specified in the request\. 
 
 ```
@@ -1117,6 +1124,8 @@ The following policy uses the `ForAnyValue` modifier on the `aws:TagKeys` condit
 }
 ```
 
+**If instances are tagged on creation, they must be tagged with a specific tag**
+
 In the following policy, users do not have to specify tags in the request, but if they do, the tag must be `purpose=test`\. No other tags are allowed\. Users can apply the tags to any taggable resource in the `RunInstances` request\.
 
 ```
@@ -1147,6 +1156,76 @@ In the following policy, users do not have to specify tags in the request, but i
        }
     }
   ]
+}
+```
+
+To disallow anyone called tag on create for RunInstances
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowRun",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-east-1::image/*",
+                "arn:aws:ec2:us-east-1:*:subnet/*",
+                "arn:aws:ec2:us-east-1:*:network-interface/*",
+                "arn:aws:ec2:us-east-1:*:security-group/*",
+                "arn:aws:ec2:us-east-1:*:key-pair/*",
+                "arn:aws:ec2:us-east-1:*:volume/*",
+                "arn:aws:ec2:us-east-1:*:instance/*",
+                "arn:aws:ec2:us-east-1:*:spot-instances-request/*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Deny",
+            "Action": "ec2:CreateTags",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+Only allow specific tags for spot\-instances\-request\. Surprise inconsistency number 2 comes into play here\. Under normal circumstances, specifying no tags will result in Unauthenticated\. In the case of spot\-instances\-request, this policy will not be evaluated if there are no spot\-instances\-request tags, so a non\-tag Spot on Run request will succeed\. 
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowRun",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-east-1::image/*",
+                "arn:aws:ec2:us-east-1:*:subnet/*",
+                "arn:aws:ec2:us-east-1:*:network-interface/*",
+                "arn:aws:ec2:us-east-1:*:security-group/*",
+                "arn:aws:ec2:us-east-1:*:key-pair/*",
+                "arn:aws:ec2:us-east-1:*:volume/*",
+                "arn:aws:ec2:us-east-1:*:instance/*",
+            ]
+        },
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": "arn:aws:ec2:us-east-1:*:spot-instances-request/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/environment": "production"
+                }
+            }
+        }
+    ]
 }
 ```
 
@@ -1344,6 +1423,263 @@ The following example allows users to launch instances only if they use a launch
        }
      }
   ]
+}
+```
+
+## Working with Spot Instances<a name="iam-example-spot-instances"></a>
+
+You can use the RunInstances action to create Spot Instance requests, and tag the Spot Instance requests on create\. The resource to specify for RunInstances is `spot-instances-request`\.
+
+The `spot-instances-request` resource is evaluated in the IAM policy as follows:
++ If you don't tag a Spot Instance request on create, Amazon EC2 does not evaluate the `spot-instances-request` resource in the RunInstances statement\.
++ If you tag a Spot Instance request on create, Amazon EC2 evaluates the `spot-instances-request` resource in the RunInstances statement\.
+
+Therefore, for the `spot-instances-request` resource, the following rules apply to the IAM policy:
++ If you use RunInstances to create a Spot Instance request and you don't intend to tag the Spot Instance request on create, you don’t need to explicitly allow the `spot-instances-request` resource; the call will succeed\.
++ If you use RunInstances to create a Spot Instance request and intend to tag the Spot Instance request on create, you must include the `spot-instances-request` resource in the RunInstances allow statement, otherwise the call will fail\.
++ If you use RunInstances to create a Spot Instance request and intend to tag the Spot Instance request on create, you must specify the `spot-instances-request` resource or `*` wildcard in the CreateTags allow statement, otherwise the call will fail\. 
+
+You can request Spot Instances using RunInstances or RequestSpotInstances\. The following example IAM policies apply only when requesting Spot Instances using RunInstances\.
+
+**Example: Request Spot Instances using RunInstances**
+
+The following policy allows users to request Spot Instances by using the RunInstances action\. The `spot-instances-request` resource, which is created by RunInstances, requests Spot Instances\.
+
+**Note**  
+To use RunInstances to create Spot Instance requests, you can omit `spot-instances-request` from the `Resource` list if you do not intend to tag the Spot Instance requests on create\. This is because Amazon EC2 does not evaluate the `spot-instances-request` resource in the RunInstances statement if the Spot Instance request is not tagged on create\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowRun",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-east-1::image/*",
+                "arn:aws:ec2:us-east-1:*:subnet/*",
+                "arn:aws:ec2:us-east-1:*:network-interface/*",
+                "arn:aws:ec2:us-east-1:*:security-group/*",
+                "arn:aws:ec2:us-east-1:*:key-pair/*",
+                "arn:aws:ec2:us-east-1:*:volume/*",
+                "arn:aws:ec2:us-east-1:*:instance/*",
+                "arn:aws:ec2:us-east-1:*:spot-instances-request/*"
+            ]
+        }
+    ]
+}
+```
+
+**Warning**  
+**NOT SUPPORTED – Example: Deny users permission to request Spot Instances using RunInstances**  
+The following policy is not supported for the `spot-instances-request` resource\.  
+The following policy is meant to give users the permission to launch On\-Demand Instances, but deny users the permission to request Spot Instances\. The `spot-instances-request` resource, which is created by RunInstances, is the resource that requests Spot Instances\. The second statement is meant to deny the RunInstances action for the `spot-instances-request` resource\. However, this condition is not supported because Amazon EC2 does not evaluate the `spot-instances-request` resource in the RunInstances statement if the Spot Instance request is not tagged on create\.  
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowRun",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-east-1::image/*",
+                "arn:aws:ec2:us-east-1:*:subnet/*",
+                "arn:aws:ec2:us-east-1:*:network-interface/*",
+                "arn:aws:ec2:us-east-1:*:security-group/*",
+                "arn:aws:ec2:us-east-1:*:key-pair/*",
+                "arn:aws:ec2:us-east-1:*:volume/*",
+                "arn:aws:ec2:us-east-1:*:instance/*"
+            ]
+        },
+        {
+            "Sid": "DenySpotInstancesRequests - NOT SUPPORTED - DO NOT USE!",
+            "Effect": "Deny",
+            "Action": "ec2:RunInstances",
+            "Resource": "arn:aws:ec2:us-east-1:*:spot-instances-request/*"
+        }
+    ]
+}
+```
+
+**Example: Tag Spot Instance requests on create**
+
+The following policy allows users to tag all resources that are created during instance launch\. The first statement allows RunInstances to create the listed resources\. The `spot-instances-request` resource, which is created by RunInstances, is the resource that requests Spot Instances\. The second statement provides a `*` wildcard to allow all resources to be tagged when they are created at instance launch\.
+
+**Note**  
+If you tag a Spot Instance request on create, Amazon EC2 evaluates the `spot-instances-request` resource in the RunInstances statement\. Therefore, you must explicitly allow the `spot-instances-request` resource for the RunInstances action, otherwise the call will fail\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowRun",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-east-1::image/*",
+                "arn:aws:ec2:us-east-1:*:subnet/*",
+                "arn:aws:ec2:us-east-1:*:network-interface/*",
+                "arn:aws:ec2:us-east-1:*:security-group/*",
+                "arn:aws:ec2:us-east-1:*:key-pair/*",
+                "arn:aws:ec2:us-east-1:*:volume/*",
+                "arn:aws:ec2:us-east-1:*:instance/*",
+                "arn:aws:ec2:us-east-1:*:spot-instances-request/*"
+            ]
+        },
+        {
+            "Sid": "TagResources",
+            "Effect": "Allow",
+            "Action": "ec2:CreateTags",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+**Example: Deny tag on create for Spot Instance requests**
+
+The following policy denies users the permission to tag the resources that are created during instance launch\.
+
+The first statement allows RunInstances to create the listed resources\. The `spot-instances-request` resource, which is created by RunInstances, is the resource that requests Spot Instances\. The second statement provides a `*` wildcard to deny all resources being tagged when they are created at instance launch\. If `spot-instances-request` or any other resource is tagged on create, the RunInstances call will fail\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowRun",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-east-1::image/*",
+                "arn:aws:ec2:us-east-1:*:subnet/*",
+                "arn:aws:ec2:us-east-1:*:network-interface/*",
+                "arn:aws:ec2:us-east-1:*:security-group/*",
+                "arn:aws:ec2:us-east-1:*:key-pair/*",
+                "arn:aws:ec2:us-east-1:*:volume/*",
+                "arn:aws:ec2:us-east-1:*:instance/*",
+                "arn:aws:ec2:us-east-1:*:spot-instances-request/*"
+            ]
+        },
+        {
+            "Sid": "DenyTagResources",
+            "Effect": "Deny",
+            "Action": "ec2:CreateTags",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+**Warning**  
+**NOT SUPPORTED – Example: Allow creating a Spot Instance request only if it is assigned a specific tag**  
+The following policy is not supported for the `spot-instances-request` resource\.  
+The following policy is meant to grant RunInstances the permission to create a Spot Instance request only if the request is tagged with a specific tag\.   
+The first statement allows RunInstances to create the listed resources\.  
+The second statement is meant to grant users the permission to create a Spot Instance request only if the request has the tag `environment=production`\. If this condition is applied to other resources created by RunInstances, specifying no tags results in an `Unauthenticated` error\. However, if no tags are specified for the Spot Instance request, Amazon EC2 does not evaluate the `spot-instances-request` resource in the RunInstances statement, which results in non\-tagged Spot Instance requests being created by RunInstances\.  
+Note that specifying another tag other than `environment=production` results in an `Unauthenticated` error, because if a user tags a Spot Instance request, Amazon EC2 evaluates the `spot-instances-request` resource in the RunInstances statement\.  
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowRun",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-east-1::image/*",
+                "arn:aws:ec2:us-east-1:*:subnet/*",
+                "arn:aws:ec2:us-east-1:*:network-interface/*",
+                "arn:aws:ec2:us-east-1:*:security-group/*",
+                "arn:aws:ec2:us-east-1:*:key-pair/*",
+                "arn:aws:ec2:us-east-1:*:volume/*",
+                "arn:aws:ec2:us-east-1:*:instance/*"
+            ]
+        },
+        {
+            "Sid": "RequestSpotInstancesOnlyIfTagIs_environment=production - NOT SUPPORTED - DO NOT USE!",
+            "Effect": "Allow",
+            "Action": "ec2:RunInstances",
+            "Resource": "arn:aws:ec2:us-east-1:*:spot-instances-request/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/environment": "production"
+                }
+            }
+        },
+        {
+            "Sid": "TagResources",
+            "Effect": "Allow",
+            "Action": "ec2:CreateTags",
+            "Resource": "*"
+        }
+
+    ]
+}
+```
+
+**Example: Deny creating a Spot Instance request if it is assigned a specific tag**
+
+The following policy denies RunInstances the permission to create a Spot Instance request if the request is tagged with `environment=production`\. 
+
+The first statement allows RunInstances to create the listed resources\.
+
+The second statement denies users the permission to create a Spot Instance request if the request has the tag `environment=production`\. Specifying `environment=production` as a tag results in an `Unauthenticated` error\. Specifying other tags or specifying no tags will result in the creation of a Spot Instance request\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowRun",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-east-1::image/*",
+                "arn:aws:ec2:us-east-1:*:subnet/*",
+                "arn:aws:ec2:us-east-1:*:network-interface/*",
+                "arn:aws:ec2:us-east-1:*:security-group/*",
+                "arn:aws:ec2:us-east-1:*:key-pair/*",
+                "arn:aws:ec2:us-east-1:*:volume/*",
+                "arn:aws:ec2:us-east-1:*:instance/*",
+                "arn:aws:ec2:us-east-1:*:spot-instances-request/*"
+            ]
+        },
+        {
+            "Sid": "DenySpotInstancesRequests",
+            "Effect": "Deny",
+            "Action": "ec2:RunInstances",
+            "Resource": "arn:aws:ec2:us-east-1:*:spot-instances-request/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestTag/environment": "production"
+                }
+            }
+        },
+        {
+            "Sid": "TagResources",
+            "Effect": "Allow",
+            "Action": "ec2:CreateTags",
+            "Resource": "*"
+        }
+    ]
 }
 ```
 

@@ -155,7 +155,7 @@ The procedure for requesting a Spot Instance is similar to the procedure for lau
 + To request a Spot Instance with a defined duration using the console, follow the [Creating a Spot Fleet request](spot-fleet-requests.md#create-spot-fleet) procedure\. For **Tell us your application or task need**, choose **Defined duration workloads**\. For more information, see [Defining a duration for your Spot Instances](#fixed-duration-spot-instances)\.
 + To request a Spot Instance with a defined duration using the CLI, use the [request\-spot\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/request-spot-instances.html) command and specify the `--block-duration-minutes` parameter\. For more information, see [Defining a duration for your Spot Instances](#fixed-duration-spot-instances)\.
 
-After you've submitted your Spot Instance request, you can't change the parameters of the request, including your maximum price\.
+After you've submitted your Spot Instance request, you can't change the parameters of the request\. This means that you can't make changes to the maximum price that you're willing to pay\.
 
 If you request multiple Spot Instances at one time, Amazon EC2 creates separate Spot Instance requests so that you can track the status of each request separately\. For more information about tracking Spot Instance requests, see [Spot request status](spot-bid-status.md)\.
 
@@ -191,7 +191,7 @@ Amazon EC2 creates a separate request for each Spot Instance\.
      + If you specify a maximum price that is more than the current Spot Price, your Spot Instance launches and is charged at the current Spot price\.
      + If you specify a maximum price that is lower than the Spot price, your Spot Instance is not launched\.
    + **Persistent request**: Choose **Persistent request** to resubmit the Spot Instance request if your Spot Instance is interrupted\.
-   + **Interruption behavior**: By default, the Spot service terminates a Spot Instance when it is interrupted\. If you choose **Persistent request**, you can then specify that the Spot service stops or hibernates your Spot Instance when its interrupted\. For more information, see [Interruption behaviors](spot-interruptions.md#interruption-behavior)\.
+   + **Interruption behavior**: By default, the Spot service terminates a Spot Instance when it is interrupted\. If you choose **Persistent request**, you can then specify that the Spot service stops or hibernates your Spot Instance when it's interrupted\. For more information, see [Interruption behaviors](spot-interruptions.md#interruption-behavior)\.
    + \(Optional\) **Request valid to**: Choose **Edit** to specify when the Spot Instance request expires\.
 
    For more information about configuring your Spot Instance, see [Step 3: Configure Instance Details](launching-instance.md#configure_instance_details_step)\.
@@ -204,7 +204,7 @@ Amazon EC2 creates a separate request for each Spot Instance\.
 
 1. On the **Review Instance Launch** page, check the details of your instance, and make any necessary changes by choosing the appropriate **Edit** link\. When you are ready, choose **Launch**\. For more information, see [Step 7: Review Instance Launch and Select Key Pair](launching-instance.md#step-7-review-instance-launch)\.
 
-1. In the **Select an existing key pair or create a new key pair** dialog box, you can choose an existing key pair, or create a new one\. For example, choose **Choose an existing key pair**, then select the key pair you created when getting set up\. For more information, see [Amazon EC2 key pairs and Windows instances](ec2-key-pairs.md)\.
+1. In the **Select an existing key pair or create a new key pair** dialog box, you can choose an existing key pair, or create a new one\. For example, choose **Choose an existing key pair**, then select the key pair that you created when getting set up\. For more information, see [Amazon EC2 key pairs and Windows instances](ec2-key-pairs.md)\.
 **Important**  
 If you choose the **Proceed without key pair** option, you won't be able to connect to the instance unless you choose an AMI that is configured to allow users another way to log in\.
 
@@ -269,7 +269,7 @@ Amazon EC2 launches a Spot Instance when the maximum price exceeds the Spot pric
 
 1. In the navigation pane, choose **Spot Requests**\. You can see both Spot Instance requests and Spot Fleet requests\. If a Spot Instance request has been fulfilled, **Capacity** is the ID of the Spot Instance\. For a Spot Fleet, **Capacity** indicates how much of the requested capacity has been fulfilled\. To view the IDs of the instances in a Spot Fleet, choose the expand arrow, or select the fleet and choose **Instances**\.
 **Note**  
-For Spot Instance requests that are created by a Spot Fleet, the requests are not tagged instantly with the system tag that indicates the Spot Fleet to which they beloweifjccgigtjigiduhlluvnvceinjjecbgtjrtteieklg, and for a period of time may appear separate from Spot Fleet requests\.
+For Spot Instance requests that are created by a Spot Fleet, the requests are not tagged instantly with the system tag that indicates the Spot Fleet to which they belong, and for a period of time may appear separate from Spot Fleet request\.
 
    Alternatively, in the navigation pane, choose **Instances**\. In the top right corner, choose the **Show/Hide** icon, and then under **Instance Attributes**, select **Lifecycle**\. For each instance, **Lifecycle** is either `normal`, `spot`, or `scheduled`\.
 
@@ -310,17 +310,131 @@ aws ec2 describe-spot-instance-requests \
 
 ## Tagging Spot Instance requests<a name="concepts-spot-instances-request-tags"></a>
 
-To help categorize and manage your Spot Instance requests, you can tag them with custom metadata\. You can only assign a tag to a Spot Instance request after you create it\. You can assign tags using the Amazon EC2 console or a command line tool\.
+To help categorize and manage your Spot Instance requests, you can tag them with custom metadata\. You can assign a tag to a Spot Instance request when you create it, or afterward\. You can assign tags using the Amazon EC2 console or a command line tool\.
 
 When you tag a Spot Instance request, the instances and volumes that are launched by the Spot Instance request are not automatically tagged\. You need to explicitly tag the instances and volumes launched by the Spot Instance request\. You can assign a tag to a Spot Instance and volumes during launch, or afterward\.
 
 For more information about how tags work, see [Tagging your Amazon EC2 resources](Using_Tags.md)\.
 
+**Topics**
++ [Prerequisites](#tag-spot-request-prereqs)
++ [Tagging a new Spot Instance request](#tag-new-spot-instance-request)
++ [Tagging an existing Spot Instance request](#tag-existing-spot-instance-request)
++ [Viewing Spot Instance request tags](#view-spot-instance-request-tags)
+
+### Prerequisites<a name="tag-spot-request-prereqs"></a>
+
+Grant the IAM user the permission to tag resources\. For more information about IAM policies and example policies, see [Example: Tagging resources](ExamplePolicies_EC2.md#iam-example-taggingresources)\.
+
+The IAM policy you create is determined by which method you use for creating a Spot Instance request\.
++ If you use the launch instance wizard or `run-instances` to request Spot Instances, see [To grant an IAM user the permission to tag resources when using the launch instance wizard or run-instances](#iam-run-instances)\.
++ If you use the Spot console to request Spot Instances with a defined duration or use the `request-spot-instances` command to request Spot Instances, see [To grant an IAM user the permission to tag resources when using request-spot-instances](#iam-request-spot-instances)\.
+
+**To grant an IAM user the permission to tag resources when using the launch instance wizard or run\-instances**  
+Create a IAM policy that includes the following:
++ The `ec2:RunInstances` action\. This grants the IAM user permission to launch an instance\.
++ For `Resource`, specify `spot-instances-request`\. This allows users to create Spot Instance requests, which request Spot Instances\.
++ The `ec2:CreateTags` action\. This grants the IAM user permission to create tags\.
++ For `Resource`, specify `*`\. This allows users to tag all resources that are created during instance launch\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowLaunchInstances",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RunInstances"
+            ],
+            "Resource": [
+                "arn:aws:ec2:us-east-1::image/*",
+                "arn:aws:ec2:us-east-1:*:subnet/*",
+                "arn:aws:ec2:us-east-1:*:network-interface/*",
+                "arn:aws:ec2:us-east-1:*:security-group/*",
+                "arn:aws:ec2:us-east-1:*:key-pair/*",
+                "arn:aws:ec2:us-east-1:*:volume/*",
+                "arn:aws:ec2:us-east-1:*:instance/*",
+                "arn:aws:ec2:us-east-1:*:spot-instances-request/*"
+            ]
+        },
+        {
+            "Sid": "TagSpotInstanceRequests",
+            "Effect": "Allow",
+            "Action": "ec2:CreateTags",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+**Note**  
+When you use the RunInstances action to create Spot Instance requests and tag the Spot Instance requests on create, you need to be aware of how Amazon EC2 evaluates the `spot-instances-request` resource in the RunInstances statement\.  
+The `spot-instances-request` resource is evaluated in the IAM policy as follows:  
+If you don't tag a Spot Instance request on create, Amazon EC2 does not evaluate the `spot-instances-request` resource in the RunInstances statement\.
+If you tag a Spot Instance request on create, Amazon EC2 evaluates the `spot-instances-request` resource in the RunInstances statement\.
+Therefore, for the `spot-instances-request` resource, the following rules apply to the IAM policy:  
+If you use RunInstances to create a Spot Instance request and you don't intend to tag the Spot Instance request on create, you don’t need to explicitly allow the `spot-instances-request` resource; the call will succeed\.
+If you use RunInstances to create a Spot Instance request and intend to tag the Spot Instance request on create, you must include the `spot-instances-request` resource in the RunInstances allow statement, otherwise the call will fail\.
+If you use RunInstances to create a Spot Instance request and intend to tag the Spot Instance request on create, you must specify the `spot-instances-request` resource or include a `*` wildcard in the CreateTags allow statement, otherwise the call will fail\.
+For example IAM policies, including policies that are not supported for Spot Instance requests, see [Working with Spot Instances](ExamplePolicies_EC2.md#iam-example-spot-instances)\.
+
+**To grant an IAM user the permission to tag resources when using request\-spot\-instances**  
+Create a IAM policy that includes the following:
++ The `ec2:RequestSpotInstances` action\. This grants the IAM user permission to create a Spot Instance request\.
++ The `ec2:CreateTags` action\. This grants the IAM user permission to create tags\.
++ For `Resource`, specify `spot-instances-request`\. This allows users to tag only the Spot Instance request\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "TagSpotInstanceRequest",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RequestSpotInstances",
+                "ec2:CreateTags"
+            ],
+            "Resource": "arn:aws:ec2:us-east-1:111122223333:spot-instances-request/*"
+}
+```
+
+### Tagging a new Spot Instance request<a name="tag-new-spot-instance-request"></a>
+
+**To tag a new Spot Instance request using the console**
+
+1. Follow the [Creating a Spot Instance request](#using-spot-instances-request) procedure\.
+
+1. To add a tag, on the **Add Tags** page, choose **Add Tag**, and enter the key and value for the tag\. Choose **Add another tag** for each additional tag\.
+
+   For each tag, you can tag the Spot Instance request, the Spot Instances, and the volumes with the same tag\. To tag all three, ensure that **Instances**, **Volumes**, and **Spot Instance Requests** are selected\. To tag only one or two, ensure that the resources you want to tag are selected, and the other resources are cleared\.
+
+1. Complete the required fields to create a Spot Instance request, and then choose **Launch**\. For more information, see [Creating a Spot Instance request](#using-spot-instances-request)\.
+
+**To tag a new Spot Instance request using the AWS CLI**  
+To tag a Spot Instance request when you create it, configure the Spot Instance request configuration as follows:
++ Specify the tags for the Spot Instance request using the `--tag-specification` parameter\.
++ For `ResourceType`, specify `spot-instances-request`\. If you specify another value, the Spot Instance request will fail\.
++ For `Tags`, specify the key\-value pair\. You can specify more than one key\-value pair\.
+
+In the following example, the Spot Instance request is tagged with two tags: Key=Environment and Value=Production, and Key=Cost\-Center and Value=123\.
+
+```
+aws ec2 request-spot-instances \
+    --instance-count 5 \
+    --type "one-time" \
+    --launch-specification file://specification.json \
+    --tag-specification 'ResourceType=spot-instances-request,Tags=[{Key=Environment,Value=Production},{Key=Cost-Center,Value=123}]'
+```
+
+### Tagging an existing Spot Instance request<a name="tag-existing-spot-instance-request"></a>
+
 **To tag an existing Spot Instance request using the console**
 
-After you have created a Spot Instance request, you can add tags to the request using the console\.
+After you have created a Spot Instance request, you can add tags to the Spot Instance request using the console\.
 
-1. Open the Spot console at [https://console\.aws\.amazon\.com/ec2spot](https://console.aws.amazon.com/ec2spot)
+1. Open the Spot console at [https://console\.aws\.amazon\.com/ec2spot](https://console.aws.amazon.com/ec2spot)\.
 
 1. Select your Spot Instance request\.
 
@@ -336,6 +450,118 @@ Use the [create\-tags](https://docs.aws.amazon.com/cli/latest/reference/ec2/crea
 aws ec2 create-tags \
     --resources sir-08b93456 i-1234567890abcdef0 \
     --tags Key=purpose,Value=test
+```
+
+### Viewing Spot Instance request tags<a name="view-spot-instance-request-tags"></a>
+
+**To view Spot Instance request tags using the console**
+
+1. Open the Spot console at [https://console\.aws\.amazon\.com/ec2spot](https://console.aws.amazon.com/ec2spot)\.
+
+1. Select your Spot Instance request and choose the **Tags** tab\.
+
+**To describe Spot Instance request tags**  
+Use the [describe\-tags](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-tags.html) command to view the tags for the specified resource\. In the following example, you describe the tags for the specified request\.
+
+```
+aws ec2 describe-tags \
+    --filters "Name=resource-id,Values=sir-11112222-3333-4444-5555-66666EXAMPLE"
+```
+
+```
+{
+    "Tags": [
+        {
+            "Key": "Environment",
+            "ResourceId": "sir-11112222-3333-4444-5555-66666EXAMPLE",
+            "ResourceType": "spot-instances-request",
+            "Value": "Production"
+        },
+        {
+            "Key": "Another key",
+            "ResourceId": "sir-11112222-3333-4444-5555-66666EXAMPLE",
+            "ResourceType": "spot-instances-request",
+            "Value": "Another value"
+        }
+    ]
+}
+```
+
+You can also view the tags of a Spot Instance request by describing the Spot Instance request\.
+
+Use the [describe\-spot\-instance\-requests](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-spot-instance-requests.html) command to view the configuration of the specified Spot Instance request, which includes any tags that were specified for the request\.
+
+```
+aws ec2 describe-spot-instance-requests \
+    --spot-instance-request-ids sir-11112222-3333-4444-5555-66666EXAMPLE
+```
+
+```
+{
+    "SpotInstanceRequests": [
+        {
+            "CreateTime": "2020-06-24T14:22:11+00:00",
+            "InstanceId": "i-1234567890EXAMPLE",
+            "LaunchSpecification": {
+                "SecurityGroups": [
+                    {
+                        "GroupName": "launch-wizard-6",
+                        "GroupId": "sg-1234567890EXAMPLE"
+                    }
+                ],
+                "BlockDeviceMappings": [
+                    {
+                        "DeviceName": "/dev/xvda",
+                        "Ebs": {
+                            "DeleteOnTermination": true,
+                            "VolumeSize": 8,
+                            "VolumeType": "gp2"
+                        }
+                    }
+                ],
+                "ImageId": "ami-1234567890EXAMPLE",
+                "InstanceType": "t2.micro",
+                "KeyName": "my-key-pair",
+                "NetworkInterfaces": [
+                    {
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "SubnetId": "subnet-11122233"
+                    }
+                ],
+                "Placement": {
+                    "AvailabilityZone": "eu-west-1c",
+                    "Tenancy": "default"
+                },
+                "Monitoring": {
+                    "Enabled": false
+                }
+            },
+            "LaunchedAvailabilityZone": "eu-west-1c",
+            "ProductDescription": "Linux/UNIX",
+            "SpotInstanceRequestId": "sir-1234567890EXAMPLE",
+            "SpotPrice": "0.012600",
+            "State": "active",
+            "Status": {
+                "Code": "fulfilled",
+                "Message": "Your spot request is fulfilled.",
+                "UpdateTime": "2020-06-25T18:30:21+00:00"
+            },
+            "Tags": [
+                {
+                    "Key": "Environment",
+                    "Value": "Production"
+                },
+                {
+                    "Key": "Another key",
+                    "Value": "Another value"
+                }
+            ],
+            "Type": "one-time",
+            "InstanceInterruptionBehavior": "terminate"
+        }
+    ]
+}
 ```
 
 ## Canceling a Spot Instance request<a name="using-spot-instances-cancel"></a>

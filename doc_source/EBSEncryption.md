@@ -27,9 +27,9 @@ Amazon EBS works with AWS KMS to encrypt and decrypt your EBS volumes as follows
 
 1. Amazon EBS sends a [CreateGrant](https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateGrant.html) request to AWS KMS, so that it can decrypt the data key\.
 
-1. Amazon EBS sends a [GenerateDataKeyWithoutPlaintext](https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKeyWithoutPlaintext.html) request to AWS KMS, specifying the CMK to use to encrypt the volume\.
+1. Amazon EBS sends a [GenerateDataKeyWithoutPlaintext](https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKeyWithoutPlaintext.html) request to AWS KMS, specifying the CMK that you chose for volume encryption\.
 
-1. AWS KMS generates a new data key, encrypts it under the specified CMK, and sends the encrypted data key to Amazon EBS to be stored with the volume metadata\.
+1. AWS KMS generates a new data key, encrypts it under the CMK that you chose for volume encryption, and sends the encrypted data key to Amazon EBS to be stored with the volume metadata\.
 
 1. When you attach an encrypted volume to an instance, Amazon EC2 sends a [Decrypt](https://docs.aws.amazon.com/kms/latest/APIReference/API_Decrypt.html) request to AWS KMS, specifying the encrypted data key\.
 

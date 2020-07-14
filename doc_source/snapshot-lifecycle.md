@@ -60,7 +60,7 @@ A lifecycle policy consists of these core settings:
 + Schedule—The start time and interval for creating snapshots\.
 + Retention—You can retain snapshots based on either the total count of snapshots or the age of each snapshot\.
 
-For example, you could create a policy that manages all EBS volumes with the tag `account=Finance`, creates snapshots every 24 hours at 0900, and retains the five most recent snapshots\. Snapshot creation could start as late as 0959\.
+For example, you could create a policy that manages all EBS volumes with the tag `account=Finance`, creates snapshots every 24 hours at 0900, and retains the five most recent snapshots\. Snapshot creation would start by 0959 each day\.
 
 ## Considerations for Amazon Data Lifecycle Manager<a name="dlm-considerations"></a>
 
@@ -71,7 +71,7 @@ Your AWS account has the following quotas related to Amazon Data Lifecycle Manag
 
 The following considerations apply to lifecycle policies:
 + A policy does not begin creating snapshots until you set its activation status to *enabled*\. You can configure a policy to be enabled upon creation\.
-+ The first snapshot is created by a policy within one hour after the specified start time\.
++ The first snapshot is created by a policy within one hour after the specified start time\. Subsequent snapshots are created within one hour of their scheduled time\.
 + If you modify a policy by removing or changing its target tag, the EBS volumes with that tag are no longer affected by the policy\.
 + If you modify the schedule name for a policy, the snapshots created under the old schedule name are no longer affected by the policy\.
 + If you modify a retention schedule based on time to use a new time interval, the new interval is used only for new snapshots\. The new schedule does not affect the retention schedule of existing snapshots created by this policy\.

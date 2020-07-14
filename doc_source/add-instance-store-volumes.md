@@ -88,3 +88,26 @@ Many instance store volumes are pre\-formatted with the ext3 file system\. SSD\-
 You can confirm that the instance store devices are available from within the instance itself using instance metadata\. For more information, see [Viewing the instance block device mapping for instance store volumes](block-device-mapping-concepts.md#bdm-instance-metadata)\.
 
 For Windows instances, you can also view the instance store volumes using Windows Disk Management\. For more information, see [Listing the disks using Windows Disk Management](ec2-windows-volumes.md#windows-disks)\.
+
+**To manually mount an instance store volume**
+
+1. Choose **Start**, enter **Computer Management**, and then press **Enter**\.
+
+1. In left\-hand panel, choose **Disk Management**\.
+
+1. If you are prompted to initialize the volume, choose the volume to initialize, select the required partition type depending on your use case, and then choose **OK**\.
+
+1. In the list of volumes, right\-click the volume to mount, and then choose **New Simple Volume**\.
+
+1. On the wizard, choose **Next**\.
+
+1. On the Specify Volume Size screen, choose **Next** to use the maximum volume size\. Alternatively, choose a volume size that is between the minimum and maximum disk space\.
+
+1. On the Assign a Drive Letter or Path screen, do one of the following, and choose **Next**\.
+   + To mount the volume with a drive letter, choose **Assign the following drive letter** and then choose the drive letter to use\.
+   + To mount the volume as a folder, choose **Mount in the following empty NTFS folder** and then choose **Browse** to create or select the folder to use\.
+   + To mount the volume without a drive letter or path, choose **Do not assign a drive letter or drive path**\.
+
+1. On the Format Partition screen, specify whether or not to format the volume\. If you choose to format the volume, choose the required file system and unit size, and specify a volume label\.
+
+1. Choose **Next**, **Finish**\.

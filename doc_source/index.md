@@ -256,6 +256,8 @@ Amazon's trademarks and trade dress may not be used in
          + [Viewing Amazon EBS snapshot information](ebs-describing-snapshots.md)
          + [Sharing an Amazon EBS snapshot](ebs-modifying-snapshot-permissions.md)
          + [Accessing the contents of an EBS snapshot](ebs-accessing-snapshot.md)
+            + [Logging API Calls for the EBS direct APIs with AWS CloudTrail](logging-ebs-apis-using-cloudtrail.md)
+            + [Idempotency for StartSnapshot API](ebs-direct-api-idempotency.md)
          + [Automating the Amazon EBS snapshot lifecycle](snapshot-lifecycle.md)
       + [Amazon EBS data services](ebs-data-services.md)
          + [Amazon EBS Elastic Volumes](ebs-modify-volume.md)

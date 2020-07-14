@@ -18,7 +18,7 @@ The Reserved Instance pricing is determined by the following key variables\.
 
 ### Instance attributes<a name="ri-pricing-variable-instance-attributes"></a>
 
-A Reserved Instance has four instance attributes that determine its price\. The attributes also determine how the Reserved Instance is applied to a running instance in your account\.
+A Reserved Instance has four instance attributes that determine its price\. 
 + **Instance type**: For example, `m4.large`\. This is composed of the instance family \(for example, `m4`\) and the instance size \(for example, `large`\)\.
 + **Region**: The Region in which the Reserved Instance is purchased\.
 + **Tenancy**: Whether your instance runs on shared \(default\) or single\-tenant \(dedicated\) hardware\. For more information, see [Dedicated Instances](dedicated-instance.md)\. 
@@ -53,7 +53,7 @@ For more information, see [Types of Reserved Instances \(offering classes\)](res
 
 After you purchase a Reserved Instance, you cannot cancel your purchase\. However, you may be able to [modify](ri-modifying.md), [exchange](ri-convertible-exchange.md), or [sell](ri-market-general.md) your Reserved Instance if your needs change\.
 
-For more information about pricing, see [Amazon EC2 Reserved Instances Pricing](https://aws.amazon.com/ec2/pricing/reserved-instances/pricing/)\.
+For more information, see the [Amazon EC2 Reserved Instances Pricing page](http://aws.amazon.com/ec2/pricing/reserved-instances/pricing)\.
 
 ## Reserved Instance limits<a name="ri-limits"></a>
 

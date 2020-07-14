@@ -7,7 +7,7 @@ An instance with an attached GPU, such as a P3 or G4 instance, must have the app
 + [Available drivers by instance type](#nvidia-driver-instance-type)
 + [Installation options](#nvidia-installation-options)
   + [Option 1: AMIs with the NVIDIA drivers installed](#preinstalled-nvidia-driver)
-  + [Option 2: Public NVIDIA Tesla drivers](#public-nvidia-driver)
+  + [Option 2: Public NVIDIA drivers](#public-nvidia-driver)
   + [Option 3: GRID drivers \(G3 and G4 instances\)](#nvidia-GRID-driver)
   + [Option 4: NVIDIA gaming drivers \(G4 instances\)](#nvidia-gaming-driver)
 
@@ -48,7 +48,7 @@ The following table summarizes the supported NVIDIA drivers for each GPU instanc
 
 | Instance type | Tesla driver | GRID driver | Gaming driver | 
 | --- | --- | --- | --- | 
-| G2 | Yes | No | No | 
+| G2 | No | Yes | No | 
 | G3 | Yes | Yes | No | 
 | G4 | Yes | Yes | Yes | 
 | P2 | Yes | No | No | 
@@ -62,7 +62,7 @@ Use one of the following options to get the NVIDIA drivers required for your GPU
 
 **Topics**
 + [Option 1: AMIs with the NVIDIA drivers installed](#preinstalled-nvidia-driver)
-+ [Option 2: Public NVIDIA Tesla drivers](#public-nvidia-driver)
++ [Option 2: Public NVIDIA drivers](#public-nvidia-driver)
 + [Option 3: GRID drivers \(G3 and G4 instances\)](#nvidia-GRID-driver)
 + [Option 4: NVIDIA gaming drivers \(G4 instances\)](#nvidia-gaming-driver)
 
@@ -73,19 +73,23 @@ AWS and NVIDIA offer different Amazon Machine Images \(AMI\) that come with the 
 + [Marketplace offerings with the GRID driver](http://aws.amazon.com/marketplace/search/results?&searchTerms=NVIDIA+quadro)
 + [Marketplace offerings with the Gaming driver](http://aws.amazon.com/marketplace/search/results?searchTerms=NVIDIA+gaming)
 
-### Option 2: Public NVIDIA Tesla drivers<a name="public-nvidia-driver"></a>
+### Option 2: Public NVIDIA drivers<a name="public-nvidia-driver"></a>
 
-**To download the NVIDIA driver**  
-Log on to your Windows instance and download the 64\-bit NVIDIA driver appropriate for the instance type from [http://www\.nvidia\.com/Download/Find\.aspx](http://www.nvidia.com/Download/Find.aspx)\.
+The options offered by AWS come with the necessary license for the driver\. Alternatively, you can install the public drivers and bring your own license\. To install a public driver, download it from the NVIDIA site as described here\.
+
+Alternatively, you can use the options offered by AWS instead of the public drivers\. To use a GRID driver on a P3 instance, use the AWS Marketplace AMIs as described in [Option 1](#preinstalled-nvidia-driver)\. To use a GRID driver on a G3 or G4 instance, use the AWS Marketplace AMIs, as described in Option 1 or install the NVIDIA drivers provided by AWS as described in [Option 3](#nvidia-GRID-driver)\.
+
+**To download a public NVIDIA driver**  
+Log on to your Windows instance and download the 64\-bit NVIDIA driver appropriate for the instance type from [http://www\.nvidia\.com/Download/Find\.aspx](http://www.nvidia.com/Download/Find.aspx)\. For **Product Type**, **Product Series**, and **Product**, use the options in the following table\.
 
 
-| Instance | Product Series | Product | 
-| --- | --- | --- | 
-| G2 | K\-Series | K520 | 
-| G3 | M\-Class | M60 | 
-| G4 † | T\-Series | T4 | 
-| P2 | K\-Series | K80 | 
-| P3 | V\-Series | V100 | 
+| Instance | Product Type | Product Series | Product | 
+| --- | --- | --- | --- | 
+| G2 | GRID | GRID Series | GRID K520 | 
+| G3 | Tesla | M\-Class | M60 | 
+| G4 † | Tesla | T\-Series | T4 | 
+| P2 | Tesla | K\-Series | K80 | 
+| P3 | Tesla | V\-Series | V100 | 
 
 † G4 instances require driver version 426\.00 or later\.
 
@@ -103,14 +107,15 @@ Log on to your Windows instance and download the 64\-bit NVIDIA driver appropria
 
 These downloads are available to AWS customers only\. By downloading, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 or NVIDIA Tesla M60 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
-**Prerequisites**  
-Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
+**Prerequisites**
++ Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
++ IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
 
 **To install the NVIDIA GRID driver on your Windows instance**
 
 1. Connect to your Windows instance and open a PowerShell window\.
 
-1. Download the drivers and the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX) from Amazon S3 to your desktop using the following PowerShell commands\. If you are an IAM user, you must have read\-only access to Amazon S3 actions\.
+1. Download the drivers and the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX) from Amazon S3 to your desktop using the following PowerShell commands\.
 
    For G3 instances:
 
@@ -157,14 +162,15 @@ Configure default credentials for the AWS Tools for Windows PowerShell on your W
 
 These drivers are available to AWS customers only\. By downloading them, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
-**Prerequisites**  
-Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
+**Prerequisites**
++ Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
++ IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
 
 **To install the NVIDIA gaming driver on your Windows instance**
 
 1. Connect to your Windows instance and open a PowerShell window\.
 
-1. Download and install the gaming driver using the following PowerShell commands\. If you are an IAM user, you must have read\-only access to Amazon S3 actions\.
+1. Download and install the gaming driver using the following PowerShell commands\.
 
    ```
    $Bucket = "nvidia-gaming"
@@ -184,11 +190,17 @@ Configure default credentials for the AWS Tools for Windows PowerShell on your W
 
 1. Navigate to the desktop and double\-click the installation file to launch it \(choose the driver version that corresponds to your instance OS version\)\. Follow the instructions to install the driver and reboot your instance as required\. To verify that the GPU is working properly, check Device Manager\.
 
-1. Use the following command to create the required configuration\.
+1. Create a registry value in the HKEY\_LOCAL\_MACHINE\\SOFTWARE\\NVIDIA Corporation\\Global key with the name vGamingMarketplace, the type DWord, and the value 2\. You can use either the Command Prompt window or a 64\-bit version of PowerShell as follows\.
+   + Use the following PowerShell command to create this registry value\. By default, the AWS Tools for PowerShell in AWS Windows AMIs is a 32\-bit version and this command fails\. Instead, use the 64\-bit version of PowerShell included with the operating system\.
 
-   ```
-   New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global" -Name "vGamingMarketplace" -PropertyType "DWord" -Value "2"
-   ```
+     ```
+     New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global" -Name "vGamingMarketplace" -PropertyType "DWord" -Value "2"
+     ```
+   + Use the following registry command to create this registry value\. You can run it using the Command Prompt window or a 64\-bit version of PowerShell\.
+
+     ```
+     reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global" /v vGamingMarketplace /t REG_DWORD /d 2
+     ```
 
 1. Use the following command to download the certification file, rename the file `GridSwCert.txt`, and move the file to the Public Documents folder on your system drive\. Typically, the folder path is C:\\Users\\Public\\Public Documents \(Windows Explorer\) or C:\\Users\\Public\\Documents \(Command Prompt window\)\.
    + For version 445\.87 or later:

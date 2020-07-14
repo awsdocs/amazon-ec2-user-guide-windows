@@ -51,6 +51,10 @@ You can create a key pair using one of the following methods\.
 
 1. Choose **Create key pair**\.
 
+1. The private key file is automatically downloaded by your browser\. The base file name is the name you specified as the name of your key pair, and the file name extension is determined by the file format you chose\. Save the private key file in a safe place\.
+**Important**  
+This is the only chance for you to save the private key file\.
+
 ------
 #### [ Old console ]
 
@@ -68,19 +72,7 @@ The navigation pane is on the left side of the Amazon EC2 console\. If you do no
 
 1. The private key file is automatically downloaded by your browser\. The base file name is the name you specified as the name of your key pair, and the file name extension is `.pem`\. Save the private key file in a safe place\.
 **Important**  
-This is the only chance for you to save the private key file\. You'll need to provide the name of your key pair when you launch an instance and the corresponding private key each time you connect to the instance\.
-
-------
-#### [ AWS CLI ]
-
-**To create your key pair**  
-Use the [create\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html) AWS CLI command\.
-
-------
-#### [ PowerShell ]
-
-**To create your key pair**  
-Use the [New\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2KeyPair.html) AWS Tools for Windows PowerShell command\.
+This is the only chance for you to save the private key file\.
 
 ------
 

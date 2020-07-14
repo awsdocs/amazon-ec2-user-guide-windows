@@ -69,7 +69,7 @@ The following table describes the Amazon EC2 resources that can be tagged, and t
 |  Key pair  |  Yes  | Yes | 
 |  Launch template  |  Yes  |  Yes  | 
 |  Launch template version  |  No  |  No  | 
-|   Local gateway  |  Yes  |  No  | 
+|  Local gateway  |  Yes  |  No  | 
 |  Local gateway route table  |  Yes  |  No  | 
 |  Local gateway virtual interface  |  Yes  |  No  | 
 |  Local gateway virtual interface group  |  Yes  |  No  | 
@@ -84,7 +84,7 @@ The following table describes the Amazon EC2 resources that can be tagged, and t
 |  Reserved Instance listing  |  No  | No | 
 | Route table |  Yes  | No | 
 |  Spot Fleet request  |  Yes  | Yes | 
-|  Spot Instance request  |  Yes  | No | 
+|  Spot Instance request  |  Yes  | Yes | 
 |  Security group  |  Yes  | Yes | 
 |  Subnet  |  Yes  | Yes | 
 | Traffic Mirror filter | Yes | Yes | 

@@ -2,7 +2,7 @@
 
 With On\-Demand Instances, you pay for compute capacity by the hour with no long\-term commitments\. You have full control over its lifecycle—you decide when to launch, stop, hibernate, start, reboot, or terminate it\.
 
-There is no long\-term commitment required when you purchase On\-Demand Instances\. You pay only for the hours that your On\-Demand Instances are in the `running` state\. The price per hour for a running On\-Demand Instance is fixed, and is listed on the [On\-Demand Pricing](https://aws.amazon.com/ec2/pricing/on-demand) page\.
+There is no long\-term commitment required when you purchase On\-Demand Instances\. You pay only for the hours that your On\-Demand Instances are in the `running` state\. The price per hour for a running On\-Demand Instance is fixed, and is listed on the [Amazon EC2 Pricing, On\-Demand Pricing page](http://aws.amazon.com/ec2/pricing/on-demand/)\.
 
 We recommend that you use On\-Demand Instances for applications with short\-term, irregular workloads that cannot be interrupted\.
 

@@ -10,7 +10,7 @@ For example, if you create a Capacity Reservation for 20 `m4.large` Linux instan
 
 Billing discounts for Savings Plans and regional Reserved Instances apply to Capacity Reservations\. For more information, see [Billing Discounts](#capacity-reservations-discounts)\.
 
-For more information about Amazon EC2 pricing, see [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing/on-demand/)\.
+For more information, see [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing/)\.
 
 ## Billing<a name="capacity-reservations-billing"></a>
 
