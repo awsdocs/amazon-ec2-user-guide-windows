@@ -124,7 +124,7 @@ As you fill the SSD\-based instance store volumes for your instance, the number 
 
 SSD controllers can use several strategies to reduce the impact of write amplification\. One such strategy is to reserve space in the SSD instance storage so that the controller can more efficiently manage the space available for write operations\. This is called *over\-provisioning*\. The SSD\-based instance store volumes provided to an instance don't have any space reserved for over\-provisioning\. To reduce write amplification, we recommend that you leave 10% of the volume unpartitioned so that the SSD controller can use it for over\-provisioning\. This decreases the storage that you can use, but increases performance even if the disk is close to full capacity\.
 
-For instance store volumes that support TRIM, you can use the TRIM command to notify the SSD controller whenever you no longer need data that you've written\. This provides the controller with more free space, which can reduce write amplification and increase performance\. For more information, see [Instance Store Volume TRIM Support](ssd-instance-store.md#InstanceStoreTrimSupport)\.
+For instance store volumes that support TRIM, you can use the TRIM command to notify the SSD controller whenever you no longer need data that you've written\. This provides the controller with more free space, which can reduce write amplification and increase performance\. For more information, see [Instance store volume TRIM support](ssd-instance-store.md#InstanceStoreTrimSupport)\.
 
 ## Instance features<a name="compute-instances-features"></a>
 
@@ -143,7 +143,7 @@ The following is a summary of features for compute optimized instances:
 
 For more information, see the following:
 + [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)
-+ [Amazon EC2 Instance Store](InstanceStorage.md)
++ [Amazon EC2 instance store](InstanceStorage.md)
 + [Placement groups](placement-groups.md)
 
 ## Release notes<a name="compute-instance-limits"></a>

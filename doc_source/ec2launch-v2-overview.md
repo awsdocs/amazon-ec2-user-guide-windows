@@ -20,6 +20,7 @@ The following table shows the major functional differences between EC2Config, EC
 |  Set Administrator username  | No | No |  Yes  | 
 |  User data size  | 16 KB | 16 KB |  60 KB \(compressed\)  | 
 |  Local user data baked on AMI  | No | No | Yes, configurable | 
+| Task configuration in user data | No | No | Yes | 
 |  Configurable wallpaper  | No | No |  Yes  | 
 |  Customize task execution order  | No | No |  Yes  | 
 |  Configurable tasks  | 15 |  9  |  20 at launch  | 

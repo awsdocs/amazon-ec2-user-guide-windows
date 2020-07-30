@@ -214,7 +214,7 @@ help for reset
 
 ### run<a name="ec2launch-v2-run"></a>
 
-Deletes the `.runonce` file so that tasks specified to run once will run on the next execution; optionally deletes the service and sysprep logs\.
+Runs EC2Launch v2\.
 
 **Example**
 
@@ -452,7 +452,7 @@ Executes a script with optional arguments and a specified frequency\.
 
 `arguments`: \(list of strings\) list of string arguments to pass to the shell
 
-`contents`: \(string\) contents of the script
+`content`: \(string\) contents of the script
 
 `runAs`: \(string\) one of `admin` or `localSystem`
 

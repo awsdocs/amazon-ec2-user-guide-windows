@@ -40,7 +40,7 @@ For more information about the available Regions and Availability Zones, see [Us
 
 When using Amazon EC2, you may have data that you need to store\. Amazon EC2 offers the following storage options:
 +  [Amazon Elastic Block Store \(Amazon EBS\)](https://aws.amazon.com/ebs) 
-+ [Amazon EC2 Instance Store](InstanceStorage.md)
++ [Amazon EC2 instance store](InstanceStorage.md)
 +  [Amazon Simple Storage Service \(Amazon S3\)](https://aws.amazon.com/s3) 
 
 The following figure shows the relationship between these types of storage\.
@@ -61,9 +61,9 @@ For more information about Amazon EBS volumes, see [Amazon Elastic Block Store \
 
 ### Instance store<a name="EC2Win_InstanceStore"></a>
 
-*Instance store* provides your instances with temporary, block\-level storage\. This is storage that is physically attached to the host computer\. The data on an instance store volume doesn't persist when the associated instance is stopped or terminated\. For a list of instance store volumes available on each supported instance type, see [Instance Store Volumes](InstanceStorage.md#instance-store-volumes)\. 
+*Instance store* provides your instances with temporary, block\-level storage\. This is storage that is physically attached to the host computer\. The data on an instance store volume doesn't persist when the associated instance is stopped or terminated\. For a list of instance store volumes available on each supported instance type, see [Instance store volumes](InstanceStorage.md#instance-store-volumes)\. 
 
-Instance store is an option for inexpensive temporary storage\. You can use instance store volumes if you don't require data persistence\. For more information about instance store volumes, see [Amazon EC2 Instance Store](InstanceStorage.md)\.
+Instance store is an option for inexpensive temporary storage\. You can use instance store volumes if you don't require data persistence\. For more information about instance store volumes, see [Amazon EC2 instance store](InstanceStorage.md)\.
 
 ### Amazon S3<a name="EC2Win_StorageS3"></a>
 

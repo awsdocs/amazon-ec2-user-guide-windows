@@ -42,6 +42,9 @@ You can find the disks on your Windows instance using Windows Disk Management\.
 
 The following PowerShell script lists each disk and its corresponding device name and volume\. 
 
+**Note**  
+The following script will not return information for dynamic disks\.
+
 ```
 # List the Windows disks
 
@@ -163,7 +166,7 @@ The block device driver for the instance assigns the actual volume names when mo
 
 ### Instance store volumes<a name="instance-store-volume-map"></a>
 
-The following table describes how the Citrix PV and AWS PV drivers map non\-NVMe instance store volumes to Windows volumes\. The number of available instance store volumes is determined by the instance type\. For more information, see [Instance Store Volumes](InstanceStorage.md#instance-store-volumes)\.
+The following table describes how the Citrix PV and AWS PV drivers map non\-NVMe instance store volumes to Windows volumes\. The number of available instance store volumes is determined by the instance type\. For more information, see [Instance store volumes](InstanceStorage.md#instance-store-volumes)\.
 
 
 | Location | Device name | 

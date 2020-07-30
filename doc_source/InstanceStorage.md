@@ -1,4 +1,4 @@
-# Amazon EC2 Instance Store<a name="InstanceStorage"></a>
+# Amazon EC2 instance store<a name="InstanceStorage"></a>
 
 An *instance store* provides temporary block\-level storage for your instance\. This storage is located on disks that are physically attached to the host computer\. Instance store is ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content, or for data that is replicated across a fleet of instances, such as a load\-balanced pool of web servers\.
 
@@ -9,12 +9,12 @@ The virtual devices for instance store volumes are `ephemeral[0-23]`\. Instance 
 ![\[Amazon EC2 instance storage\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_storage.png)
 
 **Topics**
-+ [Instance Store Lifetime](#instance-store-lifetime)
-+ [Instance Store Volumes](#instance-store-volumes)
-+ [Add Instance Store Volumes to Your EC2 Instance](add-instance-store-volumes.md)
-+ [SSD Instance Store Volumes](ssd-instance-store.md)
++ [Instance store lifetime](#instance-store-lifetime)
++ [Instance store volumes](#instance-store-volumes)
++ [Add instance store volumes to your EC2 instance](add-instance-store-volumes.md)
++ [SSD instance store volumes](ssd-instance-store.md)
 
-## Instance Store Lifetime<a name="instance-store-lifetime"></a>
+## Instance store lifetime<a name="instance-store-lifetime"></a>
 
 You can specify instance store volumes for an instance only when you launch it\. You can't detach an instance store volume from one instance and attach it to a different instance\.
 
@@ -31,16 +31,16 @@ If you create an AMI from an instance, the data on its instance store volumes is
 
 If you change the instance type, an instance store will not be attached to the new instance type\. For more information, see [Changing the instance type](ec2-instance-resize.md)\.
 
-## Instance Store Volumes<a name="instance-store-volumes"></a>
+## Instance store volumes<a name="instance-store-volumes"></a>
 
-The instance type determines the size of the instance store available and the type of hardware used for the instance store volumes\. Instance store volumes are included as part of the instance's usage cost\. You must specify the instance store volumes that you'd like to use when you launch the instance \(except for NVMe instance store volumes, which are available by default\)\. Then format and mount the instance store volumes before using them\. You can't make an instance store volume available after you launch the instance\. For more information, see [Add Instance Store Volumes to Your EC2 Instance](add-instance-store-volumes.md)\.
+The instance type determines the size of the instance store available and the type of hardware used for the instance store volumes\. Instance store volumes are included as part of the instance's usage cost\. You must specify the instance store volumes that you'd like to use when you launch the instance \(except for NVMe instance store volumes, which are available by default\)\. Then format and mount the instance store volumes before using them\. You can't make an instance store volume available after you launch the instance\. For more information, see [Add instance store volumes to your EC2 instance](add-instance-store-volumes.md)\.
 
-Some instance types use NVMe or SATA\-based solid state drives \(SSD\) to deliver high random I/O performance\. This is a good option when you need storage with very low latency, but you don't need the data to persist when the instance terminates or you can take advantage of fault\-tolerant architectures\. For more information, see [SSD Instance Store Volumes](ssd-instance-store.md)\.
+Some instance types use NVMe or SATA\-based solid state drives \(SSD\) to deliver high random I/O performance\. This is a good option when you need storage with very low latency, but you don't need the data to persist when the instance terminates or you can take advantage of fault\-tolerant architectures\. For more information, see [SSD instance store volumes](ssd-instance-store.md)\.
 
 The following table provides the quantity, size, type, and performance optimizations of instance store volumes available on each supported instance type\. For a complete list of instance types, including EBS\-only types, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
 
-| Instance Type | Instance Store Volumes | Type | Needs Initialization\* | TRIM Support\*\* | 
+| Instance type | Instance store volumes | Type | Needs initialization\* | TRIM support\*\* | 
 | --- | --- | --- | --- | --- | 
 | c1\.medium |  1 x 350 GB  | HDD | ✔ |  | 
 | c1\.xlarge |  4 x 420 GB \(1\.6 TB\)  | HDD | ✔ |  | 
@@ -181,4 +181,4 @@ The following table provides the quantity, size, type, and performance optimizat
 
 \* Volumes attached to certain instances suffer a first\-write penalty unless initialized\.
 
-\*\* For more information, see [Instance Store Volume TRIM Support](ssd-instance-store.md#InstanceStoreTrimSupport)\.
+\*\* For more information, see [Instance store volume TRIM support](ssd-instance-store.md#InstanceStoreTrimSupport)\.

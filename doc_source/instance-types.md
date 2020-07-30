@@ -124,7 +124,8 @@ The following instances are built on the Nitro System:
 For more information, see the following videos:
 + [AWS re:Invent 2017: The Amazon EC2 Nitro System Architecture](https://www.youtube.com/watch?v=02EbskIXCOc)
 + [AWS re:Invent 2017: Amazon EC2 Bare Metal Instances](https://www.youtube.com/watch?v=o9_4uGvbvnk)
-+ [The Nitro Project: Next\-Generation EC2 Infrastructure](https://www.slideshare.net/AmazonWebServices/the-nitro-project-nextgeneration-ec2-infrastructure-aws-online-tech-talks)
++ [AWS re:Invent 2019: Powering next\-gen Amazon EC2: Deep dive into the Nitro system](https://www.youtube.com/watch?v=rUY-00yFlE4)
++ [AWS re:Inforce 2019: Security Benefits of the Nitro Architecture](https://www.youtube.com/watch?v=kN9XcFp5vUM)
 
 ## Networking and storage features<a name="instance-networking-storage"></a>
 
@@ -141,7 +142,7 @@ When you select an instance type, this determines the networking and storage fea
 + The maximum transmission unit \(MTU\) supported varies across instance types\. All Amazon EC2 instance types support standard Ethernet V2 1500 MTU frames\. All current generation instances support 9001 MTU, or jumbo frames, and some previous generation instances support them as well\. For more information, see [Network maximum transmission unit \(MTU\) for your EC2 instance](network_mtu.md)\.
 
 **Storage features**
-+ Some instance types support EBS volumes and instance store volumes, while other instance types support only EBS volumes\. Some instance types that support instance store volumes use solid state drives \(SSD\) to deliver very high random I/O performance\. Some instance types support NVMe instance store volumes\. Some instance types support NVMe EBS volumes\. For more information, see [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md) and [NVMe SSD Volumes](ssd-instance-store.md#nvme-ssd-volumes)\.
++ Some instance types support EBS volumes and instance store volumes, while other instance types support only EBS volumes\. Some instance types that support instance store volumes use solid state drives \(SSD\) to deliver very high random I/O performance\. Some instance types support NVMe instance store volumes\. Some instance types support NVMe EBS volumes\. For more information, see [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md) and [NVMe SSD volumes](ssd-instance-store.md#nvme-ssd-volumes)\.
 + To obtain additional, dedicated capacity for Amazon EBS I/O, you can launch some instance types as EBS–optimized instances\. Some instance types are EBS–optimized by default\. For more information, see [Amazon EBS–optimized instances](ebs-optimized.md)\.
 
 ### Summary of networking and storage features<a name="instance-type-summary-table"></a>

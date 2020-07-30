@@ -4,7 +4,7 @@ Amazon EC2 provides you with flexible, cost effective, and easy\-to\-use data st
 
 After reading this section, you should have a good understanding about how you can use the data storage options supported by Amazon EC2 to meet your specific requirements\. These storage options include the following:
 + [Amazon Elastic Block Store \(Amazon EBS\)](AmazonEBS.md)
-+ [Amazon EC2 Instance Store](InstanceStorage.md)
++ [Amazon EC2 instance store](InstanceStorage.md)
 + [Amazon Simple Storage Service \(Amazon S3\)](AmazonS3.md)
 
 The following figure shows the relationship between these storage options and your instance\.
@@ -19,7 +19,7 @@ An EBS volume behaves like a raw, unformatted, external block device that you ca
 To keep a backup copy of your data, you can create a *snapshot* of an EBS volume, which is stored in Amazon S3\. You can create an EBS volume from a snapshot, and attach it to another instance\. For more information, see [Amazon Elastic Block Store \(Amazon EBS\)](AmazonEBS.md)\.
 
 **Amazon EC2 instance store**  
-Many instances can access storage from disks that are physically attached to the host computer\. This disk storage is referred to as *instance store*\. Instance store provides temporary block\-level storage for instances\. The data on an instance store volume persists only during the life of the associated instance; if you stop or terminate an instance, any data on instance store volumes is lost\. For more information, see [Amazon EC2 Instance Store](InstanceStorage.md)\.
+Many instances can access storage from disks that are physically attached to the host computer\. This disk storage is referred to as *instance store*\. Instance store provides temporary block\-level storage for instances\. The data on an instance store volume persists only during the life of the associated instance; if you stop or terminate an instance, any data on instance store volumes is lost\. For more information, see [Amazon EC2 instance store](InstanceStorage.md)\.
 
 **Amazon S3**  
 Amazon S3 provides access to reliable and inexpensive data storage infrastructure\. It is designed to make web\-scale computing easier by enabling you to store and retrieve any amount of data, at any time, from within Amazon EC2 or anywhere on the web\. For example, you can use Amazon S3 to store backup copies of your data and applications\. Amazon EC2 uses Amazon S3 to store EBS snapshots and instance store\-backed AMIs\. For more information, see [Amazon Simple Storage Service \(Amazon S3\)](AmazonS3.md)\.

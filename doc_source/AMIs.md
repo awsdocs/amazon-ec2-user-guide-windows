@@ -29,6 +29,8 @@ You can deregister an AMI when you have finished with it\. After you deregister 
 
 AWS provides a set of publicly available AMIs that contain software configurations specific to the Windows platform\. Using these AMIs, you can quickly start building and deploying your applications using Amazon EC2\. First choose the AMI that meets your specific requirements, and then launch an instance using that AMI\. You retrieve the password for the administrator account and then log in to the instance using Remote Desktop Connection, just as you would with any other Windows server\.
 
+When you launch an instance from a Windows AMI, the root device for the Windows instance is an Amazon EBS volume\. Windows AMIs do not support instance store for the root device\.
+
 Some Windows AMIs include an edition of Microsoft SQL Server \(SQL Enterprise Edition, SQL Server Standard, SQL Server Express, or SQL Server Web\)\. Launching an instance from a Windows AMI with Microsoft SQL Server enables you to run the instance as a database server\. Alternatively, you can launch an instance from any Windows AMI and then install the database software that you need on the instance\.
 
 Microsoft no longer supports Windows Server 2003 \(see [Microsoft Windows Server 2003 End\-of\-Support](https://aws.amazon.com/windows/products/ec2/server2003/)\)\. We recommend that you launch new EC2 instances using a supported version of Windows Server\. If you have existing EC2 instances that are running an unsupported version of Windows Server, we recommend that you upgrade those instances to a supported version of Windows Server\. For more information, see [Upgrading an Amazon EC2 Windows instance to a newer version of Windows Server](serverupgrade.md)\.

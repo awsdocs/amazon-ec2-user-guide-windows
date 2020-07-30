@@ -5,7 +5,7 @@ The latest launch service for all supported Windows Server versions is [EC2Launc
 Windows AMIs for Windows Server 2012 R2 and earlier include an optional service, the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. EC2Config can also perform tasks on demand\. Some of these tasks are automatically enabled, while others must be enabled manually\. Although optional, this service provides access to advanced features that aren't otherwise available\. This service runs in the LocalSystem account\.
 
 **Note**  
-EC2Launch replaces EC2Config on Windows AMIs for Windows Server 2016 and later\. For more information, see [Configuring a Windows instance using EC2Launch](ec2launch.md)\.
+EC2Launch replaced EC2Config on Windows AMIs for Windows Server 2016 and later\. For more information, see [Configuring a Windows instance using EC2Launch](ec2launch.md)\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
 EC2Config uses settings files to control its operation\. You can update these settings files using either a graphical tool or by directly editing XML files\. The service binaries and additional files are contained in the `%ProgramFiles%\Amazon\EC2ConfigService` directory\.
 
@@ -298,7 +298,7 @@ You can configure the EC2Config service to communicate through a proxy using one
 
 ### Configure Proxy Settings Using the AWS SDK for \.NET \(Preferred\)<a name="sdk-proxy"></a>
 
-You can configure proxy settings for the EC2Config service by specifying the `proxy` element in the `Ec2Config.exe.config` file\. For more information, see [Configuration Files Reference for AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v2/developer-guide/net-dg-config-ref.html#net-dg-config-ref-elements-proxy)\.
+You can configure proxy settings for the EC2Config service by specifying the `proxy` element in the `Ec2Config.exe.config` file\. For more information, see [Configuration Files Reference for AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-ref.html#net-dg-config-ref-elements-proxy)\.
 
 **To specify the proxy element in Ec2Config\.exe\.config**
 
