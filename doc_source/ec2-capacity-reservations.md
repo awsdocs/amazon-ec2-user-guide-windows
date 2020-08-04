@@ -13,6 +13,7 @@ In addition, you can use Savings Plans and regional Reserved Instances with your
 
 **Topics**
 + [Differences Between Capacity Reservations, Reserved Instances, and Savings Plans](#capacity-reservations-differences)
++ [Supported platforms](#capacity-reservations-platforms)
 + [Capacity Reservation Limits](#capacity-reservations-limits)
 + [Capacity Reservation Limitations and Restrictions](#capacity-reservations-limitations)
 + [Capacity Reservation Pricing and Billing](capacity-reservations-pricing-billing.md)
@@ -36,6 +37,21 @@ For more information, see the following:
 + [Reserved Instances](ec2-reserved-instances.md)
 + [AWS Savings Plans User Guide](https://docs.aws.amazon.com/savingsplans/latest/userguide/)
 
+## Supported platforms<a name="capacity-reservations-platforms"></a>
+
+You must create the Capacity Reservation with the correct platform to ensure that it properly matches with your instances\. Capacity Reservations support the following platforms:
++ Windows
++ Windows with SQL Server
++ Windows with SQL Server Web
++ Windows with SQL Server Standard
++ Windows with SQL Server Enterprise
++ Windows BYOL
+
+**Bring your own license \(BYOL\)**  
+ Capacity Reservations support Windows BYOL AMIs\. If you intend to use a Capacity Reservation for instances running a Windows BYOL AMI, then you must create the Capacity Reservation using the `Windows BYOL` platform\. 
+
+ For more information about the supported Linux platforms, see [ Supported platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html#capacity-reservations-platforms) in the *Amazon EC2 User Guide for Linux Instances*\. 
+
 ## Capacity Reservation Limits<a name="capacity-reservations-limits"></a>
 
 The number of instances for which you are allowed to reserve capacity is based on your account's On\-Demand Instance limit\. You can reserve capacity for as many instances as that limit allows, minus the number of instances that are already running\.
@@ -48,5 +64,4 @@ Before you create Capacity Reservations, take note of the following limitations 
 + Zonal Reserved Instance billing discounts do not apply to Capacity Reservations
 + Capacity Reservations can't be created in placement groups
 + Capacity Reservations can't be used with Dedicated Hosts
-+ Capacity Reservations can't be used with Bring Your Own License \(BYOL\)
 + Capacity Reservations can't be used with Local Zones

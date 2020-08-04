@@ -13,6 +13,7 @@ The keys that Amazon EC2 uses are 2048\-bit SSH\-2 RSA keys\. You can have up to
 + [Tagging a key pair](#tag-key-pair)
 + [Retrieving the public key for your key pair](#retrieving-the-public-key-windows)
 + [Retrieving the public key for your key pair through instance metadata](#retrieving-the-public-key-instance)
++ [Identifying the key pair that was specified at launch](#identify-key-pair-specified-at-launch)
 + [\(Optional\) Verifying your key pair's fingerprint](#verify-key-pair-fingerprints)
 + [Connecting to your Windows instance if you lose your private key](#replacing-lost-key-pair-windows)
 + [Deleting your key pair](#delete-key-pair)
@@ -294,6 +295,18 @@ BQoQzd8v7yeb7OzlPnWOyN0qFU0XA246RA8QFYiCNYwI3f05p6KLxEXAMPLE my-key-pair
 ```
 
 If you change the key pair that you use to connect to the instance, we don't update the instance metadata to show the new public key\. Instead, the instance metadata continues to show the public key for the key pair that you specified when you launched the instance\. For more information, see [Retrieving instance metadata](instancedata-data-retrieval.md)\.
+
+## Identifying the key pair that was specified at launch<a name="identify-key-pair-specified-at-launch"></a>
+
+When you launch an instance, you are [prompted for a key pair](launching-instance.md#step-7-review-instance-launch)\. If you plan to connect to the instance using RDP, you must specify a key pair\.
+
+**To identify the key pair that was specified at launch**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Instances**, and then select your instance\.
+
+1. On the **Description** tab, the **Key pair name** field displays the name of the key pair that you specified when you launched the instance\. The value of the **Key pair name** does not change even if you change the public key on the instance, or add key pairs\.
 
 ## \(Optional\) Verifying your key pair's fingerprint<a name="verify-key-pair-fingerprints"></a>
 

@@ -193,7 +193,7 @@ Amazon's trademarks and trade dress may not be used in
 + [Networking in Amazon EC2](ec2-networking.md)
    + [Amazon EC2 instance IP addressing](using-instance-addressing.md)
       + [Multiple IP addresses](MultipleIP.md)
-   + [Bring your own IP addresses (BYOIP)](ec2-byoip.md)
+   + [Bring your own IP addresses (BYOIP) in Amazon EC2](ec2-byoip.md)
    + [Elastic IP addresses](elastic-ip-addresses-eip.md)
    + [Elastic network interfaces](using-eni.md)
       + [Requester-managed network interfaces](requester-managed-eni.md)
