@@ -52,6 +52,7 @@ The following table shows the changes to AWS PV drivers for each driver release\
 
 | Package version | Details | Release date | 
 | --- | --- | --- | 
+| 8\.3\.4 | Improved reliability of network device attachment\. | 4 August 2020 | 
 | 8\.3\.3 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html) To update this driver on Windows Server 2008 R2 instances, you must first verify that the appropriate patches are installed to address the following Microsoft Security Advisory: [https://docs\.microsoft\.com/en\-us/security\-updates/SecurityAdvisories/2014/2949927](https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2014/2949927)\.    | 4 February 2020 | 
 | 8\.3\.2 |  Enhanced reliability of networking components\.  | 30 July 2019 | 
 | 8\.3\.1 |  Improved performance and robustness of storage component\.  | 12 June 2019 | 

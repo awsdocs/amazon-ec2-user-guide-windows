@@ -1,6 +1,6 @@
 # EC2Launch v2 settings<a name="ec2launch-v2-settings"></a>
 
-This section contains information about how to use the EC2Launch v2 dialog box to enable or disable EC2Launch settings, the EC2Launch directory structure, CLI commands to update EC2Launch settings, details to manually configure the `agent-config.yml` file, and information about how EC2Launch uses Sysprep\. 
+This section contains information about how to configure settings for EC2Launch v2\. 
 
 **Topics**
 + [Change settings using the EC2Launch v2 settings dialog box](#ec2launch-v2-ui)
@@ -333,7 +333,7 @@ wallpaper file path
 
 ## EC2Launch v2 task configuration<a name="ec2launch-v2-task-configuration"></a>
 
-The configuration tasks and details for configuring the `agent-config.yml` file are as follows\.
+This section includes the configuration tasks, details, and examples for the `agent-config.yml` and `user-data.yml` files\.
 
 **Topics**
 + [activateWindows](#ec2launch-v2-activatewindows)
@@ -349,7 +349,7 @@ The configuration tasks and details for configuring the `agent-config.yml` file 
 + [setHostName](#ec2launch-v2-sethostname)
 + [setWallpaper](#ec2launch-v2-setwallpaper)
 + [startSsm](#ec2launch-v2-startssm)
-+ [writeFile](#ec2-launch-v2-writeile)
++ [writeFile](#ec2-launch-v2-writefile)
 + [Example: `agent-config.yml`](#ec2launch-v2-example-agent-config)
 + [Example: `user-data.yml`](#ec2launch-v2-example-user-data)
 
@@ -371,8 +371,8 @@ Activates Windows against a set of KMS servers\.
 
 ```
 task: activateWindows
-  inputs:
-  - activation
+inputs:
+  activation:
     type: amazon
 ```
 
@@ -404,6 +404,8 @@ Enables Windows OpenSSH and adds the public key for the instance to the authoriz
 
 *Example*
 
+The following example shows how to enable OpenSSH on an instance, and to add the public key for the instance to the authorized keys folder\. This configuration works only on instances running Windows Server 2019\.
+
 ```
 task: enableOpenSsh
 ```
@@ -428,12 +430,27 @@ Executes a program with optional arguments and a specified frequency\.
 
 *Example*
 
+The following example shows how to run an executable file that is already on an instance\. 
+
 ```
 task: executeProgram
-  inputs:
-  - frequency: always
-    path: C:\Users\Administrator\Desktop\setup.exe
-    arguments: [‘—quiet']
+inputs:
+- frequency: always
+  path: C:\Users\Administrator\Desktop\setup.exe
+  arguments: [‘—quiet']
+```
+
+*Example 2*
+
+The following example shows how to run an executable file that is already on an instance\. This configuration installs a VLC `.exe` file that is present on the `C:` drive of the instance\. `/L=1033` and `/S` are VLC arguments passed as a string list with the VLC `.exe` file\.
+
+```
+task: executeProgram
+inputs:
+- frequency: always
+  path: C:\vlc-3.0.11-win64.exe 
+  arguments: ['/L=1033','/S']
+  runAs: localSystem
 ```
 
 ### executeScript<a name="ec2launch-v2-executescript"></a>
@@ -460,12 +477,36 @@ Executes a script with optional arguments and a specified frequency\.
 
 ```
 task: executeScript
-  inputs:
-  - frequency: always
-    type: powershell
-    content: |
-      Get-Process | Out-File -FilePath .\Process.txt
-    runAs: localSystem
+inputs:
+- frequency: always
+  type: powershell
+  content: |
+    Get-Process | Out-File -FilePath .\Process.txt
+  runAs: localSystem
+```
+
+*Example 2*
+
+The following example shows how to run a PowerShell script on an EC2 instance\. This configuration creates a text file in the `C:` drive\.
+
+```
+task: executeScript
+inputs:
+- frequency: always
+  type: powershell
+  content: |-
+    New-Item -Path 'C:\PowerShellTest.txt' -ItemType
+    File
+```
+
+The following format is compatible with the previous version of this service\.
+
+```
+<powershell>
+  $file = $env:SystemRoot + "\Temp" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+  New-Item $file -ItemType file
+</powershell>
+<persist>true</persist>
 ```
 
 ### extendRootPartition<a name="ec2launch-v2-extendrootpartition"></a>
@@ -506,49 +547,33 @@ Initializes volumes attached to the instance so that they are activated and part
 
 `partition`: \(string\) partitioning type to use; one of mbr or gpt
 
-*Example* 
+*Example 1* 
+
+The following example shows inputs for the `InitializeVolume` task to set selected volumes to be initialized\.
 
 ```
 task: initializeVolume
-  inputs:
-    initialize: devices
-    devices:
-    - device: xvdb
-      name: MyVolumeOne
-      letter: D
-      partition: mbr
-    - device: /dev/nvme0n1
-      name: MyVolumeTwo
-      letter: E
-      partition: gpt
+inputs:
+  initialize: devices
+  devices:
+  - device: xvdb
+    name: MyVolumeOne
+    letter: D
+    partition: mbr
+  - device: /dev/nvme0n1
+    name: MyVolumeTwo
+    letter: E
+    partition: gpt
 ```
 
-The following examples show possible inputs for the `InitializeVolume` task to set all volumes to be initialized, and to set selected volumes to be initialized\.
+*Example 2*
 
-Example 1
-
-```
-initializeVolume:
- initialize: all
-```
-
-Example 2
+The following example shows how to initialize EBS volumes that are attached to an instance\. This configuration will initialize all empty EBS volumes that are attached to the instance\. If a volume is not empty, then it will not be initialized\.
 
 ```
-initializeVolume:
- initialize: devices
- devices:
-    - device: xvda
-      name: First Volume Name
-      letter: D
-      partition: mbr
-    - device: /dev/nvme0n1
-      name: Second Volume Name
-      letter: E
-      partition: gpt
-    - device: xvdc
-      name: Volume Next Available Letter
-    - device: xvde
+task: initializeVolume
+inputs:
+  initialize: all
 ```
 
 ### optimizeEna<a name="ec2launch-v2-optimizeena"></a>
@@ -591,10 +616,10 @@ Sets attributes for the default administrator account that is created on the loc
 
 ```
 task: setAdminAccount
-  inputs:
-    name: Administrator
-    password:
-      type: random
+inputs:
+  name: Administrator
+  password:
+    type: random
 ```
 
 ### setDnsSuffix<a name="ec2launch-v2-setdnssuffix"></a>
@@ -613,9 +638,9 @@ Adds DNS suffixes to the list of search suffixes\. Only suffixes that do not alr
 
 ```
 task: setDnsSuffix
-  inputs:
-    suffixes:
-    - $REGION.ec2-utilities.amazonaws.com
+inputs:
+  suffixes:
+  - $REGION.ec2-utilities.amazonaws.com
 ```
 
 ### setHostName<a name="ec2launch-v2-sethostname"></a>
@@ -634,8 +659,8 @@ Sets the hostname of the computer to the private IPv4 address\.
 
 ```
 task: setHostName
-  inputs:
-    reboot: true
+inputs:
+  reboot: true
 ```
 
 ### setWallpaper<a name="ec2launch-v2-setwallpaper"></a>
@@ -656,16 +681,18 @@ Sets up the instance with custom wallpaper that displays instance attributes\.
 
 ```
 task: setWallpaper
-  inputs:
-    path: C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg
-    attributes:
-    - hostName
-    - instanceId
-    - privateIpAddress
-    - publicIpAddress
+inputs:
+  path: C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg
+  attributes:
+  - hostName
+  - instanceId
+  - privateIpAddress
+  - publicIpAddress
 ```
 
 ### startSsm<a name="ec2launch-v2-startssm"></a>
+
+Starts the Systems Manager \(SSM\) service following Sysprep\.
 
 *Frequency* — always
 
@@ -679,7 +706,7 @@ task: setWallpaper
 task: startSsm
 ```
 
-### writeFile<a name="ec2-launch-v2-writeile"></a>
+### writeFile<a name="ec2-launch-v2-writefile"></a>
 
 Writes a file to a destination\.
 
@@ -699,10 +726,10 @@ Writes a file to a destination\.
 
 ```
 task: writeFile
-  inputs:
-  - frequency: once
-    destination: C:\Users\Administrator\Desktop\booted.txt
-    content: Windows Has Booted
+inputs:
+- frequency: once
+  destination: C:\Users\Administrator\Desktop\booted.txt
+  content: Windows Has Booted
 ```
 
 ### Example: `agent-config.yml`<a name="ec2launch-v2-example-agent-config"></a>
@@ -712,100 +739,39 @@ The following example shows settings for the `agent-config.yml` configuration fi
 ```
 version: 1.0
 config:
-  - stage: boot
-    tasks:
-    - task: extendRootPartition
-  - stage: preReady
-    tasks:
-    - task: setDnsSuffix
-      inputs:
-        suffixes:
-        - test1
-        - domain.test2
-        - $AZ.test3
-        - $REGION.domain.test4
-    - task: enableOpenSSH
-    - task: setAdminAccount
-      inputs:
-        name: Admin
-        password:
-          type: static
-          data: Demo
-    - task: setWallpaper
-      inputs:
-        path: C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg
-        attributes:
-          - hostName
-          - instanceId
-          - privateIpAddress
-          - publicIpAddress
-          - instanceSize
-          - availabilityZone
-          - architecture
-          - memory
-           - network
-    - stage: postReady
-      tasks:
-        - task: optimizeENA
-        - task: startSSM
-        - task: setHostName
-          inputs:
-            reboot: true
-        - task: writeFile
-          inputs:
-          - frequency: always
-            destination: C:\test.txt
-            content: echo hello
-        - task: executeScript
-          inputs:
-          - frequency: always
-            type: powershell
-            arguments: scriptarguments
-            content: |-
-              $file = "C:\Demo.txt"
-              if(!(Test-Path $file -PathType Leaf)){
-                New-Item $file -ItemType file
-              }
-              Add-Content $file (Get-Date).ToString("MM-dd-yy-hh-mm")
-            runAs: localSystem
-          - frequency: once
-            type: powershell
-            content: |-
-              $file = "C:\Demo2.txt"
-              if(!(Test-Path $file -PathType Leaf)){
-                New-Item $file -ItemType file
-              }
-              Add-Content $file (Get-Date).ToString("MM-dd-yy-hh-mm")
-            runAs: localSystem
-        - task: executeProgram
-          inputs:
-          - frequency: always
-            path: c:\temp\abc.exe
-            arguments:
-              - arg1
-              - arg2
-              - arg3
-          - frequency: once
-            path: c:\temp\abc2.exe
-            arguments:
-              - arg1
-              - arg2
-              - arg3
-        - task: initializeVolume
-          inputs:
-            initialize: devices
-            devices:
-              - device: xvda
-                name: First Volume Name
-                letter: D
-                partition: mbr
-              - device: /dev/nvme0n1
-                name: Second Volume Name
-                letter: E
-                partition: gpt
-              - device: xvdc
-                name: Volume Next Available Letter
-              - device: xvde
+- stage: boot
+  tasks:
+  - task: extendRootPartition
+- stage: preReady
+  tasks:
+  - task: activateWindows
+    inputs:
+      activation:
+        type: amazon
+  - task: setDnsSuffix
+    inputs:
+      suffixes:
+      - $REGION.ec2-utilities.amazonaws.com
+  - task: setAdminAccount
+    inputs:
+      password:
+        type: random
+  - task: setWallpaper
+    inputs:
+      path: C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg
+      attributes:
+      - hostName
+      - instanceId
+      - privateIpAddress
+      - publicIpAddress
+      - instanceSize
+      - availabilityZone
+      - architecture
+      - memory
+      - network
+- stage: postReady
+  tasks:
+  - task: startSsm
 ```
 
 ### Example: `user-data.yml`<a name="ec2launch-v2-example-user-data"></a>
@@ -815,20 +781,23 @@ The following example shows settings for the `user-data.yml` configuration file\
 ```
 version: 1.0
 tasks:
-    - task: executeScript
-      inputs:
-        - frequency: always
-          type: powershell
-          content: |-
-            New-Item -Path 'C:\PowerShellTest.txt' -ItemType
-            File
-            Old format that is compatible with older version of service:
-            <powershell>
-            $file = $env:SystemRoot + "\Temp" + (Get-
-            Date).ToString("MM-dd-yy-hh-mm")
-            New-Item $file -ItemType file
-            </powershell>
-            <persist>true</persist>
+- task: executeScript
+  inputs:
+  - frequency: always
+    type: powershell
+    content: |-
+      New-Item -Path 'C:\PowerShellTest.txt' -ItemType
+      File
+```
+
+The following format is compatible with the previous version of this service\.
+
+```
+<powershell>
+  $file = $env:SystemRoot + "\Temp" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+  New-Item $file -ItemType file
+</powershell>
+<persist>true</persist>
 ```
 
 ## EC2Launch v2 and Sysprep<a name="ec2launch-v2-sysprep"></a>

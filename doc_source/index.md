@@ -129,6 +129,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Subscribe to EC2Launch v2 service notifications](ec2launch-v2-sns.md)
          + [EC2Launch v2 settings](ec2launch-v2-settings.md)
          + [Troubleshooting EC2Launch v2](ec2launchv2-troubleshooting.md)
+         + [EC2Launch v2 version histories](ec2launchv2-versions.md)
       + [Configuring a Windows instance using EC2Launch](ec2launch.md)
          + [Installing the latest version of EC2Launch](ec2launch-download.md)
          + [EC2Launch version history](ec2launch-version-details.md)

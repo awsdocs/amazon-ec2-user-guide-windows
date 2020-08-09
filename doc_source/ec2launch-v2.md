@@ -21,3 +21,4 @@ EC2Launch v2 publishes Windows event logs to help you troubleshoot errors and se
 + [Subscribe to EC2Launch v2 service notifications](ec2launch-v2-sns.md)
 + [EC2Launch v2 settings](ec2launch-v2-settings.md)
 + [Troubleshooting EC2Launch v2](ec2launchv2-troubleshooting.md)
++ [EC2Launch v2 version histories](ec2launchv2-versions.md)

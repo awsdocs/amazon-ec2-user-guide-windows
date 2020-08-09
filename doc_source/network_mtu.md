@@ -4,6 +4,8 @@ The maximum transmission unit \(MTU\) of a network connection is the size, in by
 
 Ethernet frames can come in different formats, and the most common format is the standard Ethernet v2 frame format\. It supports 1500 MTU, which is the largest Ethernet packet size supported over most of the internet\. The maximum supported MTU for an instance depends on its instance type\. All Amazon EC2 instance types support 1500 MTU, and many current instance sizes support 9001 MTU, or jumbo frames\.
 
+If your instance runs in a Wavelength Zone, the maximum MTU value is 1300\.
+
 **Topics**
 + [Jumbo frames \(9001 MTU\)](#jumbo_frame_instances)
 + [Path MTU Discovery](#path_mtu_discovery)
@@ -61,6 +63,8 @@ You can check the path MTU between two hosts using the mturoute\.exe command,  w
 ## Check and set the MTU on your Windows instance<a name="set_mtu_windows"></a>
 
 Some drivers are configured to use jumbo frames, and others are configured to use standard frame sizes\. You might want to use jumbo frames for network traffic within your VPC or standard frames for internet traffic\. Whatever your use case, we recommend that you verify that your instances behave as expected\.
+
+If your instance runs in a Wavelength Zone, the maximum MTU value is 1300\.
 
 ### ENA Driver<a name="set-mtu-windows-ena-driver"></a>
 

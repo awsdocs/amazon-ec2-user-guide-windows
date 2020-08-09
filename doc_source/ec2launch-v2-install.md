@@ -1,6 +1,6 @@
 # Install the latest version of EC2Launch v2<a name="ec2launch-v2-install"></a>
 
-EC2Launch v2 is currently available by download, by installation from SSM Distributor, and on all supported Windows AMIs\. If you want to install EC2Launch v2 on a Windows AMI that currently has EC2Config or EC2Launch \(v1\) installed, follow the steps for [migrating to EC2Launch v2](ec2launch-v2-migrate.md)\. Prior versions of the launch service will not be removed unless you migrate to the new version\. 
+EC2Launch v2 is currently available by download, by installation from SSM Distributor, and on all supported Windows AMIs\.
 
 **Download**  
 To install the latest version of EC2Launch v2, download the service from the following locations:
@@ -22,12 +22,3 @@ EC2Launch v2 is preinstalled on the following AMIs\. Do not use these AMIs for p
 + EC2LaunchV2\_Preview\-Windows\_Server\-2012\_RTM\-English\-Full\-Base
 + EC2LaunchV2\_Preview\-Windows\-Server\-2019\-English\-Full\-SQL\_2019\_Express
 + EC2LaunchV2\_Preview\-Windows\-Server\-2016\-English\-Full\-SQL\_2017\_Express
-
-## EC2Launch v2 version history<a name="ec2launchv2-version-history"></a>
-
-The following table describes the released versions of EC2Launch v2\.
-
-
-| Version | Details | Release date | 
-| --- | --- | --- | 
-| 2\.0\.0 | Initial release | June 30, 2020 | 

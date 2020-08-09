@@ -30,7 +30,7 @@ If you have an AWS account already, skip to the next task\. If you don't have an
 
 AWS uses public\-key cryptography to secure the login information for your instance\. You specify the name of the key pair when you launch your instance, then provide the private key to obtain the administrator password for your Windows instance so you can log in using RDP\.
 
-If you haven't created a key pair already, you can create one using the Amazon EC2 console\. Note that if you plan to launch instances in multiple Regions, you'll need to create a key pair in each Region\. For more information about Regions, see [Regions and Availability Zones](EC2Win_Infrastructure.md#EC2Win_Regions)\.
+If you haven't created a key pair already, you can create one using the Amazon EC2 console\. Note that if you plan to launch instances in multiple Regions, you'll need to create a key pair in each Region\. For more information about Regions, see [Regions and Zones](EC2Win_Infrastructure.md#EC2Win_Regions)\.
 
 You can create a key pair using one of the following methods\. 
 

@@ -4,7 +4,7 @@ As you get started with Amazon EC2, you'll benefit from understanding the compon
 
 **Topics**
 + [Amazon Machine Images and instances](#AMISandInstances)
-+ [Regions and Availability Zones](#EC2Win_Regions)
++ [Regions and Zones](#EC2Win_Regions)
 + [Storage](#EC2Win_Storage)
 + [Root device volume](#RootDevice_WinAMI)
 + [Networking and security](#EC2Win_Sec)
@@ -26,15 +26,17 @@ Your Windows instances keep running until you stop or terminate them, or until t
 
 Your AWS account has a limit on the number of instances that you can have running\. For more information about this limit, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
 
-## Regions and Availability Zones<a name="EC2Win_Regions"></a>
+## Regions and Zones<a name="EC2Win_Regions"></a>
 
-Amazon has data centers in different areas of the world \(for example, North America, Europe, and Asia\)\. Correspondingly, Amazon EC2 is available to use in different *Regions*\. By launching instances in separate Regions, you can design your application to be closer to specific customers or to meet legal or other requirements\. Prices for Amazon EC2 usage vary by Region \(for more information about pricing by Region, see [Amazon EC2 Pricing](https://aws.amazon.com/ec2/pricing)\)\. 
+Amazon EC2 is hosted in multiple locations world\-wide\. These locations are composed of Regions, Availability Zones, Local Zones, and Wavelength Zones\. Each *Region* is a separate geographic area\. 
++ Availability Zones are multiple, isolated locations within each Region\.
++ Local Zones provide you the ability to place resources, such as compute and storage, in multiple locations closer to your end users\.
++ AWS Outposts brings native AWS services, infrastructure, and operating models to virtually any data center, co\-location space, or on\-premises facility\.
++ Wavelength Zones allow developers to build applications that deliver ultra\-low latencies to 5G devices and end users\. Wavelength deploys standard AWS compute and storage services to the edge of telecommunication carriers' 5G networks\.
 
-Each Region contains multiple distinct locations called *Availability Zones*\. Each Availability Zone is engineered to be isolated from failures in other Availability Zones, and to provide inexpensive, low\-latency network connectivity to other zones in the same Region\. By launching instances in separate Availability Zones, you can protect your applications from the failure of a single location\. 
+AWS operates state\-of\-the\-art, highly available data centers\. Although rare, failures can occur that affect the availability of instances that are in the same location\. If you host all of your instances in a single location that is affected by a failure, none of your instances would be available\.
 
-![\[Regions and Availability Zones\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_regions.png)
-
-For more information about the available Regions and Availability Zones, see [Using Regions and Availability Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For more information about the available Regions and Availability Zones, see [Regions and Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Storage<a name="EC2Win_Storage"></a>
 

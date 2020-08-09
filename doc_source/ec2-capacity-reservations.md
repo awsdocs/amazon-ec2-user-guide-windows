@@ -45,10 +45,6 @@ You must create the Capacity Reservation with the correct platform to ensure tha
 + Windows with SQL Server Web
 + Windows with SQL Server Standard
 + Windows with SQL Server Enterprise
-+ Windows BYOL
-
-**Bring your own license \(BYOL\)**  
- Capacity Reservations support Windows BYOL AMIs\. If you intend to use a Capacity Reservation for instances running a Windows BYOL AMI, then you must create the Capacity Reservation using the `Windows BYOL` platform\. 
 
  For more information about the supported Linux platforms, see [ Supported platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html#capacity-reservations-platforms) in the *Amazon EC2 User Guide for Linux Instances*\. 
 

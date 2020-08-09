@@ -113,7 +113,7 @@ With EC2Config, the log file is `C:\Program Files\Amazon\Ec2ConfigService\Logs\E
 
 When you update instance user data, user data scripts are not executed automatically when you reboot or start the instance\. However, you can enable user data execution so that user data scripts are executed one time when you reboot or start the instance, or every time you reboot or start the instance\.
 
-If you choose the **Shutdown with Sysprep** option, user data scripts are executed when the instance is rebooted or started, even if you did not enable user data execution for subsequent reboots or starts\.
+If you choose the **Shutdown with Sysprep** option, user data scripts are executed the next time the instance starts or reboots, even if you did not enable user data execution for subsequent reboots or starts\. The user data scripts will not be executed on subsequent reboots or starts\.
 
 **To enable user data execution on Windows Server 2016 or later \(EC2Launch\)**
 

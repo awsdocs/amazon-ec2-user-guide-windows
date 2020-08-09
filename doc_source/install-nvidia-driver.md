@@ -117,22 +117,9 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
 1. Download the drivers and the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX) from Amazon S3 to your desktop using the following PowerShell commands\.
 
-   For G3 instances:
-
-   ```
-   $KeyPrefix = "latest"
-   ```
-
-   For G4 instances:
-
-   ```
-   $KeyPrefix = "g4/latest"
-   ```
-
-   For G3 and G4 instances:
-
    ```
    $Bucket = "ec2-windows-nvidia-drivers"
+   $KeyPrefix = "latest"
    $LocalPath = "$home\Desktop\NVIDIA"
    $Objects = Get-S3Object -BucketName $Bucket -KeyPrefix $KeyPrefix -Region us-east-1
    foreach ($Object in $Objects) {
@@ -154,9 +141,11 @@ These downloads are available to AWS customers only\. By downloading, you agree 
    New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global\GridLicensing" -Name "NvCplDisableManageLicensePage" -PropertyType "DWord" -Value "1"
    ```
 
-1. \(Optional\) To help take advantage of the four displays of up to 4K resolution, set up the high\-performance display protocol, [NICE DCV](https://docs.aws.amazon.com/dcv/)\.
+1. \(Optional\) Depending on your use case, you might complete the following optional steps\. If you do not require this functionality, do not complete these steps\.
 
-1. \(Optional\) NVIDIA Quadro Virtual Workstation mode is enabled by default\. To activate GRID Virtual Applications for RDSH Application hosting capabilities, complete the GRID Virtual Application activation steps in [Activate NVIDIA GRID Virtual Applications](activate_grid.md)\.
+   1. To help take advantage of the four displays of up to 4K resolution, set up the high\-performance display protocol, [NICE DCV](https://docs.aws.amazon.com/dcv/)\.
+
+   1. NVIDIA Quadro Virtual Workstation mode is enabled by default\. To activate GRID Virtual Applications for RDSH Application hosting capabilities, complete the GRID Virtual Application activation steps in [Activate NVIDIA GRID Virtual Applications](activate_grid.md)\.
 
 ### Option 4: NVIDIA gaming drivers \(G4 instances\)<a name="nvidia-gaming-driver"></a>
 
@@ -230,4 +219,4 @@ These drivers are available to AWS customers only\. By downloading them, you agr
        License Status            : Licensed
    ```
 
-1. \(Optional\) To help take advantage of the single display of up to 4K resolution, set up the high\-performance display protocol [NICE DCV](https://docs.aws.amazon.com/dcv)\.
+1. \(Optional\) To help take advantage of the single display of up to 4K resolution, set up the high\-performance display protocol [NICE DCV](https://docs.aws.amazon.com/dcv)\. If you do not require this functionality, do not complete this step\.
