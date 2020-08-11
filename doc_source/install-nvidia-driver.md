@@ -133,6 +133,8 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
    Multiple versions of the NVIDIA GRID driver are stored in this bucket\. You can download all of the available versions in the bucket by removing the `-KeyPrefix $KeyPrefix` option\.
 
+   Starting with GRID version 11\.0, you can use the drivers under `latest` for both G3 and G4 instances\. We will not add versions later than 11\.0 to `g4/latest`, but will keep version 11\.0 and the earlier versions specific to G4 under `g4/latest`\.
+
 1. Navigate to the desktop and double\-click the installation file to launch it \(choose the driver version that corresponds to your instance OS version\)\. Follow the instructions to install the driver and reboot your instance as required\. To verify that the GPU is working properly, check Device Manager\.
 
 1. \(Optional\) Use the following command to disable the licensing page in the control panel to prevent users from accidentally changing the product type \(NVIDIA GRID Virtual Workstation is enabled by default\)\. For more information, see the [GRID Licensing User Guide](http://docs.nvidia.com/grid/4.6/grid-licensing-user-guide/index.html)\.
