@@ -1,4 +1,4 @@
-# Using EC2Rescue for Windows Server with the Command Line<a name="ec2rw-cli"></a>
+# Using EC2Rescue for Windows Server with the command line<a name="ec2rw-cli"></a>
 
 The EC2Rescue for Windows Server command line interface \(CLI\) allows you to run an EC2Rescue for Windows Server plugin \(referred as an "action"\) programmatically\.
 
@@ -13,16 +13,16 @@ EC2RescueCmd.exe /help
 ```
 
 EC2Rescue for Windows Server can perform the following actions on an Amazon EC2 Windows instance:
-+ [Collect Action](#ec2rw-collect)
-+ [Rescue Action](#ec2rw-rescue)
-+ [Restore Action](#ec2rw-restore)
++ [Collect action](#ec2rw-collect)
++ [Rescue action](#ec2rw-rescue)
++ [Restore action](#ec2rw-restore)
 
-## Collect Action<a name="ec2rw-collect"></a>
+## Collect action<a name="ec2rw-collect"></a>
 
 EC2Rescue for Windows Server can collect the following data from active and offline instances\. You can collect all logs, an entire log group, or an individual log within a group\.
 
 
-| Log Group | Available Logs | Description | 
+| Log group | Available logs | Description | 
 | --- | --- | --- | 
 | all |  | Collects all available logs\. | 
 | system\-info | 'MSInfo32 Output' | Collects MSInfo32\. | 
@@ -48,7 +48,7 @@ The following are the available options:
 
 The following are examples using the EC2Rescue for Windows Server CLI\.
 
-#### Online Mode Examples<a name="ec2rw-collect-examples-online"></a>
+#### Online mode examples<a name="ec2rw-collect-examples-online"></a>
 
 Collect all available logs:
 
@@ -68,7 +68,7 @@ Collect individual logs within a log group:
 EC2RescueCmd /accepteula /online /collect:'ec2config.Log Files,driver-setup.SetupAPI Log Files' /output:<outputFilePath>
 ```
 
-#### Offline Mode Examples<a name="ec2rw-collect-examples-offline"></a>
+#### Offline mode examples<a name="ec2rw-collect-examples-offline"></a>
 
 Collect all available logs from an EBS volume\. The volume is specified by the device\_id value\.
 
@@ -82,12 +82,12 @@ Collect only a specific log group:
 EC2RescueCmd /accepteula /offline:xvdf /collect:ec2config /output:<outputFilePath>
 ```
 
-## Rescue Action<a name="ec2rw-rescue"></a>
+## Rescue action<a name="ec2rw-rescue"></a>
 
 EC2Rescue for Windows Server can detect and address issues with the following service settings:
 
 
-|  Service Group  | Available Actions |  Description  | 
+|  Service group  | Available actions |  Description  | 
 | --- | --- | --- | 
 | all |  |  | 
 | system\-time | 'RealTimeIsUniversal' | System Time[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2rw-cli.html) | 
@@ -103,7 +103,7 @@ The following are the available options:
 + **/no\-offline** ‐ Optional attribute that prevents the volume from being set offline after completing the action\.
 + **/no\-fix\-signature** ‐ Optional attribute that does not fix a possible disk signature collision after completing the action\.
 
-### Rescue Examples<a name="ec2rw-rescue-examples"></a>
+### Rescue examples<a name="ec2rw-rescue-examples"></a>
 
 The following are examples using the EC2Rescue for Windows Server CLI\. The volume is specified using the device\_id value\.
 
@@ -131,7 +131,7 @@ Specify multiple issues to attempt to fix on a volume:
 EC2RescueCmd /accepteula /offline:xvdf /rescue:'system-time.RealTimeIsUniversal,ec2config.Service Start'
 ```
 
-## Restore Action<a name="ec2rw-restore"></a>
+## Restore action<a name="ec2rw-restore"></a>
 
 EC2Rescue for Windows Server can detect and address issues with the following service settings:
 
@@ -145,7 +145,7 @@ The following are the available options:
 + **/no\-offline**—Optional attribute that prevents the volume from being set offline after completing the action\.
 + **/no\-fix\-signature**—Optional attribute that does not fix a possible disk signature collision after completing the action\.
 
-### Restore Examples<a name="ec2rw-restore-examples"></a>
+### Restore examples<a name="ec2rw-restore-examples"></a>
 
 The following are examples using the EC2Rescue for Windows Server CLI\. The volume is specified using the device\_id value\.
 

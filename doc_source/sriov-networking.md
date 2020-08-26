@@ -142,6 +142,6 @@ The administrator password will reset when you enable the initialize instance EC
      Edit-EC2InstanceAttribute -InstanceId instance_id -SriovNetSupport "simple"
      ```
 
-1. \(Optional\) Create an AMI from the instance, as described in [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. The AMI inherits the enhanced networking attribute from the instance\. Therefore, you can use this AMI to launch another instance with enhanced networking enabled by default\.
+1. \(Optional\) Create an AMI from the instance, as described in [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. The AMI inherits the enhanced networking attribute from the instance\. Therefore, you can use this AMI to launch another instance with enhanced networking enabled by default\.
 
 1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\), [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance in the AWS OpsWorks console so that the instance state remains in sync\.

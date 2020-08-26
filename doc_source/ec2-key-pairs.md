@@ -336,7 +336,7 @@ C:\> ssh-keygen -ef path_to_private_key -m PEM | openssl rsa -RSAPublicKey_in -o
 
 When you connect to a newly launched Windows instance, you decrypt the password for the Administrator account using the private key for the key pair that you specified when you launched the instance\.
 
-If you lose the Administrator password and you no longer have the private key, you must reset the password or create a new instance\. For more information, see [Resetting a Lost or Expired Windows Administrator Password](ResettingAdminPassword.md)\. For steps to reset the password using an AWS Systems Manager document, see [Reset Passwords and SSH Keys on Amazon EC2 Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
+If you lose the Administrator password and you no longer have the private key, you must reset the password or create a new instance\. For more information, see [Resetting a lost or expired Windows administrator password](ResettingAdminPassword.md)\. For steps to reset the password using an AWS Systems Manager document, see [Reset Passwords and SSH Keys on Amazon EC2 Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
 
 ## Deleting your key pair<a name="delete-key-pair"></a>
 

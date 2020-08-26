@@ -35,6 +35,7 @@ Amazon EC2 provides the instance types in the following table\. To determine whi
 | C4 | c4\.large \| c4\.xlarge \| c4\.2xlarge \| c4\.4xlarge \| c4\.8xlarge | [Compute optimized](compute-optimized-instances.md) | 
 | C5 | c5\.large \| c5\.xlarge \| c5\.2xlarge \| c5\.4xlarge \| c5\.9xlarge \| c5\.12xlarge \| c5\.18xlarge \| c5\.24xlarge \| c5\.metal | [Compute optimized](compute-optimized-instances.md) | 
 | C5a | c5a\.large \| c5a\.xlarge \| c5a\.2xlarge \| c5a\.4xlarge \| c5a\.8xlarge \| c5a\.12xlarge \| c5a\.16xlarge \| c5a\.24xlarge | [Compute optimized](compute-optimized-instances.md) | 
+| C5ad | c5ad\.large \| c5ad\.xlarge \| c5ad\.2xlarge \| c5ad\.4xlarge \| c5ad\.8xlarge \| c5ad\.12xlarge \| c5ad\.16xlarge \| c5ad\.24xlarge | [Compute optimized](compute-optimized-instances.md) | 
 | C5d | c5d\.large \| c5d\.xlarge \| c5d\.2xlarge \| c5d\.4xlarge \| c5d\.9xlarge \| c5d\.12xlarge \| c5d\.18xlarge \| c5d\.24xlarge \| c5d\.metal  | [Compute optimized](compute-optimized-instances.md) | 
 | C5n | c5n\.large \| c5n\.xlarge \| c5n\.2xlarge \| c5n\.4xlarge \| c5n\.9xlarge \| c5n\.18xlarge \| c5n\.metal | [Compute optimized](compute-optimized-instances.md) | 
 | D2 | d2\.xlarge \| d2\.2xlarge \| d2\.4xlarge \| d2\.8xlarge | [Storage optimized](storage-optimized-instances.md) | 
@@ -116,7 +117,7 @@ The following components are part of the Nitro System:
 **Instance types**
 
 The following instances are built on the Nitro System:
-+ Virtualized: C5, C5a, C5d, C5n, G4, I3en, M5, M5a, M5ad, M5d, M5dn, M5n, `p3dn.24xlarge`, R5, R5a, R5ad, R5d, R5dn, R5n, T3, T3a, and z1d
++ Virtualized: C5, C5a, C5ad, C5d, C5n, G4, I3en, M5, M5a, M5ad, M5d, M5dn, M5n, `p3dn.24xlarge`, R5, R5a, R5ad, R5d, R5dn, R5n, T3, T3a, and z1d
 + Bare metal: `c5.metal`, `c5d.metal`, `c5n.metal`, `i3.metal`, `i3en.metal`, `m5.metal`, `m5d.metal`, `r5.metal`, `r5d.metal`, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, and `z1d.metal`
 
 **Learn more**
@@ -155,6 +156,7 @@ The following table summarizes the networking and storage features supported by 
 |  C4  |  Yes  | No | No |  Yes  | Intel 82599 VF | 
 |  C5  |  Yes  | Yes | No |  Yes  | ENA | 
 | C5a | Yes | Yes | No | Yes | ENA | 
+| C5ad | No | Yes | NVMe \* | Yes | ENA | 
 |  C5d  | No | Yes | NVMe \* |  Yes  | ENA | 
 |  C5n  |  Yes  | Yes | No |  Yes  | ENA | 
 |  D2  | No | No |  HDD  |  Yes  | Intel 82599 VF | 
@@ -185,7 +187,7 @@ The following table summarizes the networking and storage features supported by 
 | T3 | Yes | Yes | No | No | ENA | 
 | T3a | Yes | Yes | No | No | ENA | 
 | u\-xtb1\.metal | Yes | Yes | No | No | ENA | 
-|  X1  | No | No |  SSD  |  Yes  | ENA | 
+|  X1  | No | No |  SSD \*  |  Yes  | ENA | 
 | X1e | No | No | SSD \* | Yes | ENA | 
 | z1d | No | Yes | NVMe \* | Yes | ENA | 
 

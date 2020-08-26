@@ -41,7 +41,7 @@ EC2Config performs the following task every time a user logs in:
 + Display wallpaper information to the desktop background\.
 
 While the instance is running, you can request that EC2Config perform the following task on demand:
-+ Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a standard Amazon Machine Image using Sysprep](ami-create-standard.md)\.
++ Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Use Sysprep to create a standard Amazon Machine Image ](ami-create-standard.md)\.
 
 ## Stopping, Restarting, Deleting, or Uninstalling EC2Config<a name="UsingConfig_StopDelete"></a>
 
@@ -99,7 +99,7 @@ You can use Run Command to upgrade your existing instances to use to the latest 
 
 The EC2Config service runs Sysprep, a Microsoft tool that enables you to create a customized Windows AMI that can be reused\. When EC2Config calls Sysprep, it uses the files in `%ProgramFiles%\Amazon\EC2ConfigService\Settings` to determine which operations to perform\. You can edit these files indirectly using the **Ec2 Service Properties** dialog box, or directly using an XML editor or a text editor\. However, there are some advanced settings that aren't available in the **Ec2 Service Properties** dialog box, so you must edit those entries directly\.
 
-If you create an AMI from an instance after updating its settings, the new settings are applied to any instance that's launched from the new AMI\. For information about creating an AMI, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+If you create an AMI from an instance after updating its settings, the new settings are applied to any instance that's launched from the new AMI\. For information about creating an AMI, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 ## EC2 Service Properties<a name="UsingConfigInterface_WinAMI"></a>
 
@@ -143,7 +143,7 @@ To choose the drive letters for your volumes, click **Mappings**\. In the **Driv
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_driver_letter_mapping.png)
 After you specify a drive letter mapping and attach a volume with same label as one of the volume names that you specified, EC2Config automatically assigns your specified drive letter to that volume\. However, the drive letter mapping fails if the drive letter is already in use\. Note that EC2Config doesn't change the drive letters of volumes that were already mounted when you specified the drive letter mapping\.
 
-1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a standard Amazon Machine Image using Sysprep](ami-create-standard.md)\.
+1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Use Sysprep to create a standard Amazon Machine Image ](ami-create-standard.md)\.
 
 ## EC2Config Settings Files<a name="UsingConfigXML_WinAMI"></a>
 

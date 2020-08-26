@@ -61,4 +61,4 @@ If the import task fails, you'll receive the notification `Import VM: Import Fai
 
 ## Backing Up Your Imported Instance<a name="scvmm-backup"></a>
 
-After the import operation completes, the instance runs until it is terminated\. If your instance is terminated, you can't connect to or recover the instance\. To ensure that you can start a new instance with the same software as an imported instance if needed, create an Amazon Machine Image \(AMI\) from the imported instance\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+After the import operation completes, the instance runs until it is terminated\. If your instance is terminated, you can't connect to or recover the instance\. To ensure that you can start a new instance with the same software as an imported instance if needed, create an Amazon Machine Image \(AMI\) from the imported instance\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.

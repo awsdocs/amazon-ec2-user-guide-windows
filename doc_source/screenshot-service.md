@@ -157,7 +157,7 @@ Console Screenshot Service returned the following\.
 
 ![\[Sysprep Screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-4.png)
 
-You may see this screen if you did not use the EC2Config Service to call sysprep\.exe or if the operating system failed while running Sysprep\. To solve this problem, [Create a standard Amazon Machine Image using Sysprep](ami-create-standard.md)\.
+You may see this screen if you did not use the EC2Config Service to call sysprep\.exe or if the operating system failed while running Sysprep\. To solve this problem, [Use Sysprep to create a standard Amazon Machine Image ](ami-create-standard.md)\.
 
 ### Getting ready screen<a name="getting-ready-screen"></a>
 

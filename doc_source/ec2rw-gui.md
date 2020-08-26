@@ -26,13 +26,13 @@ EC2Rescue for Windows Server can collect the following data from active and offl
 | Boot Configuration | Collects HKEY\_LOCAL\_MACHINE\\BCD00000000 hive\. | 
 | Windows Update Log | Collects information about the updates that are installed on the instance\.  Windows Update logs are not captured on Windows Server 2016 and later instances\.  | 
 
-## Video Walkthrough<a name="ec2rescue-walkthrough"></a>
+## Video walkthrough<a name="ec2rescue-walkthrough"></a>
 
 Brandon shows you how to use the Diagnose and Rescue feature of EC2Rescue for Windows Server:
 
 [![AWS Videos](http://img.youtube.com/vi/Apc6u2II5JA/0.jpg)](http://www.youtube.com/watch?v=Apc6u2II5JA)
 
-## Analyzing an Offline Instance<a name="ec2rescue-offline"></a>
+## Analyzing an offline instance<a name="ec2rescue-offline"></a>
 
 The **Offline Instance** option is useful for debugging boot issues with Windows instances\.
 
@@ -62,7 +62,7 @@ The **Offline Instance** option is useful for debugging boot issues with Windows
 
 The EC2Rescue for Windows Server tool scans the volume and collects troubleshooting information based on the selected log files\.
 
-## Collecting Data from an Active Instance<a name="ec2rescue-active"></a>
+## Collecting data from an active instance<a name="ec2rescue-active"></a>
 
 You can collect logs and other data from an active instance\.
 

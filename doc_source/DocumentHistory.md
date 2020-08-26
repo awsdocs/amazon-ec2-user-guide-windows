@@ -4,6 +4,8 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Provisioned IOPS SSD \(io2\) volumes for Amazon EBS](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-volume-types.html#EBSVolumeTypes_piops) | Provisioned IOPS SSD \(`io2`\) volumes are designed to provide 99\.999 percent volume durability with an AFR no higher than 0\.001 percent\. | August 24, 2020 | 
+| [C5ad instances](#DocumentHistory) | New compute optimized instances featuring second\-generation AMD EYPC processors\. | August 13, 2020 | 
 | [Wavelength Zones](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2Win_Infrastructure.html#EC2Win_Regions) | A Wavelength Zone is an isolated zone in the carrier location where the Wavelength infrastructure is deployed\.  | August 6, 2020 | 
 | [Capacity Reservation groups](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/capacity-reservations-using.html#create-cr-group) | You can use AWS Resource Groups to create logical collections of Capacity Reservations, and then target instance launches into those groups\. | July 29, 2020 | 
 | [C6gd, M6gd, and R6gd instances](#DocumentHistory) | New general purpose instances powered by AWS Graviton2 processors, which are based on 64\-bit Arm Neoverse cores and custom silicon designed by AWS for optimized performance and cost\. | July 27, 2020 | 

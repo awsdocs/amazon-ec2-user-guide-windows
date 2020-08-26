@@ -1,23 +1,26 @@
-# Create a standard Amazon Machine Image using Sysprep<a name="ami-create-standard"></a>
+# Use Sysprep to create a standard Amazon Machine Image<a name="ami-create-standard"></a>
 
-The Microsoft System Preparation \(Sysprep\) tool simplifies the process of duplicating a customized installation of Windows\. We recommend that you use Sysprep to create a standardized Amazon Machine Image \(AMI\)\. You can then create new Amazon EC2 instances for Windows from this standardized image\.
+The Microsoft System Preparation \(Sysprep\) tool simplifies the process of duplicating a customized installation of Windows\. You can use Sysprep to create a standardized Amazon Machine Image \(AMI\)\. You can then create new Amazon EC2 instances for Windows from this standardized image\.
 
-We also recommend that you run Sysprep with EC2Launch \(Windows Server 2016 and later\) or the EC2Config service \(prior to Windows Server 2016\)\.
+We recommend that you use [EC2 Image Builder](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html) to automate the creation, management, and deployment of customized, secure, and up\-to\-date "golden" server images that are pre\-installed and preconfigured with software and settings\.
+
+If you use Sysprep to create a standardized AMI, we recommend that you run Sysprep with EC2Launch v2\. If you are still using the EC2Config service \(prior to Windows Server 2016\), please see the documentation for using Sysprep with the EC2Config service below\.
 
 **Important**  
 Don't use Sysprep to create an instance backup\. Sysprep removes system\-specific information; removing this information might have unintended consequences for an instance backup\.
+
+To troubleshoot Sysprep, see [Troubleshooting Sysprep](sysprep-troubleshoot.md)\.
 
 **Topics**
 + [Before you begin](#sysprep-begin)
 + [Using Sysprep with the EC2Config service](#sysprep-using)
 + [Run Sysprep with the EC2Config service](#sysprep-gui-procedure)
-+ [Troubleshooting Sysprep](#sysprep-troubleshoot)
 
 ## Before you begin<a name="sysprep-begin"></a>
 + Before performing Sysprep, we recommend that you remove all local user accounts and all account profiles other than a single administrator account under which Sysprep will be executed\. If you perform Sysprep with additional accounts and profiles, unexpected behavior could result, including loss of profile data or failure to complete Sysprep\.
 + Learn more about [Sysprep](https://technet.microsoft.com/en-us/library/cc721940.aspx) on Microsoft TechNet\.
 + Learn which [server roles are supported for Sysprep](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)\.
-+ The procedures on this page apply to E2Config\. With Windows Server 2016 and later, see [Using Sysprep with EC2Launch](ec2launch.md#ec2launch-sysprep)\.
++ The procedures on this page apply to EC2Config\. With Windows Server 2016 and later, see [Using Sysprep with EC2Launch](ec2launch.md#ec2launch-sysprep)\.
 
 ## Using Sysprep with the EC2Config service<a name="sysprep-using"></a>
 
@@ -186,27 +189,3 @@ You can manually invoke the Sysprep tool from the command line using the followi
 The double quotation marks in the command are not required if your CMD shell is already in the C:\\Program Files\\Amazon\\EC2ConfigService\\ directory\.
 
 However, you must be very careful that the XML file options specified in the `Ec2ConfigService\Settings` folder are correct; otherwise, you might not be able to connect to the instance\. For more information about the settings files, see [EC2Config Settings Files](ec2config-service.md#UsingConfigXML_WinAMI)\. For an example of configuring and then running Sysprep from the command line, see `Ec2ConfigService\Scripts\InstallUpdates.ps1`\.
-
-## Troubleshooting Sysprep<a name="sysprep-troubleshoot"></a>
-
-If you experience problems or receive error messages during image preparations, review the following logs: 
-+ %WINDIR%\\Panther\\Unattendgc
-+ %WINDIR%\\System32\\Sysprep\\Panther
-+ "C:\\Program Files\\Amazon\\Ec2ConfigService\\Logs\\Ec2ConfigLog\.txt"
-
-If you receive an error message during image preparation with Sysprep, the OS might not be reachable\. To review the log files, you must stop the instance, attach its root volume to another healthy instance as a secondary volume, and then review the logs mentioned earlier on the secondary volume\. For more information about the purpose of the log files by name, see [Windows Setup\-Related Log Files](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/deployment-troubleshooting-and-log-files#windows-setup-related-log-files) in the Microsoft documentation\.
-
-If you locate errors in the Unattendgc log file, use the [Microsoft Error Lookup Tool](https://www.microsoft.com/en-us/download/details.aspx?id=100432) to get more details about the error\. The following issue reported in the Unattendgc log file is typically the result of one or more corrupted user profiles on the instance:
-
-```
-Error [Shell Unattend] _FindLatestProfile failed (0x80070003) [gle=0x00000003]
-		Error [Shell Unattend] CopyProfile failed (0x80070003) [gle=0x00000003]
-```
-
-There are two options for resolving this issue:
-
-**Option 1:** Use Regedit on the instance to search for the following key\. Verify that there are no profile registry keys for a deleted user:
-
-\[HKEY\_LOCAL\_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\ProfileList\\
-
-**Option 2:** Edit the EC2Config answer file \(`C:\Program Files\Amazon\Ec2ConfigService\sysprep2008.xml`\) and change <CopyProfile>true</CopyProfile> to <CopyProfile>false</CopyProfile>\. Run Sysprep again\. Note that this configuration change will delete the built\-in administrator user profile after Sysprep completes\.

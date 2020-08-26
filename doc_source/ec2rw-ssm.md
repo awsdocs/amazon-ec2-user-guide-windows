@@ -78,7 +78,7 @@ The following procedure describes how to view the JSON for this document in the 
 
 Here are some examples on how to use the Systems Manager Run Command document to execute EC2Rescue for Windows Server, using the AWS CLI\. For more information about sending commands with the AWS CLI, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ssm/send-command.html)\.
 
-### Attempt to Fix All Identified Issues on an Offline Root Volume<a name="ec2rw-ssm-exam1"></a>
+### Attempt to fix all identified issues on an offline root volume<a name="ec2rw-ssm-exam1"></a>
 
 Attempt to fix all identified issues on an offline root volume attached to an Amazon EC2 Windows instance:
 
@@ -86,7 +86,7 @@ Attempt to fix all identified issues on an offline root volume attached to an Am
 aws ssm send-command --instance-ids "i-0cb2b964d3e14fd9f" --document-name "AWSSupport-RunEC2RescueForWindowsTool" --comment "EC2Rescue offline volume xvdf" --parameters "Command=FixAll, Parameters='xvdf'" --output text
 ```
 
-### Collect Logs from the Current Amazon EC2 Windows Instance<a name="ec2rw-ssm-exam2"></a>
+### Collect logs from the current Amazon EC2 Windows instance<a name="ec2rw-ssm-exam2"></a>
 
 Collect all logs from the current online Amazon EC2 Windows instance and upload them to an Amazon S3 bucket:
 
@@ -94,7 +94,7 @@ Collect all logs from the current online Amazon EC2 Windows instance and upload 
 aws ssm send-command --instance-ids "i-0cb2b964d3e14fd9f" --document-name "AWSSupport-RunEC2RescueForWindowsTool" --comment "EC2Rescue online log collection to S3" --parameters "Command=CollectLogs, Parameters='YOURS3BUCKETNAME'" --output text
 ```
 
-### Collect Logs from an Offline Amazon EC2 Windows Instance Volume<a name="ec2rw-ssm-exam3"></a>
+### Collect logs from an offline Amazon EC2 Windows instance volume<a name="ec2rw-ssm-exam3"></a>
 
 Collect all logs from an offline volume attached to an Amazon EC2 Windows instance and upload them to Amazon S3 with a presigned URL: 
 
@@ -102,7 +102,7 @@ Collect all logs from an offline volume attached to an Amazon EC2 Windows instan
 aws ssm send-command --instance-ids "i-0cb2b964d3e14fd9f" --document-name "AWSSupport-RunEC2RescueForWindowsTool" --comment "EC2Rescue offline log collection to S3" --parameters "Command=CollectLogs, Parameters=\"-Offline -BlockDeviceName xvdf -S3PreSignedUrl 'YOURS3PRESIGNEDURL'\"" --output text
 ```
 
-### Reset the Local Administrator Password<a name="ec2rw-ssm-exam4"></a>
+### Reset the local Administrator password<a name="ec2rw-ssm-exam4"></a>
 
 The following examples show methods you can use to reset the local Administrator password\. The output provides a link to Parameter Store, where you can find the randomly generated secure password you can then use to RDP to your Amazon EC2 Windows instance as the local Administrator\.
 

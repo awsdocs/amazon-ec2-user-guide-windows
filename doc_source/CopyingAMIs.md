@@ -8,7 +8,7 @@ There are no charges for copying an AMI\. However, standard storage and data tra
 
 AWS does not copy launch permissions, user\-defined tags, or Amazon S3 bucket permissions from the source AMI to the new AMI\. After the copy operation is complete, you can apply launch permissions, user\-defined tags, and Amazon S3 bucket permissions to the new AMI\.
 
-You can't copy an AMI that was obtained from the AWS Marketplace, regardless of whether you obtained it directly or it was shared with you\. Instead, launch an EC2 instance using the AWS Marketplace AMI and then create an AMI from the instance\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+You can't copy an AMI that was obtained from the AWS Marketplace, regardless of whether you obtained it directly or it was shared with you\. Instead, launch an EC2 instance using the AWS Marketplace AMI and then create an AMI from the instance\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 ## Permissions for copying an instance store\-backed AMI<a name="copy-ami-permissions"></a>
 
@@ -118,7 +118,7 @@ For more information about copying AMIs with encrypted snapshots, see [Using enc
 You can copy an AMI as follows\.
 
 **Prerequisite**  
-Create or obtain an AMI backed by an Amazon EBS snapshot\. Note that you can use the Amazon EC2 console to search a wide variety of AMIs provided by AWS\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md) and [Finding a Windows AMI](finding-an-ami.md)\.
+Create or obtain an AMI backed by an Amazon EBS snapshot\. Note that you can use the Amazon EC2 console to search a wide variety of AMIs provided by AWS\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md) and [Finding a Windows AMI](finding-an-ami.md)\.
 
 **To copy an AMI using the console**
 

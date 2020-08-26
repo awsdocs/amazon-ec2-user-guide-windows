@@ -4,6 +4,9 @@ EC2Launch v2 is currently available by download, by installation from SSM Distri
 
 **Download**  
 To install the latest version of EC2Launch v2, download the service from the following locations:
+
+**Note**  
+AmazonEC2Launch\.msi does not uninstall previous versions of the EC2 launch services, such as EC2Launch \(v1\) or EC2Config\. To upgrade to EC2Launch v2 from an earlier launch service version, see [Migrate to EC2Launch v2Migrate](ec2launch-v2-migrate.md)\. 
 + **64Bit** — [https://s3\.amazonaws\.com/amazon\-ec2launch\-v2/windows/amd64/latest/AmazonEC2Launch\.msi](https://s3.amazonaws.com/amazon-ec2launch-v2/windows/amd64/latest/AmazonEC2Launch.msi)
 + **32Bit** — [https://s3\.amazonaws\.com/amazon\-ec2launch\-v2/windows/386/latest/AmazonEC2Launch\.msi](https://s3.amazonaws.com/amazon-ec2launch-v2/windows/386/latest/AmazonEC2Launch.msi)
 

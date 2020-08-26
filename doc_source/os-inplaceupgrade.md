@@ -29,7 +29,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 **To perform the in\-place upgrade**
 
-1. Create an AMI of the system you plan to upgrade for either backup or testing purposes\. You can then perform the upgrade on the copy to simulate a test environment\. If the upgrade completes, you can switch traffic to this instance with little downtime\. If the upgrade fails, you can revert to the backup\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+1. Create an AMI of the system you plan to upgrade for either backup or testing purposes\. You can then perform the upgrade on the copy to simulate a test environment\. If the upgrade completes, you can switch traffic to this instance with little downtime\. If the upgrade fails, you can revert to the backup\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 1. Ensure that your Windows Server instance is using the latest network drivers\. See [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md) for information on upgrading your AWS PV driver\.
 

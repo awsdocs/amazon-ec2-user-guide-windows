@@ -4,7 +4,7 @@ The AWS Windows AMIs are configured with the default settings used by the Micros
 + If you are launching instances from custom Windows AMIs
 + If you are launching instances from Windows AMIs provided by Amazon that were created before August 2018
 
-For more information, see [Amazon EC2 Update — Additional Instance Types, Nitro System, and CPU Options](https://aws.amazon.com/blogs/aws/amazon-ec2-update-additional-instance-types-nitro-system-and-cpu-options/)\. 
+For more information, see [Amazon EC2 Update — Additional Instance Types, Nitro System, and CPU Options](http://aws.amazon.com/blogs/aws/amazon-ec2-update-additional-instance-types-nitro-system-and-cpu-options/)\.
 
 **Contents**
 + [Part 1: Installing and upgrading AWS PV drivers](#upgrade-pv)

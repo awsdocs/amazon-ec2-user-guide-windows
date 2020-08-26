@@ -11,7 +11,7 @@ An AMI includes the following:
 
 You can launch an instance from an existing AMI, customize the instance, and then save this updated configuration as a custom AMI\. Instances launched from this new custom AMI include the customizations that you made when you created the AMI\.
 
-For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 To help categorize and manage your AMIs, you can assign custom *tags* to them\. For more information, see [Tagging your Amazon EC2 resources](Using_Tags.md)\.
 

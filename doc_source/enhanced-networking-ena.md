@@ -14,7 +14,7 @@ Amazon EC2 provides enhanced networking capabilities through the Elastic Network
 ## Requirements<a name="ena-requirements"></a>
 
 To prepare for enhanced networking using the ENA, set up your instance as follows:
-+ Select from the following supported instance types: C5, C5a, C5d, C5n, F1, G3, G4, H1, I3, I3en, `m4.16xlarge`, M5, M5a, M5ad, M5d, M5dn, M5n, P2, P3, R4, R5, R5a, R5ad, R5d, R5dn, R5n, T3, T3a, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, X1, X1e, and z1d\.
++ Use one of the following instance types: F1, G3, H1, HS1, I3, m4\.16xlarge, P2, P3, P3dn, R4, X1, X1e, and instances based on the [Nitro System](instance-types.md#ec2-nitro-instances)\.
 + Ensure that the instance has internet connectivity\.
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable\. If you have a recent backup, your data will still be retained if this happens\.
@@ -141,7 +141,7 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
 
    1. Choose **Details**\. For **Network Connection Details**, check that **Description** is **Amazon Elastic Network Adapter**\.
 
-1. \(Optional\) Create an AMI from the instance\. The AMI inherits the `enaSupport` attribute from the instance\. Therefore, you can use this AMI to launch another instance with ENA enabled by default\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+1. \(Optional\) Create an AMI from the instance\. The AMI inherits the `enaSupport` attribute from the instance\. Therefore, you can use this AMI to launch another instance with ENA enabled by default\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 ## Amazon ENA driver versions<a name="ena-adapter-driver-versions"></a>
 
@@ -150,6 +150,7 @@ Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The f
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+|  [2\.2\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.2.0/AwsEnaNetworkDriver.zip)  |  New Features [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Performance Optimizations [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | August 12, 2020 | 
 |  [2\.1\.5](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.5/AwsEnaNetworkDriver.zip)  |  Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | June 23, 2020 | 
 |  [2\.1\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.4/AwsEnaNetworkDriver.zip)  |  Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | November 25, 2019 | 
 |  [2\.1\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.2/AwsEnaNetworkDriver.zip)  | New Features [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fixes [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | November 4, 2019 | 

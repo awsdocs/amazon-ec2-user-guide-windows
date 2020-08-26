@@ -1,8 +1,14 @@
-# Creating a custom Windows AMI<a name="Creating_EBSbacked_WinAMI"></a>
+# Create a custom Windows AMI<a name="Creating_EBSbacked_WinAMI"></a>
 
 To create a Windows AMI, you launch an instance from an existing Windows AMI, customize the instance, and create a new AMI from the instance\.
 
 To create a custom Linux AMI, use the procedure for the type of volume for the instance\. For more information, see [Creating an Amazon EBS\-Backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) or [Creating an Instance Store\-Backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+
+**Topics**
++ [Overview of creating an AMI](#process-creating-a-windows-ami-ebs)
++ [Create a Windows AMI from a running instance](#how-to-create-windows-ebs-ami)
++ [Use Sysprep to create a standard Amazon Machine Image](ami-create-standard.md)
++ [To create an AMI from an instance using the command line](#create-windows-ami-cli)
 
 ## Overview of creating an AMI<a name="process-creating-a-windows-ami-ebs"></a>
 
@@ -19,7 +25,7 @@ If you add instance store volumes or Amazon EBS volumes to your instance in addi
 **Note**  
 When you create a new instance from a custom AMI, you should initialize both its root volume and any additional EBS storage before putting it into production\. For more information, see [Initializing Amazon EBS Volumes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
 
-## Creating a Windows AMI from a running instance<a name="how-to-create-windows-ebs-ami"></a>
+## Create a Windows AMI from a running instance<a name="how-to-create-windows-ebs-ami"></a>
 
 You can create an AMI using the AWS Management Console or the command line\. The following diagram summarizes the process for creating an AMI from a running EC2 instance\. Start with an existing AMI, launch an instance, customize it, create a new AMI from it, and finally launch an instance of your new AMI\. The steps in the following diagram match the steps in the procedure below\. If you already have a running Windows instance, you can go directly to step 4\.
 
@@ -78,7 +84,7 @@ If you choose **No reboot**, we can't guarantee the file system integrity of the
 
 1. Launch an instance from your new AMI\. For more information, see [Launching an instance using the Launch Instance Wizard](launching-instance.md)\. The new running instance contains all of the customizations you applied in previous steps, and any additional customization you add when launching the instance, such as user data \(scripts that run when the instance starts\)\.
 
-### To create an AMI from an instance using the command line<a name="create-windows-ami-cli"></a>
+## To create an AMI from an instance using the command line<a name="create-windows-ami-cli"></a>
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
 + [create\-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-image.html) \(AWS CLI\)

@@ -11,5 +11,5 @@ If you are using a Linux instance, see [EC2Rescue for Linux](https://docs.aws.am
 
 **Contents**
 + [Using EC2Rescue for Windows Server GUI](ec2rw-gui.md)
-+ [Using EC2Rescue for Windows Server with the Command Line](ec2rw-cli.md)
++ [Using EC2Rescue for Windows Server with the command line](ec2rw-cli.md)
 + [Using EC2Rescue for Windows Server with Systems Manager Run Command](ec2rw-ssm.md)

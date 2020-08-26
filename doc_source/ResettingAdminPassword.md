@@ -1,4 +1,4 @@
-# Resetting a Lost or Expired Windows Administrator Password<a name="ResettingAdminPassword"></a>
+# Resetting a lost or expired Windows administrator password<a name="ResettingAdminPassword"></a>
 
 If you are no longer able to access your Windows Amazon EC2 instance because the Windows administrator password is lost or expired, you can reset the password\.
 
@@ -15,5 +15,5 @@ These procedures also describe how to connect to an instance if you lost the key
 If you have disabled the local administrator account on the instance and your instance is configured for Systems Manager, you can also re\-enable and reset your local administrator password by using EC2Rescue and Run Command\. For more information, see [Using EC2Rescue for Windows Server with Systems Manager Run Command](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2rw-ssm.html)\.
 
 **Topics**
-+ [Resetting the Windows Administrator Password Using EC2Config](ResettingAdminPassword_EC2Config.md)
-+ [Resetting the Windows Administrator Password Using EC2Launch](ResettingAdminPassword_EC2Launch.md)
++ [Resetting the Windows administrator password using EC2Config](ResettingAdminPassword_EC2Config.md)
++ [Resetting the Windows administrator password using EC2Launch](ResettingAdminPassword_EC2Launch.md)

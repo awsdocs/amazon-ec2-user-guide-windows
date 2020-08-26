@@ -1,8 +1,8 @@
 # Running commands on your Windows instance at launch<a name="ec2-windows-user-data"></a>
 
-When you launch a Windows instance in Amazon EC2, you can pass user data to the instance that can be used to perform automated configuration tasks or run scripts after the instance starts\. Instance user data is treated as opaque data; it is up to the instance to interpret it\. User data is processed by [EC2Config](ec2config-service.md) on Windows Server 2012 R2 and earlier and by [EC2Launch](ec2launch.md) on Windows Server 2016 and later\.
+When you launch a Windows instance in Amazon EC2, you can pass user data to the instance that can be used to perform automated configuration tasks or to run scripts after the instance starts\. Instance user data is treated as opaque data; it is up to the instance to interpret it\. User data is processed by EC2Launch v2 \([supported preview AMIs and by download](ec2launch-v2-install.md)\), [EC2Launch](ec2launch.md) on Windows Server 2016 and later, and [EC2Config](ec2config-service.md) on Windows Server 2012 R2 and earlier\.
 
-For examples of the assembly of a UserData property in a AWS CloudFormation template, see [Base64 Encoded UserData Property](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64) and [Base64 Encoded UserData Property with AccessKey and SecretKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64-with-keys)\.
+For examples of the assembly of a `UserData` property in a AWS CloudFormation template, see [Base64 Encoded UserData Property](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64) and [Base64 Encoded UserData Property with AccessKey and SecretKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64-with-keys)\.
 
 For information about running commands on your Linux instance at launch, see [Running commands on your Linux instance at launch](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
@@ -19,6 +19,12 @@ For EC2Config or EC2Launch to execute scripts, you must enclose the script withi
 If you specify both a batch script and a Windows PowerShell script, the batch script runs first and the Windows PowerShell script runs next, regardless of the order in which they appear in the instance user data\.
 
 If you use an AWS API in a user data script, you must use an instance profile when launching the instance\. An instance profile provides the appropriate AWS credentials required by the user data script to execute the API call\. For more information, see [Instance profiles](iam-roles-for-amazon-ec2.md#ec2-instance-profile)\.
+
+**Topics**
++ [Syntax for batch scripts](#user-data-batch-scripts)
++ [Syntax for Windows PowerShell scripts](#user-data-powershell-scripts)
++ [Syntax for YAML configuration scripts](#user-data-yaml-scripts)
++ [Base64 encoding](#user-data-base64-encoding)
 
 ### Syntax for batch scripts<a name="user-data-batch-scripts"></a>
 
@@ -64,6 +70,42 @@ New-Item $file -ItemType file
 <persist>true</persist>
 ```
 
+### Syntax for YAML configuration scripts<a name="user-data-yaml-scripts"></a>
+
+If you are using EC2Launch v2 to execute scripts, you can use the YAML format\. To view configuration tasks, details, and examples for EC2Launch v2, see [EC2Launch v2 task configuration](ec2launch-v2-settings.md#ec2launch-v2-task-configuration)\. 
+
+Specify a YAML script with the `executeScript` task\.
+
+*Example YAML syntax to execute a PowerShell script* 
+
+```
+version: 1.0
+tasks:
+- task: executeScript
+  inputs:
+  - frequency: always
+    type: powershell
+    runAs: localSystem
+    content: |-
+      $file = $env:SystemRoot + "\Temp\" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+      New-Item $file -ItemType file
+```
+
+*Example YAML syntax to execute a batch script*
+
+```
+version: 1.0
+tasks:
+- task: executeScript
+  inputs:
+  - frequency: always
+    type: batch
+    runAs: localSystem
+    content: |-
+      echo Current date and time >> %SystemRoot%\Temp\test.log
+      echo %DATE% %TIME% >> %SystemRoot%\Temp\test.log
+```
+
 ### Base64 encoding<a name="user-data-base64-encoding"></a>
 
 If you're using the Amazon EC2 API or a tool that does not perform base64 encoding of the user data, you must encode the user data yourself\. If not, an error is logged about being unable to find `script` or `powershell` tags to execute\. The following is an example that encodes using Windows PowerShell\.
@@ -88,9 +130,23 @@ User data scripts are executed from the local administrator account when a rando
 
 ### Instance launch<a name="user-data-scripts-launch"></a>
 
-Any scripts in the instance user data are executed during the initial launch of the instance\. If the `persist` tag is found, user data execution is enabled for subsequent reboots or starts\. The log files for EC2Launch and EC2Config contain the output from the standard output and standard error streams\.
+Scripts in the instance user data are executed during the initial launch of the instance\. If the `persist` tag is found, user data execution is enabled for subsequent reboots or starts\. The log files for EC2Launch v2, EC2Launch, and EC2Config contain the output from the standard output and standard error streams\.
 
-With EC2Launch, the log file is `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`\.
+**EC2Launch v2**  
+The log file for EC2Launch v2 is `C:\ProgramData\Amazon\EC2Launch\log\agent.log`\.
+
+**Note**  
+The `C:\ProgramData` folder might be hidden\. To view the folder, you must show hidden files and folders\.
+
+The following information is logged when the user data is executed:
++ `Info: Converting user-data to yaml format` – If the user data was provided in XML format
++ `Info: Initializing user-data state` – The start of user data execution
++ `Info: Frequency is: always` – If the user data task is running on every boot
++ `Info: Frequency is: once` – If the user data task is running just once
++ `Stage: postReadyUserData execution completed` – The end of user data execution
+
+**EC2Launch**  
+The log file for EC2Launch is `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`\.
 
 **Note**  
 The `C:\ProgramData` folder might be hidden\. To view the folder, you must show hidden files and folders\.
@@ -103,7 +159,8 @@ The following information is logged when the user data is executed:
 + `<script> tag was provided.. running script content` – If the script tag is found
 + `Message: The output from user scripts` – If user data scripts are executed, their output is logged
 
-With EC2Config, the log file is `C:\Program Files\Amazon\Ec2ConfigService\Logs\Ec2Config.log`\. The following information is logged when the user data is executed:
+**EC2Config**  
+The log file for EC2Config is `C:\Program Files\Amazon\Ec2ConfigService\Logs\Ec2Config.log`\. The following information is logged when the user data is executed:
 + `Ec2HandleUserData: Message: Start running user scripts` – The start of user data execution
 + `Ec2HandleUserData: Message: Re-enabled userdata execution` – If the persist tag is found
 + `Ec2HandleUserData: Message: Could not find <persist> and </persist>` – If the persist tag is not found
@@ -115,7 +172,11 @@ When you update instance user data, user data scripts are not executed automatic
 
 If you choose the **Shutdown with Sysprep** option, user data scripts are executed the next time the instance starts or reboots, even if you did not enable user data execution for subsequent reboots or starts\. The user data scripts will not be executed on subsequent reboots or starts\.
 
-**To enable user data execution on Windows Server 2016 or later \(EC2Launch\)**
+**To enable user data execution with EC2Launch v2 \(Preview AMIs\)**
++ To run a task in user data on first boot, set `frequency` to `once`\.
++ To run a task in user data on every boot, set `frequency` to `always`\.
+
+**To enable user data execution with EC2Launch \(Windows Server 2016 or later\)**
 
 1. Connect to your Windows instance\.
 
@@ -127,7 +188,7 @@ If you choose the **Shutdown with Sysprep** option, user data scripts are execut
 
 1. Disconnect from your Windows instance\. To execute updated scripts the next time the instance is started, stop the instance and update the user data\. For more information, see [View and update the instance user data](#user-data-view-change)\.
 
-**To enable user data execution on Windows Server 2012 R2 and earlier \(EC2Config\)**
+**To enable user data execution with EC2Config \(Windows Server 2012 R2 and earlier\)**
 
 1. Connect to your Windows instance\.
 

@@ -785,9 +785,9 @@ tasks:
   inputs:
   - frequency: always
     type: powershell
+    runAs: localSystem
     content: |-
-      New-Item -Path 'C:\PowerShellTest.txt' -ItemType
-      File
+      New-Item -Path 'C:\PowerShellTest.txt' -ItemType File
 ```
 
 The following format is compatible with the previous version of this service\.
@@ -804,4 +804,4 @@ The following format is compatible with the previous version of this service\.
 
 The EC2Launch v2 service runs Sysprep, a Microsoft tool that enables you to create a customized Windows AMI that can be reused\. When EC2Launch v2 calls Sysprep, it uses the files in `%ProgramData%\Amazon\EC2Launch` to determine which operations to perform\. You can edit these files indirectly using the **EC2Launch settings** dialog box, or directly using a YAML editor or a text editor\. However, there are some advanced settings that aren't available in the **EC2Launch settings** dialog box, so you must edit those entries directly\.
 
-If you create an AMI from an instance after updating its settings, the new settings are applied to any instance that's launched from the new AMI\. For information about creating an AMI, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+If you create an AMI from an instance after updating its settings, the new settings are applied to any instance that's launched from the new AMI\. For information about creating an AMI, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.

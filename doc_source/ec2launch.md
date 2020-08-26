@@ -282,3 +282,4 @@ To update metadata/KMS routes for Server 2016 and later when launching a custom 
 + Manually reschedule EC2 Launch initialize tasks before creating an AMI from [PowerShell](#ec2launch-inittasks)\. 
 **Important**  
 Take note of the default password reset behavior before rescheduling tasks\.
++ To update the routes on a running instance that is experiencing Windows activation failures, see ["Unable to activate Windows"](common-messages.md#activate-windows)\.

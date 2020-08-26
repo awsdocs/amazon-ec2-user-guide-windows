@@ -32,7 +32,7 @@ Check the console output for the instance to see whether the AMI that you used t
 Ec2SetPassword: Disabled
 ```
 
-If password generation is disabled and you don't remember the password for the original instance, you can reset the password for this instance\. For more information, see [Resetting a Lost or Expired Windows Administrator Password](ResettingAdminPassword.md)\.
+If password generation is disabled and you don't remember the password for the original instance, you can reset the password for this instance\. For more information, see [Resetting a lost or expired Windows administrator password](ResettingAdminPassword.md)\.
 
 ## "Password not available yet"<a name="password-not-ready"></a>
 

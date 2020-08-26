@@ -66,8 +66,8 @@ When you are notified that your instance is scheduled for retirement, we recomme
 
 **Create a backup of your instance**
 
-Create an EBS\-backed AMI from your instance so that you have a backup\. To ensure data integrity, stop the instance before you create the AMI\. You can wait for the scheduled retirement date when the instance is stopped, or stop the instance yourself before the retirement date\. You can start the instance again at any time\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+Create an EBS\-backed AMI from your instance so that you have a backup\. To ensure data integrity, stop the instance before you create the AMI\. You can wait for the scheduled retirement date when the instance is stopped, or stop the instance yourself before the retirement date\. You can start the instance again at any time\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 **Launch a replacement instance**
 
-Create an EBS\-backed AMI from your instance, and launch a replacement instance\. For more information, see [Creating a custom Windows AMI](Creating_EBSbacked_WinAMI.md) and [Launching an instance using the Launch Instance Wizard](launching-instance.md)\.
+Create an EBS\-backed AMI from your instance, and launch a replacement instance\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md) and [Launching an instance using the Launch Instance Wizard](launching-instance.md)\.
