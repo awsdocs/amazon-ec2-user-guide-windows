@@ -78,7 +78,7 @@ EC2Launch v2 can perform the following tasks at each boot:
 + Send instance information to the Amazon EC2 console\.
 + Send the RDP certificate thumbprint to the EC2 console\.
 + Dynamically extend the operating system partition to include any unpartitioned space\.
-+ Execute user data\. For more information about specifying user data, see [Working with instance user data](instancedata-add-user-data.md)\.
++ Execute user data\. For more information about specifying user data, see [EC2Launch v2 task configuration](ec2launch-v2-settings.md#ec2launch-v2-task-configuration)\.
 + Set persistent static routes to reach the metadata service and KMS servers\.
 + Set non\-boot partitions to MBR or GPT\.
 + Start the Systems Manager \(SSM\) service following Sysprep\.

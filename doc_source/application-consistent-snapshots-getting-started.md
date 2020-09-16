@@ -26,19 +26,28 @@ The following procedures describes how to work with IAM policies and IAM roles\.
            {
                "Effect": "Allow",
                "Action": "ec2:CreateTags",
-               "Resource": "arn:aws:ec2:*::snapshot/*"
+               "Resource": [
+                   "arn:aws:ec2:*::snapshot/*",
+                   "arn:aws:ec2:*::image/*"
+               ]
            },
            {
                "Effect": "Allow",
                "Action": [
                    "ec2:DescribeInstances",
-                   "ec2:CreateSnapshot"
+                   "ec2:CreateSnapshot",
+                   "ec2:CreateImage",
+                   "ec2:DescribeImages"
                ],
                "Resource": "*"
            }
        ]
    }
    ```
+
+   If you do not intend to set the **CreateAmi** parameter to **True**, then you can omit `arn:aws:ec2:*::image/*` from the first policy statement and you can omit `ec2:CreateImage` and `ec2:DescribeImages` from the second policy statement\. 
+
+   If you intend to always set the **CreateAmi** parameter to **True**, then you can omit `ec2:CreateSnapshot` from the second policy statement\.
 
 1. Choose **Review policy**\.
 
@@ -86,7 +95,7 @@ Use the following procedure to create an IAM role for VSS\-enabled snapshots\. T
 
 ## Download and Install VSS Components to the Windows on EC2 Instance<a name="run-command-vss-package"></a>
 
-Systems Manager requires VSS components to be installed on your instances\. Use the following procedure to install the components using the `AWSVssComponents` package\. The package installs two components: a VSS requestor and a VSS provider\. 
+Systems Manager requires VSS components to be installed on your instances\. Use the following procedure to install the components using the `AWSVssComponents` package\. The package installs two components: a VSS requestor and a VSS provider\. We recommend that you install the latest AWS VSS component package to improve reliability and performance of application\-consistent snapshots on your EC2 Windows instances\. To view the latest package version, see the [AWS VSS component package version history](application-consistent-snapshots-details.md)\.
 
 1. Open the AWS Systems Manager console at [https://console\.aws\.amazon\.com/systems\-manager/](https://console.aws.amazon.com/systems-manager/)\.
 
@@ -140,7 +149,7 @@ Use the following procedure to create a VSS\-enabled EBS snapshot\.
 
 1. Choose **Run command**\.
 
-1. For **Command document**, choose `AWSEC2-CreateVssSnapshot`\.
+1. For **Command document**, choose `AWSEC2-CreateVssSnapshot` for the **Document name**, then choose `Latest version at runtime` as the **Document version**\.
 
 1. For **Targets**, identify the instances on which you want to run this operation by specifying tags or selecting instances manually\.
 **Note**  
@@ -163,6 +172,10 @@ This option requires that AWS VSS provider version 1\.2\.00 or later be installe
    1. For **No Writers**, choose **True** to exclude application VSS writers from the snapshot process\. This can help you resolve conflicts with third\-party VSS backup components\. This option is set to **False** by default\.
 **Note**  
 This option requires that AWS VSS provider version 1\.2\.00 or later be installed\.
+
+   1. For **CreateAmi**, choose **True** to create an Amazon Machine Image \(AMI\) backup that is VSS\-enabled, instead of an EBS snapshot\. This option is set to **False** by default\. For more information about creating an AMI, see [Create a Windows AMI from a running instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/how-to-create-windows-ebs-ami.html)\.
+
+   1. \(Optional\) For **AmiName**, specify a name for the created AMI\. This option applies only if the **CreateAmi** option is set to **True**\.
 
 1. For **Other parameters**:
    + For **Comment**, type information about this command\.

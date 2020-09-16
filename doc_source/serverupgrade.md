@@ -9,4 +9,4 @@ Microsoft has traditionally recommended migrating to a newer version of Windows 
 + [Performing an automated upgrade](automated-upgrades.md)
 + [Migrating to latest generation instance types](migrating-latest-types.md)
 + [Windows to Linux replatforming assistant for Microsoft SQL Server Databases](replatform-sql-server.md)
-+ [Troubleshooting an Upgrade](os-upgrade-trbl.md)
++ [Troubleshooting an upgrade](os-upgrade-trbl.md)

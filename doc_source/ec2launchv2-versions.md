@@ -11,6 +11,7 @@ The following table describes the released versions of EC2Launch v2\.
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 2\.0\.124 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html)  | September 10, 2020 | 
 | 2\.0\.104 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html)  | August 12, 2020 | 
 | 2\.0\.0 | Initial release\. | June 30, 2020 | 
 
@@ -21,6 +22,7 @@ The following table describes the released versions of the EC2Launch v2 migratio
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 1\.0\.60 | Increments the version number of the EC2Launch agent to 2\.0\.124\. | September 10, 2020 | 
 | 1\.0\.54 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | August 12, 2020 | 
 | 1\.0\.50 | Removes NuGet dependency\. | August 10, 2020 | 
 | 1\.0\.0 | Initial release\. | June 30, 2020 | 

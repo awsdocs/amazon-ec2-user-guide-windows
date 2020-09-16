@@ -1,4 +1,4 @@
-## Create a Windows AMI from a running instance<a name="how-to-create-windows-ebs-ami"></a>
+# Create a Windows AMI from a running instance<a name="how-to-create-windows-ebs-ami"></a>
 
 You can create an AMI using the AWS Management Console or the command line\. The following diagram summarizes the process for creating an AMI from a running EC2 instance\. Start with an existing AMI, launch an instance, customize it, create a new AMI from it, and finally launch an instance of your new AMI\. The steps in the following diagram match the steps in the procedure below\. If you already have a running Windows instance, you can go directly to step 4\.
 

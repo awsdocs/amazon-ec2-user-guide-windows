@@ -8,8 +8,9 @@ There is no additional cost to use VSS\-enabled EBS snapshots\. You only pay for
 + [How It Works](#application-consistent-snapshots-how)
 + [Before You Begin](application-consistent-snapshots-prereqs.md)
 + [Getting Started](application-consistent-snapshots-getting-started.md)
-+ [Creating a VSS Application\-Consistent Snapshot Using the AWS CLI, AWS Tools for Windows PowerShell, or the AWSEC2\-ManageVssIO SSM Document](application-consistent-snapshots-creating-commands.md)
++ [Create Snapshots Using the Command Line](application-consistent-snapshots-creating-commands.md)
 + [Restoring Volumes from VSS\-Enabled EBS snapshots](application-consistent-snapshots-restore.md)
++ [Version history](application-consistent-snapshots-details.md)
 
 ## How It Works<a name="application-consistent-snapshots-how"></a>
 

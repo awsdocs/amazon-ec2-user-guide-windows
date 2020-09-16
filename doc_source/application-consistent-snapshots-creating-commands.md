@@ -143,6 +143,6 @@ Note the following important details about this process:
 
 1. Download the [CreateVssSnapshotAdvancedScript\.zip](https://docs.aws.amazon.com/systems-manager/latest/userguide/samples/CreateVssSnapshotAdvancedScript.zip) file and extract the file contents\. 
 
-1. Open [CreateVssSnapshotAdvancedScript\.zip](https://docs.aws.amazon.com/systems-manager/latest/userguide/samples/CreateVssSnapshotAdvancedScript.zip) in a text editor, edit the sample call at the bottom of the script with a valid EC2 instance ID, snapshot description, and desired tag values, and then run the script from PowerShell\.
+1. Open `CreateVssSnapshotAdvancedScript.ps1` in a text editor, edit the sample call at the bottom of the script with a valid EC2 instance ID, snapshot description, and desired tag values, and then run the script from PowerShell\.
 
 If successful, the command populates the list of EBS snapshots with the new snapshots\. You can locate these snapshots in the list of EBS snapshots by searching for the tags you specified, or by searching for `AppConsistent`\. If the command execution failed, view the command output for details about why the execution failed\. If the command was successfully completed, but a specific volume backup failed, you can troubleshoot the failure in the list of EBS volumes\.

@@ -113,7 +113,7 @@ Amazon Machine Images \(AMIs\) generally adhere to the out\-of\-the\-box default
 
 ## Configuring time settings for Windows Server 2008 and later<a name="windows-persisting-time-changes-w2k8"></a>
 
-When you change the time on a Windows instance, you must ensure that the time persists through system restarts\. Otherwise, when the instance restarts, it reverts back to using UTC time\. For Windows Server 2008 and later, you can persist your time setting by adding a RealTimeIsUniversal registry key\.
+When you change the time on a Windows instance, you must ensure that the time persists through system restarts\. Otherwise, when the instance restarts, it reverts back to using UTC time\. For Windows Server 2008 and later, you can persist your time setting by adding a RealTimeIsUniversal registry key\. This key is set by default on all current generation instances\. To verify whether the RealTimeIsUniversal registry key is set, see Step 4 in the following procedure\. If the key is not set, follow the these steps from the beginning\.
 
 **To set the RealTimeIsUniversal registry key**
 

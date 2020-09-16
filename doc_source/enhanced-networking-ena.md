@@ -9,12 +9,12 @@ Amazon EC2 provides enhanced networking capabilities through the Elastic Network
 + [Enabling enhanced networking on Windows](#enable-enhanced-networking-ena-WIN)
 + [Amazon ENA driver versions](#ena-adapter-driver-versions)
 + [Subscribing to notifications](#drivers-subscribe-notifications)
-+ [Operating System Optimizations](enhanced-networking-os.md)
++ [Operating system optimizations](enhanced-networking-os.md)
 
 ## Requirements<a name="ena-requirements"></a>
 
 To prepare for enhanced networking using the ENA, set up your instance as follows:
-+ Use one of the following instance types: F1, G3, H1, HS1, I3, m4\.16xlarge, P2, P3, P3dn, R4, X1, X1e, and instances based on the [Nitro System](instance-types.md#ec2-nitro-instances)\.
++ Launch the instance using a [current generation](instance-types.md#current-gen-instances) instance type, other than an M4 instance smaller than `m4.16xlarge`\.
 + Ensure that the instance has internet connectivity\.
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable\. If you have a recent backup, your data will still be retained if this happens\.

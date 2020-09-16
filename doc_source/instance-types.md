@@ -25,9 +25,11 @@ Each instance type provides higher or lower minimum performance from a shared re
 
 ## Available instance types<a name="AvailableInstanceTypes"></a>
 
-Amazon EC2 provides a wide selection of instance types optimized for different use cases\. For the best performance, we recommend that you use the following current generation instance types when you launch new instances\. For more information about the current generation instance types, see [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/)\.
+Amazon EC2 provides a wide selection of instance types optimized for different use cases\. To determine which instance types meet your requirements, such as supported Regions, compute resources, or storage resources, see [Finding an Amazon EC2 instance type](instance-discovery.md)\.
 
-Amazon EC2 provides the instance types in the following table\. To determine which instance types meet your requirements, such as supported Regions, compute resources, or storage resources, see [Finding an Amazon EC2 instance type](instance-discovery.md)\.
+### Current generation instances<a name="current-gen-instances"></a>
+
+For the best performance, we recommend that you use the following instance types when you launch new instances\. For more information, see [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/)\.
 
 
 | Type | Sizes | Use case | 
@@ -72,7 +74,7 @@ Amazon EC2 provides the instance types in the following table\. To determine whi
 
 ### Previous generation instances<a name="previous-gen-instances"></a>
 
-Amazon Web Services offers previous generation instances for users who have optimized their applications around these instances and have yet to upgrade\. We encourage you to use the latest generation of instances to get the best performance, but we continue to support these previous generation instances\. If you are currently using a previous generation instance, you can see which current generation instance would be a suitable upgrade\. For more information, see [Previous Generation Instances](https://aws.amazon.com/ec2/previous-generation/)\.
+Amazon Web Services offers previous generation instance types for users who have optimized their applications around them and have yet to upgrade\. We encourage you to use current generation instance types to get the best performance, but we continue to support the following previous generation instance types\. For more information about which current generation instance type would be a suitable upgrade, see [Previous Generation Instances](https://aws.amazon.com/ec2/previous-generation/)\.
 
 
 | Type | Sizes | 
@@ -210,4 +212,4 @@ There is a limit on the total number of instances that you can launch in a regio
 
 For more information about the default limits, see [How many instances can I run in Amazon EC2?](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2)
 
-For more information about viewing your current limits or requesting an increase in your current limits, see [Amazon EC2 Service Quotas](ec2-resource-limits.md)\.
+For more information about viewing your current limits or requesting an increase in your current limits, see [Amazon EC2 service quotas](ec2-resource-limits.md)\.

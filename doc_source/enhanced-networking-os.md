@@ -1,6 +1,6 @@
-# Operating System Optimizations<a name="enhanced-networking-os"></a>
+# Operating system optimizations<a name="enhanced-networking-os"></a>
 
-To achieve the maximum network performance on instances with enhanced networking, you may need to modify the default operating system configuration\. We recommend the following configuration changes for applications that require high network performance\.Other optimizations \(such as turning on checksum offloading and enabling RSS, for example\) are already in place on official Windows AMIs\. 
+To achieve the maximum network performance on instances with enhanced networking, you may need to modify the default operating system configuration\. We recommend the following configuration changes for applications that require high network performance\.Other optimizations \(such as turning on checksum offloading and enabling RSS, for example\) are already in place on official Windows AMIs\.
 
 **Note**  
 TCP chimney offloading should be disabled in most use cases, and has been deprecated as of Windows Server 2016\.
@@ -9,7 +9,7 @@ In addition to these operating system optimizations, you should also consider th
 
 AWS regularly measures average round trip latencies between instances launched in a cluster placement group of 50us and tail latencies of 200us at the 99\.9 percentile\. If your applications require consistently low latencies, we recommend using the latest version of the ENA drivers on fixed performance Nitro\-based instances\.
 
-## Configure RSS CPU Affinity<a name="windows-rss-cpu-affinity"></a>
+## Configure RSS CPU affinity<a name="windows-rss-cpu-affinity"></a>
 
 Receive side scaling \(RSS\) is used to distribute network traffic CPU load across multiple processors\. By default, the official Amazon Windows AMIs are configured with RSS enabled\. ENA ENIs provide up to eight RSS queues\. By defining CPU affinity for RSS queues, as well as for other system processes, it is possible to spread the CPU load out over multi\-core systems, enabling more network traffic to be processed\. On instance types with more than 16 vCPUs, we recommend you use the `Set-NetAdapterRSS` PowerShell cmdlt \(available from Windows Server 2012 and later\), which manually excludes the boot processor \(logical processor 0 and 1 when hyper\-threading is enabled\) from the RSS configuration for all ENIs, in order to prevent contention with various system components\.
 

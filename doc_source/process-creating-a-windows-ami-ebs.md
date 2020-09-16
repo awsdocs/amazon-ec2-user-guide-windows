@@ -1,4 +1,4 @@
-## How the creation of a custom AMI works <a name="process-creating-a-windows-ami-ebs"></a>
+# How the creation of a custom AMI works<a name="process-creating-a-windows-ami-ebs"></a>
 
 First, launch an instance from an AMI that's similar to the AMI that you'd like to create\. You can connect to your instance and customize it\. When the instance is set up the way you want it, ensure data integrity by stopping the instance before you create an AMI and then create the image\. We automatically register the AMI for you\.
 

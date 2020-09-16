@@ -54,7 +54,7 @@ The following procedure describes how to use the EC2Launch v2 settings dialog bo
 
    1. **Optimize ENA**
 
-      When selected, ENA settings are configured to ensure that ENA Receive Side Scaling and Receive Queue Depth settings are optimized for AWS\. For more information, see [Configure RSS CPU Affinity](enhanced-networking-os.md#windows-rss-cpu-affinity)\.
+      When selected, ENA settings are configured to ensure that ENA Receive Side Scaling and Receive Queue Depth settings are optimized for AWS\. For more information, see [Configure RSS CPU affinity](enhanced-networking-os.md#windows-rss-cpu-affinity)\.
 
    1. **Enable SSH**
 
@@ -307,10 +307,7 @@ Sets new wallpaper to the wallpaper path that is provided \(\.jpg file\), and di
 **Example**
 
 ```
-ec2launch wallpaper --
-path="C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg" --
-attributes=hostName,instanceId,privateIpAddress,publicIpAddress,instanc
-eSize,availabilityZone,architecture,memory,network
+ec2launch wallpaper --path="C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg" --attributes=hostName,instanceId,privateIpAddress,publicIpAddress,instanceSize,availabilityZone,architecture,memory,network
 ```
 
 **Usage**

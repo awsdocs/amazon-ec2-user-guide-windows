@@ -22,8 +22,10 @@ Migrating enterprise applications to AWS can involve many variables and configur
 
 **Update launch agents**
 
-Update to the latest EC2Config \(2012 R2 and earlier\) or EC2Launch \(2016 and later\) agents to ensure the latest issue fixes are applied across your fleet\.
-+ For EC2Config update instructions, see [ Installing the Latest Version of EC2Config](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_Install.html)\. Leverage [ Trusted Advisor](https://aws.amazon.com/premiumsupport/trustedadvisor/best-practices) to describe all instances running older versions of EC2Config\. You can use SNS topics to receive updates for new releases\.
+Update to the latest EC2Launch v2 \(Windows Server 2008 and later\) agent to ensure that the latest issue fixes are applied across your fleet\. To update, see the instructions at [Install the latest version ofEC2Launch v2](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-v2-install.html)\.
+
+If you want to continue to use the EC2Config \(Windows Server 2012 R2 and earlier\) or EC2Launch \(Windows Server 2016 and later\) agents, ensure that the latest issue fixes are applied across your fleet\.
++ For EC2Config update instructions, see [ Installing the Latest Version of EC2Config](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_Install.html)\. 
 + For EC2Launch update instructions, see [ Installing the Latest Version of EC2Launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-download.html)\.
 
 **Security**
@@ -44,7 +46,7 @@ Windows instances in AWS should adhere to the following high\-level best practic
 
 **Resource management**
 + Use instance metadata and custom resource tags to track and identify your AWS resources\. For more information, see [Instance metadata and user data](ec2-instance-metadata.md) and [Tagging your Amazon EC2 resources](Using_Tags.md)\.
-+ View your current limits for Amazon EC2\. Plan to request any limit increases in advance of the time that you'll need them\. For more information, see [Amazon EC2 Service Quotas](ec2-resource-limits.md)\.
++ View your current limits for Amazon EC2\. Plan to request any limit increases in advance of the time that you'll need them\. For more information, see [Amazon EC2 service quotas](ec2-resource-limits.md)\.
 
 **Backup and recovery**
 + Regularly back up your EBS volumes using [Amazon EBS snapshots](EBSSnapshots.md), and create an [Amazon Machine Image \(AMI\)](AMIs.md) from your instance to save the configuration as a template for launching future instances\.
@@ -53,3 +55,6 @@ Windows instances in AWS should adhere to the following high\-level best practic
 + Monitor and respond to events\. For more information, see [Monitoring Amazon EC2](monitoring_ec2.md)\.
 + Ensure that you are prepared to handle failover\. For a basic solution, you can manually attach a network interface or Elastic IP address to a replacement instance\. For more information, see [Elastic network interfaces](using-eni.md)\. For an automated solution, you can use Amazon EC2 Auto Scaling\. For more information, see the [Amazon EC2 Auto Scaling User Guide](https://docs.aws.amazon.com/autoscaling/latest/userguide/)\.
 + Regularly test the process of recovering your instances and Amazon EBS volumes if they fail\.
+
+**Networking**
++ Set the time\-to\-live \(TTL\) value for your applications to 255, for IPv4 and IPv6\. If you use a smaller value, there is a risk that the TTL will expire while application traffic is in transit, causing reachability issues for your instances\.

@@ -8,7 +8,6 @@ EC2Launch is a set of Windows PowerShell scripts that replaced the EC2Config ser
 + [Verify the EC2Launch version](#ec2launch-verify-version)
 + [EC2Launch directory structure](#ec2launch-directories)
 + [Configuring EC2Launch](#ec2launch-config)
-+ [Using Sysprep with EC2Launch](#ec2launch-sysprep)
 + [EC2Launch version history](ec2launch-version-details.md)
 
 ## EC2Launch tasks<a name="ec2launch-tasks"></a>
@@ -24,7 +23,7 @@ EC2Launch performs the following tasks by default during the initial instance bo
 + Executes user data \(if specified\)\. For more information about specifying user data, see [Working with instance user data](instancedata-add-user-data.md)\.
 +  Sets persistent static routes to reach the metadata service and KMS servers\. 
 **Important**  
- If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI](#update-metadata-KMS)\. 
+ If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI](ami-create-standard.md#update-metadata-KMS)\. 
 
 The following tasks help to maintain backward compatibility with the EC2Config service\. You can also configure EC2Launch to perform these tasks during startup:
 + Initialize secondary EBS volumes\.
@@ -205,81 +204,3 @@ The EC2Config service sent the "Windows is ready" message to the EC2 console aft
 ```
 PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\SendWindowsIsReady.ps1 -Schedule
 ```
-
-## Using Sysprep with EC2Launch<a name="ec2launch-sysprep"></a>
-
-Sysprep simplifies the process of duplicating a customized installation of Windows Server 2016 and later\. EC2Launch offers a default answer file and batch files for Sysprep that automate and secure the image\-preparation process on your AMI\. Modifying these files is optional\. These files are located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep`\.
-
-**Important**  
-Do not use Sysprep to create an instance backup\. Sysprep removes system\-specific information\. If you remove this information there might be unintended consequences for an instance backup\.
-
-The EC2Launch answer file and batch files for Sysprep include the following:
-
-`Unattend.xml`  
-This is the default answer file\. If you run `SysprepInstance.ps1` or choose **ShutdownWithSysprep** in the user interface, the system reads the setting from this file\.
-
-`BeforeSysprep.cmd`  
-Customize this batch file to run commands before EC2Launch runs Sysprep\.
-
-`SysprepSpecialize.cmd`  
-Customize this batch file to run commands during the Sysprep specialize phase\.
-
-### Running Sysprep with EC2Launch<a name="ec2launch-sysprep-running"></a>
-
-On the full installation of Windows Server 2016 and later \(with a desktop experience\), you can run Sysprep with EC2Launch manually or by using the **EC2 Launch Settings** application\.
-
-**To run Sysprep using the EC2Launch Settings application**
-
-1. In the Amazon EC2 console, locate or create a Windows Server 2016 or later AMI\.
-
-1. Launch a Windows instance from the AMI\.
-
-1. Connect to your Windows instance and customize it\.
-
-1. Search for and run the **EC2LaunchSettings** application\. It is located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Settings`\.  
-![\[EC2 Launch Settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launch-sysprep.png)
-
-1. Select or clear options as needed\. These settings are stored in the `LaunchConfig.json` file\.
-
-1. For **Administrator Password**, do one of the following:
-   + Choose **Random**\. EC2Launch generates a password and encrypts it using the user's key\. The system disables this setting after the instance is launched so that this password persists if the instance is rebooted or stopped and started\.
-   + Choose **Specify** and type a password that meets the system requirements\. The password is stored in `LaunchConfig.json` as clear text and is deleted after Sysprep sets the administrator password\. If you shut down now, the password is set immediately\. EC2Launch encrypts the password using the user's key\.
-   + Choose **DoNothing** and specify a password in the `unattend.xml` file\. If you don't specify a password in `unattend.xml`, the administrator account is disabled\.
-
-1. Choose **Shutdown with Sysprep**\.
-
-**To manually run Sysprep using EC2Launch**
-
-1. In the Amazon EC2 console locate or create a Windows Server 2016 or later Datacenter edition AMI that you want to duplicate\.
-
-1. Launch and connect to your Windows instance\.
-
-1. Customize the instance\.
-
-1. Specify settings in the `LaunchConfig.json` file\. This file is located in the `C:\ProgramData\Amazon\EC2-Windows\Launch\Config` directory by default\.
-
-   For `adminPasswordType`, specify one of the following values:  
-`Random`  
-EC2Launch generates a password and encrypts it using the user's key\. The system disables this setting after the instance is launched so that this password persists if the instance is rebooted or stopped and started\.  
-`Specify`  
-EC2Launch uses the password you specify in `adminPassword`\. If the password does not meet the system requirements, EC2Lauch generates a random password instead\. The password is stored in `LaunchConfig.json` as clear text and is deleted after Sysprep sets the administrator password\. EC2Launch encrypts the password using the user's key\.  
-`DoNothing`  
-EC2Launch uses the password you specify in the `unattend.xml` file\. If you don't specify a password in `unattend.xml`, the administrator account is disabled\.
-
-1. \(Optional\) Specify settings in `unattend.xml` and other configuration files\. If plan to attend to the installation, then you don't need to make changes in these files\. The files are located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Sysprep`\.
-
-1. In Windows PowerShell, run `./InitializeInstance.ps1 -Schedule`\. The script is located in the following directory, by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts`\. This script schedules the instance to initialize during the next boot\. You must run this script before you run the `SysprepInstance.ps1` script in the next step\.
-
-1. In Windows PowerShell, run `./SysprepInstance.ps1`\. The script is located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts`\. 
-
-You are logged off the instance and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `running` to `stopping`, and then to `stopped`\. At this point, it is safe to create an AMI from this instance\.
-
-### Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI<a name="update-metadata-KMS"></a>
-
-To update metadata/KMS routes for Server 2016 and later when launching a custom AMI, do one of the following:
-+ Run the EC2LaunchSettings GUI \(C:\\ProgramData\\Amazon\\EC2\-Windows\\Launch\\Settings\\Ec2LaunchSettings\.exe\) and select the option to shut down with Sysprep\.
-+ Run EC2LaunchSettings and shut down without Sysprep before creating the AMI\. This sets the EC2 Launch Initialize tasks to run at the next boot, which will set routes based on the subnet for the instance\.
-+ Manually reschedule EC2 Launch initialize tasks before creating an AMI from [PowerShell](#ec2launch-inittasks)\. 
-**Important**  
-Take note of the default password reset behavior before rescheduling tasks\.
-+ To update the routes on a running instance that is experiencing Windows activation failures, see ["Unable to activate Windows"](common-messages.md#activate-windows)\.

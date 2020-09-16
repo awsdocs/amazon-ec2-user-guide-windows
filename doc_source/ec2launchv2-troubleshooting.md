@@ -1,10 +1,11 @@
 # Troubleshooting EC2Launch v2<a name="ec2launchv2-troubleshooting"></a>
 
+This section shows common troubleshooting scenarios for EC2Launch v2, information about viewing Windows event logs, and console log output and messages\.
+
 **Topics**
 + [Common troubleshooting scenarios](#ec2launchv2-troubleshooting-scenarios)
 + [Windows event logs](#ec2launchv2-windows-event-logs)
-
-This section shows common troubleshooting scenarios for EC2Launch v2 and information about viewing Windows event logs\.
++ [EC2Launch v2 console log output](#ec2launchv2-console-output)
 
 ## Common troubleshooting scenarios<a name="ec2launchv2-troubleshooting-scenarios"></a>
 
@@ -52,7 +53,7 @@ This section shows common troubleshooting scenarios and steps for resolution\.
 
 1. Check the latest entries in `%ProgramData%\Amazon\EC2Launch\log\agent.log`\.
 
-1. If no errors occurred, try running the service manually from `%ProgramFiles%\Amazon\EC2Launch\EC2Launch.exe` to see if the tasks succeed\.
+1. If no errors occurred, try running the service manually from `"%ProgramFiles%\Amazon\EC2Launch\EC2Launch.exe" run` to see if the tasks succeed\.
 
 ## Windows event logs<a name="ec2launchv2-windows-event-logs"></a>
 
@@ -136,3 +137,98 @@ The following are example event IDs\.
 |  `6090/7090`  | PostReadyLocal/UserData \- start\_ssm | 
 |  `7100`  | PostReadyUserData \- enable\_open\_ssh | 
 |  `6110/7110`  | PostReadyLocal/UserData \- enable\_jumbo\_frames | 
+
+## EC2Launch v2 console log output<a name="ec2launchv2-console-output"></a>
+
+This section contains sample console log output for EC2Launch v2 and lists all of the EC2Launch v2 console log error messages to help you to troubleshoot issues\.
+
+**Topics**
++ [EC2Launch v2 console log output](#ec2launchv2-console-log-output)
++ [EC2Launch v2 console log messages](#ec2launchv2-console-log-messages)
+
+### EC2Launch v2 console log output<a name="ec2launchv2-console-log-output"></a>
+
+The following is sample console log output for EC2Launch v2\.
+
+```
+2020/08/13 17:25:12Z: Windows is being configured. SysprepState=IMAGE_STATE_UNDEPLOYABLE
+2020/08/13 17:27:44Z: Windows is being configured. SysprepState=IMAGE_STATE_UNDEPLOYABLE
+2020/08/13 17:28:02Z: Windows sysprep configuration complete.
+2020/08/13 17:28:03Z: Message: Waiting for meta-data accessibility...
+2020/08/13 17:28:03Z: Message: Meta-data is now available.
+2020/08/13 17:28:03Z: AMI Origin Version: 2020.07.15
+2020/08/13 17:28:03Z: AMI Origin Name: EC2LaunchV2_Preview-Windows_Server-2012_R2_RTM-English-Full-Base
+2020/08/13 17:28:03Z: OS: Microsoft Windows NT 6.3.9600
+2020/08/13 17:28:03Z: OsVersion: 6.3
+2020/08/13 17:28:03Z: OsProductName: Windows Server 2012 R2 Standard
+2020/08/13 17:28:03Z: OsBuildLabEx: 9600.19761.amd64fre.winblue_ltsb.200610-0600
+2020/08/13 17:28:03Z: OsCurrentBuild: 9600
+2020/08/13 17:28:03Z: Language: en-US
+2020/08/13 17:28:03Z: TimeZone: GMT
+2020/08/13 17:28:03Z: Offset: UTC +0000
+2020/08/13 17:28:03Z: Launch: EC2 Launch v2.0.0
+2020/08/13 17:28:03Z: AMI-ID: ami-1a2b3c4d
+2020/08/13 17:28:03Z: Instance-ID: i-1234567890abcdef0
+2020/08/13 17:28:03Z: Instance Type: t2.nano
+2020/08/13 17:28:07Z: Driver: AWS PV Driver Package v8.3.3
+2020/08/13 17:28:07Z: RDPCERTIFICATE-SUBJECTNAME: EC2AMAZ-A1B2C3D
+2020/08/13 17:28:07Z: RDPCERTIFICATE-THUMBPRINT: A1B2C3D4E5
+2020/08/13 17:28:12Z: SSM: Amazon SSM Agent v2.3.842.0
+2020/08/13 17:28:13Z: Username: Administrator
+2020/08/13 17:28:13Z: Password: <Password>
+A1B2C3D4E5F6G7H8I9J10K11L12M13N14O15P16Q17
+</Password>
+2020/08/13 17:28:13Z: Message: Windows is Ready to use
+```
+
+### EC2Launch v2 console log messages<a name="ec2launchv2-console-log-messages"></a>
+
+The following is a list of all of the EC2Launch v2 console log messages\.
+
+```
+Message: Error EC2Launch service is stopping. {error message}
+ Error setting up EC2Launch agent folders
+ See instance logs for detail
+ Error stopping service
+ Error initializing service
+Message: Windows sysprep configuration complete
+Message: Invalid administrator username: {invalid username}
+Message: Invalid administrator password
+Username: {username}
+Password: <Password>{encrypted password}</Password>
+AMI Origin Version: {amiVersion}
+AMI Origin Name: {amiName}
+Microsoft Windows NT {currentVersion}.{currentBuildNumber}
+OsVersion: {currentVersion}
+OsProductName: {productName}
+OsBuildLabEx: {buildLabEx}
+OsCurrentBuild: {currentBuild}
+OsReleaseId: {releaseId}
+Language: {language}
+TimeZone: {timeZone}
+Offset: UTC {offset}
+Launch agent: EC2Launch {BuildVersion}
+AMI-ID: {amiId}
+Instance-ID: {instanceId}
+Instance Type: {instanceType}
+RDPCERTIFICATE-SUBJECTNAME: {certificate subject name}
+RDPCERTIFICATE-THUMBPRINT: {thumbprint hash}
+SqlServerBilling: {sql billing}
+SqlServerInstall: {sql patch leve, edition type}
+Driver: AWS NVMe Driver {version}
+Driver: Inbox NVMe Driver {version}
+Driver: AWS PV Driver Package {version}
+Microsoft-Hyper-V is installed.
+Unable to get service status for vmms
+Microsoft-Hyper-V is {status}
+SSM: Amazon SSM Agent {version}
+AWS VSS Version: {version}
+Message: Windows sysprep configuration complete
+Message: Windows is being configured. SysprepState is {state}
+Windows is still being configured. SysprepState is {state}
+Message: Windows is Ready to use
+Message: Waiting for meta-data accessibility...
+Message: Meta-data is now available.
+Message: Still waiting for meta-data accessibility...
+Message: Failed to find primary network interface...retrying...
+```

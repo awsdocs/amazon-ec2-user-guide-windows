@@ -1,4 +1,4 @@
-# Amazon FSx for Windows File Server<a name="storage_fsx"></a>
+# Using Amazon FSx for Windows File Server with Amazon EC2<a name="storage_fsx"></a>
 
 Amazon FSx for Windows File Server provides fully managed Windows file servers, backed by a fully–native Windows file system with the features, performance, and compatibility to easily lift and shift enterprise applications to AWS\.
 

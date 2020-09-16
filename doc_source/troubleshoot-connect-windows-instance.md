@@ -167,7 +167,7 @@ The AWSSupport\-TroubleshootRDP automation document can be used with EC2 instanc
 
 The following examples show you how to accomplish common troubleshooting tasks using AWSSupport\-TroubleshootRDP\. You can use either the example AWS CLI [start\-automation\-execution](https://docs.aws.amazon.com/cli/latest/reference/ssm/start-automation-execution.html) command or the provided link to the AWS Management Console\.
 
-**Example Example: Check the current RDP status**  <a name="check-rdp"></a>
+**Example: Check the current RDP status**  <a name="check-rdp"></a>
 AWS CLI:  
 
 ```
@@ -179,7 +179,7 @@ AWS Systems Manager console:
 https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-TroubleshootRDP?region=region#documentVersion=$LATEST
 ```
 
-**Example Example: Disable the Windows Firewall**  <a name="disable-firewall"></a>
+**Example: Disable the Windows Firewall**  <a name="disable-firewall"></a>
 AWS CLI:  
 
 ```
@@ -191,7 +191,7 @@ AWS Systems Manager console:
 https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-TroubleshootRDP?region=region_code#documentVersion=$LATEST&Firewall=Disable
 ```
 
-**Example Example: Disable Network Level Authentication**  <a name="disable-nla"></a>
+**Example: Disable Network Level Authentication**  <a name="disable-nla"></a>
 AWS CLI:  
 
 ```
@@ -203,7 +203,7 @@ AWS Systems Manager console:
 https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-TroubleshootRDP?region=region_code#documentVersion
 ```
 
-**Example Example: Set RDP Service Startup Type to Automatic and start the RDP service**  <a name="rdp-auto"></a>
+**Example: Set RDP Service Startup Type to Automatic and start the RDP service**  <a name="rdp-auto"></a>
 AWS CLI:  
 
 ```
@@ -215,7 +215,7 @@ AWS Systems Manager console:
 https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-TroubleshootRDP?region=region_code#documentVersion=$LATEST&RDPServiceStartupType=Auto&RDPServiceAction=Start
 ```
 
-**Example Example: Restore the default RDP Port \(3389\)**  <a name="restore-3389"></a>
+**Example: Restore the default RDP Port \(3389\)**  <a name="restore-3389"></a>
 AWS CLI:  
 
 ```
@@ -227,7 +227,7 @@ AWS Systems Manager console:
 https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-TroubleshootRDP?region=region_code#documentVersion=$LATEST&RDPPortAction=Modify
 ```
 
-**Example Example: Allow remote connections**  <a name="allow-rdp"></a>
+**Example: Allow remote connections**  <a name="allow-rdp"></a>
 AWS CLI:  
 
 ```

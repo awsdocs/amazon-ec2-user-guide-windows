@@ -32,7 +32,7 @@ To attempt to resolve the problem while you are waiting for assistance from the 
 
    1. Choose **No reboot**\.
 
-   For more information, see [Create a Windows AMI from a running instance](Creating_EBSbacked_WinAMI.md#how-to-create-windows-ebs-ami)\.
+   For more information, see [Create a Windows AMI from a running instance](how-to-create-windows-ebs-ami.md)\.
 
 1. Launch a new instance from the AMI and verify that the new instance is working\.
 

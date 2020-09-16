@@ -90,7 +90,7 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 **Note**  
 If upgrading to Windows Server 2019, after the upgrade is complete you can change the desktop background manually to remove the previous operating system name if desired\.
 
-If the instance has not passed both status checks after several hours, see [Troubleshooting an Upgrade](os-upgrade-trbl.md)\.
+If the instance has not passed both status checks after several hours, see [Troubleshooting an upgrade](os-upgrade-trbl.md)\.
 
 ## Upgrade an instance in\-place with Citrix PV drivers<a name="os-upgrade-citrix"></a>
 

@@ -6,7 +6,7 @@ For more information about the types of instance events, see [Scheduled events f
 
 **Topics**
 + [Identifying instances scheduled for retirement](#instance-retirement-identify)
-+ [Actions for instances scheduled for retirement](#instance-retirement-working)
++ [Actions to take for instances scheduled for retirement](#instance-retirement-actions-EBS)
 
 ## Identifying instances scheduled for retirement<a name="instance-retirement-identify"></a>
 
@@ -48,11 +48,7 @@ You can use one of the following commands\. For more information about these com
 + [describe\-instance\-status](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-status.html) \(AWS CLI\)
 + [Get\-EC2InstanceStatus](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2InstanceStatus.html) \(AWS Tools for Windows PowerShell\)
 
-## Actions for instances scheduled for retirement<a name="instance-retirement-working"></a>
-
-There are a number of actions available to you when your instance is scheduled for retirement\.
-
-### Actions to take on EBS\-backed instances scheduled for retirement<a name="instance-retirement-actions-EBS"></a>
+## Actions to take for instances scheduled for retirement<a name="instance-retirement-actions-EBS"></a>
 
 To preserve the data on your retiring instance, you can perform one of the following actions\. It's important that you take this action before the instance retirement date to prevent unforeseen downtime and data loss\.
 
@@ -64,10 +60,8 @@ When you are notified that your instance is scheduled for retirement, we recomme
 + If your instance is unreachable, you should take immediate action and perform a [stop/start](Stop_Start.md) to recover your instance\.
 + Alternatively, if you want to [terminate](terminating-instances.md) your instance, plan to do so as soon as possible so that you stop incurring charges for the instance\.
 
-**Create a backup of your instance**
-
+**Create a backup of your instance**  
 Create an EBS\-backed AMI from your instance so that you have a backup\. To ensure data integrity, stop the instance before you create the AMI\. You can wait for the scheduled retirement date when the instance is stopped, or stop the instance yourself before the retirement date\. You can start the instance again at any time\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
-**Launch a replacement instance**
-
-Create an EBS\-backed AMI from your instance, and launch a replacement instance\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md) and [Launching an instance using the Launch Instance Wizard](launching-instance.md)\.
+**Launch a replacement instance**  
+After you create an AMI from your instance, you can use the AMI to launch a replacement instance\. From the Amazon EC2 console, select your new AMI and then choose **Actions**, **Launch**\. Follow the wizard to launch your instance\. For more information about each step in the wizard, see [Launching an instance using the Launch Instance Wizard](launching-instance.md)\.

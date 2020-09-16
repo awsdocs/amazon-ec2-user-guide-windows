@@ -15,7 +15,7 @@ You can launch an instance using the following methods\.
 |  \[Amazon EC2 console\] Use an AMI that you purchased from the AWS Marketplace\.  |  [Launching an AWS Marketplace instance](launch-marketplace-console.md)  | 
 |  \[AWS CLI\] Use an AMI that you select\.  |  [Using Amazon EC2 through the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html)  | 
 |  \[AWS Tools for Windows PowerShell\] Use an AMI that you select\.  |  [Amazon EC2 from the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2.html)  | 
-|  \[AWS CLI\] Use EC2 Fleet to provision capacity across different EC2 instance types and Availability Zones, and across On\-Demand Instance, Reserved Instance, and Spot Instance purchase models\.   |  [Launching an EC2 Fleet](ec2-fleet.md)  | 
+|  \[AWS CLI\] Use EC2 Fleet to provision capacity across different EC2 instance types and Availability Zones, and across On\-Demand Instance, Reserved Instance, and Spot Instance purchase models\.   |  [Launching instances using an EC2 Fleet](ec2-fleet.md)  | 
 
 When you launch your instance, you can launch your instance in a subnet that is associated with one of the following resources:
 + An Availability Zone \- This option is the default\.

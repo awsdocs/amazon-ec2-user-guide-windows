@@ -18,7 +18,7 @@ For EC2Config or EC2Launch to execute scripts, you must enclose the script withi
 
 If you specify both a batch script and a Windows PowerShell script, the batch script runs first and the Windows PowerShell script runs next, regardless of the order in which they appear in the instance user data\.
 
-If you use an AWS API in a user data script, you must use an instance profile when launching the instance\. An instance profile provides the appropriate AWS credentials required by the user data script to execute the API call\. For more information, see [Instance profiles](iam-roles-for-amazon-ec2.md#ec2-instance-profile)\.
+If you use an AWS API, including the AWS CLI, in a user data script, you must use an instance profile when launching the instance\. An instance profile provides the appropriate AWS credentials required by the user data script to execute the API call\. For more information, see [Instance profiles](iam-roles-for-amazon-ec2.md#ec2-instance-profile)\. The permissions you assign to the IAM role depend on which services you are calling with the API\. For more information, see [IAM roles for Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/iam-roles-for-amazon-ec2.html)\.
 
 **Topics**
 + [Syntax for batch scripts](#user-data-batch-scripts)

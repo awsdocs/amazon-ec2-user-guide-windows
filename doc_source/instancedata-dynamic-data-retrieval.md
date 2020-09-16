@@ -36,4 +36,4 @@ signature
 
 ------
 
-For more information about dynamic data and examples of how to retrieve it, see [Instance Identity Documents](instance-identity-documents.md)\.
+For more information about dynamic data and examples of how to retrieve it, see [Instance identity documents](instance-identity-documents.md)\.
