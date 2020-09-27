@@ -155,9 +155,9 @@ Some instance types support both PV and HVM virtualization, while others support
 
 #### \(Optional\) Share or copy your AMI<a name="vpc-migrate-share-ami"></a>
 
-To use your AMI to launch an instance in a new AWS account, you must first share the AMI with your new account\. For more information, see [Sharing an AMI with specific AWS accounts](sharingamis-explicit.md)\.
+To use your AMI to launch an instance in a new AWS account, you must first share the AMI with your new account\. For more information, see [Share an AMI with specific AWS accounts](sharingamis-explicit.md)\.
 
-To use your AMI to launch an instance in a VPC in a different Region, you must first copy the AMI to that Region\. For more information, see [Copying an AMI](CopyingAMIs.md)\.
+To use your AMI to launch an instance in a VPC in a different Region, you must first copy the AMI to that Region\. For more information, see [Copy an AMI](CopyingAMIs.md)\.
 
 #### \(Optional\) Store your data on Amazon EBS volumes<a name="vpc-migrate-create-volumes"></a>
 

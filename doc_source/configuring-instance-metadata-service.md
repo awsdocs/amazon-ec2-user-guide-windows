@@ -109,6 +109,9 @@ You can also use IAM condition keys in an IAM policy or SCP to do the following:
 To configure the instance metadata options on new or existing instances, you use the AWS SDK or CLI\. For more information, see [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) and [modify\-instance\-metadata\-options](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-metadata-options.html) in the *AWS CLI Command Reference*\.
 
 **Note**  
+If your PowerShell version is earlier than 4\.0, you must [update to Windows Management Framework 4\.0](https://devblogs.microsoft.com/powershell/windows-management-framework-wmf-4-0-update-now-available-for-windows-server-2012-windows-server-2008-r2-sp1-and-windows-7-sp1/) to require the use of IMDSv2\.
+
+**Note**  
 You should proceed cautiously and conduct careful testing before making any changes\. Take note of the following:  
 If you enforce the use of IMDSv2, applications or agents that use IMDSv1 for instance metadata access will break\.
 If you turn off all access to instance metadata, applications or agents that rely on instance metadata access to function will break\.

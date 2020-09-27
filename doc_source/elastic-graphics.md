@@ -67,6 +67,7 @@ Before you start using Elastic Graphics accelerators, be aware of the following 
 + You can attach accelerators only to Windows instances with Microsoft Windows Server 2012 R2 or later\. Linux instances are currently not supported\.
 + You can attach one accelerator to an instance at a time\.
 + You can attach an accelerator only during instance launch\. You cannot attach an accelerator to an existing instance\.
++ You can't hibernate an instance with an attached accelerator\.
 + You can't share an accelerator between instances\.
 + You can't detach an accelerator from an instance or transfer it to another instance\. If you no longer require an accelerator, you must terminate your instance\. To change the accelerator type, create an AMI from your instance, terminate the instance, and launch a new instance with a different accelerator specification\.
 + The only supported versions of the OpenGL API are 4\.3 and earlier\. DirectX, CUDA, and OpenCL are not supported\.

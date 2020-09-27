@@ -14,7 +14,7 @@ AmazonEC2Launch\.msi does not uninstall previous versions of the EC2 launch serv
 You can install the `AWSEC2Launch-Agent` package from AWS SSM Distributor\. For instructions on how to install a package from SSM Distributor, see [Install or update packages](https://docs.aws.amazon.com/systems-manager/latest/userguide/distributor-working-with-packages-deploy.html) in the *AWS SSM User Guide*\.
 
 **Use AMI with EC2Launch v2 preinstalled \(non\-production workloads\)**  
-EC2Launch v2 is preinstalled on the following AMIs\. Do not use these AMIs for production workloads as they are intended only for you to verify if the EC2Launch v2 service works well with your existing processes and workloads\. You can find these AMIs from the Amazon EC2 console, or you can find them using the EC2 CLI and searching with the prefix `EC2LaunchV2_Preview-Windows_Server-`\.
+EC2Launch v2 is preinstalled on the following AMIs\. Do not use these AMIs for production workloads as they are intended only for you to verify if the EC2Launch v2 service works well with your existing processes and workloads\. You can [find these AMIs from the Amazon EC2 console](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html#finding-an-ami-console) or you can [find them using the EC2 CLI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html#finding-an-ami-aws-cli) and searching with the prefix `EC2LaunchV2_Preview-Windows_Server-`\.
 + EC2LaunchV2\_Preview\-Windows\_Server\-2004\-English\-Core\-Base
 + EC2LaunchV2\_Preview\-Windows\_Server\-2019\-English\-Full\-Base
 + EC2LaunchV2\_Preview\-Windows\_Server\-2019\-English\-Core\-Base

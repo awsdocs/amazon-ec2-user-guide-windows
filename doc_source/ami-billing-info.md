@@ -1,4 +1,4 @@
-# Obtaining billing information<a name="ami-billing-info"></a>
+# Obtain billing information<a name="ami-billing-info"></a>
 
 You can determine the platform details and billing information associated with an Amazon Machine Image \(AMI\) before you launch an On\-Demand Instance or Spot Instance, or purchase a Reserved Instance\. For Spot Instances, you can use the platform details to confirm that the AMI is supported for Spot Instances\. When purchasing a Reserved Instance, you can make sure that, for **Platform**, you select the correct value that maps to **Platform details** on the AMI\. By knowing the billing information before launching an instance or purchasing a Reserved Instance, you reduce the chance of erroneously launching instances from incorrect AMIs and incurring unplanned costs\.
 

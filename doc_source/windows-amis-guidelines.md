@@ -1,4 +1,4 @@
-# Guidelines for shared Windows AMIs<a name="windows-amis-guidelines"></a>
+# Best Practices for shared Windows AMIs<a name="windows-amis-guidelines"></a>
 
 Use the following guidelines to reduce the attack surface and improve the reliability of the AMIs you create\. 
 + No list of security guidelines can be exhaustive\. Build your shared AMIs carefully and take time to consider where you might expose sensitive data\.

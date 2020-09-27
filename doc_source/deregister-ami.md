@@ -1,4 +1,4 @@
-# Deregistering your Windows AMI<a name="deregister-ami"></a>
+# Deregister your Windows AMI<a name="deregister-ami"></a>
 
 You can deregister a Windows AMI when you have finished using it\. After you deregister an AMI, you can't use it to launch new instances\.
 

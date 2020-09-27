@@ -39,20 +39,18 @@ First, you need to get set up to use Amazon EC2\. After you are set up, you are 
 + [Tags](Using_Tags.md)
 
 **Networking and security**
-+ [Amazon EC2 key pairs and Windows instances](ec2-key-pairs.md)
-+ [Security Groups](ec2-security-groups.md)
++ [Key pairs](ec2-key-pairs.md)
++ [Security groups](ec2-security-groups.md)
 + [Elastic IP addresses](elastic-ip-addresses-eip.md)
-+ [Amazon EC2 and Amazon VPC](using-vpc.md)
++ [Virtual private clouds](using-vpc.md)
 
 **Storage**
 + [Amazon EBS](AmazonEBS.md)
-+ [Instance Store](InstanceStorage.md)
++ [Instance store](InstanceStorage.md)
 
 **Working with Windows instances**
 + [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html) in the *AWS Systems Manager User Guide*
-+ [Differences between Windows Server and an Amazon EC2 Windows instance](EC2Win_Infrastructure.md#EC2InstanceAndWindowsServer)
-+ [Designing your applications to run on Amazon EC2 Windows instances](EC2Win_Infrastructure.md#Win_AppDesign)
-+ [Getting Started with AWS: Hosting a \.NET Web App](https://docs.aws.amazon.com/gettingstarted/latest/wah/)
++ [Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md)
 
 If you have questions about whether AWS is right for you, [contact AWS Sales](https://aws.amazon.com/contact-us/)\. If you have technical questions about Amazon EC2, use the [Amazon EC2 forum](https://forums.aws.amazon.com/forum.jspa?forumID=30)\. 
 
@@ -83,6 +81,8 @@ Provides commands for a broad set of AWS products, and is supported on Windows, 
 
 **AWS Tools for Windows PowerShell**  
 Provides commands for a broad set of AWS products for those who script in the PowerShell environment\. To get started, see the [AWS Tools for Windows PowerShell User Guide](https://docs.aws.amazon.com/powershell/latest/userguide/)\. For more information about the cmdlets for Amazon EC2, see the [AWS Tools for PowerShell Cmdlet Reference](https://docs.aws.amazon.com/powershell/latest/reference/Index.html)\.
+
+Amazon EC2 supports creating resources using AWS CloudFormation\. You create a template, in JSON or YAML, that describes your AWS resources, and AWS CloudFormation provisions and configures those resources for you\. You can reuse your CloudFormation templates to provision the same resources multiple times, whether in the same Region and account or in multiple Regions and accounts\. For more information about the resource types and properties for Amazon EC2, see [EC2 resource type reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_EC2.html) in the *AWS CloudFormation User Guide*\.
 
 Amazon EC2 provides a Query API\. These requests are HTTP or HTTPS requests that use the HTTP verbs GET or POST and a Query parameter named `Action`\. For more information about the API actions for Amazon EC2, see [Actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-apis.html) in the *Amazon EC2 API Reference*\.
 

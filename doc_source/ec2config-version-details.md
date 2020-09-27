@@ -1,6 +1,6 @@
 # EC2Config Version History<a name="ec2config-version-details"></a>
 
-Windows AMIs prior to Windows Server 2016 include an optional service called the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. For information about the EC2Config versions included in the Windows AMIs, see [Managed AWS Windows AMIs](windows-ami-version-history.md)\.
+Windows AMIs prior to Windows Server 2016 include an optional service called the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. For information about the EC2Config versions included in the Windows AMIs, see [AWS Windows AMIs](windows-ami-version-history.md)\.
 
 You can receive notifications when new versions of the EC2Config service are released\. For more information, see [Subscribing to EC2Config Service Notifications](#ec2-subscribe-notifications)\.
 

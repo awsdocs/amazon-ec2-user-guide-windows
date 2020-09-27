@@ -14,7 +14,7 @@ Amazon EC2 provides enhanced networking capabilities through the Elastic Network
 ## Requirements<a name="ena-requirements"></a>
 
 To prepare for enhanced networking using the ENA, set up your instance as follows:
-+ Launch the instance using a [current generation](instance-types.md#current-gen-instances) instance type, other than an M4 instance smaller than `m4.16xlarge`\.
++ Launch the instance using a [current generation](instance-types.md#current-gen-instances) instance type, other than C4, D2, M4 instances smaller than `m4.16xlarge`, or T2\.
 + Ensure that the instance has internet connectivity\.
 + Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable\. If you have a recent backup, your data will still be retained if this happens\.
@@ -61,7 +61,7 @@ To check whether an AMI has the enhanced networking `enaSupport` attribute set, 
 
 ## Enabling enhanced networking on Windows<a name="enable-enhanced-networking-ena-WIN"></a>
 
-If you launched your instance and it does not have enhanced networking enabled already, you must download and install the required network adapter driver on your instance, and then set the `enaSupport` instance attribute to activate enhanced networking\. You can only enable this attribute on supported instance types and only if the ENA driver is installed\. For more information, see [Enhanced networking types](enhanced-networking.md#supported_instances)\.
+If you launched your instance and it does not have enhanced networking enabled already, you must download and install the required network adapter driver on your instance, and then set the `enaSupport` instance attribute to activate enhanced networking\. You can only enable this attribute on supported instance types and only if the ENA driver is installed\. For more information, see [Enhanced networking support](enhanced-networking.md#supported_instances)\.
 
 **To enable enhanced networking**
 

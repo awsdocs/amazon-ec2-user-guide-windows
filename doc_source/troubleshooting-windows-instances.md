@@ -6,7 +6,7 @@ The following procedures and tips can help you troubleshoot problems with your A
 + [Troubleshooting instance launch issues](troubleshooting-launch.md)
 + [Troubleshooting connecting to your Windows instance](troubleshoot-connect-windows-instance.md)
 + [Troubleshoot an unreachable instance](screenshot-service.md)
-+ [Resetting a lost or expired Windows administrator password](ResettingAdminPassword.md)
++ [Reset a lost or expired Windows administrator password](ResettingAdminPassword.md)
 + [Troubleshooting stopping your instance](TroubleshootingInstancesStopping.md)
 + [Troubleshooting terminating \(shutting down\) your instance](TroubleshootingInstancesShuttingDown.md)
 + [Troubleshooting Sysprep](sysprep-troubleshoot.md)

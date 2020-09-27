@@ -28,4 +28,4 @@ Store the new password in a safe place\. You won't be able to retrieve the new p
 
 ## Changing a lost or expired password<a name="change-lost-expired-password"></a>
 
-If you lose your password or it expires, you can generate a new password\. For password reset procedures, see [Resetting a lost or expired Windows administrator password](ResettingAdminPassword.md)\.
+If you lose your password or it expires, you can generate a new password\. For password reset procedures, see [Reset a lost or expired Windows administrator password](ResettingAdminPassword.md)\.

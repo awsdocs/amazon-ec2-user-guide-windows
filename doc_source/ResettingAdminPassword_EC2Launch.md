@@ -1,8 +1,8 @@
-# Resetting the Windows administrator password using EC2Launch<a name="ResettingAdminPassword_EC2Launch"></a>
+# Reset the Windows administrator password using EC2Launch<a name="ResettingAdminPassword_EC2Launch"></a>
 
 If you have lost your Windows administrator password and are using a Windows Server 2016 or later AMI, you can use the EC2Rescue tool, which uses the EC2Launch service to generate a new password\.
 
-If you are using a Windows Server AMI earlier than Windows Server 2016, see [Resetting the Windows administrator password using EC2Config](ResettingAdminPassword_EC2Config.md)\.
+If you are using a Windows Server AMI earlier than Windows Server 2016, see [Reset the Windows administrator password using EC2Config](ResettingAdminPassword_EC2Config.md)\.
 
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.

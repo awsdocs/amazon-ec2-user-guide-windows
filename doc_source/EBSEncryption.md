@@ -207,7 +207,7 @@ To encrypt the snapshot copy to a customer managed CMK, you must both enable enc
 **Important**  
 Amazon EBS does not support asymmetric CMKs\. For more information, see [Using Symmetric and Asymmetric Keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html) in the *AWS Key Management Service Developer Guide*\.
 
-You can also apply new encryption states when launching an instance from an EBS\-backed AMI\. This is because EBS\-backed AMIs include snapshots of EBS volumes that can be encrypted as described\. For more information, see [Using encryption with EBS\-backed AMIs](AMIEncryption.md)\.
+You can also apply new encryption states when launching an instance from an EBS\-backed AMI\. This is because EBS\-backed AMIs include snapshots of EBS volumes that can be encrypted as described\. For more information, see [Use encryption with EBS\-backed AMIs](AMIEncryption.md)\.
 
 ## Encryption scenarios<a name="encryption-examples"></a>
 

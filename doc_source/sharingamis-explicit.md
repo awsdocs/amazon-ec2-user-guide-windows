@@ -1,12 +1,12 @@
-# Sharing an AMI with specific AWS accounts<a name="sharingamis-explicit"></a>
+# Share an AMI with specific AWS accounts<a name="sharingamis-explicit"></a>
 
 You can share an AMI with specific AWS accounts without making the AMI public\. All you need is the AWS account IDs\. You can only share AMIs that have unencrypted volumes and volumes that are encrypted with a customer managed CMK\. If you share an AMI with encrypted volumes, you must also share any CMKs used to encrypt them\. For more information, see [Sharing an Amazon EBS snapshot](ebs-modifying-snapshot-permissions.md)\. You cannot share an AMI that has volumes that are encrypted with a AWS managed CMK\.
 
-AMIs are a regional resource\. Therefore, sharing an AMI makes it available in that Region\. To make an AMI available in a different Region, copy the AMI to the Region and then share it\. For more information, see [Copying an AMI](CopyingAMIs.md)\.
+AMIs are a regional resource\. Therefore, sharing an AMI makes it available in that Region\. To make an AMI available in a different Region, copy the AMI to the Region and then share it\. For more information, see [Copy an AMI](CopyingAMIs.md)\.
 
 There is no limit to the number of AWS accounts with which an AMI can be shared\. User\-defined tags that you attach to a shared AMI are available only to your AWS account and not to the other accounts that the AMI is shared with\.
 
-## Sharing an AMI \(console\)<a name="sharingamis-console"></a>
+## Share an AMI \(console\)<a name="sharingamis-console"></a>
 
 **To grant explicit launch permissions using the console**
 
@@ -26,9 +26,9 @@ You do not need to share the Amazon EBS snapshots that an AMI references in orde
 
 1. Choose **Save** when you are done\.
 
-1. \(Optional\) To view the AWS account IDs with which you have shared the AMI, select the AMI in the list, and choose the **Permissions** tab\. To find AMIs that are shared with you, see [Finding shared AMIs](usingsharedamis-finding.md)\.
+1. \(Optional\) To view the AWS account IDs with which you have shared the AMI, select the AMI in the list, and choose the **Permissions** tab\. To find AMIs that are shared with you, see [Find shared AMIs](usingsharedamis-finding.md)\.
 
-## Sharing an AMI \(Tools for Windows PowerShell\)<a name="sharing-amis-powershell"></a>
+## Share an AMI \(Tools for Windows PowerShell\)<a name="sharing-amis-powershell"></a>
 
 Use the [Edit\-EC2ImageAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2ImageAttribute.html) command \(Tools for Windows PowerShell\) to share an AMI as shown in the following examples\.
 
@@ -68,7 +68,7 @@ The following command removes all public and explicit launch permissions from th
 PS C:\> Reset-EC2ImageAttribute -ImageId ami-0abcdef1234567890 -Attribute launchPermission
 ```
 
-## Sharing an AMI \(AWS CLI\)<a name="sharingamis-aws-cli"></a>
+## Share an AMI \(AWS CLI\)<a name="sharingamis-aws-cli"></a>
 
 Use the [modify\-image\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-image-attribute.html) command \(AWS CLI\) to share an AMI as shown in the following examples\.
 

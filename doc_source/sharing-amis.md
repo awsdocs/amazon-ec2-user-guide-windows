@@ -9,8 +9,8 @@ Amazon's public images have an aliased owner, which appears as `amazon` in the a
  For information about creating an AMI, see [Creating an Amazon EBS\-Backed Windows AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Creating_EBSbacked_WinAMI.html) \. For more information about building, delivering, and maintaining your applications on the AWS Marketplace, see the [AWS Marketplace Documentation](https://docs.aws.amazon.com/marketplace/)\.
 
 **Topics**
-+ [Finding shared AMIs](usingsharedamis-finding.md)
-+ [Making an AMI public](sharingamis-intro.md)
-+ [Sharing an AMI with specific AWS accounts](sharingamis-explicit.md)
-+ [Using bookmarks](using-bookmarks.md)
-+ [Guidelines for shared Windows AMIs](windows-amis-guidelines.md)
++ [Find shared AMIs](usingsharedamis-finding.md)
++ [Make an AMI public](sharingamis-intro.md)
++ [Share an AMI with specific AWS accounts](sharingamis-explicit.md)
++ [Use bookmarks](using-bookmarks.md)
++ [Best Practices for shared Windows AMIs](windows-amis-guidelines.md)

@@ -1,4 +1,4 @@
-# Using encryption with EBS\-backed AMIs<a name="AMIEncryption"></a>
+# Use encryption with EBS\-backed AMIs<a name="AMIEncryption"></a>
 
 AMIs that are backed by Amazon EBS snapshots can take advantage of Amazon EBS encryption\. Snapshots of both data and root volumes can be encrypted and attached to an AMI\. You can launch instances and copy images with full EBS encryption support included\. Encryption parameters for these operations are supported in all Regions where AWS KMS is available\.
 
@@ -7,6 +7,10 @@ EC2 instances with encrypted EBS volumes are launched from AMIs in the same way 
 Like EBS volumes, snapshots in AMIs can be encrypted by either your default AWS Key Management Service customer master key \(CMK\), or to a customer managed key that you specify\. You must in all cases have permission to use the selected key\.
 
 AMIs with encrypted snapshots can be shared across AWS accounts\. For more information, see [Shared AMIs](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/sharing-amis.html)\.
+
+**Topics**
++ [Instance\-launching scenarios](#AMI-encryption-launch)
++ [Image\-copying scenarios](#AMI-encryption-copy)
 
 ## Instance\-launching scenarios<a name="AMI-encryption-launch"></a>
 

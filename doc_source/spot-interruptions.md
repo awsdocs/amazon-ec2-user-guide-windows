@@ -19,7 +19,7 @@ An On\-Demand Instance specified in an EC2 Fleet or Spot Fleet cannot be interru
 
 The following are the possible reasons that Amazon EC2 might interrupt your Spot Instances:
 + Price – The Spot price is greater than your maximum price\.
-+ Capacity – If there are not enough unused EC2 instances to meet the demand for Spot Instances, Amazon EC2 interrupts Spot Instances\. The order in which the instances are interrupted is determined by Amazon EC2\.
++ Capacity – If there are not enough unused EC2 instances to meet the demand for On\-Demand Instances, Amazon EC2 interrupts Spot Instances\. The order in which the instances are interrupted is determined by Amazon EC2\.
 + Constraints – If your request includes a constraint such as a launch group or an Availability Zone group, these Spot Instances are terminated as a group when the constraint can no longer be met\.
 
 ## Interruption behaviors<a name="interruption-behavior"></a>
@@ -76,7 +76,7 @@ You can specify the interruption behavior so that Amazon EC2 hibernates Spot Ins
 
 **Recommendation**
 + We strongly recommend that you use an encrypted Amazon EBS volume as the root volume, because instance memory is stored on the root volume during hibernation\. This ensures that the contents of memory \(RAM\) are encrypted when the data is at rest on the volume and when data is moving between the instance and volume\. Use one of the following three options to ensure that the root volume is an encrypted Amazon EBS volume:
-  + EBS “single\-step” encryption: In a single run\-instances API call, you can launch encrypted EBS\-backed EC2 instances from an unencrypted AMI\. For more information, see [Using encryption with EBS\-backed AMIs](AMIEncryption.md)\.
+  + EBS “single\-step” encryption: In a single run\-instances API call, you can launch encrypted EBS\-backed EC2 instances from an unencrypted AMI\. For more information, see [Use encryption with EBS\-backed AMIs](AMIEncryption.md)\.
   + EBS encryption by default: You can enable EBS encryption by default to ensure all new EBS volumes created in your AWS account are encrypted\. For more information, see [Encryption by default](EBSEncryption.md#encryption-by-default)\.
   + Encrypted AMI: You can enable EBS encryption by using an encrypted AMI to launch your instance\. If your AMI does not have an encrypted root snapshot, you can copy it to a new AMI and request encryption\. For more information, see [Encrypt an unencrypted image during copy](AMIEncryption.md#copy-unencrypted-to-encrypted) and [Copying an AMI](CopyingAMIs.md#ami-copy-steps)\. 
 
