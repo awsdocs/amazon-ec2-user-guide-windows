@@ -66,7 +66,7 @@ A Windows instance must obtain information from its instance metadata before it 
 
 If the instance is failing the instance reachability test, try the following to resolve this issue\.
 + Check the CIDR block for your VPC\. A Windows instance cannot boot correctly if it's launched into a VPC that has an IP address range from `224.0.0.0` to `255.255.255.255` \(Class D and Class E IP address ranges\)\. These IP address ranges are reserved, and should not be assigned to host devices\. We recommend that you create a VPC with a CIDR block from the private \(non\-publicly routable\) IP address ranges as specified in [RFC 1918](http://www.faqs.org/rfcs/rfc1918.html)\.
-+ It's possible that the system has been configured with a static IP address\. Try [creating a network interface](using-eni.md#create_eni) and [attaching it to the instance](using-eni.md#attach_eni_running_stopped)\.
++ It's possible that the system has been configured with a static IP address\. Try [creating a network interface](using-eni.md#create_eni) and [attaching it to the instance](using-eni.md#attach_eni)\.
 + 
 
 **To enable DHCP on a Windows instance that you can't connect to**

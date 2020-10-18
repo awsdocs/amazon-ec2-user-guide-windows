@@ -48,6 +48,46 @@ For more information, see [Stop and start your instance](Stop_Start.md)\.
 
 Use the following procedure to resize an Amazon EBS–backed instance using the AWS Management Console\.
 
+------
+#### [ New console ]
+
+**To resize an Amazon EBS–backed instance**
+
+1. \(Optional\) If the new instance type requires drivers that are not installed on the existing instance, you must connect to your instance and install the drivers first\. For more information, see [Compatibility for resizing instances](#resize-limitations)\.
+**Note**  
+The AWS PV driver package should be updated before changing instance families\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
+
+1. \(Optional\) If you configured your Windows instance to use [static IP addressing](config-windows-multiple-ip.md#step1) and you resize the instance from a type that doesn't support enhanced networking to an instance type that does support enhanced networking, you might get a warning about a potential IP address conflict when you reconfigure static IP addressing\. To prevent this, enable DHCP on the network interface for your instance before you change the instance type\. From your instance, open the **Network and Sharing Center**, go to **Internet Protocol Version 4 \(TCP/IPv4\) Properties** for the network interface, and choose **Obtain an IP address automatically**\. Change the instance type and reconfigure static IP addressing on the network interface\.
+
+1. Open the Amazon EC2 console\.
+
+1. \[Windows Server 2016 and later\] Connect to your Windows instance and run the following EC2Launch PowerShell script to configure the instance after it is resized\.
+
+   ```
+   PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
+   ```
+
+1. In the navigation pane, choose **Instances**\.
+
+1. Select the instance and choose **Actions**, **Instance state**, **Stop instance**\.
+
+1. In the confirmation dialog box, choose **Stop**\. It can take a few minutes for the instance to stop\.
+
+1. With the instance still selected, choose **Actions**, **Instance settings**, **Change instance type**\. This action is disabled if the instance state is not `stopped`\.
+
+1. In the **Change instance type** dialog box, do the following:
+
+   1. From **Instance type**, select the instance type that you want\. If the instance type that you want does not appear in the list, then it is not compatible with the configuration of your instance \(for example, because of virtualization type\)\. For more information, see [Compatibility for resizing instances](#resize-limitations)\.
+
+   1. \(Optional\) If the instance type that you selected supports EBS–optimization, select **EBS\-optimized** to enable EBS–optimization or deselect **EBS\-optimized** to disable EBS–optimization\. If the instance type that you selected is EBS–optimized by default, **EBS\-optimized** is selected and you can't deselect it\.
+
+   1. Choose **Apply** to accept the new settings\.
+
+1. To restart the stopped instance, select the instance and choose **Actions**, **Instance state**, **Start instance**\. It can take a few minutes for the instance to enter the `running` state\.
+
+------
+#### [ Old console ]
+
 **To resize an Amazon EBS–backed instance**
 
 1. \(Optional\) If the new instance type requires drivers that are not installed on the existing instance, you must connect to your instance and install the drivers first\. For more information, see [Compatibility for resizing instances](#resize-limitations)\.
@@ -84,9 +124,48 @@ The AWS PV driver package should be updated before changing instance families\. 
 
 1. In the confirmation dialog box, choose **Yes, Start**\. It can take a few minutes for the instance to enter the `running` state\.
 
+------
+
 ## Migrating to a new instance configuration<a name="migrate-instance-configuration"></a>
 
 If the current configuration of your instance is incompatible with the new instance type that you want, then you can't resize the instance to that instance type\. Instead, you can migrate your application to a new instance with a configuration that is compatible with the new instance type that you want\.
+
+------
+#### [ New console ]
+
+**To migrate your application to a compatible instance**
+
+1. Back up any data on your instance store volumes that you need to keep to persistent storage\. To migrate data on your EBS volumes that you need to keep, create a snapshot of the volumes \(see [Creating Amazon EBS snapshots](ebs-creating-snapshot.md)\) or detach the volume from the instance so that you can attach it to the new instance later \(see [Detaching an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)\)\.
+
+1. Launch a new instance, selecting the following:
+   + If you are using an Elastic IP address, select the VPC that the original instance is currently running in\.
+   + Any EBS volumes that you detached from the original instance and want to attach to the new instance, or new EBS volumes based on the snapshots that you created\.
+   + If you want to allow the same traffic to reach the new instance, select the security group that is associated with the original instance\.
+
+1. Install your application and any required software on the instance\.
+
+1. Restore any data that you backed up from the instance store volumes of the original instance\.
+
+1. If you are using an Elastic IP address, assign it to the newly launched instance as follows:
+
+   1. In the navigation pane, choose **Elastic IPs**\.
+
+   1. Select the Elastic IP address that is associated with the original instance and choose **Actions**, **Disassociate Elastic IP address**\. When prompted for confirmation, choose **Disassociate**\.
+
+   1. With the Elastic IP address still selected, choose **Actions**, **Associate Elastic IP address**\.
+
+   1. For **Resource type**, choose **Instance**\. 
+
+   1. For **Instance**, choose the instance with which to associate the Elastic IP address\. You can also enter text to search for a specific instance\.
+
+   1. \(Optional\) For **Private IP address**, specify a private IP address with which to associate the Elastic IP address\.
+
+   1. Choose **Associate**\.
+
+1. \(Optional\) You can terminate the original instance if it's no longer needed\. Select the instance and verify that you are about to terminate the original instance, not the new instance \(for example, check the name or launch time\)\. Choose **Actions**, **Instance state**, **Terminate instance**\.
+
+------
+#### [ Old console ]
 
 **To migrate your application to a compatible instance**
 
@@ -112,3 +191,5 @@ If the current configuration of your instance is incompatible with the new insta
    1. From **Instance**, select the new instance, and then choose **Associate**\.
 
 1. \(Optional\) You can terminate the original instance if it's no longer needed\. Select the instance and verify that you are about to terminate the original instance, not the new instance \(for example, check the name or launch time\)\. Choose **Actions**, **Instance State**, **Terminate**\.
+
+------

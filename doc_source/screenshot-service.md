@@ -89,7 +89,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 | Configuration | Verify | 
 | --- | --- | 
 | Windows Firewall | Verify that Windows Firewall isn't blocking connections to your instance\. Disable Windows Firewall as described in bullet 7 of the remote desktop troubleshooting section, [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.  | 
-| Advanced TCP/IP configuration \(Use of static IP\) | The instance may be unresponsive because you configured a static IP address\. For a VPC, [create a network interface](using-eni.md#create_eni) and [attach it to the instance](using-eni.md#attach_eni_running_stopped)\. For EC2 Classic, enable DHCP\. | 
+| Advanced TCP/IP configuration \(Use of static IP\) | The instance may be unresponsive because you configured a static IP address\. For a VPC, [create a network interface](using-eni.md#create_eni) and [attach it to the instance](using-eni.md#attach_eni)\. For EC2 Classic, enable DHCP\. | 
 
 **Local or On\-Premises Network Configuration**
 

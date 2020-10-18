@@ -72,9 +72,11 @@ The following procedure describes how to use the EC2Launch v2 settings dialog bo
 ![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launch-v2-dns-suffix.png)
 
 1. On the **Wallpaper** tab, you can enable the display of selected instance details on the wallpaper\. You also have the option of choosing a custom image\. The details are generated each time that you log in\. Clear the check box to remove instance details from the wallpaper\.  
-![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launch-v2-wallpaper.png)
+![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-wallpaper-02.png)
 
-1. On the **Volumes** tab, select whether you want to initialize the volumes that are attached to the instance\. Enabling sets drive letters for any additional volumes and extends them to use available space\. If you select **All**, all of the storage volumes are initialized\. If you select **Devices**, only devices that are specified in the list are initialized\. You must enter the device for each device to be initialized\. Use the devices listed on the EC2 console, for example, `xvdb` or `/dev/nvme0n1`\. **Name**, **Letter**, and **Partition** are optional fields\. If no value is specified for **Partition**, storage volumes larger than 2 TB are initialized with the GPT partition type, and those smaller than 2 TB are initialized with the MBR partition type\. If devices are configured, and a non\-NTFS device either contains a partition table, or the first 4 KB of the disk contain data, then the disk is skipped and the action logged\.   
+1. On the **Volumes** tab, select whether you want to initialize the volumes that are attached to the instance\. Enabling sets drive letters for any additional volumes and extends them to use available space\. If you select **All**, all of the storage volumes are initialized\. If you select **Devices**, only devices that are specified in the list are initialized\. You must enter the device for each device to be initialized\. Use the devices listed on the EC2 console, for example, `xvdb` or `/dev/nvme0n1`\. The dropdown list displays the storage volumes that are attached to the instance\. To enter a device that is not attached to the instance, enter it in the text field\.
+
+   **Name**, **Letter**, and **Partition** are optional fields\. If no value is specified for **Partition**, storage volumes larger than 2 TB are initialized with the GPT partition type, and those smaller than 2 TB are initialized with the MBR partition type\. If devices are configured, and a non\-NTFS device either contains a partition table, or the first 4 KB of the disk contain data, then the disk is skipped and the action logged\.   
 ![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launch-v2-volumes.png)
 
 The following is an example configuration YAML file created from the settings entered in the EC2Launch dialog\.
@@ -157,6 +159,8 @@ You can use the Command Line Interface \(CLI\) to configure your EC2Launch setti
 
 **Topics**
 + [collect\-logs](#ec2launch-v2-collect-logs)
++ [get\-agent\-config](#ec2launch-v2-get-agent-config)
++ [list\-volumes](#ec2launch-v2-list-volumes)
 + [reset](#ec2launch-v2-reset)
 + [run](#ec2launch-v2-run)
 + [sysprep](#ec2launch-v2-sysprep)
@@ -187,6 +191,65 @@ help for `collect-logs`
 `-o`, `--output string`
 
 path to zipped output log files
+
+### get\-agent\-config<a name="ec2launch-v2-get-agent-config"></a>
+
+Prints `agent-config.yml` in the format specified \(JSON or YAML\)\. If no format is specified, `agent-config.yml` is printed in the format previously specified\. 
+
+**Example**
+
+```
+ec2launch get-agent-config -f json
+```
+
+**Example 2**
+
+The following PowerShell commands show how to edit and save the `agent-config` file in JSON format\.
+
+```
+$config = ec2launch get-agent-config --format json | ConvertFrom-Json
+$jumboFrame =@"
+{
+   "task": "enableJumboFrames"
+}
+"@
+$config.config | %{if($_.stage -eq 'postReady'){$_.tasks += (ConvertFrom-Json -InputObject $jumboFrame)}}
+$config | ConvertTo-Json -Depth 6 | Out-File -encoding UTF8 $env:ProgramData/Amazon/EC2Launch/config/agent-config.yml
+```
+
+**Usage**
+
+`ec2launch get-agent-config [flags]`
+
+**Flags**
+
+`-h`, `--help`
+
+help for `get-agent-config`
+
+`-f`, `--format string`
+
+output format of `agent-config` file: `json`, `yaml`
+
+### list\-volumes<a name="ec2launch-v2-list-volumes"></a>
+
+Lists all of the storage volumes attached to the instance, including ephemeral and EBS volumes\.
+
+**Example**
+
+```
+ec2launch list-volumes
+```
+
+**Usage**
+
+`ec2launch list-volumes`
+
+**Flags**
+
+`-h`, `--help`
+
+help for `list-volumes`
 
 ### reset<a name="ec2launch-v2-reset"></a>
 
@@ -307,7 +370,9 @@ Sets new wallpaper to the wallpaper path that is provided \(\.jpg file\), and di
 **Example**
 
 ```
-ec2launch wallpaper --path="C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg" --attributes=hostName,instanceId,privateIpAddress,publicIpAddress,instanceSize,availabilityZone,architecture,memory,network
+ec2launch wallpaper ^
+--path="C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg" ^
+--attributes=hostName,instanceId,privateIpAddress,publicIpAddress,instanceSize,availabilityZone,architecture,memory,network
 ```
 
 **Usage**
@@ -491,19 +556,10 @@ task: executeScript
 inputs:
 - frequency: always
   type: powershell
+  runAs: admin
   content: |-
-    New-Item -Path 'C:\PowerShellTest.txt' -ItemType
-    File
-```
-
-The following format is compatible with the previous version of this service\.
-
-```
-<powershell>
-  $file = $env:SystemRoot + "\Temp" + (Get-Date).ToString("MM-dd-yy-hh-mm")
-  New-Item $file -ItemType file
-</powershell>
-<persist>true</persist>
+    New-Item -Path 'C:\PowerShellTest.txt' -ItemType File
+    Set-Content 'C:\PowerShellTest.txt' "hello world"
 ```
 
 ### extendRootPartition<a name="ec2launch-v2-extendrootpartition"></a>
@@ -605,9 +661,7 @@ Sets attributes for the default administrator account that is created on the loc
 
 `type`: \(string\) strategy to set the password, either as `static`, `random`, or `doNothing`
 
-`doNothing`: \(string\) stores data depending on the field type
-
-`data`
+`doNothing`: \(string\) stores data if the `type` field is static
 
 *Example*
 

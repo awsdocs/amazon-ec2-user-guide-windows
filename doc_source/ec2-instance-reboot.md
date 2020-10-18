@@ -10,6 +10,22 @@ We recommend that you use the Amazon EC2 console, a command line tool, or the Am
 
 If Windows is installing updates on your instance, we recommend that you do not reboot or shut down your instance using the Amazon EC2 console or the command line until all the updates are installed\. When you use the Amazon EC2 console or the command line to reboot or shut down your instance, there is a risk that your instance will be hard rebooted\. A hard reboot while updates are being installed could throw your instance into an unstable state\.
 
+------
+#### [ New console ]
+
+**To reboot an instance using the console**
+
+1. Open the Amazon EC2 console\.
+
+1. In the navigation pane, choose **Instances**\.
+
+1. Select the instance and choose **Actions**, **Instance state**, **Reboot instance**\.
+
+1. Choose **Reboot** when prompted for confirmation\. The instance remains in the running state\. 
+
+------
+#### [ Old console ]
+
 **To reboot an instance using the console**
 
 1. Open the Amazon EC2 console\.
@@ -18,7 +34,9 @@ If Windows is installing updates on your instance, we recommend that you do not 
 
 1. Select the instance and choose **Actions**, **Instance State**, **Reboot**\.
 
-1. Choose **Yes, Reboot** when prompted for confirmation\. The instance will remain in a "running" state\. 
+1. Choose **Yes, Reboot** when prompted for confirmation\. The instance remains in the running state\.
+
+------
 
 **To reboot an instance using the command line**
 

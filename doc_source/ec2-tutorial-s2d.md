@@ -207,7 +207,7 @@ When the cluster is ready, enable S2D on one of the nodes using [Enable\-Cluster
 
 ## Step 5: Provision Storage<a name="ec2-s2d-provision-storage"></a>
 
-To provision storage, create a storage pool and then create volumes in that pool\. To keep thing simple, by default, the [Enable\-ClusterS2D](https://technet.microsoft.com/en-us/itpro/powershell/windows/failoverclusters/enable-clusterstoragespacesdirect) command creates a pool using all of the disks available in the cluster\. With this command we configured the storage pool name as "S2D Pool\." 
+To provision storage, create a storage pool and then create volumes in that pool\. To keep things simple, by default, the [Enable\-ClusterS2D](https://technet.microsoft.com/en-us/itpro/powershell/windows/failoverclusters/enable-clusterstoragespacesdirect) command creates a pool using all of the disks available in the cluster\. With this command we configured the storage pool name as "S2D Pool\." 
 
 After volumes are created, they become accessible to every node in the cluster\. The volumes can then be assigned to a specific role in the cluster, such as a file server role; or, they can be assigned as [cluster shared volumes](https://docs.microsoft.com/en-us/windows-server/failover-clustering/failover-cluster-csvs) \(CSV\)\. A CSV is accessible to the entire cluster, which means that every node in this cluster can write\-read to this volume\.
 
