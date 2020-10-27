@@ -231,4 +231,4 @@ If you experience unexpected failovers, first make sure that you are not experie
 
 1. Check driver updates\. If you are using outdated drivers on your instance, you should update them\. Updating your drivers might address bugs and stability issues that might be present in your currently installed version\.
 
-1. Check for any possible resource bottlenecks that could cause an instance to become unresponsive, such as CPU and disk I/O\. If the node cannot service requests, it may appear to be down by the cluster service\.
+1. Check for any possible resource bottlenecks that could cause an instance to become unresponsive, such as CPU and disk I/O\. If the node cannot service requests, it might appear to be down by the cluster service\.

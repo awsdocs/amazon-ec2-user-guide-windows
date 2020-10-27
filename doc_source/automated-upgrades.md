@@ -50,7 +50,7 @@ Choose this option if you want to apply the upgrade to more than one instance\. 
   Use the values defined in the automation document parameters\.
 + **Resource Group**
 
-  In AWS, a resource is an entity you can work with\. Examples include Amazon EC2 instances, AWS CloudFormation stacks, or Amazon S3 buckets\. If you work with multiple resources, it may be useful to manage them as a group as opposed to moving from one AWS service to another for every task\. In some cases, you may want to manage large numbers of related resources, such as EC2 instances that make up an application layer\. In this case, you will likely need to perform bulk actions on these resources at one time\.
+  In AWS, a resource is an entity you can work with\. Examples include Amazon EC2 instances, AWS CloudFormation stacks, or Amazon S3 buckets\. If you work with multiple resources, it might be useful to manage them as a group as opposed to moving from one AWS service to another for every task\. In some cases, you may want to manage large numbers of related resources, such as EC2 instances that make up an application layer\. In this case, you will likely need to perform bulk actions on these resources at one time\.
 + **Tags**
 
   Tags help you categorize your AWS resources in different ways, for example, by purpose, owner, or environment\. This categorization is useful when you have many resources of the same type\. You can quickly identify a specific resource using the assigned tags\.

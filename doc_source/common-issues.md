@@ -93,9 +93,9 @@ If an instance is offline and unreachable, you must detach the root volume and a
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Locate the affected instance\. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Stop**\.
+1. Locate and select the affected instance\. Choose **Instance state**, **Stop instance**\.
 
-1. Choose **Launch Instance** and create a temporary instance in the same Availability Zone as the affected instance\. Choose an instance type that uses a different version of Windows\. For example, if your instance is Windows Server 2008, then choose a Windows Server 2008 R2 instance\.
+1. Choose **Launch instances** and create a temporary instance in the same Availability Zone as the affected instance\. Choose an instance type that uses a different version of Windows\. For example, if your instance is Windows Server 2008, then choose a Windows Server 2008 R2 instance\.
 **Important**  
 If you do not create the instance in the same Availability Zone as the affected instance you will not be able to attach the root volume of the affected instance to the new instance\.
 

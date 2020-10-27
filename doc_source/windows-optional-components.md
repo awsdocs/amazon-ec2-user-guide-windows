@@ -30,19 +30,21 @@ Use the following procedure to use the AWS Management Console to add Windows com
 
 1. Choose **Actions**, **Create Volume**\.
 
-1. In the **Create Volume** dialog box, select the Availability Zone that matches your Windows instance, and then choose **Create**\.
+1. For **Availability Zone**, select the Availability Zone that matches your Windows instance\. Choose **Add Tag** and specify **Name** for the tag key and a descriptive name for the tag value\. Choose **Create Volume**\.
 
 1. In the **Volume Successfully Created** message, choose the volume that you just created\.
 
 1. Choose **Actions**, **Attach Volume**\.
 
-1. In the **Attach Volume** dialog box, type the instance ID and the name of the device for the attachment, and choose **Attach**\. If you need help with the device name, see [Device Naming](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html)\. 
+1. Type the instance ID and the name of the device for the attachment, and choose **Attach**\. If you need help with the device name, see [Device Naming](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html)\.
 
 1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 **Important**  
 Do not initialize the volume\.
 
 1. Open **Control Panel**, **Programs and Features**\. Choose **Turn Windows features on or off**\. If you are prompted for installation media, specify the EBS volume with the installation media\.
+
+1. \(Optional\) When you are finished with the installation media, you can detach the volume\. After you detach the volume, you can delete it\. For more information, see [Detaching an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md) and [Deleting an Amazon EBS volume](ebs-deleting-volume.md)\.
 
 ## Adding Windows components using the Tools for Windows PowerShell<a name="adding-windows-components-powershell"></a>
 
@@ -112,6 +114,8 @@ Do not initialize the volume\.
 
 1. Open **Control Panel**, **Programs and Features**\. Choose **Turn Windows features on or off**\. If you are prompted for installation media, specify the EBS volume with the installation media\.
 
+1. \(Optional\) When you are finished with the installation media, use the [Dismount\-EC2Volume](https://docs.aws.amazon.com/powershell/latest/reference/items/Dismount-EC2Volume.html) cmdlet to detach the volume from your instance\. After you detach the volume, you can use the [Remove\-EC2Volume](https://docs.aws.amazon.com/powershell/latest/reference/items/Remove-EC2Volume.html) cmdlet to delete the volume\.
+
 ## Adding Windows components using the AWS CLI<a name="adding-windows-components-cli"></a>
 
 Use the following procedure to use the AWS CLI to add Windows components to your instance\.
@@ -180,3 +184,5 @@ Use the following procedure to use the AWS CLI to add Windows components to your
 Do not initialize the volume\.
 
 1. Open **Control Panel**, **Programs and Features**\. Choose **Turn Windows features on or off**\. If you are prompted for installation media, specify the EBS volume with the installation media\.
+
+1. \(Optional\) When you are finished with the installation media, use the [detach\-volume](https://docs.aws.amazon.com/cli/latest/reference/ec2/detach-volume.html) command to detach the volume from your instance\. After you detach the volume, you can use the [delete\-volume](https://docs.aws.amazon.com/cli/latest/reference/ec2/delete-volume.html) command to delete the volume\.

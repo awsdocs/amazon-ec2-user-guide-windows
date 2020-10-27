@@ -41,7 +41,7 @@ Windows instances in AWS should adhere to the following high\-level best practic
 
 **Storage**
 + Use separate Amazon EBS volumes for the operating system versus your data\. Ensure that the volume with your data persists after instance termination\. For more information, see [Preserving Amazon EBS volumes on instance termination](terminating-instances.md#preserving-volumes-on-termination)\.
-+ Use the instance store available for your instance to store temporary data\. Remember that the data stored in instance store is deleted when you stop or terminate your instance\. If you use instance store for database storage, ensure that you have a cluster with a replication factor that ensures fault tolerance\.
++ Use the instance store available for your instance to store temporary data\. Remember that the data stored in instance store is deleted when you stop, hibernate, or terminate your instance\. If you use instance store for database storage, ensure that you have a cluster with a replication factor that ensures fault tolerance\.
 + Encrypt EBS volumes and snapshots\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
 
 **Resource management**

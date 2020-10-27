@@ -10,7 +10,7 @@ This section includes tips to help you troubleshoot issues based on common messa
 + ["Unable to activate Windows"](#activate-windows)
 + ["Windows is not genuine \(0x80070005\)"](#windows-not-genuine)
 + ["No Terminal Server License Servers available to provide a license"](#no-license-servers)
-+ ["Some settings are managed by your organization" \(Windows Server 2019\)](#some-settings-managed-by-org)
++ ["Some settings are managed by your organization"](#some-settings-managed-by-org)
 
 ## "Password is not available"<a name="password-not-available"></a>
 
@@ -271,20 +271,20 @@ Check for the following issues:
     For more information, see the following Microsoft article: [Access Remote Desktop Via Command Line](https://social.technet.microsoft.com/wiki/contents/articles/4487.access-remote-desktop-via-commandline.aspx)\.
   + Stop the instance, detach its Amazon EBS volumes, and attach them to another instance in the same Availability Zone to recover your data\.
 
-## "Some settings are managed by your organization" \(Windows Server 2019\)<a name="some-settings-managed-by-org"></a>
+## "Some settings are managed by your organization"<a name="some-settings-managed-by-org"></a>
 
-Instances launched from the latest Windows Server 2019 AMIs may show a Windows Update dialog message stating "Some settings are managed by your organization\." This message appears as a result of changes in Windows Server 2019 and does not impact the behavior of Windows Update or your ability to manage update settings\.
+Instances launched from the latest Windows Server AMIs might show a Windows Update dialog message stating "Some settings are managed by your organization\." This message appears as a result of changes in Windows Server and does not impact the behavior of Windows Update or your ability to manage update settings\.
 
-To remove this warning, follow these steps: 
+**To remove the warning**
 
-1. In gpedit\.msc, navigate to **Computer Configuration** > **Administrative Templates** > **Windows Components** > **Windows updates**\. Edit **Configure Automatic Update**, and switch this to **enabled**\.
+1. Open `gpedit.msc` and navigate to **Computer Configuration**, **Administrative Templates**, **Windows Components**, **Windows updates**\. Edit **Configure Automatic Update**, and set it to **enabled**\.
 
-1. In a command prompt, update group policy with **gpupdate /force**\.
+1. In a command prompt, update group policy using gpupdate /force\.
 
-1. Close and reopen the Windows Update Settings\. You will see the above message about your settings being managed by your organization, followed by "We'll automatically download updates, except on metered connections \(where charges may apply\)\. In that case, we'll automatically download those updates required to keep Windows running smoothly\.
+1. Close and reopen the Windows Update Settings\. You will see the above message about your settings being managed by your organization, followed by "We'll automatically download updates, except on metered connections \(where charges may apply\)\. In that case, we'll automatically download those updates required to keep Windows running smoothly\."
 
-1. Return to gpedit\.msc in Step 1 and set the group policy back to **not configured**\. Do another **gpupdate /force**\.
+1. Return to `gpedit.msc` and set the group policy back to **not configured**\. Run gpupdate /force again\.
 
 1. Close the command prompt and wait a few minutes\.
 
-1. Reopen the Windows Update Settings\. No message stating "Some settings are managed by your organization" should appear\.
+1. Reopen the Windows Update Settings\. You should not see the message "Some settings are managed by your organization\."

@@ -83,7 +83,7 @@ The AWS PV driver package should be updated before changing instance families\. 
 
    1. Choose **Apply** to accept the new settings\.
 
-1. To restart the stopped instance, select the instance and choose **Actions**, **Instance state**, **Start instance**\. It can take a few minutes for the instance to enter the `running` state\.
+1. To restart the stopped instance, select the instance and choose **Instance state**, **Start instance**\. It can take a few minutes for the instance to enter the `running` state\.
 
 ------
 #### [ Old console ]
@@ -162,7 +162,7 @@ If the current configuration of your instance is incompatible with the new insta
 
    1. Choose **Associate**\.
 
-1. \(Optional\) You can terminate the original instance if it's no longer needed\. Select the instance and verify that you are about to terminate the original instance, not the new instance \(for example, check the name or launch time\)\. Choose **Actions**, **Instance state**, **Terminate instance**\.
+1. \(Optional\) You can terminate the original instance if it's no longer needed\. Select the instance and verify that you are about to terminate the original instance, not the new instance \(for example, check the name or launch time\)\. Choose **Instance state**, **Terminate instance**\.
 
 ------
 #### [ Old console ]
