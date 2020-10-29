@@ -26,13 +26,13 @@ If your instance is a domain controller, see [Upgrade a Domain Controller \(AWS 
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Choose the instance that requires the driver upgrade, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\.
+1. Select the instance that requires the driver upgrade, choose **Instance state**, and then choose **Stop instance**\.
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
-1. After the instance is stopped, create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
+1. After the instance is stopped, create a backup\. Select the instance, choose **Actions**, then **Image and templates**, and then choose **Create image**\.
 
-1. From the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Start**\.
+1. Choose **Instance State**, and then choose **Start instance**\.
 
 1. Connect to the instance using Remote Desktop and prepare the instance for upgrade\. We recommend that you take all non\-system disks offline and note any drive letter mappings to the secondary disks in Disk Management before you perform this upgrade\. Note that this step is not required if you are performing an in\-place update of AWS PV drivers\. We also recommend setting non\-essential services to **Manual** start\-up in the Services console\.
 
@@ -69,13 +69,13 @@ Use the following procedure on a domain controller to perform either an in\-plac
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Choose the instance that requires the driver upgrade, open the context \(right\-click\) menu, choose **Instance State**, and then choose **Stop**\.
+1. Select the instance that requires the driver upgrade, choose **Instance state**, and then choose **Stop instance**\.
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
-1. After the instance is stopped, create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
+1. After the instance is stopped, create a backup\. Select the instance, choose**Actions**, then **Image and templates**, and then choose **Create image**\.
 
-1. From the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Start**\.
+1. Choose **Instance state**, and then choose **Start instance**\.
 
 1. Run the following command to configure Windows to boot into Directory Services Restore Mode \(DSRM\):
 
@@ -167,7 +167,7 @@ If you do not see the uninstaller dialog box, choose **Red Hat Paravirtualize** 
 
    1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-   1. On the **Instances** page, right\-click your instance and select **Get System Log**\.
+   1. On the **Instances** page, select **Actions**, then **Monitor and troubleshoot**, and then choose **Get system log**\.
 
    1. The upgrade operations should have restarted the server 3 or 4 times\. You can see this in the log file by the number of times `Windows is Ready to use` is displayed\.  
 ![\[Windows system log\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win2008-sys-log.png)

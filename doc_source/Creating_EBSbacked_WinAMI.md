@@ -60,7 +60,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
    + \[Windows Server 2012 R2 and earlier\] Configure settings using EC2Config\. To generate a random password at launch time, enable the `Ec2SetPassword` plugin; otherwise, the current administrator password is used\. For more information, see [EC2Config Settings Files](ec2config-service.md#UsingConfigXML_WinAMI)\.
    + \[Windows Server 2008 R2\] If the instance uses RedHat drivers to access Xen virtualized hardware, upgrade to Citrix drivers before you create an AMI\. For more information, see [Upgrade Windows Server 2008 and 2008 R2 Instances \(Redhat to Citrix PV Upgrade\)](Upgrading_PV_drivers.md#win2008-citrix-upgrade)\.
 
-1. In the navigation pane, choose **Instances** and select your instance\. Choose **Actions**, **Image**, and **Create Image**\.
+1. In the navigation pane, choose **Instances** and select your instance\. Choose **Actions**, **Image and templates**, and **Create image**\.
 **Tip**  
 If this option is disabled, your instance isn't an Amazon EBS\-backed instance\.
 
@@ -235,7 +235,7 @@ Use the following procedure to create a standardized AMI using Sysprep with EC2L
 
 1. Select **Shutdown with Sysprep** or **Shutdown without Sysprep**\.
 
-When you are asked to confirm that you want to run Sysprep and shut down the instance, click **Yes**\. EC2Launch v2 runs Sysprep\. Next, you are logged off the instance, and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `running` to `stopping` to `stopped`\. At this point, it's safe to create an AMI from this instance\.
+When you are asked to confirm that you want to run Sysprep and shut down the instance, click **Yes**\. EC2Launch v2 runs Sysprep\. Next, you are logged off the instance, and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `Running` to `Stopping` to `Stopped`\. At this point, it's safe to create an AMI from this instance\.
 
 You can manually invoke the Sysprep tool from the command line using the following command:
 
@@ -314,7 +314,7 @@ EC2Launch uses the password you specify in the `unattend.xml` file\. If you don'
 
 1. In Windows PowerShell, run `./SysprepInstance.ps1`\. The script is located in the following directory by default: `C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts`\. 
 
-You are logged off the instance and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `running` to `stopping`, and then to `stopped`\. At this point, it is safe to create an AMI from this instance\.
+You are logged off the instance and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `Running` to `Stopping`, and then to `Stopped`\. At this point, it is safe to create an AMI from this instance\.
 
 #### Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI<a name="update-metadata-KMS"></a>
 
@@ -486,7 +486,7 @@ Use the following procedure to create a standardized AMI using Sysprep and the E
 
 1. Choose **OK**\.
 
-When you are asked to confirm that you want to run Sysprep and shut down the instance, click **Yes**\. You'll notice that EC2Config runs Sysprep\. Next, you are logged off the instance, and the instance is shut down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `running` to `stopping`, and then finally to `stopped`\. At this point, it's safe to create an AMI from this instance\.
+When you are asked to confirm that you want to run Sysprep and shut down the instance, click **Yes**\. You'll notice that EC2Config runs Sysprep\. Next, you are logged off the instance, and the instance is shut down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `Running` to `Stopping`, and then finally to `Stopped`\. At this point, it's safe to create an AMI from this instance\.
 
 You can manually invoke the Sysprep tool from the command line using the following command:
 

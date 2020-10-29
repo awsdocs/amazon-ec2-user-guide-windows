@@ -38,11 +38,11 @@ There are two methods for restoring network and storage connectivity to an insta
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Locate the affected instance\. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Stop**\.
+1. Locate the affected instance\. Select the instance and choose **Instance state**, and then choose **Stop instance**\.
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
-1. After the instance is stopped create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
+1. After the instance is stopped, create a backup\. Select the instance and choose **Actions**, then **Image and templates**, and then choose **Create image**\.
 
 1. [Change](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-resize.html) the instance type to any C3 instance type\.
 
@@ -66,11 +66,11 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Locate the affected instance\. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Stop**\.
+1. Locate the affected instance\. Select the instance, choose **Instance state**, and then choose **Stop instance**\.
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
-1. Choose **Launch Instance** and create a temporary Windows Server 2008 or Windows Server 2012 instance in the same Availability Zone as the affected instance\. Do not create a Windows Server 2012 R2 instance\.
+1. Choose **Launch instances** and create a temporary Windows Server 2008 or Windows Server 2012 instance in the same Availability Zone as the affected instance\. Do not create a Windows Server 2012 R2 instance\.
 **Important**  
 If you do not create the instance in the same Availability Zone as the affected instance you will not be able to attach the root volume of the affected instance to the new instance\.
 
@@ -145,13 +145,13 @@ If you are unable to perform an in\-place driver upgrade or migrate to a newer i
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Choose the instance for which you want to run the remediation script\. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Stop**\.
+1. Select the instance for which you want to run the remediation script\. Choose **Instance state**, and then choose **Stop instance**\.
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
-1. After the instance is stopped create a backup\. Open the context \(right\-click\) menu for the instance, choose **Image**, and then choose **Create Image**\.
+1. After the instance is stopped, create a backup\. Select the instance, choose **Actions**, then **Image and templates**, and then choose **Create image**\.
 
-1. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Start**\.
+1. Choose **Instance state**, and then choose **Start instance**\.
 
 1. Connect to the instance by using Remote Desktop and then [download](https://s3.amazonaws.com/ec2-downloads-windows/Scripts/RemediateDriverIssue.zip) the RemediateDriverIssue\.zip folder to the instance\.
 
