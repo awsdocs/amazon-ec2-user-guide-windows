@@ -1,4 +1,4 @@
-# Configuring a Windows Instance Using the EC2Config Service<a name="ec2config-service"></a>
+# Configuring a Windows instance using the EC2Config service<a name="ec2config-service"></a>
 
 The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
@@ -10,18 +10,18 @@ EC2Launch replaced EC2Config on Windows AMIs for Windows Server 2016 and later\.
 EC2Config uses settings files to control its operation\. You can update these settings files using either a graphical tool or by directly editing XML files\. The service binaries and additional files are contained in the `%ProgramFiles%\Amazon\EC2ConfigService` directory\.
 
 **Topics**
-+ [EC2Config Tasks](#UsingConfig_Ovw)
-+ [Installing the Latest Version of EC2Config](UsingConfig_Install.md)
-+ [Stopping, Restarting, Deleting, or Uninstalling EC2Config](#UsingConfig_StopDelete)
++ [EC2Config tasks](#UsingConfig_Ovw)
++ [Installing the latest version of EC2Config](UsingConfig_Install.md)
++ [Stopping, restarting, deleting, or uninstalling EC2Config](#UsingConfig_StopDelete)
 + [EC2Config and AWS Systems Manager](#ec2config-ssm)
 + [EC2Config and Sysprep](#ec2config-sysprep)
-+ [EC2 Service Properties](#UsingConfigInterface_WinAMI)
-+ [EC2Config Settings Files](#UsingConfigXML_WinAMI)
-+ [Configure Proxy Settings for the EC2Config Service](#ec2config-proxy)
-+ [EC2Config Version History](ec2config-version-details.md)
-+ [Troubleshooting Issues with the EC2Config Service](repair-ec2config.md)
++ [EC2 service properties](#UsingConfigInterface_WinAMI)
++ [EC2Config settings files](#UsingConfigXML_WinAMI)
++ [Configure proxy settings for the EC2Config service](#ec2config-proxy)
++ [EC2Config version history](ec2config-version-details.md)
++ [Troubleshooting issues with the EC2Config service](repair-ec2config.md)
 
-## EC2Config Tasks<a name="UsingConfig_Ovw"></a>
+## EC2Config tasks<a name="UsingConfig_Ovw"></a>
 
 EC2Config runs initial startup tasks when the instance is first started and then disables them\. To run these tasks again, you must explicitly enable them prior to shutting down the instance, or by running Sysprep manually\. These tasks are as follows:
 + Set a random, encrypted password for the administrator account\.
@@ -43,7 +43,7 @@ EC2Config performs the following task every time a user logs in:
 While the instance is running, you can request that EC2Config perform the following task on demand:
 + Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep ](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
-## Stopping, Restarting, Deleting, or Uninstalling EC2Config<a name="UsingConfig_StopDelete"></a>
+## Stopping, restarting, deleting, or uninstalling EC2Config<a name="UsingConfig_StopDelete"></a>
 
 You can manage the EC2Config service just as you would any other service\.
 
@@ -101,7 +101,7 @@ The EC2Config service runs Sysprep, a Microsoft tool that enables you to create 
 
 If you create an AMI from an instance after updating its settings, the new settings are applied to any instance that's launched from the new AMI\. For information about creating an AMI, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
-## EC2 Service Properties<a name="UsingConfigInterface_WinAMI"></a>
+## EC2 service properties<a name="UsingConfigInterface_WinAMI"></a>
 
 The following procedure describes how to use the **Ec2 Service Properties** dialog box to enable or disable settings\.
 
@@ -145,7 +145,7 @@ After you specify a drive letter mapping and attach a volume with same label as 
 
 1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep ](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
-## EC2Config Settings Files<a name="UsingConfigXML_WinAMI"></a>
+## EC2Config settings files<a name="UsingConfigXML_WinAMI"></a>
 
 The settings files control the operation of the EC2Config service\. These files are located in the `C:\Program Files\Amazon\Ec2ConfigService\Settings` directory:
 + `ActivationSettings.xml`—Controls product activation using a key management server \(KMS\)\.
@@ -287,16 +287,16 @@ Disables the TRIM command when formatting drives and improves formatting times i
 *DisableInitializeDrives*  
 Disables formatting for new drives\. Use this setting to initialize drives manually\.
 
-## Configure Proxy Settings for the EC2Config Service<a name="ec2config-proxy"></a>
+## Configure proxy settings for the EC2Config service<a name="ec2config-proxy"></a>
 
 You can configure the EC2Config service to communicate through a proxy using one of the following methods: the AWS SDK for \.NET, the `system.net` element, or Microsoft Group Policy and Internet Explorer\. Using the AWS SDK for \.NET is the preferred method because you can specify a user name and password\.
 
 **Topics**
-+ [Configure Proxy Settings Using the AWS SDK for \.NET \(Preferred\)](#sdk-proxy)
-+ [Configure Proxy Settings Using the system\.net Element](#system-proxy)
-+ [Configure Proxy Settings Using Microsoft Group Policy and Microsoft Internet Explorer](#ie-proxy)
++ [Configure proxy settings using the AWS SDK for \.NET \(Preferred\)](#sdk-proxy)
++ [Configure proxy settings using the system\.net element](#system-proxy)
++ [Configure proxy settings using Microsoft Group Policy and Microsoft Internet Explorer](#ie-proxy)
 
-### Configure Proxy Settings Using the AWS SDK for \.NET \(Preferred\)<a name="sdk-proxy"></a>
+### Configure proxy settings using the AWS SDK for \.NET \(Preferred\)<a name="sdk-proxy"></a>
 
 You can configure proxy settings for the EC2Config service by specifying the `proxy` element in the `Ec2Config.exe.config` file\. For more information, see [Configuration Files Reference for AWS SDK for \.NET](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-ref.html#net-dg-config-ref-elements-proxy)\.
 
@@ -336,7 +336,7 @@ You can configure proxy settings for the EC2Config service by specifying the `pr
 
 1. Save your changes\.
 
-### Configure Proxy Settings Using the system\.net Element<a name="system-proxy"></a>
+### Configure proxy settings using the system\.net element<a name="system-proxy"></a>
 
 You can specify proxy settings in a `system.net` element in the `Ec2Config.exe.config` file\. For more information, see [defaultProxy Element \(Network Settings\)](https://msdn.microsoft.com/en-us/library/kd3cf2ex.aspx) on MSDN\.
 
@@ -361,7 +361,7 @@ You can specify proxy settings in a `system.net` element in the `Ec2Config.exe.c
 
 1. Save your changes\.
 
-### Configure Proxy Settings Using Microsoft Group Policy and Microsoft Internet Explorer<a name="ie-proxy"></a>
+### Configure proxy settings using Microsoft Group Policy and Microsoft Internet Explorer<a name="ie-proxy"></a>
 
 The EC2Config service runs under the Local System user account\. You can specify instance\-wide proxy settings for this account in Internet Explorer after you change Group Policy settings on the instance\.
 

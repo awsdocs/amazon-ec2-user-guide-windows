@@ -1,11 +1,11 @@
-# Troubleshooting PV Drivers<a name="pvdrivers-troubleshooting"></a>
+# Troubleshooting PV drivers<a name="pvdrivers-troubleshooting"></a>
 
 The following are solutions to issues that you might encounter with older Amazon EC2 images and PV drivers\.
 
 **Topics**
 + [Windows Server 2012 R2 loses network and storage connectivity after an instance reboot](#server2012R2-instance-unavailable)
-+ [TCP Offloading](#citrix-tcp-offloading)
-+ [Time Synchronization](#citrix-time-sync)
++ [TCP offloading](#citrix-tcp-offloading)
++ [Time synchronization](#citrix-time-sync)
 
 ## Windows Server 2012 R2 loses network and storage connectivity after an instance reboot<a name="server2012R2-instance-unavailable"></a>
 
@@ -17,12 +17,12 @@ Windows Server 2012 R2 Amazon Machine Images \(AMIs\) made available before Sept
 For systems that you suspect could be affected by this issue, you can download and run an in\-place driver upgrade\. If you are unable to perform the in\-place driver upgrade, you can run a helper script\. The script determines if your instance is affected\. If it is affected, and the Amazon EC2 network device has not been removed, the script disables the Plug and Play Cleanup scan\. If the network device was removed, the script repairs the device, disables the Plug and Play Cleanup scan, and enables your instance to reboot with network connectivity enabled\.
 
 **Topics**
-+ [Choose How You Want to Fix This Problem](#choose-fix)
-+ [Method 1 \- Enhanced Networking](#plug-n-play-fix-method1)
++ [Choose how to fix problems](#choose-fix)
++ [Method 1 \- Enhanced networking](#plug-n-play-fix-method1)
 + [Method 2 \- Registry configuration](#plug-n-play-fix-method2)
-+ [Run the Remediation Script](#plug-n-play-script)
++ [Run the remediation script](#plug-n-play-script)
 
-### Choose How You Want to Fix This Problem<a name="choose-fix"></a>
+### Choose how to fix problems<a name="choose-fix"></a>
 
 There are two methods for restoring network and storage connectivity to an instance affected by this issue\. Choose one of the following methods:
 
@@ -32,7 +32,7 @@ There are two methods for restoring network and storage connectivity to an insta
 | Method 1 \- Enhanced networking | Enhanced networking is only available in a virtual private cloud \(VPC\) which requires a C3 instance type\. If the server does not currently use the C3 instance type, then you must temporarily change it\. | You change the server instance type to a C3 instance\. Enhanced networking then enables you to connect to the affected instance and fix the problem\. After you fix the problem, you change the instance back to the original instance type\. This method is typically faster than Method 2 and less likely to result in user error\. You will incur additional charges as long as the C3 instance is running\. | 
 | Method 2 \- Registry configuration | Ability to create or access a second server\. Ability to change Registry settings\. | You detach the root volume from the affected instance, attach it to a different instance, connect, and make changes in the Registry\. You will incur additional charges as long as the additional server is running\. This method is slower than Method 1, but this method has worked in situations where Method 1 failed to resolve the problem\. | 
 
-### Method 1 \- Enhanced Networking<a name="plug-n-play-fix-method1"></a>
+### Method 1 \- Enhanced networking<a name="plug-n-play-fix-method1"></a>
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -54,7 +54,7 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 
    After running the MSI, the instance automatically reboots and then upgrades the drivers\. The instance will not be available for up to 15 minutes\. 
 
-1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new drivers were installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history)\.
+1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new drivers were installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV driver package history](xen-drivers-overview.md#pv-driver-history)\.
 
 1. Stop the instance and change the instance back to its original instance type\.
 
@@ -131,11 +131,11 @@ If you do not create the instance in the same Availability Zone as the affected 
 
    After running the MSI, the instance automatically reboots and then upgrades the drivers\. The instance will not be available for up to 15 minutes\. 
 
-1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new drivers were installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history)\.
+1. After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new drivers were installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV driver package history](xen-drivers-overview.md#pv-driver-history)\.
 
 1. Delete or stop the temporary instance you created in this procedure\.
 
-### Run the Remediation Script<a name="plug-n-play-script"></a>
+### Run the remediation script<a name="plug-n-play-script"></a>
 
 If you are unable to perform an in\-place driver upgrade or migrate to a newer instance you can run the remediation script to fix the problems caused by the Plug and Play Cleanup task\.
 
@@ -159,7 +159,7 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 
 1. Run the remediation script according to the instructions in the Readme\.txt file\. The file is located in the folder where you extracted RemediateDriverIssue\.zip\.
 
-## TCP Offloading<a name="citrix-tcp-offloading"></a>
+## TCP offloading<a name="citrix-tcp-offloading"></a>
 
 **Important**  
 This issue does not apply to instances running AWS PV or Intel network drivers\.
@@ -199,8 +199,8 @@ Disabling TCP offloading may reduce the network performance of your instance\.
 
 1. Reboot the instance\.
 
-## Time Synchronization<a name="citrix-time-sync"></a>
+## Time synchronization<a name="citrix-time-sync"></a>
 
 Prior to the release of the 2013\.02\.13 Windows AMI, the Citrix Xen guest agent could set the system time incorrectly\. This can cause your DHCP lease to expire\. If you have issues connecting to your instance, you might need to update the agent\.
 
-To determine whether you have the updated Citrix Xen guest agent, check whether the `C:\Program Files\Citrix\XenGuestAgent.exe` file is from March 2013\. If the date on this file is earlier than that, update the Citrix Xen guest agent service\. For more information, see [Upgrade Your Citrix Xen Guest Agent Service](Upgrading_PV_drivers.md#citrix-pv-guest-agent-upgrade)\.
+To determine whether you have the updated Citrix Xen guest agent, check whether the `C:\Program Files\Citrix\XenGuestAgent.exe` file is from March 2013\. If the date on this file is earlier than that, update the Citrix Xen guest agent service\. For more information, see [Upgrade your Citrix Xen guest agent service](Upgrading_PV_drivers.md#citrix-pv-guest-agent-upgrade)\.

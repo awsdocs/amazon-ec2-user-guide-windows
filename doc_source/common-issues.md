@@ -60,7 +60,7 @@ How you enable DSRM and boot into the instance depends on the drivers the instan
 | AWS PV 7\.2\.2 and later | Yes | Detach the root volume, attach it to another instance, and enable DSRM \(as described in this section\)\. | 
 | Enhanced Networking | Yes | Detach the root volume, attach it to another instance, and enable DSRM \(as described in this section\)\. | 
 
-For information about how to enable Enhanced Networking, see [Enabling Enhanced Networking on Windows Instances in a VPC](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking.html)\. For more information about upgrading AWS PV drivers, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
+For information about how to enable Enhanced Networking, see [Enabling Enhanced Networking on Windows Instances in a VPC](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking.html)\. For more information about upgrading AWS PV drivers, see [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
 
 ### Configure an instance to boot into DSRM<a name="configure-boot-dsrm"></a>
 
@@ -133,17 +133,17 @@ To use a time zone other than UTC persistently, you must set the **RealTimeIsUni
 
 **To resolve time issues that cause a loss of network connectivity**
 
-1. Ensure that you are running the recommended PV drivers\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
+1. Ensure that you are running the recommended PV drivers\. For more information, see [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
 
 1. Verify that the following registry key exists and is set to `1`: **HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\TimeZoneInformation\\RealTimeIsUniversal**
 
 ## Unable to get console output<a name="no-console-output"></a>
 
-For Windows instances, the instance console displays the output from tasks performed during the Windows boot process\. If Windows boots successfully, the last message logged is `Windows is Ready to use`\. Note that you can also display event log messages in the console, but this feature is not enabled by default\. For more information, see [EC2 Service Properties](ec2config-service.md#UsingConfigInterface_WinAMI)\.
+For Windows instances, the instance console displays the output from tasks performed during the Windows boot process\. If Windows boots successfully, the last message logged is `Windows is Ready to use`\. Note that you can also display event log messages in the console, but this feature is not enabled by default\. For more information, see [EC2 service properties](ec2config-service.md#UsingConfigInterface_WinAMI)\.
 
-To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, **Instance Settings**, and then **Get System Log**\. To get the console output using the command line, use one of the following commands: [get\-console\-output](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-output.html) \(AWS CLI\) or [Get\-EC2ConsoleOutput](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ConsoleOutput.html) \(AWS Tools for Windows PowerShell\)\.
+To get the console output for your instance using the Amazon EC2 console, select the instance, and then choose **Actions**, **Monitor and troubleshoot**, **Get system log**\. To get the console output using the command line, use one of the following commands: [get\-console\-output](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-output.html) \(AWS CLI\) or [Get\-EC2ConsoleOutput](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ConsoleOutput.html) \(AWS Tools for Windows PowerShell\)\.
 
-For instances running Windows Server 2012 R2 and earlier, if the console output is empty, it could indicate an issue with the EC2Config service, such as a misconfigured configuration file, or that Windows failed to boot properly\. To fix the issue, download and install the latest version of EC2Config\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
+For instances running Windows Server 2012 R2 and earlier, if the console output is empty, it could indicate an issue with the EC2Config service, such as a misconfigured configuration file, or that Windows failed to boot properly\. To fix the issue, download and install the latest version of EC2Config\. For more information, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\.
 
 ## Windows Server 2012 R2 not available on the network<a name="server-2012-network-loss"></a>
 

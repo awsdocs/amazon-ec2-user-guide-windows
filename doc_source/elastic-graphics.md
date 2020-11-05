@@ -57,7 +57,7 @@ By default, the default security group for your VPC is associated with the Elast
 
 You are charged for each second that an Elastic Graphics accelerator is attached to an instance in the `running` state when the accelerator is in the `Ok` state\. You are not charged for an accelerator attached to an instance that is in the `pending`, `stopping`, `stopped`, `shutting-down`, or `terminated` state\. You are also not charged when an accelerator is in the `Unknown` or `Impaired` state\.
 
-Pricing for accelerators is available at On\-Demand rates only\. You can attach an accelerator to a Reserved, Scheduled, or Spot Instance\. The On\-Demand price for the accelerator applies in all cases\.
+Pricing for accelerators is available at On\-Demand rates only\. You can attach an accelerator to a Reserved Instance or Spot Instance, however, the On\-Demand price for the accelerator applies\.
 
 For more information, see [Amazon Elastic Graphics Pricing](https://aws.amazon.com/ec2/elastic-graphics/pricing/)\.
 

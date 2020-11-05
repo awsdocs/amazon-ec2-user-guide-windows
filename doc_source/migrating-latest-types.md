@@ -42,9 +42,9 @@ Parts 4 and 5 of these instructions can be completed after you migrate or change
 
 Though AWS PV drivers are not used in the Nitro system, you should still upgrade them if you are on previous versions of either Citrix PV or AWS PV\. The latest AWS PV drivers resolve bugs in previous versions of the drivers that may appear while you are on a Nitro system, or if you need to migrate back to a Xen\-based instance\. As a best practice, we recommend always updating to the latest drivers for Windows instances on AWS\. 
 
-Use the following procedure to perform an in\-place upgrade of AWS PV drivers, or to upgrade from Citrix PV drivers to AWS PV drivers on Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\. 
+Use the following procedure to perform an in\-place upgrade of AWS PV drivers, or to upgrade from Citrix PV drivers to AWS PV drivers on Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019\. For more information, see [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)\. 
 
-To upgrade a Domain Controller, see [Upgrade a Domain Controller \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade-dc)\.
+To upgrade a Domain Controller, see [Upgrade a domain controller \(AWS PV upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade-dc)\.
 
 **To perform an upgrade of or to AWS PV drivers**
 
@@ -56,7 +56,7 @@ To upgrade a Domain Controller, see [Upgrade a Domain Controller \(AWS PV Upgrad
 
 After running the MSI, the instance automatically reboots and upgrades the driver\. The instance may not be available for up to 15 minutes\. 
 
-After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV Driver Package History](xen-drivers-overview.md#pv-driver-history)\. 
+After the upgrade is complete and the instance passes both health checks in the Amazon EC2 console, connect to the instance using Remote Desktop and verify that the new driver was installed\. In Device Manager, under **Storage Controllers**, locate **AWS PV Storage Host Adapter**\. Verify that the driver version is the same as the latest version listed in the Driver Version History table\. For more information, see [AWS PV driver package history](xen-drivers-overview.md#pv-driver-history)\. 
 
 ## Part 2: Installing and upgrading ENA<a name="upgrade-ena"></a>
 
@@ -106,7 +106,7 @@ When the EC2Config and EC2Launch services are updated, new Windows AMIs from AWS
 
 1. Run `EC2Install.exe`\. For a complete list of options, run `EC2Install` with the `/?` option\. By default, setup displays prompts\. To run the command with no prompts, use the `/quiet` option\.
 
-For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
+For more information, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\.
 
 **To install or update EC2Launch**
 
@@ -173,7 +173,7 @@ The `AWSSupport-UpgradeWindowsAWSDrivers` automation document automates the step
 The `AWSSupport-UpgradeWindowsAWSDrivers` automation document upgrades or repairs storage and network AWS drivers on the specified EC2 instance\. The document attempts to install the latest versions of AWS drivers online by calling the AWS Systems Manager Agent \(SSM Agent\)\. If SSM Agent is not contactable, the document can perform an offline installation of the AWS drivers if explicitly requested\.
 
 **Note**  
-This procedure will fail on a domain controller\. To update drivers on a domain controller, see [Upgrade a Domain Controller \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade-dc)\.
+This procedure will fail on a domain controller\. To update drivers on a domain controller, see [Upgrade a domain controller \(AWS PV upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade-dc)\.
 
 **To automatically upgrade the AWS PV, ENA, and NVMe drivers using AWS Systems Manager**
 

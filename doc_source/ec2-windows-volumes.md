@@ -1,14 +1,14 @@
 # Mapping disks to volumes on your Windows instance<a name="ec2-windows-volumes"></a>
 
-Your Windows instance comes with an EBS volume that serves as the root volume\. If your Windows instance uses AWS PV or Citrix PV drivers, you can optionally add up to 25 volumes, making a total of 26 volumes\. For more information, see [Instance volume limits](volume_limits.md)
+Your Windows instance comes with an EBS volume that serves as the root volume\. If your Windows instance uses AWS PV or Citrix PV drivers, you can optionally add up to 25 volumes, making a total of 26 volumes\. For more information, see [Instance volume limits](volume_limits.md)\.
 
 Depending on the instance type of your instance, you'll have from 0 to 24 possible instance store volumes available to the instance\. To use any of the instance store volumes that are available to your instance, you must specify them when you create your AMI or launch your instance\. You can also add EBS volumes when you create your AMI or launch your instance, or attach them while your instance is running\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 
-When you add a volume to your instance, you specify the device name that Amazon EC2 uses\. For more information, see [Device naming on Windows instances](device_naming.md)\. AWS Windows Amazon Machine Images \(AMIs\) contain a set of drivers that are used by Amazon EC2 to map instance store and EBS volumes to Windows disks and drive letters\. If you launch an instance from a Windows AMI that uses AWS PV or Citrix PV drivers, you can use the relationships described on this page to map your Windows disks to your instance store and EBS volumes\. If your Windows AMI uses Red Hat PV drivers, you can update your instance to use the Citrix drivers\. For more information, see [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)\.
+When you add a volume to your instance, you specify the device name that Amazon EC2 uses\. For more information, see [Device naming on Windows instances](device_naming.md)\. AWS Windows Amazon Machine Images \(AMIs\) contain a set of drivers that are used by Amazon EC2 to map instance store and EBS volumes to Windows disks and drive letters\. If you launch an instance from a Windows AMI that uses AWS PV or Citrix PV drivers, you can use the relationships described on this page to map your Windows disks to your instance store and EBS volumes\. If your Windows AMI uses Red Hat PV drivers, you can update your instance to use the Citrix drivers\. For more information, see [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
 
 **Topics**
 + [Listing the disks using Windows Disk Management](#windows-disks)
-+ [Listing the disks using Windows PowerShell \(Windows Server 2012 and later\)](#windows-list-disks)
++ [Listing the disks using Windows PowerShell](#windows-list-disks)
 + [Disk device to device name mapping](#windows-volume-mapping)
 
 ## Listing the disks using Windows Disk Management<a name="windows-disks"></a>
@@ -31,19 +31,30 @@ You can find the disks on your Windows instance using Windows Disk Management\.
 1. Right\-click the gray pane labeled Disk 1, and then select **Properties**\. Note the value of **Location** and look it up in the tables in [Disk device to device name mapping](#windows-volume-mapping)\. For example, the following disk has the location Bus Number 0, Target Id 9, LUN 0\. According to the table for EBS volumes, the device name for this location is `xvdj`\.  
 ![\[The location of an EBS volume.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/disk_1_location.png)
 
-1. To map the device name of an EBS volume to its volume ID, open the Amazon EC2 console on your computer\. In the navigation pane, select **Instances**, and then select your instance\. Under **Block devices** on the **Description** tab, click the device name, and locate **EBS ID**\. For this example, the volume ID is `vol-0a07f3e37b14708b9`\.  
+1. To map the device name of an EBS volume to its volume ID, open the Amazon EC2 console on your computer\. In the navigation pane, select **Instances**, and then select your instance\. Under **Block devices** on the **Storage** tab, locate **Volume ID**\. For this example, the volume ID is `vol-0a07f3e37b14708b9`\.  
 ![\[Display the block device mapping in the Amazon EC2 console.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/block_devices.png)
 
    Note that the Amazon EC2 console shows only the EBS volumes\.
 
    Another way to access volume IDs from the console is to select **Volumes** under **Elastic Block Store** in the navigation pane\. Volumes will be listed by instance name and volume size\. Review or select the **Attachment Information** to verify the instance to which the volume is attached\. 
 
-## Listing the disks using Windows PowerShell \(Windows Server 2012 and later\)<a name="windows-list-disks"></a>
+## Listing the disks using Windows PowerShell<a name="windows-list-disks"></a>
 
 The following PowerShell script lists each disk and its corresponding device name and volume\. 
 
-**Note**  
-The following script will not return information for dynamic disks\.
+**Requirements and limitations**
++ Requires Windows Server 2012 or later\.
++ Requires credentials to get the EBS volume ID\. You can configure a profile using the Tools for PowerShell, or attach an IAM role to the instance\.
++ Does not support NVMe volumes\.
++ Does not support dynamic disks\.
+
+Connect to your Windows instance and run the following command to enable PowerShell script execution\.
+
+```
+Set-ExecutionPolicy RemoteSigned
+```
+
+Copy the following script and save it as `mapping.ps1` on your Windows instance\.
 
 ```
 # List the Windows disks
@@ -133,27 +144,24 @@ Get-disk | ForEach-Object {
 } | Sort-Object Disk | Format-Table -AutoSize -Property Disk, Partitions, DriveLetter, EbsVolumeId, Device, VirtualDevice, VolumeName
 ```
 
-**Note**  
-This script requires a profile configured in the AWS Tools for PS, or an IAM role attached to the instance\.
-
-Before you run this script, be sure to run the following command to enable PowerShell script execution\.
+Run the script as follows:
 
 ```
-Set-ExecutionPolicy RemoteSigned
+PS C:\> .\mapping.ps1
 ```
 
-Copy the script and save it as a `.ps1` file on the Windows instance\. If you run the script without setting your access keys, you'll see output similar to the following\.
+The following is example output\.
 
 ```
 Disk Partitions DriveLetter EbsVolumeId           Device    VirtualDevice VolumeName
 ---- ---------- ----------- -----------           ------    ------------- ----------
-   0          0 N/A         N/A                   xvdca     ephemeral0    N/A
-   1          0 N/A         N/A                   xvdcb     ephemeral1    N/A
-   2          1 C:          vol-0064aexamplec838a /dev/sda1 root          Windows
-   3          0 N/A         vol-02256example8a4a3 xvdf      ebs2          N/A
+   0          1 Z           N/A                   xvdca     ephemeral0    N/A
+   1          1 Y           N/A                   xvdcb     ephemeral1    N/A
+   2          2 C           vol-0064aexamplec838a /dev/sda1 root          Windows
+   3          1 D           vol-02256example8a4a3 xvdf      ebs2          N/A
 ```
 
-If you specified an IAM role with a policy that allows access to Amazon EC2 when you launched the instance, or if you set up your credentials on the Windows instance as described in [Using AWS Credentials](https://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html) in the *AWS Tools for Windows PowerShell User Guide*, you'll get the volume ID for the EBS volumes in the `VolumeId` column instead of `NA`\.
+If you did not provide your credentials on the Windows instance, the script cannot get the EBS volume ID and uses N/A in the `EbsVolumeId` column\.
 
 ## Disk device to device name mapping<a name="windows-volume-mapping"></a>
 

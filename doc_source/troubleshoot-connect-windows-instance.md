@@ -120,7 +120,7 @@ Download the Microsoft Remote Desktop app from the Mac App Store and use the app
 ## RDP displays a black screen instead of the desktop<a name="rdp-black-screen"></a>
 
 Try the following to resolve this issue:
-+ Check the console output for additional information\. To get the console output for your instance using the Amazon EC2 console, select the instance, choose **Actions**, select **Instance Settings**, and then choose **Get System Log**\.
++ Check the console output for additional information\. To get the console output for your instance using the Amazon EC2 console, select the instance, and then choose **Actions**, **Monitor and troubleshoot**, **Get system log**\.
 + Verify that you are running the latest version of your RDP client\.
 + Try the default settings for the RDP client\. For more information, see [Remote Session Environment](http://technet.microsoft.com/en-us/library/cc772398.aspx)\.
 + If you are using Remote Desktop Connection, try starting it with the `/admin` option as follows\.

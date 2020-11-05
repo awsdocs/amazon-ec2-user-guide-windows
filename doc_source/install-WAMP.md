@@ -37,7 +37,7 @@ There are many third\-party solutions that you can use to install a WAMP stack; 
    1. Make a note to re\-enable Internet Explorer Enhanced Security Configuration when you have finished installing software from the web\.
 
 1. Install software updates to ensure that the instance has the latest security updates and bug fixes\.
-   + **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
+   + **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\.
    + **Windows Update** \- Run Windows Update to ensure that the latest security and software updates are installed on the instance\. In Control Panel, click **System and Security**\. In the **Windows Update** section, click **Check for updates**\.
 
 1. Download and install the WAMP stack\. For the purposes of this tutorial, we suggest that you download and install [this WAMP stack](https://bitnami.com/stack/wamp)\. You can, however, download and install other Bitnami WAMP stacks\. Regardless of which stack you install, the Bitnami site prompts you to either create a free Bitnami account or log in by using a social media account\. After you log in, run the Bitnami setup wizard\.

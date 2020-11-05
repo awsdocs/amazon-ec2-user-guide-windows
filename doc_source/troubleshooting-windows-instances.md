@@ -15,4 +15,4 @@ The following procedures and tips can help you troubleshoot problems with your A
 + [Common issues with Windows instances](common-issues.md)
 + [Common messages troubleshooting Windows instances](common-messages.md)
 
-To get additional information for troubleshooting problems with your instance, use [Using EC2Rescue for Windows Server](Windows-Server-EC2Rescue.md)\. For information about troubleshooting issues with PV drivers, see [Troubleshooting PV Drivers](pvdrivers-troubleshooting.md)\.
+To get additional information for troubleshooting problems with your instance, use [Using EC2Rescue for Windows Server](Windows-Server-EC2Rescue.md)\. For information about troubleshooting issues with PV drivers, see [Troubleshooting PV drivers](pvdrivers-troubleshooting.md)\.

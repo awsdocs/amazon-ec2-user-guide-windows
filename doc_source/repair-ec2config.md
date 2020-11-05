@@ -1,8 +1,8 @@
-# Troubleshooting Issues with the EC2Config Service<a name="repair-ec2config"></a>
+# Troubleshooting issues with the EC2Config service<a name="repair-ec2config"></a>
 
 The following information can help you troubleshoot issues with the EC2Config service\.
 
-## Update EC2Config on an Unreachable Instance<a name="repair-stopped-w2k3"></a>
+## Update EC2Config on an unreachable instance<a name="repair-stopped-w2k3"></a>
 
 Use the following procedure to update the EC2Config service on a Windows Server instance that is inaccessible using Remote Desktop\.
 
@@ -12,11 +12,11 @@ Use the following procedure to update the EC2Config service on a Windows Server 
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Locate the affected instance\. Open the context \(right\-click\) menu for the instance, choose **Instance State**, and then choose **Stop**\.
+1. Locate the affected instance\. Select the instance and choose **Instance state**, and then choose **Stop instance**\.
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
-1. Choose **Launch Instance** and create a temporary `t2.micro` instance in the same Availability Zone as the affected instance\. Use a different AMI than the one that you used to launch the affected instance\.
+1. Choose **Launch instances** and create a temporary `t2.micro` instance in the same Availability Zone as the affected instance\. Use a different AMI than the one that you used to launch the affected instance\.
 **Important**  
 If you do not create the instance in the same Availability Zone as the affected instance you will not be able to attach the root volume of the affected instance to the new instance\.
 

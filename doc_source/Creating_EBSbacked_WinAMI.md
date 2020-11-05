@@ -57,8 +57,8 @@ You can create an AMI using the AWS Management Console or the command line\. The
 
      If you are sharing your AMI, these credentials can be supplied for RDP access without disclosing your default administrator password\.
    + \[Windows Server 2016 and later\] Configure settings using EC2Launch\. To generate a random password at launch time, use the `adminPasswordType` setting\. For more information, see [Configuring EC2Launch](ec2launch.md#ec2launch-config)\.
-   + \[Windows Server 2012 R2 and earlier\] Configure settings using EC2Config\. To generate a random password at launch time, enable the `Ec2SetPassword` plugin; otherwise, the current administrator password is used\. For more information, see [EC2Config Settings Files](ec2config-service.md#UsingConfigXML_WinAMI)\.
-   + \[Windows Server 2008 R2\] If the instance uses RedHat drivers to access Xen virtualized hardware, upgrade to Citrix drivers before you create an AMI\. For more information, see [Upgrade Windows Server 2008 and 2008 R2 Instances \(Redhat to Citrix PV Upgrade\)](Upgrading_PV_drivers.md#win2008-citrix-upgrade)\.
+   + \[Windows Server 2012 R2 and earlier\] Configure settings using EC2Config\. To generate a random password at launch time, enable the `Ec2SetPassword` plugin; otherwise, the current administrator password is used\. For more information, see [EC2Config settings files](ec2config-service.md#UsingConfigXML_WinAMI)\.
+   + \[Windows Server 2008 R2\] If the instance uses RedHat drivers to access Xen virtualized hardware, upgrade to Citrix drivers before you create an AMI\. For more information, see [Upgrade Windows Server 2008 and 2008 R2 instances \(Redhat to Citrix PV upgrade\)](Upgrading_PV_drivers.md#win2008-citrix-upgrade)\.
 
 1. In the navigation pane, choose **Instances** and select your instance\. Choose **Actions**, **Image and templates**, and **Create image**\.
 **Tip**  
@@ -459,7 +459,7 @@ EC2Config then performs the following actions:
    + UserData
    + AWS Systems Manager \(Systems Manager\) 
 
-For more information about Windows plug\-ins, see [Configuring a Windows Instance Using the EC2Config Service](ec2config-service.md)\.
+For more information about Windows plug\-ins, see [Configuring a Windows instance using the EC2Config service](ec2config-service.md)\.
 
 #### Run Sysprep with the EC2Config service<a name="sysprep-gui-procedure"></a>
 
@@ -497,4 +497,4 @@ You can manually invoke the Sysprep tool from the command line using the followi
 **Note**  
 The double quotation marks in the command are not required if your CMD shell is already in the C:\\Program Files\\Amazon\\EC2ConfigService\\ directory\.
 
-However, you must be very careful that the XML file options specified in the `Ec2ConfigService\Settings` folder are correct; otherwise, you might not be able to connect to the instance\. For more information about the settings files, see [EC2Config Settings Files](ec2config-service.md#UsingConfigXML_WinAMI)\. For an example of configuring and then running Sysprep from the command line, see `Ec2ConfigService\Scripts\InstallUpdates.ps1`\.
+However, you must be very careful that the XML file options specified in the `Ec2ConfigService\Settings` folder are correct; otherwise, you might not be able to connect to the instance\. For more information about the settings files, see [EC2Config settings files](ec2config-service.md#UsingConfigXML_WinAMI)\. For an example of configuring and then running Sysprep from the command line, see `Ec2ConfigService\Scripts\InstallUpdates.ps1`\.

@@ -216,17 +216,17 @@ You can view the instance user data for any instance, and you can update the ins
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Instances**\. the instance\.
+1. In the navigation pane, choose **Instances**\.
 
-1. Select the instance and choose **Actions**, **Instance State**, **Stop**\.
+1. Select the instance and choose **Actions**, **Instance state**, **Stop instance**\.
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
 
-1. When prompted for confirmation, choose **Yes, Stop**\. It can take a few minutes for the instance to stop\.
+1. When prompted for confirmation, choose **Stop**\. It can take a few minutes for the instance to stop\.
 
-1. With the instance still selected, choose **Actions**, **Instance Settings**, **View/Change User Data**\. You can't change the user data if the instance is running, but you can view it\.
+1. With the instance still selected, choose **Actions**, **Instance settings**, **Edit user data**\. You can't change the user data if the instance is running, but you can view it\.
 
-1. In the **View/Change User Data** dialog box, update the user data, and then choose **Save**\. To execute user data scripts every time you reboot or start the instance, add `<persist>true</persist>`, as shown in the following example:  
+1. In the **Edit user data** dialog box, update the user data, and then choose **Save**\. To execute user data scripts every time you reboot or start the instance, add `<persist>true</persist>`, as shown in the following example:  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/view-change-user-data.png)
 
 1. Start the instance\. If you enabled user data execution for subsequent reboots or starts, the updated user data scripts are executed as part of the instance start process\.

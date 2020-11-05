@@ -25,9 +25,9 @@ Before you attempt to reset the administrator password, verify that the EC2Confi
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Instances** and then choose the instance that needs a password reset\. This instance is referred to as the *original* instance in this procedure\.
+1. In the navigation pane, choose **Instances** and then select the instance that requires a password reset\. This instance is referred to as the *original* instance in this procedure\.
 
-1. Choose **Actions**, **Instance Settings**, **Get System Log**\.
+1. Choose **Actions**, **Monitor and troubleshoot**, **Get system log**\.
 
 1. Locate the EC2 Agent entry, for example, **EC2 Agent: Ec2Config service v3\.18\.1118**\. If you see this entry, the EC2Config service is running\.
 
@@ -43,7 +43,7 @@ You can't use EC2Config to reset an administrator password if the volume on whic
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Select the instance that needs a password reset and choose **Actions**, **Instance State**, **Stop**\. After the instance's status changes to **stopped**, continue with the next step\.
+1. Select the instance that requires a password reset and choose **Actions**, **Instance state**, **Stop instance**\. After the status of the instance changes to **Stopped**, continue with the next step\.
 
 1. \(Optional\) If you have the private key that you specified when you launched this instance, continue with the next step\. Otherwise, use the following steps to replace the instance with a new instance that you launch with a new key pair\.
 
@@ -51,9 +51,9 @@ You can't use EC2Config to reset an administrator password if the volume on whic
 
    1. Select the instance to replace\. Note the instance type, VPC, subnet, security group, and IAM role of the instance\.
 
-   1. Choose **Actions**, **Image**, **Create Image**\. Type a name and a description for the image and choose **Create Image**, **View pending image**\. After the image status changes to **available**, continue to the next step\.
+   1. Choose **Actions**, **Image and templates**, **Create image**\. Type a name and a description for the image and choose **Create image**\. In the navigation pane, choose **AMIs**\. After the image status changes to **available**, continue to the next step\.
 
-   1. Select the image and choose **Launch**\.
+   1. Select the image and choose **Actions**, and then **Launch**\.
 
    1. Complete the wizard, selecting the same instance type, VPC, subnet, security group, and IAM role as the instance to replace, and then choose **Launch**\.
 
@@ -79,7 +79,7 @@ Next, launch a temporary instance and attach the volume to it as a secondary vol
 
 1. Launch the temporary instance as follows:
 
-   1. In the navigation pane, choose **Instances**, choose **Launch Instance**, and then select an AMI\.
+   1. In the navigation pane, choose **Instances**, choose **Launch instances**, and then select an AMI\.
 **Important**  
 To avoid disk signature collisions, you must select an AMI for a different version of Windows\. For example, if the original instance runs Windows Server 2012 R2, launch the temporary instance using the base AMI for Windows Server 2008 R2\.
 
@@ -140,10 +140,10 @@ After you have modified the configuration file, reattach the volume to the origi
 
    1. Choose **Attach**\. After the volume status changes to `in-use`, continue to the next step\.
 
-1. In the navigation pane, choose **Instances**\. Select the original instance and choose **Actions**, **Instance State**, **Start**\. When prompted for confirmation, choose **Yes, Start**\. After the instance state changes to `running`, continue to the next step\.
+1. In the navigation pane, choose **Instances**\. Select the original instance and choose **Instance state**, **Start instance**\. After the instance state changes to `Running`, continue to the next step\.
 
 1. Retrieve your new Windows administrator password using the private key for the new key pair and connect to the instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 **Important**  
 The instance gets a new public IP address after you stop and start it\. Make sure to connect to the instance using its current public DNS name\. For more information, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
 
-1. \(Optional\) If you have no further use for the temporary instance, you can terminate it\. Select the temporary instance, and choose **Actions**, **Instance State**, **Terminate**\.
+1. \(Optional\) If you have no further use for the temporary instance, you can terminate it\. Select the temporary instance, and choose **Instance State**, **Terminate instanve**\.

@@ -81,7 +81,7 @@ After you have set up static IP addressing on your Windows instance, you are rea
 
 1. In the navigation pane, choose **Instances** and select your instance\.
 
-1. On the **Description** tab, note the secondary IP address\.
+1. On the **Networking**, note the secondary IP address\.
 
 1. Connect to your instance\.
 

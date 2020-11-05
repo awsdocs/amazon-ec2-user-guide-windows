@@ -39,9 +39,9 @@ You can get screenshots of an instance while it is running or after it has crash
 
 1. Select the instance to capture\.
 
-1. Choose **Actions**, **Instance Settings**\.
+1. Choose **Actions**, **Monitor and troubleshoot**, **Get instance screenshot**\.
 
-1. Choose **Get Instance Screenshot**\. Right\-click the image to download and save it\.
+1. Choose **Download**, or right\-click the image to download and save it\.
 
 **To get a screenshot of a running instance using the command line**
 

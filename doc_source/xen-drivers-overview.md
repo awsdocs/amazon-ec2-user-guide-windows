@@ -1,4 +1,4 @@
-# Paravirtual Drivers for Windows Instances<a name="xen-drivers-overview"></a>
+# Paravirtual drivers for Windows instances<a name="xen-drivers-overview"></a>
 
 Windows AMIs contain a set of drivers to permit access to virtualized hardware\. These drivers are used by Amazon EC2 to map instance store and Amazon EBS volumes to their devices\. The following table shows key differences between the different drivers\.
 
@@ -10,6 +10,8 @@ Windows AMIs contain a set of drivers to permit access to virtualized hardware\.
 |  Network  |  The driver has known issues where the network connection resets under high loads; for example, fast FTP file transfers\.  |   |  The driver automatically configures jumbo frames on the network adapter when on a compatible instance type\. When the instance is in a [cluster placement group](placement-groups.md), this offers better network performance between instances in the cluster placement group\.  | 
 
 The following list shows which PV drivers you should run on each version of Windows Server on Amazon EC2\.
+
+**Drivers by version of Windows Server**
 + Windows Server 2019: AWS PV
 + Windows Server 2016: AWS PV
 + Windows Server 2012 and 2012 R2: AWS PV
@@ -17,14 +19,14 @@ The following list shows which PV drivers you should run on each version of Wind
 + Windows Server 2008: Citrix PV 5\.9
 
 **Topics**
-+ [AWS PV Drivers](#xen-driver-awspv)
-+ [Citrix PV Drivers](#xen-driver-citrix)
-+ [RedHat PV Drivers](#xen-driver-redhat)
-+ [Subscribing to Notifications](#drivers-subscribe-notifications)
-+ [Upgrading PV Drivers on Your Windows Instances](Upgrading_PV_drivers.md)
-+ [Troubleshooting PV Drivers](pvdrivers-troubleshooting.md)
++ [AWS PV drivers](#xen-driver-awspv)
++ [Citrix PV drivers](#xen-driver-citrix)
++ [RedHat PV drivers](#xen-driver-redhat)
++ [Subscribing to notifications](#drivers-subscribe-notifications)
++ [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)
++ [Troubleshooting PV drivers](pvdrivers-troubleshooting.md)
 
-## AWS PV Drivers<a name="xen-driver-awspv"></a>
+## AWS PV drivers<a name="xen-driver-awspv"></a>
 
 The AWS PV drivers are stored in the `%ProgramFiles%\Amazon\Xentools` directory\. This directory also contains public symbols and a command line tool, `xenstore_client.exe`, that enables you to access entries in XenStore\. For example, the following PowerShell command returns the current time from the Hypervisor:
 
@@ -37,15 +39,15 @@ The AWS PV driver components are listed in the Windows registry under `HKEY_LOCA
 
 AWS PV drivers also have a Windows service named LiteAgent, which runs in user\-mode\. It handles tasks such as shutdown and restart events from AWS APIs on Xen generation instances\. You can access and manage services by running `Services.msc` from the command line\. When running on Nitro generation instances, the AWS PV drivers are not used and the LiteAgent service will self\-stop starting with driver version 8\.2\.4\. Updating to the latest AWS PV driver also updates the LiteAgent and improves reliability on all instance generations\.
 
-### Installing the Latest AWS PV Drivers<a name="aws-pv-download"></a>
+### Installing the latest AWS PV drivers<a name="aws-pv-download"></a>
 
 Amazon Windows AMIs contain a set of drivers to permit access to virtualized hardware\. These drivers are used by Amazon EC2 to map instance store and Amazon EBS volumes to their devices\. We recommend that you install the latest drivers to improve stability and performance of your EC2 Windows instances\.
 
-**Installation Options**
+**Installation options**
 + You can use AWS Systems Manager to automatically update the PV drivers\. For more information, see [Walkthrough: Automatically Update PV Drivers on EC2 Windows Instances \(Console\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-state-pvdriver.html) in the *AWS Systems Manager User Guide*\.
-+ You can [download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/Latest/AWSPVDriver.zip) the setup package and run the install program manually\. For information about downloading and installing the AWS PV drivers, or if you are upgrading a domain controller, see [Upgrade Windows Server Instances \(AWS PV Upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade)\. 
++ You can [download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/Latest/AWSPVDriver.zip) the driver package and run the install program manually\. Be sure to check the `readme.txt` file for system requirements\. For information about downloading and installing the AWS PV drivers, or upgrading a domain controller, see [Upgrade Windows Server instances \(AWS PV upgrade\)](Upgrading_PV_drivers.md#aws-pv-upgrade)\.
 
-### AWS PV Driver Package History<a name="pv-driver-history"></a>
+### AWS PV driver package history<a name="pv-driver-history"></a>
 
 The following table shows the changes to AWS PV drivers for each driver release\.
 
@@ -75,7 +77,7 @@ The following table shows the changes to AWS PV drivers for each driver release\
 | 7\.2\.1 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
 | 7\.2\.0 | Base: The AWS PV base version\. |  | 
 
-## Citrix PV Drivers<a name="xen-driver-citrix"></a>
+## Citrix PV drivers<a name="xen-driver-citrix"></a>
 
 The Citrix PV drivers are stored in the `%ProgramFiles%\Citrix\XenTools` \(32\-bit instances\) or `%ProgramFiles(x86)%\Citrix\XenTools` \(64\-bit instances\) directory\.
 
@@ -83,15 +85,15 @@ The Citrix PV driver components are listed in the Windows registry under `HKEY_L
 
 Citrix also has a driver component named XenGuestAgent, which runs as a Windows service\. It handles tasks such as shutdown and restart events from the API\. You can access and manage services by running `Services.msc` from the command line\.
 
-If you are encountering networking errors while performing certain workloads, you may need to disable the TCP offloading feature for the Citrix PV driver\. For more information, see [TCP Offloading](pvdrivers-troubleshooting.md#citrix-tcp-offloading)\.
+If you are encountering networking errors while performing certain workloads, you may need to disable the TCP offloading feature for the Citrix PV driver\. For more information, see [TCP offloading](pvdrivers-troubleshooting.md#citrix-tcp-offloading)\.
 
-## RedHat PV Drivers<a name="xen-driver-redhat"></a>
+## RedHat PV drivers<a name="xen-driver-redhat"></a>
 
 RedHat drivers are supported for legacy instances, but are not recommended on newer instances with more than 12GB of RAM due to driver limitations\. Instances with more than 12GB of RAM running RedHat drivers can fail to boot and become inaccessible\. We recommend upgrading RedHat drivers to Citrix PV drivers, and then upgrade Citrix PV drivers to AWS PV drivers\.
 
 The source files for the RedHat drivers are in the `%ProgramFiles%\RedHat` \(32\-bit instances\) or `%ProgramFiles(x86)%\RedHat` \(64\-bit instances\) directory\. The two drivers are `rhelnet`, the RedHat Paravirtualized network driver, and `rhelscsi`, the RedHat SCSI miniport driver\.
 
-## Subscribing to Notifications<a name="drivers-subscribe-notifications"></a>
+## Subscribing to notifications<a name="drivers-subscribe-notifications"></a>
 
 Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use the following procedure to subscribe to these notifications\.
 
@@ -136,8 +138,8 @@ To subscribe to EC2 notifications with the AWS CLI, use the following command\.
 aws sns subscribe --topic-arn arn:aws:sns:us-east-1:801119661308:ec2-windows-drivers --protocol email --notification-endpoint YourUserName@YourDomainName.ext
 ```
 
-**To subscribe to EC2 notifications using AWS Tools for Windows PowerShell**  
-To subscribe to EC2 notifications with AWS Tools for Windows PowerShell, use the following command\. 
+**To subscribe to EC2 notifications using the AWS Tools for PowerShell**  
+To subscribe to EC2 notifications with Tools for Windows PowerShell, use the following command\. 
 
 ```
 Connect-SNSNotification -TopicArn 'arn:aws:sns:us-east-1:801119661308:ec2-windows-drivers' -Protocol email -Region us-east-1 -Endpoint 'YourUserName@YourDomainName.ext'

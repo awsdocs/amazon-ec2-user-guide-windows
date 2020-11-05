@@ -363,11 +363,11 @@ To complete your cluster configuration, from the head node, add the compute node
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Wait for the instance status to show **stopped**\.
+1. Wait for the instance status to show **Stopped**\.
 
-1. Select the instance, choose **Actions**, **Image**, **Create Image**\.
+1. Select the instance, choose **Actions**, **Image and templates**, **Create image**\.
 
-1.  Specify an image name and image description, and then choose **Create Image** to create an AMI from the instance\. 
+1.  Specify an image name and image description, and then choose **Create image** to create an AMI from the instance\. 
 
 1. Start the original `HPC-Compute` instance that was shut down\.
 

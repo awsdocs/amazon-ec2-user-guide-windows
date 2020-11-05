@@ -39,7 +39,7 @@ Make a note to re\-enable Internet Explorer Enhanced Security Configuration when
 
 1. Install software updates to ensure that the instance has the latest security updates and bug fixes\.
 
-   1.  **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about how to install this service, see [Installing the Latest Version of EC2Config](UsingConfig_Install.md)\.
+   1.  **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about how to install this service, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\.
 
    1.  **Windows Update** \- Run Windows Update to ensure that the latest security and software updates are installed on the instance\. In Control Panel, choose **System and Security**\. In the **Windows Update** section, choose **Check for updates**\.
 
