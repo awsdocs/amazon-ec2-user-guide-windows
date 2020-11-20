@@ -1,4 +1,4 @@
-# Before You Begin<a name="application-consistent-snapshots-prereqs"></a>
+# Before you begin<a name="application-consistent-snapshots-prereqs"></a>
 
 Before you create VSS\-enabled EBS snapshots by using Run Command, review the following requirements and limitations, and complete the required tasks\. 
 

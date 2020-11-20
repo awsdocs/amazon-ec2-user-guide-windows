@@ -44,7 +44,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
    + **amazon/Windows\_Server\-2012**
    + **amazon/Windows\_Server\-2008**
 
-   Add any other filters that you need\. When you have chosen an AMI, select its checkbox\.
+   Add any other filters that you need\. When you have chosen an AMI, select its check box\.
 
 1. Choose **Launch**\. Accept the default values as you step through the wizard\. For more information, see [Launching an instance using the Launch Instance Wizard](launching-instance.md)\. When the instance is ready, connect to it\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 

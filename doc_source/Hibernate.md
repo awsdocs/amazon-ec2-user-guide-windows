@@ -55,7 +55,14 @@ For information about how hibernation differs from reboot, stop, and terminate, 
 ## Hibernation prerequisites<a name="hibernating-prerequisites"></a>
 
 To hibernate an instance, the following prerequisites must be in place:
-+ **Supported instance families** \- C3, C4, C5, I3, M3, M4, M5, M5a, M5ad, R3, R4, R5, R5a, R5ad, and T2\.
++ **Supported instance families**
+  + C3, C4, C5
+  + I3
+  + M3, M4, M5, M5a, M5ad
+  + R3, R4, R5, R5a, R5ad
+  + T2, T3, T3a\*
+
+    \* For hibernation, we recommend that you use a T3 or T3a instance with at least 1 GB of RAM\.
 + **Instance RAM size** \- must be up to 16 GB\.
 + **Instance size** \- not supported for bare metal instances\.
 + **Supported AMIs** \(must be an HVM AMI that supports hibernation\):
@@ -448,6 +455,9 @@ For example, the following message indicates that the instance root volume is no
 If the log line is `SetHibernateOnSleep: HibernationEnabled: true`, hibernation was successfully configured\.
 
 If you do not see any logs from these processes, your AMI might not support hibernation\. For information about supported AMIs, see [Hibernation prerequisites](#hibernating-prerequisites)\. 
+
+**Instance size**  
+If you’re using a T3 or T3a instance with less than 1 GB of RAM, try increasing the size of the instance to one that has at least 1 GB of RAM\.
 
 ### Instance "stuck" in the stopping state<a name="hibernate-troubleshooting-3"></a>
 

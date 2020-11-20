@@ -117,7 +117,7 @@ Each cluster is considered a [multi\-site cluster](https://docs.microsoft.com/en
 
 ## Instance Type Selection<a name="sql-clustering-instance-type"></a>
 
-The type of instance recommended for Windows Server Failover Clustering depends on the workload\. For production workloads, we recommend instances that support [EBS Optimization](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html) and [Enhanced Networking](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking.html)\.
+The type of instance recommended for Windows Server Failover Clustering depends on the workload\. For production workloads, we recommend instances that support [EBS optimization](ebs-optimized.md) and [Enhanced networking](enhanced-networking.md)\.
 
 ## Assigning Elastic Network Interfaces and IPs to the Instance<a name="sql-clustering-assigning-ENI-IP"></a>
 

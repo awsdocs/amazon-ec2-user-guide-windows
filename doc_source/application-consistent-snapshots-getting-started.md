@@ -1,13 +1,13 @@
-# Getting Started<a name="application-consistent-snapshots-getting-started"></a>
+# Getting started<a name="application-consistent-snapshots-getting-started"></a>
 
 These instructions describe how to install the VSS components and perform an application\-consistent snapshot of the EBS volumes attached to an EC2 Windows instance\. For more information, see [Getting Started with Amazon EC2 Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html)\.
 
 **Topics**
-+ [Create an IAM Role for VSS\-Enabled Snapshots](#run-command-vss-role)
-+ [Download and Install VSS Components to the Windows on EC2 Instance](#run-command-vss-package)
-+ [Creating a VSS Application\-Consistent Snapshot Using the Console](#application-consistent-snapshots-creating-console)
++ [Create an IAM role for VSS\-enabled snapshots](#run-command-vss-role)
++ [Download and install VSS components to the Windows on EC2 instance](#run-command-vss-package)
++ [Creating a VSS application\-consistent snapshot using the console](#application-consistent-snapshots-creating-console)
 
-## Create an IAM Role for VSS\-Enabled Snapshots<a name="run-command-vss-role"></a>
+## Create an IAM role for VSS\-enabled snapshots<a name="run-command-vss-role"></a>
 
 The following procedures describes how to work with IAM policies and IAM roles\. The policy enables Systems Manager to create snapshots, tags snapshots, and attach metadata like a device ID to the default snapshot tags that the system creates\.
 
@@ -93,7 +93,7 @@ Use the following procedure to create an IAM role for VSS\-enabled snapshots\. T
 
 1. Attach this role to the instances for which you want to create VSS\-enabled EBS snapshots\. For more information, see [Attaching an IAM Role to an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role) in the *Amazon EC2 User Guide*\.
 
-## Download and Install VSS Components to the Windows on EC2 Instance<a name="run-command-vss-package"></a>
+## Download and install VSS components to the Windows on EC2 instance<a name="run-command-vss-package"></a>
 
 Systems Manager requires VSS components to be installed on your instances\. Use the following procedure to install the components using the `AWSVssComponents` package\. The package installs two components: a VSS requestor and a VSS provider\. We recommend that you install the latest AWS VSS component package to improve reliability and performance of application\-consistent snapshots on your EC2 Windows instances\. To view the latest package version, see the [AWS VSS component package version history](application-consistent-snapshots-details.md)\.
 
@@ -137,7 +137,7 @@ The S3 permissions that grant the ability to write the data to an S3 bucket are 
 
 1. Choose **Run**\.
 
-## Creating a VSS Application\-Consistent Snapshot Using the Console<a name="application-consistent-snapshots-creating-console"></a>
+## Creating a VSS application\-consistent snapshot using the console<a name="application-consistent-snapshots-creating-console"></a>
 
 Use the following procedure to create a VSS\-enabled EBS snapshot\.
 

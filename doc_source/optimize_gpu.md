@@ -1,6 +1,6 @@
 # Optimizing GPU settings<a name="optimize_gpu"></a>
 
-There are several GPU setting optimizations that you can perform to achieve the best performance on G3, G4, P2, P3, and P3dn instances\. By default, the NVIDIA driver uses an autoboost feature, which varies the GPU clock speeds\. By disabling the autoboost feature and setting the GPU clock speeds to their maximum frequency, you can consistently achieve the maximum performance with your GPU instances\.
+There are several GPU setting optimizations that you can perform to achieve the best performance on G3, G4, P2, P3, P3dn, and P4 instances\. With some of these instance types, the NVIDIA driver uses an autoboost feature, which varies the GPU clock speeds\. By disabling autoboost and setting the GPU clock speeds to their maximum frequency, you can consistently achieve the maximum performance with your GPU instances\.
 
 **To optimize GPU settings**
 
@@ -10,17 +10,17 @@ There are several GPU setting optimizations that you can perform to achieve the 
    cd "C:\Program Files\NVIDIA Corporation\NVSMI"
    ```
 
-1. Disable the autoboost feature for all GPUs on the instance\.
+1. G2, G3, and P2 instances: Disable the autoboost feature for all GPUs on the instance\.
+**Note**  
+GPUs on G4, P3, P3dn, and P4 instances do not support autoboost\.
 
    ```
    .\nvidia-smi --auto-boost-default=0
    ```
-**Note**  
-GPUs on P3, P3dn, and G4 instances do not support autoboost\.
 
 1. Set all GPU clock speeds to their maximum frequency\. Use the memory and graphics clock speeds specified in the following commands\.
-**Note**  
-Some versions of the NVIDIA driver do not allow setting application clock speed and throw a `"Setting applications clocks is not supported for GPU …"` error, which you can ignore\.
+
+   Some versions of the NVIDIA driver do not support setting the application clock speed, and display the error `"Setting applications clocks is not supported for GPU..."`, which you can ignore\.
    + G3 instances:
 
      ```

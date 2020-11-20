@@ -1,6 +1,6 @@
 # Creating Amazon EBS snapshots<a name="ebs-creating-snapshot"></a>
 
-To create an application\-consistent snapshot, see [Creating a VSS Application\-Consistent SnapshotRestoring Volumes from VSS\-Enabled EBS snapshots](application-consistent-snapshots.md)\.
+To create an application\-consistent snapshot, see [Creating a VSS application\-consistent snapshotRestoring volumes from VSS\-enabled EBS snapshots](application-consistent-snapshots.md)\.
 
 You can create a point\-in\-time snapshot of an EBS volume and use it as a baseline for new volumes or for data backup\. If you make periodic snapshots of a volume, the snapshots are incremental—the new snapshot saves only the blocks that have changed since your last snapshot\.
 
@@ -23,7 +23,7 @@ If you copy a snapshot and encrypt it to a new CMK, a complete \(non\-incrementa
 
 ## Multi\-volume snapshots<a name="ebs-create-snapshot-multi-volume"></a>
 
-You can create multi\-volume snapshots, which are point\-in\-time snapshots for all EBS volumes attached to an EC2 instance\. You can also create lifecycle policies to automate the creation and retention of multi\-volume snapshots\. For more information, see [Automating the Amazon EBS snapshot lifecycle](snapshot-lifecycle.md)\.
+You can create multi\-volume snapshots, which are point\-in\-time snapshots for all EBS volumes attached to an EC2 instance\. You can also create lifecycle policies to automate the creation and retention of multi\-volume snapshots\. For more information, see [Amazon Data Lifecycle Manager](snapshot-lifecycle.md)\.
 
 After the snapshots are created, each snapshot is treated as an individual snapshot\. You can perform all snapshot operations, such as restore, delete, and copy across Regions or accounts, just as you would with a single volume snapshot\. You can also tag your multi\-volume snapshots as you would a single volume snapshot\. We recommend you tag your multiple volume snapshots to manage them collectively during restore, copy, or retention\.
 
@@ -33,7 +33,7 @@ After creating your snapshots, they appear in your EC2 console created at the ex
 
 ## Amazon Data Lifecycle Manager<a name="automate-snapshots"></a>
 
-You can create, retain, and delete snapshots manually, or you can use Amazon Data Lifecycle Manager to manage your snapshots for you\. For more information, see [Automating snapshots](snapshot-lifecycle.md)\.
+You can create, retain, and delete snapshots manually, or you can use Amazon Data Lifecycle Manager to manage your snapshots for you\. For more information, see [Data Lifecycle Manager](snapshot-lifecycle.md)\.
 
 ## Considerations<a name="ebs-create-snapshot-limitations"></a>
 
@@ -106,7 +106,7 @@ You can use one of the following commands\. For more information about these com
 + [New\-EC2SnapshotBatch](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2SnapshotBatch.html) \(AWS Tools for Windows PowerShell\)
 
 **To create application\-consistent snapshots using Systems Manager Run Command**  
-You can use Systems Manager Run Command to take application\-consistent snapshots of all EBS volumes attached to your Amazon EC2 Windows instances\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications, including data from pending transactions between these applications and the disk\. You don't need to shut down your instances or disconnect them when you back up all attached volumes\. For more information, see [Creating a VSS Application\-Consistent SnapshotRestoring Volumes from VSS\-Enabled EBS snapshots](application-consistent-snapshots.md)\.
+You can use Systems Manager Run Command to take application\-consistent snapshots of all EBS volumes attached to your Amazon EC2 Windows instances\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications, including data from pending transactions between these applications and the disk\. You don't need to shut down your instances or disconnect them when you back up all attached volumes\. For more information, see [Creating a VSS application\-consistent snapshotRestoring volumes from VSS\-enabled EBS snapshots](application-consistent-snapshots.md)\.
 
 ## Working with EBS snapshots<a name="using-snapshots"></a>
 

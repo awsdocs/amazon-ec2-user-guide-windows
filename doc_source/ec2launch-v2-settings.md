@@ -163,7 +163,7 @@ You can use the Command Line Interface \(CLI\) to configure your EC2Launch setti
 + [list\-volumes](#ec2launch-v2-list-volumes)
 + [reset](#ec2launch-v2-reset)
 + [run](#ec2launch-v2-run)
-+ [sysprep](#ec2launch-v2-sysprep)
++ [sysprep](#ec2launch-v2-settings-sysprep)
 + [validate](#ec2launch-v2-validate)
 + [version](#ec2launch-v2-version)
 + [wallpaper](#ec2launch-v2-wallpaper)
@@ -295,7 +295,7 @@ ec2launch run
 
 help for reset
 
-### sysprep<a name="ec2launch-v2-sysprep"></a>
+### sysprep<a name="ec2launch-v2-settings-sysprep"></a>
 
 Resets the service state, updates `unattend.xml`, disables RDP, and executes Sysprep\.
 
@@ -321,7 +321,7 @@ help for Sysprep
 
 `-s`,`--shutdown`
 
-shuts down the instance after Sysprep \(default `true`\)
+shuts down the instance after Sysprep
 
 ### validate<a name="ec2launch-v2-validate"></a>
 
@@ -411,6 +411,7 @@ This section includes the configuration tasks, details, and examples for the `ag
 + [setHostName](#ec2launch-v2-sethostname)
 + [setWallpaper](#ec2launch-v2-setwallpaper)
 + [startSsm](#ec2launch-v2-startssm)
++ [sysprep](#ec2launch-v2-task-sysprep)
 + [writeFile](#ec2-launch-v2-writefile)
 + [Example: `agent-config.yml`](#ec2launch-v2-example-agent-config)
 + [Example: `user-data.yml`](#ec2launch-v2-example-user-data)
@@ -755,6 +756,29 @@ Starts the Systems Manager \(SSM\) service following Sysprep\.
 
 ```
 task: startSsm
+```
+
+### sysprep<a name="ec2launch-v2-task-sysprep"></a>
+
+Resets the service state, updates `unattend.xml`, disables RDP, and runs Sysprep\. This task runs only after all other tasks are completed\.
+
+*Frequency* — once
+
+*AllowedStages* — `[UserData]`
+
+*Inputs* — 
+
+`clean`: \(boolean\) cleans instance logs before running Sysprep
+
+`shutdown`: \(boolean\) shuts down the instance after running Sysprep
+
+*Example*
+
+```
+task: sysprep
+inputs:
+  clean: true
+  shutdown: true
 ```
 
 ### writeFile<a name="ec2-launch-v2-writefile"></a>

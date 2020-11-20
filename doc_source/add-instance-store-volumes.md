@@ -87,7 +87,7 @@ Many instance store volumes are pre\-formatted with the ext3 file system\. SSD\-
 
 You can confirm that the instance store devices are available from within the instance itself using instance metadata\. For more information, see [Viewing the instance block device mapping for instance store volumes](block-device-mapping-concepts.md#bdm-instance-metadata)\.
 
-For Windows instances, you can also view the instance store volumes using Windows Disk Management\. For more information, see [Listing the disks using Windows Disk Management](ec2-windows-volumes.md#windows-disks)\.
+For Windows instances, you can also view the instance store volumes using Windows Disk Management\. For more information, see [Listing disks using Disk Management](ec2-windows-volumes.md#windows-disks)\.
 
 **To manually mount an instance store volume**
 

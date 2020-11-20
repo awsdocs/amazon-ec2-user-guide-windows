@@ -23,13 +23,13 @@ Charges for your snapshots are based on the amount of data stored\. Because snap
 + [Copying and sharing snapshots](#copy-and-share)
 + [Encryption support for snapshots](#encryption-support)
 + [Creating Amazon EBS snapshots](ebs-creating-snapshot.md)
-+ [Creating a VSS Application\-Consistent Snapshot](application-consistent-snapshots.md)
++ [Creating a VSS application\-consistent snapshot](application-consistent-snapshots.md)
 + [Deleting an Amazon EBS snapshot](ebs-deleting-snapshot.md)
 + [Copying an Amazon EBS snapshot](ebs-copy-snapshot.md)
 + [Viewing Amazon EBS snapshot information](ebs-describing-snapshots.md)
 + [Sharing an Amazon EBS snapshot](ebs-modifying-snapshot-permissions.md)
 + [Using EBS direct APIs to access the contents of an EBS snapshot](ebs-accessing-snapshot.md)
-+ [Automating the Amazon EBS snapshot lifecycle](snapshot-lifecycle.md)
++ [Automating the snapshot lifecycle](automating-snapshots.md)
 
 ## How incremental snapshots work<a name="how_snapshots_work"></a>
 

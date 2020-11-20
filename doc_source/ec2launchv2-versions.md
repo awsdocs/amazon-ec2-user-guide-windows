@@ -24,6 +24,7 @@ The following table describes the released versions of the EC2Launch v2 migratio
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 1\.0\.69 | Increments the version number of the EC2Launch agent to 2\.0\.153\. | November 5, 2020 | 
 | 1\.0\.65 | Increments the version number of the EC2Launch agent to 2\.0\.146\. | October 9, 2020 | 
 | 1\.0\.60 | Increments the version number of the EC2Launch agent to 2\.0\.124\. | September 10, 2020 | 
 | 1\.0\.54 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | August 12, 2020 | 

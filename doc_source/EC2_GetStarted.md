@@ -20,7 +20,7 @@ For step\-by\-step tutorials on specific use cases for EC2 instances running Win
 
 The instance is an Amazon EBS\-backed instance \(meaning that the root volume is an EBS volume\)\. You can either specify the Availability Zone in which your instance runs, or let Amazon EC2 select an Availability Zone for you\. When you launch your instance, you secure it by specifying a key pair and security group\. When you connect to your instance, you must specify the private key of the key pair that you specified when launching your instance\.
 
-![\[An Amazon EBS-backed instance with an additional Amazon Elastic Block Store (EBS) volume\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/overview_getting_started.png)
+![\[An Amazon EBS-backed instance with an additional Amazon EBS volume\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/overview_getting_started.png)
 
 **Tasks**
 
@@ -80,53 +80,51 @@ Don't select **Proceed without a key pair**\. If you launch your instance withou
 
 ## Step 2: Connect to your instance<a name="ec2-connect-to-instance-windows"></a>
 
-To connect to a Windows instance, you must retrieve the initial administrator password \(see step 2 below\) and then specify this password when you connect to your instance using Remote Desktop\.
+To connect to a Windows instance, you must retrieve the initial administrator password and then specify this password when you connect to your instance using Remote Desktop\. It takes a few minutes after instance launch before this password is available\.
 
 The name of the administrator account depends on the language of the operating system\. For example, for English, it's Administrator, for French it's Administrateur, and for Portuguese it's Administrador\. For more information, see [Localized Names for Administrator Account in Windows](http://social.technet.microsoft.com/wiki/contents/articles/13813.localized-names-for-administrator-account-in-windows.aspx) in the Microsoft TechNet Wiki\.
 
 If you've joined your instance to a domain, you can connect to your instance using domain credentials you've defined in AWS Directory Service\. On the Remote Desktop login screen, instead of using the local computer name and the generated password, use the fully\-qualified user name for the administrator \(for example, **corp\.example\.com\\Admin**\) and the password for this account\.
 
-The license for the Windows Server operating system \(OS\) allows two simultaneous remote connections for administrative purposes\. The license for Windows Server is included in the price of your Windows instance\. If you need more than two simultaneous remote connections, you must purchase a Remote Desktop Services \(RDS\) license\. If you attempt a third connection, an error occurs\. For more information, see [Configure the Number of Simultaneous Remote Connections Allowed for a Connection](http://technet.microsoft.com/en-us/library/cc753380.aspx)\.
+If you receive an error while attempting to connect to your instance, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
 
 **To connect to your Windows instance using an RDP client**
 
-1. In the Amazon EC2 console, select the instance, and then choose **Connect**\.
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the **Connect To Your Instance** dialog box, choose **Get Password** \(it will take a few minutes after the instance is launched before the password is available\)\.
+1. In the navigation pane, select **Instances**\. Select the instance and then choose **Connect**\.
 
-1. Choose **Browse** and navigate to the private key file you created when you launched the instance\. Select the file and choose **Open** to copy the entire contents of the file into the **Contents** field\.
+1. In the **Connect to instance** page, choose **RDP client** and then choose **Get password**\.
 
-1. Choose **Decrypt Password**\. The console displays the default administrator password for the instance in the **Connect To Your Instance** dialog box, replacing the link to **Get Password** shown previously with the actual password\.
+1. Choose **Browse** and navigate to the private key file you created when you launched the instance\. Select the file and choose **Open** to copy the entire contents of the file to this page\.
 
-1. Record the default administrator password, or copy it to the clipboard\. You need this password to connect to the instance\.
+1. Choose **Decrypt Password**\. The console displays the default administrator password for the instance in **Password**, replacing the **Get password** link shown previously\. Save the password in a safe place\. You need this password to connect to the instance\.
 
-1. Choose **Download Remote Desktop File**\. Your browser prompts you to either open or save the \.rdp file\. Either option is fine\. When you have finished, you can choose **Close** to dismiss the **Connect To Your Instance** dialog box\. 
-   + If you opened the \.rdp file, you'll see the **Remote Desktop Connection** dialog box\.
-   + If you saved the \.rdp file, navigate to your downloads directory, and open the \.rdp file to display the dialog box\.
+1. Choose **Download remote desktop file**\. Your browser prompts you to either open or save the RDP shortcut file\. Select the option to save the file\. When you have finished downloading the file, choose **Cancel** to return to the **Instances** page\.
 
-1. You may get a warning that the publisher of the remote connection is unknown\. You can continue to connect to your instance\.
+1. Navigate to your downloads directory and open the RDP shortcut file\.
 
-1. When prompted, log in to the instance, using the administrator account for the operating system and the password that you recorded or copied previously\. If your **Remote Desktop Connection** already has an administrator account set up, you might have to choose the **Use another account** option and type the user name and password manually\.
-**Note**  
-Sometimes copying and pasting content can corrupt data\. If you encounter a "Password Failed" error when you log in, try typing in the password manually\.
+1. You might get a warning that the publisher of the remote connection is unknown\. Choose **Connect** to continue to connect to your instance\.
 
-1. Due to the nature of self\-signed certificates, you may get a warning that the security certificate could not be authenticated\. Use the following steps to verify the identity of the remote computer, or simply choose **Yes** or **Continue** to continue if you trust the certificate\.
+1. The administrator account is chosen by default\. Copy and paste the password that you saved previously\.
+**Tip**  
+If you receive a "Password Failed" error, try entering the password manually\. Copying and pasting content can corrupt it\.
 
-   1. If you are using **Remote Desktop Connection** from a Windows PC, choose **View certificate**\. If you are using **Microsoft Remote Desktop** on a Mac, choose **Show Certificate**\.
+1. Due to the nature of self\-signed certificates, you might get a warning that the security certificate could not be authenticated\. Use the following steps to verify the identity of the remote computer, or simply choose **Yes** \(Windows\) or **Continue** \(Mac OS X\) if you trust the certificate\.
 
-   1. Choose the **Details** tab, and scroll down to the **Thumbprint** entry on a Windows PC, or the **SHA1 Fingerprints** entry on a Mac\. This is the unique identifier for the remote computer's security certificate\.
+   1. If you are using **Remote Desktop Connection** on a Windows computer, choose **View certificate**\. If you are using **Microsoft Remote Desktop** on a Mac, choose **Show Certificate**\.
 
-   1. In the Amazon EC2 console, select the instance, choose **Actions**, and then choose **Get System Log**\.
+   1. Choose the **Details** tab, and scroll down to **Thumbprint** \(Windows\) or **SHA1 Fingerprints** \(Mac OS X\)\. This is the unique identifier for the remote computer's security certificate\.
 
-   1. In the system log output, look for an entry labeled `RDPCERTIFICATE-THUMBPRINT`\. If this value matches the thumbprint or fingerprint of the certificate, you have verified the identity of the remote computer\.
+   1. In the Amazon EC2 console, select the instance, choose **Actions**, **Monitor and troubleshoot**, **Get system log**\.
 
-   1. If you are using **Remote Desktop Connection** from a Windows PC, return to the **Certificate** dialog box and choose **OK**\. If you are using **Microsoft Remote Desktop** on a Mac, return to the **Verify Certificate** and choose **Continue**\.
+   1. In the system log output, look for `RDPCERTIFICATE-THUMBPRINT`\. If this value matches the thumbprint or fingerprint of the certificate, you have verified the identity of the remote computer\.
+
+   1. If you are using **Remote Desktop Connection** on a Windows computer, return to the **Certificate** dialog box and choose **OK**\. If you are using **Microsoft Remote Desktop** on a Mac, return to the **Verify Certificate** and choose **Continue**\.
 
    1. \[Windows\] Choose **Yes** in the **Remote Desktop Connection** window to connect to your instance\.
 
-      \[Mac OS\] Log in as prompted, using the default administrator account and the default administrator password that you recorded or copied previously\. Note that you might need to switch spaces to see the login screen\. For more information about spaces, see [support\.apple\.com/en\-us/HT204100](https://support.apple.com/en-us/HT204100)\.
-
-   1. If you receive an error while attempting to connect to your instance, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
+      \[Mac OS X\] Log in as prompted, using the default administrator account and the default administrator password that you recorded or copied previously\. Note that you might need to switch spaces to see the login screen\. For more information, see [Add spaces and switch between them](https://support.apple.com/en-us/HT204100)\.
 
 ## Step 3: Clean up your instance<a name="ec2-clean-up-your-instance"></a>
 

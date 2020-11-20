@@ -70,6 +70,7 @@ After your instance has been initialized the first time, you can configure EC2La
 
 Specify settings in the `LaunchConfig.json` file to enable or disable the following initialization tasks:
 + Set the computer name\.
++ Set the monitor to always stay on\.
 + Set up new wallpaper\.
 + Add DNS suffix list\.
 + Extend the boot volume size\.
@@ -84,6 +85,7 @@ Specify settings in the `LaunchConfig.json` file to enable or disable the follow
    ```
    {
      "setComputerName": false,
+     "setMonitorAlwaysOn": true,
      "setWallpaper": true,
      "addDnsSuffixList": true,
      "extendBootVolumeSize": true,

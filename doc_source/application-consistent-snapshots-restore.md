@@ -1,4 +1,4 @@
-# Restoring Volumes from VSS\-Enabled EBS snapshots<a name="application-consistent-snapshots-restore"></a>
+# Restoring volumes from VSS\-enabled EBS snapshots<a name="application-consistent-snapshots-restore"></a>
 
 You can use the `RestoreVssSnapshotSampleScript.ps1` script to restore volumes on an instance from VSS\-enabled EBS snapshots\. This script performs the following tasks:
 + Stops an instance

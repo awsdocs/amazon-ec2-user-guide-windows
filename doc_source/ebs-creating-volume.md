@@ -2,7 +2,7 @@
 
 You can create an Amazon EBS volume and then attach it to any EC2 instance in the same Availability Zone\. If you create an encrypted EBS volume, you can only attach it to supported instance types\. For more information, see [Supported instance types](EBSEncryption.md#EBSEncryption_supported_instances)\.
 
-If you are creating a volume for a high\-performance storage scenario, you should make sure to use a Provisioned IOPS SSD \(`io1` or `io2`\) volume and attach it to an instance with enough bandwidth to support your application, such as an EBS\-optimized instance or an instance with 10\-Gigabit network connectivity\. The same advice holds for Throughput Optimized HDD \(`st1`\) and Cold HDD \(`sc1`\) volumes\. For more information, see [Amazon EBS–optimized instances](ebs-optimized.md)\.
+If you are creating a volume for a high\-performance storage scenario, you should make sure to use a Provisioned IOPS SSD volume \(`io1` or `io2`\) and attach it to an instance with enough bandwidth to support your application, such as an EBS\-optimized instance or an instance with 10\-Gigabit network connectivity\. The same advice holds for Throughput Optimized HDD \(`st1`\) and Cold HDD \(`sc1`\) volumes\. For more information, see [Amazon EBS–optimized instances](ebs-optimized.md)\.
 
 **Note**  
 If you create a volume for use with a Windows instance, and it's larger than 2048 GiB \(or is a volume that's smaller than 2048 GiB but might be increased later\), ensure that you configure the volume to use GPT partition tables\. For more information, see [ Windows support for hard disks that are larger than 2 TB\.](https://docs.microsoft.com/en-us/troubleshoot/windows-server/backup-and-storage/support-for-hard-disks-exceeding-2-tb)\.

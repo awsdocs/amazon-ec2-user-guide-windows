@@ -133,13 +133,13 @@ If you previously disabled [TCP offloading](pvdrivers-troubleshooting.md#citrix-
 
 Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure you do the following:
 + Install the latest version of the EC2Config service\. For more information, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\.
-+ Verify that you have Windows PowerShell 2\.0 installed\. To verify the version that you have installed, run the following command in a PowerShell window:
++ Verify that you have Windows PowerShell 3\.0 installed\. To verify the version that you have installed, run the following command in a PowerShell window:
 
   ```
   PS C:\> $PSVersionTable.PSVersion
   ```
 
-  If you need to install version 2\.0, see [Installing the Windows PowerShell 2\.0 Engine](https://docs.microsoft.com/en-us/powershell/scripting/windows-powershell/install/installing-the-windows-powershell-2.0-engine) in the Microsoft documentation\.
+  Windows PowerShell 3\.0 is bundled in the Windows Management Framework \(WMF\) version 3\.0 install package\. If you need to install Windows PowerShell 3\.0, see [Windows Management Framework 3\.0](https://www.microsoft.com/en-us/download/details.aspx?id=34595) in the Microsoft Download Center\.
 + Back up your important information on the instance, or create an AMI from the instance\. For more information about creating an AMI, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. If you create an AMI, make sure that you do the following:
   + Write down your password\.
   + Do not run the Sysprep tool manually or using the EC2Config service\.
