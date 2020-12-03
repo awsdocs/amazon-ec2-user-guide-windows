@@ -7,7 +7,14 @@ Storage optimized instances are designed for workloads that require high, sequen
 These instances are well suited for the following:
 + Massive parallel processing \(MPP\) data warehouse
 + MapReduce and Hadoop distributed computing
-+ Log or data processing applications<a name="h1-instances"></a>
++ Log or data processing applications<a name="d3-instances"></a>
+
+**D3 and D3en instances**
+
+These instances offer scale out of instance storage and are well suited for the following:
++ Distributed file systems for Hadoop workloads
++ File storage workloads such as GPFC and BeeFS
++ Large data lakes for HPC workloads<a name="h1-instances"></a>
 
 **H1 instances**
 
@@ -40,7 +47,7 @@ For more information, see [Amazon EC2 I3 Instances](https://aws.amazon.com/ec2/i
 
 ## Hardware specifications<a name="storage-instances-hardware"></a>
 
-The primary data storage for D2 instances is HDD instance store volumes\. The primary data storage for I3 and I3en instances is non\-volatile memory express \(NVMe\) SSD instance store volumes\.
+The primary data storage for D2, D3, and D3en instances is HDD instance store volumes\. The primary data storage for I3 and I3en instances is non\-volatile memory express \(NVMe\) SSD instance store volumes\.
 
 Instance store volumes persist only for the life of the instance\. When you stop, hibernate, or terminate an instance, the applications and data in its instance store volumes are erased\. We recommend that you regularly back up or replicate important data in your instance store volumes\. For more information, see [Amazon EC2 instance store](InstanceStorage.md) and [SSD instance store volumes](ssd-instance-store.md)\.
 
@@ -53,6 +60,17 @@ The following is a summary of the hardware specifications for storage optimized 
 | d2\.2xlarge | 8 | 61 | 
 | d2\.4xlarge | 16 | 122 | 
 | d2\.8xlarge | 36 | 244 | 
+| d3\.xlarge | 4 | 32 | 
+| d3\.2xlarge | 8 | 64 | 
+| d3\.4xlarge | 16 | 128 | 
+| d3\.8xlarge | 32 | 256 | 
+| d3en\.large | 2 | 8 | 
+| d3en\.xlarge | 4 | 16 | 
+| d3en\.2xlarge | 8 | 32 | 
+| d3en\.4xlarge | 16 | 64 | 
+| d3en\.6xlarge | 24 | 96 | 
+| d3en\.8xlarge | 32 | 128 | 
+| d3en\.12xlarge | 48 | 192 | 
 | h1\.2xlarge | 8 | 32 | 
 | h1\.4xlarge | 16 | 64 | 
 | h1\.8xlarge | 32 | 128 | 
@@ -92,11 +110,15 @@ The following is a summary of network performance for storage optimized instance
 
 | Instance type | Network performance | Enhanced networking | 
 | --- | --- | --- | 
+| d3\.xlarge | Up to 5 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| d3\.2xlarge | 5 Gbps | [ENA](enhanced-networking-ena.md) | 
 | i3\.4xlarge and smaller | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
-| i3\.8xlarge \| h1\.8xlarge | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
-| i3en\.3xlarge and smaller | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
-| i3\.16xlarge \| i3\.metal \| i3en\.6xlarge \| h1\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
-| i3en\.12xlarge | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+| d3\.4xlarge \| i3\.8xlarge \| h1\.8xlarge | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
+| d3en\.2xlarge and smaller \| i3en\.3xlarge and smaller | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| d3\.8xlarge \| d3en\.4xlarge \| i3\.16xlarge \| i3\.metal \| i3en\.6xlarge \| h1\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+| d3en\.6xlarge | 40 Gbps | [ENA](enhanced-networking-ena.md) | 
+| d3\.8xlarge \| d3en\.8xlarge \| i3en\.12xlarge | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+| d3en\.12xlarge | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
 | i3en\.24xlarge \| i3en\.metal | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 | d2\.xlarge | Moderate | [Intel 82599 VF](sriov-networking.md) | 
 | d2\.2xlarge \| d2\.4xlarge | High | [Intel 82599 VF](sriov-networking.md) | 
@@ -143,6 +165,8 @@ The following is a summary of features for storage optimized instances:
 |  | EBS only | Instance store | Placement group | 
 | --- | --- | --- | --- | 
 | D2 | No | HDD  | Yes | 
+| D3 | No | HDD \*  | Yes | 
+| D3en | No | HDD \*  | Yes | 
 | H1 | No | HDD \* | Yes | 
 | I3 | No | NVMe \* | Yes | 
 | I3en | No | NVMe \* | Yes | 
@@ -164,4 +188,5 @@ For more information, see the following:
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.
 + Bare metal instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The upstream Linux kernel and the latest Amazon Linux AMIs support this device\. Bare metal instances also provide an ACPI SPCR table to enable the system to automatically use the PCI\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device\.
++ The `d3.8xlarge` and `d3en.12xlarge` instances support a maximum of three attachments, including the root volume\. If you exceed the attachment limit when you add a network interface or EBS volume, this causes attachment issues on your instance\.
 + There is a limit on the total number of instances that you can launch in a Region, and there are additional limits on some instance types\. For more information, see [How many instances can I run in Amazon EC2?](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 FAQ\.

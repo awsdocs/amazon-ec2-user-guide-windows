@@ -137,7 +137,7 @@ This setting dynamically extends Disk 0/Volume 0 to include any unpartitioned sp
  **Initialize Drives**   
 This setting formats and mounts all volumes attached to the instance during start\.  
  **Drive Letter Mapping**   
-The system maps the volumes attached to an instance to drive letters\. For Amazon EBS volumes, the default is to assign drive letters going from D: to Z:\. For instance store volumes, the default depends on the driver\. Citrix PV drivers assign instance store volumes drive letters going from Z: to A:\. Red Hat drivers assign instance store volumes drive letters going from D: to Z:\.  
+The system maps the volumes attached to an instance to drive letters\. For Amazon EBS volumes, the default is to assign drive letters going from D: to Z:\. For instance store volumes, the default depends on the driver\. AWS PV drivers and Citrix PV drivers assign instance store volumes drive letters going from Z: to A:\. Red Hat drivers assign instance store volumes drive letters going from D: to Z:\.  
 To choose the drive letters for your volumes, click **Mappings**\. In the **DriveLetterSetting** dialog box, specify the **Volume Name** and **Drive Letter** values for each volume, click **Apply**, and then click **OK**\. We recommend that you select drive letters that avoid conflicts with drive letters that are likely to be in use, such as drive letters in the middle of the alphabet\.  
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_driver_letter_mapping.png)

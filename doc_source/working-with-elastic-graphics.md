@@ -18,23 +18,25 @@ If you use the Amazon EC2 console to launch your instance with an Elastic Graphi
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Security Groups**, **Create Security Group**\.
+1. In the navigation pane, choose **Security Groups**\.
 
-1. Provide a name for your security group, such as "Elastic Graphics security group", and a description for the security group\. Select the VPC that you will use to launch your instance with an Elastic Graphics accelerator\.
+1. Choose **Create security group**\.
 
-1. Create an inbound security group rule as follows:
+1. Enter a name for your security group, such as "Elastic Graphics security group", and a description for the security group\. Select the VPC that you will use to launch your instance with an Elastic Graphics accelerator\.
 
-   1. On the **Inbound** tab, choose **Add Rule**
+1. On the **Inbound rules** panel, create an inbound security group rule as follows:
 
-   1. For **Type**, choose **Elastic Graphics**\. For **Source**, choose **Custom** and type the ID of the security group\.
+   1. For **Type**, choose **Elastic Graphics**\.
 
-1. Create an outbound security group rule as follows:
+   1. For **Source**, choose **Custom** and enter the ID of the security group\.
 
-   1. On the **Outbound** tab, choose **Add Rule**
+1. On the **Outbound rules** panel, create an outbound security group rule as follows:
 
-   1. For **Type**, choose **All TCP**\. For **Destination**, choose **Custom** and type the ID of the security group\.
+   1. For **Type**, choose **All TCP**\.
 
-1. Choose **Create**\.
+   1. For **Destination**, choose **Custom** and enter the ID of the security group\.
+
+1. Choose **Create security group**\.
 
 For more information, see [Amazon EC2 security groups for Windows instances](ec2-security-groups.md)\.
 
@@ -184,7 +186,7 @@ You can view information about the Elastic Graphics accelerator attached to your
 
 1. In the navigation pane, choose **Instances** and select your instance\.
 
-1. On the **Description** tab, find **Elastic Graphics ID**\. Choose the ID to view the following information about the Elastic Graphics accelerator:
+1. On the **Details** tab, find **Elastic Graphics ID**\. Choose the ID to view the following information about the Elastic Graphics accelerator:
    + **Attachment State**
    + **Type**
    + **Health status**

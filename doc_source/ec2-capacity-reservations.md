@@ -30,10 +30,12 @@ The following table highlights key differences between Capacity Reservations, Re
 
 |  | Capacity Reservations | Zonal Reserved Instances | Regional Reserved Instances | Savings Plans | 
 | --- | --- | --- | --- | --- | 
-| Term | No commitment required\. Can be created and canceled as needed\. | Require fixed one\-year or three\-year commitment | 
-| Capacity benefit | Capacity reserved in a specific Availability Zone\. | Do not reserve capacity in an Availability Zone\. | 
-| Billing discount | No billing discount\. Instances launched into a Capacity Reservation are charged at their standard On\-Demand rates\. However, you can use Savings Plans or regional Reserved Instances with Capacity Reservations to get a billing discount\. Zonal Reserved Instances do not apply to Capacity Reservations\. | Provide billing discounts | 
-| Instance Limits | Limited to your On\-Demand Instance limits per Region\. | Limited to 20 per Availability Zone\. A limit increase can be requested\. | Limited to 20 per Region\. A limit increase can be requested\. | No limits\. | 
+| Term | No commitment required\. Can be created and canceled as needed\. | Requires a fixed one\-year or three\-year commitment | 
+| Capacity benefit | Capacity reserved in a specific Availability Zone\. | Capacity reserved in a specific Region\. | No capacity reserved\. | 
+| Billing discount | No billing discount\. † | Provides a billing discount\. | 
+| Instance Limits | Your On\-Demand Instance limits per Region apply\. | Default is 20 per Availability Zone\. You can request a limit increase\. | Default is 20 per Region\. You can request a limit increase\. | No limit\. | 
+
+† You can combine Capacity Reservations with Savings Plans or Regional Reserved Instances to receive a discount\.
 
 For more information, see the following:
 + [Reserved Instances](ec2-reserved-instances.md)
@@ -47,6 +49,10 @@ You must create the Capacity Reservation with the correct platform to ensure tha
 + Windows with SQL Server Web
 + Windows with SQL Server Standard
 + Windows with SQL Server Enterprise
+
+When you purchase a Capacity Reservation, you must specify the *platform* that represents the operating system for your instance\.
++ For Windows with SQL Standard, Windows with SQL Server Enterprise, and Windows with SQL Server Web, you must choose the specific platform\.
++ For all other Windows versions, excluding BYOL which is not supported, choose the **Windows** platform\.
 
  For more information about the supported Linux platforms, see [ Supported platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html#capacity-reservations-platforms) in the *Amazon EC2 User Guide for Linux Instances*\. 
 
@@ -62,3 +68,4 @@ Before you create Capacity Reservations, take note of the following limitations 
 + Zonal Reserved Instance billing discounts do not apply to Capacity Reservations
 + Capacity Reservations can't be created in placement groups
 + Capacity Reservations can't be used with Dedicated Hosts
++ Capacity Reservations can't be used with Bring Your Own License \(BYOL\)

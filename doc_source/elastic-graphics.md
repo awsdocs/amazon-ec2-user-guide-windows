@@ -23,13 +23,13 @@ Elastic Graphics accelerators are available in the following AWS Regions: `us-ea
 
 The following instance types support Elastic Graphics accelerators:
 + C3 \| C4 \| C5 \| C5a \| C5ad \| C5d \| C5n
-+ D2
++ D2 \| D3 \| D3en
 + H1
 + I3 \| I3en
 + M3 \| M4 \| M5 \| M5d \| M5dn \| M5n
 + P2 \| P3 \| P3dn
 + R3 \| R4 \| R5 \| R5d \| R5dn \| R5n
-+ `t2.medium` or larger \| `t3.medium` or larger 
++ `t2.medium` or larger \| `t3.medium` or larger
 + X1 \| X1e
 + z1d
 

@@ -14,11 +14,20 @@ For more information, see [Amazon EC2 M5 Instances](https://aws.amazon.com/ec2/i
 
 Bare metal instances, such as `m5.metal`, provide your applications with direct access to physical resources of the host server, such as processors and memory\.
 
+**M5zn**
+
+These instances are ideal for applications that benefit from extremely high single\-thread performance, high throughput, and low latency networking\. They are well\-suited for the following:
++ Gaming
++ High performance computing
++ Simulation modeling
+
 For more information, see [Amazon EC2 M5 Instances](https://aws.amazon.com/ec2/instance-types/m5)\.
+
+Bare metal instances, such as `m5zn.metal`, provide your applications with direct access to physical resources of the host server, such as processors and memory\.
 
 **T2, T3, and T3a instances**
 
-These instances provide a baseline level of CPU performance with the ability to burst to a higher level when required by your workload\. An Unlimited instance can sustain high CPU performance for any period of time whenever required\. For more information, see [Burstable performance instances](burstable-performance-instances.md)\. These instances are well\-suited for the following:
+These instances provide a baseline level of CPU performance with the ability to burst to a higher level when required by your workload\. An Unlimited instance can sustain high CPU performance for any period of time whenever required\. For more information, see [Burstable performance instances](burstable-performance-instances.md)\. They are well\-suited for the following:
 + Websites and web applications
 + Code repositories
 + Development, build, test, and staging environments
@@ -98,6 +107,13 @@ The following is a summary of the hardware specifications for general purpose in
 | m5n\.12xlarge | 48 | 192 | 
 | m5n\.16xlarge | 64 | 256 | 
 | m5n\.24xlarge | 96 | 384 | 
+| m5zn\.large | 2 | 8 | 
+| m5zn\.xlarge | 4 | 16 | 
+| m5zn\.2xlarge | 8 | 32 | 
+| m5zn\.3xlarge | 12 | 48 | 
+| m5zn\.6xlarge | 24 | 96 | 
+| m5zn\.12xlarge | 48 | 192 | 
+| m5zn\.metal | 48 | 192 | 
 | t2\.nano | 1 | 0\.5 | 
 | t2\.micro | 1 | 1 | 
 | t2\.small | 1 | 2 | 
@@ -146,11 +162,11 @@ The following is a summary of network performance for general purpose instances 
 |  m5\.8xlarge \| m5a\.12xlarge \| m5ad\.12xlarge \| m5d\.8xlarge  | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5\.12xlarge \| m5a\.16xlarge \| m5ad\.16xlarge \| m5d\.12xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5\.16xlarge \| m5a\.24xlarge \| m5ad\.24xlarge \| m5d\.16xlarge  | 20 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5dn\.4xlarge and smaller \| m5n\.4xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.4xlarge and smaller \| m5n\.4xlarge and smaller \| m5zn\.3xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
 |  m4\.16xlarge \| m5\.24xlarge \| m5\.metal \| m5d\.24xlarge \| m5d\.metal \| m5dn\.8xlarge \| m5n\.8xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5dn\.12xlarge \| m5n\.12xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.12xlarge \| m5n\.12xlarge \| m5zn\.6xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5dn\.16xlarge \| m5n\.16xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5dn\.24xlarge \| m5n\.24xlarge  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.24xlarge \| m5n\.24xlarge \| m5zn\.12xlarge \| m5zn\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
 † These instances use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. They accrue credits when their bandwidth is below their baseline bandwidth, and can use these credits when they perform network data transfers\. For more information, open a support case and ask about baseline bandwidth for the specific instance types that you are interested in\.
 
@@ -209,6 +225,7 @@ The following is a summary of features for general purpose instances:
 | M5d | No | Yes | NVMe \* | Yes | 
 | M5dn | No | Yes | NVMe \* | Yes | 
 | M5n | Yes | Yes | No | Yes | 
+| M5zn | Yes | Yes | No | Yes | 
 | T2 | Yes | No | No | No | 
 | T3 | Yes | Yes | No | No | 
 | T3a | Yes | Yes | No | No | 
@@ -223,6 +240,7 @@ For more information, see the following:
 ## Release notes<a name="general-purpose-instances-limits"></a>
 + M5, M5d, and T3 instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor from either the first generation \(Skylake\-SP\) or second generation \(Cascade Lake\)\.
 + M5a, M5ad, and T3a instances feature a 2\.5 GHz AMD EPYC 7000 series processor\.
++ M5zn instances are powered by Intel Cascade Lake CPUs that deliver all\-core turbo frequency of up to 4\.5 GHz and up to 100 Gbps network bandwidth\.
 + M4, M5, M5a, M5ad, M5d, `t2.large` and larger, and `t3.large` and larger, and `t3a.large` and larger instance types require 64\-bit HVM AMIs\. They have high\-memory, and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
 + Instances built on the [Nitro System](instance-types.md#ec2-nitro-instances) have the following requirements:
   + [NVMe drivers](nvme-ebs-volumes.md) must be installed
