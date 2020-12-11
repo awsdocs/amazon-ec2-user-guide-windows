@@ -2,6 +2,8 @@
 
 You can attach an available EBS volume to one or more of your instances that is in the same Availability Zone as the volume\.
 
+For information about adding EBS volumes to your instance at launch, see [Instance block device mapping](block-device-mapping-concepts.md#instance-block-device-mapping)\.
+
 **Prerequisites**
 + Determine how many volumes you can attach to your instance\. For more information, see [Instance volume limits](volume_limits.md)\.
 + If a volume is encrypted, it can only be attached to an instance that supports Amazon EBS encryption\. For more information, see [Supported instance types](EBSEncryption.md#EBSEncryption_supported_instances)\.

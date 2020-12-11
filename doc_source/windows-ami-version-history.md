@@ -2,7 +2,7 @@
 
 AWS provides a set of publicly available AMIs that contain software configurations specific to the Windows platform\. Using these AMIs, you can quickly start building and deploying your applications using Amazon EC2\. First choose the AMI that meets your specific requirements, and then launch an instance using that AMI\. You retrieve the password for the administrator account and then log in to the instance using Remote Desktop Connection, just as you would with any other Windows server\.
 
-When you launch an instance from a Windows AMI, the root device for the Windows instance is an Amazon EBS volume\. Windows AMIs do not support instance store for the root device\.
+When you launch an instance from a Windows AMI, the root device for the Windows instance is an Amazon Elastic Block Store \(Amazon EBS\) volume\. Windows AMIs do not support instance store for the root device\.
 
 Some Windows AMIs include an edition of Microsoft SQL Server \(SQL Enterprise Edition, SQL Server Standard, SQL Server Express, or SQL Server Web\)\. Launching an instance from a Windows AMI with Microsoft SQL Server enables you to run the instance as a database server\. Alternatively, you can launch an instance from any Windows AMI and then install the database software that you need on the instance\.
 
@@ -28,9 +28,9 @@ You can also create an AMI from your own Windows computer\. For more information
 
 ## Keeping your AMIs up\-to\-date<a name="WinAMI_Updating"></a>
 
-AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. For more information, see [Details about AWS Windows AMI versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-versions.html)\.
+AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. For more information, see [Details about AWS Windows AMI versions](aws-windows-ami.md#windows-ami-versions)\.
 
-The AWS Windows AMIs contain the latest security updates available at the time they were created\. For more information, see [Patches, security updates, and AMI IDs](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-versions.html#ami-patches-security-ID)\.
+The AWS Windows AMIs contain the latest security updates available at the time they were created\. For more information, see [Patches, security updates, and AMI IDs](aws-windows-ami.md#ami-patches-security-ID)\.
 
 ## Virtualization types<a name="virtualization-types"></a>
 

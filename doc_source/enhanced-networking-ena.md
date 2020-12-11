@@ -9,7 +9,6 @@ Amazon EC2 provides enhanced networking capabilities through the Elastic Network
 + [Enabling enhanced networking on Windows](#enable-enhanced-networking-ena-WIN)
 + [Amazon ENA driver versions](#ena-adapter-driver-versions)
 + [Subscribing to notifications](#drivers-subscribe-notifications)
-+ [Operating system optimizations](enhanced-networking-os.md)
 
 ## Requirements<a name="ena-requirements"></a>
 

@@ -105,10 +105,10 @@ The temporary instance must be in the same Availability Zone as the original ins
 
 ## Step 4: Delete the `.run-once` file<a name="resetting-password-ec2launchv2-step4"></a>
 
-After you have attached the volume to the temporary instance as a secondary volume, delete the `.run-once` file from the instance, located at `%ProgramData%/Amazon/EC2Launch/state/.run-once`\. This directs EC2Launch v2 to execute all tasks with a frequency of `once`, which includes setting the administrator password\. 
+After you have attached the volume to the temporary instance as a secondary volume, delete the `.run-once` file from the instance, located at `%ProgramData%/Amazon/EC2Launch/state/.run-once`\. This directs EC2Launch v2 to run all tasks with a frequency of `once`, which includes setting the administrator password\. 
 
 **Important**  
-Any scripts set to execute once will be triggered by this action\.
+Any scripts set to run once will be triggered by this action\.
 
 ## Step 5: Restart the original instance<a name="resetting-password-ec2launchv2-step5"></a>
 

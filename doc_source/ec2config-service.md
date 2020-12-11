@@ -117,7 +117,7 @@ The following procedure describes how to use the **Ec2 Service Properties** dial
 If this setting is enabled \(it is disabled by default\), the host name is compared to the current internal IP address at each boot; if the host name and internal IP address do not match, the host name is reset to contain the internal IP address and then the system reboots to pick up the new host name\. To set your own host name, or to prevent your existing host name from being modified, do not enable this setting\.  
  **User Data**   
 User data execution enables you to specify scripts in the instance metadata\. By default, these scripts are run during the initial launch\. You can also configure them to run the next time you reboot or start the instance, or every time you reboot or start the instance\.  
-If you have a large script, we recommend that you use user data to download the script, and then execute it\.  
+If you have a large script, we recommend that you use user data to download the script, and then run it\.  
 For more information, see [User data execution](ec2-windows-user-data.md#user-data-execution)\.  
  **Event Log**   
 Use this setting to display event log entries on the console during boot for easy monitoring and debugging\.  
@@ -192,7 +192,7 @@ This file contains settings that control how EC2Config prepares an instance for 
 
   To modify the KMS settings, edit the `ActivationSettings.xml` file located in the `EC2ConfigService\Settings` directory\.
 + `Ec2DynamicBootVolumeSize`—Extends Disk 0/Volume 0 to include any unpartitioned space\.
-+ `Ec2HandleUserData`—Creates and executes scripts created by the user on the first launch of an instance after Sysprep is run\. Commands wrapped in script tags are saved to a batch file, and commands wrapped in PowerShell tags are saved to a \.ps1 file \(corresponds to the User Data check box on the Ec2 Service Properties dialog box\)\.
++ `Ec2HandleUserData`—Creates and runs scripts created by the user on the first launch of an instance after Sysprep is run\. Commands wrapped in script tags are saved to a batch file, and commands wrapped in PowerShell tags are saved to a \.ps1 file \(corresponds to the User Data check box on the Ec2 Service Properties dialog box\)\.
 + `Ec2ElasticGpuSetup`—Installs the Elastic GPU software package if the instance is associated with an elastic GPU\.
 + `Ec2FeatureLogging`—Sends Windows feature installation and corresponding service status to the console\. Supported only for the Microsoft Hyper\-V feature and corresponding vmms service\.
 

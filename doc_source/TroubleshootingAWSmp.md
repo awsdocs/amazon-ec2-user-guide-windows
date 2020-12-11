@@ -38,7 +38,7 @@ failed, type = "Amazon.SCOM.SDK.Interfaces.IMonitorSdk", name = "(none)".
 Exception occurred while: Calling constructor Amazon.SCOM.SDK.CloudWatch.AwsMonitorSdk
 (System.String awsAccessKey, System.String awsSecretKey).
 Exception is: InvalidOperationException - Collection was modified; enumeration operation 
-may not execute.
+may not run.
 ```
 
 ## Event 623<a name="event-623"></a>

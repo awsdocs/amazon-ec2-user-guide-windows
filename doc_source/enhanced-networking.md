@@ -9,6 +9,7 @@ For information about the supported network speed for each instance type, see [A
 + [Enabling enhanced networking on your instance](#enabling_enhanced_networking)
 + [Enhanced networking: ENA](enhanced-networking-ena.md)
 + [Enhanced networking: Intel 82599 VF](sriov-networking.md)
++ [Operating system optimizations](enhanced-networking-os.md)
 
 ## Enhanced networking support<a name="supported_instances"></a>
 

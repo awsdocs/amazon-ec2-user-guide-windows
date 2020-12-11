@@ -2,7 +2,7 @@
 
 You can manage the EC2Launch v2 service just as you would any other Windows service\.
 
-EC2Launch v2 runs once on boot and executes all of the configured tasks\. After executing tasks, the service enters a stopped state\. When you restart the service, the service will run all of the configured tasks again and return to a stopped state\.
+EC2Launch v2 runs once on boot and runs all of the configured tasks\. After executing tasks, the service enters a stopped state\. When you restart the service, the service will run all of the configured tasks again and return to a stopped state\.
 
 To apply updated settings to your instance, you can stop and restart the service\. If you are manually installing EC2Launch v2, you must first stop the service first\.
 

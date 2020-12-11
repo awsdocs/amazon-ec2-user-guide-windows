@@ -14,7 +14,7 @@ This section shows common troubleshooting scenarios and steps for resolution\.
 **Topics**
 + [Service fails to set the wallpaper](#ec2launchv2-troubleshooting-wallpaper)
 + [Service fails to run user data](#ec2launchv2-troubleshooting-user-data)
-+ [Service executes a task only one time](#ec2launchv2-troubleshooting-task-once)
++ [Service runs a task only one time](#ec2launchv2-troubleshooting-task-once)
 + [Service fails to run a task](#ec2launchv2-troubleshooting-task-failed)
 
 ### Service fails to set the wallpaper<a name="ec2launchv2-troubleshooting-wallpaper"></a>
@@ -37,7 +37,7 @@ This section shows common troubleshooting scenarios and steps for resolution\.
 
 1. If one of the stages failed, check `%ProgramData%\Amazon\EC2Launch\log\agent.log` for specific errors\.
 
-### Service executes a task only one time<a name="ec2launchv2-troubleshooting-task-once"></a>
+### Service runs a task only one time<a name="ec2launchv2-troubleshooting-task-once"></a>
 
 **Resolution**
 

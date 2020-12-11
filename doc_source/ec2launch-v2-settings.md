@@ -297,7 +297,7 @@ help for reset
 
 ### sysprep<a name="ec2launch-v2-settings-sysprep"></a>
 
-Resets the service state, updates `unattend.xml`, disables RDP, and executes Sysprep\.
+Resets the service state, updates `unattend.xml`, disables RDP, and runs Sysprep\.
 
 **Example:**
 

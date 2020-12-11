@@ -23,7 +23,7 @@ The following AWS services are used in the automated upgrade process:
 
 In order to automate your upgrade with AWS Systems Manager Automation documents, you must perform the following tasks:
 + [Create an IAM role with the specified IAM policies](#automated-iam) to allow Systems Manager to perform automation tasks on your Amazon EC2 instances and verify that you meet the prerequisites to use Systems Manager\.
-+ [Select the option for how you want the automation to be executed](#automated-execution-option)\. The options for execution are **Simple execution**, **Rate control**, **Multi\-account and Region**, and **Manual execution**\. 
++ [Select the option for how you want the automation to be run](#automated-execution-option)\. The options for execution are **Simple execution**, **Rate control**, **Multi\-account and Region**, and **Manual execution**\. 
 
 ### Create IAM role with specified permissions<a name="automated-iam"></a>
 

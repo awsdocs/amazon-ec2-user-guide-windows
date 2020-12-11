@@ -51,7 +51,7 @@ If you're mounting a volume that already has data on it, do not reformat the vol
 
    For more information, see [DiskPart Syntax and Parameters](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-vista/cc766465(v=ws.10)#diskpart-syntax-and-parameters)\.
 
-1. Navigate to the folder in which the script is located and execute the following command:
+1. Navigate to the folder in which the script is located and run the following command:
 
    ```
    C:\> diskpart /s diskpart.txt

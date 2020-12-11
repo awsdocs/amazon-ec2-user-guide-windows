@@ -98,7 +98,7 @@ Citrix PV drivers are used in Windows Server 2003 and 2008\. There is a known is
 
 ### Using the upgrade helper service<a name="os-upgradehelper"></a>
 
-You must run the Upgrade Helper Service before you start the upgrade\. After you run it, the utility creates a Windows service that executes during the post\-upgrade steps to correct the driver state\. The executable is written in C\# and can run on \.NET Framework versions 2\.0 through 4\.0\.
+You must run the Upgrade Helper Service before you start the upgrade\. After you run it, the utility creates a Windows service that runs during the post\-upgrade steps to correct the driver state\. The executable is written in C\# and can run on \.NET Framework versions 2\.0 through 4\.0\.
 
 When you run Upgrade Helper Service on the system *before* the upgrade, it performs the following tasks:
 + Creates a new Windows service named `UpgradeHelperService`\.

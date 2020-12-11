@@ -117,7 +117,7 @@ If Windows Update is set to **Check for updates but let me choose whether to dow
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update" /v AUOptions /t REG_DWORD /d 3 /f net stop wuauserv net start wuauserv
 ```
 
-When you execute this script specify a value for /d\. The default value is 3\. Possible values include the following: 
+When you run this script, specify a value for /d\. The default value is 3\. Possible values include the following: 
 
 1. Never check for updates
 
@@ -127,4 +127,4 @@ When you execute this script specify a value for /d\. The default value is 3\. P
 
 1. Install updates automatically
 
-After you modify the user data for your instance, you can execute it\. For more information, see [View and update the instance user data](ec2-windows-user-data.md#user-data-view-change) and [User data execution](ec2-windows-user-data.md#user-data-execution)\.
+After you modify the user data for your instance, you can run it\. For more information, see [View and update the instance user data](ec2-windows-user-data.md#user-data-view-change) and [User data execution](ec2-windows-user-data.md#user-data-execution)\.

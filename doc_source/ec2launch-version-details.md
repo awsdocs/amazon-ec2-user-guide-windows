@@ -9,6 +9,7 @@ The following table describes the released versions of EC2Launch\. Note that the
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 1\.3\.2003189 | Added w32tm resync after adding routes\. | 4 December 2020 | 
 | 1\.3\.2003155 | Updated instance type information\. | 25 August 2020 | 
 | 1\.3\.2003150 | Added OsCurrentBuild and OsReleaseId to console output \. | 22 April 2020 | 
 | 1\.3\.2003040 | Fixed IMDS version 1 fallback logic\. | 7 April 2020 | 

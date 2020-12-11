@@ -4,7 +4,7 @@ You can launch an instance from an existing Windows AMI, customize the instance,
 
 To help categorize and manage your AMIs, you can assign custom *tags* to them\. For more information, see [Tagging your Amazon EC2 resources](Using_Tags.md)\.
 
-To create a custom Linux AMI, use the procedure for the type of volume for the instance\. For more information, see [Creating an Amazon EBS\-Backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) or [Creating an Instance Store\-Backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+To create a custom Linux AMI, use the procedure for the type of volume for the instance\. For more information, see [Creating an Amazon EBS\-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) or [Creating an instance store\-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
 + [How the creation of a custom AMI works](#process-creating-a-windows-ami-ebs)
@@ -21,10 +21,10 @@ Depending on the size of the volumes, it can take several minutes for the AMI\-c
 
 After the process completes, you have a new AMI and snapshot created from the root volume of the instance\. When you launch an instance using the new AMI, we create a new EBS volume for its root volume using the snapshot\.
 
-If you add instance store volumes or Amazon EBS volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block device mapping](block-device-mapping-concepts.md)\.
+If you add instance store volumes or Amazon Elastic Block Store \(Amazon EBS\) volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block device mapping](block-device-mapping-concepts.md)\.
 
 **Note**  
-When you create a new instance from a custom AMI, you should initialize both its root volume and any additional EBS storage before putting it into production\. For more information, see [Initializing Amazon EBS Volumes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
+When you create a new instance from a custom AMI, you should initialize both its root volume and any additional EBS storage before putting it into production\. For more information, see [Initializing Amazon EBS volumes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
 
 ## Create a Windows AMI from a running instance<a name="how-to-create-windows-ebs-ami"></a>
 
@@ -70,10 +70,10 @@ If this option is disabled, your instance isn't an Amazon EBS\-backed instance\.
 **Warning**  
 If you choose **No reboot**, we can't guarantee the file system integrity of the created image\.
 
-   \(Optional\) Modify the root volume, Amazon EBS volumes, and instance store volumes as needed\. For example:
+   \(Optional\) Modify the root volume, EBS volumes, and instance store volumes as needed\. For example:
    + To change the size of the root volume, locate the **Root** volume in the **Type** column, and fill in the **Size** field\.
-   + To suppress an Amazon EBS volume specified by the block device mapping of the AMI used to launch the instance, locate the EBS volume in the list and choose **Delete**\.
-   + To add an Amazon EBS volume, choose **Add New Volume**, **Type**, and **EBS**, and fill in the fields\. When you then launch an instance from your new AMI, these additional volumes are automatically attached to the instance\. Empty volumes must be formatted and mounted\. Volumes based on a snapshot must be mounted\.
+   + To suppress an EBS volume specified by the block device mapping of the AMI used to launch the instance, locate the EBS volume in the list and choose **Delete**\.
+   + To add an EBS volume, choose **Add New Volume**, **Type**, and **EBS**, and fill in the fields\. When you then launch an instance from your new AMI, these additional volumes are automatically attached to the instance\. Empty volumes must be formatted and mounted\. Volumes based on a snapshot must be mounted\.
    + To suppress an instance store volume specified by the block device mapping of the AMI used to launch the instance, locate the volume in the list and choose **Delete**\.
    + To add an instance store volume, choose **Add New Volume**, **Type**, and **Instance Store**, and select a device name from the **Device** list\. When you launch an instance from your new AMI, these additional volumes are automatically initialized and mounted\. These volumes don't contain data from the instance store volumes of the running instance from which you based your AMI\.
 
@@ -111,7 +111,7 @@ To troubleshoot Sysprep, see [Troubleshooting Sysprep](sysprep-troubleshoot.md)\
 + [Use Sysprep with EC2Config](#sysprep-using)
 
 ### Before you begin<a name="sysprep-begin"></a>
-+ Before performing Sysprep, we recommend that you remove all local user accounts and all account profiles other than a single administrator account under which Sysprep will be executed\. If you perform Sysprep with additional accounts and profiles, unexpected behavior could result, including loss of profile data or failure to complete Sysprep\.
++ Before performing Sysprep, we recommend that you remove all local user accounts and all account profiles other than a single administrator account under which Sysprep will be run\. If you perform Sysprep with additional accounts and profiles, unexpected behavior could result, including loss of profile data or failure to complete Sysprep\.
 + Learn more about [Sysprep](https://technet.microsoft.com/en-us/library/cc721940.aspx) on Microsoft TechNet\.
 + Learn which [server roles are supported for Sysprep](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)\.
 
@@ -131,7 +131,7 @@ Sysprep runs through the following phases:
 + **Generalize**: The tool removes image\-specific information and configurations\. For example, Sysprep removes the security identifier \(SID\), the computer name, the event logs, and specific drivers, to name a few\. After this phase is completed, the operating system \(OS\) is ready to create an AMI\. 
 **Note**  
 When you run Sysprep with the EC2Launch v2 service, the system prevents drivers from being removed because the `PersistAllDeviceInstalls` setting is set to true by default\.
-+ **Specialize**: Plug and Play scans the computer and installs drivers for any detected devices\. The tool generates OS requirements, like the computer name and SID\. Optionally, you can execute commands in this phase\. 
++ **Specialize**: Plug and Play scans the computer and installs drivers for any detected devices\. The tool generates OS requirements, like the computer name and SID\. Optionally, you can run commands in this phase\. 
 + **Out\-of\-Box Experience \(OOBE\)**: The system runs an abbreviated version of Windows Setup and asks you to enter information such as system language, time zone, and registered organization\. When you run Sysprep with EC2Launch v2, the answer file automates this phase\. 
 
 #### Sysprep actions<a name="sysprep-actions-ec2launchv2"></a>
@@ -142,7 +142,7 @@ Sysprep and EC2Launch v2 perform the following actions when preparing an image\.
 
 1. EC2Launch v2 edits the content of the `unattend.xml` file by reading the registry value at `HKEY_USERS\.DEFAULT\Control Panel\International\LocaleName`\. This file is located in the following directory: `C:\ProgramData\Amazon\EC2Launch\sysprep`\.
 
-1. The system executes the `BeforeSysprep.cmd`\. This command creates a registry key as follows:
+1. The system run the `BeforeSysprep.cmd`\. This command creates a registry key as follows:
 
    reg add "HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server" /v fDenyTSConnections /t REG\_DWORD /d 1 /f
 
@@ -167,13 +167,13 @@ The system generates OS\-specific requirements, such as a computer name and an S
 
   If you don’t have specific user\-profile customizations that you want to carry over to the new image, then change this setting to `False`\. Sysprep will remove all user profiles \(this saves time and disk space\)\. 
 + **TimeZone**: The time zone is set to Coordinate Universal Time \(UTC\) by default\.
-+ **Synchronous command with order 1**: The system executes the following command, which enables the administrator account and specifies the password requirement:
++ **Synchronous command with order 1**: The system runs the following command, which enables the administrator account and specifies the password requirement:
 
   net user Administrator /ACTIVE:YES /LOGONPASSWORDCHG:NO /EXPIRES:NEVER /PASSWORDREQ:YES
 + **Synchronous command with order 2**: The system scrambles the administrator password\. This security measure is designed to prevent the instance from being accessible after Sysprep completes if you did not enable the `ec2setpassword` setting\. 
 
   C:\\Program Files\\Amazon\\Ec2ConfigService\\ScramblePassword\.exe" \-u Administrator
-+ **Synchronous command with order 3**: The system executes the following command:
++ **Synchronous command with order 3**: The system runs the following command:
 
   C:\\Program Files\\Amazon\\Ec2ConfigService\\Scripts\\SysprepSpecializePhase\.cmd
 
@@ -342,7 +342,7 @@ Sysprep runs through the following phases:
 + **Generalize**: The tool removes image\-specific information and configurations\. For example, Sysprep removes the security identifier \(SID\), the computer name, the event logs, and specific drivers, to name a few\. After this phase is completed, the operating system \(OS\) is ready to create an AMI\. 
 **Note**  
 When you run Sysprep with the EC2Config service, the system prevents drivers from being removed because the PersistAllDeviceInstalls setting is set to true by default\.
-+ **Specialize**: Plug and Play scans the computer and installs drivers for any detected devices\. The tool generates OS requirements like the computer name and SID\. Optionally, you can execute commands in this phase\. 
++ **Specialize**: Plug and Play scans the computer and installs drivers for any detected devices\. The tool generates OS requirements like the computer name and SID\. Optionally, you can run commands in this phase\. 
 + **Out\-of\-Box Experience \(OOBE\)**: The system runs an abbreviated version of Windows Setup and asks the user to enter information such as a system language, the time zone, and a registered organization\. When you run Sysprep with EC2Config, the answer file automates this phase\. 
 
 #### Sysprep actions<a name="sysprep-actions"></a>
@@ -359,7 +359,7 @@ Sysprep and the EC2Config service perform the following actions when preparing a
    + **SetPasswordAfterSysprep**: Sets a random password on a newly launched instance, encrypts it with the user launch key, and outputs the encrypted password to the console\. Change the value to `No` if new instances should not be set to a random encrypted password\. The default value is `Yes`\.
    +  **PreSysprepRunCmd**: The location of the command to run\. The command is located in the following directory, by default: `C:\Program Files\Amazon\Ec2ConfigService\Scripts\BeforeSysprep.cmd`
 
-1. The system executes `BeforeSysprep.cmd`\. This command creates a registry key as follows:
+1. The system runs `BeforeSysprep.cmd`\. This command creates a registry key as follows:
 
    ```
    reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 1 /f
@@ -388,13 +388,13 @@ The system generates OS specific requirements such as a computer name and a SID\
 
   If you don’t have specific user\-profile customizations that you want to carry over to the new image then change this setting to False\. Sysprep will remove all user profiles; this saves time and disk space\. 
 + **TimeZone**: The time zone is set to Coordinate Universal Time \(UTC\) by default\.
-+ **Synchronous command with order 1**: The system executes the following command that enables the administrator account and specifies the password requirement\.
++ **Synchronous command with order 1**: The system runs the following command that enables the administrator account and specifies the password requirement\.
 
   net user Administrator /ACTIVE:YES /LOGONPASSWORDCHG:NO /EXPIRES:NEVER /PASSWORDREQ:YES
 + **Synchronous command with order 2**: The system scrambles the administrator password\. This security measure is designed to prevent the instance from being accessible after Sysprep completes if you did not enable the ec2setpassword setting\. 
 
   C:\\Program Files\\Amazon\\Ec2ConfigService\\ScramblePassword\.exe" \-u Administrator
-+ **Synchronous command with order 3**: The system executes the following command:
++ **Synchronous command with order 3**: The system runs the following command:
 
   C:\\Program Files\\Amazon\\Ec2ConfigService\\Scripts\\SysprepSpecializePhase\.cmd
 
@@ -421,9 +421,9 @@ The system generates OS specific requirements such as a computer name and a SID\
 During the generalize and specialize phases the EC2Config service monitors the status of the OS\. If EC2Config detects that the OS is in a Sysprep phase, then it publishes the following message to the system log:  
 EC2ConfigMonitorState: 0 Windows is being configured\. SysprepState=IMAGE\_STATE\_UNDEPLOYABLE
 
-1. After the OOBE phase completes, the system executes the SetupComplete\.cmd from the following location: C:\\Windows\\Setup\\Scripts\\SetupComplete\.cmd\. In Amazon public AMIs before April 2015 this file was empty and executed nothing on the image\. In public AMIs dated after April 2015, the file includes the following value: **call "C:\\Program Files\\Amazon\\Ec2ConfigService\\Scripts\\PostSysprep\.cmd"**\.
+1. After the OOBE phase completes, the system runs `SetupComplete.cmd` from the following location: `C:\Windows\Setup\Scripts\SetupComplete.cmd`\. In Amazon public AMIs before April 2015 this file was empty and ran nothing on the image\. In public AMIs dated after April 2015, the file includes the following value: call "C:\\Program Files\\Amazon\\Ec2ConfigService\\Scripts\\PostSysprep\.cmd"\.
 
-1. The system executes the PostSysprep\.cmd, which performs the following operations:
+1. The system runs `PostSysprep.cmd`, which performs the following operations:
    + Sets the local Administrator password to not expire\. If the password expired, Administrators might not be able to log on\.
    + Sets the MSSQLServer machine name \(if installed\) so that the name will be in sync with the AMI\.
 

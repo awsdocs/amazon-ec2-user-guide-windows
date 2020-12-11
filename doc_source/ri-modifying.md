@@ -38,14 +38,14 @@ You can modify these attributes as follows\.
 
 **Requirements**
 
-Amazon EC2 processes your modification request if there is sufficient capacity for your target configuration \(if applicable\), and if the following conditions are met:
+Amazon EC2 processes your modification request if there is sufficient capacity for your new configuration \(if applicable\), and if the following conditions are met:
 + The Reserved Instance cannot be modified before or at the same time that you purchase it
 + The Reserved Instance must be active
 + There cannot be a pending modification request
 + The Reserved Instance is not listed in the Reserved Instance Marketplace
-+ The input Reserved Instances are all Standard Reserved Instances or all Convertible Reserved Instances, not some of each type
-+ The input Reserved Instances must expire within the same hour, if they are Standard Reserved Instances
-+ The Reserved Instance is not a G4 instance\.
++ The original Reserved Instances are all Standard Reserved Instances or all Convertible Reserved Instances, not some of each type
++ The original Reserved Instances must expire within the same hour, if they are Standard Reserved Instances
++ The Reserved Instance is not a G4dn instance\.
 
 ## Submitting modification requests<a name="ri-modification-process"></a>
 

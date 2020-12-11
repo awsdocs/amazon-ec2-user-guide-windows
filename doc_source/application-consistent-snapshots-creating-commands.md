@@ -5,6 +5,7 @@ This section includes procedures for creating VSS\-enabled EBS snapshots by usin
 **Topics**
 + [Install the VSS package using the AWS CLI or Tools for Windows PowerShell](#application-consistent-snapshots-vss-package-command)
 + [Create VSS\-enabled EBS snapshots using the AWS CLI, Tools for Windows PowerShell, or the AWSEC2\-ManageVssIO SSM document](#application-cosistent-snapshots-cli)
++ [Troubleshooting VSS\-enabled EBS snapshots](#application-consistent-snapshots-troubleshooting)
 
 ## Install the VSS package using the AWS CLI or Tools for Windows PowerShell<a name="application-consistent-snapshots-vss-package-command"></a>
 
@@ -146,3 +147,29 @@ Note the following important details about this process:
 1. Open `CreateVssSnapshotAdvancedScript.ps1` in a text editor, edit the sample call at the bottom of the script with a valid EC2 instance ID, snapshot description, and desired tag values, and then run the script from PowerShell\.
 
 If successful, the command populates the list of EBS snapshots with the new snapshots\. You can locate these snapshots in the list of EBS snapshots by searching for the tags you specified, or by searching for `AppConsistent`\. If the command execution failed, view the command output for details about why the execution failed\. If the command was successfully completed, but a specific volume backup failed, you can troubleshoot the failure in the list of EBS volumes\.
+
+## Troubleshooting VSS\-enabled EBS snapshots<a name="application-consistent-snapshots-troubleshooting"></a>
+
+**General: Checking the log files**  
+If you experience problems or receive error messages when creating VSS\-enabled EBS snapshots, you can view the command output in the Systems Manager console\. You can also view the following logs:
++ `%ProgramData%\Amazon\SSM\InstanceData\InstanceID\document\orchestration\SSMCommandID\awsrunPowerShellScript\runPowerShellScript\stdout`
++ `%ProgramData%\Amazon\SSM\InstanceData\InstanceID\document\orchestration\SSMCommandID\awsrunPowerShellScript\runPowerShellScript\stderr`
+
+You can also open the Event Viewer Windows application and choose **Windows Logs**, **Application** to view additional logs\. To see events specifically from the EC2 Windows VSS Provider and the Volume Shadow Copy Service, filter by **Source** on the terms **Ec2VssSoftwareProvider** and **VSS**\.
+
+**Error: Thaw pipe connection timed out, error on thaw, timeout waiting for VSS Freeze, or other timeout errors**  
+The EC2 Windows VSS Provider might time out due to activity or services on the instance preventing VSS\-enabled snapshots from proceeding in a timely manner\. The Windows VSS Framework provides a non\-configurable 10\-second window during which communication to the file system is paused\. During this time, `AWSEC2-CreateVssSnapshot` snapshots your volumes\.
+
+The following items can cause the EC2 Windows VSS Provider to run into time limits during a snapshot:
++ Excessive I/O to a volume
++ Slow responsiveness of the EC2 API on the instance
++ Fragmented volumes
++ Incompatibility with some antivirus software
++ Issues with a VSS Application writer
+
+Usually, when running into time limits with the `AWSEC2-CreateVssSnapshot` command, the cause is related to the workload on the instance being too high at the time of backup\. The following actions can help you take a successful snapshot:
++ Retry the `AWSEC2-CreateVssSnapshot` command to see if the snapshot attempt is successful\. If retrying succeeds in some cases, reducing the instance load might make snapshots more successful\.
++ Wait a while for the workload on the instance to decrease, and retry the `AWSEC2-CreateVssSnapshot` command\. Alternatively, you can attempt snapshots when the instance is known to be under low stress\.
++ Attempt VSS snapshots when the antivirus software on the system is turned off\. If this resolves the issue, refer to the antivirus software instructions and configure it to allow VSS snapshots\.
++ If there are a lot of EC2 API calls being made at the time of the snapshot, API throttling might cause the snapshots to take too long to start\. Try taking snapshots again when there is less API activity in the account\.
++ Run the command `vssadmin list writers` in a shell and see if it reports any errors in the **Last error** field for any writers on the system\. If any writers report a **time out** error, consider retrying snapshots when the instance is under less load\.

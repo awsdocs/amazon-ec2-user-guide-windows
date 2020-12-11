@@ -4,6 +4,8 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [G4ad instances](#DocumentHistory) | New instances powered by AMD Radeon Pro V520 GPUs and AMD 2nd Generation EPYC processors\. | December 9, 2020 | 
+| [Tag AMIs and snapshots on AMI creation](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/creating-an-ami-ebs.html#how-to-create-ebs-ami) | When you create an AMI, you can tag the AMI and the snapshots with the same tags, or you can tag them with different tags\.  | December 4, 2020 | 
 | [io2 Block Express preview](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-volume-types.html#io2-block-express) | You can opt in to the `io2` Block Express volumes preview\. `io2` Block Express volumes provide sub\-millisecond latency, and support higher IOPS, higher throughput, and larger capacity than `io2` volumes\. | December 1, 2020 | 
 | [gp3 volumes](#DocumentHistory) | A new Amazon EBS General Purpose SSD volume type\. You can specify provisioned IOPS and throughput when you create or modify the volume\. | December 1, 2020 | 
 | [D3, D3en, M5zn, and R5b instances](#DocumentHistory) | New instance types built on the Nitro System\. | December 1, 2020 | 
@@ -29,7 +31,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 | [Capacity Reservation groups](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/capacity-reservations-using.html#create-cr-group) | You can use AWS Resource Groups to create logical collections of Capacity Reservations, and then target instance launches into those groups\. | July 29, 2020 | 
 | [Fast snapshot restore](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-fast-snapshot-restore.html) | You can enable fast snapshot restore for snaphots that are shared with you\. | July 21, 2020 | 
 | [ EC2Launch v2 ](ec2launch-v2.md) | You can use EC2Launch v2 to perform tasks during instance startup, if an instance is stopped and later started, if an instance is restarted, and on demand\. EC2Launch v2 supports all versions of Windows Server and replaces EC2Launch and EC2Config\. | June 30, 2020 | 
-| [Bare metal instances for G4](#DocumentHistory) | New instances that provide your applications with direct access to the physical resources of the host server\. | June 5, 2020 | 
+| [Bare metal instances for G4dn](#DocumentHistory) | New instances that provide your applications with direct access to the physical resources of the host server\. | June 5, 2020 | 
 | [C5a instances](#DocumentHistory) | New compute optimized instances featuring second\-generation AMD EYPC processors\. | June 4, 2020 | 
 | [Bring your own IPv6 addresses](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-byoip.html) | You can bring part or all of your IPv6 address range from your on\-premises network to your AWS account\. | May 21, 2020 | 
 | [Launch instances using a Systems Manager parameter](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html#using-systems-manager-parameter-to-find-AMI) | You can specify a AWS Systems Manager parameter instead of an AMI when you launch an instance\. | May 5, 2020 | 
@@ -47,7 +49,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 | [Instance Metadata Service Version 2](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/configuring-instance-metadata-service.html) | You can use Instance Metadata Service Version 2, which is a session\-oriented method for requesting instance metadata\. | November 19, 2019 | 
 | [Hibernation support for On\-Demand Windows instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Hibernate.html#hibernating-prerequisites) | You can hibernate On\-Demand Windows instances\. | October 14, 2019 | 
 | [Queued purchases of Reserved Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ri-market-concepts-buying.html#ri-queued-purchase) | You can queue the purchase of a Reserved Instance up to three years in advance\. | October 4, 2019 | 
-| [G4 instances](#DocumentHistory) | New instances featuring NVIDIA Tesla GPUs\. | September 19, 2019 | 
+| [G4dn instances](#DocumentHistory) | New instances featuring NVIDIA Tesla GPUs\. | September 19, 2019 | 
 | [Diagnostic interrupt](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/diagnostic-interrupt.html) | You can send a diagnostic interrupt to an unreachable or unresponsive instance to trigger a blue screen/stop error\. | August 14, 2019 | 
 | [Capacity optimized allocation strategy](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-fleet-configuration-strategies.html#ec2-fleet-strategy-capacity-optimized) | Using EC2 Fleet or Spot Fleet, you can launch Spot Instances from Spot pools with optimal capacity for the number of instances that are launching\. | August 12, 2019 | 
 | [On\-Demand Capacity Reservation sharing](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/capacity-reservation-sharing.html) | You can now share your Capacity Reservations across AWS accounts\. | July 29, 2019 | 

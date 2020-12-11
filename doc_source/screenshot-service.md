@@ -135,7 +135,7 @@ By default, the policy configuration for AWS\-provided public Windows AMIs is se
 **Warning**  
 If your temporary instance is based on the same AMI that the original instance is based on, you must complete additional steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\. Alternatively, select a different AMI for the temporary instance\. For example, if the original instance uses an AMI for Windows Server 2008 R2, launch the temporary instance using an AMI for Windows Server 2012\. If you must create a temporary instance based on the same AMI, see Step 6 in [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues) to avoid a disk signature collision\.
 
-1. Log in to the instance and execute the following command from a command prompt to change the `bootstatuspolicy` configuration to `ignoreallfailures`:
+1. Log in to the instance and run the following command from a command prompt to change the `bootstatuspolicy` configuration to `ignoreallfailures`:
 
    ```
    bcdedit /store Drive Letter:\boot\bcd /set {default} bootstatuspolicy ignoreallfailures

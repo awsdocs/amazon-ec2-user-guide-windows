@@ -5,11 +5,11 @@ When working with instance user data, keep the following in mind:
 + User data is limited to 16 KB, in raw form, before it is base64\-encoded\. The size of a string of length *n* after base64\-encoding is ceil\(*n*/3\)\*4\.
 + User data must be base64\-decoded when you retrieve it\. If you retrieve the data using instance metadata or the console, it's decoded for you automatically\.
 + User data is treated as opaque data: what you give is what you get back\. It is up to the instance to be able to interpret it\.
-+ If you stop an instance, modify its user data, and start the instance, the updated user data is not executed automatically when you start the instance\. However, you can configure settings so that updated user data scripts are executed one time when you start the instance or every time you reboot or start the instance\.
++ If you stop an instance, modify its user data, and start the instance, the updated user data is not run automatically when you start the instance\. However, you can configure settings so that updated user data scripts are run one time when you start the instance or every time you reboot or start the instance\.
 
 ## Specify instance user data at launch<a name="specify-user-data-launch"></a>
 
-You can specify user data when you launch an instance\. You can specify that the user data is executed one time at launch, or every time you reboot or start the instance\. For more information, see [Running commands on your Windows instance at launch](ec2-windows-user-data.md)\.
+You can specify user data when you launch an instance\. You can specify that the user data is run one time at launch, or every time you reboot or start the instance\. For more information, see [Running commands on your Windows instance at launch](ec2-windows-user-data.md)\.
 
 ## Modify instance user data<a name="modify-user-data-run"></a>
 
