@@ -2,7 +2,7 @@
 
 After you increase the size of an EBS volume, use the Windows Disk Management utility or PowerShell to extend the disk size to the new size of the volume\. You can begin resizing the file system as soon as the volume enters the `optimizing` state\. For more information about this utility, see [Extend a basic volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/extend-a-basic-volume) on the Microsoft Docs website\.
 
-For more information about extending a file system on Linux, see [Extending a Linux File System After Resizing a Volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For more information about extending a file system on Linux, see [Extending a Linux file system after resizing a volume](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
 + [Extend a Windows file system using the Disk Management utility](#recognize-expanded-volume-windows-disk-management)
@@ -18,7 +18,7 @@ Use the following procedure to extend a Windows file system using Disk Managemen
 
 1. Log in to your Windows instance using Remote Desktop\.
 
-1. In the **Run** dialog, type **diskmgmt\.msc** and press Enter\. The Disk Management utility opens\.  
+1. In the **Run** dialog, enter **diskmgmt\.msc** and press Enter\. The Disk Management utility opens\.  
 ![\[Windows Server Disk Management Utility\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/Expand-Volume-Win2008-before.png)
 
 1. On the **Disk Management** menu, choose **Action**, **Rescan Disks**\.

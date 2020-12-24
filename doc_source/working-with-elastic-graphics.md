@@ -93,6 +93,8 @@ If you launched your instance using a current AWS Windows AMI, the required soft
 
 ## Verifying Elastic Graphics functionality on your instance<a name="elastic-graphics-verify-instance"></a>
 
+
+
 The Elastic Graphics packages on your instance include tools that you can use to view the status of the accelerator, and to verify that OpenGL commands from your instance to the accelerator are functional\.
 
 If your instance was launched with an AMI that does not have the Elastic Graphics packages pre\-installed, you can download and install them yourself\. For more information, see [Installing the required software for Elastic Graphics](#elastic-graphics-install-libraries)\.

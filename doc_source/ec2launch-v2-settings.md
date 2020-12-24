@@ -7,6 +7,7 @@ This section contains information about how to configure settings for EC2Launch 
 + [EC2Launch v2 directory structure](#ec2launch-v2-directory)
 + [Configure EC2Launch v2 using the CLI](#ec2launch-v2-cli)
 + [EC2Launch v2 task configuration](#ec2launch-v2-task-configuration)
++ [EC2Launch v2 exit codes and reboots](#ec2launch-v2-exit-codes-reboots)
 + [EC2Launch v2 and Sysprep](#ec2launch-v2-sysprep)
 
 ## Change settings using the EC2Launch v2 settings dialog box<a name="ec2launch-v2-ui"></a>
@@ -163,6 +164,7 @@ You can use the Command Line Interface \(CLI\) to configure your EC2Launch setti
 + [list\-volumes](#ec2launch-v2-list-volumes)
 + [reset](#ec2launch-v2-reset)
 + [run](#ec2launch-v2-run)
++ [status](#ec2launch-v2-settings-status)
 + [sysprep](#ec2launch-v2-settings-sysprep)
 + [validate](#ec2launch-v2-validate)
 + [version](#ec2launch-v2-version)
@@ -269,11 +271,11 @@ ec2launch reset -c
 
 `-c`, `--clean`
 
-cleans instance logs before reset
+cleans instance logs before `reset`
 
 `-h`, `--help`
 
-help for reset
+help for `reset`
 
 ### run<a name="ec2launch-v2-run"></a>
 
@@ -293,7 +295,34 @@ ec2launch run
 
 `-h`, `--help`
 
-help for reset
+help for `run`
+
+### status<a name="ec2launch-v2-settings-status"></a>
+
+Gets the status of the EC2Launch service\. Optionally blocks the process until the service is finished\. The process exit code determines the service state:
++ `0` — the service ran and was successful\.
++ `1` — the service ran and failed\.
++ `2` — the service is still running\.
+
+**Example:**
+
+```
+ec2launch status -b
+```
+
+**Usage**
+
+`ec2launch status [flags]`
+
+**Flags**
+
+`-b`,`--block`
+
+blocks the process until the services finishes running
+
+`-h`,`--help`
+
+help for `status`
 
 ### sysprep<a name="ec2launch-v2-settings-sysprep"></a>
 
@@ -313,7 +342,7 @@ ec2launch sysprep
 
 `-c`,`--clean`
 
-cleans instance logs before Sysprep
+cleans instance logs before `sysprep`
 
 `-h`,`--help`
 
@@ -321,7 +350,7 @@ help for Sysprep
 
 `-s`,`--shutdown`
 
-shuts down the instance after Sysprep
+shuts down the instance after `sysprep`
 
 ### validate<a name="ec2launch-v2-validate"></a>
 
@@ -341,7 +370,7 @@ ec2launch validate
 
 \-h` `, `--help`
 
-help for validate
+help for `validate`
 
 ### version<a name="ec2launch-v2-version"></a>
 
@@ -361,7 +390,7 @@ ec2launch version
 
 `-h`, `--help`
 
-help for version
+help for `version`
 
 ### wallpaper<a name="ec2launch-v2-wallpaper"></a>
 
@@ -383,15 +412,15 @@ ec2launch wallpaper ^
 
 `--attributes strings`
 
-wallpaper attributes
+`wallpaper` attributes
 
 `-h`, `--help`
 
-help for wallpaper
+help for `wallpaper`
 
 `-p`, `--path string`
 
-wallpaper file path
+`wallpaper` file path
 
 ## EC2Launch v2 task configuration<a name="ec2launch-v2-task-configuration"></a>
 
@@ -563,6 +592,36 @@ inputs:
     Set-Content 'C:\PowerShellTest.txt' "hello world"
 ```
 
+*Example 3*
+
+The following example shows an idempotent script that reboots an instance multiple times\.
+
+```
+task: executeScript
+inputs:
+- frequency: always
+  type: powershell
+  runAs: localSystem
+  content: |-
+    $name = $env:ComputerName
+     if ($name -ne $desiredName) {
+       Rename-Computer -NewName $desiredName
+       exit 3010
+     }
+     $domain = Get-ADDomain
+     if ($domain -ne $desiredDomain) 
+     {
+       Add-Computer -DomainName $desiredDomain
+       exit 3010
+     }
+    $telnet = Get-WindowsFeature -Name Telnet-Client
+    if (-not $telnet.Installed)
+    {
+      Install-WindowsFeature -Name "Telnet-Client"
+      exit 3010 
+    }
+```
+
 ### extendRootPartition<a name="ec2launch-v2-extendrootpartition"></a>
 
 Extends the root volume to use all of the available space on the disk\.
@@ -581,7 +640,7 @@ task: extendRootParitition
 
 ### initializeVolume<a name="ec2launch-v2-initializevolume"></a>
 
-Initializes volumes attached to the instance so that they are activated and partitioned\. Any volumes that are detected as not empty are not initialized\.
+Initializes volumes attached to the instance so that they are activated and partitioned\. Any volumes that are detected as not empty are not initialized\. A volume is considered empty if the first 4 KiB of a volume are empty, or if a volume does not have a [Windows\-recognizable drive layout](https://docs.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_ex)\.
 
 *Frequency* — always
 
@@ -874,6 +933,14 @@ The following format is compatible with the previous version of this service\.
 </powershell>
 <persist>true</persist>
 ```
+
+## EC2Launch v2 exit codes and reboots<a name="ec2launch-v2-exit-codes-reboots"></a>
+
+You can use EC2Launch v2 to define how exit codes are handled by your scripts\. By default, the exit code of the last command that is run in a script is reported as the exit code for the entire script\. For example, if a script includes three commands and the first command fails but the following ones succeed, the run status is reported as `success` because the final command succeeded\.
+
+If you want a script to reboot an instance, then you must specify `exit 3010` in your script, even when the reboot is the last step in your script\. `exit 3010` instructs EC2Launch v2 to reboot the instance and call the script again until it returns an exit code that is not `3010`, or until the maximum reboot count has been reached\. EC2Launch v2 permits a maximum of 5 reboots per task\. If you attempt to reboot an instance from a script by using a different mechanism, such as `Restart-Computer`, then the script run status will be inconsistent\. For example, it may get stuck in a restart loop or not perform the restart\.
+
+If you are using a legacy user data format that is compatible with older agents, the user data may run more times than you intend it to\. For more information, see [Service runs user data more than once](ec2launchv2-troubleshooting.md#ec2launchv2-troubleshooting-user-data-more-than-once) in the Troubleshooting section\.
 
 ## EC2Launch v2 and Sysprep<a name="ec2launch-v2-sysprep"></a>
 

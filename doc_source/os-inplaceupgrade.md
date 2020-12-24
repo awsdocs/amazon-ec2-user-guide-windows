@@ -9,7 +9,6 @@ For steps on how to use AWS Systems Manager to automate the upgrade of your Wind
 
 Complete the following tasks and note the following important details before you begin your in\-place upgrade\.
 + Read the Microsoft documentation to understand the upgrade requirements, known issues, and restrictions\. Also review the official instructions for upgrading\.
-  + [Upgrading to Windows Server 2008](https://technet.microsoft.com/en-us/library/cc754728.aspx)
   + [Upgrading to Windows Server 2008 R2](https://technet.microsoft.com/en-us/library/ff968983.aspx)
   + [Upgrade Options for Windows Server 2012](https://technet.microsoft.com/en-us/library/jj574204.aspx)
   + [Upgrade Options for Windows Server 2012 R2](https://technet.microsoft.com/en-us/library/dn303416.aspx)

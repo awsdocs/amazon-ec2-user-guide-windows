@@ -3,7 +3,7 @@
 This section shows common troubleshooting scenarios for EC2Launch v2, information about viewing Windows event logs, and console log output and messages\.
 
 **Topics**
-+ [Common troubleshooting scenarios](#ec2launchv2-troubleshooting-scenarios)
++ [Common scenarios](#ec2launchv2-troubleshooting-scenarios)
 + [Windows event logs](#ec2launchv2-windows-event-logs)
 + [EC2Launch v2 console log output](#ec2launchv2-console-output)
 
@@ -16,6 +16,10 @@ This section shows common troubleshooting scenarios and steps for resolution\.
 + [Service fails to run user data](#ec2launchv2-troubleshooting-user-data)
 + [Service runs a task only one time](#ec2launchv2-troubleshooting-task-once)
 + [Service fails to run a task](#ec2launchv2-troubleshooting-task-failed)
++ [Service runs user data more than once](#ec2launchv2-troubleshooting-user-data-more-than-once)
++ [Scheduled tasks from EC2Launch v1 fail to run after migration to EC2Launch v2](#ec2launchv2-troubleshooting-scheduled-tasks-migration)
++ [Service fails to run a task](#ec2launchv2-troubleshooting-task-failed)
++ [Service initializes an EBS volume that is not empty](#ec2launchv2-troubleshooting-ebs-initialize)
 
 ### Service fails to set the wallpaper<a name="ec2launchv2-troubleshooting-wallpaper"></a>
 
@@ -54,6 +58,53 @@ This section shows common troubleshooting scenarios and steps for resolution\.
 1. Check the latest entries in `%ProgramData%\Amazon\EC2Launch\log\agent.log`\.
 
 1. If no errors occurred, try running the service manually from `"%ProgramFiles%\Amazon\EC2Launch\EC2Launch.exe" run` to see if the tasks succeed\.
+
+### Service runs user data more than once<a name="ec2launchv2-troubleshooting-user-data-more-than-once"></a>
+
+**Resolution**  
+User data is handled differently between EC2Launch v1 and EC2Launch v2\. EC2Launch v1 runs user data as a scheduled task on the instance when `persist` is set to `true`\. If `persist` is set to `false`, the task is not scheduled even when it exits with a reboot or is interrupted while running\. 
+
+EC2Launch v2 runs user data as an agent task and tracks its run state\. If user data issues a computer restart or if user data was interrupted while running, the run state persists as `pending` and the user data will run again at the next instance boot\. If you want to prevent the user data script from running more than once, make the script idempotent\. 
+
+The following example idempotent script sets the computer name and joins a domain\.
+
+```
+<powershell>
+  $name = $env:computername
+  if ($name -ne $desiredName) {
+    Rename-Computer -NewName $desiredName
+  }
+  $domain = Get-ADDomain
+  if ($domain -ne $desiredDomain) 
+  {
+    Add-Computer -DomainName $desiredDomain
+  }
+  $telnet = Get-WindowsFeature -Name Telnet-Client
+  if (-not $telnet.Installed)
+  {
+    Install-WindowsFeature -Name "Telnet-Client"
+  }
+</powershell>
+<persist>false</persist>
+```
+
+### Scheduled tasks from EC2Launch v1 fail to run after migration to EC2Launch v2<a name="ec2launchv2-troubleshooting-scheduled-tasks-migration"></a>
+
+**Resolution**  
+The migration tool does not detect any scheduled tasks linked to EC2Launch v1 scripts; therefore, it does not automatically set up those tasks in EC2Launch v2\. To configure these tasks, edit the [`agent-config.yml`](ec2launch-v2-settings.md#ec2launch-v2-task-configuration) file, or use the [EC2Launch v2 settings dialog box](ec2launch-v2-settings.md#ec2launch-v2-ui)\. For example, if an instance has a scheduled task that runs `InitializeDisks.ps1`, then after you run the migration tool, you must specify the volumes you want to initialize in the EC2Launch v2 settings dialog box\. See Step 6 of the procedure to [Change settings using the EC2Launch v2 settings dialog box](ec2launch-v2-settings.md#ec2launch-v2-ui)\. 
+
+### Service fails to run a task<a name="ec2launchv2-troubleshooting-task-failed"></a>
+
+**Resolution**
+
+1. Check the latest entries in `%ProgramData%\Amazon\EC2Launch\log\agent.log`\.
+
+1. If no errors occurred, try running the service manually from `"%ProgramFiles%\Amazon\EC2Launch\EC2Launch.exe" run` to see if the tasks succeed\.
+
+### Service initializes an EBS volume that is not empty<a name="ec2launchv2-troubleshooting-ebs-initialize"></a>
+
+**Resolution**  
+Before it initializes a volume, EC2Launch v2 attempts to detect whether it is empty\. If a volume is not empty, it skips the initialization\. Any volumes that are detected as not empty are not initialized\. A volume is considered empty if the first 4 KiB of a volume are empty, or if a volume does not have a [Windows\-recognizable drive layout](https://docs.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_ex)\. A volume that was initialized and formatted on a Linux system does not have a Windows\-recognizable drive layout, for example MBR or GPT\. Therefore, it will be considered as empty and initialized\. If you want to preserve this data, do not rely on EC2Launch v2 empty drive detection\. Instead, specify volumes that you would like to initialize in the [EC2Launch v2 settings dialog box](ec2launch-v2-settings.md#ec2launch-v2-ui) \(see step 6\) or in the [`agent-config.yml`](ec2launch-v2-settings.md#ec2launch-v2-initializevolume)\.
 
 ## Windows event logs<a name="ec2launchv2-windows-event-logs"></a>
 

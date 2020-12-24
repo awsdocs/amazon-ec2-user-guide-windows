@@ -364,3 +364,4 @@ PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/block-dev
 ```
 
 The instance type determines the number of instance store volumes that are available to the instance\. If the number of instance store volumes in a block device mapping exceeds the number of instance store volumes available to an instance, the additional volumes are ignored\. To view the instance store volumes for your instance, open Windows Disk Management\. To learn how many instance store volumes are supported by each instance type, see [Instance store volumes](InstanceStorage.md#instance-store-volumes)\.
+

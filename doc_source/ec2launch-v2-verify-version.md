@@ -1,5 +1,15 @@
 # Verify the EC2Launch v2 version<a name="ec2launch-v2-verify-version"></a>
 
+Use the following procedure to verify the version of EC2Launch v2 that is installed on your instances\.
+
+**To verify the installed version of EC2Launch v2**
+
+1. Launch an instance from your AMI and connect to it\.
+
+1. In the Control Panel, select **Programs and Features**\.
+
+1. In the list of installed programs, look for `Amazon EC2Launch`\. Its version number appears in the **Version** column\.
+
 For information about the EC2Launch v2 versions included in the Windows AMIs, see [AWS Windows AMIs](windows-ami-version-history.md)\.
 
 For the latest version of EC2Launch v2, see [EC2Launch v2 version history](ec2launchv2-versions.md#ec2launchv2-version-history)\.

@@ -17,7 +17,6 @@ This AWS resource is referred to as a *network interface* in the AWS Management 
 
 **Topics**
 + [Network interface basics](#eni-basics)
-+ [Network cards](#network-cards)
 + [IP addresses per network interface per instance type](#AvailableIpPerENI)
 + [Working with network interfaces](#working-with-enis)
 + [Scenarios for network interfaces](scenarios-enis.md)
@@ -58,19 +57,6 @@ Disabling source/destination checking enables an instance to handle network traf
 
 **Monitoring IP traffic**  
 You can enable a VPC flow log on your network interface to capture information about the IP traffic going to and from a network interface\. After you've created a flow log, you can view and retrieve its data in Amazon CloudWatch Logs\. For more information, see [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html) in the *Amazon VPC User Guide*\.
-
-## Network cards<a name="network-cards"></a>
-
-Instances with multiple network cards provide higher network performance, including bandwidth capabilities above 100 Gbps and improved packet rate performance\. Each network interface is attached to a network card\. The primary network interface must be assigned to network card index 0\.
-
-If you enable Elastic Fabric Adapter \(EFA\) when you launch an instance that supports multiple network cards, all network cards are available\. You can assign up to one EFA per network card\. An EFA counts as a network interface\.
-
-The following instances support multiple network cards\. All other instance types support one network card\.
-
-
-| Instance type | Number of network cards | 
-| --- | --- | 
-| P4d | 4 | 
 
 ## IP addresses per network interface per instance type<a name="AvailableIpPerENI"></a>
 

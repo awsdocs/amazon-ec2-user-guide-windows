@@ -34,7 +34,7 @@ The following tables list the instance types that support specifying CPU options
 
 **Accelerated computing instances**  
 
-| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid number of CPU cores | Valid number of threads per core | 
+| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid CPU cores | Valid threads per core | 
 | --- | --- | --- | --- | --- | --- | 
 | f1\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
 | f1\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
@@ -63,7 +63,7 @@ The following tables list the instance types that support specifying CPU options
 
 **Compute optimized instances**  
 
-| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid number of CPU cores | Valid number of threads per core | 
+| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid CPU cores | Valid threads per core | 
 | --- | --- | --- | --- | --- | --- | 
 | c4\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | c4\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
@@ -74,7 +74,7 @@ The following tables list the instance types that support specifying CPU options
 | c5\.xlarge | 4 | 2 | 2 | 2 | 1, 2 | 
 | c5\.2xlarge | 8 | 4 | 2 | 2, 4 | 1, 2 | 
 | c5\.4xlarge | 16 | 8 | 2 | 2, 4, 6, 8 | 1, 2 | 
-| c5\.9xlarge | 36 | 18 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18 | 1, 2 | 
+| c5\.9xlarge | 36 | 18 | 2 | 4, 6, 8, 10, 12, 14, 16, 18 | 1, 2 | 
 | c5\.12xlarge | 48 | 24 | 2 | 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24 | 1, 2 | 
 | c5\.18xlarge | 72 | 36 | 2 | 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36 | 1, 2 | 
 | c5\.24xlarge | 96 | 48 | 2 | 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48 | 1, 2 | 
@@ -112,7 +112,7 @@ The following tables list the instance types that support specifying CPU options
 
 **General purpose instances**  
 
-| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid number of CPU cores | Valid number of threads per core | 
+| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid CPU cores | Valid threads per core | 
 | --- | --- | --- | --- | --- | --- | 
 | m5\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | m5\.xlarge | 4 | 2 | 2 | 2 | 1, 2 | 
@@ -126,9 +126,9 @@ The following tables list the instance types that support specifying CPU options
 | m5a\.xlarge | 4 | 2 | 2 | 2 | 1, 2 | 
 | m5a\.2xlarge | 8 | 4 | 2 | 2, 4 | 1, 2 | 
 | m5a\.4xlarge | 16 | 8 | 2 | 2, 4, 6, 8 | 1, 2 | 
-| m5a\.8xlarge | 32 | 16 | 2 | 2, 4, 6, 8, 10, 12, 14, 16 | 1, 2 | 
+| m5a\.8xlarge | 32 | 16 | 2 | 4, 6, 8, 10, 12, 14, 16 | 1, 2 | 
 | m5a\.12xlarge | 48 | 24 | 2 | 6, 12, 18, 24 | 1, 2 | 
-| m5a\.16xlarge | 64 | 32 | 2 | 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
+| m5a\.16xlarge | 64 | 32 | 2 | 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | m5a\.24xlarge | 96 | 48 | 2 | 12, 18, 24, 36, 48 | 1, 2 | 
 | m5ad\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | m5ad\.xlarge | 4 | 2 | 2 | 2 | 1, 2 | 
@@ -186,7 +186,7 @@ The following tables list the instance types that support specifying CPU options
 
 **Memory optimized instances**  
 
-| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid number of CPU cores | Valid number of threads per core | 
+| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid CPU cores | Valid threads per core | 
 | --- | --- | --- | --- | --- | --- | 
 | r4\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | r4\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
@@ -206,7 +206,7 @@ The following tables list the instance types that support specifying CPU options
 | r5a\.xlarge | 4 | 2 | 2 | 2 | 1, 2 | 
 | r5a\.2xlarge | 8 | 4 | 2 | 2, 4 | 1, 2 | 
 | r5a\.4xlarge | 16 | 8 | 2 | 2, 4, 6, 8 | 1, 2 | 
-| r5a\.8xlarge | 32 | 16 | 2 | 2, 4, 6, 8, 10, 12, 14, 16 | 1, 2 | 
+| r5a\.8xlarge | 32 | 16 | 2 | 4, 6, 8, 10, 12, 14, 16 | 1, 2 | 
 | r5a\.12xlarge | 48 | 24 | 2 | 6, 12, 18, 24 | 1, 2 | 
 | r5a\.16xlarge | 64 | 32 | 2 | 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | r5a\.24xlarge | 96 | 48 | 2 | 12, 18, 24, 36, 48 | 1, 2 | 
@@ -268,7 +268,7 @@ The following tables list the instance types that support specifying CPU options
 
 **Storage optimized instances**  
 
-| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid number of CPU cores | Valid number of threads per core | 
+| Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid CPU cores | Valid threads per core | 
 | --- | --- | --- | --- | --- | --- | 
 | d2\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
 | d2\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 

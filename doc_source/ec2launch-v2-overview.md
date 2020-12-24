@@ -62,7 +62,7 @@ The following frequencies can be specified:
 By default, the EC2Launch v2 installation installs an `agent-config` file that includes recommended configurations that are used in standard Amazon Windows AMIs\. You can update the configuration file to alter the default boot experience for your AMI that EC2Launch v2 specifies\.
 
 **User data**  
-User data is data that is configurable when you launch an instance\. You can update user data to dynamically change how custom AMIs or quickstart AMIs are configured\. EC2Launch v2 supports 60 kB user data input length\. User data includes only the UserData stage, and therefore runs after the `agent-config` file\.
+User data is data that is configurable when you launch an instance\. You can update user data to dynamically change how custom AMIs or quickstart AMIs are configured\. EC2Launch v2 supports 60 kB user data input length\. User data includes only the UserData stage, and therefore runs after the `agent-config` file\. You can enter user data when you launch an instance using the launch instance wizard, or you can modify user data from the EC2 console\. For more information about working with user data, see [Running commands on your Windows instance at launch](ec2-windows-user-data.md)\.
 
 ## EC2Launch v2 tasks<a name="ec2launch-v2-tasks"></a>
 

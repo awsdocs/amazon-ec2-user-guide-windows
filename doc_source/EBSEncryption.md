@@ -304,6 +304,8 @@ We recommend using folders rather than copying an entire volume, as this avoids 
 
 ### Encryption outcomes<a name="ebs-volume-encryption-outcomes"></a>
 
+
+
 The following table describes the encryption outcome for each possible combination of settings\.
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EBSEncryption.html)

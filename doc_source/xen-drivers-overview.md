@@ -7,7 +7,7 @@ Windows AMIs contain a set of drivers to permit access to virtualized hardware\.
 | --- | --- | --- | --- | 
 |  Instance type  |  Not supported for all instance types\. If you specify an unsupported instance type, the instance is impaired\.  |  Supported for all instance types\.  |  Supported for all instance types\.  | 
 |  Attached volumes  |  Supports up to 16 attached volumes\.  |  Supports more than 16 attached volumes\.  |  Supports more than 16 attached volumes\.  | 
-|  Network  |  The driver has known issues where the network connection resets under high loads; for example, fast FTP file transfers\.  |   |  The driver automatically configures jumbo frames on the network adapter when on a compatible instance type\. When the instance is in a [cluster placement group](placement-groups.md), this offers better network performance between instances in the cluster placement group\.  | 
+|  Network  |  The driver has known issues where the network connection resets under high loads; for example, fast FTP file transfers\.  |    |  The driver automatically configures jumbo frames on the network adapter when on a compatible instance type\. When the instance is in a [cluster placement group](placement-groups.md), this offers better network performance between instances in the cluster placement group\.  | 
 
 The following list shows which PV drivers you should run on each version of Windows Server on Amazon EC2\.
 

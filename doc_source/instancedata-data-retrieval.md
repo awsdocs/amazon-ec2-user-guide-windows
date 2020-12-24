@@ -16,6 +16,9 @@ Note that you are not billed for HTTP requests used to retrieve instance metadat
 
 The command format is different, depending on whether you use IMDSv1 or IMDSv2\. By default, you can use both instance metadata services\. To require the use of IMDSv2, see [Configuring the instance metadata service](configuring-instance-metadata-service.md)\.
 
+**Note**  
+The AWS SDKs use IMDSv2 calls by default\. If the IMDSv2 call receives no response, the SDK retries the call and, if still unsuccessful, uses IMDSv1\. This can result in a delay\. In a container environment, if the hop limit is 1, the IMDSv2 response does not return because going to the container is considered an additional network hop\. To avoid the process of falling back to IMDSv1 and the resultant delay, in a container environment we recommend that you set the hop limit to 2\. For more information, see [Configuring the instance metadata options](configuring-instance-metadata-service.md#configuring-instance-metadata-options)\.
+
 You can use PowerShell cmdlets to retrieve the URI\. For example, if you are running version 3\.0 or later of PowerShell, use the following cmdlet\.
 
 ------

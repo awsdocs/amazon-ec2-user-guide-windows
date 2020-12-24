@@ -156,6 +156,8 @@ The settings files control the operation of the EC2Config service\. These files 
 + `EventLogConfig.xml`—Controls the event log information that's displayed on the console while the instance is booting\.
 + `WallpaperSettings.xml`—Controls the information that's displayed on the desktop background\.
 
+
+
 **ActivationSettings\.xml**
 
 This file contains settings that control product activation\. When Windows boots, the EC2Config service checks whether Windows is already activated\. If Windows is not already activated, it attempts to activate Windows by searching for the specified KMS server\.
