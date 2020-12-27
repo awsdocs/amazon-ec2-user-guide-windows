@@ -75,7 +75,7 @@ This is the only chance for you to save the private key file\.
 + Use the [create\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-key-pair.html) AWS CLI command as follows to generate the key and save it to a `.pem` file\.
 
   ```
-  aws ec2 create-key-pair --key-name my-key-pair --query 'KeyMaterial' --output text > my-key-pair.pem
+  aws ec2 create-key-pair --key-name my-key-pair --query "KeyMaterial" --output text > my-key-pair.pem
   ```
 
 ------
