@@ -92,28 +92,32 @@ PS C:\> (New-EC2KeyPair -KeyName "my-key-pair").KeyMaterial | Out-File -Encoding
 
 ### Option 2: Import your own public key to Amazon EC2<a name="how-to-generate-your-own-key-and-import-it-to-aws"></a>
 
-Instead of using Amazon EC2 to create your key pair, you can create an RSA key pair using a third\-party tool and then import the public key to Amazon EC2\. For example, you can use ssh\-keygen \(a tool provided with the standard OpenSSH installation\) to create a key pair\. Alternatively, Java, Ruby, Python, and many other programming languages provide standard libraries that you can use to create an RSA key pair\.
+Instead of using Amazon EC2 to create your key pair, you can create an RSA key pair using a third\-party tool and then import the public key to Amazon EC2\.
 
-**Requirements**
+**Requirements for key pairs**
 + 
 
   The following formats are supported:
   + OpenSSH public key format 
   + Base64 encoded DER format
   + SSH public key file format as specified in [RFC4716](http://tools.ietf.org/html/rfc4716)
-  + SSH private key file format must be PEM \(for example, use `ssh-keygen -m PEM` to convert the OpenSSH key into the PEM format\)
+  + SSH private key file format must be PEM
 + Create an RSA key\. Amazon EC2 does not accept DSA keys\.
 + The supported lengths are 1024, 2048, and 4096\. 
 
 **To create a key pair using a third\-party tool**
 
-1. Generate a key pair with a third\-party tool of your choice\.
+1. Generate a key pair with a third\-party tool of your choice\. For example, you can use ssh\-keygen \(a tool provided with the standard OpenSSH installation\)\. Alternatively, Java, Ruby, Python, and many other programming languages provide standard libraries that you can use to create an RSA key pair\.
+**Important**  
+The private key must be in the PEM format\. For example, use `ssh-keygen -m PEM` to generate the OpenSSH key in the PEM format\.
 
 1. Save the public key to a local file\. For example, `C:\keys\my-key-pair.pub`\. The file name extension for this file is not important\.
 
-1. Save the private key to a different local file that has the `.pem` extension\. For example, `C:\keys\my-key-pair.pem`\. Save the private key file in a safe place\. You'll need to provide the name of your key pair when you launch an instance and the corresponding private key each time you connect to the instance\.
+1. Save the private key to a local file that has the `.pem` extension\. For example,  `C:\keys\my-key-pair.pem`\. The file name extension for this file is important because only `.pem` files can be selected when connecting to your Windows instance from the EC2 console\.
+**Important**  
+Save the private key file in a safe place\. You'll need to provide the name of your public key when you launch an instance and the corresponding private key each time you connect to the instance\.
 
-After you have created the key pair, use one of the following methods to import your key pair to Amazon EC2\.
+After you have created the key pair, use one of the following methods to import your public key to Amazon EC2\.
 
 ------
 #### [ New console ]
@@ -126,13 +130,15 @@ After you have created the key pair, use one of the following methods to import 
 
 1. Choose **Import key pair**\.
 
-1. For **Name**, enter a descriptive name for the key pair\. The name can include up to 255 ASCII characters\. It can’t include leading or trailing spaces\.
+1. For **Name**, enter a descriptive name for the public key\. The name can include up to 255 ASCII characters\. It can’t include leading or trailing spaces\.
+**Note**  
+When you connect to your instance from the EC2 console, the console suggests this name for the name of your private key file\.
 
 1. Either choose **Browse** to navigate to and select your public key, or paste the contents of your public key into the **Public key contents** field\.
 
 1. Choose **Import key pair**\.
 
-1. Verify that the key pair you imported appears in the list of key pairs\.
+1. Verify that the public key that you imported appears in the list of key pairs\.
 
 ------
 #### [ Old console ]
@@ -294,7 +300,7 @@ qaeJAAHco+CY/5WrUBkrHmFJr6HcXkvJdWPkYQS3xqC0+FmUZofz221CBt5IMucxXPkX4rWi+z7wB3Rb
 BQoQzd8v7yeb7OzlPnWOyN0qFU0XA246RA8QFYiCNYwI3f05p6KLxEXAMPLE my-key-pair
 ```
 
-If you change the key pair that you use to connect to the instance, we don't update the instance metadata to show the new public key\. Instead, the instance metadata continues to show the public key for the key pair that you specified when you launched the instance\. For more information, see [Retrieving instance metadata](instancedata-data-retrieval.md)\.
+If you change the key pair that you use to connect to the instance, we don't update the instance metadata to show the new public key\. Instead, the instance metadata continues to show the public key for the key pair that you specified when you launched the instance\. For more information, see [Retrieve instance metadata](instancedata-data-retrieval.md)\.
 
 ## Identifying the key pair that was specified at launch<a name="identify-key-pair-specified-at-launch"></a>
 

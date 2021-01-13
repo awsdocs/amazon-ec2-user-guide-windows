@@ -149,7 +149,7 @@ The `%ProgramData%\Amazon\EC2Launch` directory contains the following subdirecto
   Logs for the service \(`agent.log`\), console \(`console.log`\), performance \(`bench.log`\), and errors \(`error.log`\) are stored in this directory\. Log files are appended to on subsequent executions of the service\.
 + `state` — Service state data
 
-  The state that the service uses to determine which tasks should run is stored here\. There is a `.run- once` file that indicates whether the service has already run after Sysprep \(so tasks with a frequency of once will be skipped on the next run\)\. This subdirectory includes a `state.json` and `previous- state.json` to track the status of each task\.
+  The state that the service uses to determine which tasks should run is stored here\. There is a `.run-once` file that indicates whether the service has already run after Sysprep \(so tasks with a frequency of once will be skipped on the next run\)\. This subdirectory includes a `state.json` and `previous-state.json` to track the status of each task\.
 + `sysprep` — Sysprep
 
   This directory contains files that are used to determine which operations to perform by Sysprep when it creates a customized Windows AMI that can be reused\.

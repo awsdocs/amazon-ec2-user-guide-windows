@@ -1,17 +1,17 @@
-# Troubleshooting<a name="elastic-graphics-troubleshooting"></a>
+# Troubleshoot<a name="elastic-graphics-troubleshooting"></a>
 
 The following are common errors and troubleshooting steps\.
 
 **Contents**
-+ [Investigating application performance issues](#elastic-graphics-troubleshooting_performance)
++ [Investigate application performance issues](#elastic-graphics-troubleshooting_performance)
   + [OpenGL rendering performance issues](#elastic-graphics-opengl-performance)
   + [Remote access performance issues](#elastic-graphics-remote-performance)
-+ [Resolving unhealthy status issues](#elastic-graphics-troubleshooting_unhealthy_status)
++ [Resolve unhealthy status issues](#elastic-graphics-troubleshooting_unhealthy_status)
   + [Stop and start the instance](#elastic-graphics-start-and-stop)
   + [Verify the installed components](#elastic-graphics-verify)
   + [Check the Elastic Graphics logs](#elastic-graphics-check-logs)
 
-## Investigating application performance issues<a name="elastic-graphics-troubleshooting_performance"></a>
+## Investigate application performance issues<a name="elastic-graphics-troubleshooting_performance"></a>
 
 Elastic Graphics uses the instance network to send OpenGL commands to a remotely attached graphics card\. In addition, a desktop running an OpenGL application with an Elastic Graphics accelerator is usually accessed using a remote access technology\. It is important to distinguish between a performance problem related to the OpenGL rendering or the desktop remote access technology\.
 
@@ -76,13 +76,13 @@ Possible choices for the remote access protocol include:
 
 For more information about optimization, see the specific protocol\.
 
-## Resolving unhealthy status issues<a name="elastic-graphics-troubleshooting_unhealthy_status"></a>
+## Resolve unhealthy status issues<a name="elastic-graphics-troubleshooting_unhealthy_status"></a>
 
 If the Elastic Graphics accelerator is in an unhealthy state, use the following troubleshooting steps to resolve the issue\.
 
 ### Stop and start the instance<a name="elastic-graphics-start-and-stop"></a>
 
-If your Elastic Graphics accelerator is in an unhealthy state, stopping the instance and starting it again is the simplest option\. For more information, see [Stopping and starting your instances](Stop_Start.md#starting-stopping-instances)\.
+If your Elastic Graphics accelerator is in an unhealthy state, stopping the instance and starting it again is the simplest option\. For more information, see [Stop and start your instances](Stop_Start.md#starting-stopping-instances)\.
 
 **Warning**  
 When you stop an instance, the data on any instance store volumes is erased\. To keep data from instance store volumes, be sure to back it up to persistent storage\.
@@ -94,7 +94,7 @@ Open the Windows Control Panel and confirm that the following components are ins
 + Amazon Elastic Graphics OpenGL Library
 + Amazon EC2 Elastic GPUs OpenGL Redirector
 
-If any of these items are missing, you must install them manually\. For more information, see [Installing the required software for Elastic Graphics](working-with-elastic-graphics.md#elastic-graphics-install-libraries)\.
+If any of these items are missing, you must install them manually\. For more information, see [Install the required software for Elastic Graphics](working-with-elastic-graphics.md#elastic-graphics-install-libraries)\.
 
 ### Check the Elastic Graphics logs<a name="elastic-graphics-check-logs"></a>
 

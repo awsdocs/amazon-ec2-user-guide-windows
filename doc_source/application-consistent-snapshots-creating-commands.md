@@ -1,11 +1,11 @@
-# Creating a VSS application\-consistent snapshot using the AWS CLI, AWS Tools for Windows PowerShell, or the AWSEC2\-ManageVssIO SSM document<a name="application-consistent-snapshots-creating-commands"></a>
+# Create a VSS application\-consistent snapshot using the AWS CLI, AWS Tools for Windows PowerShell, or the AWSEC2\-ManageVssIO SSM document<a name="application-consistent-snapshots-creating-commands"></a>
 
 This section includes procedures for creating VSS\-enabled EBS snapshots by using the AWS CLI or AWS Tools for Windows PowerShell\. It also contains an advanced method for creating VSS\-enabled snapshots using the AWSEC2\-ManageVssIO SSM document\.
 
 **Topics**
 + [Install the VSS package using the AWS CLI or Tools for Windows PowerShell](#application-consistent-snapshots-vss-package-command)
 + [Create VSS\-enabled EBS snapshots using the AWS CLI, Tools for Windows PowerShell, or the AWSEC2\-ManageVssIO SSM document](#application-cosistent-snapshots-cli)
-+ [Troubleshooting VSS\-enabled EBS snapshots](#application-consistent-snapshots-troubleshooting)
++ [Troubleshoot VSS\-enabled EBS snapshots](#application-consistent-snapshots-troubleshooting)
 
 ## Install the VSS package using the AWS CLI or Tools for Windows PowerShell<a name="application-consistent-snapshots-vss-package-command"></a>
 
@@ -55,7 +55,7 @@ Use the following procedure to download and install the AwsVssComponents package
 
 Use one of the following command\-line procedures to create VSS\-enabled EBS snapshots\.
 
-### Creating VSS\-enabled EBS snapshots using the AWS CLI<a name="integration-vss-cli"></a>
+### Create VSS\-enabled EBS snapshots using the AWS CLI<a name="integration-vss-cli"></a>
 
 Use the following procedure to create VSS\-enabled EBS snapshots by using the AWS CLI\. When you run the command, you can specify the following parameters:
 + Instance \(Required\): Specify one or more Amazon EC2 Windows instances\. You can either manually specify instances, or you can specify tags\.
@@ -81,7 +81,7 @@ If successful, the command populates the list of EBS snapshots with the new snap
 
 You can automate backups by creating a maintenance window task that uses the `AWSEC2-CreateVssSnapshot` SSM document\. For more information, see [Working with Maintenance Windows \(Console\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-working.html) in the *AWS Systems Manager User Guide*\.
 
-### Creating VSS\-enabled EBS snapshots using AWS Tools for Windows PowerShell<a name="integration-vss-ps"></a>
+### Create VSS\-enabled EBS snapshots using AWS Tools for Windows PowerShell<a name="integration-vss-ps"></a>
 
 Use the following procedure to create VSS\-enabled EBS snapshots by using the AWS Tools for Windows PowerShell\. When you run the command, you can specify the following parameters:
 + Instance \(Required\): Specify one or more Amazon EC2 Windows instances\. You can either manually specify instances, or you can specify tags\.
@@ -116,7 +116,7 @@ If successful, the command populates the list of EBS snapshots with the new snap
 
 You can automate backups by creating a maintenance window task that uses the `AWSEC2-CreateVssSnapshot` SSM document\. For more information, see [Working with Maintenance Windows \(Console\)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-working.html) in the *AWS Systems Manager User Guide*\.
 
-### Creating VSS\-enabled EBS snapshots by using the AWSEC2\-ManageVssIO SSM document \(advanced\)<a name="integration-vss-AWSEC2-ManageVssIO"></a>
+### Create VSS\-enabled EBS snapshots by using the AWSEC2\-ManageVssIO SSM document \(advanced\)<a name="integration-vss-AWSEC2-ManageVssIO"></a>
 
 You can use the following script and the pre\-defined `AWSEC2-ManageVssIO` SSM document to temporarily pause I/O, create VSS\-enabled EBS snapshots, and restart I/O\. This process runs in the context of the user who runs the command\. If the user has sufficient permission to create and tag snapshots, then AWS Systems Manager can create and tag VSS\-enabled EBS snapshots without the need for the additional IAM snapshot role on the instance\.
 
@@ -148,7 +148,7 @@ Note the following important details about this process:
 
 If successful, the command populates the list of EBS snapshots with the new snapshots\. You can locate these snapshots in the list of EBS snapshots by searching for the tags you specified, or by searching for `AppConsistent`\. If the command execution failed, view the command output for details about why the execution failed\. If the command was successfully completed, but a specific volume backup failed, you can troubleshoot the failure in the list of EBS volumes\.
 
-## Troubleshooting VSS\-enabled EBS snapshots<a name="application-consistent-snapshots-troubleshooting"></a>
+## Troubleshoot VSS\-enabled EBS snapshots<a name="application-consistent-snapshots-troubleshooting"></a>
 
 **General: Checking the log files**  
 If you experience problems or receive error messages when creating VSS\-enabled EBS snapshots, you can view the command output in the Systems Manager console\. You can also view the following logs:

@@ -1,4 +1,4 @@
-# Configuring your Windows instance<a name="ec2-windows-instances"></a>
+# Configure your Windows instance<a name="ec2-windows-instances"></a>
 
 A Windows instance is a virtual server running Windows Server in the cloud\.
 
@@ -10,7 +10,7 @@ After you have successfully launched and logged into your instance, you can make
 + [Configuring a Windows instance using the EC2Config service](ec2config-service.md)
 + [Paravirtual drivers for Windows instances](xen-drivers-overview.md)
 + [AWS NVMe drivers for Windows instances](aws-nvme-drivers.md)
-+ [Optimizing CPU options](instance-optimize-cpu.md)
++ [Optimize CPU options](instance-optimize-cpu.md)
 + [Setting the time for a Windows instance](windows-set-time.md)
 + [Setting the password for a Windows instance](ec2-windows-passwords.md)
 + [Adding Windows components Using installation media](windows-optional-components.md)

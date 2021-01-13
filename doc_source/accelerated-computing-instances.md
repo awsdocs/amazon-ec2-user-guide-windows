@@ -12,10 +12,10 @@ If you require high processing capability, you'll benefit from using accelerated
 + [Network performance](#gpu-network-performance)
 + [Instance features](#gpu-instances-features)
 + [Release notes](#gpu-instance-release-notes)
-+ [Installing NVIDIA drivers on Windows instances](install-nvidia-driver.md)
++ [Install NVIDIA drivers on Windows instances](install-nvidia-driver.md)
 + [Install AMD drivers on Windows instances](install-amd-driver.md)
 + [Activate NVIDIA GRID Virtual Applications](activate_grid.md)
-+ [Optimizing GPU settings](optimize_gpu.md)
++ [Optimize GPU settings](optimize_gpu.md)
 
 ## GPU instances<a name="gpu-instances"></a>
 
@@ -103,7 +103,7 @@ The following is a summary of the hardware specifications for accelerated comput
 
 For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
-For more information about specifying CPU options, see [Optimizing CPU options](instance-optimize-cpu.md)\.
+For more information about specifying CPU options, see [Optimize CPU options](instance-optimize-cpu.md)\.
 
 ## Instance performance<a name="gpu-instance-performance"></a>
 
@@ -157,7 +157,7 @@ For more information, see the following:
   + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
   The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
-+ GPU\-based instances can't access the GPU unless the NVIDIA drivers are installed\. For more information, see [Installing NVIDIA drivers on Windows instances](install-nvidia-driver.md)\.
++ GPU\-based instances can't access the GPU unless the NVIDIA drivers are installed\. For more information, see [Install NVIDIA drivers on Windows instances](install-nvidia-driver.md)\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.
 + Bare metal instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The upstream Linux kernel and the latest Amazon Linux AMIs support this device\. Bare metal instances also provide an ACPI SPCR table to enable the system to automatically use the PCI\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device\.

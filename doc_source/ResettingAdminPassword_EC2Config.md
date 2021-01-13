@@ -146,4 +146,4 @@ After you have modified the configuration file, reattach the volume to the origi
 **Important**  
 The instance gets a new public IP address after you stop and start it\. Make sure to connect to the instance using its current public DNS name\. For more information, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
 
-1. \(Optional\) If you have no further use for the temporary instance, you can terminate it\. Select the temporary instance, and choose **Instance State**, **Terminate instanve**\.
+1. \(Optional\) If you have no further use for the temporary instance, you can terminate it\. Select the temporary instance, and choose **Instance State**, **Terminate instance**\.

@@ -1,4 +1,4 @@
-# Using CloudWatch metrics to monitor Elastic Graphics<a name="elastic-graphics-cloudwatch"></a>
+# Use CloudWatch metrics to monitor Elastic Graphics<a name="elastic-graphics-cloudwatch"></a>
 
 You can monitor your Elastic Graphics accelerator using Amazon CloudWatch, which collects metrics about your accelerator performance\. These statistics are recorded for a period of two weeks, so that you can access historical information and gain a better perspective on how your service is performing\.
 
@@ -27,7 +27,7 @@ You can filter the metrics data for your Elastic Graphics accelerators using the
 | EGPUId | Filters the data by the Elastic Graphics accelerator\. | 
 | InstanceId | Filters the data by the instance to which the Elastic Graphics accelerator is attached\. | 
 
-## Viewing CloudWatch metrics for Elastic Graphics<a name="viewing-elastic-graphics-metrics"></a>
+## View CloudWatch metrics for Elastic Graphics<a name="viewing-elastic-graphics-metrics"></a>
 
 Metrics are grouped first by the service namespace, and then by the supported dimensions\. You can use the following procedures to view the metrics for your Elastic Graphics accelerators\.
 
@@ -48,7 +48,7 @@ Use the following [list\-metrics](https://docs.aws.amazon.com/cli/latest/referen
 aws cloudwatch list-metrics --namespace "AWS/ElasticGPUs"
 ```
 
-## Creating CloudWatch alarms to monitor Elastic Graphics<a name="elastic-graphics-cloudwatch-alarms"></a>
+## Create CloudWatch alarms to monitor Elastic Graphics<a name="elastic-graphics-cloudwatch-alarms"></a>
 
 You can create a CloudWatch alarm that sends an Amazon SNS message when the alarm changes state\. An alarm watches a single metric over a time period you specify, and sends a notification to an Amazon SNS topic based on the value of the metric relative to a given threshold over a number of time periods\. 
 

@@ -151,4 +151,4 @@ After you have reset the administrator password using EC2Launch, reattach the vo
 
 1. Retrieve your new Windows administrator password using the private key for the new key pair and connect to the instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
-1. \(Optional\) If you have no further use for the temporary instance, you can terminate it\. Select the temporary instance, and choose **Instance State**, **Terminate instanve**\.
+1. \(Optional\) If you have no further use for the temporary instance, you can terminate it\. Select the temporary instance, and choose **Instance State**, **Terminate instance**\.

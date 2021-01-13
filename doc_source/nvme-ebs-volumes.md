@@ -6,15 +6,15 @@ The EBS performance guarantees stated in [Amazon EBS Product Details](http://aws
 
 **Topics**
 + [Install or upgrade the NVMe driver](#install-nvme-driver)
-+ [Identifying the EBS device](#identify-nvme-ebs-device)
-+ [Working with NVMe EBS volumes](#using-nvme-ebs-volumes)
++ [Identify the EBS device](#identify-nvme-ebs-device)
++ [Work with NVMe EBS volumes](#using-nvme-ebs-volumes)
 + [I/O operation timeout](#timeout-nvme-ebs-volumes)
 
 ## Install or upgrade the NVMe driver<a name="install-nvme-driver"></a>
 
 The AWS Windows AMIs for Windows Server 2008 R2 and later include the AWS NVMe driver\. If you are not using the latest AWS Windows AMIs provided by Amazon, see [Installing or upgrading AWS NVMe drivers](aws-nvme-drivers.md#install-nvme-drivers)\.
 
-## Identifying the EBS device<a name="identify-nvme-ebs-device"></a>
+## Identify the EBS device<a name="identify-nvme-ebs-device"></a>
 
 EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachments on Nitro\-based instances using the NVMe specification\. These devices rely on standard NVMe drivers on the operating system\. These drivers typically discover attached devices by scanning the PCI bus during instance boot, and create device nodes based on the order in which the devices respond, not on how the devices are specified in the block device mapping\. 
 
@@ -51,7 +51,7 @@ Volume ID: vol-03e2dbe464b66f0a1
 Device Name: xvdc
 ```
 
-## Working with NVMe EBS volumes<a name="using-nvme-ebs-volumes"></a>
+## Work with NVMe EBS volumes<a name="using-nvme-ebs-volumes"></a>
 
 The latest AWS Windows AMIs contain the AWS NVMe driver that is required by instance types that expose EBS volumes as NVMe block devices\. However, if you resize your root volume on a Windows system, you must rescan the volume in order for this change to be reflected in the instance\. If you launched your instance from a different AMI, it might not contain the required AWS NVMe driver\. If your instance does not have the latest AWS NVMe driver, you must install it\. For more information, see [AWS NVMe drivers for Windows instances](aws-nvme-drivers.md)\.
 

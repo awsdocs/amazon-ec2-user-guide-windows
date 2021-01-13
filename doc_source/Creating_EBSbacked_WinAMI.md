@@ -17,7 +17,7 @@ First, launch an instance from an AMI that's similar to the AMI that you'd like 
 
 During the AMI\-creation process, Amazon EC2 creates snapshots of your instance's root volume and any other EBS volumes attached to your instance\. You're charged for the snapshots until you deregister the AMI and delete the snapshots\. For more information, see [Deregister your Windows AMI](deregister-ami.md)\. If any volumes attached to the instance are encrypted, the new AMI only launches successfully on instance types that support Amazon EBS encryption\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
 
-Depending on the size of the volumes, it can take several minutes for the AMI\-creation process to complete \(sometimes up to 24 hours\)\. You may find it more efficient to create snapshots of your volumes prior to creating your AMI\. This way, only small, incremental snapshots need to be created when the AMI is created, and the process completes more quickly \(the total time for snapshot creation remains the same\)\. For more information, see [Creating Amazon EBS snapshots](ebs-creating-snapshot.md)\.
+Depending on the size of the volumes, it can take several minutes for the AMI\-creation process to complete \(sometimes up to 24 hours\)\. You may find it more efficient to create snapshots of your volumes prior to creating your AMI\. This way, only small, incremental snapshots need to be created when the AMI is created, and the process completes more quickly \(the total time for snapshot creation remains the same\)\. For more information, see [Create Amazon EBS snapshots](ebs-creating-snapshot.md)\.
 
 After the process completes, you have a new AMI and snapshot created from the root volume of the instance\. When you launch an instance using the new AMI, we create a new EBS volume for its root volume using the snapshot\.
 
@@ -46,7 +46,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
 
    Add any other filters that you need\. When you have chosen an AMI, select its check box\.
 
-1. Choose **Launch**\. Accept the default values as you step through the wizard\. For more information, see [Launching an instance using the Launch Instance Wizard](launching-instance.md)\. When the instance is ready, connect to it\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Choose **Launch**\. Accept the default values as you step through the wizard\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\. When the instance is ready, connect to it\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. You can perform any of the following actions on your instance to customize it for your needs:
    + Install software and applications
@@ -83,7 +83,7 @@ If you choose **No reboot**, we can't guarantee the file system integrity of the
 
    \(Optional\) Choose **Snapshots** in the navigation pane to view the snapshot that was created for the new AMI\. When you launch an instance from this AMI, we use this snapshot to create its root device volume\.
 
-1. Launch an instance from your new AMI\. For more information, see [Launching an instance using the Launch Instance Wizard](launching-instance.md)\. The new running instance contains all of the customizations you applied in previous steps, and any additional customization you add when launching the instance, such as user data \(scripts that run when the instance starts\)\.
+1. Launch an instance from your new AMI\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\. The new running instance contains all of the customizations you applied in previous steps, and any additional customization you add when launching the instance, such as user data \(scripts that run when the instance starts\)\.
 
 ### To create an AMI from an instance using the command line<a name="create-windows-ami-cli"></a>
 

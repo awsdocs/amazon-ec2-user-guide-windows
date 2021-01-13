@@ -129,7 +129,7 @@ Try the following to resolve this issue:
   mstsc /v:instance /admin
   ```
 + If the server is running a full\-screen application, it might have stopped responding\. Use Ctrl\+Shift\+Esc to start Windows Task Manager, and then close the application\.
-+ If the server is over\-utilized, it might have stopped responding\. To monitor the instance using the Amazon EC2 console, select the instance and then select the **Monitoring** tab\. If you need to change the instance type to a larger size, see [Changing the instance type](ec2-instance-resize.md)\.
++ If the server is over\-utilized, it might have stopped responding\. To monitor the instance using the Amazon EC2 console, select the instance and then select the **Monitoring** tab\. If you need to change the instance type to a larger size, see [Change the instance type](ec2-instance-resize.md)\.
 
 ## Unable to remotely log on to an instance with a user account that is not an administrator<a name="remote-failure"></a>
 

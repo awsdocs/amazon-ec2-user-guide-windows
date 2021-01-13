@@ -200,13 +200,13 @@ If this does not resolve the activation issue, follow these additional steps\.
 
 **For EC2Launch \(Windows Server 2016 AMIs and later\)**
 
-1. Import the EC2Launch module:
+1. From a PowerShell prompt with administrative rights, import the EC2Launch module:
 
    ```
    PS C:\> Import-Module "C:\ProgramData\Amazon\EC2-Windows\Launch\Module\Ec2Launch.psd1"
    ```
 
-1. Call the Add\-Routes function:
+1. Call the Add\-Routes function to see the list of new routes:
 
    ```
    PS C:\> Add-Routes

@@ -5,10 +5,10 @@ An instance is scheduled to be retired when AWS detects irreparable failure of t
 For more information about the types of instance events, see [Scheduled events for your instances](monitoring-instances-status-check_sched.md)\.
 
 **Topics**
-+ [Identifying instances scheduled for retirement](#instance-retirement-identify)
++ [Identify instances scheduled for retirement](#instance-retirement-identify)
 + [Actions to take for instances scheduled for retirement](#instance-retirement-actions-EBS)
 
-## Identifying instances scheduled for retirement<a name="instance-retirement-identify"></a>
+## Identify instances scheduled for retirement<a name="instance-retirement-identify"></a>
 
 If your instance is scheduled for retirement, you receive an email prior to the event with the instance ID and retirement date\. You can also check for instances that are scheduled for retirement using the Amazon EC2 console or the command line\.
 
@@ -64,4 +64,4 @@ When you are notified that your instance is scheduled for retirement, we recomme
 Create an EBS\-backed AMI from your instance so that you have a backup\. To ensure data integrity, stop the instance before you create the AMI\. You can wait for the scheduled retirement date when the instance is stopped, or stop the instance yourself before the retirement date\. You can start the instance again at any time\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
 **Launch a replacement instance**  
-After you create an AMI from your instance, you can use the AMI to launch a replacement instance\. From the Amazon EC2 console, select your new AMI and then choose **Actions**, **Launch**\. Follow the wizard to launch your instance\. For more information about each step in the wizard, see [Launching an instance using the Launch Instance Wizard](launching-instance.md)\.
+After you create an AMI from your instance, you can use the AMI to launch a replacement instance\. From the Amazon EC2 console, select your new AMI and then choose **Actions**, **Launch**\. Follow the wizard to launch your instance\. For more information about each step in the wizard, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\.

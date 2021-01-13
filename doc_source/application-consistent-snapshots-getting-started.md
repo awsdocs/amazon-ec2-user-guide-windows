@@ -1,11 +1,11 @@
-# Getting started<a name="application-consistent-snapshots-getting-started"></a>
+# Get started<a name="application-consistent-snapshots-getting-started"></a>
 
 These instructions describe how to install the VSS components and perform an application\-consistent snapshot of the EBS volumes attached to an EC2 Windows instance\. For more information, see [Getting Started with Amazon EC2 Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2_GetStarted.html)\.
 
 **Topics**
 + [Create an IAM role for VSS\-enabled snapshots](#run-command-vss-role)
 + [Download and install VSS components to the Windows on EC2 instance](#run-command-vss-package)
-+ [Creating a VSS application\-consistent snapshot using the console](#application-consistent-snapshots-creating-console)
++ [Create a VSS application\-consistent snapshot using the console](#application-consistent-snapshots-creating-console)
 
 ## Create an IAM role for VSS\-enabled snapshots<a name="run-command-vss-role"></a>
 
@@ -95,7 +95,7 @@ Use the following procedure to create an IAM role for VSS\-enabled snapshots\. T
 
 ## Download and install VSS components to the Windows on EC2 instance<a name="run-command-vss-package"></a>
 
-Systems Manager requires VSS components to be installed on your instances\. Use the following procedure to install the components using the `AWSVssComponents` package\. The package installs two components: a VSS requestor and a VSS provider\. We recommend that you install the latest AWS VSS component package to improve reliability and performance of application\-consistent snapshots on your EC2 Windows instances\. To view the latest package version, see the [AWS VSS component package version history](application-consistent-snapshots-details.md)\.
+Systems Manager requires VSS components to be installed on your instances\. Use the following procedure to install the components using the `AWSVssComponents` package\. The package installs two components: a VSS requester and a VSS provider\. We recommend that you install the latest AWS VSS component package to improve reliability and performance of application\-consistent snapshots on your EC2 Windows instances\. To view the latest package version, see the [AWS VSS component package version history](application-consistent-snapshots-details.md)\.
 
 1. Open the AWS Systems Manager console at [https://console\.aws\.amazon\.com/systems\-manager/](https://console.aws.amazon.com/systems-manager/)\.
 
@@ -137,7 +137,7 @@ The S3 permissions that grant the ability to write the data to an S3 bucket are 
 
 1. Choose **Run**\.
 
-## Creating a VSS application\-consistent snapshot using the console<a name="application-consistent-snapshots-creating-console"></a>
+## Create a VSS application\-consistent snapshot using the console<a name="application-consistent-snapshots-creating-console"></a>
 
 Use the following procedure to create a VSS\-enabled EBS snapshot\.
 

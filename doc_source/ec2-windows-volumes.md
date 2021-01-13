@@ -2,7 +2,7 @@
 
 Your Windows instance comes with an EBS volume that serves as the root volume\. If your Windows instance uses AWS PV or Citrix PV drivers, you can optionally add up to 25 volumes, making a total of 26 volumes\. For more information, see [Instance volume limits](volume_limits.md)\.
 
-Depending on the instance type of your instance, you'll have from 0 to 24 possible instance store volumes available to the instance\. To use any of the instance store volumes that are available to your instance, you must specify them when you create your AMI or launch your instance\. You can also add EBS volumes when you create your AMI or launch your instance, or attach them while your instance is running\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
+Depending on the instance type of your instance, you'll have from 0 to 24 possible instance store volumes available to the instance\. To use any of the instance store volumes that are available to your instance, you must specify them when you create your AMI or launch your instance\. You can also add EBS volumes when you create your AMI or launch your instance, or attach them while your instance is running\. For more information, see [Make an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 
 When you add a volume to your instance, you specify the device name that Amazon EC2 uses\. For more information, see [Device naming on Windows instances](device_naming.md)\. AWS Windows Amazon Machine Images \(AMIs\) contain a set of drivers that are used by Amazon EC2 to map instance store and EBS volumes to Windows disks and drive letters\. If you launch an instance from a Windows AMI that uses AWS PV or Citrix PV drivers, you can use the relationships described on this page to map your Windows disks to your instance store and EBS volumes\. If your Windows AMI uses Red Hat PV drivers, you can update your instance to use the Citrix drivers\. For more information, see [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
 
@@ -152,7 +152,7 @@ If you did not provide your credentials on the Windows instance, the script cann
 
 ### Mapping NVMe EBS volumes<a name="ebs-nvme-volume-map"></a>
 
-With instances built on the [Nitro System](instance-types.md#ec2-nitro-instances), EBS volumes are exposed as NVMe devices\. You can use the [Get\-Disk](https://docs.microsoft.com/en-us/powershell/module/storage/get-disk) command to map Windows disk numbers to EBS volume IDs\. For more information, see [Identifying the EBS device](nvme-ebs-volumes.md#identify-nvme-ebs-device)\.
+With instances built on the [Nitro System](instance-types.md#ec2-nitro-instances), EBS volumes are exposed as NVMe devices\. You can use the [Get\-Disk](https://docs.microsoft.com/en-us/powershell/module/storage/get-disk) command to map Windows disk numbers to EBS volume IDs\. For more information, see [Identify the EBS device](nvme-ebs-volumes.md#identify-nvme-ebs-device)\.
 
 ```
 PS C:\> Get-Disk

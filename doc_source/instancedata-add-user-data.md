@@ -1,4 +1,4 @@
-# Working with instance user data<a name="instancedata-add-user-data"></a>
+# Work with instance user data<a name="instancedata-add-user-data"></a>
 
 When working with instance user data, keep the following in mind:
 + User data must be base64\-encoded\. The Amazon EC2 console can perform the base64\-encoding for you or accept base64\-encoded input\.

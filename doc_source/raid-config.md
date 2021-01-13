@@ -39,11 +39,11 @@ Use the following procedure to create the RAID array\. Note that you can get dir
 
 **To create a RAID array on Windows**
 
-1. Create the Amazon EBS volumes for your array\. For more information, see [Creating an Amazon EBS volume](ebs-creating-volume.md)\.
+1. Create the Amazon EBS volumes for your array\. For more information, see [Create an Amazon EBS volume](ebs-creating-volume.md)\.
 **Important**  
 Create volumes with identical size and IOPS performance values for your array\. Make sure you do not create an array that exceeds the available bandwidth of your EC2 instance\.
 
-1. Attach the Amazon EBS volumes to the instance that you want to host the array\. For more information, see [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
+1. Attach the Amazon EBS volumes to the instance that you want to host the array\. For more information, see [Attach an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
 
 1. Connect to your Windows instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
 

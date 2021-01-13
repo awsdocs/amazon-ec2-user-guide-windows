@@ -1,9 +1,9 @@
-# Modifying Reserved Instances<a name="ri-modifying"></a>
+# Modify Reserved Instances<a name="ri-modifying"></a>
 
 When your needs change, you can modify your Standard or Convertible Reserved Instances and continue to benefit from the billing benefit\. You can modify attributes such as the Availability Zone and scope of your Reserved Instance\.
 
 **Note**  
-You can also exchange a Convertible Reserved Instance for another Convertible Reserved Instance with a different configuration\. For more information, see [Exchanging Convertible Reserved Instances](ri-convertible-exchange.md)\.
+You can also exchange a Convertible Reserved Instance for another Convertible Reserved Instance with a different configuration\. For more information, see [Exchange Convertible Reserved Instances](ri-convertible-exchange.md)\.
 
 After modification, the benefit of the Reserved Instances is applied only to instances that match the new parameters\. For example, if you change the Availability Zone of a reservation, the capacity reservation and pricing benefits are automatically applied to instance usage in the new Availability Zone\. Instances that no longer match the new parameters are charged at the On\-Demand rate, unless your account has other applicable reservations\.
 
@@ -21,8 +21,8 @@ You can modify your reservations as frequently as you like, but you cannot chang
 
 **Topics**
 + [Requirements and restrictions for modification](#ri-modification-limits)
-+ [Submitting modification requests](#ri-modification-process)
-+ [Troubleshooting modification requests](#ri-modification-process-messages)
++ [Submit modification requests](#ri-modification-process)
++ [Troubleshoot modification requests](#ri-modification-process-messages)
 
 ## Requirements and restrictions for modification<a name="ri-modification-limits"></a>
 
@@ -47,7 +47,7 @@ Amazon EC2 processes your modification request if there is sufficient capacity f
 + The original Reserved Instances must expire within the same hour, if they are Standard Reserved Instances
 + The Reserved Instance is not a G4dn instance\.
 
-## Submitting modification requests<a name="ri-modification-process"></a>
+## Submit modification requests<a name="ri-modification-process"></a>
 
 Before you modify your Reserved Instances, ensure that you have read the applicable [restrictions](#ri-modification-limits)\.
 
@@ -84,7 +84,7 @@ If your Reserved Instances are not in the active state or cannot be modified, **
    + [describe\-reserved\-instances\-modifications](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-reserved-instances-modifications.html) \(AWS CLI\)
    + [Get\-EC2ReservedInstancesModification](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ReservedInstancesModification.html) \(AWS Tools for Windows PowerShell\)
 
-## Troubleshooting modification requests<a name="ri-modification-process-messages"></a>
+## Troubleshoot modification requests<a name="ri-modification-process-messages"></a>
 
 If the target configuration settings that you requested were unique, you receive a message that your request is being processed\. At this point, Amazon EC2 has only determined that the parameters of your modification request are valid\. Your modification request can still fail during processing due to unavailable capacity\.
 

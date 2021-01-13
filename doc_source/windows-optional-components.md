@@ -38,13 +38,13 @@ Use the following procedure to use the AWS Management Console to add Windows com
 
 1. Type the instance ID and the name of the device for the attachment, and choose **Attach**\. If you need help with the device name, see [Device Naming](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html)\.
 
-1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
+1. Connect to your instance and make the volume available\. For more information, see [Make an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 **Important**  
 Do not initialize the volume\.
 
 1. Open **Control Panel**, **Programs and Features**\. Choose **Turn Windows features on or off**\. If you are prompted for installation media, specify the EBS volume with the installation media\.
 
-1. \(Optional\) When you are finished with the installation media, you can detach the volume\. After you detach the volume, you can delete it\. For more information, see [Detaching an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md) and [Deleting an Amazon EBS volume](ebs-deleting-volume.md)\.
+1. \(Optional\) When you are finished with the installation media, you can detach the volume\. After you detach the volume, you can delete it\. For more information, see [Detach an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md) and [Delete an Amazon EBS volume](ebs-deleting-volume.md)\.
 
 ## Adding Windows components using the Tools for Windows PowerShell<a name="adding-windows-components-powershell"></a>
 
@@ -108,7 +108,7 @@ Use the following procedure to use the Tools for Windows PowerShell to add Windo
    PS C:\> Add-EC2Volume -InstanceId i-087711ddaf98f9489 -VolumeId vol-06aa9e1fbf8b82ed1 -Device xvdh
    ```
 
-1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
+1. Connect to your instance and make the volume available\. For more information, see [Make an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 **Important**  
 Do not initialize the volume\.
 
@@ -179,7 +179,7 @@ Use the following procedure to use the AWS CLI to add Windows components to your
    aws ec2 attach-volume --volume-id vol-0c98b37f30bcbc290 --instance-id i-01474ef662b89480 --device xvdg 
    ```
 
-1. Connect to your instance and make the volume available\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
+1. Connect to your instance and make the volume available\. For more information, see [Make an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 **Important**  
 Do not initialize the volume\.
 

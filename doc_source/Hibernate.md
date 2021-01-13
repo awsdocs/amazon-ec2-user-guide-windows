@@ -27,10 +27,10 @@ For information about using hibernation on Linux instances, see [Hibernate your 
 + [Overview of hibernation](#instance_hibernate)
 + [Hibernation prerequisites](#hibernating-prerequisites)
 + [Limitations](#hibernating-not-supported)
-+ [Enabling hibernation for an instance](#enabling-hibernation)
-+ [Hibernating an instance](#hibernating-instances)
-+ [Starting a hibernated instance](#hibernating-resuming)
-+ [Troubleshooting hibernation](#troubleshoot-instance-hibernate)
++ [Enable hibernation for an instance](#enabling-hibernation)
++ [Hibernate an instance](#hibernating-instances)
++ [Start a hibernated instance](#hibernating-resuming)
++ [Troubleshoot hibernation](#troubleshoot-instance-hibernate)
 
 ## Overview of hibernation<a name="instance_hibernate"></a>
 
@@ -78,9 +78,9 @@ To hibernate an instance, the following prerequisites must be in place:
 + **EBS root volume encryption** \- To use hibernation, the root volume must be encrypted to ensure the protection of sensitive content that is in memory at the time of hibernation\. When RAM data is moved to the EBS root volume, it is always encrypted\. Encryption of the root volume is enforced at instance launch\. Use one of the following three options to ensure that the root volume is an encrypted EBS volume:
   + EBS "single\-step" encryption: You can launch encrypted EBS\-backed EC2 instances from an unencrypted AMI and also enable hibernation at the same time\. For more information, see [Use encryption with EBS\-backed AMIs](AMIEncryption.md)\.
   + EBS encryption by default: You can enable EBS encryption by default to ensure all new EBS volumes created in your AWS account are encrypted\. This way, you can enable hibernation for your instances without specifying encryption intent at instance launch\. For more information, see [Encryption by default](EBSEncryption.md#encryption-by-default)\.
-  + Encrypted AMI: You can enable EBS encryption by using an encrypted AMI to launch your instance\. If your AMI does not have an encrypted root snapshot, you can copy it to a new AMI and request encryption\. For more information, see [Encrypt an unencrypted image during copy](AMIEncryption.md#copy-unencrypted-to-encrypted) and [Copying an AMI](CopyingAMIs.md#ami-copy-steps)\.
-+ **Enable hibernation at launch** \- You cannot enable hibernation on an existing instance \(running or stopped\)\. For more information, see [Enabling hibernation for an instance](#enabling-hibernation)\.
-+ **Purchasing options** \- This feature is available for On\-Demand Instances and Reserved Instances\. It is not available for Spot Instances\. For more information, see [Hibernating interrupted Spot Instances](spot-interruptions.md#hibernate-spot-instances)\.
+  + Encrypted AMI: You can enable EBS encryption by using an encrypted AMI to launch your instance\. If your AMI does not have an encrypted root snapshot, you can copy it to a new AMI and request encryption\. For more information, see [Encrypt an unencrypted image during copy](AMIEncryption.md#copy-unencrypted-to-encrypted) and [Copy an AMI](CopyingAMIs.md#ami-copy-steps)\.
++ **Enable hibernation at launch** \- You cannot enable hibernation on an existing instance \(running or stopped\)\. For more information, see [Enable hibernation for an instance](#enabling-hibernation)\.
++ **Purchasing options** \- This feature is available for On\-Demand Instances and Reserved Instances\. It is not available for Spot Instances\. For more information, see [Hibernate interrupted Spot Instances](spot-interruptions.md#hibernate-spot-instances)\.
 
 ## Limitations<a name="hibernating-not-supported"></a>
 + When you hibernate an instance, the data on any instance store volumes is lost\.
@@ -91,7 +91,7 @@ To hibernate an instance, the following prerequisites must be in place:
 + We do not support keeping an instance hibernated for more than 60 days\. To keep the instance for longer than 60 days, you must start the hibernated instance, stop the instance, and start it\.
 + We constantly update our platform with upgrades and security patches, which can conflict with existing hibernated instances\. We notify you about critical updates that require a start for hibernated instances so that we can perform a shutdown or a reboot to apply the necessary upgrades and security patches\.
 
-## Enabling hibernation for an instance<a name="enabling-hibernation"></a>
+## Enable hibernation for an instance<a name="enabling-hibernation"></a>
 
 To hibernate an instance, it must first be enabled for hibernation\. To enable hibernation, you must do it while launching the instance\.
 
@@ -103,7 +103,7 @@ You can't enable or disable hibernation for an instance after you launch it\.
 
 **To enable hibernation using the console**
 
-1. Follow the [Launching an instance using the Launch Instance Wizard](launching-instance.md) procedure\.
+1. Follow the [Launch an instance using the Launch Instance Wizard](launching-instance.md) procedure\.
 
 1. On the **Choose an Amazon Machine Image \(AMI\)** page, select an AMI that supports hibernation\. For more information about supported AMIs, see [Hibernation prerequisites](#hibernating-prerequisites)\.
 
@@ -118,7 +118,7 @@ You can't enable or disable hibernation for an instance after you launch it\.
 
    For more information about the prerequisites for the root volume, see [Hibernation prerequisites](#hibernating-prerequisites)\.
 
-1. Continue as prompted by the wizard\. When you've finished reviewing your options on the **Review Instance Launch** page, choose **Launch**\. For more information, see [Launching an instance using the Launch Instance Wizard](launching-instance.md)\.
+1. Continue as prompted by the wizard\. When you've finished reviewing your options on the **Review Instance Launch** page, choose **Launch**\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\.
 
 ------
 #### [ AWS CLI ]
@@ -251,7 +251,7 @@ The output lists the EC2 instances that are enabled for hibernation\.
 
 ------
 
-## Hibernating an instance<a name="hibernating-instances"></a>
+## Hibernate an instance<a name="hibernating-instances"></a>
 
 You can hibernate an instance if the instance is [enabled for hibernation](#enabling-hibernation) and meets the [hibernation prerequisites](#hibernating-prerequisites)\. If an instance cannot hibernate successfully, a normal shutdown occurs\.
 
@@ -365,7 +365,7 @@ The output lists the EC2 instances on which hibernation was initiated\.
 
 ------
 
-## Starting a hibernated instance<a name="hibernating-resuming"></a>
+## Start a hibernated instance<a name="hibernating-resuming"></a>
 
 Start a hibernated instance by starting it in the same way that you would start a stopped instance\.
 
@@ -415,7 +415,7 @@ Start-EC2Instance `
 
 ------
 
-## Troubleshooting hibernation<a name="troubleshoot-instance-hibernate"></a>
+## Troubleshoot hibernation<a name="troubleshoot-instance-hibernate"></a>
 
 Use this information to help diagnose and fix issues that you might encounter when hibernating an instance\.
 

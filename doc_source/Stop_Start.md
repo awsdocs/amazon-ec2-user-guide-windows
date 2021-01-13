@@ -11,9 +11,9 @@ If you decide that you no longer need an instance, you can terminate it\. As soo
 **Topics**
 + [Overview](#instance_stop)
 + [What happens when you stop an instance](#what-happens-stop)
-+ [Stopping and starting your instances](#starting-stopping-instances)
-+ [Modifying a stopped instance](#Using_ChangingAttributesWhileInstanceStopped)
-+ [Troubleshooting](#troubleshoot-instance-stop)
++ [Stop and start your instances](#starting-stopping-instances)
++ [Modify a stopped instance](#Using_ChangingAttributesWhileInstanceStopped)
++ [Troubleshoot stopping your instance](#troubleshoot-instance-stop)
 
 ## Overview<a name="instance_stop"></a>
 
@@ -47,9 +47,9 @@ When an EC2 instance is stopped using the `stop-instances` command, the followin
 + The instance shuts down when the graceful shutdown process exits\. There is no configurable OS shutdown time\.
 + If the instance OS does not shut down cleanly within a few minutes, a hard shutdown is performed\.
 
-By default, when you initiate a shutdown from an Amazon EBS\-backed instance, the instance stops\. You can change this behavior so that it terminates instead\. For more information, see [Changing the instance initiated shutdown behavior](terminating-instances.md#Using_ChangingInstanceInitiatedShutdownBehavior)\.
+By default, when you initiate a shutdown from an Amazon EBS\-backed instance, the instance stops\. You can change this behavior so that it terminates instead\. For more information, see [Change the instance initiated shutdown behavior](terminating-instances.md#Using_ChangingInstanceInitiatedShutdownBehavior)\.
 
-## Stopping and starting your instances<a name="starting-stopping-instances"></a>
+## Stop and start your instances<a name="starting-stopping-instances"></a>
 
 You can stop and start your Amazon EBS\-backed instance using the console or the command line\.
 
@@ -66,7 +66,7 @@ You can stop and start your Amazon EBS\-backed instance using the console or the
 
 1. When prompted for confirmation, choose **Stop**\. It can take a few minutes for the instance to stop\.
 
-1. \(Optional\) While your instance is stopped, you can modify certain instance attributes\. For more information, see [Modifying a stopped instance](#Using_ChangingAttributesWhileInstanceStopped)\.
+1. \(Optional\) While your instance is stopped, you can modify certain instance attributes\. For more information, see [Modify a stopped instance](#Using_ChangingAttributesWhileInstanceStopped)\.
 
 1. To start the stopped instance, select the instance, and choose **Instance state**, **Start instance**\.
 
@@ -85,7 +85,7 @@ You can stop and start your Amazon EBS\-backed instance using the console or the
 
 1. When prompted for confirmation, choose **Yes, Stop**\. It can take a few minutes for the instance to stop\.
 
-1. \(Optional\) While your instance is stopped, you can modify certain instance attributes\. For more information, see [Modifying a stopped instance](#Using_ChangingAttributesWhileInstanceStopped)\.
+1. \(Optional\) While your instance is stopped, you can modify certain instance attributes\. For more information, see [Modify a stopped instance](#Using_ChangingAttributesWhileInstanceStopped)\.
 
 1. To start the stopped instance, select the instance, and choose **Actions**, **Instance State**, **Start**\.
 
@@ -99,13 +99,13 @@ You can use one of the following commands\. For more information about these com
 + [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) and [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\)
 + [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) and [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)
 
-## Modifying a stopped instance<a name="Using_ChangingAttributesWhileInstanceStopped"></a>
+## Modify a stopped instance<a name="Using_ChangingAttributesWhileInstanceStopped"></a>
 
 You can change the instance type, user data, and EBS\-optimization attributes of a stopped instance using the AWS Management Console or the command line interface\. You can't use the AWS Management Console to modify the `DeleteOnTermination`, kernel, or RAM disk attributes\.
 
 **To modify an instance attribute**
-+ To change the instance type, see [Changing the instance type](ec2-instance-resize.md)\.
-+ To change the user data for your instance, see [Working with instance user data](instancedata-add-user-data.md)\.
++ To change the instance type, see [Change the instance type](ec2-instance-resize.md)\.
++ To change the user data for your instance, see [Work with instance user data](instancedata-add-user-data.md)\.
 + To enable or disable EBS–optimization for your instance, see [Modifying EBS–Optimization](ebs-optimized.md#modify-ebs-optimized-attribute)\.
 + To change the `DeleteOnTermination` attribute of the root volume for your instance, see [Updating the block device mapping of a running instance](block-device-mapping-concepts.md#update-instance-bdm)\. You are not required to stop the instance to change this attribute\. 
 
@@ -115,6 +115,6 @@ You can use one of the following commands\. For more information about these com
 + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
 + [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
-## Troubleshooting<a name="troubleshoot-instance-stop"></a>
+## Troubleshoot stopping your instance<a name="troubleshoot-instance-stop"></a>
 
 If you have stopped your Amazon EBS\-backed instance and it appears "stuck" in the `stopping` state, you can forcibly stop it\. For more information, see [Troubleshooting stopping your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html) in the *Amazon EC2 User Guide for Linux Instances*\.

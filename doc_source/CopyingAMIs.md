@@ -15,8 +15,8 @@ If you are using an AWS Marketplace AMI, or an AMI that was directly or indirect
 + [Cross\-Region copying](#copy-amis-across-regions)
 + [Cross\-account copying](#copy-ami-across-accounts)
 + [Encryption and copying](#ami-copy-encryption)
-+ [Copying an AMI](#ami-copy-steps)
-+ [Stopping a pending AMI copy operation](#ami-copy-stop)
++ [Copy an AMI](#ami-copy-steps)
++ [Stop a pending AMI copy operation](#ami-copy-stop)
 
 ## Permissions for copying an instance store\-backed AMI<a name="copy-ami-permissions"></a>
 
@@ -124,7 +124,7 @@ Setting the `Encrypted` parameter encrypts the single snapshot for this instance
 
 For more information about copying AMIs with encrypted snapshots, see [Use encryption with EBS\-backed AMIs](AMIEncryption.md)\.
 
-## Copying an AMI<a name="ami-copy-steps"></a>
+## Copy an AMI<a name="ami-copy-steps"></a>
 
 You can copy an AMI as follows\.
 
@@ -162,7 +162,7 @@ You can copy an AMI using the [Copy\-EC2Image](https://docs.aws.amazon.com/power
 
 When you encrypt a target snapshot during copying, you must specify these additional parameters: `-Encrypted` and `-KmsKeyId`\.
 
-## Stopping a pending AMI copy operation<a name="ami-copy-stop"></a>
+## Stop a pending AMI copy operation<a name="ami-copy-stop"></a>
 
 You can stop a pending AMI copy as follows\.
 

@@ -16,14 +16,14 @@ For more information about pricing, see [Amazon EBS Pricing](http://aws.amazon.c
 + [Benefits of using EBS volumes](#EBSFeatures)
 + [Amazon EBS volume types](ebs-volume-types.md)
 + [Constraints on the size and configuration of an EBS volume](volume_constraints.md)
-+ [Creating an Amazon EBS volume](ebs-creating-volume.md)
-+ [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)
-+ [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)
-+ [Viewing information about an Amazon EBS volume](ebs-describing-volumes.md)
-+ [Replacing an Amazon EBS volume using a previous snapshot](ebs-restoring-volume.md)
-+ [Monitoring the status of your volumes](monitoring-volume-status.md)
-+ [Detaching an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)
-+ [Deleting an Amazon EBS volume](ebs-deleting-volume.md)
++ [Create an Amazon EBS volume](ebs-creating-volume.md)
++ [Attach an Amazon EBS volume to an instance](ebs-attaching-volume.md)
++ [Make an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)
++ [View information about an Amazon EBS volume](ebs-describing-volumes.md)
++ [Replace an Amazon EBS volume using a previous snapshot](ebs-restoring-volume.md)
++ [Monitor the status of your volumes](monitoring-volume-status.md)
++ [Detach an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)
++ [Delete an Amazon EBS volume](ebs-deleting-volume.md)
 
 ## Benefits of using EBS volumes<a name="EBSFeatures"></a>
 

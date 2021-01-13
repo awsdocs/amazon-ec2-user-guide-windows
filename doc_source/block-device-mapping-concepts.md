@@ -1,6 +1,6 @@
 # Block device mapping<a name="block-device-mapping-concepts"></a>
 
-Each instance that you launch has an associated root device volume, which is either an Amazon EBS volume or an instance store volume\. You can use block device mapping to specify additional EBS volumes or instance store volumes to attach to an instance when it's launched\. You can also attach additional EBS volumes to a running instance; see [Attaching an Amazon EBS volume to an instance](ebs-attaching-volume.md)\. However, the only way to attach instance store volumes to an instance is to use block device mapping to attach the volumes as the instance is launched\.
+Each instance that you launch has an associated root device volume, which is either an Amazon EBS volume or an instance store volume\. You can use block device mapping to specify additional EBS volumes or instance store volumes to attach to an instance when it's launched\. You can also attach additional EBS volumes to a running instance; see [Attach an Amazon EBS volume to an instance](ebs-attaching-volume.md)\. However, the only way to attach instance store volumes to an instance is to use block device mapping to attach the volumes as the instance is launched\.
 
 For more information about root device volumes, see [Root device volume](EC2Win_Infrastructure.md#RootDevice_WinAMI)\.
 
@@ -311,7 +311,7 @@ For instances launched before the release of the 2009\-10\-31 API, AWS can't dis
 
    If the instance was launched with additional EBS volumes using a block device mapping, they appear under **Block devices**\. Any instance store volumes do not appear on this tab\.
 
-1. To display additional information about an EBS volume, choose its volume ID to go to the volume page\. For more information, see [Viewing information about an Amazon EBS volume](ebs-describing-volumes.md)\.
+1. To display additional information about an EBS volume, choose its volume ID to go to the volume page\. For more information, see [View information about an Amazon EBS volume](ebs-describing-volumes.md)\.
 
 **To view the EBS volumes for an instance using the command line**
 

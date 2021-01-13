@@ -1,4 +1,4 @@
-# Optimizing GPU settings<a name="optimize_gpu"></a>
+# Optimize GPU settings<a name="optimize_gpu"></a>
 
 There are several GPU setting optimizations that you can perform to achieve the best performance on G3, G4dn, P2, P3, and P3dn instances\. With some of these instance types, the NVIDIA driver uses an autoboost feature, which varies the GPU clock speeds\. By disabling autoboost and setting the GPU clock speeds to their maximum frequency, you can consistently achieve the maximum performance with your GPU instances\.
 

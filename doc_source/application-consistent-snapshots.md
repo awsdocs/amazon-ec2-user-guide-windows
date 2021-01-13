@@ -1,4 +1,4 @@
-# Creating a VSS application\-consistent snapshot<a name="application-consistent-snapshots"></a>
+# Create a VSS application\-consistent snapshot<a name="application-consistent-snapshots"></a>
 
 You can take application\-consistent snapshots of all [Amazon Elastic Block Store \(Amazon EBS\)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EBSVolumes.html) volumes attached to your Windows on Amazon EC2 instances by using [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html)\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications\. The snapshots include data from pending transactions between these applications and the disk\. You don't have to shut down your instances or disconnect them when you need to back up all attached volumes\. 
 
@@ -7,9 +7,9 @@ There is no additional cost to use VSS\-enabled EBS snapshots\. You only pay for
 **Topics**
 + [How it works](#application-consistent-snapshots-how)
 + [Before you begin](application-consistent-snapshots-prereqs.md)
-+ [Getting started](application-consistent-snapshots-getting-started.md)
++ [Get started](application-consistent-snapshots-getting-started.md)
 + [Create Snapshots Using the Command Line](application-consistent-snapshots-creating-commands.md)
-+ [Restoring volumes from VSS\-enabled EBS snapshots](application-consistent-snapshots-restore.md)
++ [Restore volumes from VSS\-enabled EBS snapshots](application-consistent-snapshots-restore.md)
 + [Version history](application-consistent-snapshots-details.md)
 
 ## How it works<a name="application-consistent-snapshots-how"></a>

@@ -1,4 +1,4 @@
-# Initializing Amazon EBS volumes<a name="ebs-initialize"></a>
+# Initialize Amazon EBS volumes<a name="ebs-initialize"></a>
 
 Empty EBS volumes receive their maximum performance the moment that they are created and do not require initialization \(formerly known as pre\-warming\)\.
 
@@ -8,10 +8,10 @@ For volumes that were created from snapshots, the storage blocks must be pulled 
 While initializing Provisioned IOPS SSD volumes that were created from snapshots, the performance of the volume may drop below 50 percent of its expected level, which causes the volume to display a `warning` state in the **I/O Performance** status check\. This is expected, and you can ignore the `warning` state on Provisioned IOPS SSD volumes while you are initializing them\. For more information, see [EBS volume status checks](monitoring-volume-status.md#monitoring-volume-checks)\.
 
 For most applications, amortizing the initialization cost over the lifetime of the volume is acceptable\. To avoid this initial performance hit in a production environment, you can use one of the following options:
-+ Force the immediate initialization of the entire volume\. For more information, see [Initializing Amazon EBS volumes on Windows](#ebs-initialize-windows)\.
++ Force the immediate initialization of the entire volume\. For more information, see [Initialize Amazon EBS volumes on Windows](#ebs-initialize-windows)\.
 + Enable fast snapshot restore on a snapshot to ensure that the EBS volumes created from it are fully\-initialized at creation and instantly deliver all of their provisioned performance\. For more information, see [Amazon EBS fast snapshot restore](ebs-fast-snapshot-restore.md)\.
 
-## Initializing Amazon EBS volumes on Windows<a name="ebs-initialize-windows"></a>
+## Initialize Amazon EBS volumes on Windows<a name="ebs-initialize-windows"></a>
 
 New EBS volumes receive their maximum performance the moment that they are available and do not require initialization \(formerly known as pre\-warming\)\. For volumes that have been created from snapshots, use dd or fio for Windows to read from all of the blocks on a volume\. All existing data on the volume will be preserved\.
 
@@ -39,7 +39,7 @@ Before using either tool, gather information about the disks on your system as f
 
 1. Identify the disk to initialize using dd or fio\. The `C:` drive is on `\\.\PHYSICALDRIVE0`\. You can use the `diskmgmt.msc` utility to compare drive letters to disk drive numbers if you are not sure which drive number to use\. 
 
-### Using dd<a name="using_dd"></a>
+### Use dd<a name="using_dd"></a>
 
 Complete the following procedures to install and use dd to initialize a volume\.
 
@@ -86,7 +86,7 @@ If you used an earlier version of the dd command, it does not support the `/dev/
 dd if=\\.\PHYSICALDRIVEn of=nul bs=1M --progress --size
 ```
 
-### Using fio<a name="using_fio"></a>
+### Use fio<a name="using_fio"></a>
 
 Complete the following procedures to install and use fio to initialize a volume\.
 
@@ -106,4 +106,4 @@ The fio for Windows program provides a similar experience to the fio program tha
    fio --filename=\\.\PHYSICALDRIVEn  --rw=read --bs=128k --iodepth=32 --direct=1 --name=volume-initialize
    ```
 
-1. When the operation completes, you are ready to use your new volume\. For more information, see [Making an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
+1. When the operation completes, you are ready to use your new volume\. For more information, see [Make an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.

@@ -1,4 +1,4 @@
-# Changing the instance type<a name="ec2-instance-resize"></a>
+# Change the instance type<a name="ec2-instance-resize"></a>
 
 As your needs change, you might find that your instance is over\-utilized \(the instance type is too small\) or under\-utilized \(the instance type is too large\)\. If this is the case, you can change the size of your instance\. For example, if your `t2.micro` instance is too small for its workload, you can change it to another instance type that is appropriate for the workload\.
 
@@ -12,16 +12,16 @@ You can change the size of the instance simply by changing its instance type, wh
 
 **Topics**
 + [Compatibility for resizing instances](#resize-limitations)
-+ [Resizing an Amazon EBS–backed instance](#resize-ebs-backed-instance)
-+ [Migrating to a new instance configuration](#migrate-instance-configuration)
++ [Resize an Amazon EBS–backed instance](#resize-ebs-backed-instance)
++ [Migrate to a new instance configuration](#migrate-instance-configuration)
 
 ## Compatibility for resizing instances<a name="resize-limitations"></a>
 
 You can resize an instance only if its current instance type and the new instance type that you want are compatible in the following ways:
 + **Architecture**: AMIs are specific to the architecture of the processor, so you must select an instance type with the same processor architecture as the current instance type\. For example:
-  + If you are resizing an instance type with a processor based on the Arm architecture, you are limited to the instance types that support a processor based on the Arm architecture, such as A1 and M6g\.
+  + If you are resizing an instance type with a processor based on the Arm architecture, you are limited to the instance types that support a processor based on the Arm architecture, such as C6g and M6g\.
   + The following instance types are the only instance types that support 32\-bit AMIs: `t2.nano`, `t2.micro`, `t2.small`, `t2.medium`, `c3.large`, `t1.micro`, `m1.small`, `m1.medium`, and `c1.medium`\. If you are resizing a 32\-bit instance, you are limited to these instance types\.
-+ **Network**: Newer instance types must be launched in a VPC\. Therefore, you can't resize an instance in the EC2\-Classic platform to a instance type that is available only in a VPC unless you have a nondefault VPC\. To check whether your instance is in a VPC, check the **VPC ID** value on the details pane of the **Instances** screen in the Amazon EC2 console\. For more information, see [Migrating from EC2\-Classic to a VPC](vpc-migrate.md)\.
++ **Network**: Newer instance types must be launched in a VPC\. Therefore, you can't resize an instance in the EC2\-Classic platform to a instance type that is available only in a VPC unless you have a nondefault VPC\. To check whether your instance is in a VPC, check the **VPC ID** value on the details pane of the **Instances** screen in the Amazon EC2 console\. For more information, see [Migrate from EC2\-Classic to a VPC](vpc-migrate.md)\.
 + **Network adapters**: If you switch from a driver for one network adapter to another, the network adapter settings are reset when the operating system creates the new adapter\. To reconfigure the settings, you might need access to a local account with administrator permissions\. The following are examples of moving from one network adapter to another:
   + AWS PV \(T2 instances\) to Intel 82599 VF \(M4 instances\)
   + Intel 82599 VF \(most M4 instances\) to ENA \(M5 instances\)
@@ -34,7 +34,7 @@ You can resize an instance only if its current instance type and the new instanc
   + [Memory optimized instances](memory-optimized-instances.md)
   + [Storage optimized instances](storage-optimized-instances.md)
 
-## Resizing an Amazon EBS–backed instance<a name="resize-ebs-backed-instance"></a>
+## Resize an Amazon EBS–backed instance<a name="resize-ebs-backed-instance"></a>
 
 You must stop your Amazon EBS–backed instance before you can change its instance type\. When you stop and start an instance, be aware of the following:
 + We move the instance to new hardware; however, the instance ID does not change\.
@@ -126,7 +126,7 @@ The AWS PV driver package should be updated before changing instance families\. 
 
 ------
 
-## Migrating to a new instance configuration<a name="migrate-instance-configuration"></a>
+## Migrate to a new instance configuration<a name="migrate-instance-configuration"></a>
 
 If the current configuration of your instance is incompatible with the new instance type that you want, then you can't resize the instance to that instance type\. Instead, you can migrate your application to a new instance with a configuration that is compatible with the new instance type that you want\.
 
@@ -135,7 +135,7 @@ If the current configuration of your instance is incompatible with the new insta
 
 **To migrate your application to a compatible instance**
 
-1. Back up any data on your instance store volumes that you need to keep to persistent storage\. To migrate data on your EBS volumes that you need to keep, create a snapshot of the volumes \(see [Creating Amazon EBS snapshots](ebs-creating-snapshot.md)\) or detach the volume from the instance so that you can attach it to the new instance later \(see [Detaching an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)\)\.
+1. Back up any data on your instance store volumes that you need to keep to persistent storage\. To migrate data on your EBS volumes that you need to keep, create a snapshot of the volumes \(see [Create Amazon EBS snapshots](ebs-creating-snapshot.md)\) or detach the volume from the instance so that you can attach it to the new instance later \(see [Detach an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)\)\.
 
 1. Launch a new instance, selecting the following:
    + If you are using an Elastic IP address, select the VPC that the original instance is currently running in\.
@@ -169,7 +169,7 @@ If the current configuration of your instance is incompatible with the new insta
 
 **To migrate your application to a compatible instance**
 
-1. Back up any data on your instance store volumes that you need to keep to persistent storage\. To migrate data on your EBS volumes that you need to keep, create a snapshot of the volumes \(see [Creating Amazon EBS snapshots](ebs-creating-snapshot.md)\) or detach the volume from the instance so that you can attach it to the new instance later \(see [Detaching an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)\)\.
+1. Back up any data on your instance store volumes that you need to keep to persistent storage\. To migrate data on your EBS volumes that you need to keep, create a snapshot of the volumes \(see [Create Amazon EBS snapshots](ebs-creating-snapshot.md)\) or detach the volume from the instance so that you can attach it to the new instance later \(see [Detach an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)\)\.
 
 1. Launch a new instance, selecting the following:
    + If you are using an Elastic IP address, select the VPC that the original instance is currently running in\.

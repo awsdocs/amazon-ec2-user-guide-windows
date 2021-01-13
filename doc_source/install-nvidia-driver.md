@@ -1,4 +1,4 @@
-# Installing NVIDIA drivers on Windows instances<a name="install-nvidia-driver"></a>
+# Install NVIDIA drivers on Windows instances<a name="install-nvidia-driver"></a>
 
 An instance with an attached NVIDIA GPU, such as a P3 or G4dn instance, must have the appropriate NVIDIA driver installed\. Depending on the instance type, you can either download a public NVIDIA driver, download a driver from Amazon S3 that is available only to AWS customers, or use an AMI with the driver pre\-installed\.
 
@@ -12,7 +12,7 @@ To install AMD drivers on an instance with an attached AMD GPU, such as a G4ad i
   + [Option 2: Public NVIDIA drivers](#public-nvidia-driver)
   + [Option 3: GRID drivers \(G3 and G4dn instances\)](#nvidia-GRID-driver)
   + [Option 4: NVIDIA gaming drivers \(G4dn instances\)](#nvidia-gaming-driver)
-+ [Installing an additional version of CUDA](#gpu-instance-install-cuda)
++ [Install an additional version of CUDA](#gpu-instance-install-cuda)
 
 ## Types of NVIDIA drivers<a name="nvidia-driver-types"></a>
 
@@ -76,6 +76,8 @@ AWS and NVIDIA offer different Amazon Machine Images \(AMI\) that come with the 
 + [Marketplace offerings with the GRID driver](http://aws.amazon.com/marketplace/search/results?&searchTerms=NVIDIA+quadro)
 + [Marketplace offerings with the Gaming driver](http://aws.amazon.com/marketplace/search/results?searchTerms=NVIDIA+gaming)
 
+If you create a custom Windows AMI using one of the AWS Marketplace offerings, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the GRID driver works\.
+
 ### Option 2: Public NVIDIA drivers<a name="public-nvidia-driver"></a>
 
 The options offered by AWS come with the necessary license for the driver\. Alternatively, you can install the public drivers and bring your own license\. To install a public driver, download it from the NVIDIA site as described here\.
@@ -104,13 +106,14 @@ Log on to your Windows instance and download the 64\-bit NVIDIA driver appropria
 
 1. Check Device Manager to verify that the GPU is working correctly\.
 
-1. To achieve the best performance from your GPU, complete the optimization steps in [Optimizing GPU settings](optimize_gpu.md)\.
+1. To achieve the best performance from your GPU, complete the optimization steps in [Optimize GPU settings](optimize_gpu.md)\.
 
 ### Option 3: GRID drivers \(G3 and G4dn instances\)<a name="nvidia-GRID-driver"></a>
 
 These downloads are available to AWS customers only\. By downloading, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 or NVIDIA Tesla M60 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
 **Prerequisites**
++ If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the GRID driver works\.
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 + IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
 
@@ -157,6 +160,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 These drivers are available to AWS customers only\. By downloading them, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
 **Prerequisites**
++ If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the gaming driver works\.
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 + IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
 
@@ -226,7 +230,7 @@ These drivers are available to AWS customers only\. By downloading them, you agr
 
 1. \(Optional\) To help take advantage of the single display of up to 4K resolution, set up the high\-performance display protocol [NICE DCV](https://docs.aws.amazon.com/dcv)\. If you do not require this functionality, do not complete this step\.
 
-## Installing an additional version of CUDA<a name="gpu-instance-install-cuda"></a>
+## Install an additional version of CUDA<a name="gpu-instance-install-cuda"></a>
 
 After you install an NVIDIA graphics driver on your instance, you can install a version of CUDA other than the version that is bundled with the graphics driver\. The following procedure demonstrates how to configure multiple versions of CUDA on the instance\.
 

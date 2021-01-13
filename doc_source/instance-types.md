@@ -19,13 +19,13 @@ Each instance type provides higher or lower minimum performance from a shared re
 + [Memory optimized instances](memory-optimized-instances.md)
 + [Storage optimized instances](storage-optimized-instances.md)
 + [Windows accelerated computing instances](accelerated-computing-instances.md)
-+ [Finding an Amazon EC2 instance type](instance-discovery.md)
-+ [Changing the instance type](ec2-instance-resize.md)
-+ [Getting recommendations for an instance type](ec2-instance-recommendations.md)
++ [Find an Amazon EC2 instance type](instance-discovery.md)
++ [Change the instance type](ec2-instance-resize.md)
++ [Get recommendations for an instance type](ec2-instance-recommendations.md)
 
 ## Available instance types<a name="AvailableInstanceTypes"></a>
 
-Amazon EC2 provides a wide selection of instance types optimized for different use cases\. To determine which instance types meet your requirements, such as supported Regions, compute resources, or storage resources, see [Finding an Amazon EC2 instance type](instance-discovery.md)\.
+Amazon EC2 provides a wide selection of instance types optimized for different use cases\. To determine which instance types meet your requirements, such as supported Regions, compute resources, or storage resources, see [Find an Amazon EC2 instance type](instance-discovery.md)\.
 
 ### Current generation instances<a name="current-gen-instances"></a>
 
@@ -100,10 +100,21 @@ For more information about the hardware specifications for each Amazon EC2 insta
 
 To determine which instance type best meets your needs, we recommend that you launch an instance and use your own benchmark application\. Because you pay by the instance hour, it's convenient and inexpensive to test multiple instance types before making a decision\.
 
-If your needs change, even after you make a decision, you can resize your instance later\. For more information, see [Changing the instance type](ec2-instance-resize.md)\.
+If your needs change, even after you make a decision, you can resize your instance later\. For more information, see [Change the instance type](ec2-instance-resize.md)\.
 
 **Note**  
 Amazon EC2 instances typically run on 64\-bit virtual Intel processors as specified in the instance type product pages\. For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\. However, confusion may result from industry naming conventions for 64\-bit CPUs\. Chip manufacturer Advanced Micro Devices \(AMD\) introduced the first commercially successful 64\-bit architecture based on the Intel x86 instruction set\. Consequently, the architecture is widely referred to as AMD64 regardless of the chip manufacturer\. Windows and several Linux distributions follow this practice\. This explains why the internal system information on an Ubuntu or Windows EC2 instance displays the CPU architecture as AMD64 even though the instances are running on Intel hardware\.
+
+### Processor features<a name="instance-hardware-processors"></a>
+
+**Intel processor features**  
+Amazon EC2 instances that run on Intel processors may include the following features\. Not all of the following processor features are supported by all instance types\. For detailed information about which features are available for each instance type, see [Amazon EC2 Instance Types\.](http://aws.amazon.com/ec2/instance-types/) 
++ **Intel AES New Instructions \(AES\-NI\)** — Intel AES\-NI encryption instruction set improves upon the original Advanced Encryption Standard \(AES\) algorithm to provide faster data protection and greater security\. All current generation EC2 instances support this processor feature\.
++ **Intel Advanced Vector Extensions \(Intel AVX, Intel AVX2, and Intel AVX\-512\)** — Intel AVX and Intel AVX2 are 256\-bit, and Intel AVX\-512 is a 512\-bit instruction set extension designed for applications that are Floating Point \(FP\) intensive\. Intel AVX instructions improve performance for applications like image and audio/video processing, scientific simulations, financial analytics, and 3D modeling and analysis\. These features are only available on instances launched with HVM AMIs\.
++ **Intel Turbo Boost Technology** — Intel Turbo Boost Technology processors automatically run cores faster than the base operating frequency\.
++ **Intel Deep Learning Boost \(Intel DL Boost\)** — Accelerates AI deep learning use cases\. The 2nd Gen Intel Xeon Scalable processors extend Intel AVX\-512 with a new Vector Neural Network Instruction \(VNNI/INT8\) that significantly increases deep learning inference performance over previous generation Intel Xeon Scalable processors \(with FP32\) for image recognition/segmentation, object detection, speech recognition, language translation, recommendation systems, reinforcement learning, and more\. VNNI may not be compatible with all Linux distributions\. 
+
+  The following instances support VNNI: `M5n`, `R5n`, `M5dn`, `M5zn`, `R5b`, `R5dn`, `D3`, and `D3en`\. `C5` and `C5d` instances support VNNI for only `12xlarge`, `24xlarge`, and `metal` instances\. 
 
 ## Instances built on the Nitro System<a name="ec2-nitro-instances"></a>
 

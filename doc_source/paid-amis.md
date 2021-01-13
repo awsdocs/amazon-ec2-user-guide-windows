@@ -34,7 +34,7 @@ For information about how to sell your AMI on AWS Marketplace, see [Selling on A
 
 There are several ways that you can find AMIs that are available for you to purchase\. For example, you can use [AWS Marketplace](https://aws.amazon.com/marketplace), the Amazon EC2 console, or the command line\. Alternatively, a developer might let you know about a paid AMI themselves\.
 
-### Finding a paid AMI using the console<a name="paid-ami-console"></a>
+### Find a paid AMI using the console<a name="paid-ami-console"></a>
 
 **To find a paid AMI using the console**
 
@@ -119,13 +119,13 @@ Typically a seller of a paid AMI presents you with information about the AMI, in
 
 ### Purchase a paid AMI using the console<a name="purchase-paid-ami-console"></a>
 
-You can purchase a paid AMI by using the Amazon EC2 launch wizard\. For more information, see [Launching an AWS Marketplace instance](launch-marketplace-console.md)\.
+You can purchase a paid AMI by using the Amazon EC2 launch wizard\. For more information, see [Launch an AWS Marketplace instance](launch-marketplace-console.md)\.
 
 ### Subscribe to a product using AWS Marketplace<a name="subscribe-to-paid-ami"></a>
 
 To use the AWS Marketplace, you must have an AWS account\. To launch instances from AWS Marketplace products, you must be signed up to use the Amazon EC2 service, and you must be subscribed to the product from which to launch the instance\. There are two ways to subscribe to products in the AWS Marketplace:
 + **AWS Marketplace website**: You can launch preconfigured software quickly with the 1\-Click deployment feature\.
-+ **Amazon EC2 launch wizard**: You can search for an AMI and launch an instance directly from the wizard\. For more information, see [Launching an AWS Marketplace instance](launch-marketplace-console.md)\.
++ **Amazon EC2 launch wizard**: You can search for an AMI and launch an instance directly from the wizard\. For more information, see [Launch an AWS Marketplace instance](launch-marketplace-console.md)\.
 
 ## Get the product code for your instance<a name="get-product-code"></a>
 

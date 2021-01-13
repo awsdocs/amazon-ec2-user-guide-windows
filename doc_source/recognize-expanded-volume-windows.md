@@ -1,4 +1,4 @@
-# Extending a Windows file system after resizing a volume<a name="recognize-expanded-volume-windows"></a>
+# Extend a Windows file system after resizing a volume<a name="recognize-expanded-volume-windows"></a>
 
 After you increase the size of an EBS volume, use the Windows Disk Management utility or PowerShell to extend the disk size to the new size of the volume\. You can begin resizing the file system as soon as the volume enters the `optimizing` state\. For more information about this utility, see [Extend a basic volume](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/extend-a-basic-volume) on the Microsoft Docs website\.
 
@@ -14,7 +14,7 @@ Use the following procedure to extend a Windows file system using Disk Managemen
 
 **To extend a file system using Disk Management**
 
-1. Before extending a file system that contains valuable data, it is a best practice to create a snapshot of the volume that contains it in case you need to roll back your changes\. For more information, see [Creating Amazon EBS snapshots](ebs-creating-snapshot.md)\.
+1. Before extending a file system that contains valuable data, it is a best practice to create a snapshot of the volume that contains it in case you need to roll back your changes\. For more information, see [Create Amazon EBS snapshots](ebs-creating-snapshot.md)\.
 
 1. Log in to your Windows instance using Remote Desktop\.
 
@@ -39,7 +39,7 @@ Use the following procedure to extend a Windows file system using PowerShell\.
 
 **To extend a file system using PowerShell**
 
-1. Before extending a file system that contains valuable data, it is a best practice to create a snapshot of the volume that contains it in case you need to roll back your changes\. For more information, see [Creating Amazon EBS snapshots](ebs-creating-snapshot.md)\.
+1. Before extending a file system that contains valuable data, it is a best practice to create a snapshot of the volume that contains it in case you need to roll back your changes\. For more information, see [Create Amazon EBS snapshots](ebs-creating-snapshot.md)\.
 
 1. Log in to your Windows instance using Remote Desktop\.
 
