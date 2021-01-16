@@ -1,10 +1,10 @@
-# Connecting to your Windows instance<a name="connecting_to_windows_instance"></a>
+# Connect to your Windows instance<a name="connecting_to_windows_instance"></a>
 
 Amazon EC2 instances created from most Windows Amazon Machine Images \(AMIs\) enable you to connect using Remote Desktop\. Remote Desktop uses the Remote Desktop Protocol \(RDP\) and enables you to connect to and use your instance in the same way you use a computer sitting in front of you\. It is available on most editions of Windows and available for Mac OS\.
 
 The license for the Windows Server operating system allows two simultaneous remote connections for administrative purposes\. The license for Windows Server is included in the price of your Windows instance\. If you need more than two simultaneous remote connections, you must purchase a Remote Desktop Services \(RDS\) license\. If you attempt a third connection, an error occurs\.
 
-For information about connecting to a Linux instance, see [Connect to Your Linux Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For information about connecting to a Linux instance, see [Connect to your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
 + [Prerequisites](#rdp-prereqs)
@@ -24,7 +24,7 @@ For information about connecting to a Linux instance, see [Connect to Your Linux
   Get the fully\-qualified path to the location on your computer of the `.pem` file for the key pair that you specified when you launched the instance\. For more information about how you created your key pair, see [Creating a Key Pair Using Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair)\.
 + **Enable inbound RDP traffic from your IP address to your instance**
 
-  Ensure that the security group associated with your instance allows incoming RDP traffic \(port 3389\) from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorizing inbound traffic for your Windows instances](authorizing-access-to-an-instance.md)\.
+  Ensure that the security group associated with your instance allows incoming RDP traffic \(port 3389\) from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorize inbound traffic for your Windows instances](authorizing-access-to-an-instance.md)\.
 
 ## Connect to your Windows instance using RDP<a name="connect-rdp"></a>
 

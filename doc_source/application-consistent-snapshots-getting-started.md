@@ -91,7 +91,7 @@ Use the following procedure to create an IAM role for VSS\-enabled snapshots\. T
 
 1. Choose **Attach policy**\.
 
-1. Attach this role to the instances for which you want to create VSS\-enabled EBS snapshots\. For more information, see [Attaching an IAM Role to an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role) in the *Amazon EC2 User Guide*\.
+1. Attach this role to the instances for which you want to create VSS\-enabled EBS snapshots\. For more information, see [Attach an IAM role to an instance](iam-roles-for-amazon-ec2.md#attach-iam-role)\.
 
 ## Download and install VSS components to the Windows on EC2 instance<a name="run-command-vss-package"></a>
 

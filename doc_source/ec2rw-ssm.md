@@ -1,4 +1,4 @@
-# Using EC2Rescue for Windows Server with Systems Manager Run Command<a name="ec2rw-ssm"></a>
+# Use EC2Rescue for Windows Server with Systems Manager Run Command<a name="ec2rw-ssm"></a>
 
 AWS Support provides you with a Systems Manager Run Command document to interface with your Systems Manager\-enabled instance to run EC2Rescue for Windows Server\. The Run Command document is called `AWSSupport-RunEC2RescueForWindowsTool`\.
 

@@ -1,4 +1,4 @@
-# Running commands on your Windows instance at launch<a name="ec2-windows-user-data"></a>
+# Run commands on your Windows instance at launch<a name="ec2-windows-user-data"></a>
 
 When you launch a Windows instance in Amazon EC2, you can pass user data to the instance that can be used to perform automated configuration tasks or to run scripts after the instance starts\. Instance user data is treated as opaque data; it is up to the instance to interpret it\. User data is processed by EC2Launch v2 \([supported preview AMIs and by download](ec2launch-v2-install.md)\), [EC2Launch](ec2launch.md) on Windows Server 2016 and later, and [EC2Config](ec2config-service.md) on Windows Server 2012 R2 and earlier\.
 
@@ -232,7 +232,7 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 
 ## User data and the Tools for Windows PowerShell<a name="user-data-powershell"></a>
 
-You can use the Tools for Windows PowerShell to specify, modify, and view the user data for your instance\. For information about viewing user data from your instance using instance metadata, see [Retrieve instance user data](instancedata-add-user-data.md#instancedata-user-data-retrieval)\. For information about user data and the AWS CLI, see [User Data and the AWS CLI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-api-cli) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can use the Tools for Windows PowerShell to specify, modify, and view the user data for your instance\. For information about viewing user data from your instance using instance metadata, see [Retrieve instance user data](instancedata-add-user-data.md#instancedata-user-data-retrieval)\. For information about user data and the AWS CLI, see [User data and the AWS CLI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html#user-data-api-cli) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Example: Specify instance user data at launch**  
 Create a text file with the instance user data\. To run user data scripts every time you reboot or start the instance, add `<persist>true</persist>`, as shown in the following example\.

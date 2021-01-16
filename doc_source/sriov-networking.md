@@ -1,11 +1,11 @@
-# Enabling enhanced networking with the Intel 82599 VF interface on Windows instances<a name="sriov-networking"></a>
+# Enable enhanced networking with the Intel 82599 VF interface on Windows instances<a name="sriov-networking"></a>
 
 Amazon EC2 provides enhanced networking capabilities through the Intel 82599 VF interface, which uses the Intel `ixgbevf` driver\.
 
 **Topics**
 + [Requirements](#ixgbevf-requirements)
-+ [Testing whether enhanced networking is enabled](#test-enhanced-networking)
-+ [Enabling enhanced networking on Windows](#enable-enhanced-networking)
++ [Test whether enhanced networking is enabled](#test-enhanced-networking)
++ [Enable enhanced networking on Windows](#enable-enhanced-networking)
 
 ## Requirements<a name="ixgbevf-requirements"></a>
 
@@ -13,10 +13,10 @@ To prepare for enhanced networking using the Intel 82599 VF interface, set up yo
 + Select from the following supported instance types: C3, C4, D2, I2, M4 \(excluding `m4.16xlarge`\), and R3\.
 + Launch the instance from a 64\-bit HVM AMI\. You can't enable enhanced networking on Windows Server 2008 and Windows Server 2003\. Enhanced networking is already enabled for Windows Server 2012 R2 and Windows Server 2016 and later AMIs\. Windows Server 2012 R2 includes Intel driver 1\.0\.15\.3 and we recommend that you upgrade that driver to the latest version using the Pnputil\.exe utility\. 
 + Ensure that the instance has internet connectivity\.
-+ Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Accessing Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
++ Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Access Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `sriovNetSupport` attribute, might render incompatible instances or operating systems unreachable\. If you have a recent backup, your data will still be retained if this happens\.
 
-## Testing whether enhanced networking is enabled<a name="test-enhanced-networking"></a>
+## Test whether enhanced networking is enabled<a name="test-enhanced-networking"></a>
 
 Enhanced networking with the Intel 82599 VF interface is enabled if the driver is installed on your instance and the `sriovNetSupport` attribute is set\. 
 
@@ -59,7 +59,7 @@ To check whether an AMI already has the enhanced networking `sriovNetSupport` at
 
 If the attribute isn't set, `SriovNetSupport` is empty\. If the attribute is set, the value is simple\.
 
-## Enabling enhanced networking on Windows<a name="enable-enhanced-networking"></a>
+## Enable enhanced networking on Windows<a name="enable-enhanced-networking"></a>
 
 If you launched your instance and it does not have enhanced networking enabled already, you must download and install the required network adapter driver on your instance, and then set the `sriovNetSupport` instance attribute to activate enhanced networking\. You can only enable this attribute on supported instance types\. For more information, see [Enhanced networking support](enhanced-networking.md#supported_instances)\. 
 

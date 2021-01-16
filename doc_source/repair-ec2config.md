@@ -1,4 +1,4 @@
-# Troubleshooting issues with the EC2Config service<a name="repair-ec2config"></a>
+# Troubleshoot issues with the EC2Config service<a name="repair-ec2config"></a>
 
 The following information can help you troubleshoot issues with the EC2Config service\.
 

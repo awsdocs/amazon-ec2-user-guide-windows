@@ -1,4 +1,4 @@
-# Performing an automated upgrade<a name="automated-upgrades"></a>
+# Perform an automated upgrade<a name="automated-upgrades"></a>
 
 You can perform an automated upgrade on your Windows Server 2008 R2, Windows Server 2012 R2, Windows Server 2016, and SQL Server 2008 R2 with Service Pack 3 instances on AWS with AWS Systems Manager Automation documents\. 
 

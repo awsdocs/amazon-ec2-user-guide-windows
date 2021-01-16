@@ -1,4 +1,4 @@
-# Upgrading PV drivers on Windows instances<a name="Upgrading_PV_drivers"></a>
+# Upgrade PV drivers on Windows instances<a name="Upgrading_PV_drivers"></a>
 
 We recommend that you install the latest PV drivers to improve the stability and performance of your EC2 Windows instances\. The directions on this page help you download the driver package and run the install program\.
 
@@ -132,7 +132,7 @@ If you previously disabled [TCP offloading](pvdrivers-troubleshooting.md#citrix-
 ## Upgrade Windows Server 2008 and 2008 R2 instances \(Redhat to Citrix PV upgrade\)<a name="win2008-citrix-upgrade"></a>
 
 Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure you do the following:
-+ Install the latest version of the EC2Config service\. For more information, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\.
++ Install the latest version of the EC2Config service\. For more information, see [Install the latest version of EC2Config](UsingConfig_Install.md)\.
 + Verify that you have Windows PowerShell 3\.0 installed\. To verify the version that you have installed, run the following command in a PowerShell window:
 
   ```
@@ -147,7 +147,7 @@ Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure y
 
 **To upgrade Redhat drivers**
 
-1. Connect to your instance and log in as the local administrator\. For more information about connecting to your instance, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Connect to your instance and log in as the local administrator\. For more information about connecting to your instance, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. In your instance, [download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/Citrix-Win_PV.zip) the Citrix PV upgrade package\.
 
@@ -192,7 +192,7 @@ Before you start upgrading your drivers, make sure you back up your important in
 
 **To upgrade your Citrix Xen guest agent service**
 
-1. Connect to your instance and log in as the local administrator\. For more information about connecting to your instance, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Connect to your instance and log in as the local administrator\. For more information about connecting to your instance, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. On your instance, [download](https://s3.amazonaws.com/ec2-downloads-windows/Drivers/Citrix-Win_PV.zip) the Citrix upgrade package\.
 

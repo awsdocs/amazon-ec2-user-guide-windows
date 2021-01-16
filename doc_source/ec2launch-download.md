@@ -1,4 +1,4 @@
-# Installing the latest version of EC2Launch<a name="ec2launch-download"></a>
+# Install the latest version of EC2Launch<a name="ec2launch-download"></a>
 
 Use the following procedure to download and install the latest version of EC2Launch on your instances\.
 

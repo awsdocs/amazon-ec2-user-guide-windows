@@ -1,4 +1,4 @@
-# Importing Your Virtual Machine Using AWS Systems Manager for Microsoft SCVMM<a name="scvmm-import-vm"></a>
+# Import your virtual machine using AWS Systems Manager for Microsoft SCVMM<a name="scvmm-import-vm"></a>
 
 You can launch an EC2 instance from a virtual machine that you import from SCVMM to Amazon EC2\.
 
@@ -7,9 +7,9 @@ You can't import Linux virtual machines from SCVMM to Amazon EC2\.
 
 **Topics**
 + [Prerequisites](#scvmm-import-vm-prereqs)
-+ [Importing Your Virtual Machine](#scvmm-importing)
-+ [Checking the Import Task Status](#scvmm-import-status)
-+ [Backing Up Your Imported Instance](#scvmm-backup)
++ [Import your virtual machine](#scvmm-importing)
++ [Check the import task status](#scvmm-import-status)
++ [Back up your imported instance](#scvmm-backup)
 
 ## Prerequisites<a name="scvmm-import-vm-prereqs"></a>
 + Ensure that your VM is ready\. For more information, see [Prepare Your VM](https://docs.aws.amazon.com/vm-import/latest/userguide/prepare-vm-image.html) in the * VM Import/Export User Guide*\.
@@ -18,7 +18,7 @@ You can't import Linux virtual machines from SCVMM to Amazon EC2\.
   + **VM image export path**: A location for the disk images exported from the VM\. To delete the disk images after they are imported, select **Clean up export path after import**\.
   + **Alternate Hyper\-V PowerShell module path**: The location of the Hyper\-V PowerShell module, if it's not installed in the standard location\. For more information, see [Installing the Hyper\-V Management Tools](http://technet.microsoft.com/en-us/library/dn632582.aspx#BKMK_SERVER) in the Microsoft TechNet Library\.
 
-## Importing Your Virtual Machine<a name="scvmm-importing"></a>
+## Import your virtual machine<a name="scvmm-importing"></a>
 
 The permissions that you've been granted by your administrator determine whether you can import HyperV Windows virtual machines from SCVMM to AWS\.
 
@@ -43,7 +43,7 @@ The permissions that you've been granted by your administrator determine whether
 
 1. Click **Import**\. If you haven't specified the required information in the **VM Import** tab, you'll receive an error asking you to provide the required information\. Otherwise, you'll receive confirmation that the import task has started\. Click **Close**\.
 
-## Checking the Import Task Status<a name="scvmm-import-status"></a>
+## Check the import task status<a name="scvmm-import-status"></a>
 
 The import task can take several hours to complete\. To view the current status, open AWS System Manager and click **Notifications**\.
 
@@ -57,8 +57,8 @@ You'll receive the following notifications as the import task progresses:
 
 Note that you'll receive the `Import VM: Upload to S3`, `Import VM: Image Conversion Starting`, and `Import VM: Image Conversion Done` notifications for each disk image converted\.
 
-If the import task fails, you'll receive the notification `Import VM: Import Failed`\. For more information about troubleshooting issues with import tasks, see [Errors Importing a VM](scvmm-troubleshoot.md#scvmm-import-errors)\.
+If the import task fails, you'll receive the notification `Import VM: Import Failed`\. For more information about troubleshooting issues with import tasks, see [Errors importing a virtual machine](scvmm-troubleshoot.md#scvmm-import-errors)\.
 
-## Backing Up Your Imported Instance<a name="scvmm-backup"></a>
+## Back up your imported instance<a name="scvmm-backup"></a>
 
 After the import operation completes, the instance runs until it is terminated\. If your instance is terminated, you can't connect to or recover the instance\. To ensure that you can start a new instance with the same software as an imported instance if needed, create an Amazon Machine Image \(AMI\) from the imported instance\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.

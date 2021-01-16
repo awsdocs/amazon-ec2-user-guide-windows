@@ -55,7 +55,7 @@ Use the following procedure to resize an Amazon EBS–backed instance using the 
 
 1. \(Optional\) If the new instance type requires drivers that are not installed on the existing instance, you must connect to your instance and install the drivers first\. For more information, see [Compatibility for resizing instances](#resize-limitations)\.
 **Note**  
-The AWS PV driver package should be updated before changing instance families\. For more information, see [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
+The AWS PV driver package should be updated before changing instance families\. For more information, see [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
 
 1. \(Optional\) If you configured your Windows instance to use [static IP addressing](config-windows-multiple-ip.md#step1) and you resize the instance from a type that doesn't support enhanced networking to an instance type that does support enhanced networking, you might get a warning about a potential IP address conflict when you reconfigure static IP addressing\. To prevent this, enable DHCP on the network interface for your instance before you change the instance type\. From your instance, open the **Network and Sharing Center**, go to **Internet Protocol Version 4 \(TCP/IPv4\) Properties** for the network interface, and choose **Obtain an IP address automatically**\. Change the instance type and reconfigure static IP addressing on the network interface\.
 
@@ -92,7 +92,7 @@ The AWS PV driver package should be updated before changing instance families\. 
 
 1. \(Optional\) If the new instance type requires drivers that are not installed on the existing instance, you must connect to your instance and install the drivers first\. For more information, see [Compatibility for resizing instances](#resize-limitations)\.
 **Note**  
-The AWS PV driver package should be updated before changing instance families\. For more information, see [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
+The AWS PV driver package should be updated before changing instance families\. For more information, see [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
 
 1. \(Optional\) If you configured your Windows instance to use [static IP addressing](config-windows-multiple-ip.md#step1) and you resize the instance from a type that doesn't support enhanced networking to an instance type that does support enhanced networking, you might get a warning about a potential IP address conflict when you reconfigure static IP addressing\. To prevent this, enable DHCP on the network interface for your instance before you change the instance type\. From your instance, open the **Network and Sharing Center**, go to **Internet Protocol Version 4 \(TCP/IPv4\) Properties** for the network interface, and choose **Obtain an IP address automatically**\. Change the instance type and reconfigure static IP addressing on the network interface\.
 

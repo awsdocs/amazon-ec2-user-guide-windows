@@ -87,7 +87,7 @@ If you have multiple network interfaces, you'll need to identify the correct int
 
   1. \(Optional\) If DHCP is already enabled, it's possible that you don't have a route to the metadata service\. Updating EC2Config can resolve this issue\.
 
-     1. [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\. 
+     1. [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Install the latest version of EC2Config](UsingConfig_Install.md)\. 
 
      1. Extract the files from the `.zip` file to the `Temp` directory on the drive you attached\.
 
@@ -166,8 +166,8 @@ http://169.254.169.254/latest/meta-data/
 ```
 
 If you can't contact the metadata server, try the following to resolve the issue:
-+ [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\. 
-+ Check whether the Windows instance is running RedHat PV drivers\. If so, update to Citrix PV drivers\. For more information, see [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
++ [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Install the latest version of EC2Config](UsingConfig_Install.md)\. 
++ Check whether the Windows instance is running RedHat PV drivers\. If so, update to Citrix PV drivers\. For more information, see [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
 + Verify that the firewall, IPSec, and proxy settings do not block outgoing traffic to the metadata service \(`169.254.169.254`\) or the KMS servers \(the addresses are specified in `TargetKMSServer` elements in `C:\Program Files\Amazon\Ec2ConfigService\Settings\ActivationSettings.xml`\)\.
 + Verify that you have a route to the metadata service \(`169.254.169.254`\) using the following command\.
 
@@ -184,7 +184,7 @@ If you encounter a Windows activation issue, use the following procedure to reso
 
 **For EC2Config \(Windows Server 2012 R2 AMIs and earlier\)**
 
-1. [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\. 
+1. [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Install the latest version of EC2Config](UsingConfig_Install.md)\. 
 
 1. Log onto the instance and open the following file: `C:\Program Files\Amazon\Ec2ConfigService\Settings\config.xml`\.
 

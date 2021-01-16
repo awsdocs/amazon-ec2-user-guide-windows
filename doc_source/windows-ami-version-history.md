@@ -9,8 +9,8 @@ Some Windows AMIs include an edition of Microsoft SQL Server \(SQL Enterprise Ed
 Microsoft no longer supports Windows Server 2003 \(see [Microsoft Windows Server 2003 End\-of\-Support](https://aws.amazon.com/windows/products/ec2/server2003/)\)\. We recommend that you launch new EC2 instances using a supported version of Windows Server\. If you have existing EC2 instances that are running an unsupported version of Windows Server, we recommend that you upgrade those instances to a supported version of Windows Server\. For more information, see [Upgrading an Amazon EC2 Windows instance to a newer version of Windows Server](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/serverupgrade.html)\.
 
 **Topics**
-+ [Selecting an initial Windows AMI](#select-windows-ami)
-+ [Keeping your AMIs up\-to\-date](#WinAMI_Updating)
++ [Select an initial Windows AMI](#select-windows-ami)
++ [Keep your AMIs up\-to\-date](#WinAMI_Updating)
 + [Virtualization types](#virtualization-types)
 + [Managed AWS Windows AMIs](aws-windows-ami.md)
 + [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)
@@ -18,7 +18,7 @@ Microsoft no longer supports Windows Server 2003 \(see [Microsoft Windows Server
 + [Specialized Windows AMIs](ami-windows-specialized.md)
 + [AWS Windows AMI Version History](ec2-windows-ami-version-history.md)
 
-## Selecting an initial Windows AMI<a name="select-windows-ami"></a>
+## Select an initial Windows AMI<a name="select-windows-ami"></a>
 
 To view the Windows AMIs provided by AWS, you can use the Amazon EC2 console or [AWS Marketplace](https://aws.amazon.com/marketplace/)\. For more information, see [Finding a Windows AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html)\.
 
@@ -26,7 +26,7 @@ You can also create an AMI from your own Windows computer\. For more information
 + [AWS Server Migration Service](https://docs.aws.amazon.com/server-migration-service/latest/userguide/)
 + [VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/)
 
-## Keeping your AMIs up\-to\-date<a name="WinAMI_Updating"></a>
+## Keep your AMIs up\-to\-date<a name="WinAMI_Updating"></a>
 
 AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. For more information, see [Details about AWS Windows AMI versions](aws-windows-ami.md#windows-ami-versions)\.
 

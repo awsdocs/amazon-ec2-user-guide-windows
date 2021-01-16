@@ -1,4 +1,4 @@
-# Troubleshooting Sysprep<a name="sysprep-troubleshoot"></a>
+# Troubleshoot Sysprep<a name="sysprep-troubleshoot"></a>
 
 If you experience problems or receive error messages during image preparations, review the following logs: 
 + %WINDIR%\\Panther\\Unattendgc

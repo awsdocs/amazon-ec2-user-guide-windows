@@ -35,9 +35,9 @@ Attaching more than the following volumes to a Windows instance is supported on 
 
 We do not recommend that you give a Windows instance more than 26 volumes with AWS PV or Citrix PV drivers, as it is likely to cause performance issues\.
 
-To determine which PV drivers your instance is using, or to upgrade your Windows instance from Red Hat to Citrix PV drivers, see [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
+To determine which PV drivers your instance is using, or to upgrade your Windows instance from Red Hat to Citrix PV drivers, see [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
 
-For more information about how device names related to volumes, see [Mapping disks to volumes on your Windows instance](ec2-windows-volumes.md)\.
+For more information about how device names related to volumes, see [Map disks to volumes on your Windows instance](ec2-windows-volumes.md)\.
 
 ## Bandwidth versus capacity<a name="storage-bandwidth"></a>
 

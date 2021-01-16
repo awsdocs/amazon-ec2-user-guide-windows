@@ -2,9 +2,9 @@
 
 You can launch an instance from an existing Windows AMI, customize the instance, and then save this updated configuration as a custom AMI\. Instances launched from this new custom AMI include the customizations that you made when you created the AMI\.
 
-To help categorize and manage your AMIs, you can assign custom *tags* to them\. For more information, see [Tagging your Amazon EC2 resources](Using_Tags.md)\.
+To help categorize and manage your AMIs, you can assign custom *tags* to them\. For more information, see [Tag your Amazon EC2 resources](Using_Tags.md)\.
 
-To create a custom Linux AMI, use the procedure for the type of volume for the instance\. For more information, see [Creating an Amazon EBS\-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) or [Creating an instance store\-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+To create a custom Linux AMI, use the procedure for the type of volume for the instance\. For more information, see [Create an Amazon EBS\-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html) or [Create an instance store\-backed Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-instance-store.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
 + [How the creation of a custom AMI works](#process-creating-a-windows-ami-ebs)
@@ -24,7 +24,7 @@ After the process completes, you have a new AMI and snapshot created from the ro
 If you add instance store volumes or Amazon Elastic Block Store \(Amazon EBS\) volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block device mapping](block-device-mapping-concepts.md)\.
 
 **Note**  
-When you create a new instance from a custom AMI, you should initialize both its root volume and any additional EBS storage before putting it into production\. For more information, see [Initializing Amazon EBS volumes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
+When you create a new instance from a custom AMI, you should initialize both its root volume and any additional EBS storage before putting it into production\. For more information, see [Initialize Amazon EBS volumes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
 
 ## Create a Windows AMI from a running instance<a name="how-to-create-windows-ebs-ami"></a>
 
@@ -46,7 +46,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
 
    Add any other filters that you need\. When you have chosen an AMI, select its check box\.
 
-1. Choose **Launch**\. Accept the default values as you step through the wizard\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\. When the instance is ready, connect to it\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Choose **Launch**\. Accept the default values as you step through the wizard\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\. When the instance is ready, connect to it\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. You can perform any of the following actions on your instance to customize it for your needs:
    + Install software and applications
@@ -56,7 +56,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
    + Create a new user account and add it to the Administrators group
 
      If you are sharing your AMI, these credentials can be supplied for RDP access without disclosing your default administrator password\.
-   + \[Windows Server 2016 and later\] Configure settings using EC2Launch\. To generate a random password at launch time, use the `adminPasswordType` setting\. For more information, see [Configuring EC2Launch](ec2launch.md#ec2launch-config)\.
+   + \[Windows Server 2016 and later\] Configure settings using EC2Launch\. To generate a random password at launch time, use the `adminPasswordType` setting\. For more information, see [Configure EC2Launch](ec2launch.md#ec2launch-config)\.
    + \[Windows Server 2012 R2 and earlier\] Configure settings using EC2Config\. To generate a random password at launch time, enable the `Ec2SetPassword` plugin; otherwise, the current administrator password is used\. For more information, see [EC2Config settings files](ec2config-service.md#UsingConfigXML_WinAMI)\.
    + \[Windows Server 2008 R2\] If the instance uses RedHat drivers to access Xen virtualized hardware, upgrade to Citrix drivers before you create an AMI\. For more information, see [Upgrade Windows Server 2008 and 2008 R2 instances \(Redhat to Citrix PV upgrade\)](Upgrading_PV_drivers.md#win2008-citrix-upgrade)\.
 
@@ -85,9 +85,9 @@ If you choose **No reboot**, we can't guarantee the file system integrity of the
 
 1. Launch an instance from your new AMI\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\. The new running instance contains all of the customizations you applied in previous steps, and any additional customization you add when launching the instance, such as user data \(scripts that run when the instance starts\)\.
 
-### To create an AMI from an instance using the command line<a name="create-windows-ami-cli"></a>
+### Create an AMI from an instance using the command line<a name="create-windows-ami-cli"></a>
 
-You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
+You can use one of the following commands\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
 + [create\-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-image.html) \(AWS CLI\)
 + [New\-EC2Image](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Image.html) \(AWS Tools for Windows PowerShell\)
 
@@ -102,7 +102,7 @@ If you use Sysprep to create a standardized AMI, we recommend that you run Syspr
 **Important**  
 Do not use Sysprep to create an instance backup\. Sysprep removes system\-specific information; removing this information might have unintended consequences for an instance backup\.
 
-To troubleshoot Sysprep, see [Troubleshooting Sysprep](sysprep-troubleshoot.md)\.
+To troubleshoot Sysprep, see [Troubleshoot Sysprep](sysprep-troubleshoot.md)\.
 
 **Topics**
 + [Before you begin](#sysprep-begin)
@@ -219,7 +219,7 @@ EC2Launch v2 then performs the following actions:
 
 1. Executes all tasks in the `PostReady` stage\.
 
-For more information about EC2Launch v2 , see [Configuring a Windows instance using EC2Launch v2](ec2launch-v2.md)\.
+For more information about EC2Launch v2 , see [Configure a Windows instance using EC2Launch v2](ec2launch-v2.md)\.
 
 #### Run Sysprep with EC2Launch v2<a name="sysprep-gui-procedure-ec2launchv2"></a>
 
@@ -250,8 +250,8 @@ Do not use Sysprep to create an instance backup\. Sysprep removes system\-specif
 
 **Topics**
 + [EC2Launch answer and batch files for Sysprep](#ec2launch-sysprep-answer-batch)
-+ [Running Sysprep with EC2Launch](#ec2launch-sysprep-running)
-+ [Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI](#update-metadata-KMS)
++ [Run Sysprep with EC2Launch](#ec2launch-sysprep-running)
++ [Update metadata/KMS routes for Server 2016 and later when launching a custom AMI](#update-metadata-KMS)
 
 #### EC2Launch answer and batch files for Sysprep<a name="ec2launch-sysprep-answer-batch"></a>
 
@@ -266,7 +266,7 @@ Customize this batch file to run commands before EC2Launch runs Sysprep\.
 `SysprepSpecialize.cmd`  
 Customize this batch file to run commands during the Sysprep specialize phase\.
 
-#### Running Sysprep with EC2Launch<a name="ec2launch-sysprep-running"></a>
+#### Run Sysprep with EC2Launch<a name="ec2launch-sysprep-running"></a>
 
 On the full installation of Windows Server 2016 and later \(with a desktop experience\), you can run Sysprep with EC2Launch manually or by using the **EC2 Launch Settings** application\.
 
@@ -316,7 +316,7 @@ EC2Launch uses the password you specify in the `unattend.xml` file\. If you don'
 
 You are logged off the instance and the instance shuts down\. If you check the **Instances** page in the Amazon EC2 console, the instance state changes from `Running` to `Stopping`, and then to `Stopped`\. At this point, it is safe to create an AMI from this instance\.
 
-#### Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI<a name="update-metadata-KMS"></a>
+#### Update metadata/KMS routes for Server 2016 and later when launching a custom AMI<a name="update-metadata-KMS"></a>
 
 To update metadata/KMS routes for Server 2016 and later when launching a custom AMI, do one of the following:
 + Run the EC2LaunchSettings GUI \(C:\\ProgramData\\Amazon\\EC2\-Windows\\Launch\\Settings\\Ec2LaunchSettings\.exe\) and select the option to shut down with Sysprep\.
@@ -459,7 +459,7 @@ EC2Config then performs the following actions:
    + UserData
    + AWS Systems Manager \(Systems Manager\) 
 
-For more information about Windows plug\-ins, see [Configuring a Windows instance using the EC2Config service](ec2config-service.md)\.
+For more information about Windows plug\-ins, see [Configure a Windows instance using the EC2Config service](ec2config-service.md)\.
 
 #### Run Sysprep with the EC2Config service<a name="sysprep-gui-procedure"></a>
 

@@ -9,7 +9,7 @@ When working with instance user data, keep the following in mind:
 
 ## Specify instance user data at launch<a name="specify-user-data-launch"></a>
 
-You can specify user data when you launch an instance\. You can specify that the user data is run one time at launch, or every time you reboot or start the instance\. For more information, see [Running commands on your Windows instance at launch](ec2-windows-user-data.md)\.
+You can specify user data when you launch an instance\. You can specify that the user data is run one time at launch, or every time you reboot or start the instance\. For more information, see [Run commands on your Windows instance at launch](ec2-windows-user-data.md)\.
 
 ## Modify instance user data<a name="modify-user-data-run"></a>
 

@@ -1,4 +1,4 @@
-# Performing an in\-place upgrade<a name="os-inplaceupgrade"></a>
+# Perform an in\-place upgrade<a name="os-inplaceupgrade"></a>
 
 Before you perform an in\-place upgrade, you must determine which network drivers the instance is running\. PV network drivers enable you to access your instance using Remote Desktop\. Starting with Windows Server 2008 R2, instances use either *AWS PV*, Intel Network Adapter, or the Enhanced Networking drivers\. Instances with Windows Server 2003 and Windows Server 2008 use *Citrix PV* drivers\. For more information, see [Paravirtual drivers for Windows instances](xen-drivers-overview.md)\.
 
@@ -19,7 +19,7 @@ Complete the following tasks and note the following important details before you
 + Verify that the root volume on your Windows instance has enough free disk space\. The Windows Setup process might not warn you of insufficient disk space\. For information about how much disk space is required to upgrade a specific operating system, see the Microsoft documentation\. If the volume does not have enough space, it can be expanded\. For more information, see [Amazon EBS Elastic Volumes](ebs-modify-volume.md)\.
 + Determine your upgrade path\. You must upgrade the operating system to the same architecture\. For example, you must upgrade a 32\-bit system to a 32\-bit system\. Windows Server 2008 R2 and later are 64\-bit only\.
 + Disable antivirus and anti\-spyware software and firewalls\. These types of software can conflict with the upgrade process\. Re\-enable antivirus and anti\-spyware software and firewalls after the upgrade completes\.
-+ Update to the latest drivers as described in [Migrating to latest generation instance types](migrating-latest-types.md)\.
++ Update to the latest drivers as described in [Migrate to latest generation instance types](migrating-latest-types.md)\.
 + The Upgrade Helper Service only supports instances running Citrix PV drivers\. If the instance is running Red Hat drivers, you must manually [upgrade those drivers](Upgrading_PV_drivers.md) first\.
 
 ## Upgrade an instance in\-place with AWS PV, Intel Network Adapter, or the Enhanced Networking drivers<a name="os-upgrade-pv"></a>
@@ -30,7 +30,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 1. Create an AMI of the system you plan to upgrade for either backup or testing purposes\. You can then perform the upgrade on the copy to simulate a test environment\. If the upgrade completes, you can switch traffic to this instance with little downtime\. If the upgrade fails, you can revert to the backup\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
-1. Ensure that your Windows Server instance is using the latest network drivers\. See [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md) for information on upgrading your AWS PV driver\.
+1. Ensure that your Windows Server instance is using the latest network drivers\. See [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md) for information on upgrading your AWS PV driver\.
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -38,9 +38,9 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 1. If you are upgrading from Windows Server 2012 or 2012 R2 to Windows Server 2016 or 2019, do the following on your instance before proceeding:
 
-   1. Uninstall the EC2Config service\. For more information, see [Stopping, restarting, deleting, or uninstalling EC2Config](ec2config-service.md#UsingConfig_StopDelete)\.
+   1. Uninstall the EC2Config service\. For more information, see [Stop, restart, delete, or uninstall EC2Config](ec2config-service.md#UsingConfig_StopDelete)\.
 
-   1. Install the EC2Launch service\. For more information, see [Installing the latest version of EC2Launch](ec2launch-download.md)\.
+   1. Install the EC2Launch service\. For more information, see [Install the latest version of EC2Launch](ec2launch-download.md)\.
 
    1. Install the AWS Systems Manager SSM Agent\. For more information, see [Working with SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) in the *AWS Systems Manager User Guide*\.
 
@@ -89,7 +89,7 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 **Note**  
 If upgrading to Windows Server 2019, after the upgrade is complete you can change the desktop background manually to remove the previous operating system name if desired\.
 
-If the instance has not passed both status checks after several hours, see [Troubleshooting an upgrade](os-upgrade-trbl.md)\.
+If the instance has not passed both status checks after several hours, see [Troubleshoot an upgrade](os-upgrade-trbl.md)\.
 
 ## Upgrade an instance in\-place with Citrix PV drivers<a name="os-upgrade-citrix"></a>
 
@@ -118,7 +118,7 @@ When you run Upgrade Helper Service on the system *after* the upgrade, it perfor
   ```
 + Automatically removes `UpgradeHelperService` when complete\.
 
-### Performing the upgrade on instances running Citrix PV drivers<a name="os-upgrade-citrix-go"></a>
+### Perform the upgrade on instances running Citrix PV drivers<a name="os-upgrade-citrix-go"></a>
 
 To complete the upgrade, you must attach the installation media volume to your EC2 instance and use `UpgradeHelperService.exe`\.
 
@@ -174,12 +174,12 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 
 1. Log in to the instance to initiate an upgrade for the \.NET Framework and reboot the system when prompted\.
 
-1. Install the latest version of the EC2Config service \(Windows 2012 R2 and earlier\) or EC2Launch \(Windows 2016 and later\)\. For more information, see [Installing the latest version of EC2Config](UsingConfig_Install.md) or [Installing the latest version of EC2Launch](ec2launch-download.md)\.
+1. Install the latest version of the EC2Config service \(Windows 2012 R2 and earlier\) or EC2Launch \(Windows 2016 and later\)\. For more information, see [Install the latest version of EC2Config](UsingConfig_Install.md) or [Install the latest version of EC2Launch](ec2launch-download.md)\.
 
 1. Install Microsoft hotfix [KB2800213](https://support.microsoft.com/en-us/help/2800213/high-cpu-usage-during-dst-changeover-in-windows-server-2008-windows-7)\.
 
 1. Install Microsoft hotfix [KB2922223](http://support.microsoft.com/en-us/kb/2922223)\.
 
-1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance , we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Installing or upgrading AWS NVMe drivers](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
+1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance , we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Install or upgrade AWS NVMe drivers](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
 
 1. Re\-enable antivirus and anti\-spyware software and firewalls\.

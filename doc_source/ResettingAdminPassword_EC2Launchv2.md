@@ -126,7 +126,7 @@ After you have deleted the `.run-once` file, reattach the volume to the original
 
 1. In the navigation pane, choose **Instances**\. Select the original instance and choose **Instance state**, **Start instance**\. After the instance state changes to `Running`, continue to the next step\.
 
-1. Retrieve your new Windows administrator password using the private key for the new key pair and connect to the instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Retrieve your new Windows administrator password using the private key for the new key pair and connect to the instance\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 **Important**  
 The instance gets a new public IP address after you stop and start it\. Make sure to connect to the instance using its current public DNS name\. For more information, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
 

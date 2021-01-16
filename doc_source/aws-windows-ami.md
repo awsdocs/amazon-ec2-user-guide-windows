@@ -20,9 +20,9 @@ For information about other customizations, see [Configuration changes for AWS W
   + [Patches, security updates, and AMI IDs](#ami-patches-security-ID)
   + [Semiannual channel releases](#channel-releases)
 + [Configuration changes for AWS Windows AMIs](#windows-ami-configuration)
-+ [Updating your Windows instance](#update-windows-instance)
-+ [Upgrading or migrating to a newer version of Windows Server](#WinAMI_Upgrading)
-+ [Subscribing to Windows AMI notifications](#subscribe-notifications)
++ [Update your Windows instance](#update-windows-instance)
++ [Upgrade or migrate to a newer version of Windows Server](#WinAMI_Upgrading)
++ [Subscribe to Windows AMI notifications](#subscribe-notifications)
 + [Changes in Windows Server 2016 and later AMIs](#win2k16-amis)
 + [Docker container conflict on Windows Server 2016 instances](#ec2launch-docker)
 + [Issue with the Hibernate Agent \(2018\.03\.16 AMIs\)](#ec2hibernateagent-2018-03-16)
@@ -127,7 +127,7 @@ The following changes are applied to each AWS Windows AMI\.
 | Set the display in all power schemes to never turn off | All AMIs | 
 | Set the PowerShell execution policy to "Unrestricted" | All AMIs | 
 
-## Updating your Windows instance<a name="update-windows-instance"></a>
+## Update your Windows instance<a name="update-windows-instance"></a>
 
 After you launch a Windows instance, you are responsible for installing updates on it\. You can manually install only the updates that interest you, or you can start from a current AWS Windows AMI and build a new Windows instance\. For information about finding the current AWS Windows AMIs, see [Finding a Windows AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html)\.
 
@@ -149,11 +149,11 @@ For Windows instances, you can install updates to the following services or appl
 
 You can reboot a Windows instance after installing updates\. For more information, see [Reboot your instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-reboot.html)\.
 
-## Upgrading or migrating to a newer version of Windows Server<a name="WinAMI_Upgrading"></a>
+## Upgrade or migrate to a newer version of Windows Server<a name="WinAMI_Upgrading"></a>
 
 For information about how to upgrade or migrate a Windows instance to a newer version of Windows Server, see [Upgrading an Amazon EC2 Windows instance to a newer version of Windows Server](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/serverupgrade.html)\.
 
-## Subscribing to Windows AMI notifications<a name="subscribe-notifications"></a>
+## Subscribe to Windows AMI notifications<a name="subscribe-notifications"></a>
 
 To be notified when new AMIs are released or when previously released AMIs are made private, subscribe for notifications using Amazon SNS\.
 

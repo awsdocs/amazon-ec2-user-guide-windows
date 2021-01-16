@@ -8,7 +8,7 @@ The Windows to Linux replatforming assistant for Microsoft SQL Server Databases 
 + [How Windows to Linux replatforming assistant for Microsoft SQL Server works](#replatform-sql-server-how-it-works)
 + [Components](#replatform-sql-server-components)
 + [Setting up](replatform-sql-server-setting-up.md)
-+ [Getting started](replatform-sql-server-getting-started.md)
++ [Get started](replatform-sql-server-getting-started.md)
 
 ## Concepts<a name="replatform-sql-server-concepts"></a>
 

@@ -1,4 +1,4 @@
-# Step 2: Configuring the Watcher Node<a name="ConfiguringWatcherNode"></a>
+# Step 2: Configure the watcher node<a name="ConfiguringWatcherNode"></a>
 
 On System Center Operations Manager 2007 R2, the watcher node runs discoveries that go beyond the watcher node computer, so you must enable the proxy agent option on the watcher node\. The proxy agent allows those discoveries to access the objects on other computers\.
 

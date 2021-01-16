@@ -1,4 +1,4 @@
-# Downloading the AWS Management Pack<a name="DownloadAWSmp"></a>
+# Download the AWS Management Pack<a name="DownloadAWSmp"></a>
 
 To get started, download the AWS Management Pack\. The AWS Management Pack is free\. You might incur charges for Amazon CloudWatch, depending on how you configure monitoring or how many AWS resources you monitor\.
 
@@ -21,7 +21,7 @@ Before you download the AWS Management Pack, ensure that your systems meet the f
 
 1. Save `AWS-SCOM-MP-2.5.zip` to your computer and unzip it\.
 
-Continue with [Deploying the AWS Management Pack](DeployingAWSmp.md)\.
+Continue with [Deploy the AWS Management Pack](DeployingAWSmp.md)\.
 
 ## System Center 2007 R2<a name="download-2007"></a>
 
@@ -42,4 +42,4 @@ Before you download the AWS Management Pack, ensure that your systems meet the f
 
 1. Save `AWS-MP-Setup-2.5.msi` to your computer\.
 
-Continue with [Deploying the AWS Management Pack](DeployingAWSmp.md)\.
+Continue with [Deploy the AWS Management Pack](DeployingAWSmp.md)\.

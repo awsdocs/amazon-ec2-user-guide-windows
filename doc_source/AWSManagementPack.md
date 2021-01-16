@@ -19,12 +19,12 @@ You can monitor the following resources:
 **Topics**
 + [Overview of AWS Management Pack for System Center 2012](#overview-2012)
 + [Overview of AWS Management Pack for System Center 2007 R2](#overview-2007)
-+ [Downloading the AWS Management Pack](DownloadAWSmp.md)
-+ [Deploying the AWS Management Pack](DeployingAWSmp.md)
-+ [Using the AWS Management Pack](UsingAWSmp.md)
-+ [Upgrading the AWS Management Pack](upgrading-awsmp.md)
-+ [Uninstalling the AWS Management Pack](uninstalling-awsmp.md)
-+ [Troubleshooting the AWS Management Pack](TroubleshootingAWSmp.md)
++ [Download the AWS Management Pack](DownloadAWSmp.md)
++ [Deploy the AWS Management Pack](DeployingAWSmp.md)
++ [Use the AWS Management Pack](UsingAWSmp.md)
++ [Upgrade the AWS Management Pack](upgrading-awsmp.md)
++ [Uninstall the AWS Management Pack](uninstalling-awsmp.md)
++ [Troubleshoot the AWS Management Pack](TroubleshootingAWSmp.md)
 
 ## Overview of AWS Management Pack for System Center 2012<a name="overview-2012"></a>
 

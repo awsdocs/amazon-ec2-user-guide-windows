@@ -3,6 +3,7 @@
 The following tables summarize the changes to each release of the AWS Windows AMIs\. Note that some changes apply to all AWS Windows AMIs while others apply to only a subset of these AMIs\.
 
 **Topics**
++ [Monthly AMI updates for 2021 \(to date\)](#amis-2021)
 + [Monthly AMI updates for 2020 \(to date\)](#amis-2020)
 + [Monthly AMI updates for 2019](#amis-2019)
 + [Monthly AMI updates for 2018](#amis-2018)
@@ -21,9 +22,18 @@ For more information about components included in these AMIs, see the following:
 + [Amazon ENA driver versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#ena-adapter-driver-versions)
 + [AWS PV drivers](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html#xen-driver-awspv)
 
+## Monthly AMI updates for 2021 \(to date\)<a name="amis-2021"></a>
+
+For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2021](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv-2021)\.
+
+
+| Release | Changes | 
+| --- | --- | 
+| 2021\.01\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
+
 ## Monthly AMI updates for 2020 \(to date\)<a name="amis-2020"></a>
 
-For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2020](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv-2020)\.
+For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2020](https://support.microsoft.com/en-us/help/4602108/software-update-services-and-windows-server-update-services-2020)\.
 
 
 | Release | Changes | 

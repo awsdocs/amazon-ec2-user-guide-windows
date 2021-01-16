@@ -1,4 +1,4 @@
-# Troubleshooting the AWS Management Pack<a name="TroubleshootingAWSmp"></a>
+# Troubleshoot the AWS Management Pack<a name="TroubleshootingAWSmp"></a>
 
 The following are common errors, events, and troubleshooting steps\.
 
@@ -8,12 +8,12 @@ The following are common errors, events, and troubleshooting steps\.
 + [Event 623](#event-623)
 + [Events 2023 and 2120](#event-2023-2120)
 + [Event 6024](#event-6024)
-+ [General Troubleshooting for System Center 2012 — Operations Manager](#general-troubleshooting-2012)
-+ [General Troubleshooting for System Center 2007 R2](#general-troubleshooting-2007)
++ [General troubleshooting for System Center 2012 — Operations Manager](#general-troubleshooting-2012)
++ [General troubleshooting for System Center 2007 R2](#general-troubleshooting-2007)
 
 ## Errors 4101 and 4105<a name="error-4101-4105"></a>
 
-If you receive one of the following errors, you must upgrade the AWS Management Pack\. For more information, see [Upgrading the AWS Management Pack](upgrading-awsmp.md)\.
+If you receive one of the following errors, you must upgrade the AWS Management Pack\. For more information, see [Upgrade the AWS Management Pack](upgrading-awsmp.md)\.
 
 ```
 Error 4101
@@ -29,7 +29,7 @@ in the request is invalid"
 
 ## Error 4513<a name="error-4513"></a>
 
-If you receive one of the following error, you must upgrade the AWS Management Pack\. For more information, see [Upgrading the AWS Management Pack](upgrading-awsmp.md)\.
+If you receive one of the following error, you must upgrade the AWS Management Pack\. For more information, see [Upgrade the AWS Management Pack](upgrading-awsmp.md)\.
 
 ```
 Error 4513
@@ -84,11 +84,11 @@ LaunchRestartHealthService.js : Launching Restart Health Service. Health Service
 Process\Handle Count or Private Bytes threshold.
 ```
 
-## General Troubleshooting for System Center 2012 — Operations Manager<a name="general-troubleshooting-2012"></a>
+## General troubleshooting for System Center 2012 — Operations Manager<a name="general-troubleshooting-2012"></a>
 
 Try the following to resolve any issues\.
 + Verify that you have installed the latest Update Rollup for System Center 2012 — Operations Manager\. The AWS Management Pack requires at least Update Rollup 1\.
-+ Ensure that you have configured the AWS Management Pack after importing it by running the Add Monitoring Wizard\. For more information, see [Step 1: Installing the AWS Management Pack](ConfiguringAWSmp.md)\.
++ Ensure that you have configured the AWS Management Pack after importing it by running the Add Monitoring Wizard\. For more information, see [Step 1: Install the AWS Management Pack](ConfiguringAWSmp.md)\.
 + Verify that you have waited long enough for the AWS resources to be discovered \(10–20 minutes\)\.
 + Verify that the management servers are configured properly\.
   + Management servers must have Internet connectivity\.
@@ -102,13 +102,13 @@ Try the following to resolve any issues\.
     + For further troubleshooting, use the information in the event logs\.
     + Check the Operations Manager event log on the management server\. For more information, see [Events](UsingAWSmp.md#EventIDs) for a list of the events that the AWS Management Pack writes to the Operations Manager event log\.
 
-## General Troubleshooting for System Center 2007 R2<a name="general-troubleshooting-2007"></a>
+## General troubleshooting for System Center 2007 R2<a name="general-troubleshooting-2007"></a>
 
 Try the following to resolve any issues\.
-+ Ensure that you have configured the AWS Management Pack after importing it by running the Add Monitoring Wizard\. For more information, see [Step 1: Installing the AWS Management Pack](ConfiguringAWSmp.md)\.
++ Ensure that you have configured the AWS Management Pack after importing it by running the Add Monitoring Wizard\. For more information, see [Step 1: Install the AWS Management Pack](ConfiguringAWSmp.md)\.
 + Verify that you have waited long enough for the AWS resources to be discovered \(10–20 minutes\)\.
 + Verify that the watcher node is configured properly\.
-  + The proxy agent is enabled\. For more information, see [Step 2: Configuring the Watcher Node](ConfiguringWatcherNode.md)\.
+  + The proxy agent is enabled\. For more information, see [Step 2: Configure the watcher node](ConfiguringWatcherNode.md)\.
   + The watcher node has Internet connectivity\.
   + The action account for the watcher node has local administrator privileges\.
   + The watcher node must have the \.NET Framework 3\.5\.1 or later\.

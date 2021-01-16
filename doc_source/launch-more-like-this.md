@@ -43,7 +43,7 @@ The following configuration details are not copied from your selected instance\.
 
    When you are ready, choose **Launch** to select a key pair and launch your instance\.
 
-1. If the instance fails to launch or the state immediately goes to `terminated` instead of `running`, see [Troubleshooting instance launch issues](troubleshooting-launch.md)\.
+1. If the instance fails to launch or the state immediately goes to `terminated` instead of `running`, see [Troubleshoot instance launch issues](troubleshooting-launch.md)\.
 
 ------
 #### [ Old console ]
@@ -60,6 +60,6 @@ The following configuration details are not copied from your selected instance\.
 
    When you are ready, choose **Launch** to select a key pair and launch your instance\.
 
-1. If the instance fails to launch or the state immediately goes to `terminated` instead of `running`, see [Troubleshooting instance launch issues](troubleshooting-launch.md)\.
+1. If the instance fails to launch or the state immediately goes to `terminated` instead of `running`, see [Troubleshoot instance launch issues](troubleshooting-launch.md)\.
 
 ------

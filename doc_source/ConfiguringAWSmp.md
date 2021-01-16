@@ -1,4 +1,4 @@
-# Step 1: Installing the AWS Management Pack<a name="ConfiguringAWSmp"></a>
+# Step 1: Install the AWS Management Pack<a name="ConfiguringAWSmp"></a>
 
 After you download the AWS Management Pack, you must configure it to monitor one or more AWS accounts\.
 

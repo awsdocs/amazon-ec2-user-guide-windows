@@ -1,4 +1,4 @@
-# Troubleshooting EC2Launch v2<a name="ec2launchv2-troubleshooting"></a>
+# Troubleshoot EC2Launch v2<a name="ec2launchv2-troubleshooting"></a>
 
 This section shows common troubleshooting scenarios for EC2Launch v2, information about viewing Windows event logs, and console log output and messages\.
 

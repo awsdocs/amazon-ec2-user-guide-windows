@@ -1,4 +1,4 @@
-# Tutorial: Installing a WIMP server on an Amazon EC2 instance running Windows Server<a name="install-WIMP"></a>
+# Tutorial: Install a WIMP server on an Amazon EC2 instance running Windows Server<a name="install-WIMP"></a>
 
 This tutorial shows you how to install a Microsoft Internet Information Services \(IIS\) web server with PHP and MySQL on an EC2 instance running Windows Server\. This software configuration is sometimes called a WIMP server or WIMP stack \(Windows, IIS, MySQL, PHP\)\.
 
@@ -21,7 +21,7 @@ You can, however, create a WIMP stack on an EC2 instance to prototype a web proj
 
 **To prepare your instance**
 
-1. Connect to your instance using Microsoft Remote Desktop\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Connect to your instance using Microsoft Remote Desktop\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Disable Internet Explorer Enhanced Security Configuration so that you can download and install required software from the web\.
 
@@ -39,7 +39,7 @@ Make a note to re\-enable Internet Explorer Enhanced Security Configuration when
 
 1. Install software updates to ensure that the instance has the latest security updates and bug fixes\.
 
-   1.  **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about how to install this service, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\.
+   1.  **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about how to install this service, see [Install the latest version of EC2Config](UsingConfig_Install.md)\.
 
    1.  **Windows Update** \- Run Windows Update to ensure that the latest security and software updates are installed on the instance\. In Control Panel, choose **System and Security**\. In the **Windows Update** section, choose **Check for updates**\.
 
@@ -47,7 +47,7 @@ Make a note to re\-enable Internet Explorer Enhanced Security Configuration when
 
 IIS is a feature of Windows Server and is installed by using Server Manager\. The procedure you'll use depends on the version of Windows Server your instance is running\.
 
-**Install IIS on Windows Server 2012**
+**To install IIS on Windows Server 2012**
 
 1. On your Windows instance, choose **Start**, **Server Manager**, and then choose **Add roles and features**\.
 
@@ -87,7 +87,7 @@ IIS is a feature of Windows Server and is installed by using Server Manager\. Th
 
 1. Run Windows update again\.
 
-**Install IIS on Windows Server 2008**
+**To install IIS on Windows Server 2008**
 
 1. On your Windows instance, choose **Start**, **Server Manager**, and then choose **Roles**\.
 
@@ -113,7 +113,7 @@ IIS is a feature of Windows Server and is installed by using Server Manager\. Th
 After setup completes, verify that the IIS web server is configured properly and running by going to the IIS welcome page\. Open a web browser on a different computer and enter either the public DNS address of the WIMP server or the public IP address\. The public DNS address for your instance is listed on the Amazon EC2 console in the **Public DNS** column\. If this column is hidden, choose the **Show/Hide** icon and choose **Public DNS**\.
 
 **Important**  
-If you do not see the Bitnami test page, use Windows Firewall with Advanced Security to create a custom rule that allows the HTTP protocol through port 80 and the HTTPS protocol through port 443\. For more information, see [Network Security](https://technet.microsoft.com/en-us/library/cc725616.aspx) on Microsoft TechNet\. Also verify that the security group for your instances contains a rule to allow connections on HTTP \(port 80\)\. For more information, see [Adding rules to a security group](working-with-security-groups.md#adding-security-group-rule)\.
+If you do not see the Bitnami test page, use Windows Firewall with Advanced Security to create a custom rule that allows the HTTP protocol through port 80 and the HTTPS protocol through port 443\. For more information, see [Network Security](https://technet.microsoft.com/en-us/library/cc725616.aspx) on Microsoft TechNet\. Also verify that the security group for your instances contains a rule to allow connections on HTTP \(port 80\)\. For more information, see [Add rules to a security group](working-with-security-groups.md#adding-security-group-rule)\.
 
 ## Install MySQL and PHP<a name="wimp-mysql-php"></a>
 

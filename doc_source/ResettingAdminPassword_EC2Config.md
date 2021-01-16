@@ -111,7 +111,7 @@ After you have attached the volume to the temporary instance as a secondary volu
 
    1. Launch and connect to the temporary instance\.
 
-   1. Open the **Disk Management** utility, and bring the drive online using these instructions: [Making an Amazon EBS Volume Available for Use](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-using-volumes.html)\.
+   1. Open the **Disk Management** utility, and bring the drive online using these instructions: [Making an Amazon EBS volume available for use](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-using-volumes.html)\.
 
    1. Navigate to the secondary volume, and open `\Program Files\Amazon\Ec2ConfigService\Settings\config.xml` using a text editor, such as Notepad\.
 
@@ -142,7 +142,7 @@ After you have modified the configuration file, reattach the volume to the origi
 
 1. In the navigation pane, choose **Instances**\. Select the original instance and choose **Instance state**, **Start instance**\. After the instance state changes to `Running`, continue to the next step\.
 
-1. Retrieve your new Windows administrator password using the private key for the new key pair and connect to the instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Retrieve your new Windows administrator password using the private key for the new key pair and connect to the instance\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 **Important**  
 The instance gets a new public IP address after you stop and start it\. Make sure to connect to the instance using its current public DNS name\. For more information, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
 

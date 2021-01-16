@@ -6,7 +6,7 @@ For information about the supported network speed for each instance type, see [A
 
 **Topics**
 + [Enhanced networking support](#supported_instances)
-+ [Enabling enhanced networking on your instance](#enabling_enhanced_networking)
++ [Enable enhanced networking on your instance](#enabling_enhanced_networking)
 + [Enhanced networking: ENA](enhanced-networking-ena.md)
 + [Enhanced networking: Intel 82599 VF](sriov-networking.md)
 + [Operating system optimizations](enhanced-networking-os.md)
@@ -28,8 +28,8 @@ The following instance types use the Intel 82599 VF interface for enhanced netwo
 
 For a summary of the enhanced networking mechanisms by instance type, see [Summary of networking and storage features](instance-types.md#instance-type-summary-table)\.
 
-## Enabling enhanced networking on your instance<a name="enabling_enhanced_networking"></a>
+## Enable enhanced networking on your instance<a name="enabling_enhanced_networking"></a>
 
-If your instance type supports the Elastic Network Adapter for enhanced networking, follow the procedures in [Enabling enhanced networking with the Elastic Network Adapter \(ENA\) on Windows instances](enhanced-networking-ena.md)\.
+If your instance type supports the Elastic Network Adapter for enhanced networking, follow the procedures in [Enable enhanced networking with the Elastic Network Adapter \(ENA\) on Windows instances](enhanced-networking-ena.md)\.
 
-If your instance type supports the Intel 82599 VF interface for enhanced networking, follow the procedures in [Enabling enhanced networking with the Intel 82599 VF interface on Windows instances](sriov-networking.md)\.
+If your instance type supports the Intel 82599 VF interface for enhanced networking, follow the procedures in [Enable enhanced networking with the Intel 82599 VF interface on Windows instances](sriov-networking.md)\.

@@ -1,4 +1,4 @@
-# Troubleshooting PV drivers<a name="pvdrivers-troubleshooting"></a>
+# Troubleshoot PV drivers<a name="pvdrivers-troubleshooting"></a>
 
 The following are solutions to issues that you might encounter with older Amazon EC2 images and PV drivers\.
 

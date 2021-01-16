@@ -1,4 +1,4 @@
-# RAID Configuration on Windows<a name="raid-config"></a>
+# RAID configuration on Windows<a name="raid-config"></a>
 
 With Amazon EBS, you can use any of the standard RAID configurations that you can use with a traditional bare metal server, as long as that particular RAID configuration is supported by the operating system for your instance\. This is because all RAID is accomplished at the software level\. For greater I/O performance than you can achieve with a single volume, RAID 0 can stripe multiple volumes together; for on\-instance redundancy, RAID 1 can mirror two volumes together\.
 
@@ -7,14 +7,14 @@ Amazon EBS volume data is replicated across multiple servers in an Availability 
 **Note**  
 You should avoid booting from a RAID volume\. If one of the devices fails, you may be unable to boot the operating system\.
 
-If you need to create a RAID array on a Linux instance, see [RAID Configuration on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+If you need to create a RAID array on a Linux instance, see [RAID configuration on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
-+ [RAID Configuration Options](#raid-config-options)
-+ [Creating a RAID Array on Windows](#windows-raid)
-+ [Creating Snapshots of Volumes in a RAID Array](#ebs-snapshots-raid-array)
++ [RAID configuration options](#raid-config-options)
++ [Create a RAID array on Windows](#windows-raid)
++ [Create snapshots of volumes in a RAID array](#ebs-snapshots-raid-array)
 
-## RAID Configuration Options<a name="raid-config-options"></a>
+## RAID configuration options<a name="raid-config-options"></a>
 
 The following table compares the common RAID 0 and RAID 1 options\.
 
@@ -33,9 +33,9 @@ The resulting size of a RAID 0 array is the sum of the sizes of the volumes with
 
 This documentation provides basic RAID setup examples\. For more information about RAID configuration, performance, and recovery, see the Linux RAID Wiki at [https://raid\.wiki\.kernel\.org/index\.php/Linux\_Raid](https://raid.wiki.kernel.org/index.php/Linux_Raid)\.
 
-## Creating a RAID Array on Windows<a name="windows-raid"></a>
+## Create a RAID array on Windows<a name="windows-raid"></a>
 
-Use the following procedure to create the RAID array\. Note that you can get directions for Linux instances from [Creating a RAID Array on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html#linux-raid) in the *Amazon EC2 User Guide for Linux Instances*\.
+Use the following procedure to create the RAID array\. Note that you can get directions for Linux instances from [Create a RAID array on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html#linux-raid) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **To create a RAID array on Windows**
 
@@ -45,7 +45,7 @@ Create volumes with identical size and IOPS performance values for your array\. 
 
 1. Attach the Amazon EBS volumes to the instance that you want to host the array\. For more information, see [Attach an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
 
-1. Connect to your Windows instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Connect to your Windows instance\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Open a command prompt and type the diskpart command\.
 
@@ -228,7 +228,7 @@ To perform a full format, omit the `quick` option\.
 
    Your new volume is now ready to use\.
 
-## Creating Snapshots of Volumes in a RAID Array<a name="ebs-snapshots-raid-array"></a>
+## Create snapshots of volumes in a RAID array<a name="ebs-snapshots-raid-array"></a>
 
 If you want to back up the data on the EBS volumes in a RAID array using snapshots, you must ensure that the snapshots are consistent\. This is because the snapshots of these volumes are created independently\. To restore EBS volumes in a RAID array from snapshots that are out of sync would degrade the integrity of the array\.
 

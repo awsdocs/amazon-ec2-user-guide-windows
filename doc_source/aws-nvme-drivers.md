@@ -4,7 +4,7 @@ EBS volumes and instance store volumes are exposed as NVMe block devices on [Nit
 
 For more information about EBS and NVMe, see [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)\. For more information about SSD instance store and NVMe, see [SSD instance store volumes](ssd-instance-store.md)\.
 
-## Installing or upgrading AWS NVMe drivers<a name="install-nvme-drivers"></a>
+## Install or upgrade AWS NVMe drivers<a name="install-nvme-drivers"></a>
 
 If you are not using the latest AWS Windows AMIs provided by Amazon, use the following procedure to install the current AWS NVMe driver\. You should perform this update at a time when it is convenient to reboot your instance\. Either the install script will reboot your instance or you must reboot it as the final step\.
 
@@ -46,7 +46,7 @@ The following table describes the released versions of the AWS NVMe driver\.
 | 1\.2\.0 | Performance and reliability improvements for AWS NVMe devices on all supported instances, including bare metal instances | 13 June 2018 | 
 | 1\.0\.0 | AWS NVMe driver for supported instance types running Windows Server | 12 February 2018 | 
 
-## Subscribing to notifications<a name="drivers-subscribe-notifications"></a>
+## Subscribe to notifications<a name="drivers-subscribe-notifications"></a>
 
 Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use the following procedure to subscribe to these notifications\.
 

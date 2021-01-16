@@ -1,11 +1,11 @@
-# Installing the latest version of EC2Config<a name="UsingConfig_Install"></a>
+# Install the latest version of EC2Config<a name="UsingConfig_Install"></a>
 
 By default, the EC2Config service is included in AMIs prior to Windows Server 2016\. When the EC2Config service is updated, new Windows AMIs from AWS include the latest version of the service\. However, you need to update your own Windows AMIs and instances with the latest version of EC2Config\.
 
 **Note**  
-EC2Launch replaces EC2Config on Windows Server 2016 and later AMIs\. For more information, see [Configuring a Windows instance using EC2Launch](ec2launch.md)\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
+EC2Launch replaces EC2Config on Windows Server 2016 and later AMIs\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md)\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
-For information about how to receive notifications for EC2Config updates, see [Subscribing to EC2Config service notifications](ec2config-version-details.md#ec2-subscribe-notifications)\. For information about the changes in each version, see the [EC2Config version history](ec2config-version-details.md)\.
+For information about how to receive notifications for EC2Config updates, see [Subscribe to EC2Config service notifications](ec2config-version-details.md#ec2-subscribe-notifications)\. For information about the changes in each version, see the [EC2Config version history](ec2config-version-details.md)\.
 
 ## Before you begin<a name="ec2config-prereqs"></a>
 + Verify that you have \.NET framework 3\.5 SP1 or greater\.

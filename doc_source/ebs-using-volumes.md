@@ -4,13 +4,13 @@ After you attach an Amazon EBS volume to your instance, it is exposed as a block
 
 You can take snapshots of your EBS volume for backup purposes or to use as a baseline when you create another volume\. For more information, see [Amazon EBS snapshots](EBSSnapshots.md)\.
 
-You can get directions for volumes on a Linux instance from [Making a Volume Available for Use on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+You can get directions for volumes on a Linux instance from [Make a volume available for use on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 You can make an EBS volume available for use using the Disk Management utility and the DiskPart command line tool\.
 
 **To make an EBS volume available for use using the Disk Management utility**
 
-1. Log in to your Windows instance using Remote Desktop\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Log in to your Windows instance using Remote Desktop\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Start the Disk Management utility\. On the taskbar, open the context \(right\-click\) menu for the Windows logo and choose **Disk Management**\.
 **Note**  
@@ -31,7 +31,7 @@ If you're mounting a volume that already has data on it \(for example, a public 
 
 **To make an EBS volume available for use using the DiskPart command line tool**
 
-1. Log in to your Windows instance using Remote Desktop\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Log in to your Windows instance using Remote Desktop\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Create a new script file named `diskpart.txt`\.
 

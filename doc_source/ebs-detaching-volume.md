@@ -2,7 +2,7 @@
 
 You need to detach an Amazon Elastic Block Store \(Amazon EBS\) volume from an instance before you can attach it to a different instance or delete it\. Detaching a volume does not affect the data on the volume\.
 
-For information about detaching volumes from a Linux instance, see [Detaching a volume from a Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For information about detaching volumes from a Linux instance, see [Detach a volume from a Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**
 + [Considerations](#considerations)
@@ -56,7 +56,7 @@ To detach the volume from the instance, use one of the following methods:
 
 **To detach an EBS volume from an instance using the command line**
 
-After unmounting the volume, you can use one of the following commands to detach it\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
+After unmounting the volume, you can use one of the following commands to detach it\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
 + [detach\-volume](https://docs.aws.amazon.com/cli/latest/reference/ec2/detach-volume.html) \(AWS CLI\)
 + [Dismount\-EC2Volume](https://docs.aws.amazon.com/powershell/latest/reference/items/Dismount-EC2Volume.html) \(AWS Tools for Windows PowerShell\)
 

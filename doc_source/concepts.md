@@ -8,7 +8,7 @@ For more information about cloud computing, see [What is Cloud Computing?](https
 + [Features of Amazon EC2](#ec2-features)
 + [How to get started with Amazon EC2](#how-to-get-started)
 + [Related services](#related-services)
-+ [Accessing Amazon EC2](#access-ec2)
++ [Access Amazon EC2](#access-ec2)
 + [Pricing for Amazon EC2](#ec2-pricing)
 + [PCI DSS compliance](#pci-compliance)
 + [Amazon EC2 basic infrastructure for Windows](EC2Win_Infrastructure.md)
@@ -59,7 +59,7 @@ First, you need to get set up to use Amazon EC2\. After you are set up, you are 
 
 **Working with Windows instances**
 + [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html) in the *AWS Systems Manager User Guide*
-+ [Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md)
++ [Tutorial: Install a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md)
 
 If you have questions about whether AWS is right for you, [contact AWS Sales](https://aws.amazon.com/contact-us/)\. If you have technical questions about Amazon EC2, use the [Amazon EC2 forum](https://forums.aws.amazon.com/forum.jspa?forumID=30)\. 
 
@@ -81,7 +81,7 @@ To monitor basic statistics for your instances and Amazon EBS volumes, use Amazo
 
 To detect potentially authorized or malicious use of your EC2 instances, use Amazon GuardDuty\. For more information see the [Amazon GuardDuty User Guide](https://docs.aws.amazon.com/guardduty/latest/ug/)\.
 
-## Accessing Amazon EC2<a name="access-ec2"></a>
+## Access Amazon EC2<a name="access-ec2"></a>
 
 Amazon EC2 provides a web\-based user interface, the Amazon EC2 console\. If you've signed up for an AWS account, you can access the Amazon EC2 console by signing into the AWS Management Console and selecting **EC2** from the console home page\.
 

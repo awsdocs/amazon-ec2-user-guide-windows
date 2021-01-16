@@ -1,4 +1,4 @@
-# Step 4: Run the Add Monitoring Wizard<a name="RunAddMonitoringWizard"></a>
+# Step 4: Run the Add Monitoring wizard<a name="RunAddMonitoringWizard"></a>
 
 You can configure the AWS Management Pack to monitor a particular AWS account by using the Add Monitoring Wizard, which is available in the **Authoring** workspace of the Operations console\. This wizard creates a management pack that contains the settings for the AWS account to monitor\. You must run this wizard to monitor each AWS account\. For example, if you want to monitor two AWS accounts, you must run the wizard twice\.
 
@@ -59,9 +59,9 @@ You can configure the AWS Management Pack to monitor a particular AWS account by
 
 1. After the AWS Management Pack is configured, it first discovers the watcher node\. To verify that the watcher node was discovered successfully, navigate to the **Monitoring** workspace in the Operations console\. You should see a new `Amazon Web Services` folder and an `Amazon Watcher Nodes` subfolder under it\. This subfolder displays the watcher nodes\. The AWS Management Pack automatically checks and monitors the watcher node connectivity to AWS\. When the watcher node is discovered, it shows up in this list\. When the watcher node is ready, its state changes to `Healthy`\.
 **Note**  
-To establish connectivity with AWS, the AWS Management Pack requires that you deploy the AWS SDK for \.NET, modules, and scripts to the watcher node\. This can take about ten minutes\. If the watcher node doesn't appear, or if you see the state as `Not Monitored`, verify your Internet connectivity and IAM permissions\. For more information, see [Troubleshooting the AWS Management Pack](TroubleshootingAWSmp.md)\.  
+To establish connectivity with AWS, the AWS Management Pack requires that you deploy the AWS SDK for \.NET, modules, and scripts to the watcher node\. This can take about ten minutes\. If the watcher node doesn't appear, or if you see the state as `Not Monitored`, verify your Internet connectivity and IAM permissions\. For more information, see [Troubleshoot the AWS Management Pack](TroubleshootingAWSmp.md)\.  
 ![\[Checking the watcher node discovery\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/check_watcher_node_discovery.png)
 
 1. After the watcher node is discovered, dependent discoveries are triggered, and the AWS resources are added to the **Monitoring** workspace of the Operations console\.
 
-   The discovery of AWS resources should finish within twenty minutes\. This process can take more time, based on your Operations Manager environment, your AWS environment, the load on the management server, and the load on the watcher node\. For more information, see [Troubleshooting the AWS Management Pack](TroubleshootingAWSmp.md)\.
+   The discovery of AWS resources should finish within twenty minutes\. This process can take more time, based on your Operations Manager environment, your AWS environment, the load on the management server, and the load on the watcher node\. For more information, see [Troubleshoot the AWS Management Pack](TroubleshootingAWSmp.md)\.

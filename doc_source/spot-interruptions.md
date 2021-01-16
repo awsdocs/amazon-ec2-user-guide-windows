@@ -125,7 +125,7 @@ Here are some best practices to follow when you use Spot Instances:
 
 You must install a hibernation agent on your instance, unless you used an AMI that already includes the agent\. You must run the agent on instance startup, whether the agent was included in your AMI or you installed it yourself\.
 
-The following procedure helps you prepare a Windows instance\. For directions to prepare a Linux instance, see [Preparing for instance hibernation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#prepare-for-instance-hibernation) in the *Amazon EC2 User Guide for Linux Instances*\.
+The following procedure helps you prepare a Windows instance\. For directions to prepare a Linux instance, see [Prepare for instance hibernation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#prepare-for-instance-hibernation) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **To prepare a Windows instance**
 

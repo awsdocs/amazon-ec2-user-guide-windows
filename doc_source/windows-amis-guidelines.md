@@ -4,7 +4,7 @@ Use the following guidelines to reduce the attack surface and improve the reliab
 + No list of security guidelines can be exhaustive\. Build your shared AMIs carefully and take time to consider where you might expose sensitive data\.
 + Develop a repeatable process for building, updating, and republishing AMIs\.
 + Build AMIs using the most up\-to\-date operating systems, packages, and software\.
-+ [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\. 
++ [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Install the latest version of EC2Config](UsingConfig_Install.md)\. 
 + Verify that Ec2SetPassword, Ec2WindowsActivate and Ec2HandleUserData are enabled\.
 + Verify that no guest accounts or Remote Desktop user accounts are present\.
 + Disable or remove unnecessary services and programs to reduce the attack surface of your AMI\.

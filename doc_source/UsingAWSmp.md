@@ -1,4 +1,4 @@
-# Using the AWS Management Pack<a name="UsingAWSmp"></a>
+# Use the AWS Management Pack<a name="UsingAWSmp"></a>
 
 You can use the AWS Management Pack to monitor the health of your AWS resources\.
 
@@ -8,8 +8,8 @@ You can use the AWS Management Pack to monitor the health of your AWS resources\
 + [Monitors](#Monitors)
 + [Rules](#Rules)
 + [Events](#EventIDs)
-+ [Health Model](#HealthModel)
-+ [Customizing the AWS Management Pack](#CustomizingAWSmp)
++ [Health model](#HealthModel)
++ [Customize the AWS Management Pack](#CustomizingAWSmp)
 
 ## Views<a name="AWSmpViews"></a>
 
@@ -19,12 +19,12 @@ The AWS Management Pack provides the following views, which are displayed in the
 + [EC2 Instances](#awsmp-ec2-instances-view)
 + [Amazon EBS Volumes](#awsmp-ebs-volumes-view)
 + [Elastic Load Balancers](#awsmp-load-balancers-view)
-+ [AWS Elastic Beanstalk Applications](#awsmp-beanstalk-apps-view)
-+ [AWS CloudFormation Stacks](#awsmp-cfn-stacks-view)
-+ [Amazon Performance Views](#awsmp-performance-views)
-+ [Amazon CloudWatch Metric Alarms](#awsmp-metric-alarms-view)
-+ [AWS Alerts](#awsmp-aws-alerts-view)
-+ [Watcher Nodes \(System Center Operations Manager 2007 R2\)](#awsmp-watcher-nodes-view)
++ [AWS Elastic Beanstalk applications](#awsmp-beanstalk-apps-view)
++ [AWS CloudFormation stacks](#awsmp-cfn-stacks-view)
++ [Amazon performance views](#awsmp-performance-views)
++ [Amazon CloudWatch metric alarms](#awsmp-metric-alarms-view)
++ [AWS alerts](#awsmp-aws-alerts-view)
++ [Watcher nodes \(System Center Operations Manager 2007 R2\)](#awsmp-watcher-nodes-view)
 
 ### EC2 Instances<a name="awsmp-ec2-instances-view"></a>
 
@@ -66,7 +66,7 @@ Shows the Elastic Load Balancing relationship with other components\. The follow
 
 ![\[Elastic Load Balancing diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_diagram_view.png)
 
-### AWS Elastic Beanstalk Applications<a name="awsmp-beanstalk-apps-view"></a>
+### AWS Elastic Beanstalk applications<a name="awsmp-beanstalk-apps-view"></a>
 
 Shows the state of all discovered AWS Elastic Beanstalk applications\.
 
@@ -77,36 +77,36 @@ Shows the AWS Elastic Beanstalk application, application environment, applicatio
 
 ![\[AWS Elastic Beanstalk diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/beanstalk_diagram_view.png)
 
-### AWS CloudFormation Stacks<a name="awsmp-cfn-stacks-view"></a>
+### AWS CloudFormation stacks<a name="awsmp-cfn-stacks-view"></a>
 
 Shows the health state of all the AWS CloudFormation stacks for a particular AWS account from all regions\.
 
 ![\[AWS CloudFormation stack state view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_view.png)
 
-**AWS CloudFormation Stacks Diagram View**  
+**AWS CloudFormation stacks diagram view**  
 Shows the AWS CloudFormation stack relationship with other components\. An AWS CloudFormation stack might contain Amazon EC2 or Elastic Load Balancing resources\. The following illustration shows an example:
 
 ![\[AWS CloudFormation stack diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_diagram_view.png)
 
-### Amazon Performance Views<a name="awsmp-performance-views"></a>
+### Amazon performance views<a name="awsmp-performance-views"></a>
 
 Shows the Amazon CloudWatch metrics for Amazon EC2, Amazon EBS, and Elastic Load Balancing, custom metrics, and metrics created from CloudWatch alarms\. In addition, there are separate performance views for each resource\. The **Other Metrics** performance view contains custom metrics, and metrics created from CloudWatch alarms\. For more information about these metrics, see [AWS Services That Publish CloudWatch Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html) in the *Amazon CloudWatch User Guide*\. The following illustration shows an example\. 
 
 ![\[Amazon performance views\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_performance_view.png)
 
-### Amazon CloudWatch Metric Alarms<a name="awsmp-metric-alarms-view"></a>
+### Amazon CloudWatch metric alarms<a name="awsmp-metric-alarms-view"></a>
 
 Shows Amazon CloudWatch alarms related to the discovered AWS resources\.
 
 ![\[Amazon CloudWatch metric alarms\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudwatch_alarms_view.png)
 
-### AWS Alerts<a name="awsmp-aws-alerts-view"></a>
+### AWS alerts<a name="awsmp-aws-alerts-view"></a>
 
 Shows the alerts that the AWS management pack produces when the health of an object is in a critical state\. 
 
 ![\[AWS Alerts\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_alerts_view.png)
 
-### Watcher Nodes \(System Center Operations Manager 2007 R2\)<a name="awsmp-watcher-nodes-view"></a>
+### Watcher nodes \(System Center Operations Manager 2007 R2\)<a name="awsmp-watcher-nodes-view"></a>
 
 View the health state of the watcher nodes across all of the AWS accounts that are being monitored\. A **Healthy** state means that the watcher node is configured correctly and can communicate with AWS\.
 
@@ -211,7 +211,7 @@ Events report on activities that involve the monitored resources\. Events are wr
 |  4117  |  Elastic Beanstalk Environment Operational State calculated  | 
 |  4118  |  Elastic Beanstalk Environment Configuration State calculated  | 
 
-## Health Model<a name="HealthModel"></a>
+## Health model<a name="HealthModel"></a>
 
 The following illustration shows the health model defined by the AWS Management Pack\.
 
@@ -238,7 +238,7 @@ The full health model for an AWS CloudFormation stack is as follows:
 
 ![\[Health model for an AWS CloudFormation stack\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPCloudformationHealthModel.png)
 
-## Customizing the AWS Management Pack<a name="CustomizingAWSmp"></a>
+## Customize the AWS Management Pack<a name="CustomizingAWSmp"></a>
 
 To change the frequency of discoveries, rules, and monitors, you can override the interval time \(in seconds\)\.
 

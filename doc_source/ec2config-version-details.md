@@ -2,7 +2,7 @@
 
 Windows AMIs prior to Windows Server 2016 include an optional service called the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. For information about the EC2Config versions included in the Windows AMIs, see [AWS Windows AMIs](windows-ami-version-history.md)\.
 
-You can receive notifications when new versions of the EC2Config service are released\. For more information, see [Subscribing to EC2Config service notifications](#ec2-subscribe-notifications)\.
+You can receive notifications when new versions of the EC2Config service are released\. For more information, see [Subscribe to EC2Config service notifications](#ec2-subscribe-notifications)\.
 
 The following table describes the released versions of EC2Config\. For information about the updates for SSM Agent, see [Systems Manager SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/master/RELEASENOTES.md)\.
 
@@ -124,7 +124,7 @@ The following table describes the released versions of EC2Config\. For informati
 |  2\.1\.2   |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  |  | 
 |  2\.1\.0   |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  |  | 
 
-## Subscribing to EC2Config service notifications<a name="ec2-subscribe-notifications"></a>
+## Subscribe to EC2Config service notifications<a name="ec2-subscribe-notifications"></a>
 
 Amazon SNS can notify you when new versions of the EC2Config service are released\. Use the following procedure to subscribe to these notifications\. 
 

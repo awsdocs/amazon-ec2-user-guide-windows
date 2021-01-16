@@ -1,4 +1,4 @@
-# Adding Windows components Using installation media<a name="windows-optional-components"></a>
+# Add Windows components using installation media<a name="windows-optional-components"></a>
 
 Windows Server operating systems include many optional components\. Including all optional components in each Amazon EC2 Windows Server AMI is not practical\. Instead, we provide you with installation media EBS snapshots that have the necessary files to configure or install components on your Windows instance\.
 
@@ -8,7 +8,7 @@ To access and install the optional components, you must find the correct EBS sna
 
 Use the AWS Management Console or a command line tool to get the instance ID and Availability Zone of your instance\. You must create your EBS volume in the same Availability Zone as your instance\.
 
-## Adding Windows components using the console<a name="adding-windows-components-console"></a>
+## Add Windows components using the console<a name="adding-windows-components-console"></a>
 
 Use the following procedure to use the AWS Management Console to add Windows components to your instance\.
 
@@ -46,7 +46,7 @@ Do not initialize the volume\.
 
 1. \(Optional\) When you are finished with the installation media, you can detach the volume\. After you detach the volume, you can delete it\. For more information, see [Detach an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md) and [Delete an Amazon EBS volume](ebs-deleting-volume.md)\.
 
-## Adding Windows components using the Tools for Windows PowerShell<a name="adding-windows-components-powershell"></a>
+## Add Windows components using the Tools for Windows PowerShell<a name="adding-windows-components-powershell"></a>
 
 Use the following procedure to use the Tools for Windows PowerShell to add Windows components to your instance\.
 
@@ -116,7 +116,7 @@ Do not initialize the volume\.
 
 1. \(Optional\) When you are finished with the installation media, use the [Dismount\-EC2Volume](https://docs.aws.amazon.com/powershell/latest/reference/items/Dismount-EC2Volume.html) cmdlet to detach the volume from your instance\. After you detach the volume, you can use the [Remove\-EC2Volume](https://docs.aws.amazon.com/powershell/latest/reference/items/Remove-EC2Volume.html) cmdlet to delete the volume\.
 
-## Adding Windows components using the AWS CLI<a name="adding-windows-components-cli"></a>
+## Add Windows components using the AWS CLI<a name="adding-windows-components-cli"></a>
 
 Use the following procedure to use the AWS CLI to add Windows components to your instance\.
 

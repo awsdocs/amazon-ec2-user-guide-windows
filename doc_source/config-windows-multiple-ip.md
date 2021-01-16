@@ -1,4 +1,4 @@
-# Configuring a secondary private IPv4 address for your Windows instance<a name="config-windows-multiple-ip"></a>
+# Configure a secondary private IPv4 address for your Windows instance<a name="config-windows-multiple-ip"></a>
 
 You can specify multiple private IPv4 addresses for your instances\. After you assign a secondary private IPv4 address to an instance, you must configure the operating system on the instance to recognize the secondary private IPv4 address\.
 
@@ -14,8 +14,8 @@ These instructions are based on Windows Server 2008 R2\. The implementation of t
 
 Before you begin, make sure you meet the following requirements:
 + As a best practice, launch your Windows instances using the latest AMIs\. If you are using an older Windows AMI, ensure that it has the Microsoft hot fix referenced in [http://support\.microsoft\.com/kb/2582281](http://support.microsoft.com/kb/2582281)\.
-+ After you launch your instance in your VPC, add a secondary private IP address\. For more information, see [Assigning a secondary private IPv4 address](MultipleIP.md#ManageMultipleIP)\.
-+ To allow Internet requests to your website after you complete the tasks in these steps, you must configure an Elastic IP address and associate it with the secondary private IP address\. For more information, see [Associating an Elastic IP address with the secondary private IPv4 address](MultipleIP.md#StepThreeEIP)\.
++ After you launch your instance in your VPC, add a secondary private IP address\. For more information, see [Assign a secondary private IPv4 address](MultipleIP.md#ManageMultipleIP)\.
++ To allow Internet requests to your website after you complete the tasks in these steps, you must configure an Elastic IP address and associate it with the secondary private IP address\. For more information, see [Associate an Elastic IP address with the secondary private IPv4 address](MultipleIP.md#StepThreeEIP)\.
 
 ## Step 1: Configure static IP addressing on your instance<a name="step1"></a>
 

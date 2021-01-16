@@ -1,4 +1,4 @@
-# Best Practices and Recommendations for SQL Server Clustering in EC2<a name="aws-sql-clustering"></a>
+# Best practices and recommendations for SQL Server clustering on EC2<a name="aws-sql-clustering"></a>
 
 SQL Always On clustering offers high availability without the requirement for shared storage\. The list of practices in this topic, in addition to the prerequisites listed at [Prerequisites, Restrictions, and Recommendations for Always On availability groups](https://msdn.microsoft.com/en-us/library/ff878487.aspx), can help you get the best results when operating a SQL Server Always On cluster on AWS\. The practices listed in this topic also offer a method to gather logs\.
 
@@ -6,27 +6,27 @@ SQL Always On clustering offers high availability without the requirement for sh
 When nodes are deployed in different Availability Zones, or in different subnets within the same zone, they should be treated as a multi\-subnet cluster\. Keep this in mind as you apply best practices and when you address possible failure scenarios\.
 
 **Topics**
-+ [Assigning IP Addresses](#sql-ip-assignment)
-+ [Cluster Properties](#sql-clustering-cluster-properties)
-+ [Cluster Quorum Votes and 50/50 Splits in a Multi\-Site Cluster](#sql-clustering-quorum)
-+ [DNS Registration](#sql-dns-registration)
++ [Assign IP addresses](#sql-ip-assignment)
++ [Cluster properties](#sql-clustering-cluster-properties)
++ [Cluster quorum votes and 50/50 splits in a multi\-site cluster](#sql-clustering-quorum)
++ [DNS registration](#sql-dns-registration)
 + [Elastic Network Adapters \(ENAs\)](#sql-clustering-ena)
-+ [Multi\-Site Clusters and EC2 Instance Placement](#sql-multi-site-clusters)
-+ [Instance Type Selection](#sql-clustering-instance-type)
-+ [Assigning Elastic Network Interfaces and IPs to the Instance](#sql-clustering-assigning-ENI-IP)
-+ [Heartbeat Network](#sql-clustering-heartbeat)
-+ [Configuring the Network Adapter in the OS](#sql-clustering-network-adapter)
++ [Multi\-site clusters and EC2 instance placement](#sql-multi-site-clusters)
++ [Instance type selection](#sql-clustering-instance-type)
++ [Assign elastic network interfaces and IPs to the instance](#sql-clustering-assigning-ENI-IP)
++ [Heartbeat network](#sql-clustering-heartbeat)
++ [Configure the network adapter in the OS](#sql-clustering-network-adapter)
 + [IPv6](#sql-clustering-ipv6)
-+ [Host Record TTL for SQL Availability Group Listeners](#sql-clustering-ttl)
++ [Host record TTL for SQL Availability Group Listeners](#sql-clustering-ttl)
 + [Logging](#sql-clustering-logging)
 + [NetBIOS over TCP](#sql-clustering-2012r2-netbios)
 + [NetFT Virtual Adapter](#sql-clustering-2012r2-netft)
-+ [Setting Possible Owners](#sql-owners)
-+ [Tuning the Failover Thresholds](#sql-failover-thresholds)
-+ [Witness Importance and Dynamic Quorum Architecture](#sql-clustering-file-share-witness)
-+ [Troubleshooting](#sql-troubleshooting)
++ [Set possible owners](#sql-owners)
++ [Tune the failover thresholds](#sql-failover-thresholds)
++ [Witness importance and Dynamic Quorum Architecture](#sql-clustering-file-share-witness)
++ [Troubleshoot](#sql-troubleshooting)
 
-## Assigning IP Addresses<a name="sql-ip-assignment"></a>
+## Assign IP addresses<a name="sql-ip-assignment"></a>
 
 Each cluster node should have one elastic network interface assigned that includes three private IP addresses on the subnet: a primary IP address, a cluster IP address, and an Availability Group IP address\. The operating system \(OS\) should have the NIC configured for DHCP\. It should not be set for a static IP address because the IP addresses for the cluster IP and Availability Group will be handled virtually in the Failover Cluster Manager\. The NIC can be configured for a static IP as long as it is configured to only use the primary IP of **eth0**\. If the other IPs are assigned to the NIC, it can cause network drops for the instance during failover events\.
 
@@ -48,7 +48,7 @@ netsh int ipv6 isatap set state disabled
 
 When you run this command, the adapter is removed from Device Manager\. This command should be run on all nodes\. It does not impact the ability of the cluster to function\. Instead, when the command has been run, ISATAP is no longer used\. However, because this command might cause unknown impacts on other applications that leverage ISATAP, you should test it\. 
 
-## Cluster Properties<a name="sql-clustering-cluster-properties"></a>
+## Cluster properties<a name="sql-clustering-cluster-properties"></a>
 
 To see the complete cluster configuration, run the following PowerShell command\.
 
@@ -56,11 +56,11 @@ To see the complete cluster configuration, run the following PowerShell command\
 Get-Cluster | Format-List -Property *
 ```
 
-## Cluster Quorum Votes and 50/50 Splits in a Multi\-Site Cluster<a name="sql-clustering-quorum"></a>
+## Cluster quorum votes and 50/50 splits in a multi\-site cluster<a name="sql-clustering-quorum"></a>
 
 To learn how the cluster quorum works and what to expect if a failure occurs, see [Understanding Cluster and Pool Quorum](https://docs.microsoft.com/en-us/windows-server/storage/storage-spaces/understand-quorum)\.
 
-## DNS Registration<a name="sql-dns-registration"></a>
+## DNS registration<a name="sql-dns-registration"></a>
 
 In Windows Server 2012, Failover Clustering, by default, attempts to register each DNS node under the cluster name\. This is acceptable for applications that are aware the SQL target is configured for multi\-site\. However, when the client is not configured this way, it can result in timeouts, delays, and application errors due to attempts to connect to each individual node and failing on the inactive ones\. To prevent these problems, the Cluster Resource parameter `RegisterAllProvidersIp` must be changed to **0**\. For more information, see [RegisterAllProvidersIP Setting](https://msdn.microsoft.com/en-us/library/hh213080.aspx#RegisterAllProvidersIP) and [Multi\-subnet Clustered SQL \+ RegisterAllProvidersIP \+ SharePoint 2013](https://blogs.msdn.microsoft.com/sambetts/2014/02/04/multi-subnet-clustered-sql-registerallprovidersip-sharepoint-2013/)\.
 
@@ -111,23 +111,23 @@ Run the following command\.
 Set-NetAdapterRss -name (Get-NetAdapter | Where-Object {$_.InterfaceDescription -like '*Elastic*'}).Name -Baseprocessorgroup 0 -BaseProcessorNumber 1
 ```
 
-## Multi\-Site Clusters and EC2 Instance Placement<a name="sql-multi-site-clusters"></a>
+## Multi\-site clusters and EC2 instance placement<a name="sql-multi-site-clusters"></a>
 
 Each cluster is considered a [multi\-site cluster](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd197575(v=ws.10))\. The EC2 service does not share IP addresses virtually\. Each node must be in a unique [subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)\. Though not required, we recommend that each node also be in a unique [Availability Zone](EC2Win_Infrastructure.md#EC2Win_Regions)\.
 
-## Instance Type Selection<a name="sql-clustering-instance-type"></a>
+## Instance type selection<a name="sql-clustering-instance-type"></a>
 
 The type of instance recommended for Windows Server Failover Clustering depends on the workload\. For production workloads, we recommend instances that support [EBS optimization](ebs-optimized.md) and [Enhanced networking](enhanced-networking.md)\.
 
-## Assigning Elastic Network Interfaces and IPs to the Instance<a name="sql-clustering-assigning-ENI-IP"></a>
+## Assign elastic network interfaces and IPs to the instance<a name="sql-clustering-assigning-ENI-IP"></a>
 
 Each node in an EC2 cluster should have only one attached elastic network interface\. The network interface should have a minimum of two assigned private IP addresses\. However, for workloads that use Availability Groups, such as SQL Always On, you must include an additional IP address for each Availability Group\. The primary IP address is used for accessing and managing the server, the secondary IP address is used as the cluster IP address, and each additional IP address is assigned to Availability Groups, as needed\.
 
-## Heartbeat Network<a name="sql-clustering-heartbeat"></a>
+## Heartbeat network<a name="sql-clustering-heartbeat"></a>
 
 Some Microsoft documentation recommends using a dedicated [heartbeat network](https://support.microsoft.com/en-us/help/258750/recommended-private-heartbeat-configuration-on-a-cluster-server)\. However, this recommendation is not applicable to EC2\. With EC2, while you can assign and use a second elastic network interface for the heartbeat network, it uses the same infrastructure and shares bandwidth with the primary network interface\. Therefore, traffic within the infrastructure cannot be prioritized, and cannot benefit from a dedicated network interface\.
 
-## Configuring the Network Adapter in the OS<a name="sql-clustering-network-adapter"></a>
+## Configure the network adapter in the OS<a name="sql-clustering-network-adapter"></a>
 
 The NIC in the OS can keep using DHCP as long as the DNS servers that are being retrieved from the DHCP Options Set allow for the nodes to resolve each other\. You can set the NIC to be configured statically\. When completed, you then manually configure only the primary IP address for the elastic network interface\. Failover Clustering manages and assigns additional IP addresses, as needed\.
 
@@ -141,7 +141,7 @@ Get-NetAdapter | Set-NetAdapterAdvancedProperty -DisplayName "MTU" -DisplayValue
 
 Microsoft does not recommend disabling IPv6 in a Windows Cluster\. While Failover Clustering works in an IPv4\-only environment, Microsoft tests clusters with IPv6 enabled\. See [Failover Clustering and IPv6 in Windows Server 2012 R2](https://techcommunity.microsoft.com/t5/Failover-Clustering/Failover-Clustering-and-IPv6-in-Windows-Server-2012-R2/ba-p/371912) for details\.
 
-## Host Record TTL for SQL Availability Group Listeners<a name="sql-clustering-ttl"></a>
+## Host record TTL for SQL Availability Group Listeners<a name="sql-clustering-ttl"></a>
 
 Set the host record TTL to **300** seconds instead of the default 20 minutes \(1200 seconds\)\. For legacy client comparability, set `RegisterAllProvidersIP` to **0** for SQL Availability Group Listeners\. This is not required in all environments\. These settings are important because some legacy client applications cannot use `MultiSubnetFailover` in their connection strings\. See [HostRecordTTL Setting](https://docs.microsoft.com/en-us/sql/database-engine/availability-groups/windows/create-or-configure-an-availability-group-listener-sql-server?view=sql-server-2017#HostRecordTTL) for more information\. When you change these settings, the Cluster Resource must be restarted\. The Cluster Group for the listener stops when the Cluster Resource is restarted, so it must be started\. If you do not start the Cluster Group, the Availability Group remains offline in a `RESOLVING` state\. The following are example PowerShell scripts for changing the TTL and `RegisterAllProvidersIP` settings\.
 
@@ -189,7 +189,7 @@ For Windows Server versions earlier than 2016 and non\-Hyper\-V workloads, Micro
 Get-NetAdapter | Set-NetAdapterBinding –ComponentID ms_netftflt –Enable $true
 ```
 
-## Setting Possible Owners<a name="sql-owners"></a>
+## Set possible owners<a name="sql-owners"></a>
 
 The Failover Cluster Manager can be configured so that each IP address specified on the Cluster Core Resources and Availability Group resources can be brought online only on the node to which the IP belongs\. When the Failover Cluster Manager is not configured for this and a failure occurs, there will be some delay in failover as the cluster attempts to bring up the IPs on nodes that do not recognize the address\. For more information, see [SQL Server Manages Preferred and Possible Owner Properties for AlwaysOn Availability Group/Role](https://blogs.msdn.microsoft.com/alwaysonpro/2014/02/28/sql-server-manages-preferred-and-possible-owner-properties-for-alwayson-availability-grouprole/)\.
 
@@ -197,7 +197,7 @@ Each resource in a cluster has a setting for Possible Owners\. This setting tell
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/failover_cluster_manager_1.PNG)
 
-## Tuning the Failover Thresholds<a name="sql-failover-thresholds"></a>
+## Tune the failover thresholds<a name="sql-failover-thresholds"></a>
 
 In Server 2012 R2, the network thresholds for the failover heartbeat network default to high values\. See [Tuning Failover Cluster Network Thresholds](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) for details\. This potentially unreliable configuration \(for clusters with some distance between them\) was addressed in Server 2016 with an increase in the number of heartbeats\. It was discovered that clusters would fail over due to very brief transient network issues\. The heartbeat network is maintained with UDP 3343, which is traditionally far less reliable than TCP and more prone to incomplete conversations\. Although there are low\-latency connections between AWS Availability Zones, there are still geographic separations with a number of "hops" separating resources\. Within an Availability Zone, there may be some distance between clusters unless the customer is using Placement Groups or Dedicated Hosts\. As a result, there is a higher possibility for heartbeat failure with UDP than with TCP\-based heartbeats\.
 
@@ -219,11 +219,11 @@ After increasing the `SameSubnetThreshold` or `CrossSubnetThreshold`, we recomme
 (Get-Cluster).RouteHistoryLength = 20
 ```
 
-## Witness Importance and Dynamic Quorum Architecture<a name="sql-clustering-file-share-witness"></a>
+## Witness importance and Dynamic Quorum Architecture<a name="sql-clustering-file-share-witness"></a>
 
 There is a difference between Disk Witness and File Share Witness\. Disk Witness keeps a backup of the cluster database while File Share Witness does not\. Both add a [vote to the cluster](#sql-clustering-quorum)\. You can use Disk Witness if you use iSCSI\-based storage\. For more about witness options, see [File Share witness vs Disk witness for local clusters](https://blogs.technet.microsoft.com/mspfe/2012/11/05/file-share-witness-vs-disk-witness-for-local-clusters/)\.
 
-## Troubleshooting<a name="sql-troubleshooting"></a>
+## Troubleshoot<a name="sql-troubleshooting"></a>
 
 If you experience unexpected failovers, first make sure that you are not experiencing networking, service, or infrastructure issues\.
 

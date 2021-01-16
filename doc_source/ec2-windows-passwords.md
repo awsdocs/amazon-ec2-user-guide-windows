@@ -1,4 +1,4 @@
-# Setting the password for a Windows instance<a name="ec2-windows-passwords"></a>
+# Set the password for a Windows instance<a name="ec2-windows-passwords"></a>
 
 When you connect to a Windows instance, you must specify a user account and password that has permission to access the instance\. The first time that you connect to an instance, you are prompted to specify the Administrator account and the default password\.
 
@@ -7,7 +7,7 @@ With AWS Windows AMIs for Windows Server 2012 R2 and earlier, the [EC2Config ser
 **Note**  
 With Windows Server 2016 and later, `Password never expires` is disabled for the local administrator\. With Windows Server 2012 R2 and earlier, `Password never expires` is enabled for the local administrator\.
 
-## Changing the Administrator password after connecting<a name="change-admin-password"></a>
+## Change the Administrator password after connecting<a name="change-admin-password"></a>
 
 When you connect to an instance the first time, we recommend that you change the Administrator password from its default value\. Use the following procedure to change the Administrator password for a Windows instance\.
 
@@ -26,6 +26,6 @@ Store the new password in a safe place\. You won't be able to retrieve the new p
 
 1. Store the new password in a safe place\.
 
-## Changing a lost or expired password<a name="change-lost-expired-password"></a>
+## Change a lost or expired password<a name="change-lost-expired-password"></a>
 
 If you lose your password or it expires, you can generate a new password\. For password reset procedures, see [Reset a lost or expired Windows administrator password](ResettingAdminPassword.md)\.

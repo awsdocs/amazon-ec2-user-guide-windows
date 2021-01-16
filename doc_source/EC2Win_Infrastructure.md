@@ -10,7 +10,7 @@ As you get started with Amazon EC2, you'll benefit from understanding the compon
 + [Networking and security](#EC2Win_Sec)
 + [AWS Identity and Access Management](#EC2Win_IAM)
 + [Differences between Windows Server and an Amazon EC2 Windows instance](#EC2InstanceAndWindowsServer)
-+ [Designing your applications to run on Amazon EC2 Windows instances](#Win_AppDesign)
++ [Design your applications to run on Amazon EC2 Windows instances](#Win_AppDesign)
 
 ## Amazon Machine Images and instances<a name="AMISandInstances"></a>
 
@@ -95,7 +95,7 @@ You can verify the setting by viewing details for the root device volume on the 
 
 **To change the root device volume of an instance to persist using the command line**
 
-You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
+You can use one of the following commands\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
 + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
 + [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
@@ -152,7 +152,7 @@ An Amazon EC2 Windows instance is similar to the traditional Windows Server, as 
 
 ![\[Instance and AMI lifecycle\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_lifecycle.png)
 
-## Designing your applications to run on Amazon EC2 Windows instances<a name="Win_AppDesign"></a>
+## Design your applications to run on Amazon EC2 Windows instances<a name="Win_AppDesign"></a>
 
 It is important that you consider the differences mentioned in the previous section when you design your applications to run on Amazon EC2 Windows instances\.
 

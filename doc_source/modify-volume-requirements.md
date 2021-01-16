@@ -12,7 +12,7 @@ If your instance type does not support Elastic Volumes, see [Modify an EBS volum
 
 ## Requirements for Windows volumes<a name="window-volumes"></a>
 
-By default, Windows initializes volumes with a master boot record \(MBR\) partition table\. Because MBR supports only volumes smaller than 2 TiB \(2,048 GiB\), Windows prevents you from resizing MBR volumes beyond this limit\. In such a case, the **Extend Volume** option is disabled in the Windows **Disk Management** utility\. If you use the AWS Management Console or AWS CLI to create an MBR\-partitioned volume that exceeds the size limit, Windows cannot detect or use the additional space\. For requirements affecting Linux volumes, see [Requirements for Linux Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_constraints.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+By default, Windows initializes volumes with a master boot record \(MBR\) partition table\. Because MBR supports only volumes smaller than 2 TiB \(2,048 GiB\), Windows prevents you from resizing MBR volumes beyond this limit\. In such a case, the **Extend Volume** option is disabled in the Windows **Disk Management** utility\. If you use the AWS Management Console or AWS CLI to create an MBR\-partitioned volume that exceeds the size limit, Windows cannot detect or use the additional space\. For requirements affecting Linux volumes, see [Requirements for Linux volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/volume_constraints.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 To overcome this limitation, you can create a new, larger volume with a GUID partition table \(GPT\) and copy over the data from the original MBR volume\. 
 

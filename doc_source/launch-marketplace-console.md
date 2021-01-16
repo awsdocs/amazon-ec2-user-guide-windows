@@ -28,11 +28,11 @@ You are not charged for using the product until you have launched an instance wi
 **Note**  
 You are charged the subscription price as long as your instance is running, even if it is idle\. If your instance is stopped, you may still be charged for storage\.
 
-1. When your instance is in the `running` state, you can connect to it\. To do this, select your instance in the list and choose **Connect**\. Follow the instructions in the dialog\. For more information about connecting to your instance, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. When your instance is in the `running` state, you can connect to it\. To do this, select your instance in the list and choose **Connect**\. Follow the instructions in the dialog\. For more information about connecting to your instance, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 **Important**  
 Check the vendor's usage instructions carefully, as you may need to use a specific user name to log in to the instance\. For more information about accessing your subscription details, see [Manage your AWS Marketplace subscriptions](paid-amis.md#marketplace-manage-subscriptions)\.
 
-1. If the instance fails to launch or the state immediately goes to `terminated` instead of `running`, see [Troubleshooting instance launch issues](troubleshooting-launch.md)\.
+1. If the instance fails to launch or the state immediately goes to `terminated` instead of `running`, see [Troubleshoot instance launch issues](troubleshooting-launch.md)\.
 
 ## Launch an AWS Marketplace AMI instance using the API and CLI<a name="launch-marketplace-cli-api"></a>
 

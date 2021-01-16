@@ -1,25 +1,25 @@
-# Configuring a Windows instance using the EC2Config service<a name="ec2config-service"></a>
+# Configure a Windows instance using the EC2Config service<a name="ec2config-service"></a>
 
 The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
 Windows AMIs for Windows Server 2012 R2 and earlier include an optional service, the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. EC2Config can also perform tasks on demand\. Some of these tasks are automatically enabled, while others must be enabled manually\. Although optional, this service provides access to advanced features that aren't otherwise available\. This service runs in the LocalSystem account\.
 
 **Note**  
-EC2Launch replaced EC2Config on Windows AMIs for Windows Server 2016 and later\. For more information, see [Configuring a Windows instance using EC2Launch](ec2launch.md)\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
+EC2Launch replaced EC2Config on Windows AMIs for Windows Server 2016 and later\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md)\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
 EC2Config uses settings files to control its operation\. You can update these settings files using either a graphical tool or by directly editing XML files\. The service binaries and additional files are contained in the `%ProgramFiles%\Amazon\EC2ConfigService` directory\.
 
 **Topics**
 + [EC2Config tasks](#UsingConfig_Ovw)
-+ [Installing the latest version of EC2Config](UsingConfig_Install.md)
-+ [Stopping, restarting, deleting, or uninstalling EC2Config](#UsingConfig_StopDelete)
++ [Install the latest version of EC2Config](UsingConfig_Install.md)
++ [Stop, restart, delete, or uninstall EC2Config](#UsingConfig_StopDelete)
 + [EC2Config and AWS Systems Manager](#ec2config-ssm)
 + [EC2Config and Sysprep](#ec2config-sysprep)
 + [EC2 service properties](#UsingConfigInterface_WinAMI)
 + [EC2Config settings files](#UsingConfigXML_WinAMI)
 + [Configure proxy settings for the EC2Config service](#ec2config-proxy)
 + [EC2Config version history](ec2config-version-details.md)
-+ [Troubleshooting issues with the EC2Config service](repair-ec2config.md)
++ [Troubleshoot issues with the EC2Config service](repair-ec2config.md)
 
 ## EC2Config tasks<a name="UsingConfig_Ovw"></a>
 
@@ -43,7 +43,7 @@ EC2Config performs the following task every time a user logs in:
 While the instance is running, you can request that EC2Config perform the following task on demand:
 + Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep ](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
-## Stopping, restarting, deleting, or uninstalling EC2Config<a name="UsingConfig_StopDelete"></a>
+## Stop, restart, delete, or uninstall EC2Config<a name="UsingConfig_StopDelete"></a>
 
 You can manage the EC2Config service just as you would any other service\.
 

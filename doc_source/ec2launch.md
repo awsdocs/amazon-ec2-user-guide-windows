@@ -1,13 +1,13 @@
-# Configuring a Windows instance using EC2Launch<a name="ec2launch"></a>
+# Configure a Windows instance using EC2Launch<a name="ec2launch"></a>
 
 EC2Launch is a set of Windows PowerShell scripts that replaced the EC2Config service on Windows Server 2016 and later AMIs\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
 **Topics**
 + [EC2Launch tasks](#ec2launch-tasks)
-+ [Installing the latest version of EC2Launch](ec2launch-download.md)
++ [Install the latest version of EC2Launch](ec2launch-download.md)
 + [Verify the EC2Launch version](#ec2launch-verify-version)
 + [EC2Launch directory structure](#ec2launch-directories)
-+ [Configuring EC2Launch](#ec2launch-config)
++ [Configure EC2Launch](#ec2launch-config)
 + [EC2Launch version history](ec2launch-version-details.md)
 
 ## EC2Launch tasks<a name="ec2launch-tasks"></a>
@@ -23,7 +23,7 @@ EC2Launch performs the following tasks by default during the initial instance bo
 + Executes user data \(if specified\)\. For more information about specifying user data, see [Work with instance user data](instancedata-add-user-data.md)\.
 +  Sets persistent static routes to reach the metadata service and KMS servers\. 
 **Important**  
- If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Updating metadata/KMS routes for Server 2016 and later when launching a custom AMI](Creating_EBSbacked_WinAMI.md#update-metadata-KMS)\. 
+ If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Update metadata/KMS routes for Server 2016 and later when launching a custom AMI](Creating_EBSbacked_WinAMI.md#update-metadata-KMS)\. 
 
 The following tasks help to maintain backward compatibility with the EC2Config service\. You can also configure EC2Launch to perform these tasks during startup:
 + Initialize secondary EBS volumes\.
@@ -58,7 +58,7 @@ The `Launch` directory contains the following subdirectories\.
 All EC2Launch directories inherit their permissions from `C:\ProgramData`, with the exception of the following:
 + `C:\ProgramData\Amazon\EC2-Windows\Launch\Module\Scripts` — This folder inherits all initial permissions from `C:\ProgramData` when it is created, but removes access for normal users to `CreateFiles` in the directory\.
 
-## Configuring EC2Launch<a name="ec2launch-config"></a>
+## Configure EC2Launch<a name="ec2launch-config"></a>
 
 After your instance has been initialized the first time, you can configure EC2Launch to run again and perform different start\-up tasks\.
 

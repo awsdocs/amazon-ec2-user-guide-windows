@@ -1,4 +1,4 @@
-# Step 3: Create an AWS Run As Account<a name="CreateRunAsAccount"></a>
+# Step 3: Create an AWS Run As account<a name="CreateRunAsAccount"></a>
 
 You must set up credentials that grant AWS Management Pack access to your AWS resources\.
 

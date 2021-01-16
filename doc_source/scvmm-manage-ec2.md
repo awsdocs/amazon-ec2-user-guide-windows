@@ -1,17 +1,17 @@
-# Managing EC2 Instances Using AWS Systems Manager for Microsoft SCVMM<a name="scvmm-manage-ec2"></a>
+# Manage EC2 instances using AWS Systems Manager for Microsoft SCVMM<a name="scvmm-manage-ec2"></a>
 
 After you log in to the Systems Manager console using your AWS credentials, you can manage your EC2 instances\.
 
 **Topics**
-+ [Creating an EC2 Instance](#create-instances)
-+ [Viewing Your Instances](#view-instances)
-+ [Connecting to Your Instance](#connect-instances)
-+ [Rebooting Your Instance](#reboot-instance)
-+ [Stopping Your Instance](#stop-instance)
-+ [Starting Your Instance](#start-instance)
-+ [Terminating Your Instance](#terminate-instance)
++ [Create an EC2 Instance](#create-instances)
++ [View your instances](#view-instances)
++ [Connect to your instance](#connect-instances)
++ [Reboot your instance](#reboot-instance)
++ [Stop your instance](#stop-instance)
++ [Start your instance](#start-instance)
++ [Terminate your instance](#terminate-instance)
 
-## Creating an EC2 Instance<a name="create-instances"></a>
+## Create an EC2 Instance<a name="create-instances"></a>
 
 The permissions that you've been granted by your administrator determine whether you can create instances\.
 
@@ -54,7 +54,7 @@ You can manage the lifecycle of your instance using Systems Manager, as describe
 + [Associate an Elastic IP address with your instance](elastic-ip-addresses-eip.md#using-instance-addressing-eips-associating)
 + [Enable termination protection](terminating-instances.md#Using_ChangingDisableAPITermination)
 
-## Viewing Your Instances<a name="view-instances"></a>
+## View your instances<a name="view-instances"></a>
 
 The permissions that your administrator grants you determine whether you can view instances and get detailed information about them\.
 
@@ -69,7 +69,7 @@ The permissions that your administrator grants you determine whether you can vie
 1. In the lower pane, click the down arrow next to each instance to view detailed information about the instance\.  
 ![\[View instance details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_details.png)
 
-## Connecting to Your Instance<a name="connect-instances"></a>
+## Connect to your instance<a name="connect-instances"></a>
 
 You can log in to an EC2 instance if you have the private key \(`.pem` file\) for the key pair that was specified when launching the instance\. The tool that you'll use to connect to your instance depends on whether the instance is a Windows instance or a Linux instance\.
 
@@ -87,7 +87,7 @@ You can log in to an EC2 instance if you have the private key \(`.pem` file\) fo
 
 1. Because the certificate is self\-signed, you might get a warning that the security certificate is not from a trusted certifying authority\. Click **Yes** to continue\.
 
-   If the connection fails, see [Troubleshooting Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/troubleshooting-windows-instances.html) in the *Amazon EC2 User Guide for Windows Instances*\.
+   If the connection fails, see [Troubleshoot Windows instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/troubleshooting-windows-instances.html) in the *Amazon EC2 User Guide for Windows Instances*\.
 
 **To connect to a Linux EC2 instance**
 
@@ -99,9 +99,9 @@ You can log in to an EC2 instance if you have the private key \(`.pem` file\) fo
 
 1. Locate the public DNS name\. You'll need this information to connect to your instance\.
 
-1. Connect to the instance using PuTTY\. For step\-by\-step instructions, see [Connect to Your Linux Instance from Windows Using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+1. Connect to the instance using PuTTY\. For step\-by\-step instructions, see [Connect to your Linux instance from Windows using PuTTY](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-## Rebooting Your Instance<a name="reboot-instance"></a>
+## Reboot your instance<a name="reboot-instance"></a>
 
 The permissions that you've been granted by your administrator determine whether you can reboot instances\.
 
@@ -115,7 +115,7 @@ The permissions that you've been granted by your administrator determine whether
 
 1. When prompted for confirmation, click **Yes**\.
 
-## Stopping Your Instance<a name="stop-instance"></a>
+## Stop your instance<a name="stop-instance"></a>
 
 The permissions that you've been granted by your administrator determine whether you can stop instances\.
 
@@ -129,7 +129,7 @@ The permissions that you've been granted by your administrator determine whether
 
 1. When prompted for confirmation, click **Yes**\.
 
-## Starting Your Instance<a name="start-instance"></a>
+## Start your instance<a name="start-instance"></a>
 
 The permissions that you've been granted by your administrator determine whether you can start instances\.
 
@@ -145,7 +145,7 @@ The permissions that you've been granted by your administrator determine whether
 
 If you get a quota error when you try to start an instance, you have reached your concurrent running instance limit\. The default limit for your AWS account is 20\. If you need additional running instances, complete the form at [Request to Increase Amazon EC2 Instance Limit](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-ec2-instances)\.
 
-## Terminating Your Instance<a name="terminate-instance"></a>
+## Terminate your instance<a name="terminate-instance"></a>
 
 The permissions that you've been granted by your administrator determine whether you can terminate instances\.
 

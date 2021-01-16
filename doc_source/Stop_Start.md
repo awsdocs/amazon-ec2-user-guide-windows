@@ -24,7 +24,7 @@ When you stop a running instance, the following happens:
 + In most cases, the instance is migrated to a new underlying host computer when it's started \(though in some cases, it remains on the current host\)\.
 + The instance retains its private IPv4 addresses and any IPv6 addresses when stopped and started\. We release the public IPv4 address and assign a new one when you start it\.
 + The instance retains its associated Elastic IP addresses\. You're charged for any Elastic IP addresses associated with a stopped instance\. With EC2\-Classic, an Elastic IP address is dissociated from your instance when you stop it\. For more information, see [EC2\-Classic](ec2-classic-platform.md)\.
-+ When you stop and start a Windows instance, the EC2Config service performs tasks on the instance, such as changing the drive letters for any attached Amazon EBS volumes\. For more information about these defaults and how you can change them, see [Configuring a Windows instance using the EC2Config service](ec2config-service.md) \.
++ When you stop and start a Windows instance, the EC2Config service performs tasks on the instance, such as changing the drive letters for any attached Amazon EBS volumes\. For more information about these defaults and how you can change them, see [Configure a Windows instance using the EC2Config service](ec2config-service.md) \.
 + If your instance is in an Auto Scaling group, the Amazon EC2 Auto Scaling service marks the stopped instance as unhealthy, and may terminate it and launch a replacement instance\. For more information, see [Health Checks for Auto Scaling Instances](https://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 + When you stop a ClassicLink instance, it's unlinked from the VPC to which it was linked\. You must link the instance to the VPC again after starting it\. For more information about ClassicLink, see [ClassicLink](vpc-classiclink.md)\.
 
@@ -95,7 +95,7 @@ You can stop and start your Amazon EBS\-backed instance using the console or the
 
 **To stop and start an Amazon EBS\-backed instance using the command line**
 
-You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
+You can use one of the following commands\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
 + [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) and [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\)
 + [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) and [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)
 
@@ -107,14 +107,14 @@ You can change the instance type, user data, and EBS\-optimization attributes of
 + To change the instance type, see [Change the instance type](ec2-instance-resize.md)\.
 + To change the user data for your instance, see [Work with instance user data](instancedata-add-user-data.md)\.
 + To enable or disable EBS–optimization for your instance, see [Modifying EBS–Optimization](ebs-optimized.md#modify-ebs-optimized-attribute)\.
-+ To change the `DeleteOnTermination` attribute of the root volume for your instance, see [Updating the block device mapping of a running instance](block-device-mapping-concepts.md#update-instance-bdm)\. You are not required to stop the instance to change this attribute\. 
++ To change the `DeleteOnTermination` attribute of the root volume for your instance, see [Update the block device mapping of a running instance](block-device-mapping-concepts.md#update-instance-bdm)\. You are not required to stop the instance to change this attribute\. 
 
 **To modify an instance attribute using the command line**
 
-You can use one of the following commands\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
+You can use one of the following commands\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
 + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
 + [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
 ## Troubleshoot stopping your instance<a name="troubleshoot-instance-stop"></a>
 
-If you have stopped your Amazon EBS\-backed instance and it appears "stuck" in the `stopping` state, you can forcibly stop it\. For more information, see [Troubleshooting stopping your instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+If you have stopped your Amazon EBS\-backed instance and it appears "stuck" in the `stopping` state, you can forcibly stop it\. For more information, see [Troubleshoot stopping your instance](TroubleshootingInstancesStopping.md)\.

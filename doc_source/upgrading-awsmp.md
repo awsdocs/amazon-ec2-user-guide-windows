@@ -1,4 +1,4 @@
-# Upgrading the AWS Management Pack<a name="upgrading-awsmp"></a>
+# Upgrade the AWS Management Pack<a name="upgrading-awsmp"></a>
 
 The procedure that you'll use to update AWS Management Pack depends on the version of System Center\.
 
@@ -18,7 +18,7 @@ The procedure that you'll use to update AWS Management Pack depends on the versi
 
 1. On the **Select Management Packs** page, under **Import list**, select the **Amazon Web Services** management pack, and then click **Install**\.
 
-   If the **Install** button is disabled, upgrading to the current version is not supported and you must uninstall the AWS Management Pack before you can install the current version\. For more information, see [Uninstalling the AWS Management Pack](uninstalling-awsmp.md)\.
+   If the **Install** button is disabled, upgrading to the current version is not supported and you must uninstall the AWS Management Pack before you can install the current version\. For more information, see [Uninstall the AWS Management Pack](uninstalling-awsmp.md)\.
 
 ## System Center 2007 R2<a name="upgrade-2007"></a>
 
@@ -52,4 +52,4 @@ The procedure that you'll use to update AWS Management Pack depends on the versi
 
 1. On the **Select Management Packs** page, under **Import list**, select the **Amazon Web Services** management pack, and then click **Install**\.
 
-   If the **Install** button is disabled, upgrading to the current version is not supported and you must uninstall AWS Management Pack first\. For more information, see [Uninstalling the AWS Management Pack](uninstalling-awsmp.md)\.
+   If the **Install** button is disabled, upgrading to the current version is not supported and you must uninstall AWS Management Pack first\. For more information, see [Uninstall the AWS Management Pack](uninstalling-awsmp.md)\.

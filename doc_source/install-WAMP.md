@@ -1,6 +1,6 @@
-# Tutorial: Installing a WAMP Server on an Amazon EC2 Instance Running Windows Server<a name="install-WAMP"></a>
+# Tutorial: Install a WAMP Server on an Amazon EC2 Instance Running Windows Server<a name="install-WAMP"></a>
 
-This tutorial shows you how to install an Apache web server with PHP and MySQL on an EC2 instance running Windows Server\. This software configuration is sometimes called a WAMP server or WAMP stack \(Windows, Apache, MySQL, PHP\)\. For information about how to create a similar server on Linux, see [Tutorial: Installing a LAMP Web Server](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-LAMP.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+This tutorial shows you how to install an Apache web server with PHP and MySQL on an EC2 instance running Windows Server\. This software configuration is sometimes called a WAMP server or WAMP stack \(Windows, Apache, MySQL, PHP\)\. For information about how to create a similar server on Amazon Linux 2, see [Tutorial: Install a LAMP web server on Amazon Linux 2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 A WAMP stack is designed for easy installation to help developers get up and running quickly\. It is not designed for production environments for the following reasons:
 + The default configurations do not meet security requirements for most production environments\.
@@ -20,7 +20,7 @@ There are many third\-party solutions that you can use to install a WAMP stack; 
 
 **To install a WAMP server**
 
-1. Connect to your instance using Microsoft Remote Desktop\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Connect to your instance using Microsoft Remote Desktop\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Disable Internet Explorer Enhanced Security Configuration so that you can download and install required software from the web\.
 
@@ -37,14 +37,14 @@ There are many third\-party solutions that you can use to install a WAMP stack; 
    1. Make a note to re\-enable Internet Explorer Enhanced Security Configuration when you have finished installing software from the web\.
 
 1. Install software updates to ensure that the instance has the latest security updates and bug fixes\.
-   + **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information, see [Installing the latest version of EC2Config](UsingConfig_Install.md)\.
+   + **EC2Config** \- [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information, see [Install the latest version of EC2Config](UsingConfig_Install.md)\.
    + **Windows Update** \- Run Windows Update to ensure that the latest security and software updates are installed on the instance\. In Control Panel, click **System and Security**\. In the **Windows Update** section, click **Check for updates**\.
 
 1. Download and install the WAMP stack\. For the purposes of this tutorial, we suggest that you download and install [this WAMP stack](https://bitnami.com/stack/wamp)\. You can, however, download and install other Bitnami WAMP stacks\. Regardless of which stack you install, the Bitnami site prompts you to either create a free Bitnami account or log in by using a social media account\. After you log in, run the Bitnami setup wizard\.
 
 1. After setup completes, verify that the Apache web server is configured properly and running by browsing to a test page\. Open a web browser on a different computer and enter either the public DNS address of the WAMP server or the public IP address\. The public DNS address for your instance is listed on the Amazon EC2 console in the **Public DNS** column\. If this column is hidden, click the **Show/Hide** icon and select **Public DNS**\.
 **Important**  
-If you do not see the Bitnami test page, use Windows Firewall with Advanced Security to create a custom rule that allows the HTTP protocol through port 80 and the HTTPS protocol through port 443\. For more information, see [Network Security](https://technet.microsoft.com/en-us/library/cc725616.aspx) on Microsoft TechNet\. Also verify that the security group for your instances contains a rule to allow connections on HTTP \(port 80\)\. For more information, see [Adding rules to a security group](working-with-security-groups.md#adding-security-group-rule)\.
+If you do not see the Bitnami test page, use Windows Firewall with Advanced Security to create a custom rule that allows the HTTP protocol through port 80 and the HTTPS protocol through port 443\. For more information, see [Network Security](https://technet.microsoft.com/en-us/library/cc725616.aspx) on Microsoft TechNet\. Also verify that the security group for your instances contains a rule to allow connections on HTTP \(port 80\)\. For more information, see [Add rules to a security group](working-with-security-groups.md#adding-security-group-rule)\.
 
 1. Test your WAMP server by viewing a PHP file from the web\. You must be logged onto the instance as an administrator to perform the following steps\. 
 

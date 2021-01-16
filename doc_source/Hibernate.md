@@ -461,4 +461,4 @@ If you’re using a T3 or T3a instance with less than 1 GB of RAM, try increasin
 
 ### Instance "stuck" in the stopping state<a name="hibernate-troubleshooting-3"></a>
 
-If you hibernated your instance and it appears "stuck" in the `stopping` state, you can forcibly stop it\. For more information, see [Troubleshooting stopping your instance](TroubleshootingInstancesStopping.md)\.
+If you hibernated your instance and it appears "stuck" in the `stopping` state, you can forcibly stop it\. For more information, see [Troubleshoot stopping your instance](TroubleshootingInstancesStopping.md)\.

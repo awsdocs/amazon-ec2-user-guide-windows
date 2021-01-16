@@ -13,7 +13,7 @@ To see Network MTU information for Linux instances, switch to this page in the *
 + [Path MTU Discovery](#path_mtu_discovery)
 + [Check the path MTU between two hosts](#check_path_mtu)
 + [Check and set the MTU on your Windows instance](#set_mtu_windows)
-+ [Troubleshooting](#mtu-troubleshooting)
++ [Troubleshoot](#mtu-troubleshooting)
 
 ## Jumbo frames \(9001 MTU\)<a name="jumbo_frame_instances"></a>
 
@@ -166,6 +166,6 @@ Disable jumbo frames as follows:
 netsh interface ipv4 set subinterface "Ethernet" mtu=1500
 ```
 
-## Troubleshooting<a name="mtu-troubleshooting"></a>
+## Troubleshoot<a name="mtu-troubleshooting"></a>
 
 If you experience connectivity issues between your EC2 instance and an Amazon Redshift cluster when using jumbo frames, see [Queries Appear to Hang](https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-drop-issues.html) in the *Amazon Redshift Cluster Management Guide*

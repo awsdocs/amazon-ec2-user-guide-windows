@@ -1,14 +1,14 @@
-# Setting Up AWS Systems Manager for Microsoft SCVMM<a name="scvmm-set-up"></a>
+# Set up AWS Systems Manager for Microsoft SCVMM<a name="scvmm-set-up"></a>
 
 When you set up AWS Systems Manager, users in your organization can access your AWS resources\. The process involves creating accounts, deploying the add\-in, and providing your credentials\.
 
 **Topics**
-+ [Sign Up for AWS](#create-account)
-+ [Set Up Access for Users](#create-users)
-+ [Deploy the Add\-In](#deploy-add-in)
-+ [Provide Your AWS Credentials](#provide-credentials)
++ [Sign up for AWS](#create-account)
++ [Set up access for users](#create-users)
++ [Deploy the add\-in](#deploy-add-in)
++ [Provide your AWS credentials](#provide-credentials)
 
-## Sign Up for AWS<a name="create-account"></a>
+## Sign up for AWS<a name="create-account"></a>
 
 When you sign up for Amazon Web Services, your AWS account is automatically signed up for all services in AWS\. You are charged only for the services that you use\.
 
@@ -22,7 +22,7 @@ If you have an AWS account already, skip to the next task\. If you don't have an
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
-## Set Up Access for Users<a name="create-users"></a>
+## Set up access for users<a name="create-users"></a>
 
 The first time that you use Systems Manager, you must provide AWS credentials\. To enable multiple users to access the same AWS account using unique credentials and permissions, create an IAM user for each user\. You can create one or more groups with policies that grant permissions to perform limited tasks\. Then you can create one or more IAM users, and add each user to the appropriate group\.
 
@@ -144,7 +144,7 @@ You cannot retrieve the secret access key after you complete this step; if you m
 
 1. Choose **Close**\.
 
-## Deploy the Add\-In<a name="deploy-add-in"></a>
+## Deploy the add\-in<a name="deploy-add-in"></a>
 
 Add\-ins for System Center VMM are distributed as `.zip` files\. To deploy the add\-in, use the following procedure\.
 
@@ -166,7 +166,7 @@ Add\-ins for System Center VMM are distributed as `.zip` files\. To deploy the a
 
 1. When the add\-in is imported, the status of the job is `Completed`\. You can close the **Jobs** window\.
 
-## Provide Your AWS Credentials<a name="provide-credentials"></a>
+## Provide your AWS credentials<a name="provide-credentials"></a>
 
 When you use the Systems Manager for the first time, you must provide your AWS credentials\. Your access keys identify you to AWS\. There are two types of access keys: access key IDs \(for example, AKIAIOSFODNN7EXAMPLE\) and secret access keys \(for example, wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\)\. You should have stored your access keys in a safe place when you received them\.
 

@@ -22,9 +22,9 @@ The following list shows which PV drivers you should run on each version of Wind
 + [AWS PV drivers](#xen-driver-awspv)
 + [Citrix PV drivers](#xen-driver-citrix)
 + [RedHat PV drivers](#xen-driver-redhat)
-+ [Subscribing to notifications](#drivers-subscribe-notifications)
-+ [Upgrading PV drivers on Windows instances](Upgrading_PV_drivers.md)
-+ [Troubleshooting PV drivers](pvdrivers-troubleshooting.md)
++ [Subscribe to notifications](#drivers-subscribe-notifications)
++ [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)
++ [Troubleshoot PV drivers](pvdrivers-troubleshooting.md)
 
 ## AWS PV drivers<a name="xen-driver-awspv"></a>
 
@@ -39,7 +39,7 @@ The AWS PV driver components are listed in the Windows registry under `HKEY_LOCA
 
 AWS PV drivers also have a Windows service named LiteAgent, which runs in user\-mode\. It handles tasks such as shutdown and restart events from AWS APIs on Xen generation instances\. You can access and manage services by running `Services.msc` from the command line\. When running on Nitro generation instances, the AWS PV drivers are not used and the LiteAgent service will self\-stop starting with driver version 8\.2\.4\. Updating to the latest AWS PV driver also updates the LiteAgent and improves reliability on all instance generations\.
 
-### Installing the latest AWS PV drivers<a name="aws-pv-download"></a>
+### Install the latest AWS PV drivers<a name="aws-pv-download"></a>
 
 Amazon Windows AMIs contain a set of drivers to permit access to virtualized hardware\. These drivers are used by Amazon EC2 to map instance store and Amazon EBS volumes to their devices\. We recommend that you install the latest drivers to improve stability and performance of your EC2 Windows instances\.
 
@@ -93,7 +93,7 @@ RedHat drivers are supported for legacy instances, but are not recommended on ne
 
 The source files for the RedHat drivers are in the `%ProgramFiles%\RedHat` \(32\-bit instances\) or `%ProgramFiles(x86)%\RedHat` \(64\-bit instances\) directory\. The two drivers are `rhelnet`, the RedHat Paravirtualized network driver, and `rhelscsi`, the RedHat SCSI miniport driver\.
 
-## Subscribing to notifications<a name="drivers-subscribe-notifications"></a>
+## Subscribe to notifications<a name="drivers-subscribe-notifications"></a>
 
 Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use the following procedure to subscribe to these notifications\.
 

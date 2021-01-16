@@ -1,4 +1,4 @@
-# Configuring a Windows instance using EC2Launch v2<a name="ec2launch-v2"></a>
+# Configure a Windows instance using EC2Launch v2<a name="ec2launch-v2"></a>
 
 All supported instances of Amazon EC2 running Windows Server include the EC2Launch v2 service \(`EC2Launch.exe`\)\. EC2Launch v2 performs tasks during instance startup and runs if an instance is stopped and later started, or restarted\. EC2Launch v2 can also perform tasks on demand\. Some of these tasks are automatically enabled, while others must be enabled manually\. The EC2Launch v2 service supports all EC2Config and EC2Launch features\. 
 
@@ -20,5 +20,5 @@ EC2Launch v2 publishes Windows event logs to help you troubleshoot errors and se
 + [Verify the EC2Launch v2 version](ec2launch-v2-verify-version.md)
 + [Subscribe to EC2Launch v2 service notifications](ec2launch-v2-sns.md)
 + [EC2Launch v2 settings](ec2launch-v2-settings.md)
-+ [Troubleshooting EC2Launch v2](ec2launchv2-troubleshooting.md)
++ [Troubleshoot EC2Launch v2](ec2launchv2-troubleshooting.md)
 + [EC2Launch v2 version histories](ec2launchv2-versions.md)

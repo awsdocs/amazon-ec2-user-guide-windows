@@ -1,13 +1,13 @@
-# Troubleshooting AWS Systems Manager for Microsoft SCVMM<a name="scvmm-troubleshoot"></a>
+# Troubleshoot AWS Systems Manager for Microsoft SCVMM<a name="scvmm-troubleshoot"></a>
 
 The following are common errors and troubleshooting steps\.
 
 **Topics**
 + [Error: Add\-in cannot be installed](#scvmm-addin-error)
-+ [Installation Errors](#scvmm-install-errors)
-+ [Checking the Log File](#scvmm-log)
-+ [Errors Importing a VM](#scvmm-import-errors)
-+ [Uninstalling the Add\-In](#scvmm-uninstall)
++ [Installation errors](#scvmm-install-errors)
++ [Check the log file](#scvmm-log)
++ [Errors importing a virtual machine](#scvmm-import-errors)
++ [Uninstall the add\-in](#scvmm-uninstall)
 
 ## Error: Add\-in cannot be installed<a name="scvmm-addin-error"></a>
 
@@ -23,7 +23,7 @@ reasons:
 3. The assembly file is corrupt and cannot be loaded.
 ```
 
-## Installation Errors<a name="scvmm-install-errors"></a>
+## Installation errors<a name="scvmm-install-errors"></a>
 
 If you receive one of the following errors during installation, it is likely due to an issue with SCVMM:
 
@@ -50,11 +50,11 @@ Try one of the following steps to work around this issue:
 + Grant authenticated users permission to read and run the `C:\Program Files\Microsoft System Center 2012\Virtual Machine Manager\Bin\AddInPipeline` folder\. In Windows Explorer, right\-click the folder, select **Properties**, and then select the **Security** tab\.
 + Close the SCVMM console and start it one time as an administrator\. From the **Start** menu, locate SCVMM, right\-click, and then select **Run as administrator**\.
 
-## Checking the Log File<a name="scvmm-log"></a>
+## Check the log file<a name="scvmm-log"></a>
 
 If you have a problem using the add\-in, check the generated log file, `%APPDATA%\Amazon\SCVMM\ec2addin.log`, for useful information\.
 
-## Errors Importing a VM<a name="scvmm-import-errors"></a>
+## Errors importing a virtual machine<a name="scvmm-import-errors"></a>
 
 The log file, `%APPDATA%\Amazon\SCVMM\ec2addin.log`, contains detailed information about the status of an import task\. The following are common errors that you might see in the log file when you import your VM from SCVMM to Amazon EC2\.
 
@@ -74,7 +74,7 @@ This error usually occurs when Hyper\-V can't save the VM image into the configu
 
 The image will be exported to a local directory on the Hyper\-V server\. The SCVMM plugin will pull it from Hyper\-V, and upload into Amazon S3\.
 
-## Uninstalling the Add\-In<a name="scvmm-uninstall"></a>
+## Uninstall the add\-in<a name="scvmm-uninstall"></a>
 
 If you need to uninstall the add\-in, use the following procedure\.
 

@@ -1,4 +1,4 @@
-# Uninstalling the AWS Management Pack<a name="uninstalling-awsmp"></a>
+# Uninstall the AWS Management Pack<a name="uninstalling-awsmp"></a>
 
 If you need to uninstall the AWS Management Pack, use the following procedure\.
 

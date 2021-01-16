@@ -1,13 +1,13 @@
-# Tutorial: Setting Up a Windows HPC Cluster on Amazon EC2<a name="ConfigWindowsHPC"></a>
+# Tutorial: Set up a Windows HPC cluster on Amazon EC2<a name="ConfigWindowsHPC"></a>
 
 You can launch a scalable Windows High Performance Computing \(HPC\) cluster using Amazon EC2 instances\. A Windows HPC cluster requires an Active Directory domain controller, a DNS server, a head node, and one or more compute nodes\.
 
 To set up a Windows HPC cluster on Amazon EC2, complete the following tasks:
-+ [Step 1: Create Security Groups](#Set_ADSecurity_Groups)
-+ [Step 2: Set Up Your Active Directory Domain Controller](#ADSetup)
-+ [Step 3: Configure Your Head Node](#HeadNode)
-+ [Step 4: Set Up the Compute Node](#ComputeNode)
-+ [Step 5: Scale Your HPC Compute Nodes \(Optional\)](#scale_cluster)
++ [Step 1: Create your security groups](#Set_ADSecurity_Groups)
++ [Step 2: Set up your Active Directory domain controller](#ADSetup)
++ [Step 3: Configure your head node](#HeadNode)
++ [Step 4: Set up the compute node](#ComputeNode)
++ [Step 5: Scale your HPC compute nodes \(optional\)](#scale_cluster)
 
 For more information about high performance computing, see [High Performance Computing \(HPC\) on AWS](https://aws.amazon.com/hpc-applications/)\.
 
@@ -15,7 +15,7 @@ For more information about high performance computing, see [High Performance Com
 
 You must launch your instances in a VPC\. You can use the default VPC or create a nondefault VPC\. For more information, see [Getting Started](https://docs.aws.amazon.com/vpc/latest/userguide/GetStarted.html) in the *Amazon VPC User Guide*\.
 
-## Step 1: Create Security Groups<a name="Set_ADSecurity_Groups"></a>
+## Step 1: Create your security groups<a name="Set_ADSecurity_Groups"></a>
 
 Use the Tools for Windows PowerShell to create security groups for the domain controller, domain members, and the HPC cluster\.
 
@@ -133,7 +133,7 @@ Use the Tools for Windows PowerShell to create security groups for the domain co
 
 1. In the navigation pane, choose **Security Groups**\. Verify that the all three security groups appear in the list and have the required rules\.
 
-## Step 2: Set Up Your Active Directory Domain Controller<a name="ADSetup"></a>
+## Step 2: Set up your Active Directory domain controller<a name="ADSetup"></a>
 
 The Active Directory domain controller provides authentication and centralized resource management of the HPC environment and is required for the installation\. To set up your Active Directory, launch an instance to serve as the domain controller for your HPC cluster and configure it\.
 
@@ -165,7 +165,7 @@ Connect to the instance you created, and configure the server as a domain contro
 
 **To configure your instance as a domain controller**
 
-1. Connect to your `Domain Controller` instance\. For more information, see [Connecting to your Windows instance](connecting_to_windows_instance.md)\.
+1. Connect to your `Domain Controller` instance\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. Open **Server Manager**, and add the **Active Directory Domain Services** role\. 
 
@@ -189,7 +189,7 @@ Connect to the instance you created, and configure the server as a domain contro
 
 1. Create a domain user **hpc\.local\\hpcuser**\.
 
-## Step 3: Configure Your Head Node<a name="HeadNode"></a>
+## Step 3: Configure your head node<a name="HeadNode"></a>
 
 An HPC client connects to the head node\. The head node facilitates the scheduled jobs\. You configure your head node by launching an instance, installing the HPC Pack, and configuring the cluster\.
 
@@ -259,7 +259,7 @@ Launch an instance and then configure it as a member of the `hpc.local` domain a
 
    1. Choose **Create**\.
 
-## Step 4: Set Up the Compute Node<a name="ComputeNode"></a>
+## Step 4: Set up the compute node<a name="ComputeNode"></a>
 
 You set up the compute node by launching an instance, installing the HPC Pack, and adding the node to your cluster\.
 
@@ -323,7 +323,7 @@ To complete your cluster configuration, from the head node, add the compute node
 
 1. Right\-click the node and choose **Bring Online**\.
 
-## Step 5: Scale Your HPC Compute Nodes \(Optional\)<a name="scale_cluster"></a>
+## Step 5: Scale your HPC compute nodes \(optional\)<a name="scale_cluster"></a>
 
 **To scale your compute nodes**
 

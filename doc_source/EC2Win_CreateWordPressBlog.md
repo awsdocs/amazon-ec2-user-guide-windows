@@ -1,8 +1,8 @@
-# Tutorial: Deploying a WordPress blog on your Amazon EC2 instance running Windows Server<a name="EC2Win_CreateWordPressBlog"></a>
+# Tutorial: Deploy a WordPress blog on your Amazon EC2 instance running Windows Server<a name="EC2Win_CreateWordPressBlog"></a>
 
-This tutorial will help you install and deploy a WordPress blog on an Amazon EC2 instance running Windows Server\.
+This tutorial helps you install and deploy a WordPress blog on an Amazon EC2 instance running Windows Server\.
 
-If you'd prefer to host your WordPress blog on a Linux instance, see [Tutorial: Hosting a WordPress blog with Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hosting-wordpress.html) in the *Amazon EC2 User Guide for Linux Instances*\. If you need a high\-availability solution with a decoupled database, see [Deploying a high\-availability WordPress website](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/php-hawordpress-tutorial.html) in the *AWS Elastic Beanstalk Developer Guide*\.
+If you'd prefer to host your WordPress blog on a Linux instance, see [Tutorial: Host a WordPress blog with Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hosting-wordpress.html) in the *Amazon EC2 User Guide for Linux Instances*\. If you need a high\-availability solution with a decoupled database, see [Deploying a high\-availability WordPress website](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/php-hawordpress-tutorial.html) in the *AWS Elastic Beanstalk Developer Guide*\.
 
 ## Prerequisites<a name="EC2Win_PrerequisiteWordPressBlog"></a>
 
@@ -14,7 +14,7 @@ If you've launched a regular instance and use it to deploy the WordPress website
 + Ensure that the security group in which you're launching your instance has ports 80 \(HTTP\), 443 \(HTTPS\), and 3389 \(RDP\) open for inbound traffic\. Ports 80 and 443 allow computers outside of the instance to connect with HTTP and HTTPS\. If these ports are not open, the WordPress site can't be accessed from outside the instance\. Port 3389 allows you to connect to the instance with Remote Desktop Protocol\.
 + Connect to your instance\. 
 
-## Installing the Microsoft Web Platform Installer<a name="InstallWebDeployment"></a>
+## Install the Microsoft Web Platform Installer<a name="InstallWebDeployment"></a>
 
 You can use the Microsoft Web Platform Installer to install and configure WordPress on your server\. This tool simplifies deployment of Web applications and Web sites to IIS servers\. For more information, see [Microsoft Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx)\.
 
@@ -38,7 +38,7 @@ You can use the Microsoft Web Platform Installer to install and configure WordPr
 
 1. Download and install the latest version of the [Microsoft Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx)\.
 
-## Installing WordPress<a name="InstallWordPress"></a>
+## Install WordPress<a name="InstallWordPress"></a>
 
 Now you'll use the Web Platform Installer to deploy WordPress on your server\.
 
@@ -62,7 +62,7 @@ Even if your operating system is a 64\-bit operating system, you must install th
 
 1. Click **Yes** to accept that the contents of the folder will be overwritten\.
 
-## Configuring security keys<a name="configure-WordPress-security"></a>
+## Configure security keys<a name="configure-WordPress-security"></a>
 
 WordPress allows you to generate and enter unique authentication keys and salts for your site\. These key and salt values provide a layer of encryption to the browser cookies that WordPress users store on their local machines\. Basically, adding long, random values here makes your site more secure\.
 
@@ -119,7 +119,7 @@ The values below are for example purposes only; do not use these values for your
 
 1. Click **Continue** and **Finish** to complete the Web Platform Installer wizard\.
 
-## Configuring the site title and administrator<a name="configure-WordPress-site"></a>
+## Configure the site title and administrator<a name="configure-WordPress-site"></a>
 
 When you complete the Web Platform Installer wizard, a browser window opens to your WordPress installation at `http://localhost/wp-admin/install.php`\. On this page, you configure the title for your site and an administrative user to moderate your blog\.
 
@@ -132,7 +132,7 @@ When you complete the Web Platform Installer wizard, a browser window opens to y
 
 1. On the **Log In** page, enter your user name for **Username** and the site password you entered previously for **Password**\.
 
-## Making your WordPress site public<a name="publish-WordPress-site"></a>
+## Make your WordPress site public<a name="publish-WordPress-site"></a>
 
 Now that you can see your WordPress blog on your local host, you can publish this website as the default site on your instance so that other people can see it\. The next procedure walks you through the process of modifying your WordPress settings to point to the public DNS name of your instance instead of your local host\. 
 
@@ -159,7 +159,5 @@ If you no longer need this instance, you can remove it to avoid incurring charge
 If your WordPress blog becomes popular and you need more compute power or storage, consider the following steps:
 + Expand the storage space on your instance\. For more information, see [Amazon EBS Elastic Volumes](ebs-modify-volume.md)\.
 + Move your MySQL database to [Amazon RDS](https://aws.amazon.com/rds) to take advantage of the service's ability to scale automatically\.
-+ Migrate to a larger instance type\. For more information, see [Change the instance type](ec2-instance-resize.md)\.
-+ Add additional instances\. For more information, see [Tutorial: Increase the availability of your application on Amazon EC2](ec2-increase-availability.md)\.
 
 For information about WordPress, see the WordPress Codex help documentation at [http://codex\.wordpress\.org/](http://codex.wordpress.org/)\. For more information about troubleshooting your installation, see [https://wordpress\.org/support/article/how\-to\-install\-wordpress/\#common\-installation\-problems](https://wordpress.org/support/article/how-to-install-wordpress/#common-installation-problems)\. For information about making your WordPress blog more secure, see [https://wordpress\.org/support/article/hardening\-wordpress/](https://wordpress.org/support/article/hardening-wordpress/)\. For information about keeping your WordPress blog up\-to\-date, see [https://wordpress\.org/support/article/updating\-wordpress/](https://wordpress.org/support/article/updating-wordpress/)\.

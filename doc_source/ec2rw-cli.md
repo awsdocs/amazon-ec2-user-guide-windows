@@ -1,4 +1,4 @@
-# Using EC2Rescue for Windows Server with the command line<a name="ec2rw-cli"></a>
+# Use EC2Rescue for Windows Server with the command line<a name="ec2rw-cli"></a>
 
 The EC2Rescue for Windows Server command line interface \(CLI\) allows you to run an EC2Rescue for Windows Server plugin \(referred as an "action"\) programmatically\.
 

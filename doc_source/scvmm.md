@@ -20,7 +20,7 @@ AWS Systems Manager for Microsoft System Center Virtual Machine Manager \(SCVMM\
 + An AWS account
 + Microsoft System Center VMM 2012 R2 or System Center VMM 2012 SP1 with the latest update roll\-up
 
-## Getting Started<a name="get-started"></a>
+## Get started<a name="get-started"></a>
 
 To get started, see the following documentation:
 + [Setting Up](scvmm-set-up.md)

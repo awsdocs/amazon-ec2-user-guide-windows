@@ -15,4 +15,4 @@ An AMI includes the following:
 + [Automate the EBS\-backed AMI lifecycle](automating-amis.md)
 + [Use encryption with EBS\-backed AMIs](AMIEncryption.md)
 + [Copy an AMI](CopyingAMIs.md)
-+ [Understanding AMI billing information](ami-billing-info.md)
++ [Understand AMI billing information](ami-billing-info.md)

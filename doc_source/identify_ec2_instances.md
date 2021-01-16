@@ -2,7 +2,7 @@
 
 Your application might need to determine whether it is running on an EC2 instance\.
 
-For information about identifying Linux instances, see [Identify EC2 Linux Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/identify_ec2_instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
+For information about identifying Linux instances, see [Identify EC2 Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/identify_ec2_instances.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Inspect the instance identity document<a name="inspect-document"></a>
 

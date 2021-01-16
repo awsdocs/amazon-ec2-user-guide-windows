@@ -1,4 +1,4 @@
-# Step 5: Configure Ports and Endpoints<a name="ConfigurePortsAndEndpoints"></a>
+# Step 5: Configure ports and endpoints<a name="ConfigurePortsAndEndpoints"></a>
 
 The AWS Management Pack for Microsoft System Center must be able to communicate with AWS services to monitor the performance of those services and provide alerts in System Center\. For monitoring to succeed, you must configure the firewall on the Management Pack servers to allow outbound HTTP calls on ports 80 and 443 to the AWS endpoints for the following services\.
 

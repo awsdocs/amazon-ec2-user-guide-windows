@@ -1,10 +1,10 @@
 # Troubleshoot an unreachable instance<a name="screenshot-service"></a>
 
 If you are unable to reach your instance through SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility into the status of the instance, and allows for quicker troubleshooting\. You can also use [EC2 Rescue](Windows-Server-EC2Rescue.md) on instances running Windows Server 2008 or later to gather and analyze date from offline instances\. 
-+ [How to get a screenshot of an unreachable instance](#how-to-ics)
++ [Get a screenshot of an unreachable instance](#how-to-ics)
 + [Common screenshots](#ics-common)
 
-## How to get a screenshot of an unreachable instance<a name="how-to-ics"></a>
+## Get a screenshot of an unreachable instance<a name="how-to-ics"></a>
 
 You can get screenshots of an instance while it is running or after it has crashed\. There is no data transfer cost for the screenshot\. The image is generated in JPG format and is no larger than 100 kb\. This feature is not supported when the instance is using an NVIDIA GRID driver, is on bare metal instances \(instances of type `*.metal`\), or is powered by Arm\-based Graviton or Graviton 2 processors\. This feature is available in the following Regions: 
 + Asia Pacific \(Hong Kong\) Region
@@ -45,7 +45,7 @@ You can get screenshots of an instance while it is running or after it has crash
 
 **To get a screenshot of a running instance using the command line**
 
-You can use one of the following commands\. The returned output is base64\-encoded\. For more information about these command line interfaces, see [Accessing Amazon EC2](concepts.md#access-ec2)\.
+You can use one of the following commands\. The returned output is base64\-encoded\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
 + [get\-console\-screenshot](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-screenshot.html) \(AWS CLI\)
 + [GetConsoleScreenshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-GetConsoleScreenshot.html) \(Amazon EC2 Query API\)
 
