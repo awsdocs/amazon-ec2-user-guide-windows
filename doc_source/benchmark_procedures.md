@@ -70,37 +70,37 @@ You can disable C\-states on Windows as follows:
 1. In PowerShell, get the current active power scheme\.
 
    ```
-   C:\> $current_scheme = powercfg /getactivescheme
+   $current_scheme = powercfg /getactivescheme
    ```
 
 1. Get the power scheme GUID\.
 
    ```
-   C:\> (Get-WmiObject -class Win32_PowerPlan -Namespace "root\cimv2\power" -Filter "ElementName='High performance'").InstanceID          
+   (Get-WmiObject -class Win32_PowerPlan -Namespace "root\cimv2\power" -Filter "ElementName='High performance'").InstanceID          
    ```
 
 1. Get the power setting GUID\.
 
    ```
-   C:\> (Get-WmiObject -class Win32_PowerSetting -Namespace "root\cimv2\power" -Filter "ElementName='Processor idle disable'").InstanceID                  
+   (Get-WmiObject -class Win32_PowerSetting -Namespace "root\cimv2\power" -Filter "ElementName='Processor idle disable'").InstanceID                  
    ```
 
 1. Get the power setting subgroup GUID\.
 
    ```
-   C:\> (Get-WmiObject -class Win32_PowerSettingSubgroup -Namespace "root\cimv2\power" -Filter "ElementName='Processor power management'").InstanceID
+   (Get-WmiObject -class Win32_PowerSettingSubgroup -Namespace "root\cimv2\power" -Filter "ElementName='Processor power management'").InstanceID
    ```
 
 1. Disable C\-states by setting the value of the index to 1\. A value of 0 indicates that C\-states are disabled\.
 
    ```
-   C:\> powercfg /setacvalueindex <power_scheme_guid> <power_setting_subgroup_guid> <power_setting_guid> 1
+   powercfg /setacvalueindex <power_scheme_guid> <power_setting_subgroup_guid> <power_setting_guid> 1
    ```
 
 1. Set active scheme to ensure the settings are saved\.
 
    ```
-   C:\> powercfg /setactive <power_scheme_guid>
+   powercfg /setactive <power_scheme_guid>
    ```
 
 ## Perform benchmarking<a name="perform_benchmarking"></a>
