@@ -125,13 +125,3 @@ You can configure any applications to use the secondary private IP address\. For
 ![\[IP Addresses\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/IIS.png)
 
 1. Choose **OK**, **Close**\.
-
-## Configure a secondary network interface<a name="config-windows-multiple-eni"></a>
-
-You can attach a second elastic network interface to the instance\.
-
-**To configure a second network interface**
-
-1. Configure the static IP addressing for the primary elastic network interface as per the procedures above in [Step 1: Configure static IP addressing on your instance](#step1)\.
-
-1. Configure the static IP addressing for the secondary elastic network interface as per the same procedures\.

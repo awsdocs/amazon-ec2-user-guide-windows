@@ -25,9 +25,9 @@ To get optimal performance from EBS volumes, we recommend that you use an EBS\-o
 
 To create an EBS\-optimized instance, choose **Launch as an EBS\-Optimized instance** when launching the instance using the Amazon EC2 console, or specify \-\-ebs\-optimized when using the command line\. Be sure that you launch a current\-generation instance that supports this option\. For more information, see [Amazon EBS–optimized instances](ebs-optimized.md)\.
 
-### Set up Provisioned IOPS SSD volumes<a name="setupPIOPS"></a>
+### Set up Provisioned IOPS SSD or General Purpose SSD volumes<a name="setupPIOPS"></a>
 
-To create Provisioned IOPS SSD \(`io1` and `io2`\) volumes using the Amazon EC2 console, choose the **Provisioned IOPS SSD \(io1\)** or **Provisioned IOPS SSD \(io2\)** volume type\. At the command line, specify `io1` or `io2` for the \-\-volume\-type parameter and an integer between 100 and 64,000 for the \-\-iops parameter\. For more information, see [Amazon EBS volume types](ebs-volume-types.md) and [Create an Amazon EBS volume](ebs-creating-volume.md)\.
+To create Provisioned IOPS SSD \(`io1` and `io2`\) or General Purpose SSD \(`gp2` and `gp3`\) volumes using the Amazon EC2 console, for **Volume type**, choose **Provisioned IOPS SSD \(io1\)**, **Provisioned IOPS SSD \(io2\)**, **General Purpose SSD \(gp2\)**, or **General Purpose SSD \(gp3\)**\. At the command line, specify `io1`, `io2`, `gp2`, or `gp3` for the \-\-volume\-type parameter\. For `io1`, `io2`, and `gp3` volumes, specify the number of I/O operations per second \(IOPS\) for the \-\-iops parameter\. For more information, see [Amazon EBS volume types](ebs-volume-types.md) and [Create an Amazon EBS volume](ebs-creating-volume.md)\.
 
 ### Set up Throughput Optimized HDD \(`st1`\) or Cold HDD \(`sc1`\) volumes<a name="set_up_hdd"></a>
 
@@ -111,7 +111,7 @@ Run the following commands on an EBS\-optimized instance with attached EBS volum
 
 When you are finished testing your volumes, see the following topics for help cleaning up: [Delete an Amazon EBS volume](ebs-deleting-volume.md) and [Terminate your instance](terminating-instances.md)\.
 
-### Benchmark Provisioned IOPS SSD volumes<a name="piops_benchmarking"></a>
+### Benchmark Provisioned IOPS SSD and General Purpose SSD volumes<a name="piops_benchmarking"></a>
 
 Run DiskSpd on the volume that you created\.
 

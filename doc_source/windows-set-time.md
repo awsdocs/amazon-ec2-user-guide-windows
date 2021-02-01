@@ -1,6 +1,6 @@
 # Set the time for a Windows instance<a name="windows-set-time"></a>
 
-A consistent and accurate time reference is crucial for many server tasks and processes\. Most system logs include a time stamp that you can use to determine when problems occur and in what order the events take place\. If you use the AWS CLI or an AWS SDK to make requests from your instance, these tools sign requests on your behalf\. If your instance's date and time are not set correctly, the date in the signature may not match the date of the request, and AWS rejects the request\. We recommend that you use Coordinated Universal Time \(UTC\) for your Windows instances\. However, you can use a different time zone if you want\.
+A consistent and accurate time reference is crucial for many server tasks and processes\. Most system logs include a time stamp that you can use to determine when problems occur and in what order the events take place\. If you use the AWS CLI or an AWS SDK to make requests from your instance, these tools sign requests on your behalf\. If your instance's date and time are not set correctly, the date in the signature may not match the date of the request, and AWS rejects the request\.
 
 **Topics**
 + [Change the time zone](#windows-changing-time-zone)

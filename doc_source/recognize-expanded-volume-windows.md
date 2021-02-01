@@ -25,7 +25,9 @@ Use the following procedure to extend a Windows file system using Disk Managemen
 
 1. Open the context \(right\-click\) menu for the expanded drive and choose **Extend Volume**\.
 **Note**  
-The unallocated space must be adjacent to the right side of the drive you want to extend\. If **Extend Volume** is grayed out, the unallocated space might not be adjacent to the drive\.  
+**Extend Volume** might be disabled \(grayed out\) if:  
+The unallocated space is not adjacent to the drive\. The unallocated space must be adjacent to the right side of the drive you want to extend\.
+The volume uses the Master Boot Record \(MBR\) partition style and it is already 2TB in size\. Volumes that use MBR cannot exceed 2TB in size\.  
 ![\[Windows Server Disk Management Utility\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/Expand-Volume-Win2008-before-menu.png)
 
 1. In the **Extend Volume** wizard, choose **Next**\. For **Select the amount of space in MB**, enter the number of megabytes by which to extend the volume\. Generally, you specify the maximum available space\. The highlighted text under **Selected** is the amount of space that is added, not the final size the volume will have\. Complete the wizard\.  

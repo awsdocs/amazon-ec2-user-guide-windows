@@ -11,7 +11,7 @@ AWS provides managed Amazon Machine Images \(AMIs\) that include various version
 + Graphics drivers \(NVidia GPU, Elastic GPU\)
 + Spot Instance hibernation
 
-For information about other customizations, see [Configuration changes for AWS Windows AMIs](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html#windows-ami-configuration)\.
+For information about other customizations, see [AWS Windows AMIs](windows-ami-version-history.md)\.
 
 **Contents**
 + [Details about AWS Windows AMI versions](#windows-ami-versions)
@@ -34,8 +34,8 @@ For information about other customizations, see [Configuration changes for AWS W
 AWS provides AMIs with a variety of configurations for all supported Windows Operating System versions\. For each of these images, AWS:
 + Installs all Microsoft recommended Windows security patches\. We release images shortly after the monthly Microsoft patches are made available\.
 + Installs the latest drivers for AWS hardware, including network and disk drivers, EC2WinUtil for troubleshooting, as well as GPU drivers in selected AMIs\.
-+ Includes AWS helper software, like [EC2 Config](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-service.html) for Server 2012 R2 and earlier, or [EC2 Launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html) for Server 2016 and later\.
-+ Configures Windows Time to use the [AWS Time Service](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-set-time.html#default-ntp-settings)\.
++ Includes AWS helper software, like [Configure a Windows instance using the EC2Config service](ec2config-service.md) for Server 2012 R2 and earlier, or [Configure a Windows instance using EC2Launch](ec2launch.md) for Server 2016 and later\.
++ Configures Windows Time to use the [Set the time for a Windows instance](windows-set-time.md)\.
 + Makes changes in all power schemes to set the display to never turn off\.
 + Performs minor bug fixes – generally one\-line registry changes to enable or disable features that we have found to improve performance on AWS\.
 
@@ -129,7 +129,7 @@ The following changes are applied to each AWS Windows AMI\.
 
 ## Update your Windows instance<a name="update-windows-instance"></a>
 
-After you launch a Windows instance, you are responsible for installing updates on it\. You can manually install only the updates that interest you, or you can start from a current AWS Windows AMI and build a new Windows instance\. For information about finding the current AWS Windows AMIs, see [Finding a Windows AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html)\.
+After you launch a Windows instance, you are responsible for installing updates on it\. You can manually install only the updates that interest you, or you can start from a current AWS Windows AMI and build a new Windows instance\. For information about finding the current AWS Windows AMIs, see [Find a Windows AMI](finding-an-ami.md)\.
 
 **Note**  
 Instances should be stateless when updating\. For more information, see [Managing Your AWS Infrastructure at Scale](https://d1.awsstatic.com/whitepapers/managing-your-aws-infrastructure-at-scale.pdf)\.
@@ -138,20 +138,20 @@ For Windows instances, you can install updates to the following services or appl
 +  [Microsoft Windows Server](http://windows.microsoft.com/en-us/windows/windows-update) 
 +  [Microsoft SQL Server](http://technet.microsoft.com/en-us/library/ff803383.aspx) 
 +  [Windows PowerShell](http://technet.microsoft.com/en-us/scriptcenter/dd772288) 
-+ [EC2Launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-download.html)
-+ [EC2Config service](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_Install.html)
++ [Install the latest version of EC2Launch](ec2launch-download.md)
++ [Install the latest version of EC2Config](UsingConfig_Install.md)
 + [AWS Systems Manager SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
-+ [ENA](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)
-+ [NVMe drivers](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-nvme-drivers.html#install-nvme-drivers)
-+ [PV drivers](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/Upgrading_PV_drivers.html)
++ [Enable enhanced networking on Windows](enhanced-networking-ena.md#enable-enhanced-networking-ena-WIN)
++ [Install or upgrade AWS NVMe drivers](aws-nvme-drivers.md#install-nvme-drivers)
++ [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)
 + [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell)
 + [AWS CloudFormation helper scripts](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html)
 
-You can reboot a Windows instance after installing updates\. For more information, see [Reboot your instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-reboot.html)\.
+You can reboot a Windows instance after installing updates\. For more information, see [Reboot your instance](ec2-instance-reboot.md)\.
 
 ## Upgrade or migrate to a newer version of Windows Server<a name="WinAMI_Upgrading"></a>
 
-For information about how to upgrade or migrate a Windows instance to a newer version of Windows Server, see [Upgrading an Amazon EC2 Windows instance to a newer version of Windows Server](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/serverupgrade.html)\.
+For information about how to upgrade or migrate a Windows instance to a newer version of Windows Server, see [Upgrade an Amazon EC2 Windows instance to a newer version of Windows Server](serverupgrade.md)\.
 
 ## Subscribe to Windows AMI notifications<a name="subscribe-notifications"></a>
 
@@ -200,13 +200,13 @@ Whenever Windows AMIs are released, we send notifications to the subscribers of 
 ## Changes in Windows Server 2016 and later AMIs<a name="win2k16-amis"></a>
 
 AWS provides AMIs for Windows Server 2016 and later\. These AMIs include the following high\-level changes from earlier Windows AMIs:
-+ To accommodate the change from \.NET Framework to \.NET Core, the EC2Config service has been deprecated on Windows Server 2016 AMIs and replaced by EC2Launch\. EC2Launch is a bundle of Windows PowerShell scripts that perform many of the tasks performed by the EC2Config service\. For more information, see [Configuring a Windows instance using EC2Launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html)\. 
++ To accommodate the change from \.NET Framework to \.NET Core, the EC2Config service has been deprecated on Windows Server 2016 AMIs and replaced by EC2Launch\. EC2Launch is a bundle of Windows PowerShell scripts that perform many of the tasks performed by the EC2Config service\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md)\. 
 + On earlier versions of Windows Server AMIs, you can use the EC2Config service to join an EC2 instance to a domain and configure integration with Amazon CloudWatch\. On Windows Server 2016 and later AMIs, you can use the CloudWatch agent to configure integration with Amazon CloudWatch\. For more information about configuring instances to send log data to CloudWatch, see [Collect Metrics and Logs from Amazon EC2 Instances and On\-Premises Servers with the CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html)\. For information about joining an EC2 instance to a domain, see [ Join an Instance to a Domain Using the AWS\-JoinDirectoryServiceDomain JSON Document](https://docs.aws.amazon.com/systems-manager/latest/userguide/walkthrough-powershell.html#walkthrough-powershell-domain-join) in the *AWS Systems Manager User Guide*\.
 
 **Other Differences**
 
 Note these additional important differences for instances created from Windows Server 2016 and later AMIs\.
-+ By default, EC2Launch does not initialize secondary EBS volumes\. You can configure EC2Launch to initialize disks automatically by either scheduling the script to run or by calling EC2Launch in user data\. For the procedure to initialize disks using EC2Launch, see "Initialize Drives and Drive Letter Mappings" in [Configure EC2Launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html#ec2launch-config)\.
++ By default, EC2Launch does not initialize secondary EBS volumes\. You can configure EC2Launch to initialize disks automatically by either scheduling the script to run or by calling EC2Launch in user data\. For the procedure to initialize disks using EC2Launch, see "Initialize Drives and Drive Letter Mappings" in [Configure EC2Launch](ec2launch.md#ec2launch-config)\.
 + If you previously enabled CloudWatch integration on your instances by using a local configuration file \(AWS\.EC2\.Windows\.CloudWatch\.json\), you can configure the file to work with the SSM Agent on instances created from Windows Server 2016 and later AMIs\.
 
 For more information, see [Windows Server 2019](https://www.microsoft.com/en-us/cloud-platform/windows-server) on Microsoft\.com\.
@@ -222,7 +222,7 @@ If you plan to run Docker on a Windows Server 2016 instance, you must create the
 
 After the release of the 2018\.03\.16 Windows AMIs, we discovered an unquoted path in the configuration of the Amazon EC2 Hibernate Agent\. The agent was included in the AMIs for Windows Server 2008 through Windows Server 2016\. This issue does not impact the AMIs for Windows Server 2003\.
 
-AWS has removed the Windows AMIs dated 2018\.03\.16\. To be notified when new Windows AMIs are available, see [Subscribing to Windows AMI notifications](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html#subscribe-notifications)\.
+AWS has removed the Windows AMIs dated 2018\.03\.16\. To be notified when new Windows AMIs are available, see [Subscribe to Windows AMI notifications](#subscribe-notifications)\.
 
 To mitigate the issue, you can use one of the following procedures to add the missing quotation marks\. If the agent is running, you must also restart the agent\. Alternatively, you can terminate any instances that you launched from a 2018\.03\.16 Windows AMI and replace them with instances launched using a different AMI\.
 
