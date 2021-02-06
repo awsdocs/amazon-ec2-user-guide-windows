@@ -54,7 +54,10 @@ Task frequency is used to schedule when tasks should run, depending on the boot 
 
 The following frequencies can be specified:
 + Once — The task runs once, when the AMI has booted for the first time \(finished Sysprep\)\.
-+ Always — The task runs every time that the AMI boots, including the first time\.
++ Always — The task runs every time that the launch agent runs\. The launch agent runs when:
+  + an instance starts or restarts
+  + the EC2Launch service runs
+  + `EC2Launch.exe run` is invoked
 
 **`agent-config`**  
 `agent-config` is a file that is located in the configuration folder for EC2Launch v2\. It includes configuration for the boot, network, preready, and postready stages\. This file is used to specify the configuration for an instance for tasks that should run when the AMI is either booted for the first time or for subsequent times\.
@@ -85,5 +88,5 @@ EC2Launch v2 can perform the following tasks at each boot:
 + Optimize ENA settings\.
 + Enable OpenSSH for later Windows versions\.
 + Enable Jumbo Frames\.
-+ Set Sysprep to run at with EC2Launch v2\.
++ Set Sysprep to run with EC2Launch v2\.
 + Publish Windows event logs\.

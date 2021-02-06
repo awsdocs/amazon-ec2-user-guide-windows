@@ -123,6 +123,7 @@ The following is a summary of the hardware specifications for memory optimized i
 | r5dn\.12xlarge | 48 | 384 | 
 | r5dn\.16xlarge | 64 | 512 | 
 | r5dn\.24xlarge | 96 | 768 | 
+| r5dn\.metal | 96 | 768 | 
 | r5n\.large | 2 | 16 | 
 | r5n\.xlarge | 4 | 32 | 
 | r5n\.2xlarge | 8 | 64 | 
@@ -131,6 +132,7 @@ The following is a summary of the hardware specifications for memory optimized i
 | r5n\.12xlarge | 48 | 384 | 
 | r5n\.16xlarge | 64 | 512 | 
 | r5n\.24xlarge | 96 | 768 | 
+| r5n\.metal | 96 | 768 | 
 | u\-6tb1\.metal | 448 \* | 6,144 | 
 | u\-9tb1\.metal | 448 \* | 9,216 | 
 | u\-12tb1\.metal | 448 \* | 12,288 | 
@@ -187,7 +189,7 @@ The following is a summary of network performance for memory optimized instances
 |  r4\.16xlarge \| r5\.24xlarge \| r5\.metal \| r5b\.24xlarge \| r5b\.metal \| r5d\.24xlarge \| r5d\.metal \| r5dn\.8xlarge \| r5n\.8xlarge \| x1\.32xlarge \| x1e\.32xlarge \| z1d\.12xlarge \| z1d\.metal  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
 | r5dn\.12xlarge \| r5n\.12xlarge | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 | r5dn\.16xlarge \| r5n\.16xlarge | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  r5dn\.24xlarge \| r5n\.24xlarge \| u\-6tb1\.metal \* \| u\-9tb1\.metal \* \| u\-12tb1\.metal \* \| u\-18tb1\.metal \| u\-24tb1\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  r5dn\.24xlarge \| r5dn\.metal \| r5n\.24xlarge \| r5n\.metal \| u\-6tb1\.metal \* \| u\-9tb1\.metal \* \| u\-12tb1\.metal \* \| u\-18tb1\.metal \| u\-24tb1\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
 \* Instances of this type launched after March 12, 2020 provide network performance of 100 Gbps\. Instances of this type launched before March 12, 2020 might only provide network performance of 25 Gbps\. To ensure that instances launched before March 12, 2020 have a network performance of 100 Gbps, contact your account team to upgrade your instance at no additional cost\.
 
@@ -225,6 +227,7 @@ If you use all the SSD\-based instance store volumes available to your instance,
 | r5dn\.12xlarge | 700,000 | 340,000 | 
 | r5dn\.16xlarge | 933,333 | 466,666 | 
 | r5dn\.24xlarge | 1,400,000 | 680,000 | 
+| r5dn\.metal | 1,400,000 | 680,000 | 
 | z1d\.large \* | 30,000 | 15,000 | 
 | z1d\.xlarge \* | 59,000 | 29,000 | 
 | z1d\.2xlarge \* | 117,000 | 57,000 | 

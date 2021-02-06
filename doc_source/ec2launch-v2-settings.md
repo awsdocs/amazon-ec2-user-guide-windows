@@ -17,13 +17,13 @@ The following procedure describes how to use the EC2Launch v2 settings dialog bo
 1. Launch and connect to your Windows instance\.
 
 1. From the Start menu, choose **All Programs**, and then navigate to **EC2Launch settings**\.   
-![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launch-v2-settings.png)
+![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-settings.png)
 
 1. On the **General** tab of the **EC2Launch settings** dialog box, you can enable or disable the following settings\.
 
    1. **Set Computer Name**
 
-      If this setting is enabled \(it is disabled by default\), the host name is compared to the current internal IP address at each boot\. If the host name and the internal IP address do not match, the host name is reset to contain the internal IP address, and then the system reboots to pick up the new host name\. To set your own host name, or to prevent your existing host name from being modified, do not enable this setting\.
+      If this setting is enabled \(it is disabled by default\), the current host name is compared to the desired host name at each boot\. If the host names do not match, the host name is reset, and the system then optionally reboots to pick up the new host name\. If a custom host name is not specified, it is generated using the hexadecimal\-formatted private IPv4 address, for example, `ip-AC1F4E6`\. To prevent your existing host name from being modified, do not enable this setting\.
 
    1. **Extend Boot Volume**
 
@@ -70,7 +70,7 @@ The following procedure describes how to use the EC2Launch v2 settings dialog bo
       Select whether you want your EC2 instance to shut down with or without Sysprep\. When you want to run Sysprep with EC2Launch v2, choose **Shutdown with Sysprep**\.
 
 1. On the **DNS Suffix** tab, you can select whether you want to add a DNS suffix list for DNS resolution of servers running in EC2, without providing the fully qualified domain name\. DNS suffixes can contain the variables `$REGION` and `$AZ`\. Only suffixes that do not already exist will be added to the list\.   
-![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launch-v2-dns-suffix.png)
+![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-dns.png)
 
 1. On the **Wallpaper** tab, you can enable the display of selected instance details on the wallpaper\. You also have the option of choosing a custom image\. The details are generated each time that you log in\. Clear the check box to remove instance details from the wallpaper\.  
 ![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-wallpaper-02.png)
@@ -78,7 +78,7 @@ The following procedure describes how to use the EC2Launch v2 settings dialog bo
 1. On the **Volumes** tab, select whether you want to initialize the volumes that are attached to the instance\. Enabling sets drive letters for any additional volumes and extends them to use available space\. If you select **All**, all of the storage volumes are initialized\. If you select **Devices**, only devices that are specified in the list are initialized\. You must enter the device for each device to be initialized\. Use the devices listed on the EC2 console, for example, `xvdb` or `/dev/nvme0n1`\. The dropdown list displays the storage volumes that are attached to the instance\. To enter a device that is not attached to the instance, enter it in the text field\.
 
    **Name**, **Letter**, and **Partition** are optional fields\. If no value is specified for **Partition**, storage volumes larger than 2 TB are initialized with the GPT partition type, and those smaller than 2 TB are initialized with the MBR partition type\. If devices are configured, and a non\-NTFS device either contains a partition table, or the first 4 KB of the disk contain data, then the disk is skipped and the action logged\.   
-![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launch-v2-volumes.png)
+![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-volumes.png)
 
 The following is an example configuration YAML file created from the settings entered in the EC2Launch dialog\.
 
@@ -137,6 +137,8 @@ The `%ProgramFiles%\Amazon\EC2Launch` directory contains binaries and supporting
   + `ebsnvme-id.exe` — tool for examining the metadata of the EBS volumes on the instance
   + `AWSAcpiSpcrReader.exe` — tool for determining the correct COM port to use
   + `EC2LaunchEventMessage.dll` — DLL for supporting the Windows event logging for EC2Launch\.
++ `service`
+  + `EC2LaunchService.exe` — Windows service executable that is launched when the launch agent runs as a service\.
 + `EC2Launch.exe` — main EC2Launch executable
 + `EC2LaunchAgentAttribution.txt` — attribution for code used within EC2 Launch
 
@@ -443,7 +445,7 @@ This section includes the configuration tasks, details, and examples for the `ag
 + [sysprep](#ec2launch-v2-task-sysprep)
 + [writeFile](#ec2-launch-v2-writefile)
 + [Example: `agent-config.yml`](#ec2launch-v2-example-agent-config)
-+ [Example: `user-data.yml`](#ec2launch-v2-example-user-data)
++ [Example: user data](#ec2launch-v2-example-user-data)
 
 ### activateWindows<a name="ec2launch-v2-activatewindows"></a>
 
@@ -756,13 +758,18 @@ inputs:
 
 ### setHostName<a name="ec2launch-v2-sethostname"></a>
 
-Sets the hostname of the computer to the private IPv4 address\.
+Sets the hostname of the computer to a custom string or, if `hostName` is not specified, the private IPv4 address\.
 
 *Frequency* — always
 
 *AllowedStages* — `[PostReady, UserData]`
 
 *Inputs* — 
+
+`hostName`: \(string\) optional host name, which must be formatted as follows\.
++ Must be 15 characters or less
++ Must contain only alphanumeric \(a\-z, A\-Z, 0\-9\) and hyphen \(\-\) characters\.
++ Must not consist entirely of numerical characters\.
 
 `reboot`: \(boolean\) denotes whether a reboot is permitted when the hostname is changed
 
@@ -908,9 +915,11 @@ config:
   - task: startSsm
 ```
 
-### Example: `user-data.yml`<a name="ec2launch-v2-example-user-data"></a>
+### Example: user data<a name="ec2launch-v2-example-user-data"></a>
 
-The following example shows settings for the `user-data.yml` configuration file\.
+For more information about user data, see [Run commands on your Windows instance at launch](ec2-windows-user-data.md)\.
+
+The following example shows settings for user data\.
 
 ```
 version: 1.0

@@ -25,3 +25,21 @@ EC2Launch v2 is preinstalled on the following AMIs\. Do not use these AMIs for p
 + EC2LaunchV2\_Preview\-Windows\_Server\-2012\_RTM\-English\-Full\-Base
 + EC2LaunchV2\_Preview\-Windows\-Server\-2019\-English\-Full\-SQL\_2019\_Express
 + EC2LaunchV2\_Preview\-Windows\-Server\-2016\-English\-Full\-SQL\_2017\_Express
+
+## Installation options<a name="ec2launch-v2-install-options"></a>
+
+When you install or upgrade EC2Launch v2, your existing configuration, located at `%ProgramData%/Amazon/EC2Launch/config/agent-config.yml`, is not replaced\. Perform a clean installation to overwrite an existing configuration to use the latest version\.
+
+You can perform a clean installation using the EC2Launch v2 interface or the command line\.
+
+**Perform a clean installation using the EC2Launch v2 user interface**  
+When you install EC2Launch v2, choose the **Clean Install** option under **Clean Existing Configuration**\.
+
+![\[EC2Launch v2 clean install\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-clean-install.png)
+
+**Perform a clean installation using the command line**  
+To perform a clean installation of EC2Launch v2 using the command line, run the following Windows command:
+
+```
+msiexec /i "C:\Users\Administrator\Desktop\AmazonEC2Launch.msi" ADDLOCAL="Basic,Clean" /q
+```

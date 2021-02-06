@@ -110,6 +110,30 @@ Before it initializes a volume, EC2Launch v2 attempts to detect whether it is em
 
 EC2Launch v2 publishes Windows event logs for important events, such as service starting, Windows is ready, and task success and failure\. Event identifiers uniquely identify a particular event\. Each event contains stage, task, and level information, and a description\. You can set triggers for specific events using the event identifier\.
 
+Event IDs provide information about an event and uniquely identify some events\. The least significant digit of an event ID indicates the severity of an event\. 
+
+
+| Event | Least significant digit | 
+| --- | --- | 
+|  Success  | \. \. \.0 | 
+| Informational | \. \. \.1 | 
+| Warning | \. \. \.2 | 
+| Error | \. \. \.3 | 
+
+Service\-related events that are generated when the service starts or stops include a single digit event identifier\.
+
+
+| Event | Single digit identifier | 
+| --- | --- | 
+|  Success  | 0 | 
+| Informational | 1 | 
+| Warning | 2 | 
+| Error | 3 | 
+
+The event messages for `EC2LaunchService.exe` events begin with `Service:`\. The event messages for `EC2Launch.exe` events do not begin with `Service:`\.
+
+Four digit event IDs include information about the stage, task, and severity of an event\.
+
 **Topics**
 + [Event ID format](#ec2launchv2-windows-event-logs-format)
 + [Event ID examples](#ec2launchv2-windows-event-logs-id-examples)
@@ -145,49 +169,50 @@ The following are example event IDs\.
 
 | MessageId/Event Id | Event message | 
 | --- | --- | 
-|  `. . .0`  | Success | 
-|  `. . .1`  | Informational | 
-|  `. . .2`  | Warning | 
-|  `. . .3`  | Error | 
-|  `x`  | EC2Launch service\-level logs | 
-|  `0`  | EC2Launch Service exited successfully | 
-|  `1`  | EC2Launch Service starting | 
-|  `2`  | Error stopping EC2Launch service | 
-|  `10`  | Replace state\.json with previous\-state\.json | 
+|  \. \. \.0  | Success | 
+|  \. \. \.1  | Informational | 
+|  \. \. \.2  | Warning | 
+|  \. \. \.3  | Error | 
+|  x  | EC2Launch service\-level logs | 
+|  0  | EC2Launch service exited successfully | 
+|  1  |  EC2Launch service informational logs | 
+|  2  |  EC2Launch service warning logs | 
+| 3 | EC2Launch service error logs | 
+|  10  | Replace state\.json with previous\-state\.json | 
 | 100 | Serial Port | 
 | 200 | Sysprep | 
 | 300 | PrimaryNic | 
 | 400 | Metadata | 
-|  `x000`  | Stage \(1 digit\), Task \(2 digits\), Status \(1 digit\) | 
-|  `1000`  | Boot | 
-|  `1010`  | Boot \- extend\_root\_partition | 
+|  x000  | Stage \(1 digit\), Task \(2 digits\), Status \(1 digit\) | 
+|  1000  | Boot | 
+|  1010  | Boot \- extend\_root\_partition | 
 | 2000 | Network | 
-|  `2010`  | Network \- add\_routes | 
-|  `3000`  | PreReady | 
-|  `3010`  | PreReady \- activate\_windows | 
-|  `3020`  | PreReady \- install\_egpu\_manager | 
-|  `3030`  | PreReady \- set\_monitor\_on | 
-|  `3040`  | PreReady \- set\_hibernation | 
-|  `3050`  | PreReady \- set\_admin\_account | 
-|  `3060`  | PreReady \- set\_dns\_suffix | 
-|  `3070`  | PreReady \- set\_wallpaper | 
-|  `3080`  | PreReady \- set\_update\_schedule | 
-|  `3090`  | PreReady \- output\_log | 
-|  `3100`  | PreReady \- enable\_open\_ssh | 
-|  `5000`  | Windows is Ready to use | 
-|  `6000`  | PostReadyLocalData | 
+|  2010  | Network \- add\_routes | 
+|  3000  | PreReady | 
+|  3010  | PreReady \- activate\_windows | 
+|  3020  | PreReady \- install\_egpu\_manager | 
+|  3030  | PreReady \- set\_monitor\_on | 
+|  3040  | PreReady \- set\_hibernation | 
+|  3050  | PreReady \- set\_admin\_account | 
+|  3060  | PreReady \- set\_dns\_suffix | 
+|  3070  | PreReady \- set\_wallpaper | 
+|  3080  | PreReady \- set\_update\_schedule | 
+|  3090  | PreReady \- output\_log | 
+|  3100  | PreReady \- enable\_open\_ssh | 
+|  5000  | Windows is Ready to use | 
+|  6000  | PostReadyLocalData | 
 | 7000 | PostReadyUserData | 
-|  `6010/7010`  | PostReadyLocal/UserData \- set\_wallpaper | 
-|  `6020/7020`  | PostReadyLocal/UserData \- set\_update\_schedule | 
-|  `6030/7030`  | PostReadyLocal/UserData \- set\_hostname | 
-|  `6040/7040`  | PostReadyLocal/UserData \- execute\_program | 
-|  `6050/7050`  | PostReadyLocal/UserData \- execute\_script | 
-|  `6060/7060`  | PostReadyLocal/UserData \- manage\_package | 
-|  `6070/7070`  | PostReadyLocal/UserData \- initialize\_volume | 
-|  `6080/7080`  | PostReadyLocal/UserData \- write\_file | 
-|  `6090/7090`  | PostReadyLocal/UserData \- start\_ssm | 
-|  `7100`  | PostReadyUserData \- enable\_open\_ssh | 
-|  `6110/7110`  | PostReadyLocal/UserData \- enable\_jumbo\_frames | 
+|  6010/7010  | PostReadyLocal/UserData \- set\_wallpaper | 
+|  6020/7020  | PostReadyLocal/UserData \- set\_update\_schedule | 
+|  6030/7030  | PostReadyLocal/UserData \- set\_hostname | 
+|  6040/7040  | PostReadyLocal/UserData \- execute\_program | 
+|  6050/7050  | PostReadyLocal/UserData \- execute\_script | 
+|  6060/7060  | PostReadyLocal/UserData \- manage\_package | 
+|  6070/7070  | PostReadyLocal/UserData \- initialize\_volume | 
+|  6080/7080  | PostReadyLocal/UserData \- write\_file | 
+|  6090/7090  | PostReadyLocal/UserData \- start\_ssm | 
+|  7100  | PostReadyUserData \- enable\_open\_ssh | 
+|  6110/7110  | PostReadyLocal/UserData \- enable\_jumbo\_frames | 
 
 ## EC2Launch v2 console log output<a name="ec2launchv2-console-output"></a>
 

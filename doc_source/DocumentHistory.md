@@ -4,6 +4,8 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Amazon EBS local snapshots on Outposts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/snapshots-outposts.html) | You can now use Amazon Amazon EBS local snapshots on Outposts to store snapshots of volumes on an Outpost locally in Amazon S3 on the Outpost itself\. | February 4, 2021 | 
+| [Create a reverse DNS record](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS) | You can now set up reverse DNS lookup for your Elastic IP addresses\. | February 3, 2021 | 
 | [Amazon Data Lifecycle Manager](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/event-policy.html) | Use Amazon Data Lifecycle Manager to automate the process of sharing snapshots and copying them across AWS accounts\. | December 17, 2020 | 
 | [G4ad instances](#DocumentHistory) | New instances powered by AMD Radeon Pro V520 GPUs and AMD 2nd Generation EPYC processors\. | December 9, 2020 | 
 | [Tag AMIs and snapshots on AMI creation](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/creating-an-ami-ebs.html#how-to-create-ebs-ami) | When you create an AMI, you can tag the AMI and the snapshots with the same tags, or you can tag them with different tags\.  | December 4, 2020 | 
