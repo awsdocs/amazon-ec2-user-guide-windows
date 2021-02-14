@@ -81,10 +81,10 @@ You can change the instance to use a different set of NTP servers if required\. 
 1. From the Command Prompt window, run the following command:
 
    ```
-   w32tm /config /manualpeerlist:comma-delimited list of NTP servers /syncfromflags:manual /update
+   w32tm /config /manualpeerlist:"NTP servers" /syncfromflags:manual /update
    ```
 
-   Where *comma\-delimited list of NTP servers* is the list of NTP servers for the instance to use\.
+   Where *NTP servers* is a space\-delimited list of NTP servers for the instance to use\.
 
 1. Verify your new settings by using the following command:
 
@@ -96,7 +96,7 @@ You can change the instance to use a different set of NTP servers if required\. 
 
 Amazon Machine Images \(AMIs\) generally adhere to the out\-of\-the\-box defaults except in cases where changes are required to function on EC2 infrastructure\. The following settings have been determined to work well in a virtual environment, as well as to keep any clock drift to within one second of accuracy: 
 + **Update Interval** – governs how frequently the time service will adjust system time towards accuracy\. AWS configures the update interval to occur once every two minutes\.
-+ **NTP Server** – starting with the August 2018 release, AMIs will now use the Amazon Time Sync Service by default\. This time service is accessible from any EC2 Region at the 169\.254\.169\.123 endpoint\. Additionally, the 0x9 flag indicates that the time service is acting as a client, and to use SpecialPollInterval to determine how frequently to check in with the configured time server\.
++ **NTP Server** – starting with the August 2018 release, AMIs will now use the Amazon Time Sync Service by default\. This time service is accessible from any EC2 Region at the 169\.254\.169\.123 endpoint\. Additionally, the 0x9 flag indicates that the time service is acting as a client, and to use `SpecialPollInterval` to determine how frequently to check in with the configured time server\.
 + **Type** – "NTP" means that the service acts as a standalone NTP client instead of acting as part of a domain\.
 + **Enabled and InputProvider** – the time service is enabled and provides time to the operating system\.
 + **Special Poll Interval** – checks against the configured NTP Server every 900 seconds, or 15 minutes\. 
