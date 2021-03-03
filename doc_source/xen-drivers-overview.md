@@ -54,17 +54,17 @@ The following table shows the changes to AWS PV drivers for each driver release\
 
 | Package version | Details | Release date | 
 | --- | --- | --- | 
-| 8\.3\.4 | Improved reliability of network device attachment\. | 4 August 2020 | 
-| 8\.3\.3 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html) To update this driver on Windows Server 2008 R2 instances, you must first verify that the appropriate patches are installed to address the following Microsoft Security Advisory: [Microsoft Security Advisory 3033929](https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2015/3033929)\.  | 4 February 2020 | 
-| 8\.3\.2 |  Enhanced reliability of networking components\.  | 30 July 2019 | 
-| 8\.3\.1 |  Improved performance and robustness of storage component\.  | 12 June 2019 | 
-| 8\.2\.7 |  Improved efficiency to support migrating to latest generation instance types\.  | 20 May 2019 | 
-| 8\.2\.6 |  Improved efficiency of crash dump path\.  | 15 January 2019 | 
-| 8\.2\.5 |  Additional security enhancements\. PowerShell installer now available in package\.  | 12 December 2018 | 
-| 8\.2\.4 |  Reliability improvements\.  | 2 October 2018 | 
-| 8\.2\.3 |  Bug fixes and performance improvements\. Report EBS volume ID as disk serial number for EBS volumes\. This enables cluster scenarios such as S2D\.  | 29 May 2018 | 
-| 8\.2\.1 |  Network and storage performance improvements plus multiple robustness fixes\. To verify that this version has been installed, refer to the following Windows registry value: `HKLM\Software\Amazon\PVDriver\Version 8.2.1`\.  | 8 March 2018 | 
-| 7\.4\.6 | Stability fixes to make AWS PV drivers more resilient\. | 26 April 2017 | 
+| [8\.3\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.4/AWSPVDriver.zip) | Improved reliability of network device attachment\. | 4 August 2020 | 
+| [8\.3\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.3/AWSPVDriver.zip) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html) To update this driver on Windows Server 2008 R2 instances, you must first verify that the appropriate patches are installed to address the following Microsoft Security Advisory: [Microsoft Security Advisory 3033929](https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2015/3033929)\.  | 4 February 2020 | 
+| [8\.3\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.2/AWSPVDriver.zip) |  Enhanced reliability of networking components\.  | 30 July 2019 | 
+| [8\.3\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.1/AWSPVDriver.zip) |  Improved performance and robustness of storage component\.  | 12 June 2019 | 
+| [8\.2\.7](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.7/AWSPVDriver.zip) |  Improved efficiency to support migrating to latest generation instance types\.  | 20 May 2019 | 
+| [8\.2\.6](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.6/AWSPVDriver.zip) |  Improved efficiency of crash dump path\.  | 15 January 2019 | 
+| [8\.2\.5](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.5/AWSPVDriver.zip) |  Additional security enhancements\. PowerShell installer now available in package\.  | 12 December 2018 | 
+| [8\.2\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.4/AWSPVDriver.zip) |  Reliability improvements\.  | 2 October 2018 | 
+| [8\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.3/AWSPVDriver.zip) |  Bug fixes and performance improvements\. Report EBS volume ID as disk serial number for EBS volumes\. This enables cluster scenarios such as S2D\.  | 29 May 2018 | 
+| [8\.2\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.1/AWSPVDriver.zip) |  Network and storage performance improvements plus multiple robustness fixes\. To verify that this version has been installed, refer to the following Windows registry value: `HKLM\Software\Amazon\PVDriver\Version 8.2.1`\.  | 8 March 2018 | 
+| [7\.4\.6](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/7.4.6/AWSPVDriver.zip) | Stability fixes to make AWS PV drivers more resilient\. | 26 April 2017 | 
 | 7\.4\.3 |  Added support for Windows Server 2016\. Stability fixes for all supported Windows OS versions\. \*AWS PV driver version 7\.4\.3's signature expires on March 29, 2019\. We recommend updating to the latest AWS PV driver\.   | 18 Nov 2016 | 
 | 7\.4\.2 | Stability fixes for support of X1 instance type\. | 2 Aug 2016 | 
 | 7\.4\.1 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 12 July 2016 | 
