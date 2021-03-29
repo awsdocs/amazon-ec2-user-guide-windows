@@ -15,7 +15,7 @@ If Windows is installing updates on your instance, we recommend that you do not 
 
 **To reboot an instance using the console**
 
-1. Open the Amazon EC2 console\.
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
 1. In the navigation pane, choose **Instances**\.
 
@@ -28,7 +28,7 @@ If Windows is installing updates on your instance, we recommend that you do not 
 
 **To reboot an instance using the console**
 
-1. Open the Amazon EC2 console\.
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
 1. In the navigation pane, choose **Instances**\.
 

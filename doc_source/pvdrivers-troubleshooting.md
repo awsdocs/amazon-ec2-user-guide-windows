@@ -6,6 +6,7 @@ The following are solutions to issues that you might encounter with older Amazon
 + [Windows Server 2012 R2 loses network and storage connectivity after an instance reboot](#server2012R2-instance-unavailable)
 + [TCP offloading](#citrix-tcp-offloading)
 + [Time synchronization](#citrix-time-sync)
++ [Workloads that leverage more than 20,000 disk IOPS experience degradation due to CPU bottlenecks](#pvdriver-troubleshooting-cpu-bottlenecks)
 
 ## Windows Server 2012 R2 loses network and storage connectivity after an instance reboot<a name="server2012R2-instance-unavailable"></a>
 
@@ -204,3 +205,137 @@ Disabling TCP offloading may reduce the network performance of your instance\.
 Prior to the release of the 2013\.02\.13 Windows AMI, the Citrix Xen guest agent could set the system time incorrectly\. This can cause your DHCP lease to expire\. If you have issues connecting to your instance, you might need to update the agent\.
 
 To determine whether you have the updated Citrix Xen guest agent, check whether the `C:\Program Files\Citrix\XenGuestAgent.exe` file is from March 2013\. If the date on this file is earlier than that, update the Citrix Xen guest agent service\. For more information, see [Upgrade your Citrix Xen guest agent service](Upgrading_PV_drivers.md#citrix-pv-guest-agent-upgrade)\.
+
+## Workloads that leverage more than 20,000 disk IOPS experience degradation due to CPU bottlenecks<a name="pvdriver-troubleshooting-cpu-bottlenecks"></a>
+
+You can be affected by this issue if you are using Windows instances running AWS PV drivers that leverage more than 20,000 IOPS, and you experience bug check code `0x9E: USER_MODE_HEALTH_MONITOR`\.
+
+Disk reads and writes \(IOs\) in the AWS PV drivers occur in two phases: **IO preparation** and **IO completion**\. By default, the preparation phase runs on a single arbitrary core\. The completion phase runs on core `0`\. The amount of computation required to process an IO varies based on it size and other properties\. Some IOs use more computation in the preparation phase, and others in the completion phase\. When an instance drives more than 20,000 IOPS, the preparation or completion phase may result in a bottleneck, where the CPU upon which it runs is at 100% capacity\. Whether or not the preparation or completion phase becomes a bottleneck depends on the properties of the IOs used by the application\.
+
+Starting with AWS PV drivers 8\.4\.0, the load of the preparation phase and the completion phase can be distributed across multiple cores, eliminating bottlenecks\. Each application uses different IO properties\. Therefore, applying one of the following configurations may raise, lower, or not impact the performance of your application\. After you apply any of these configurations, monitor the application to verify that it is meeting your desired performance\.
+
+1. 
+
+**Prerequisites**
+
+   Before you begin this troubleshooting procedure, verify the following prerequisites:
+   + Your instance uses AWS PV drivers version 8\.4\.0 or later\. To upgrade, see [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
+   + You have RDP access to the instance\. For steps to connect to your Windows instance using RDP, see [Connect to your Windows instance using RDP](connecting_to_windows_instance.md#connect-rdp)\.
+   + You have administrator access on the instance\.
+
+1. 
+
+**Observe CPU load on your instance**
+
+   You can use Windows Task Manager to view the load on each CPU to determine potential bottlenecks to disk IO\.
+
+   1. Verify that your application is running and handling traffic similar to your production workload\.
+
+   1. Connect to your instance using RDP\.
+
+   1. Choose the **Start** menu on your instance\.
+
+   1. Enter `Task Manager` in the **Start** menu to open Task Manager\.
+
+   1. If Task Manager displays the Summary View, choose **More details** to expand the detailed view\.
+
+   1. Choose the **Performance** tab\.
+
+   1. Select **CPU** in the left pane\.
+
+   1. Right\-click on the graph in the main pane and select **Change graph to**>**Logical processors** to display each individual core\.
+
+   1. Depending on how many cores are on your instance, you may see lines displaying CPU load over time, or you may just see a number\.
+      + If you see graphs displaying load over time, look for CPUs where the box is almost entirely shaded\.
+      + If you see a number on each core, look for cores that consistently show 95% or greater\.
+
+   1. Note whether core `0` or a different core is experiencing a heavy load\.
+
+1. 
+
+**Choose which configuration to apply**    
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/pvdrivers-troubleshooting.html)
+**Note**  
+We recommend that you do not distribute IO preparation without also distributing IO completion \(setting `DpcRedirection` without setting `NotifierDistributed`\) because the completion phase is sensitive to overload by the preparation phase when the preparation phase is running in parallel\.
+
+**Registry key values**
+   + *NotifierDistributed*
+
+     Value `0` or not present — The completion phase will run on core `0`\.
+
+     Value `1` — The driver chooses to run the completion phase or core `0` or one additional core per attached disk\.
+
+     Value `2` — The driver runs the completion phase on one additional core per attached disk\.
+   + *DpcRedirection*
+
+     Value `0` or not present — The preparation phase will run on a single, arbitrary core\.
+
+     Value `1` — The preparation phase is distributed across multiple cores\.
+
+   
+
+   
+
+**Default configuration**
+
+   Apply the default configuration with AWS PV driver versions prior to 8\.4\.0, or if performance or stability degradation is observed after applying one of the other configurations in this section\.
+
+   1. Connect to your instance using RDP\.
+
+   1. Open a new PowerShell command prompt as an administrator\.
+
+   1. Run the following commands to remove the `NotifierDistributed` and `DpcRedirection` registry keys\.
+
+      ```
+      Remove-ItemProperty -Path HKLM:\System\CurrentControlSet\Services\xenvbd\Parameters -Name NotifierDistributed
+      ```
+
+      ```
+      Remove-ItemProperty -Path HKLM:\System\CurrentControlSet\Services\xenvbd\Parameters -Name DpcRedirection
+      ```
+
+   1. Reboot your instance\.
+
+   
+
+   
+
+**Allow driver to choose whether to distribute completion**
+
+   Set `NotiferDistributed` registry key to allow the PV storage driver to choose whether or not to distribute IO completion\.
+
+   1. Connect to your instance using RDP\.
+
+   1. Open a new PowerShell command prompt as an administrator\.
+
+   1. Run the following command to set the `NotiferDistributed` registry key\.
+
+      ```
+      Set-ItemProperty -Type DWORD -Path HKLM:\System\CurrentControlSet\Services\xenvbd\Parameters -Value 0x00000001 -Name NotifierDistributed
+      ```
+
+   1. Reboot your instance\.
+
+   
+
+   
+
+**Distribute both preparation and completion**
+
+   Set `NotifierDistributed` and `DpcRedirection` registry keys to always distribute both the preparation and completion phases\.
+
+   1. Connect to your instance using RDP\.
+
+   1. Open a new PowerShell command prompt as an administrator\.
+
+   1. Run the following commands to set the `NotifierDistributed` and `DpcRedirection` registry keys\.
+
+      ```
+      Set-ItemProperty -Type DWORD -Path HKLM:\System\CurrentControlSet\Services\xenvbd\Parameters -Value 0x00000002 -Name NotifierDistributed
+      ```
+
+      ```
+      Set-ItemProperty -Type DWORD -Path HKLM:\System\CurrentControlSet\Services\xenvbd\Parameters -Value 0x00000001 -Name DpcRedirection
+      ```
+
+   1. Reboot your instance\.

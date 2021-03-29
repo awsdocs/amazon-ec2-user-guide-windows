@@ -103,3 +103,5 @@ Total # of free bytes        : 18113204224
 Total # of bytes             : 32210153472
 Total # of avail free bytes  : 18113204224
 ```
+
+For information about viewing free disk space on a Linux instance, see [View free disk space](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-describing-volumes.html#ebs-view-free-disk-space) in the *Amazon EC2 User Guide for Linux Instances*\.

@@ -67,7 +67,7 @@ Next, launch a temporary instance and attach the volume to it as a secondary vol
 
    1. In the navigation pane, choose **Instances**, choose **Launch instances**, and then select an AMI\.
 **Important**  
-To avoid disk signature collisions, you must select an AMI for a different version of Windows\. For example, if the original instance runs Windows Server 2012 R2, launch the temporary instance using the base AMI for Windows Server 2008 R2\.
+To avoid disk signature collisions, you must select an AMI for a different version of Windows\. For example, if the original instance runs Windows Server 2019, launch the temporary instance using the base AMI for Windows Server 2016\.
 
    1. Leave the default instance type and choose **Next: Configure Instance Details**\.
 

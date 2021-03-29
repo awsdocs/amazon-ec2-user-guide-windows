@@ -1,4 +1,4 @@
-# Hibernate your Windows instance<a name="Hibernate"></a>
+# Hibernate your On\-Demand or Reserved Windows instance<a name="Hibernate"></a>
 
 When you hibernate an instance, Amazon EC2 signals the operating system to perform hibernation \(suspend\-to\-disk\)\. Hibernation saves the contents from the instance memory \(RAM\) to your Amazon Elastic Block Store \(Amazon EBS\) root volume\. Amazon EC2 persists the instance's EBS root volume and any attached EBS data volumes\. When you start your instance:
 + The EBS root volume is restored to its previous state
@@ -55,7 +55,7 @@ For information about how hibernation differs from reboot, stop, and terminate, 
 
 ## Hibernation prerequisites<a name="hibernating-prerequisites"></a>
 
-To hibernate an instance, the following prerequisites must be in place:
+To hibernate an On\-Demand Instance or Reserved Instance, the following prerequisites must be in place:
 + **Supported instance families**
   + C3, C4, C5
   + I3
@@ -74,7 +74,7 @@ To hibernate an instance, the following prerequisites must be in place:
 
   For information about the supported AMIs for Linux, see [Hibernation prerequisites](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites) in the *Amazon EC2 User Guide for Linux Instances*\.
 + **Root volume type** \- must be an EBS volume, not an instance store volume\.
-+ **Supported EBS volume types** \- General Purpose SSD \(`gp2` and `gp3`\) or Provisioned IOPS SSD \(`gp2` and `gp3`\)\. If you choose a Provisioned IOPS SSD volume type, to achieve optimum performance for hibernation, you must provision the EBS volume with the appropriate IOPS\. For more information, see [Amazon EBS volume types](ebs-volume-types.md)\.
++ **Supported EBS volume types** \- General Purpose SSD \(`gp2` and `gp3`\) or Provisioned IOPS SSD \(`io1` and `io2`\)\. If you choose a Provisioned IOPS SSD volume type, to achieve optimum performance for hibernation, you must provision the EBS volume with the appropriate IOPS\. For more information, see [Amazon EBS volume types](ebs-volume-types.md)\.
 + **EBS root volume size** \- must be large enough to store the RAM contents and accommodate your expected usage, for example, OS or applications\. If you enable hibernation, space is allocated on the root volume at launch to store the RAM\.
 + **EBS root volume encryption** \- To use hibernation, the root volume must be encrypted to ensure the protection of sensitive content that is in memory at the time of hibernation\. When RAM data is moved to the EBS root volume, it is always encrypted\. Encryption of the root volume is enforced at instance launch\. Use one of the following three options to ensure that the root volume is an encrypted EBS volume:
   + EBS "single\-step" encryption: You can launch encrypted EBS\-backed EC2 instances from an unencrypted AMI and also enable hibernation at the same time\. For more information, see [Use encryption with EBS\-backed AMIs](AMIEncryption.md)\.
@@ -88,7 +88,9 @@ To hibernate an instance, the following prerequisites must be in place:
 + You can't hibernate an instance that has more than 16 GB of RAM\.
 + If you create a snapshot or AMI from an instance that is hibernated or has hibernation enabled, you might not be able to connect to the instance\.
 + You can't change the instance type or size of an instance with hibernation enabled\.
-+ You cannot hibernate an instance that is in an Auto Scaling group or used by Amazon ECS\. If your instance is in an Auto Scaling group and you try to hibernate it, the Amazon EC2 Auto Scaling service marks the stopped instance as unhealthy, and might terminate it and launch a replacement instance\. For more information, see [Health Checks for Auto Scaling Instances](https://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*\.
++ You can't hibernate an instance that is in an Auto Scaling group or used by Amazon ECS\. If your instance is in an Auto Scaling group and you try to hibernate it, the Amazon EC2 Auto Scaling service marks the stopped instance as unhealthy, and might terminate it and launch a replacement instance\. For more information, see [Health Checks for Auto Scaling Instances](https://docs.aws.amazon.com/autoscaling/latest/userguide/healthcheck.html) in the *Amazon EC2 Auto Scaling User Guide*\.
++ You can't hibernate an instance that is configured to boot in UEFI mode\.
++ If you hibernate an instance that was launched into a Capacity Reservation, the Capacity Reservation does not ensure that the hibernated instance can resume after you try to start it\.
 + We do not support keeping an instance hibernated for more than 60 days\. To keep the instance for longer than 60 days, you must start the hibernated instance, stop the instance, and start it\.
 + We constantly update our platform with upgrades and security patches, which can conflict with existing hibernated instances\. We notify you about critical updates that require a start for hibernated instances so that we can perform a shutdown or a reboot to apply the necessary upgrades and security patches\.
 

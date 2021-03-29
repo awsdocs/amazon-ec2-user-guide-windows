@@ -11,7 +11,8 @@ The following table describes the released versions of EC2Launch v2\.
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
-| 2\.0\.207 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | February 2, 2020 | 
+| 2\.0\.285 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | March 8, 2021 | 
+| 2\.0\.207 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | February 2, 2021 | 
 | 2\.0\.160 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | December 4, 2020 | 
 | 2\.0\.153 | Adds Sysprep functionality in UserData\. | November 3, 2020 | 
 | 2\.0\.146 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html)  | October 6, 2020 | 
@@ -26,7 +27,8 @@ The following table describes the released versions of the EC2Launch v2 migratio
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
-| 1\.0\.86 | Increments the version number of the EC2Launch agent to 2\.0\.207\. | February 3, 2020 | 
+| 1\.0\.101 | Increments the version number of the EC2Launch agent to 2\.0\.285\. | March 12, 2021 | 
+| 1\.0\.86 | Increments the version number of the EC2Launch agent to 2\.0\.207\. | February 3, 2021 | 
 | 1\.0\.76 | Increments the version number of the EC2Launch agent to 2\.0\.160\. | December 4, 2020 | 
 | 1\.0\.69 | Increments the version number of the EC2Launch agent to 2\.0\.153\. | November 5, 2020 | 
 | 1\.0\.65 | Increments the version number of the EC2Launch agent to 2\.0\.146\. | October 9, 2020 | 

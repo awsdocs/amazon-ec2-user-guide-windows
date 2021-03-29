@@ -1,6 +1,17 @@
 # Set the time for a Windows instance<a name="windows-set-time"></a>
 
-A consistent and accurate time reference is crucial for many server tasks and processes\. Most system logs include a time stamp that you can use to determine when problems occur and in what order the events take place\. If you use the AWS CLI or an AWS SDK to make requests from your instance, these tools sign requests on your behalf\. If your instance's date and time are not set correctly, the date in the signature may not match the date of the request, and AWS rejects the request\.
+A consistent and accurate time reference is crucial for many server tasks and processes\. Most system logs include a time stamp that you can use to determine when problems occur and in what order the events take place\. If you use the AWS CLI or an AWS SDK to make requests from your instance, these tools sign requests on your behalf\. If the date and time of your instance are not set correctly, the date in the signature may not match the date of the request, and AWS rejects the request\.
+
+Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 instances, and is also used by other AWS services\. This service uses a fleet of satellite\-connected and atomic reference clocks in each Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard through Network Time Protocol \(NTP\)\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. 
+
+The Amazon Time Sync Service is available through NTP at the `169.254.169.123` IP address for any instance running in a VPC\. Your instance does not require access to the internet, and you do not have to configure your security group rules or your network ACL rules to allow access\. The latest versions of AWS Windows AMIs synchronize with the Amazon Time Sync Service by default\.
+
+**Should I use UTC for my instances?**  
+We recommend that you use Coordinated Universal Time \(UTC\) for your instances to avoid human error and to facilitate synchronization across your CloudWatch Logs, Metrics, local logs, and other services\. You can, however, choose to use a different time zone to better suit your requirements\.
+
+When you use local timezones rather than UTC, make sure that you account for aspects such as daylight savings time \(when applicable\) for automation, code, scheduled jobs, troubleshooting activities \(correlating logs\), and more\.
+
+Use the following procedures to configure the Amazon Time Sync Service on your instance from the command prompt\. Alternatively, you can use external NTP sources\. For more information about NTP and public time sources, see [http://www\.ntp\.org/](http://www.ntp.org/)\. An instance must have access to the internet for the external NTP time sources to work\.
 
 **Topics**
 + [Change the time zone](#windows-changing-time-zone)

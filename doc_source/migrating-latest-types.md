@@ -15,13 +15,14 @@ For more information, see [Amazon EC2 Update — Additional Instance Types, Nitr
 + [Part 6: Update power management settings](#power-management)
 + [Part 7: Update Intel chipset drivers for new instance types](#power-management)
 + [\(Alternative\) Upgrade the AWS PV, ENA, and NVMe drivers using AWS Systems Manager](#auto-upgrade)
++ [Migrate to Xen instance types from Nitro instance types](migrate-to-xen.md)
 
 **Note**  
 Alternatively, you can use the `AWSSupport-UpgradeWindowsAWSDrivers` automation document to automate the procedures described in Part 1, Part 2, and Part 3\. If you choose to use the automated procedure, see [\(Alternative\) Upgrade the AWS PV, ENA, and NVMe drivers using AWS Systems Manager](#auto-upgrade), and then continue with Part 4 and Part 5\.
 
 **Before you begin** 
 
-This procedure assumes that you are currently running on a previous generation Xen\-based instance type, such as an M4 or C4, and you are migrating to a latest generation instance type, such as an M5 or C5\. 
+This procedure assumes that you are currently running on a previous generation Xen\-based instance type, such as an M4 or C4, and you are migrating to an instance based on the [Nitro System](instance-types.md#ec2-nitro-instances), such as an M5 or C5\. 
 
 You must use PowerShell version 3\.0 or later to successfully perform the upgrade\. 
 
@@ -89,7 +90,7 @@ The following instructions are modified specifically for when you install or upg
 
    `start rundll32.exe sppnp.dll,Sysprep_Generalize_Pnp -wait`
 **Note**  
-To apply the command, you must run the PowerShell session as the administrator\.  
+To apply the command, you must run the PowerShell session as an administrator\. PowerShell \(x86\) versions will result in an error\.   
 This command only runs sysprep on the driver devices\. It does not run the full sysprep preparation\.
 
 1. For Windows Server 2008 R2 and Windows Server 2012, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type anytime after the device sysprep\.

@@ -145,7 +145,7 @@ Before you start upgrading your RedHat drivers to Citrix PV drivers, make sure y
   + Do not run the Sysprep tool manually or using the EC2Config service\.
   + Set your Ethernet adapter to obtain an IP address automatically using DHCP\. For more information, see [Configure TCP/IP Settings](https://technet.microsoft.com/en-us/library/cc731673.aspx) in the Microsoft TechNet Library\.
 
-**To upgrade Redhat drivers**
+**To upgrade RedHat drivers**
 
 1. Connect to your instance and log in as the local administrator\. For more information about connecting to your instance, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 

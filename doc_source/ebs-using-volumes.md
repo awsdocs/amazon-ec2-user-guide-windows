@@ -1,6 +1,8 @@
 # Make an Amazon EBS volume available for use on Windows<a name="ebs-using-volumes"></a>
 
-After you attach an Amazon EBS volume to your instance, it is exposed as a block device, and appears as a removable disk in Windows\. You can format the volume with any file system and then mount it\. After you make the EBS volume available for use, you can access it in the same ways that you access any other volume\. Any data written to this file system is written to the EBS volume and is transparent to applications using the device\.
+After you attach an Amazon EBS volume to your instance that runs on Xen hypervisor, it is exposed as a block device, and appears as a removable disk in Windows\. You can format the volume with any file system and then mount it\. After you make the EBS volume available for use, you can access it in the same ways that you access any other volume\. Any data written to this file system is written to the EBS volume and is transparent to applications using the device\.
+
+On Nitro instances, the Amazon EBS volume is exposed as a block device when the NVMe controller scans the PCI bus\. The disk does not appear as removable\. Unlike Xen\-based instances, there is only one NVMe controller per EBS volume on Nitro instances\.
 
 You can take snapshots of your EBS volume for backup purposes or to use as a baseline when you create another volume\. For more information, see [Amazon EBS snapshots](EBSSnapshots.md)\.
 

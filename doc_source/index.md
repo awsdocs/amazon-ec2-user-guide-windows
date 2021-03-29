@@ -1,7 +1,7 @@
 # Amazon Elastic Compute Cloud User Guide for Windows Instances
 
 -----
-*****Copyright &copy; 2021 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy;  Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -20,11 +20,13 @@ Amazon's trademarks and trade dress may not be used in
 + [Tutorial: Get started with Amazon EC2 Windows instances](EC2_GetStarted.md)
 + [Best practices for Windows on Amazon EC2](ec2-best-practices.md)
 + [Amazon Machine Images (AMI)](AMIs.md)
+   + [Boot modes](ami-boot.md)
    + [AWS Windows AMIs](windows-ami-version-history.md)
       + [Managed AWS Windows AMIs](aws-windows-ami.md)
       + [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)
       + [Deregister your Windows AMI](deregister-ami.md)
       + [Specialized Windows AMIs](ami-windows-specialized.md)
+         + [SQL Server AMIs provided by AWS](ami-windows-sql.md)
          + [Amazon EC2 Windows Server AMIs for STIG compliance](ami-windows-stig.md)
       + [AWS Windows AMI Version History](ec2-windows-ami-version-history.md)
    + [Find a Windows AMI](finding-an-ami.md)
@@ -127,7 +129,7 @@ Amazon's trademarks and trade dress may not be used in
             + [Use Amazon EventBridge to monitor EC2 Fleet events](ec2-fleet-eventbridge.md)
       + [Connect to your Windows instance](connecting_to_windows_instance.md)
       + [Stop and start your instance](Stop_Start.md)
-      + [Hibernate your Windows instance](Hibernate.md)
+      + [Hibernate your On-Demand or Reserved Windows instance](Hibernate.md)
       + [Reboot your instance](ec2-instance-reboot.md)
       + [Instance retirement](instance-retirement.md)
       + [Terminate your instance](terminating-instances.md)
@@ -175,6 +177,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Perform an in-place upgrade](os-inplaceupgrade.md)
       + [Perform an automated upgrade](automated-upgrades.md)
       + [Migrate to latest generation instance types](migrating-latest-types.md)
+         + [Migrate to Xen instance types from Nitro instance types](migrate-to-xen.md)
       + [Windows to Linux replatforming assistant for Microsoft SQL Server Databases](replatform-sql-server.md)
          + [Setting up](replatform-sql-server-setting-up.md)
          + [Get started](replatform-sql-server-getting-started.md)

@@ -43,7 +43,7 @@ The following Elastic Graphics accelerators are available\. You can attach any E
 | eg1\.xlarge | 4 | 
 | eg1\.2xlarge | 8 | 
 
-An Elastic Graphics accelerator does not form part of the hardware of your instance\. Instead, it is network\-attached through a network interface, known as the *Elastic Graphics network interface*\. When you launch an instance with graphics acceleration, the Elastic Graphics network interface is created in your VPC for you\. 
+An Elastic Graphics accelerator does not form part of the hardware of your instance\. Instead, it is network\-attached through a network interface, known as the *Elastic Graphics network interface*\. When you launch or restart an instance with graphics acceleration, the Elastic Graphics network interface is created in your VPC for you\. 
 
 The Elastic Graphics network interface is created in the same subnet and VPC as your instance and is assigned a private IPv4 address from that subnet\. The accelerator attached to your Amazon EC2 instance is allocated from a pool of available accelerators in the same Availability Zone as your instance\.
 

@@ -54,15 +54,14 @@ These downloads are available to AWS customers only\. By downloading, you agree 
    }
    ```
 
-1. Unzip the driver file that you downloaded\.
+1. Unzip the downloaded driver file and run the installer using the following PowerShell commands\.
 
-1. Open Device Manager and then open **Video Controller**\.
-
-1. Choose **Update driver**, **Browse my computer for driver software**, **Browse**\.
-
-1. Open the AMD folder\.
-
-1. Verify that **Include subfolders** is selected and choose **Next**\.
+   ```
+   Expand-Archive $LocalFilePath -DestinationPath $home\Desktop -Verbose
+   $Driverdir = Get-ChildItem $home\Desktop\ -Directory -Filter "*WHQL*"
+   Write-Host $Driverdir
+   pnputil /add-driver $home\Desktop\$Driverdir\Drivers\Display\WT6A_INF\*inf /install
+   ```
 
 1. Follow the instructions to install the driver and reboot your instance as required\.
 

@@ -122,7 +122,7 @@ The following basic restrictions apply to tags:
 
 You can't terminate, stop, or delete a resource based solely on its tags; you must specify the resource identifier\. For example, to delete snapshots that you tagged with a tag key called `DeleteMe`, you must use the `DeleteSnapshots` action with the resource identifiers of the snapshots, such as `snap-1234567890abcdef0`\. 
 
-You can tag public or shared resources, but the tags you assign are available only to your AWS account and not to the other accounts sharing the resource\.
+When you tag public or shared resources, the tags you assign are available only to your AWS account; no other AWS account will have access to those tags\. For tag\-based access control to shared resources, each AWS account must assign its own set of tags to control access to the resource\.
 
 You can't tag all resources\. For more information, see [Tagging support for Amazon EC2 resources](#tag-ec2-resources-table)\.
 

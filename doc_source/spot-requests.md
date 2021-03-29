@@ -583,13 +583,15 @@ If your Spot Instance request is `active` and has an associated running Spot Ins
 
 ## Stop a Spot Instance<a name="stopping-a-spot-instance"></a>
 
-If you don’t need your Spot Instances now, but you want to restart them later without losing the data persisted in the Amazon EBS volume, you can stop them\. The steps for stopping a Spot Instance are similar to the steps for stopping an On\-Demand Instance\. You can only stop a Spot Instance if the Spot Instance was launched from a `persistent` Spot Instance request\.
+If you don’t need your Spot Instances now, but you want to restart them later without losing the data persisted in the Amazon EBS volume, you can stop them\. The steps for stopping a Spot Instance are similar to the steps for stopping an On\-Demand Instance\.
 
 **Note**  
 While a Spot Instance is stopped, you can modify some of its instance attributes, but not the instance type\.   
 We don't charge usage for a stopped Spot Instance, or data transfer fees, but we do charge for the storage for any Amazon EBS volumes\.
 
 **Limitations**
++ You can only stop a Spot Instance if the Spot Instance was launched from a `persistent` Spot request\.
++ You can't stop a Spot Instance if the associated Spot request is cancelled\. When the Spot request is cancelled, you can only terminate the Spot Instance\.
 + You can't stop a Spot Instance if it is part of a fleet or launch group, Availability Zone group, or Spot block\.
 
 ------

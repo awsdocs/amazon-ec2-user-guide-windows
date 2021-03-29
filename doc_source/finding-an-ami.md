@@ -13,7 +13,7 @@ If you need to find a Linux AMI, see [Find a Linux AMI](https://docs.aws.amazon.
 + [Find a Windows AMI using the Amazon EC2 console](#finding-an-ami-console)
 + [Find an AMI using the AWS Tools for Windows PowerShell](#finding-an-ami-psh)
 + [Find an AMI using the AWS CLI](#finding-an-ami-aws-cli)
-+ [Find the latest Amazon Linux AMI using Systems Manager](#finding-an-ami-parameter-store)
++ [Find the latest Windows AMI using Systems Manager](#finding-an-ami-parameter-store)
 + [Use a Systems Manager parameter to find an AMI](#using-systems-manager-parameter-to-find-AMI)
 
 ## Find a Windows AMI using the Amazon EC2 console<a name="finding-an-ami-console"></a>
@@ -77,32 +77,18 @@ Omitting the `--owners` flag from the describe\-images command will return all i
 **Systems Manager Parameter Store**  
 For information and examples, see [Query for the Latest Windows AMI Using Systems Manager Parameter Store](https://aws.amazon.com/blogs/mt/query-for-the-latest-windows-ami-using-systems-manager-parameter-store/)\.
 
-## Find the latest Amazon Linux AMI using Systems Manager<a name="finding-an-ami-parameter-store"></a>
+## Find the latest Windows AMI using Systems Manager<a name="finding-an-ami-parameter-store"></a>
 
-Amazon EC2 provides AWS Systems Manager public parameters for AWS\-maintained public AMIs that you can use when launching instances\. For example, the EC2\-provided parameter `/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2` is available in all Regions and always points to the latest version of the Amazon Linux 2 AMI in a given Region\. 
+Amazon EC2 provides AWS Systems Manager public parameters for AWS\-maintained public AMIs that you can use when launching instances\. 
 
-The Amazon EC2 AMI public parameters are available from the following paths:
-+ `/aws/service/ami-amazon-linux-latest`
-+ `/aws/service/ami-windows-latest`
+The Amazon EC2 AMI public parameters are available from the following path:
+
+ `/aws/service/ami-windows-latest`
 
 You can view a list of all Windows AMIs in the current AWS Region by using the following command in the AWS CLI\.
 
 ```
 aws ssm get-parameters-by-path --path /aws/service/ami-windows-latest --query "Parameters[].Name"
-```
-
-**To launch an instance using a public parameter**  
-The following example uses the EC2\-provided public parameter to launch an `m5.xlarge` instance using the latest Amazon Linux 2 AMI\.
-
-To specify the parameter in the command, use the following syntax: `resolve:ssm:public-parameter`, where `resolve:ssm` is the standard prefix and `public-parameter` is the path and name of the public parameter\.
-
-In this example, the `--count` and `--security-group` parameters are not included\. For `--count`, the default is 1\. If you have a default VPC and a default security group, they are used\.
-
-```
-aws ec2 run-instances 
-    --image-id resolve:ssm:/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 
-    --instance-type m5.xlarge 
-    --key-name MyKeyPair
 ```
 
 For more information, see [Using public parameters](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-public-parameters.html) in the *AWS Systems Manager User Guide* and [Query for the Latest Windows AMI Using AWS Systems Manager Parameter Store](http://aws.amazon.com/blogs/mt/query-for-the-latest-windows-ami-using-systems-manager-parameter-store/)\.

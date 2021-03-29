@@ -5,18 +5,22 @@ Windows AMIs contain a set of drivers to permit access to virtualized hardware\.
 
 |  | RedHat PV | Citrix PV | AWS PV | 
 | --- | --- | --- | --- | 
-|  Instance type  |  Not supported for all instance types\. If you specify an unsupported instance type, the instance is impaired\.  |  Supported for all instance types\.  |  Supported for all instance types\.  | 
+|  Instance type  |  Not supported for all instance types\. If you specify an unsupported instance type, the instance is impaired\.  |  Supported for Xen instance types\.  |  Supported for Xen instance types\.  | 
 |  Attached volumes  |  Supports up to 16 attached volumes\.  |  Supports more than 16 attached volumes\.  |  Supports more than 16 attached volumes\.  | 
 |  Network  |  The driver has known issues where the network connection resets under high loads; for example, fast FTP file transfers\.  |    |  The driver automatically configures jumbo frames on the network adapter when on a compatible instance type\. When the instance is in a [cluster placement group](placement-groups.md), this offers better network performance between instances in the cluster placement group\.  | 
 
-The following list shows which PV drivers you should run on each version of Windows Server on Amazon EC2\.
+The following table shows which PV drivers you should run on each version of Windows Server on Amazon EC2\.
 
-**Drivers by version of Windows Server**
-+ Windows Server 2019: AWS PV
-+ Windows Server 2016: AWS PV
-+ Windows Server 2012 and 2012 R2: AWS PV
-+ Windows Server 2008 R2: AWS PV 
-+ Windows Server 2008: Citrix PV 5\.9
+
+| Windows Server version | PV driver version | 
+| --- | --- | 
+| Windows Server 2019 | AWS PV latest version | 
+| Windows Server 2016 | AWS PV latest version | 
+| Windows Server 2012 R2 | AWS PV latest version | 
+| Windows Server 2012  | AWS PV latest version | 
+| Windows Server 2008 R2 | AWS PV version 8\.3\.4 and earlier | 
+| Windows Server 2008 | Citrix PV 5\.9 | 
+| Windows Server 2003 | Citrix PV 5\.9 | 
 
 **Topics**
 + [AWS PV drivers](#xen-driver-awspv)
@@ -54,28 +58,29 @@ The following table shows the changes to AWS PV drivers for each driver release\
 
 | Package version | Details | Release date | 
 | --- | --- | --- | 
-| [8\.3\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.4/AWSPVDriver.zip) | Improved reliability of network device attachment\. | 4 August 2020 | 
-| [8\.3\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.3/AWSPVDriver.zip) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html) To update this driver on Windows Server 2008 R2 instances, you must first verify that the appropriate patches are installed to address the following Microsoft Security Advisory: [Microsoft Security Advisory 3033929](https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2015/3033929)\.  | 4 February 2020 | 
-| [8\.3\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.2/AWSPVDriver.zip) |  Enhanced reliability of networking components\.  | 30 July 2019 | 
-| [8\.3\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.1/AWSPVDriver.zip) |  Improved performance and robustness of storage component\.  | 12 June 2019 | 
-| [8\.2\.7](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.7/AWSPVDriver.zip) |  Improved efficiency to support migrating to latest generation instance types\.  | 20 May 2019 | 
-| [8\.2\.6](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.6/AWSPVDriver.zip) |  Improved efficiency of crash dump path\.  | 15 January 2019 | 
-| [8\.2\.5](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.5/AWSPVDriver.zip) |  Additional security enhancements\. PowerShell installer now available in package\.  | 12 December 2018 | 
-| [8\.2\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.4/AWSPVDriver.zip) |  Reliability improvements\.  | 2 October 2018 | 
-| [8\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.3/AWSPVDriver.zip) |  Bug fixes and performance improvements\. Report EBS volume ID as disk serial number for EBS volumes\. This enables cluster scenarios such as S2D\.  | 29 May 2018 | 
-| [8\.2\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.1/AWSPVDriver.zip) |  Network and storage performance improvements plus multiple robustness fixes\. To verify that this version has been installed, refer to the following Windows registry value: `HKLM\Software\Amazon\PVDriver\Version 8.2.1`\.  | 8 March 2018 | 
-| [7\.4\.6](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/7.4.6/AWSPVDriver.zip) | Stability fixes to make AWS PV drivers more resilient\. | 26 April 2017 | 
-| 7\.4\.3 |  Added support for Windows Server 2016\. Stability fixes for all supported Windows OS versions\. \*AWS PV driver version 7\.4\.3's signature expires on March 29, 2019\. We recommend updating to the latest AWS PV driver\.   | 18 Nov 2016 | 
-| 7\.4\.2 | Stability fixes for support of X1 instance type\. | 2 Aug 2016 | 
-| 7\.4\.1 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 12 July 2016 | 
-| 7\.3\.2 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 24 June 2015 | 
-| 7\.3\.1 |  TRIM update: Fix related to TRIM requests\. This fix stabilizes instances and improves instance performance when managing large numbers of TRIM requests\.  |  | 
-| 7\.3\.0 |  TRIM support: The AWS PV driver now sends TRIM requests to the hypervisor\. Ephemeral disks will properly process TRIM requests given the underlying storage supports TRIM \(SSD\)\. Note that EBS\-based storage does not support TRIM as of March 2015\.  |  | 
-| 7\.2\.5 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
-| 7\.2\.4 |  Device ID persistence: This driver fix masks the platform PCI device ID and forces the system to always surface the same device ID, even if the instance is moved\. More generally, the fix affects how the hypervisor surfaces virtual devices\. The fix also includes modifications to the co\-installer for the AWS PV drivers so the system persists mapped virtual devices\.  |  | 
-| 7\.2\.2 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
-| 7\.2\.1 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
-| 7\.2\.0 | Base: The AWS PV base version\. |  | 
+|  [8\.4\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.4.0/AWSPVDriver.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 2 March 2021 | 
+|  [8\.3\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.4/AWSPVDriver.zip)  | Improved reliability of network device attachment\. | 4 August 2020 | 
+|  [8\.3\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.3/AWSPVDriver.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html) To update this driver on Windows Server 2008 R2 instances, you must first verify that the appropriate patches are installed to address the following Microsoft Security Advisory: [Microsoft Security Advisory 3033929](https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2015/3033929)\.  | 4 February 2020 | 
+|  [8\.3\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.2/AWSPVDriver.zip)  |  Enhanced reliability of networking components\.  | 30 July 2019 | 
+|  [8\.3\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.1/AWSPVDriver.zip)  |  Improved performance and robustness of storage component\.  | 12 June 2019 | 
+|  [8\.2\.7](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.7/AWSPVDriver.zip)  |  Improved efficiency to support migrating to latest generation instance types\.  | 20 May 2019 | 
+|  [8\.2\.6](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.6/AWSPVDriver.zip)  |  Improved efficiency of crash dump path\.  | 15 January 2019 | 
+|  [8\.2\.5](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.5/AWSPVDriver.zip)  |  Additional security enhancements\. PowerShell installer now available in package\.  | 12 December 2018 | 
+|  [8\.2\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.4/AWSPVDriver.zip)  |  Reliability improvements\.  | 2 October 2018 | 
+|  [8\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.3/AWSPVDriver.zip)  |  Bug fixes and performance improvements\. Report EBS volume ID as disk serial number for EBS volumes\. This enables cluster scenarios such as S2D\.  | 29 May 2018 | 
+|  [8\.2\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.2.1/AWSPVDriver.zip)  |  Network and storage performance improvements plus multiple robustness fixes\. To verify that this version has been installed, refer to the following Windows registry value: `HKLM\Software\Amazon\PVDriver\Version 8.2.1`\.  | 8 March 2018 | 
+|  [7\.4\.6](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/7.4.6/AWSPVDriver.zip)  | Stability fixes to make AWS PV drivers more resilient\. | 26 April 2017 | 
+|  7\.4\.3  |  Added support for Windows Server 2016\. Stability fixes for all supported Windows OS versions\. \*AWS PV driver version 7\.4\.3's signature expires on March 29, 2019\. We recommend updating to the latest AWS PV driver\.   | 18 Nov 2016 | 
+|  7\.4\.2  | Stability fixes for support of X1 instance type\. | 2 Aug 2016 | 
+|  7\.4\.1  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 12 July 2016 | 
+|  7\.3\.2  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 24 June 2015 | 
+|  7\.3\.1  |  TRIM update: Fix related to TRIM requests\. This fix stabilizes instances and improves instance performance when managing large numbers of TRIM requests\.  |  | 
+|  7\.3\.0  |  TRIM support: The AWS PV driver now sends TRIM requests to the hypervisor\. Ephemeral disks will properly process TRIM requests given the underlying storage supports TRIM \(SSD\)\. Note that EBS\-based storage does not support TRIM as of March 2015\.  |  | 
+|  7\.2\.5  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
+|  7\.2\.4  |  Device ID persistence: This driver fix masks the platform PCI device ID and forces the system to always surface the same device ID, even if the instance is moved\. More generally, the fix affects how the hypervisor surfaces virtual devices\. The fix also includes modifications to the co\-installer for the AWS PV drivers so the system persists mapped virtual devices\.  |  | 
+|  7\.2\.2  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
+|  7\.2\.1  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  |  | 
+|  7\.2\.0  | Base: The AWS PV base version\. |  | 
 
 ## Citrix PV drivers<a name="xen-driver-citrix"></a>
 
@@ -129,7 +134,7 @@ Whenever new EC2 Windows drivers are released, we send notifications to subscrib
 
 1. In the navigation pane, choose **Subscriptions**\.
 
-1. Select the checkbox for the subscription and then choose **Actions**, **Delete subscriptions**\. When prompted for confirmation, choose **Delete**\.
+1. Select the check box for the subscription and then choose **Actions**, **Delete subscriptions**\. When prompted for confirmation, choose **Delete**\.
 
 **To subscribe to EC2 notifications using the AWS CLI**  
 To subscribe to EC2 notifications with the AWS CLI, use the following command\. 

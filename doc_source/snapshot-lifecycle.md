@@ -127,7 +127,7 @@ Depending on the configuration of your lifecycle policies, you could have multip
 The following considerations apply to sharing snapshots across accounts:
 + You can only share snapshots that are unencrypted or that are encrypted using a customer\-managed CMK\.
 + You can't share snapshots that are encrypted with the default EBS encryption key\.
-+ If you share encrypted snapshots, then you must also share the CMK that was used to encrypt the source volume with the target accounts\.
++ If you share encrypted snapshots, then you must also share the CMK that was used to encrypt the source volume with the target accounts\. For more information, see [Allowing users in other accounts to use a CMK](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html) in the *AWS Key Management Service Developer Guide*\.
 
 The following considerations apply to cross\-account copy event policies:
 + You can only copy snapshots that are unencrypted or that are encrypted using a customer\-managed CMK\.
@@ -308,4 +308,4 @@ If you enable **Cross Region copy** for unencrypted snapshots or AMIs backed by 
 
 If you enable **Cross Region copy** for encrypted snapshots or AMIs backed by encrypted snapshots, ensure that the default roles have permission to use both the source and destination CMKs\. 
 
-For more information, see [ Managing access to AWS KMS CMKs](https://docs.aws.amazon.com/kms/latest/developerguide/control-access-overview.html#managing-access) in the *AWS Key Management Service Developer Guide*\.
+For more information, see [Allowing users in other accounts to use a CMK](https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-modifying-external-accounts.html) in the *AWS Key Management Service Developer Guide*\.

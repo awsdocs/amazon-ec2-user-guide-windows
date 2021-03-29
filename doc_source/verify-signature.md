@@ -5,7 +5,7 @@ This topic explains how to verify the instance identity document using the base6
 **Important**  
 To validate the instance identity document using the base64\-encoded signature, you must request the AWS RSA public certificate from [AWS Support](https://console.aws.amazon.com/support/home#/)\. 
 
-**To verify the instance identity document using the PKCS7 signature and the AWS DSA public certificate**
+**To validate the instance identity document using the base64\-encoded signature and the AWS RSA public certificate**
 
 1. Connect to the instance\.
 

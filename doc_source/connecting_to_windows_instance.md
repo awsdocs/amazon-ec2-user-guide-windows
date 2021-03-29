@@ -36,6 +36,9 @@ If you've joined your instance to a domain, you can connect to your instance usi
 
 If you receive an error while attempting to connect to your instance, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
 
+------
+#### [ New console ]
+
 **To connect to your Windows instance using an RDP client**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
@@ -73,6 +76,51 @@ If you receive a "Password Failed" error, try entering the password manually\. C
    1. \[Windows\] Choose **Yes** in the **Remote Desktop Connection** window to connect to your instance\.
 
       \[Mac OS X\] Log in as prompted, using the default administrator account and the default administrator password that you recorded or copied previously\. Note that you might need to switch spaces to see the login screen\. For more information, see [Add spaces and switch between them](https://support.apple.com/en-us/HT204100)\.
+
+------
+#### [ Old console ]
+
+**To connect to your Windows instance using an RDP client**
+
+1. In the Amazon EC2 console, select the instance, and then choose **Connect**\.
+
+1. In the **Connect To Your Instance** dialog box, choose **Get Password** \(it will take a few minutes after the instance is launched before the password is available\)\.
+
+1. Choose **Browse** and navigate to the private key file you created when you launched the instance\. Select the file and choose **Open** to copy the entire contents of the file into the **Contents** field\.
+
+1. Choose **Decrypt Password**\. The console displays the default administrator password for the instance in the **Connect To Your Instance** dialog box, replacing the link to **Get Password** shown previously with the actual password\.
+
+1. Record the default administrator password, or copy it to the clipboard\. You need this password to connect to the instance\.
+
+1. Choose **Download Remote Desktop File**\. Your browser prompts you to either open or save the \.rdp file\. Either option is fine\. When you have finished, you can choose **Close** to dismiss the **Connect To Your Instance** dialog box\. 
+   + If you opened the \.rdp file, you'll see the **Remote Desktop Connection** dialog box\.
+   + If you saved the \.rdp file, navigate to your downloads directory, and open the \.rdp file to display the dialog box\.
+
+1. You may get a warning that the publisher of the remote connection is unknown\. You can continue to connect to your instance\.
+
+1. When prompted, log in to the instance, using the administrator account for the operating system and the password that you recorded or copied previously\. If your **Remote Desktop Connection** already has an administrator account set up, you might have to choose the **Use another account** option and type the user name and password manually\.
+**Note**  
+Sometimes copying and pasting content can corrupt data\. If you encounter a "Password Failed" error when you log in, try typing in the password manually\.
+
+1. Due to the nature of self\-signed certificates, you may get a warning that the security certificate could not be authenticated\. Use the following steps to verify the identity of the remote computer, or simply choose **Yes** or **Continue** to continue if you trust the certificate\.
+
+   1. If you are using **Remote Desktop Connection** from a Windows PC, choose **View certificate**\. If you are using **Microsoft Remote Desktop** on a Mac, choose **Show Certificate**\.
+
+   1. Choose the **Details** tab, and scroll down to the **Thumbprint** entry on a Windows PC, or the **SHA1 Fingerprints** entry on a Mac\. This is the unique identifier for the remote computer's security certificate\.
+
+   1. In the Amazon EC2 console, select the instance, choose **Actions**, and then choose **Get System Log**\.
+
+   1. In the system log output, look for an entry labeled `RDPCERTIFICATE-THUMBPRINT`\. If this value matches the thumbprint or fingerprint of the certificate, you have verified the identity of the remote computer\.
+
+   1. If you are using **Remote Desktop Connection** from a Windows PC, return to the **Certificate** dialog box and choose **OK**\. If you are using **Microsoft Remote Desktop** on a Mac, return to the **Verify Certificate** and choose **Continue**\.
+
+   1. \[Windows\] Choose **Yes** in the **Remote Desktop Connection** window to connect to your instance\.
+
+      \[Mac OS\] Log in as prompted, using the default administrator account and the default administrator password that you recorded or copied previously\. Note that you might need to switch spaces to see the login screen\. For more information about spaces, see [support\.apple\.com/en\-us/HT204100](https://support.apple.com/en-us/HT204100)\.
+
+   1. If you receive an error while attempting to connect to your instance, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
+
+------
 
 ## Connect to a Windows instance using its IPv6 address<a name="connecting-to-windows-ipv6"></a>
 

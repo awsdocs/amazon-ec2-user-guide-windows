@@ -51,6 +51,37 @@ Amazon EC2 processes your modification request if there is sufficient capacity f
 
 Before you modify your Reserved Instances, ensure that you have read the applicable [restrictions](#ri-modification-limits)\.
 
+------
+#### [ New console ]
+
+**To modify your Reserved Instances using the AWS Management Console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. On the **Reserved Instances** page, select one or more Reserved Instances to modify, and choose **Actions**, **Modify Reserved Instances**\.
+**Note**  
+If your Reserved Instances are not in the active state or cannot be modified, **Modify Reserved Instances** is disabled\.
+
+1. The first entry in the modification table displays attributes of the selected Reserved Instances, and at least one target configuration beneath it\. The **Units** column displays the total instance size footprint\. Choose **Add** for each new configuration to add\. Modify the attributes as needed for each configuration\.
+   + **Scope**: Choose whether the configuration applies to an Availability Zone or to the whole Region\.
+   + **Availability Zone**: Choose the required Availability Zone\. Not applicable for regional Reserved Instances\.
+   + **Count**: Specify the number of instances\. To split the Reserved Instances into multiple configurations, reduce the count, choose **Add**, and specify a count for the additional configuration\. For example, if you have a single configuration with a count of 10, you can change its count to 6 and add a configuration with a count of 4\. This process retires the original Reserved Instance after the new Reserved Instances are activated\.
+
+1. Choose **Continue**\.
+
+1. To confirm your modification choices when you finish specifying your target configurations, choose **Submit modifications**\.
+
+1. You can determine the status of your modification request by looking at the **State** column in the Reserved Instances screen\. The following are the possible states\.
+   + **active* \(pending modification\)*** — Transition state for original Reserved Instances
+   + **retired* \(pending modification\)*** — Transition state for original Reserved Instances while new Reserved Instances are being created
+   + **retired** — Reserved Instances successfully modified and replaced
+   + **active** — One of the following:
+     + New Reserved Instances created from a successful modification request
+     + Original Reserved Instances after a failed modification request
+
+------
+#### [ Old console ]
+
 **To modify your Reserved Instances using the AWS Management Console**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
@@ -73,6 +104,8 @@ If your Reserved Instances are not in the active state or cannot be modified, **
    + **active** — One of the following:
      + New Reserved Instances created from a successful modification request
      + Original Reserved Instances after a failed modification request
+
+------
 
 **To modify your Reserved Instances using the command line**
 

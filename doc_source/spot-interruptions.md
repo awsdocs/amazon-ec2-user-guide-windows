@@ -46,7 +46,7 @@ After a Spot Instance is stopped by the Spot service, only the Spot service can 
 
 For a Spot Instance launched by a `persistent` Spot Instance request, the Spot service restarts the stopped instance when capacity is available in the same Availability Zone and for the same instance type as the stopped instance\.
 
-If instances in an EC2 Fleet or Spot Fleet are stopped and the fleet is of type `maintain`, the Spot service launches replacement instances to maintain the target capacity\. The Spot service finds the best pools based on the specified allocation strategy \(`lowestPrice`, `diversified`, or `InstancePoolsToUseCount`\); it does not prioritize the pool with the earlier stopped instances\. Later, if the allocation strategy leads to a pool containing the earlier stopped instances, the Spot service restarts the stopped instances to meet the target capacity\.
+If instances in an EC2 Fleet or Spot Fleet are stopped and the fleet is of type `maintain`, the Spot service launches replacement instances to maintain the target capacity\. The Spot service finds the best Spot capacity pools based on the specified allocation strategy \(`lowestPrice`, `diversified`, or `InstancePoolsToUseCount`\); it does not prioritize the pool with the earlier stopped instances\. Later, if the allocation strategy leads to a pool containing the earlier stopped instances, the Spot service restarts the stopped instances to meet the target capacity\.
 
 For example, consider a Spot Fleet with the `lowestPrice` allocation strategy\. At initial launch, a `c3.large` pool meets the `lowestPrice` criteria for the launch specification\. Later, when the `c3.large` instances are interrupted, the Spot service stops the instances and replenishes capacity from another pool that fits the `lowestPrice` strategy\. This time, the pool happens to be a `c4.large` pool and the Spot service launches `c4.large` instances to meet the target capacity\. Similarly, Spot Fleet could move to a `c5.large` pool the next time\. In each of these transitions, the Spot service does not prioritize pools with earlier stopped instances, but rather prioritizes purely on the specified allocation strategy\. The `lowestPrice` strategy can lead back to pools with earlier stopped instances\. For example, if instances are interrupted in the `c5.large` pool and the `lowestPrice` strategy leads it back to the `c3.large` or `c4.large` pools, the earlier stopped instances are restarted to fulfill target capacity\.
 
@@ -65,7 +65,7 @@ You can specify the interruption behavior so that Amazon EC2 hibernates Spot Ins
 + **EC2 Fleet or Spot Fleet request type** – must be `maintain`
 + **Supported instance families** – C3, C4, C5, M4, M5, R3, R4
 + **Instance RAM size** – must be less than 100 GB
-+ **Supported operating systems** \(You must install the hibernation agent on a supported operated system\. Alternatively, use a supported AMI, which already includes the agent\.\):
++ **Supported operating systems** \(You must install the hibernation agent on a supported operating system\. Alternatively, use a supported AMI, which already includes the agent\.\):
   + Amazon Linux 2
   + Amazon Linux AMI
   + Ubuntu with an AWS\-tuned Ubuntu kernel \(linux\-aws\) greater than 4\.4\.0\-1041
@@ -99,7 +99,7 @@ After a Spot Instance is hibernated by the Spot service, it can only be resumed 
 
 For more information, see [Prepare for instance hibernation](#prepare-for-instance-hibernation)\.
 
-For information about hibernating On\-Demand Instances, see [Hibernate your Windows instance](Hibernate.md)\.
+For information about hibernating On\-Demand Instances, see [Hibernate your On\-Demand or Reserved Windows instance](Hibernate.md)\.
 
 ## Specify the interruption behavior<a name="specifying-spot-interruption-behavior"></a>
 
@@ -151,7 +151,7 @@ The best way for you to gracefully handle Spot Instance interruptions is to arch
 
 We recommend that you check for these interruption notices every 5 seconds\. 
 
-The interruption notices are made available as a CloudWatch event and as items in the [instance metadata](ec2-instance-metadata.md) on the Spot Instance\.
+The interruption notices are made available as a CloudWatch event and as items in the [instance metadata](ec2-instance-metadata.md) on the Spot Instance\. Events are emitted on a best effort basis\.
 
 ### EC2 Spot Instance interruption notice<a name="ec2-spot-instance-interruption-warning-event"></a>
 

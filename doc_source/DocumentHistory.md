@@ -4,6 +4,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ami-boot.html) | Amazon EC2 now supports UEFI boot on selected AMD\- and Intel\-based EC2 instances\. | March 22, 2021 | 
 | [Amazon EBS local snapshots on Outposts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/snapshots-outposts.html) | You can now use Amazon Amazon EBS local snapshots on Outposts to store snapshots of volumes on an Outpost locally in Amazon S3 on the Outpost itself\. | February 4, 2021 | 
 | [Create a reverse DNS record](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS) | You can now set up reverse DNS lookup for your Elastic IP addresses\. | February 3, 2021 | 
 | [Amazon Data Lifecycle Manager](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/event-policy.html) | Use Amazon Data Lifecycle Manager to automate the process of sharing snapshots and copying them across AWS accounts\. | December 17, 2020 | 

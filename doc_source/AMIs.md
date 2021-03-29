@@ -8,6 +8,7 @@ An AMI includes the following:
 + A block device mapping that specifies the volumes to attach to the instance when it's launched\.
 
 **Topics**
++ [Boot modes](ami-boot.md)
 + [AWS Windows AMIs](windows-ami-version-history.md)
 + [Find a Windows AMI](finding-an-ami.md)
 + [Shared AMIs](sharing-amis.md)
