@@ -11,6 +11,7 @@ The following procedures and tips can help you troubleshoot problems with your A
 + [Troubleshoot instance termination \(shutting down\)](TroubleshootingInstancesShuttingDown.md)
 + [Troubleshoot Sysprep](sysprep-troubleshoot.md)
 + [Use EC2Rescue for Windows Server](Windows-Server-EC2Rescue.md)
++ [EC2 Serial Console for Windows instances](ec2-serial-console.md)
 + [Send a diagnostic interrupt \(for advanced users\)](diagnostic-interrupt.md)
 + [Common issues with Windows instances](common-issues.md)
 + [Common messages troubleshooting Windows instances](common-messages.md)
