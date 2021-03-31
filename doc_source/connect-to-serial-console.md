@@ -25,6 +25,7 @@ When you connect to the serial console, you might observe a slight drop in your 
   + Z1d
 + All IAM users who will use the serial console must have the required permissions\. For more information, see [Configure IAM policies for EC2 Serial Console access](configure-access-to-serial-console.md#serial-console-iam)\.
 + The instance must be in the `pending`, `running`, `stopping`, or `shutting-down` state\. If the instance is `terminated` or `stopped`, you can't connect to the serial console\. For more information about the instant states, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
++ To connect to Windows instances, the Special Admin Console (SAC) must be enabled\. For more information, see [Troubleshoot your Windows instance using SAC](troubleshooting-sac.md)\.
 
 You do not need an sshd server installed or running on your instance\.
 
