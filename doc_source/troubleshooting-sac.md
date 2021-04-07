@@ -5,7 +5,7 @@ You can use the serial console to troubleshoot a Windows instance as follows:
 + Interrupt the boot process and boot Windows in safe mode 
 
 **Limitations**  
-If you launch an instance with an AMI that comes preconfigured with SAC, EC2 services that rely on password retrieval will not work from the console\.
+If you launch an instance with an AMI that comes preconfigured with SAC, the EC2 services that rely on password retrieval will not work from the console\.
 
 **Topics**
 + [Prerequisites](#sac-prerequisites)
@@ -53,14 +53,14 @@ If SAC has been enabled on the instance, the serial console displays the followi
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win-boot-3.png)
 
 **To display the available SAC commands**  
-Type `?` followed by Enter\.
+Enter `?` and then press **Enter**\.
 
 The output is as follows\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win-boot-4.png)
 
 **To switch to channels created by cmd**  
-Press ESC\+TAB\+channel number together\.
+Press **ESC\+TAB\+channel number** together\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win-boot-5.png)
 
@@ -96,7 +96,7 @@ ESC
 Cancels and restarts the instance\.
 
 ESC followed by 8  
-Equivalent to pressing F8\. Shows advanced options for the selected item\.
+Equivalent to pressing **F8**\. Shows advanced options for the selected item\.
 
 ESC key \+ left arrow  
 Goes back to the initial boot menu\.  

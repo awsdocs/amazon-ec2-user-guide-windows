@@ -4,6 +4,8 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Store and restore an AMI using S3](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ami-store-restore.html) | Store EBS\-backed AMIs in S3 and restore them from S3 to enable cross\-partition copying of AMIs\. | April 6, 2021 | 
+| [EC2 Serial Console](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-serial-console.html) | Troubleshoot boot and network connectivity issues by establishing a connection to the serial port of an instance\. | March 30, 2021 | 
 | [Boot modes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ami-boot.html) | Amazon EC2 now supports UEFI boot on selected AMD\- and Intel\-based EC2 instances\. | March 22, 2021 | 
 | [Amazon EBS local snapshots on Outposts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/snapshots-outposts.html) | You can now use Amazon Amazon EBS local snapshots on Outposts to store snapshots of volumes on an Outpost locally in Amazon S3 on the Outpost itself\. | February 4, 2021 | 
 | [Create a reverse DNS record](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS) | You can now set up reverse DNS lookup for your Elastic IP addresses\. | February 3, 2021 | 

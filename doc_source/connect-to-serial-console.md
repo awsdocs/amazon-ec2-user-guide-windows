@@ -24,7 +24,7 @@ When you connect to the serial console, you might observe a slight drop in your 
   + T3, T3a, T4g
   + Z1d
 + All IAM users who will use the serial console must have the required permissions\. For more information, see [Configure IAM policies for EC2 Serial Console access](configure-access-to-serial-console.md#serial-console-iam)\.
-+ The instance must be in the `pending`, `running`, `stopping`, or `shutting-down` state\. If the instance is `terminated` or `stopped`, you can't connect to the serial console\. For more information about the instant states, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
++ The instance must be in the `pending`, `running`, `stopping`, or `shutting-down` state\. If the instance is `terminated` or `stopped`, you can't connect to the serial console\. For more information about the instance states, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
 
 You do not need an sshd server installed or running on your instance\.
 
@@ -50,10 +50,10 @@ You can connect to your EC2 instance's serial console by using the browser\-base
 
    An in\-browser terminal window opens\.
 
-1. Press Enter\. If a login prompt returns, you are connected to the serial console\.
+1. Press **Enter**\. If a login prompt returns, you are connected to the serial console\.
 
    If the screen remains black, you can use the following information to help resolve issues with connecting to the serial console:
-   + **Check that you have configured access to the serial console\.** For more information, see the [Configure IAM policies for EC2 Serial Console access](configure-access-to-serial-console.md#serial-console-iam)\.
+   + **Check that you have configured access to the serial console\.** For more information, see [Configure access to the EC2 Serial Console](configure-access-to-serial-console.md)\.
    + **Restart getty\.** If you have SSH access to your instance, then connect to your instance using SSH, and restart getty using the following command\.
 
      ```
@@ -111,10 +111,10 @@ You can use your own SSH key and connect to your instance from the SSH client of
 **Note**  
 The fingerprint only appears the first time you connect to the serial console\.
 
-1. Press Enter\. If a prompt returns, you are connected to the serial console\.
+1. Press **Enter**\. If a prompt returns, you are connected to the serial console\.
 
    If the screen remains black, you can use the following information to help resolve issues with connecting to the serial console:
-   + **Check that you have configured access to the serial console\.** For more information, see the [Configure IAM policies for EC2 Serial Console access](configure-access-to-serial-console.md#serial-console-iam)\.
+   + **Check that you have configured access to the serial console\.** For more information, see [Configure access to the EC2 Serial Console](configure-access-to-serial-console.md)\.
    + **Restart getty\.** If you have SSH access to your instance, then connect to your instance using SSH, and restart getty using the following command\.
 
      ```

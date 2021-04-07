@@ -13,7 +13,6 @@ An AMI includes the following:
 + [Find a Windows AMI](finding-an-ami.md)
 + [Shared AMIs](sharing-amis.md)
 + [Paid AMIs](paid-amis.md)
-+ [Automate the EBS\-backed AMI lifecycle](automating-amis.md)
++ [AMI lifecycle](ami-lifecycle.md)
 + [Use encryption with EBS\-backed AMIs](AMIEncryption.md)
-+ [Copy an AMI](CopyingAMIs.md)
 + [Understand AMI billing information](ami-billing-info.md)
