@@ -355,7 +355,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Connect to the EC2 Serial Console](connect-to-serial-console.md)
       + [Terminate an EC2 Serial Console session](terminate-serial-console-session.title.md)
       + [Troubleshoot your Windows instance using the EC2 Serial Console](troubleshoot-using-serial-console.md)
-         + [Troubleshoot your Windows instance using SAC](troubleshooting-sac.md)
+         + [Use SAC to troubleshoot your Windows instance](troubleshooting-sac.md)
    + [Send a diagnostic interrupt (for advanced users)](diagnostic-interrupt.md)
    + [Common issues with Windows instances](common-issues.md)
    + [Common messages troubleshooting Windows instances](common-messages.md)

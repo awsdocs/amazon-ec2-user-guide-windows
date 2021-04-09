@@ -1,25 +1,61 @@
-# Troubleshoot your Windows instance using SAC<a name="troubleshooting-sac"></a>
+# Use SAC to troubleshoot your Windows instance<a name="troubleshooting-sac"></a>
 
-You can use the serial console to troubleshoot a Windows instance as follows:
-+ Use the Special Admin Console \(SAC\) capability of Windows
-+ Interrupt the boot process and boot Windows in safe mode 
-
-**Limitations**  
-If you launch an instance with an AMI that comes preconfigured with SAC, the EC2 services that rely on password retrieval will not work from the console\.
+The Special Admin Console \(SAC\) capability of Windows provides a way to troubleshoot a Windows instance\. By connecting to the instance's serial console and using SAC, you can interrupt the boot process and boot Windows in safe mode\.
 
 **Topics**
++ [Limitations](#sac-limitations)
 + [Prerequisites](#sac-prerequisites)
-+ [Enable SAC and the boot menu](#configure-sac-bootmenu)
 + [Use SAC](#use-sac)
 + [Use the boot menu](#use-boot-menu)
 
+## Limitations<a name="sac-limitations"></a>
+
+If you launch an instance with an AMI that comes preconfigured with SAC, the EC2 services that rely on password retrieval will not work from the console\.
+
 ## Prerequisites<a name="sac-prerequisites"></a>
 
-Before you can enable and use SAC and the boot menu, you must grant access to the serial console\. For more information, see [Configure access to the EC2 Serial Console](configure-access-to-serial-console.md)\.
+**To use SAC for troubleshooting a Windows instance, you must first complete the following prerequisites:**
 
-## Enable SAC and the boot menu<a name="configure-sac-bootmenu"></a>
+1. Grant access to the serial console\. For more information, see [Configure access to the EC2 Serial Console](configure-access-to-serial-console.md)\.
 
-To use the serial console on a Windows instance, you need to enable SAC and the boot menu on the instance\.
+1. Connect to the serial console\. For more information, see [Connect to the EC2 Serial Console](connect-to-serial-console.md)\.
+
+1. Enable SAC and the boot menu\. For more information, see [Enable SAC and the boot menu](#configure-sac-bootmenu)\.
+
+### Enable SAC and the boot menu<a name="configure-sac-bootmenu"></a>
+
+Use one of the following methods to enable SAC and the boot menu on an instance\.
+
+------
+#### [ PowerShell ]
+
+**To enable SAC and the boot menu on a Windows instance**
+
+1. [Connect](connecting_to_windows_instance.md) to your instance and perform the following steps from the PowerShell command line\.
+
+1. Enable SAC\.
+
+   ```
+   bcdedit /ems '{current}' on
+   bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200
+   ```
+
+1. Enable the boot menu\.
+
+   ```
+   bcdedit /set '{bootmgr}' displaybootmenu yes
+   bcdedit /set '{bootmgr}' timeout 15
+   bcdedit /set '{bootmgr}' bootems yes
+   ```
+
+1. Apply the updated configuration by rebooting the instance\.
+
+   ```
+   shutdown -r -t 0
+   ```
+
+------
+#### [ Command prompt ]
 
 **To enable SAC and the boot menu on a Windows instance**
 
@@ -45,6 +81,8 @@ To use the serial console on a Windows instance, you need to enable SAC and the 
    ```
    shutdown -r -t 0
    ```
+
+------
 
 ## Use SAC<a name="use-sac"></a>
 
