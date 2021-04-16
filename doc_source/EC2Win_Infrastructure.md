@@ -1,18 +1,8 @@
-# Amazon EC2 basic infrastructure for Windows<a name="EC2Win_Infrastructure"></a>
+# Amazon EC2 Windows instances<a name="EC2Win_Infrastructure"></a>
 
-As you get started with Amazon EC2, you'll benefit from understanding the components of its basic infrastructure and how they compare or contrast with your own data centers\.
+The following is an introduction to key components of Amazon EC2 and how a Windows instance compares to running Windows Server on premises\.
 
-**Topics**
-+ [Amazon Machine Images and instances](#AMISandInstances)
-+ [Regions and Zones](#EC2Win_Regions)
-+ [Storage](#EC2Win_Storage)
-+ [Root device volume](#RootDevice_WinAMI)
-+ [Networking and security](#EC2Win_Sec)
-+ [AWS Identity and Access Management](#EC2Win_IAM)
-+ [Differences between Windows Server and an Amazon EC2 Windows instance](#EC2InstanceAndWindowsServer)
-+ [Design your applications to run on Amazon EC2 Windows instances](#Win_AppDesign)
-
-## Amazon Machine Images and instances<a name="AMISandInstances"></a>
+## Instances and AMIs<a name="ec2-instances-and-amis"></a>
 
 An *Amazon Machine Image \(AMI\)* is a template that contains a software configuration \(for example, an operating system, an application server, and applications\)\. From an AMI, you launch *instances*, which are copies of the AMI running as virtual servers in the cloud\.
 
@@ -26,107 +16,7 @@ Your Windows instances keep running until you stop or terminate them, or until t
 
 Your AWS account has a limit on the number of instances that you can have running\. For more information about this limit, and how to request an increase, see [How many instances can I run in Amazon EC2](https://aws.amazon.com/ec2/faqs/#How_many_instances_can_I_run_in_Amazon_EC2) in the Amazon EC2 General FAQ\.
 
-## Regions and Zones<a name="EC2Win_Regions"></a>
-
-Amazon EC2 is hosted in multiple locations world\-wide\. These locations are composed of Regions, Availability Zones, Local Zones, and Wavelength Zones\. Each *Region* is a separate geographic area\. 
-+ Availability Zones are multiple, isolated locations within each Region\.
-+ Local Zones provide you the ability to place resources, such as compute and storage, in multiple locations closer to your end users\.
-+ AWS Outposts brings native AWS services, infrastructure, and operating models to virtually any data center, co\-location space, or on\-premises facility\.
-+ Wavelength Zones allow developers to build applications that deliver ultra\-low latencies to 5G devices and end users\. Wavelength deploys standard AWS compute and storage services to the edge of telecommunication carriers' 5G networks\.
-
-AWS operates state\-of\-the\-art, highly available data centers\. Although rare, failures can occur that affect the availability of instances that are in the same location\. If you host all of your instances in a single location that is affected by a failure, none of your instances would be available\.
-
-For more information about the available Regions and Availability Zones, see [Regions and Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html) in the *Amazon EC2 User Guide for Linux Instances*\.
-
-## Storage<a name="EC2Win_Storage"></a>
-
-When using Amazon EC2, you may have data that you need to store\. Amazon EC2 offers the following storage options:
-+  [Amazon Elastic Block Store \(Amazon EBS\)](https://aws.amazon.com/ebs) 
-+ [Amazon EC2 instance store](InstanceStorage.md)
-+  [Amazon Simple Storage Service \(Amazon S3\)](https://aws.amazon.com/s3) 
-
-The following figure shows the relationship between these types of storage\.
-
-![\[Storage options for Amazon EC2\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/architecture_storage_windows.png)
-
-### Amazon EBS volumes<a name="EC2Win_StorageEBS"></a>
-
-Amazon EBS volumes are the recommended storage option for the majority of use cases\. Amazon EBS provides your instances with persistent, block\-level storage\. Amazon EBS volumes are essentially hard disks that you can attach to a running instance\.
-
-Amazon EBS is especially suited for applications that require a database, a file system, or access to raw block\-level storage\.
-
-As illustrated in the previous figure, you can attach multiple volumes to an instance\. Also, to keep a backup copy of your data, you can create a *snapshot* of an EBS volume, which is stored in Amazon S3\. You can create a new Amazon EBS volume from a snapshot, and attach it to another instance\. You can also detach a volume from an instance and attach it to a different instance\. The following figure illustrates the life cycle of an EBS volume\.
-
-![\[Life cycle of an EBS volume\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/state_diagram_ebs.png)
-
-For more information about Amazon EBS volumes, see [Amazon Elastic Block Store \(Amazon EBS\)](AmazonEBS.md)\.
-
-### Instance store<a name="EC2Win_InstanceStore"></a>
-
-*Instance store* provides your instances with temporary, block\-level storage\. This is storage that is physically attached to the host computer\. The data on an instance store volume doesn't persist when the associated instance is stopped or terminated\. For a list of instance store volumes available on each supported instance type, see [Instance store volumes](InstanceStorage.md#instance-store-volumes)\. 
-
-Instance store is an option for inexpensive temporary storage\. You can use instance store volumes if you don't require data persistence\. For more information about instance store volumes, see [Amazon EC2 instance store](InstanceStorage.md)\.
-
-### Amazon S3<a name="EC2Win_StorageS3"></a>
-
-Amazon S3 is storage for the Internet\. It provides a simple web service interface that enables you to store and retrieve any amount of data from anywhere on the web\. For more information about Amazon S3, see the [Amazon S3 product page](https://aws.amazon.com/s3)\.
-
-## Root device volume<a name="RootDevice_WinAMI"></a>
-
-When you launch an instance, the *root device volume* contains the image used to boot the instance\. When you launch a Windows instance, a root EBS volume is created from an EBS snapshot and attached to the instance\.
-
-By default, the root volume is deleted when the instance terminates \(the `DeleteOnTermination` attribute is `true`\)\. Using the console, you can change `DeleteOnTermination` when you launch an instance\. To change this attribute for an existing instance, you must use the command line\.
-
-**To change the root device volume of an instance to persist at launch using the console**
-
-1. Open the Amazon EC2 console\.
-
-1. From the Amazon EC2 console dashboard, choose **Launch Instance**\.
-
-1. On the **Choose an Amazon Machine Image \(AMI\)** page, choose the AMI to use and then choose **Select**\.
-
-1. Follow the wizard to complete the **Choose an Instance Type** and **Configure Instance Details** pages\.
-
-1. On the **Add Storage** page, deselect the **Delete On Termination** check box for the root volume\.
-
-1. Complete the remaining wizard pages, and then choose **Launch**\.
-
-You can verify the setting by viewing details for the root device volume on the instance's details pane\. Next to **Block devices**, choose the entry for the root device volume\. By default, **Delete on termination** is `True`\. If you change the default behavior, **Delete on termination** is `False`\.
-
-**To change the root device volume of an instance to persist using the command line**
-
-You can use one of the following commands\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
-+ [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
-+ [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
-
-## Networking and security<a name="EC2Win_Sec"></a>
-
-By default, an instance is assigned public IPv4 address only if it's launched into a default VPC\. An instance that's launched into a nondefault VPC must be specifically assigned a public IPv4 address at launch, or you must modify your subnet's default public IPv4 addressing behavior\.
-
-Instances can fail or terminate for reasons outside of your control\. If one fails and you launch a replacement instance, the replacement has a different public IPv4 address than the original\. However, if your application needs a static IPv4 address, Amazon EC2 offers *Elastic IP addresses*\. For more information, see [Amazon EC2 instance IP addressing](using-instance-addressing.md)\.
-
-You can use *security groups* to control who can access your instances\. These are analogous to an inbound network firewall that enables you to specify the protocols, ports, and source IP ranges that are allowed to reach your instances\. You can create multiple security groups and assign different rules to each group\. You can then assign each instance to one or more security groups, and we use the rules to determine which traffic is allowed to reach the instance\. You can configure a security group so that only specific IP addresses or specific security groups have access to the instance\. For more information, see [Amazon EC2 security groups for Windows instances](ec2-security-groups.md)\. 
-
-## AWS Identity and Access Management<a name="EC2Win_IAM"></a>
-
-AWS Identity and Access Management \(IAM\) enables you to do the following:
-+ Create users and groups under your AWS account
-+ Assign unique security credentials to each user under your AWS account
-+ Control each user's permissions to perform tasks using AWS resources
-+ Allow the users in another AWS account to share your AWS resources
-+ Create roles for your AWS account and define the users or services that can assume them
-+ Use existing identities for your enterprise to grant permissions to perform tasks using AWS resources
-
-By using IAM with Amazon EC2, you can control whether users in your organization can perform a task using specific Amazon EC2 API actions and whether they can use specific AWS resources\.
-
-For more information about IAM, see the following:
-+ [Creating an IAM group and users](security-iam.md#creating-an-iam-group)
-+ [IAM policies for Amazon EC2](iam-policies-for-amazon-ec2.md)
-+ [IAM roles for Amazon EC2](iam-roles-for-amazon-ec2.md)
-+ [AWS Identity and Access Management \(IAM\)](https://aws.amazon.com/iam)
-+ [IAM User Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/)
-
-## Differences between Windows Server and an Amazon EC2 Windows instance<a name="EC2InstanceAndWindowsServer"></a>
+## Differences between Windows Server and Windows instances<a name="EC2InstanceAndWindowsServer"></a>
 
 After you launch your Amazon EC2 Windows instance, it behaves like a traditional server running Windows Server\. For example, both Windows Server and an Amazon EC2 instance can be used to run your web applications, conduct batch processing, or manage applications requiring large\-scale computations\. However, there are important differences between the server hardware model and the cloud computing model\. The way an Amazon EC2 instance runs is not the same as the way a traditional server running Windows Server runs\.
 
@@ -152,7 +42,7 @@ An Amazon EC2 Windows instance is similar to the traditional Windows Server, as 
 
 ![\[Instance and AMI lifecycle\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_lifecycle.png)
 
-## Design your applications to run on Amazon EC2 Windows instances<a name="Win_AppDesign"></a>
+## Design your applications to run on Windows instances<a name="Win_AppDesign"></a>
 
 It is important that you consider the differences mentioned in the previous section when you design your applications to run on Amazon EC2 Windows instances\.
 

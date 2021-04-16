@@ -118,7 +118,7 @@ Run DiskSpd on the volume that you created\.
 The following command will run a 30 second random I/O test using a 20GB test file located on the `T:` drive, with a 25% write and 75% read ratio, and an 8K block size\. It will use eight worker threads, each with four outstanding I/Os, and a write entropy value seed of 1GB\. The results of the test will be saved to a text file called `DiskSpeedResults.txt`\. These parameters simulate a SQL Server OLTP workload\.
 
 ```
-diskspd –b8K –d30 –o4 –t8 –h –r –w25 –L –Z1G –c20G T:\iotest.dat > DiskSpeedResults.txt
+diskspd -b8K -d30 -o4 -t8 -h -r -w25 -L -Z1G -c20G C:\iotest.dat > DiskSpeedResults.txt
 ```
 
 For more information about interpreting the results, see this tutorial: [Inspecting disk IO performance with DiskSPd](https://sqlperformance.com/2015/08/io-subsystem/diskspd-test-storage)\.

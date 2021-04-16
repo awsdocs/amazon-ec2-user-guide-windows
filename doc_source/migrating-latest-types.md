@@ -91,7 +91,7 @@ The following instructions are modified specifically for when you install or upg
    `start rundll32.exe sppnp.dll,Sysprep_Generalize_Pnp -wait`
 **Note**  
 To apply the command, you must run the PowerShell session as an administrator\. PowerShell \(x86\) versions will result in an error\.   
-This command only runs sysprep on the driver devices\. It does not run the full sysprep preparation\.
+This command only runs sysprep on the device drivers\. It does not run the full sysprep preparation\.
 
 1. For Windows Server 2008 R2 and Windows Server 2012, shut down the instance, change the instance type to a latest generation instance and start it, then proceed to Part 4\. If you start the instance again on a previous generation instance type before migrating to a latest generation instance type, it will not boot\. For other supported Windows AMIs, you can change the instance type anytime after the device sysprep\.
 

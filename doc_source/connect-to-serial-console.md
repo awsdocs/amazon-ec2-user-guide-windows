@@ -1,6 +1,6 @@
 # Connect to the EC2 Serial Console<a name="connect-to-serial-console"></a>
 
-You can connect to the serial console of your EC2 instance by using the Amazon EC2 console or via SSH\. After connecting to the serial console, you can use it for troubleshooting\. For more information about troubleshooting, see [Troubleshoot your Windows instance using the EC2 Serial ConsoleTroubleshoot your instance using the EC2 Serial Console](troubleshoot-using-serial-console.md)\.
+You can connect to the serial console of your EC2 instance by using the Amazon EC2 console or via SSH\. After connecting to the serial console, you can use it for troubleshooting boot, network configuration, and other issues\. For more information about troubleshooting, see [Troubleshoot your Windows instance using the EC2 Serial ConsoleTroubleshoot your instance using the EC2 Serial Console](troubleshoot-using-serial-console.md)\.
 
 **Topics**
 + [Considerations](#sc-considerations)
@@ -17,6 +17,7 @@ You can connect to the serial console of your EC2 instance by using the Amazon E
 When you connect to the serial console, you might observe a slight drop in your instance’s throughput\.
 
 ## Prerequisites<a name="sc-prerequisites"></a>
++ Supported AWS Regions: US East \(N\. Virginia\), US East \(Ohio\), US West \(Oregon\) Europe \(Ireland\), Europe \(Frankfurt\), Asia Pacific \(Sydney\), Asia Pacific \(Tokyo\), Asia Pacific \(Singapore\)
 + Supported instance families:
   + A1
   + C5, C5a, C5ad, C5d, C5n, C6g, C6gd
@@ -39,6 +40,8 @@ You do not need an sshd server installed or running on your instance\.
 
 You can connect to your EC2 instance's serial console by using the browser\-based client\. You do this by selecting the instance in the Amazon EC2 console and choosing to connect to the serial console\. The browser\-based client handles the permissions and provides a successful connection\.
 
+EC2 serial console works from most browsers, and supports keyboard and mouse input\.
+
 **To connect to your instance's serial port using the browser\-based client \(Amazon EC2 console\)**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
@@ -55,11 +58,6 @@ You can connect to your EC2 instance's serial console by using the browser\-base
 
    If the screen remains black, you can use the following information to help resolve issues with connecting to the serial console:
    + **Check that you have configured access to the serial console\.** For more information, see [Configure access to the EC2 Serial Console](configure-access-to-serial-console.md)\.
-   + **Restart getty\.** If you have SSH access to your instance, then connect to your instance using SSH, and restart getty using the following command\.
-
-     ```
-     [ec2-user ~]$ sudo systemctl restart serial-getty@ttyS0
-     ```
    + **Reboot your instance\.** You can reboot your instance by using the EC2 console or the AWS CLI\. For more information, see [Reboot your instance](ec2-instance-reboot.md)\.
 
 ### Connect using your own key and SSH client<a name="sc-connect-SSH"></a>
@@ -116,11 +114,6 @@ The fingerprint only appears the first time you connect to the serial console\.
 
    If the screen remains black, you can use the following information to help resolve issues with connecting to the serial console:
    + **Check that you have configured access to the serial console\.** For more information, see [Configure access to the EC2 Serial Console](configure-access-to-serial-console.md)\.
-   + **Restart getty\.** If you have SSH access to your instance, then connect to your instance using SSH, and restart getty using the following command\.
-
-     ```
-     [ec2-user ~]$ sudo systemctl restart serial-getty@ttyS0
-     ```
    + **Reboot your instance\.** You can reboot your instance by using the EC2 console or the AWS CLI\. For more information, see [Reboot your instance](ec2-instance-reboot.md)\.
 
 ## EC2 Serial Console fingerprints<a name="sc-fingerprints"></a>

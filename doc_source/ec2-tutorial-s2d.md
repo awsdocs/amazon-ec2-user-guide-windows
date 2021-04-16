@@ -26,7 +26,7 @@ A basic understanding of Windows Server computing as well as how to create and m
   + The underlying disk drive fails\.
   + The instance stops\.
   + The instance terminates\.
-+ Stopping too many instances in a cluster can cause data loss if the data is not backed up or replicated\. When you use S2D on AWS, as with any cluster, losing more nodes than your fault tolerance allows will result in loss of data\. One of the biggest risks to any cluster is losing all nodes\. Cluster redundancy protects against failures on a single instance \(or more, if your fault tolerance supports it\)\. However, you can lose data if the number of instances with failed disk drives in a cluster exceeds the fault tolerance\. You can also lose data if the number of stopped or terminated instances exceeds the fault tolerance\. To reduce risk, limit the number of people or systems that can stop or terminate instances in the cluster\. To mitigate the risk of terminating cluster node instances, [enable termination protection](terminating-instances.md#Using_ChangingDisableAPITermination) on these instances\. You can also configure [IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_ec2_tag-owner.html) to allow users to only restart nodes from the AWS console but not stop them\.
++ Stopping too many instances in a cluster can cause data loss if the data is not backed up or replicated\. When you use S2D on AWS, as with any cluster, losing more nodes than your fault tolerance allows will result in loss of data\. One of the biggest risks to any cluster is losing all nodes\. Cluster redundancy protects against failures on a single instance \(or more, if your fault tolerance supports it\)\. However, you can lose data if the number of instances with failed disk drives in a cluster exceeds the fault tolerance\. You can also lose data if the number of stopped or terminated instances exceeds the fault tolerance\. To reduce risk, limit the number of people or systems that can stop or terminate instances in the cluster\. To mitigate the risk of terminating cluster node instances, [enable termination protection](terminating-instances.md#Using_ChangingDisableAPITermination) on these instances\. You can also configure [IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_examples_ec2_tag-owner.html) to allow users to only restart nodes from the AWS Management Console but not stop them\.
 + S2D does not protect against networking or data center failures that affect the entire cluster\. To reduce risk, consider using Dedicated Hosts to ensure that instances are not placed in the same rack\.
 
 **Topics**
@@ -173,7 +173,7 @@ You can verify and review the cluster configuration with the built\-in [Test\-Cl
    Start-Process $reportFilePath
    ```
 
-1. Create the cluster using [New\-Cluster](https://technet.microsoft.com/en-us/itpro/powershell/windows/failoverclusters/new-cluster)\. Virtual IPs must be assigned a secondary private IP address from the AWS Console to each respective node\. 
+1. Create the cluster using [New\-Cluster](https://technet.microsoft.com/en-us/itpro/powershell/windows/failoverclusters/new-cluster)\. Virtual IPs must be assigned a secondary private IP address from the AWS Management Console to each respective node\. 
 
    ```
    $vips = "172.16.1.200", "172.16.3.200"

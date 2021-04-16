@@ -4,15 +4,6 @@ Amazon Elastic Compute Cloud \(Amazon EC2\) provides scalable computing capacity
 
 For more information about cloud computing, see [What is Cloud Computing?](https://aws.amazon.com/what-is-cloud-computing/)
 
-**Topics**
-+ [Features of Amazon EC2](#ec2-features)
-+ [How to get started with Amazon EC2](#how-to-get-started)
-+ [Related services](#related-services)
-+ [Access Amazon EC2](#access-ec2)
-+ [Pricing for Amazon EC2](#ec2-pricing)
-+ [PCI DSS compliance](#pci-compliance)
-+ [Amazon EC2 basic infrastructure for Windows](EC2Win_Infrastructure.md)
-
 ## Features of Amazon EC2<a name="ec2-features"></a>
 
 Amazon EC2 provides the following features:
@@ -43,7 +34,7 @@ First, you need to get set up to use Amazon EC2\. After you are set up, you are 
 + [Tutorial: Get started with Amazon EC2 Windows instances](EC2_GetStarted.md)
 
 **Basics**
-+ [Amazon EC2 basic infrastructure for Windows](EC2Win_Infrastructure.md)
++ [Amazon EC2 Windows instances](EC2Win_Infrastructure.md)
 + [Instance types](instance-types.md)
 + [Tags](Using_Tags.md)
 

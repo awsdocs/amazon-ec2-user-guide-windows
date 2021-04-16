@@ -30,7 +30,7 @@ If you have an AWS account already, skip to the next task\. If you don't have an
 
 AWS uses public\-key cryptography to secure the login information for your instance\. You specify the name of the key pair when you launch your instance, then provide the private key to obtain the administrator password for your Windows instance so you can log in using RDP\.
 
-If you haven't created a key pair already, you can create one using the Amazon EC2 console\. Note that if you plan to launch instances in multiple Regions, you'll need to create a key pair in each Region\. For more information about Regions, see [Regions and Zones](EC2Win_Infrastructure.md#EC2Win_Regions)\.
+If you haven't created a key pair already, you can create one using the Amazon EC2 console\. Note that if you plan to launch instances in multiple Regions, you'll need to create a key pair in each Region\. For more information about Regions, see [Regions and Zones](using-regions-availability-zones.md)\.
 
 You can create a key pair using one of the following methods\. 
 
@@ -82,7 +82,7 @@ For more information, see [Amazon EC2 key pairs and Windows instances](ec2-key-p
 
 Security groups act as a firewall for associated instances, controlling both inbound and outbound traffic at the instance level\. You must add rules to a security group that enable you to connect to your instance from your IP address using RDP\. You can also add rules that allow inbound and outbound HTTP and HTTPS access from anywhere\.
 
-Note that if you plan to launch instances in multiple Regions, you'll need to create a security group in each Region\. For more information about Regions, see [Regions and Availability Zones](EC2Win_Infrastructure.md#EC2Win_Regions)\.
+Note that if you plan to launch instances in multiple Regions, you'll need to create a security group in each Region\. For more information about Regions, see [Regions and Zones](using-regions-availability-zones.md)\.
 
 **Prerequisites**  
 You'll need the public IPv4 address of your local computer\. The security group editor in the Amazon EC2 console can automatically detect the public IPv4 address for you\. Alternatively, you can use the search phrase "what is my IP address" in an Internet browser, or use the following service: [Check IP](http://checkip.amazonaws.com/)\. If you are connecting through an Internet service provider \(ISP\) or from behind a firewall without a static IP address, you need to find out the range of IP addresses used by client computers\.

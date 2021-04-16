@@ -14,7 +14,7 @@ To retrieve instance metadata, see [Retrieve instance metadata](instancedata-dat
 
 IMDSv2 uses session\-oriented requests\. With session\-oriented requests, you create a session token that defines the session duration, which can be a minimum of one second and a maximum of six hours\. During the specified duration, you can use the same session token for subsequent requests\. After the specified duration expires, you must create a new session token to use for future requests\.
 
-The following example uses a PowerShell shell script and IMDSv2 to retrieve the top\-level instance metadata items\. The example command: 
+The following example uses a PowerShell shell script and IMDSv2 to retrieve the top\-level instance metadata items\. The example: 
 + Creates a session token lasting six hours \(21,600 seconds\) using the `PUT` request
 + Stores the session token header in a variable named `token`
 + Requests the top\-level metadata items using the token

@@ -113,7 +113,7 @@ Set-NetAdapterRss -name (Get-NetAdapter | Where-Object {$_.InterfaceDescription 
 
 ## Multi\-site clusters and EC2 instance placement<a name="sql-multi-site-clusters"></a>
 
-Each cluster is considered a [multi\-site cluster](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd197575(v=ws.10))\. The EC2 service does not share IP addresses virtually\. Each node must be in a unique [subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)\. Though not required, we recommend that each node also be in a unique [Availability Zone](EC2Win_Infrastructure.md#EC2Win_Regions)\.
+Each cluster is considered a [multi\-site cluster](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd197575(v=ws.10))\. The EC2 service does not share IP addresses virtually\. Each node must be in a unique [subnet](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)\. Though not required, we recommend that each node also be in a unique Availability Zone\.
 
 ## Instance type selection<a name="sql-clustering-instance-type"></a>
 

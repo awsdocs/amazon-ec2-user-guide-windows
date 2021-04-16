@@ -45,7 +45,7 @@ The permissions that you've been granted by your administrator determine whether
 
 ## Check the import task status<a name="scvmm-import-status"></a>
 
-The import task can take several hours to complete\. To view the current status, open AWS System Manager and click **Notifications**\.
+The import task can take several hours to complete\. To view the current status, open AWS Systems Manager and click **Notifications**\.
 
 You'll receive the following notifications as the import task progresses:
 + `Import VM: Created Import VM Task`

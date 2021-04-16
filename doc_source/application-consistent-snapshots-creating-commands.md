@@ -166,6 +166,7 @@ The following items can cause the EC2 Windows VSS Provider to run into time limi
 + Fragmented volumes
 + Incompatibility with some antivirus software
 + Issues with a VSS Application writer
++ When Module Logging is enabled for a large number of PowerShell modules, that can cause PowerShell scripts to run slowly
 
 Usually, when running into time limits with the `AWSEC2-CreateVssSnapshot` command, the cause is related to the workload on the instance being too high at the time of backup\. The following actions can help you take a successful snapshot:
 + Retry the `AWSEC2-CreateVssSnapshot` command to see if the snapshot attempt is successful\. If retrying succeeds in some cases, reducing the instance load might make snapshots more successful\.
@@ -173,3 +174,4 @@ Usually, when running into time limits with the `AWSEC2-CreateVssSnapshot` comma
 + Attempt VSS snapshots when the antivirus software on the system is turned off\. If this resolves the issue, refer to the antivirus software instructions and configure it to allow VSS snapshots\.
 + If there are a lot of EC2 API calls being made at the time of the snapshot, API throttling might cause the snapshots to take too long to start\. Try taking snapshots again when there is less API activity in the account\.
 + Run the command `vssadmin list writers` in a shell and see if it reports any errors in the **Last error** field for any writers on the system\. If any writers report a **time out** error, consider retrying snapshots when the instance is under less load\.
++ If one or more PowerShell modules have Group Policies that enable PowerShell module logging, try temporarily disabling the logging before you take a snapshot\.

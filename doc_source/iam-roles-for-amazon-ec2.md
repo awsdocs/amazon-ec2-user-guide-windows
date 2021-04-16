@@ -16,7 +16,7 @@ We designed IAM roles so that your applications can securely make API requests f
 
 For example, you can use IAM roles to grant permissions to applications running on your instances that need to use a bucket in Amazon S3\. You can specify permissions for IAM roles by creating a policy in JSON format\. These are similar to the policies that you create for IAM users\. If you change a role, the change is propagated to all instances\.
 
-You cannot attach multiple IAM roles to a single instance, but you can attach a single IAM role to multiple instances\. For more information about creating and using IAM roles, see [Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html) in the *IAM User Guide*\.
+You can only attach one IAM role to an instance, but you can attach the same role to many instances\. For more information about creating and using IAM roles, see [Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html) in the *IAM User Guide*\.
 
 You can apply resource\-level permissions to your IAM policies to control the users' ability to attach, replace, or detach IAM roles for an instance\. For more information, see [Supported resource\-level permissions for Amazon EC2 API actions](iam-policy-structure.md#ec2-supported-iam-actions-resources) and the following example: [Example: Work with IAM roles](ExamplePolicies_EC2.md#iam-example-iam-roles)\.
 

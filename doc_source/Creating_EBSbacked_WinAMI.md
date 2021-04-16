@@ -21,7 +21,7 @@ Depending on the size of the volumes, it can take several minutes for the AMI\-c
 
 After the process completes, you have a new AMI and snapshot created from the root volume of the instance\. When you launch an instance using the new AMI, we create a new EBS volume for its root volume using the snapshot\.
 
-If you add instance store volumes or Amazon Elastic Block Store \(Amazon EBS\) volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block device mapping](block-device-mapping-concepts.md)\.
+If you add instance store volumes or Amazon Elastic Block Store \(Amazon EBS\) volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block device mappings](block-device-mapping-concepts.md)\.
 
 **Note**  
 When you create a new instance from a custom AMI, you should initialize both its root volume and any additional EBS storage before putting it into production\. For more information, see [Initialize Amazon EBS volumes](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-initialize.html)\.
@@ -455,7 +455,7 @@ EC2Config then performs the following actions:
 1. After it is finished, sends a “Windows is ready” message to the instance system logs\.
 
 1. Runs all “After Windows is ready” plug\-ins at the same time\.
-   + AWS CloudWatch logs 
+   + Amazon CloudWatch Logs 
    + UserData
    + AWS Systems Manager \(Systems Manager\) 
 

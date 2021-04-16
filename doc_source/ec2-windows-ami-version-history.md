@@ -203,8 +203,6 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 ## Monthly AMI updates for 2013<a name="amis-2013"></a>
 
-For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2013](https://support.microsoft.com/en-us/help/2921911/description-of-software-update-services-and-windows-server-update-serv)\.
-
 
 | Release | Changes | 
 | --- | --- | 
@@ -218,8 +216,6 @@ For more information about Microsoft updates, see [Description of Software Updat
 |  2013\.02\.22  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 
 ## Monthly AMI updates for 2012<a name="amis-2012"></a>
-
-For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2012](https://support.microsoft.com/en-us/help/2800436/description-of-software-update-services-and-windows-server-update-serv)\.
 
 
 | Release | Changes | 
