@@ -14,7 +14,7 @@ We strongly recommend that you never put sensitive identifying information, such
 
 ## Encryption at rest<a name="encryption-rest"></a>
 
-Amazon EBS encryption is an encryption solution for your EBS volumes and snapshots\. It uses AWS Key Management Service \(AWS KMS\) customer master keys \(CMK\)\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
+Amazon EBS encryption is an encryption solution for your EBS volumes and snapshots\. It uses AWS KMS key\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
 
 Customers can also use Microsoft EFS and NTFS permissions for folder\- and file\-level encryption\.
 
