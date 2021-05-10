@@ -82,4 +82,4 @@ New-Item $file -ItemType file
 
 ------
 
-To retrieve user data for an instance from your own computer, see [User data and the Tools for Windows PowerShell](ec2-windows-user-data.md#user-data-powershell)
+To retrieve user data for an instance from your own computer, see [User data and the Tools for Windows PowerShell](ec2-windows-user-data.md#user-data-powershell)\.

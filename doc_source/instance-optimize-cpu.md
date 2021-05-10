@@ -43,27 +43,27 @@ The following tables list the instance types that support specifying CPU options
 
 | Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid CPU cores | Valid threads per core | 
 | --- | --- | --- | --- | --- | --- | 
-| f1\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| f1\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
+| f1\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| f1\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
 | f1\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
-| g3\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
-| g3\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | 1, 2 | 
+| g3\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
+| g3\.8xlarge | 32 | 16 | 2 | 1 to 16 | 1, 2 | 
 | g3\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | g3s\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
 | g4ad\.4xlarge | 16 | 8 | 2 | 2, 4, 8 | 1, 2 | 
 | g4ad\.8xlarge | 32 | 16 | 2 | 2, 4, 8, 16 | 1, 2 | 
 | g4ad\.16xlarge | 64 | 32 | 2 | 2, 4, 8, 16, 32 | 1, 2 | 
 | g4dn\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| g4dn\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| g4dn\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
-| g4dn\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | 1, 2 | 
+| g4dn\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| g4dn\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
+| g4dn\.8xlarge | 32 | 16 | 2 | 1 to 16 | 1, 2 | 
 | g4dn\.12xlarge | 48 | 24 | 2 | 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24 | 1, 2 | 
 | g4dn\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | p2\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| p2\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | 1, 2 | 
+| p2\.8xlarge | 32 | 16 | 2 | 1 to 16 | 1, 2 | 
 | p2\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
-| p3\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| p3\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | 1, 2 | 
+| p3\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| p3\.8xlarge | 32 | 16 | 2 | 1 to 16 | 1, 2 | 
 | p3\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | p3dn\.24xlarge | 96 | 48 | 2 | 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48 | 1, 2 | 
 
@@ -74,8 +74,8 @@ The following tables list the instance types that support specifying CPU options
 | --- | --- | --- | --- | --- | --- | 
 | c4\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | c4\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| c4\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| c4\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
+| c4\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| c4\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
 | c4\.8xlarge | 36 | 18 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18 | 1, 2 | 
 | c5\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | c5\.xlarge | 4 | 2 | 2 | 2 | 1, 2 | 
@@ -87,7 +87,7 @@ The following tables list the instance types that support specifying CPU options
 | c5\.24xlarge | 96 | 48 | 2 | 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48 | 1, 2 | 
 | c5a\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | c5a\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| c5a\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
+| c5a\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
 | c5a\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 8 | 1, 2 | 
 | c5a\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 8, 12, 16 | 1, 2 | 
 | c5a\.12xlarge | 48 | 24 | 2 | 1, 2, 3, 4, 8, 12, 16, 20, 24 | 1, 2 | 
@@ -95,7 +95,7 @@ The following tables list the instance types that support specifying CPU options
 | c5a\.24xlarge | 96 | 48 | 2 | 1, 2, 3, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48 | 1, 2 | 
 | c5ad\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | c5ad\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| c5ad\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
+| c5ad\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
 | c5ad\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 8 | 1, 2 | 
 | c5ad\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 8, 12, 16 | 1, 2 | 
 | c5ad\.12xlarge | 48 | 24 | 2 | 1, 2, 3, 4, 8, 12, 16, 20, 24 | 1, 2 | 
@@ -123,8 +123,8 @@ The following tables list the instance types that support specifying CPU options
 | --- | --- | --- | --- | --- | --- | 
 | m4\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | m4\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| m4\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| m4\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
+| m4\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| m4\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
 | m4\.10xlarge | 40 | 20 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 | 1, 2 | 
 | m4\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | m5\.large | 2 | 1 | 2 | 1 | 1, 2 | 
@@ -186,8 +186,8 @@ The following tables list the instance types that support specifying CPU options
 | t2\.small | 1 | 1 | 1 | 1 | 1 | 
 | t2\.medium | 2 | 2 | 1 | 1, 2 | 1 | 
 | t2\.large | 2 | 2 | 1 | 1, 2 | 1 | 
-| t2\.xlarge | 4 | 4 | 1 | 1, 2, 3, 4 | 1 | 
-| t2\.2xlarge | 8 | 8 | 1 | 1, 2, 3, 4, 5, 6, 7, 8 | 1 | 
+| t2\.xlarge | 4 | 4 | 1 | 1 to 4 | 1 | 
+| t2\.2xlarge | 8 | 8 | 1 | 1 to 8 | 1 | 
 | t3\.nano | 2 | 1 | 2 | 1 | 1, 2 | 
 | t3\.micro | 2 | 1 | 2 | 1 | 1, 2 | 
 | t3\.small | 2 | 1 | 2 | 1 | 1, 2 | 
@@ -210,9 +210,9 @@ The following tables list the instance types that support specifying CPU options
 | --- | --- | --- | --- | --- | --- | 
 | r4\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | r4\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| r4\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| r4\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
-| r4\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | 1, 2 | 
+| r4\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| r4\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
+| r4\.8xlarge | 32 | 16 | 2 | 1 to 16 | 1, 2 | 
 | r4\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | r5\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | r5\.xlarge | 4 | 2 | 2 | 2 | 1, 2 | 
@@ -273,9 +273,9 @@ The following tables list the instance types that support specifying CPU options
 | x1\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | x1\.32xlarge | 128 | 64 | 2 | 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64 | 1, 2 | 
 | x1e\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| x1e\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| x1e\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
-| x1e\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | 1, 2 | 
+| x1e\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| x1e\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
+| x1e\.8xlarge | 32 | 16 | 2 | 1 to 16 | 1, 2 | 
 | x1e\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | x1e\.32xlarge | 128 | 64 | 2 | 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64 | 1, 2 | 
 | z1d\.large | 2 | 1 | 2 | 1 | 1, 2 | 
@@ -291,8 +291,8 @@ The following tables list the instance types that support specifying CPU options
 | Instance type | Default vCPUs | Default CPU cores | Default threads per core | Valid CPU cores | Valid threads per core | 
 | --- | --- | --- | --- | --- | --- | 
 | d2\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| d2\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| d2\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
+| d2\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| d2\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
 | d2\.8xlarge | 36 | 18 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18 | 1, 2 | 
 | d3\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
 | d3\.2xlarge | 8 | 4 | 2 | 2, 4 | 1, 2 | 
@@ -305,15 +305,15 @@ The following tables list the instance types that support specifying CPU options
 | d3en\.6xlarge | 24 | 12 | 2 | 2, 4, 6, 8, 10, 12 | 1, 2 | 
 | d3en\.8xlarge | 32 | 16 | 2 | 2, 4, 6, 8, 10, 12, 14, 16 | 1, 2 | 
 | d3en\.12xlarge | 48 | 24 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24 | 1, 2 | 
-| h1\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| h1\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
-| h1\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | 1, 2 | 
+| h1\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| h1\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
+| h1\.8xlarge | 32 | 16 | 2 | 1 to 16 | 1, 2 | 
 | h1\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | i3\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | i3\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
-| i3\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
-| i3\.4xlarge | 16 | 8 | 2 | 1, 2, 3, 4, 5, 6, 7, 8 | 1, 2 | 
-| i3\.8xlarge | 32 | 16 | 2 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | 1, 2 | 
+| i3\.2xlarge | 8 | 4 | 2 | 1 to 4 | 1, 2 | 
+| i3\.4xlarge | 16 | 8 | 2 | 1 to 8 | 1, 2 | 
+| i3\.8xlarge | 32 | 16 | 2 | 1 to 16 | 1, 2 | 
 | i3\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | i3en\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | i3en\.xlarge | 4 | 2 | 2 | 2 | 1, 2 | 

@@ -148,7 +148,7 @@ After you specify a drive letter mapping and attach a volume with same label as 
 ## EC2Config settings files<a name="UsingConfigXML_WinAMI"></a>
 
 The settings files control the operation of the EC2Config service\. These files are located in the `C:\Program Files\Amazon\Ec2ConfigService\Settings` directory:
-+ `ActivationSettings.xml`—Controls product activation using a key management server \(KMS\)\.
++ `ActivationSettings.xml`—Controls product activation using a key management server \(AWS KMS\)\.
 + `AWS.EC2.Windows.CloudWatch.json`—Controls which performance counters to send to CloudWatch and which logs to send to CloudWatch Logs\.
 + `BundleConfig.xml`—Controls how EC2Config prepares an instance store\-backed instance for AMI creation\.
 + `Config.xml`—Controls the primary settings\.
@@ -160,12 +160,12 @@ The settings files control the operation of the EC2Config service\. These files 
 
 **ActivationSettings\.xml**
 
-This file contains settings that control product activation\. When Windows boots, the EC2Config service checks whether Windows is already activated\. If Windows is not already activated, it attempts to activate Windows by searching for the specified KMS server\.
-+ `SetAutodiscover`—Indicates whether to detect a KMS automatically\.
-+ `TargetKMSServer`—Stores the private IP address of a KMS\. The KMS must be in the same Region as your instance\.
-+ `DiscoverFromZone`—Discovers the KMS server from the specified DNS zone\.
-+ `ReadFromUserData`—Gets the KMS server from UserData\.
-+ `LegacySearchZones`—Discovers the KMS server from the specified DNS zone\.
+This file contains settings that control product activation\. When Windows boots, the EC2Config service checks whether Windows is already activated\. If Windows is not already activated, it attempts to activate Windows by searching for the specified AWS KMS server\.
++ `SetAutodiscover`—Indicates whether to detect a AWS KMS automatically\.
++ `TargetKMSServer`—Stores the private IP address of a AWS KMS\. The AWS KMS must be in the same Region as your instance\.
++ `DiscoverFromZone`—Discovers the AWS KMS server from the specified DNS zone\.
++ `ReadFromUserData`—Gets the AWS KMS server from UserData\.
++ `LegacySearchZones`—Discovers the AWS KMS server from the specified DNS zone\.
 + `DoActivate`—Attempts activation using the specified settings in the section\. This value can be `true` or `false`\.
 + `LogResultToConsole`—Displays the result to the console\.
 
@@ -190,9 +190,9 @@ This file contains settings that control how EC2Config prepares an instance for 
 + `Ec2ConfigureRDP`—Sets up a self\-signed certificate on the instance, so users can securely access the instance using Remote Desktop\. This feature is disabled on Windows Server 2008 and Windows Server 2012 instances because they can generate their own certificates\.  
 + `Ec2OutputRDPCert`—Displays the Remote Desktop certificate information to the console so that the user can verify it against the thumbprint\. 
 + `Ec2SetDriveLetter`—Sets the drive letters of the mounted volumes based on user\-defined settings\. By default, when an Amazon EBS volume is attached to an instance, it can be mounted using the drive letter on the instance\. To specify your drive letter mappings, edit the `DriveLetterConfig.xml` file located in the `EC2ConfigService\Settings` directory\.
-+ `Ec2WindowsActivate`—The plug\-in handles Windows activation\. It checks to see if Windows is activated\. If not, it updates the KMS client settings, and then activates Windows\.
++ `Ec2WindowsActivate`—The plug\-in handles Windows activation\. It checks to see if Windows is activated\. If not, it updates the AWS KMS client settings, and then activates Windows\.
 
-  To modify the KMS settings, edit the `ActivationSettings.xml` file located in the `EC2ConfigService\Settings` directory\.
+  To modify the AWS KMS settings, edit the `ActivationSettings.xml` file located in the `EC2ConfigService\Settings` directory\.
 + `Ec2DynamicBootVolumeSize`—Extends Disk 0/Volume 0 to include any unpartitioned space\.
 + `Ec2HandleUserData`—Creates and runs scripts created by the user on the first launch of an instance after Sysprep is run\. Commands wrapped in script tags are saved to a batch file, and commands wrapped in PowerShell tags are saved to a \.ps1 file \(corresponds to the User Data check box on the Ec2 Service Properties dialog box\)\.
 + `Ec2ElasticGpuSetup`—Installs the Elastic GPU software package if the instance is associated with an elastic GPU\.

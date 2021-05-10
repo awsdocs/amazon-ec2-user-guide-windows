@@ -179,6 +179,6 @@ When you use the Systems Manager for the first time, you must provide your AWS c
 1. On the ribbon, click **Amazon EC2**\.
 
 1. On the **Credentials** tab, specify your AWS credentials, select a default region, and then click **Save**\.  
-![\[AWS Systems Manager Credentials tab\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_credentials.png)
+![\[AWS Systems Manager Credentials tab\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_credentials-2.png)
 
 To change these credentials at any time, click **Configuration**\.

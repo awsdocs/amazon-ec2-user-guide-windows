@@ -9,7 +9,7 @@ This Systems Manager Run Command document performs the following tasks:
 
 The Systems Manager Run Command document accepts three parameters:
 + **Command**—The EC2Rescue for Windows Server action\. The current allowed values are:
-  + **ResetAccess**—Resets the local Administrator password\. The local Administrator password of the current instance will be reset and the randomly generated password will be securely stored in Parameter Store as `/EC2Rescue/Password/<INSTANCE_ID>`\. If you select this action and provide no parameters, passwords are encrypted automatically with the default KMS key\. Optionally, you can specify a KMS Key ID in Parameters to encrypt the password with your own key\.
+  + **ResetAccess**—Resets the local Administrator password\. The local Administrator password of the current instance will be reset and the randomly generated password will be securely stored in Parameter Store as `/EC2Rescue/Password/<INSTANCE_ID>`\. If you select this action and provide no parameters, passwords are encrypted automatically with the default KMS key\. Optionally, you can specify a KMS key ID in Parameters to encrypt the password with your own key\.
   + **CollectLogs**—Runs EC2Rescue for Windows Server with the `/collect:all` action\. If you select this action, `Parameters` must include an Amazon S3 bucket name to upload the logs to\.
   + **FixAll**—Runs EC2Rescue for Windows Server with the `/rescue:all` action\. If you select this action, `Parameters` must include the block device name to rescue\.
 + **Parameters**—The PowerShell parameters to pass for the specified command\.
@@ -106,7 +106,7 @@ aws ssm send-command --instance-ids "i-0cb2b964d3e14fd9f" --document-name "AWSSu
 
 The following examples show methods you can use to reset the local Administrator password\. The output provides a link to Parameter Store, where you can find the randomly generated secure password you can then use to RDP to your Amazon EC2 Windows instance as the local Administrator\.
 
-Reset the local Administrator password of an online instance using the default KMS key alias/aws/ssm:
+Reset the local Administrator password of an online instance using the default AWS KMS key alias/aws/ssm:
 
 ```
 aws ssm send-command --instance-ids "i-0cb2b964d3e14fd9f" --document-name "AWSSupport-RunEC2RescueForWindowsTool" --comment "EC2Rescue online password reset" --parameters "Command=ResetAccess" --output text

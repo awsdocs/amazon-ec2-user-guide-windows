@@ -14,9 +14,21 @@ PowerShell 3\.0 or later
 
 **To download and install the latest AWS NVMe driver**
 
+1. We recommend that you create an AMI as a backup as follows, in case you need to roll back your changes\.
+
+   1. When you stop an instance, the data on any instance store volumes is erased\. Before you stop an instance, verify that you've copied any data that you need from your instance store volumes to persistent storage, such as Amazon EBS or Amazon S3\.
+
+   1. In the navigation pane, choose **Instances**\.
+
+   1. Select the instance that requires the driver upgrade, and choose **Instance state**, **Stop instance**\.
+
+   1. After the instance is stopped, select the instance, choose **Actions**, then **Image and templates**, and then choose **Create image**\.
+
+   1. Choose **Instance state**, **Start instance**\.
+
 1. Connect to your instance and log in as the local administrator\.
 
-1. Download and extract the drivers using one of the following options:
+1. Download and extract the drivers to your instance using one of the following options:
    + Using a browser:
 
      1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/Latest/AWSNVMe.zip) the latest driver package to the instance\.
@@ -29,7 +41,7 @@ PowerShell 3\.0 or later
      expand-archive $env:userprofile\nvme_driver.zip -DestinationPath $env:userprofile\nvme_driver
      ```
 
-1. Install the driver by running the `install.ps1` PowerShell script\. If you get an error, make sure you are using PowerShell 3\.0 or later\.
+1. Install the driver to your instance by running the `install.ps1` PowerShell script from the `nvme_driver` directory \(`.\install.ps1`\)\. If you get an error, make sure you are using PowerShell 3\.0 or later\.
 
 1. If the installer does not reboot your instance, reboot the instance\.
 

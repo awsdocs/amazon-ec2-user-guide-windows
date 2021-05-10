@@ -6,6 +6,9 @@ The AWS Windows AMIs are configured with the default settings used by the Micros
 
 For more information, see [Amazon EC2 Update — Additional Instance Types, Nitro System, and CPU Options](http://aws.amazon.com/blogs/aws/amazon-ec2-update-additional-instance-types-nitro-system-and-cpu-options/)\.
 
+**Note**  
+The following migration procedures can be performed on Windows Server version 2008 R2 and later\.
+
 **Contents**
 + [Part 1: Install and upgrade AWS PV drivers](#upgrade-pv)
 + [Part 2: Install and upgrade ENA](#upgrade-ena)

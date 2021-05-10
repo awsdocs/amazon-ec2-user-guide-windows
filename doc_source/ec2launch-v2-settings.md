@@ -449,7 +449,7 @@ This section includes the configuration tasks, details, and examples for the `ag
 
 ### activateWindows<a name="ec2launch-v2-activatewindows"></a>
 
-Activates Windows against a set of KMS servers\.
+Activates Windows against a set of AWS KMS servers\.
 
 *Frequency* — once
 

@@ -4,7 +4,7 @@ Amazon VPC enables you to launch AWS resources, such as Amazon EC2 instances, in
 
 You can control whether the instance receives a public IP address from Amazon's pool of public IP addresses\. The public IP address of an instance is associated with your instance only until it is stopped or terminated\. If you require a persistent public IP address, you can allocate an Elastic IP address for your AWS account and associate it with an instance or a network interface\. An Elastic IP address remains associated with your AWS account until you release it, and you can move it from one instance to another as needed\. You can bring your own IP address range to your AWS account, where it appears as an address pool, and then allocate Elastic IP addresses from your address pool\.
 
-To increase network performance and reduce latency, you can launch instances in a placement group\. You can get significantly higher packet per second \(PPS\) performance using enhanced networking\.
+To increase network performance and reduce latency, you can launch instances in a placement group\. You can get significantly higher packet per second \(PPS\) performance using enhanced networking\. You can accelerate high performance computing and machine learning applications using an Elastic Fabric Adapter \(EFA\), which is a network device that you can attach to a supported instance type\.
 
 **Topics**
 + [Regions and Zones](using-regions-availability-zones.md)

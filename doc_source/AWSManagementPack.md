@@ -32,7 +32,7 @@ The AWS Management Pack for System Center 2012 — Operations Manager uses a res
 
 The following diagram shows the main components of AWS Management Pack\.
 
-![\[AWS Management Pack monitoring components\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPcomponents.png)
+![\[AWS Management Pack monitoring components\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPcomponents-4-22-21.png)
 
 
 | Item | Component | Description | 
@@ -48,7 +48,7 @@ The AWS Management Pack for System Center Operations Manager 2007 R2 uses a desi
 
 The following diagram shows the main components of AWS Management Pack\.
 
-![\[AWS Management Pack monitoring components\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPcomponents2007.png)
+![\[AWS Management Pack monitoring components\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPcomponents2007-4-22-21.png)
 
 
 | Item | Component | Description | 

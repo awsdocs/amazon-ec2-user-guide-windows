@@ -5,6 +5,9 @@ Before you create VSS\-enabled EBS snapshots by using Run Command, review the fo
 **Amazon EC2 Windows instance requirements**  
 VSS\-enabled EBS snapshots are supported for instances running Windows Server 2008 R2 or later\. \(Windows Server 2008 R2 Core is currently not supported\.\) Verify that your instances meet all requirements for Amazon EC2 Windows\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 
+**\.NET Framework version**  
+The `AWSVssComponents` package requires \.NET Framework version 4\.6 and later\. If you are using Windows Server 2008, 2008 R2, 2012, or 2012 R2, the default \.NET Framework version is earlier than 4\.6 and you must install version 4\.6 or later using Windows Update\.
+
 **SSM Agent version**  
 Update your instances to use SSM Agent version 2\.2\.58\.0 or later\. If you are using an older version of SSM Agent, you can update it by using Run Command\. For more information, see [Update SSM Agent by using Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/rc-console.html#rc-console-agentexample) in the *AWS Systems Manager User Guide*\.
 

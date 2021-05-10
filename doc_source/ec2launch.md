@@ -21,7 +21,7 @@ EC2Launch performs the following tasks by default during the initial instance bo
 + Adds DNS suffixes\.
 + Dynamically extends the operating system partition to include any unpartitioned space\.
 + Executes user data \(if specified\)\. For more information about specifying user data, see [Work with instance user data](instancedata-add-user-data.md)\.
-+  Sets persistent static routes to reach the metadata service and KMS servers\. 
++  Sets persistent static routes to reach the metadata service and AWS KMS servers\. 
 **Important**  
  If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Update metadata/KMS routes for Server 2016 and later when launching a custom AMI](Creating_EBSbacked_WinAMI.md#update-metadata-KMS)\. 
 

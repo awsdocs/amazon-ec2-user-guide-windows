@@ -6,8 +6,6 @@ To get started with a Linux instance, see [Getting started with Amazon EC2 Linux
 
 When you sign up for AWS, you can get started with Amazon EC2 using the [AWS Free Tier](https://aws.amazon.com/free/)\. If you created your AWS account less than 12 months ago, and have not already exceeded the free tier benefits for Amazon EC2, it will not cost you anything to complete this tutorial, because we help you select options that are within the free tier benefits\. Otherwise, you'll incur the standard Amazon EC2 usage fees from the time that you launch the instance until you terminate the instance \(which is the final task of this tutorial\), even if it remains idle\.
 
-For step\-by\-step tutorials on specific use cases for EC2 instances running Windows Server, see [Tutorials for Amazon EC2 instances running Windows Server](ec2-tutorials.md)\.
-
 **Topics**
 + [Overview](#ec2-get-started-overview)
 + [Prerequisites](#ec2-getstarted-prereqs)
@@ -199,4 +197,3 @@ After you start your instance, you might want to try some of the following exerc
 + Learn how to remotely manage your EC2 instance using Run Command\. For more information, see [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html) in the *AWS Systems Manager User Guide*\.
 + Configure a CloudWatch alarm to notify you if your usage exceeds the Free Tier\. For more information, see [Tracking your AWS Free Tier usage](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html) in the *AWS Billing and Cost Management User Guide*\.
 + Add an EBS volume\. For more information, see [Create an Amazon EBS volume](ebs-creating-volume.md) and [Attach an Amazon EBS volume to an instance](ebs-attaching-volume.md)\.
-+ Install the WAMP or WIMP stack\. For more information, see [Tutorial: Install a WAMP Server on an Amazon EC2 Instance Running Windows Server](install-WAMP.md) and [Tutorial: Install a WIMP server on an Amazon EC2 instance running Windows Server](install-WIMP.md)\.
