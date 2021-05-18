@@ -355,9 +355,13 @@ The following table lists the maximum number of network interfaces per instance 
 | t3a\.large |  3  |  12  | 12 | 
 | t3a\.xlarge |  4  |  15  |  15  | 
 | t3a\.2xlarge |  4  |  15  |  15  | 
-| u\-6tb1\.metal | 5 | 30 | 30 | 
-| u\-9tb1\.metal | 5 | 30 | 30 | 
-| u\-12tb1\.metal | 5 | 30 | 30 | 
+| u\-6tb1\.56xlarge | 15 | 50 | 50 | 
+| u\-6tb1\.112xlarge | 15 | 50 | 50 | 
+| u\-6tb1\.metal | 15 | 50 | 50 | 
+| u\-9tb1\.112xlarge | 15 | 50 | 50 | 
+| u\-9tb1\.metal | 15 | 50 | 50 | 
+| u\-12tb1\.112xlarge | 15 | 50 | 50 | 
+| u\-12tb1\.metal | 15 | 50 | 50 | 
 | u\-18tb1\.metal | 15 | 50 | 50 | 
 | u\-24tb1\.metal | 15 | 50 | 50 | 
 | x1\.16xlarge | 8 | 30 | 30 | 

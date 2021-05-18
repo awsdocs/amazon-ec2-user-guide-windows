@@ -239,7 +239,9 @@ When you are asked to confirm that you want to run Sysprep and shut down the ins
 
 You can manually invoke the Sysprep tool from the command line using the following command:
 
-"%programfiles%\\amazon\\ec2launch\\ec2launch\.exe" sysprep
+```
+"%programfiles%\amazon\ec2launch\ec2launch.exe" sysprep --shutdown=true
+```
 
 ### Use Sysprep with EC2Launch<a name="ec2launch-sysprep"></a>
 

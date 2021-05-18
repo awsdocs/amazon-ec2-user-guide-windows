@@ -81,52 +81,67 @@ There is no way to disable the enhanced networking attribute after you've enable
 **Important**  
 The administrator password will reset when you enable the initialize instance EC2Launch script\. You can modify the configuration file to disable the administrator password reset by specifying it in the settings for the initialization tasks\. For steps on how to disable password reset, see [Configure initialization tasks](ec2launch.md#ec2launch-inittasks)\.
 
-1. From the instance, install the driver as follows:
+1. From the instance, download the Intel network adapter driver for your operating system:
+   + **Windows Server 2019** including for Server version 1809 and later\*
 
-   1. Download the Intel network adapter driver for your operating system:
-      + [Windows Server 2008 R2](https://downloadcenter.intel.com/detail_desc.aspx?agr=Y&DwnldID=18725)
-      + [Windows Server 2012](https://downloadcenter.intel.com/download/21694/Network-Adapter-Driver-for-Windows-Server-2012-)
-      + [Windows Server 2012 R2](https://downloadcenter.intel.com/download/23073/Network-Adapter-Driver-for-Windows-Server-2012-R2-)
-      + [Windows Server 2016](https://downloadcenter.intel.com/download/26092/Ethernet-Intel-Network-Adapter-Driver-for-Windows-Server-2016-?product=83418) \(including for Server version 1803 and earlier\*\)
-      + [Windows Server 2019](https://downloadcenter.intel.com/download/28396/Intel-Network-Adapter-Driver-for-Windows-Server-2019-?product=36773) \(including for Server version 1809 and later\*\)
+     Visit the [ download page](https://downloadcenter.intel.com/download/28396/Intel-Network-Adapter-Driver-for-Windows-Server-2019-?product=36773) and download `Wired_driver_version_x64.zip`\.
+   + **Windows Server 2016** including for Server version 1803 and earlier\*
 
-      \*Server versions 1803 and earlier as well as 1809 and later are not specifically addressed on the Intel Drivers and Software pages\.
+     Visit the [ download page](https://downloadcenter.intel.com/download/26092/Ethernet-Intel-Network-Adapter-Driver-for-Windows-Server-2016-?product=83418) and download `Wired_driver_version_x64.zip`\.
+   + **Windows Server 2012 R2**
 
-   1. In the **Download** folder, locate the `PROWinx64.exe` file\. Rename this file `PROWinx64.zip`\.
+     Visit the [ download page](https://downloadcenter.intel.com/download/23073/Network-Adapter-Driver-for-Windows-Server-2012-R2-) and download `Wired_driver_version_x64.zip`\.
+   + **Windows Server 2012**
 
-   1. Open a context \(right\-click\) menu on `PROWinx64.zip` and choose **Extract All**\. Specify a destination path and choose **Extract**\.
+     Visit the [ download page](https://downloadcenter.intel.com/download/21694/Network-Adapter-Driver-for-Windows-Server-2012-) and download `Wired_driver_version_x64.zip`\.
+   + **Windows Server 2008 R2**
 
-   1. Open a command prompt window, go to the folder with the extracted files, and use the `pnputil` utility to add and install the INF file in the driver store\. 
+     Visit the [ download page](https://downloadcenter.intel.com/detail_desc.aspx?agr=Y&DwnldID=18725) and download `PROWinx64Legacy.exe`\.
 
-      **Windows Server 2019**
+   \*Server versions 1803 and earlier as well as 1809 and later are not specifically addressed on the Intel Drivers and Software pages\.
 
-      ```
-      pnputil -i -a PROXGB\Winx64\NDIS68\vxn68x64.inf 
-      ```
+1. Install the Intel network adapter driver for your operating system\.
+   + **Windows Server 2008 R2**
 
-      **Windows Server 2016**
+     1. In the **Downloads** folder, locate the `PROWinx64Legacy.exe` file and rename it to `PROWinx64Legacy.zip`\.
 
-      ```
-      pnputil -i -a PROXGB\Winx64\NDIS65\vxn65x64.inf 
-      ```
+     1. Extract the contents of the `PROWinx64Legacy.zip` file\.
 
-      **Windows Server 2012 R2**
+     1. Open the command line, navigate to the extracted folder, and run the following command to use the `pnputil` utility to add and install the INF file in the driver store\.
 
-      ```
-      pnputil -i -a PROXGB\Winx64\NDIS64\vxn64x64.inf 
-      ```
+        ```
+        C:\> pnputil -a
+                                                PROXGB\Winx64\NDIS62\vxn62x64.inf.
+        ```
+   + **Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, and Windows Server 2012**
 
-      **Windows Server 2012**
+     1. In the **Downloads** folder, extract the contents of the `Wired_driver_version_x64.zip` file\.
 
-      ```
-      pnputil -i -a PROXGB\Winx64\NDIS63\vxn63x64.inf
-      ```
+     1. In the extracted folder, locate the `Wired_driver_version_x64.exe` file and rename it to `Wired_driver_version_x64.zip`\.
 
-      **Windows Server 2008 R2**
+     1. Extract the contents of the `Wired_driver_version_x64.zip` file\.
 
-      ```
-      pnputil -a PROXGB\Winx64\NDIS62\vxn62x64.inf
-      ```
+     1. Open the command line, navigate to the extracted folder, and run one of the following commands to use the `pnputil` utility to add and install the INF file in the driver store\.
+        + Windows Server 2019
+
+          ```
+          C:\> pnputil -i -a PROXGB\Winx64\NDIS68\vxn68x64.inf
+          ```
+        + Windows Server 2016
+
+          ```
+          C:\> pnputil -i -a PROXGB\Winx64\NDIS65\vxn65x64.inf
+          ```
+        + Windows Server 2012 R2
+
+          ```
+          C:\> pnputil -i -a PROXGB\Winx64\NDIS64\vxn64x64.inf
+          ```
+        + Windows Server 2012
+
+          ```
+          C:\> pnputil -i -a PROXGB\Winx64\NDIS63\vxn63x64.inf
+          ```
 
 1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
 
