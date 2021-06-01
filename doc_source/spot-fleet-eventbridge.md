@@ -249,7 +249,7 @@ Identifies that the event is from Spot Fleet\.
 `"detail-type": "EC2 Spot Fleet State Change"`  
 Identifies the event type\.
 
-`"sub-type": "submitted"`  
+`"sub-type": "launched"`  
 Identifies the event sub\-type\.
 
 You can write an EventBridge rule and automate what actions to take when the event pattern matches the rule\.
@@ -344,7 +344,9 @@ The following example creates an EventBridge rule to trigger a Lambda function e
         {
             "source": [ "aws.ec2spotfleet" ],
             "detail-type": [ "EC2 Spot Fleet Instance Change" ],
-            "sub-type": [ "launched" ]
+            "detail" {
+                "sub-type": [ "launched" ]
+            }
         }
         ```
 
