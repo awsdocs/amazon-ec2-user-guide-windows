@@ -282,7 +282,7 @@ The following example creates an EventBridge rule to send an email, text message
    {
        "source": [ "aws.ec2spotfleet" ],
        "detail-type": [ "EC2 Spot Fleet State Change" ],
-       "detail: {
+       "detail": {
            "sub-type": [ "submitted" ]
        }
    }
