@@ -244,7 +244,7 @@ For more information, see the following:
 + M5, M5d, and T3 instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor from either the first generation \(Skylake\-SP\) or second generation \(Cascade Lake\)\.
 + M5a, M5ad, and T3a instances feature a 2\.5 GHz AMD EPYC 7000 series processor\.
 + M5zn instances are powered by Intel Cascade Lake CPUs that deliver all\-core turbo frequency of up to 4\.5 GHz and up to 100 Gbps network bandwidth\.
-+ M4, M5, M5a, M5ad, M5d, `t2.large` and larger, and `t3.large` and larger, and `t3a.large` and larger instance types require 64\-bit HVM AMIs\. They have high\-memory, and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
++ Instances built on the [Nitro System](instance-types.md#ec2-nitro-instances), M4, `t2.large` and larger, `t3.large` and larger, and `t3a.large` and larger instance types require 64\-bit HVM AMIs\. They have high\-memory, and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
 + Instances built on the [Nitro System](instance-types.md#ec2-nitro-instances) have the following requirements:
   + [NVMe drivers](nvme-ebs-volumes.md) must be installed
   + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed

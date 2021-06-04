@@ -1,9 +1,11 @@
 # Troubleshoot Sysprep<a name="sysprep-troubleshoot"></a>
 
-If you experience problems or receive error messages during image preparations, review the following logs: 
-+ %WINDIR%\\Panther\\Unattendgc
-+ %WINDIR%\\System32\\Sysprep\\Panther
-+ "C:\\Program Files\\Amazon\\Ec2ConfigService\\Logs\\Ec2ConfigLog\.txt"
+If you experience problems or receive error messages during image preparations, review the following logs\. Log location varies depending on whether you are running EC2Config or EC2Launch with Sysprep\.
++ `%WINDIR%\Panther\Unattendgc` \(EC2Config and EC2Launch\)
++ `%WINDIR%\System32\Sysprep\Panther` \(EC2Config and EC2Launch\)
++ `C:\Program Files\Amazon\Ec2ConfigService\Logs\Ec2ConfigLog.txt` \(EC2Config only\)
++ `C:\ProgramData\Amazon\Ec2Config\Logs` \(EC2Config only\)
++ `C:\PorgramData\Amazon\EC2-Windows\Launch\Log\EC2Launch.log` \(EC2Launch only\)
 
 If you receive an error message during image preparation with Sysprep, the OS might not be reachable\. To review the log files, you must stop the instance, attach its root volume to another healthy instance as a secondary volume, and then review the logs mentioned earlier on the secondary volume\. For more information about the purpose of the log files by name, see [Windows Setup\-Related Log Files](https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/deployment-troubleshooting-and-log-files#windows-setup-related-log-files) in the Microsoft documentation\.
 

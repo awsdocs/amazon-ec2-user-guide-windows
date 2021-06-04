@@ -15,8 +15,8 @@ The keys that Amazon EC2 uses are 2048\-bit SSH\-2 RSA keys\. You can have up to
 + [Retrieve the public key for your key pair through instance metadata](#retrieving-the-public-key-instance)
 + [Identify the key pair that was specified at launch](#identify-key-pair-specified-at-launch)
 + [\(Optional\) Verify your key pair's fingerprint](#verify-key-pair-fingerprints)
-+ [Connect to your Windows instance if you lose your private key](#replacing-lost-key-pair-windows)
 + [Delete your key pair](#delete-key-pair)
++ [Connect to your Windows instance if you lose your private key](#replacing-lost-key-pair-windows)
 
 ## Create or import a key pair<a name="prepare-key-pair"></a>
 
@@ -37,7 +37,7 @@ You can create a key pair using one of the following methods\.
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, under **NETWORK & SECURITY**, choose **Key Pairs**\.
+1. In the navigation pane, under **Network & Security**, choose **Key Pairs**\.
 
 1. Choose **Create key pair**\.
 
@@ -336,35 +336,31 @@ On the **Key Pairs** page in the Amazon EC2 console, the **Fingerprint** column 
 
 You can use the SSH2 fingerprint that's displayed on the **Key Pairs** page to verify that the private key you have on your local machine matches the public key stored in AWS\. From the computer where you downloaded the private key file, generate an SSH2 fingerprint from the private key file\. The output should match the fingerprint that's displayed in the console\.
 
+If you're using a Windows local machine, you can run the following commands using the Windows Subsystem for Linux \(WSL\)\. Install the WSL and a Linux distribution using the instructions in the [Windows 10 Installation Guide](https://docs.microsoft.com/en-us/windows/wsl/install-win10)\. The example in the instructions installs the Ubuntu distribution of Linux, but you can install any distribution\. You are prompted to restart your computer for the changes to take effect\.
+
 If you created your key pair using AWS, you can use the OpenSSL tools to generate a fingerprint as shown in the following example\.
 
 ```
-C:\> openssl pkcs8 -in path_to_private_key -inform PEM -outform DER -topk8 -nocrypt | openssl sha1 -c
+$ openssl pkcs8 -in path_to_private_key -inform PEM -outform DER -topk8 -nocrypt | openssl sha1 -c
 ```
 
 If you created a key pair using a third\-party tool and uploaded the public key to AWS, you can use the OpenSSL tools to generate the fingerprint as shown in the following example\.
 
 ```
-C:\> openssl rsa -in path_to_private_key -pubout -outform DER | openssl md5 -c
+$ openssl rsa -in path_to_private_key -pubout -outform DER | openssl md5 -c
 ```
 
 If you created an OpenSSH key pair using OpenSSH 7\.8 or later and uploaded the public key to AWS, you can use ssh\-keygen to generate the fingerprint as shown in the following example\.
 
 ```
-C:\> ssh-keygen -ef path_to_private_key -m PEM | openssl rsa -RSAPublicKey_in -outform DER | openssl md5 -c
+$ ssh-keygen -ef path_to_private_key -m PEM | openssl rsa -RSAPublicKey_in -outform DER | openssl md5 -c
 ```
-
-## Connect to your Windows instance if you lose your private key<a name="replacing-lost-key-pair-windows"></a>
-
-When you connect to a newly launched Windows instance, you decrypt the password for the Administrator account using the private key for the key pair that you specified when you launched the instance\.
-
-If you lose the Administrator password and you no longer have the private key, you must reset the password or create a new instance\. For more information, see [Reset a lost or expired Windows administrator password](ResettingAdminPassword.md)\. For steps to reset the password using an Systems Manager document, see [Reset Passwords and SSH Keys on Amazon EC2 Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
 
 ## Delete your key pair<a name="delete-key-pair"></a>
 
-When you delete a key pair, you are only deleting the Amazon EC2 copy of the public key\. Deleting a key pair doesn't affect the private key on your computer or the public key on any instances that already launched using that key pair\. You can't launch a new instance using a deleted key pair, but you can continue to connect to any instances that you launched using a deleted key pair, as long as you still have the private key \(`.pem`\) file\.
+When you delete a key pair using the following methods, you are only deleting the public key that you saved in Amazon EC2 when you [created or imported the key pair](#prepare-key-pair)\. Deleting a key pair doesn't delete the public key from any instances that were previously launched using that key pair\. It also doesn't delete the private key on your local computer\. You can continue to connect to instances that you launched using a key pair that is subsequently deleted, as long as you still have the private key \(`.pem`\) file\.
 
-If you're using an Auto Scaling group \(for example, in an Elastic Beanstalk environment\), ensure that the key pair you're deleting is not specified in your launch configuration\. Amazon EC2 Auto Scaling launches a replacement instance if it detects an unhealthy instance; however, the instance launch fails if the key pair cannot be found\. 
+If you're using an Auto Scaling group \(for example, in an Elastic Beanstalk environment\), ensure that the key pair you're deleting is not specified in an associated launch template or launch configuration\. If Amazon EC2 Auto Scaling detects an unhealthy instance, it launches a replacement instance\. However, the instance launch fails if the key pair cannot be found\. For more information, see [Launch templates](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
 You can delete a key pair using one of the following methods\.
 
@@ -407,3 +403,9 @@ Use the [delete\-key\-pair](https://docs.aws.amazon.com/cli/latest/reference/ec2
 Use the [Remove\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/reference/items/Remove-EC2KeyPair.html) AWS Tools for Windows PowerShell command\.
 
 ------
+
+## Connect to your Windows instance if you lose your private key<a name="replacing-lost-key-pair-windows"></a>
+
+When you connect to a newly launched Windows instance, you decrypt the password for the Administrator account using the private key for the key pair that you specified when you launched the instance\.
+
+If you lose the Administrator password and you no longer have the private key, you must reset the password or create a new instance\. For more information, see [Reset a lost or expired Windows administrator password](ResettingAdminPassword.md)\. For steps to reset the password using an Systems Manager document, see [Reset Passwords and SSH Keys on Amazon EC2 Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
