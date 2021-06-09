@@ -250,6 +250,7 @@ Identifies that the event is from Spot Fleet\.
 Identifies the event type\.
 
 `"detail": { "sub-type": "submitted" }`  
+
 Identifies the event sub\-type\.
 
 You can write an EventBridge rule and automate what actions to take when the event pattern matches the rule\.
