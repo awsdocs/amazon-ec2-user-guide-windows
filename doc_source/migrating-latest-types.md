@@ -136,7 +136,7 @@ The `i3.metal` instance type uses a PCI\-based serial device rather than an I/O 
 
 1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPCISerialDriver/Latest/AWSPCISerialDriver.zip) the serial driver package to the instance\. 
 
-1. Extract the contents of the folder, open the context \(right\-click\) menu for aws\_ser\.INF, and choose **install**\. 
+1. Extract the contents of the folder, open the context \(right\-click\) menu for `aws_ser.INF`, and choose **install**\. 
 
 1. Choose **Okay**\.
 

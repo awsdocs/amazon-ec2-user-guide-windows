@@ -49,6 +49,8 @@ The Elastic Graphics network interface is created in the same subnet and VPC as 
 
 ![\[An Elastic Graphics accelerator attached to an instance\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elastic-graphics.png)
 
+![\[An Elastic Graphics accelerator attached to an instance\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/)
+
 Elastic Graphics accelerators support the API standards for OpenGL 4\.3 API and earlier, which can be used for batch applications or 3D\-graphics acceleration\. An Amazon\-optimized OpenGL library on your instance detects the attached accelerator\. It directs OpenGL API calls from your instance to the accelerator, which then processes the requests and returns the results\. Traffic between the instance and the accelerator uses the same bandwidth as the instance's network traffic so we recommend that you have adequate network bandwidth available\. Consult your software vendor for any OpenGL compliance and version questions\.
 
 By default, the default security group for your VPC is associated with the Elastic Graphics network interface\. The Elastic Graphics network traffic uses the TCP protocol and port 2007\. Ensure that the security group for your instance allows for this\. For more information, see [Configure your security groups](working-with-elastic-graphics.md#elastic-graphics-security)\.

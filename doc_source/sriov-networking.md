@@ -25,7 +25,7 @@ To verify that the driver is installed, connect to your instance and open Device
 
 **Instance attribute \(sriovNetSupport\)**  
 To check whether an instance has the enhanced networking `sriovNetSupport` attribute set, use one of the following commands:
-+ [describe\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html) \(AWS CLI\)
++ [describe\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
 
   ```
   aws ec2 describe-instance-attribute --instance-id instance_id --attribute sriovNetSupport
@@ -46,7 +46,7 @@ If the attribute isn't set, `SriovNetSupport` is empty\. If the attribute is set
 
 **Image attribute \(sriovNetSupport\)**  
 To check whether an AMI already has the enhanced networking `sriovNetSupport` attribute set, use one of the following commands:
-+ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI\)
++ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI/AWS CloudShell\)
 
   ```
   aws ec2 describe-images --image-id ami_id --query "Images[].SriovNetSupport"
@@ -146,7 +146,7 @@ The administrator password will reset when you enable the initialize instance EC
 1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
 
 1. From your local computer, enable the enhanced networking attribute using one of the following commands:
-   + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
+   + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
 
      ```
      aws ec2 modify-instance-attribute --instance-id instance_id --sriov-net-support simple

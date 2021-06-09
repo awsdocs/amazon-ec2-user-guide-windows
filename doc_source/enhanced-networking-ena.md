@@ -35,7 +35,7 @@ To test whether enhanced networking is already enabled, verify that the driver i
 **Instance attribute \(enaSupport\)**
 
 To check whether an instance has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
-+ [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
++ [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI/AWS CloudShell\)
 
   ```
   aws ec2 describe-instances --instance-ids instance_id --query "Reservations[].Instances[].EnaSupport"
@@ -48,7 +48,7 @@ To check whether an instance has the enhanced networking `enaSupport` attribute 
 
 **Image attribute \(enaSupport\)**  
 To check whether an AMI has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
-+ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI\)
++ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI/AWS CloudShell\)
 
   ```
   aws ec2 describe-images --image-id ami_id --query "Images[].EnaSupport"
@@ -67,7 +67,7 @@ If you launched your instance and it does not have enhanced networking enabled a
 
 1. Connect to your instance and log in as the local administrator\.
 
-1. \[Windows Server 2016 and later\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
+1. \[Windows Server 2016 and later only\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
 
    ```
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
@@ -83,12 +83,12 @@ If you launched your instance and it does not have enhanced networking enabled a
 **Note**  
 If you get an execution policy error, set the policy to `Unrestricted` \(by default it is set to `Restricted` or `RemoteSigned`\)\. In a command line, run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`, and then run the `install.ps1` PowerShell script again\.
 
-1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
+1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI/AWS CloudShell\), [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
 
 1. Enable ENA support on your instance as follows:
 
    1. From your local computer, check the EC2 instance ENA support attribute on your instance by running one of the following commands\. If the attribute is not enabled, the output will be "\[\]" or blank\. `EnaSupport` is set to `false` by default\.
-      + [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
+      + [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI/AWS CloudShell\)
 
         ```
         aws ec2 describe-instances --instance-ids instance_id --query "Reservations[].Instances[].EnaSupport"
@@ -100,7 +100,7 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
         ```
 
    1. To enable ENA support, run one of the following commands:
-      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
+      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
 
         ```
         aws ec2 modify-instance-attribute --instance-id instance_id --ena-support
@@ -112,7 +112,7 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
         ```
 
       If you encounter problems when you restart the instance, you can also disable ENA support using one of the following commands:
-      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
+      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
 
         ```
         aws ec2 modify-instance-attribute --instance-id instance_id --no-ena-support
@@ -131,7 +131,7 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
       ]
       ```
 
-1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\), [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance using the AWS OpsWorks console so that the instance state remains in sync\.
+1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI/AWS CloudShell\), [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance using the AWS OpsWorks console so that the instance state remains in sync\.
 
 1. On the instance, validate that the ENA driver is installed and enabled as follows:
 

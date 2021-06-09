@@ -18,7 +18,7 @@ The process for taking application\-consistent, VSS\-enabled EBS snapshots consi
 
 1. Complete Systems Manager prerequisites\.
 
-1. Enter parameters for the AWSEC2\-CreateVssSnapshot SSM document and run this document by using Run Command\. You can't create a VSS\-enabled EBS snapshot for a specific volume\. You can, however, specify a parameter to exclude the boot volume from the backup process\.
+1. Enter parameters for the `AWSEC2-CreateVssSnapshot` SSM document and run this document by using Run Command\. You can't create a VSS\-enabled EBS snapshot for a specific volume\. You can, however, specify a parameter to exclude the boot volume from the backup process\.
 
 1. The VSS agent on your instance coordinates all ongoing I/O operations for running applications\. 
 
