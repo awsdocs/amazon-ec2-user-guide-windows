@@ -561,7 +561,7 @@ Executes a script with optional arguments and a specified frequency\.
 
 `type`: \(string\) one of `batch` or `powershell`
 
-`arguments`: \(list of strings\) list of string arguments to pass to the shell
+`arguments`: \(list of strings\) list of string arguments to pass to the shell\. This parameter is not supported when `type` is set to `batch`\.
 
 `content`: \(string\) contents of the script
 

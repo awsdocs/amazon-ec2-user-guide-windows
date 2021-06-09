@@ -2,25 +2,111 @@
 
 When you launch an instance, the *root device volume* contains the image used to boot the instance\. When you launch a Windows instance, a root EBS volume is created from an EBS snapshot and attached to the instance\.
 
+**Topics**
++ [Configure the root volume to persist](#configure-root-volume-to-persist)
++ [Confirm that a root volume is configured to persist](#confirm-root-device-persist)
++ [Change the initial size of the root volume](#change-root-volume-initial-size)
+
 ## Configure the root volume to persist<a name="configure-root-volume-to-persist"></a>
 
 By default, the root volume is deleted when the instance terminates \(the `DeleteOnTermination` attribute is `true`\)\. Using the console, you can change `DeleteOnTermination` when you launch an instance\. To change this attribute for an existing instance, you must use the command line\.
 
-**To configure the root volume of a new instance to persist using the console**
+**Topics**
++ [Configure the root volume to persist during instance launch](#configure-root-volume-to-persist-new)
++ [Configure the root volume to persist for an existing instance](#configure-root-volume-to-persist-new-existing)
 
-1. Open the Amazon EC2 console\.
+### Configure the root volume to persist during instance launch<a name="configure-root-volume-to-persist-new"></a>
 
-1. From the Amazon EC2 console dashboard, choose **Launch Instance**\.
+You can configure the root volume to persist when you launch an instance using the Amazon EC2 console or the command line tools\.
 
-1. On the **Choose an Amazon Machine Image \(AMI\)** page, choose the AMI to use and then choose **Select**\.
+------
+#### [ Console ]
+
+**To configure the root volume to persist when you launch an instance using the console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Instances** and then choose **Launch instances**\.
+
+1. On the **Choose an Amazon Machine Image \(AMI\)** page, select the AMI to use and choose **Select**\.
 
 1. Follow the wizard to complete the **Choose an Instance Type** and **Configure Instance Details** pages\.
 
-1. On the **Add Storage** page, deselect the **Delete On Termination** check box for the root volume\.
+1. On the **Add Storage** page, deselect **Delete On Termination** for the root volume\.
 
 1. Complete the remaining wizard pages, and then choose **Launch**\.
 
-**To configure the root volume of an existing instance to persist using the AWS Tools for Windows PowerShell**  
+------
+#### [ AWS CLI ]
+
+**To configure the root volume to persist when you launch an instance using the AWS CLI**  
+Use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) command and include a block device mapping that sets the `DeleteOnTermination` attribute to `false`\.
+
+```
+C:\> aws ec2 run-instances --block-device-mappings file://mapping.json ...other parameters...
+```
+
+Specify the following in `mapping.json`\.
+
+```
+[
+    {
+        "DeviceName": "/dev/sda1",
+        "Ebs": {
+            "DeleteOnTermination": false
+        }
+    }
+]
+```
+
+------
+#### [ Tools for Windows PowerShell ]
+
+**To configure the root volume to persist when you launch an instance using the Tools for Windows PowerShell**  
+Use the [New\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Instance.html) command and include a block device mapping that sets the `DeleteOnTermination` attribute to `false`\.
+
+```
+C:\> $ebs = New-Object Amazon.EC2.Model.EbsBlockDevice
+C:\> $ebs.DeleteOnTermination = $false
+C:\> $bdm = New-Object Amazon.EC2.Model.BlockDeviceMapping
+C:\> $bdm.DeviceName = "dev/xvda"
+C:\> $bdm.Ebs = $ebs
+C:\> New-EC2Instance -ImageId ami-0abcdef1234567890 -BlockDeviceMapping $bdm ...other parameters...
+```
+
+------
+
+### Configure the root volume to persist for an existing instance<a name="configure-root-volume-to-persist-new-existing"></a>
+
+You can configure the root volume to persist for a running instance using the command line tools only\. 
+
+------
+#### [ AWS CLI ]
+
+**To configure the root volume to persist for an existing instance using the AWS CLI**  
+Use the [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) command with a block device mapping that sets the `DeleteOnTermination` attribute to `false`\.
+
+```
+aws ec2 modify-instance-attribute --instance-id i-1234567890abcdef0 --block-device-mappings file://mapping.json
+```
+
+Specify the following in `mapping.json`\.
+
+```
+[
+    {
+        "DeviceName": "/dev/xvda",
+        "Ebs": {
+            "DeleteOnTermination": false
+        }
+    }
+]
+```
+
+------
+#### [ Tools for Windows PowerShell ]
+
+**To configure the root volume to persist for an existing instance using the AWS Tools for Windows PowerShell**  
 Use the [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) command with a block device mapping that sets the `DeleteOnTermination` attribute to `false`\.
 
 ```
@@ -32,19 +118,70 @@ C:\> $bdm.Ebs = $ebs
 C:\> Edit-EC2InstanceAttribute -InstanceId i-1234567890abcdef0 -BlockDeviceMapping $bdm
 ```
 
-## Verify root volume persistence<a name="verify-root-volume-persistence"></a>
+------
 
-You can check whether the root volume of an instance is configured to persist when the instance terminates\.
+## Confirm that a root volume is configured to persist<a name="confirm-root-device-persist"></a>
 
-**To verify root volume persistence using the console**  
-Open the Amazon EC2 console and select the instance\. In the **Storage** tab, under **Block devices**, locate the entry for the root device volume\. If **Delete on termination** is **No**, the volume is configured to persist\.
+You can confirm that a root volume is configured to persist using the Amazon EC2 console or the command line tools\.
 
-**To verify root volume persistence using the AWS Tools for Windows PowerShell**  
+------
+#### [ New console ]
+
+**To confirm that a root volume is configured to persist using the Amazon EC2 console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Instances** and then select the instance\.
+
+1. In the **Storage** tab, under **Block devices**, locate the entry for the root volume\. If **Delete on termination** is `No`, the volume is configured to persist\.
+
+------
+#### [ Old console ]
+
+**To confirm that a root volume is configured to persist using the Amazon EC2 console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Instances** and then select the instance\.
+
+1. In the **Description** tab, choose the entry for **Root device**\. If **Delete on termination** is `False`, the volume is configured to persist\.
+
+------
+#### [ AWS CLI ]
+
+**To confirm that a root volume is configured to persist using the AWS CLI**  
+Use the [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) command and verify that the `DeleteOnTermination` attribute in the `BlockDeviceMappings` response element is set to `false`\.
+
+```
+C:\> aws ec2 describe-instances --instance-id i-1234567890abcdef0
+```
+
+```
+...
+"BlockDeviceMappings": [
+{
+    "DeviceName": "/dev/sda1",
+    "Ebs": {
+        "Status": "attached",
+        "DeleteOnTermination": false,
+        "VolumeId": "vol-1234567890abcdef0",
+        "AttachTime": "2013-07-19T02:42:39.000Z"
+    }
+}              
+...
+```
+
+------
+#### [ Tools for Windows PowerShell ]
+
+**To confirm that a root volume is configured to persist using the AWS Tools for Windows PowerShell**  
 Use the [ Get\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Instance.html) and verify that the `DeleteOnTermination` attribute in the `BlockDeviceMappings` response element is set to `false`\.
 
 ```
 C:\> (Get-EC2Instance -InstanceId i-i-1234567890abcdef0).Instances.BlockDeviceMappings.Ebs
 ```
+
+------
 
 ## Change the initial size of the root volume<a name="change-root-volume-initial-size"></a>
 

@@ -56,7 +56,7 @@ If you launched the instance using an AMI that contains ENA driver 2\.2\.2 or la
    unlodctr /m:EnaPerfCounters.man
    ```
 
-1. Copy the manifest file `_EnaPerfCounters.man_` from the driver installation package to `%SystemRoot%\System32\driver`\.
+1. Copy the manifest file `_EnaPerfCounters.man_` from the driver installation package to `%SystemRoot%\System32\drivers`\.
 
 1. Install the new manifest using the following command:
 
