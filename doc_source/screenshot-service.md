@@ -1,8 +1,10 @@
 # Troubleshoot an unreachable instance<a name="screenshot-service"></a>
 
-If you are unable to reach your instance through SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility into the status of the instance, and allows for quicker troubleshooting\. You can also use [EC2 Rescue](Windows-Server-EC2Rescue.md) on instances running Windows Server 2008 or later to gather and analyze date from offline instances\. 
+If you are unable to reach your Windows instance through SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility into the status of the instance, and allows for quicker troubleshooting\. You can also use [EC2 Rescue](Windows-Server-EC2Rescue.md) on instances running Windows Server 2008 or later to gather and analyze date from offline instances\. 
 + [Get a screenshot of an unreachable instance](#how-to-ics)
 + [Common screenshots](#ics-common)
+
+For information about troubleshooting an unreachable Linux instance, see [Troubleshoot an unreachable instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html)\.
 
 ## Get a screenshot of an unreachable instance<a name="how-to-ics"></a>
 

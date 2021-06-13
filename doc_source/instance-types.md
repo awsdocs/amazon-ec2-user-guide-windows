@@ -98,7 +98,7 @@ Amazon Web Services offers previous generation instance types for users who have
 
 For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
-To determine which instance type best meets your needs, we recommend that you launch an instance and use your own benchmark application\. Because you pay by the instance hour, it's convenient and inexpensive to test multiple instance types before making a decision\.
+To determine which instance type best meets your needs, we recommend that you launch an instance and use your own benchmark application\. Because you pay by the instance second, it's convenient and inexpensive to test multiple instance types before making a decision\.
 
 If your needs change, even after you make a decision, you can resize your instance later\. For more information, see [Change the instance type](ec2-instance-resize.md)\.
 

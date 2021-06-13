@@ -16,11 +16,19 @@ The AWS Free Tier is available for new AWS accounts\. If you are using the AWS F
 
 Reserved Instances are billed for every clock\-hour during the term that you select, regardless of whether an instance is running\. Each clock\-hour starts on the hour \(zero minutes and zero seconds past the hour\) of a standard 24\-hour clock\. For example, 1:00:00 to 1:59:59 is one clock\-hour\. For more information about instance states, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
 
-Reserved Instance billing benefits only apply to one instance\-hour per clock\-hour\. An instance\-hour begins when an instance is started and continues for 60 minutes or until the instance is stopped or terminated—whichever happens first\.
+A Reserved Instance billing benefit can be applied to a running instance on a per\-second basis\. 
 
-A new instance\-hour begins after an instance has run for 60 continuous minutes, or if an instance is stopped and then started\. Rebooting an instance does not reset the running instance\-hour\.
+A Reserved Instance billing benefit can apply to a maximum of 3600 seconds \(one hour\) of instance usage per clock\-hour\. You can run multiple instances concurrently, but can only receive the benefit of the Reserved Instance discount for a total of 3600 seconds per clock\-hour; instance usage that exceeds 3600 seconds in a clock\-hour is billed at the On\-Demand rate\.
 
-For example, if an instance is stopped and then started again during a clock\-hour and continues running for two more clock\-hours, the first instance\-hour \(before the restart\) is charged at the discounted Reserved Instance rate\. The next instance\-hour \(after restart\) is charged at the On\-Demand rate and the next two instance\-hours are charged at the discounted Reserved Instance rate\.
+For example, if you purchase one `m4.xlarge` Reserved Instance and run four `m4.xlarge` instances concurrently for one hour, one instance is charged at one hour of Reserved Instance usage and the other three instances are charged at three hours of On\-Demand usage\.
+
+However, if you purchase one `m4.xlarge` Reserved Instance and run four `m4.xlarge` instances for 15 minutes \(900 seconds\) each within the same hour, the total running time for the instances is one hour, which results in one hour of Reserved Instance usage and 0 hours of On\-Demand usage\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ri-per-second-billing.png)
+
+If multiple eligible instances are running concurrently, the Reserved Instance billing benefit is applied to all the instances at the same time up to a maximum of 3600 seconds in a clock\-hour; thereafter, On\-Demand rates apply\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ri-per-second-billing-concurrent.png)
 
 **Cost Explorer** on the [Billing and Cost Management](https://console.aws.amazon.com/billing) console enables you to analyze the savings against running On\-Demand Instances\. The [Reserved Instances FAQ](https://aws.amazon.com/ec2/faqs/#reserved-instances) includes an example of a list value calculation\.
 
