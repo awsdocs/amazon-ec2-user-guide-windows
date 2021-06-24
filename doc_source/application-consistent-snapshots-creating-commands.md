@@ -4,7 +4,7 @@ This section includes procedures for creating VSS\-enabled EBS snapshots by usin
 
 **Topics**
 + [Install the VSS package using the AWS CLI or Tools for Windows PowerShell](#application-consistent-snapshots-vss-package-command)
-+ [Create VSS\-enabled EBS snapshots using the AWS CLI, Tools for Windows PowerShell, or the `WSEC2-ManageVssIO`A SSM document](#application-cosistent-snapshots-cli)
++ [Create VSS\-enabled EBS snapshots using the AWS CLI, Tools for Windows PowerShell, or the `AWSEC2-ManageVssIO` SSM document](#application-cosistent-snapshots-cli)
 + [Troubleshoot VSS\-enabled EBS snapshots](#application-consistent-snapshots-troubleshooting)
 
 ## Install the VSS package using the AWS CLI or Tools for Windows PowerShell<a name="application-consistent-snapshots-vss-package-command"></a>
@@ -51,7 +51,7 @@ Use the following procedure to download and install the `AwsVssComponents` packa
    Send-SSMCommand -DocumentName AWS-ConfigureAWSPackage -InstanceId "$instance"-Parameter @{'action'='Install';'name'='AwsVssComponents'}
    ```
 
-## Create VSS\-enabled EBS snapshots using the AWS CLI, Tools for Windows PowerShell, or the `WSEC2-ManageVssIO`A SSM document<a name="application-cosistent-snapshots-cli"></a>
+## Create VSS\-enabled EBS snapshots using the AWS CLI, Tools for Windows PowerShell, or the `AWSEC2-ManageVssIO` SSM document<a name="application-cosistent-snapshots-cli"></a>
 
 Use one of the following command\-line procedures to create VSS\-enabled EBS snapshots\.
 

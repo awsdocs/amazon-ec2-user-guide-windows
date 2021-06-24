@@ -31,6 +31,11 @@ Use an encryption protocol such as Transport Layer Security \(TLS\) to encrypt s
 Make sure to allow only encrypted connections between EC2 instances and the AWS API endpoints or other sensitive remote network services\. You can enforce this through an outbound security group or [Windows Firewall](https://docs.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) rules\.
 
 AWS provides secure and private connectivity between EC2 instances of all types\. In addition, some instance types use the offload capabilities of the underlying hardware to automatically encrypt in\-transit traffic between instances, using AEAD algorithms with 256\-bit encryption\. There is no impact on network performance\. To support this additional in\-transit traffic encryption between instances, the following requirements must be met:
-+ The instances use the following instance types: C5a, C5ad, C5n, D3, D3en, G4ad, G4dn, I3en, M5dn, M5n, M5zn, P3dn, R5dn, and R5n\.
++ The instances use the following instance types:
+  + General purpose: M5dn \| M5n \| M5zn
+  + Compute optimized: C5a \| C5ad \| C5n
+  + Memory optimized: R5dn \| R5n \| high memory \(u\-\*\)
+  + Storage optimized: D3 \| D3en \| I3en
+  + Accelerated computing: G4ad \| G4dn \| P3dn
 + The instances are in the same Region\.
 + The instances are in the same VPC or peered VPCs, and the traffic does not pass through a virtual network device, such as a load balancer or a transit gateway\.

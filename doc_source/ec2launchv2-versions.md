@@ -27,6 +27,7 @@ The following table describes the released versions of the EC2Launch v2 migratio
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 1\.0\.113 | Uses IMDSv2 in place of IMDSv1\. | June 4, 2021 | 
 | 1\.0\.101 | Increments the version number of the EC2Launch agent to 2\.0\.285\. | March 12, 2021 | 
 | 1\.0\.86 | Increments the version number of the EC2Launch agent to 2\.0\.207\. | February 3, 2021 | 
 | 1\.0\.76 | Increments the version number of the EC2Launch agent to 2\.0\.160\. | December 4, 2020 | 
