@@ -41,7 +41,7 @@ EC2Config performs the following task every time a user logs in:
 + Display wallpaper information to the desktop background\.
 
 While the instance is running, you can request that EC2Config perform the following task on demand:
-+ Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep ](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
++ Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
 ## Stop, restart, delete, or uninstall EC2Config<a name="UsingConfig_StopDelete"></a>
 
@@ -143,7 +143,7 @@ To choose the drive letters for your volumes, click **Mappings**\. In the **Driv
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_driver_letter_mapping.png)
 After you specify a drive letter mapping and attach a volume with same label as one of the volume names that you specified, EC2Config automatically assigns your specified drive letter to that volume\. However, the drive letter mapping fails if the drive letter is already in use\. Note that EC2Config doesn't change the drive letters of volumes that were already mounted when you specified the drive letter mapping\.
 
-1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep ](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
+1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
 ## EC2Config settings files<a name="UsingConfigXML_WinAMI"></a>
 

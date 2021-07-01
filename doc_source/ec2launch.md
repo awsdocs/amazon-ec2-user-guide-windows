@@ -140,7 +140,7 @@ Similarly, if you do not want your password reset on the next boot, you should s
 
 ### Initialize drives and map drive letters<a name="ec2launch-mapping"></a>
 
-Specify settings in the `DriveLetterMappingConfig.json` file to map drive letters to volumes on your EC2 instance\. The script performs this operation if the drives have not already been initialized and partitioned\.
+Specify settings in the `DriveLetterMappingConfig.json` file to map drive letters to volumes on your EC2 instance\. The script initializes drives that are not already initialized and partitioned\.
 
 **To map drive letters to volumes**
 

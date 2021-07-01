@@ -159,7 +159,7 @@ Console Screenshot Service returned the following\.
 
 ![\[Sysprep Screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-4.png)
 
-You may see this screen if you did not use the EC2Config Service to call sysprep\.exe or if the operating system failed while running Sysprep\. To solve this problem, [Create a standardized Amazon Machine Image \(AMI\) using Sysprep ](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
+You may see this screen if you did not use the EC2Config Service to call Sysprep or if the operating system failed while running Sysprep\. You can reset the password using [EC2Rescue](Windows-Server-EC2Rescue.md)\. Otherwise, [Create a standardized Amazon Machine Image \(AMI\) using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
 ### Getting ready screen<a name="getting-ready-screen"></a>
 

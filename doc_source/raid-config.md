@@ -1,6 +1,6 @@
 # RAID configuration on Windows<a name="raid-config"></a>
 
-With Amazon EBS, you can use any of the standard RAID configurations that you can use with a traditional bare metal server, as long as that particular RAID configuration is supported by the operating system for your instance\. This is because all RAID is accomplished at the software level\. For greater I/O performance than you can achieve with a single volume, RAID 0 can stripe multiple volumes together; for on\-instance redundancy, RAID 1 can mirror two volumes together\.
+With Amazon EBS, you can use any of the standard RAID configurations that you can use with a traditional bare metal server, as long as that particular RAID configuration is supported by the operating system for your instance\. This is because all RAID is accomplished at the software level\. 
 
 Amazon EBS volume data is replicated across multiple servers in an Availability Zone to prevent the loss of data from the failure of any single component\. This replication makes Amazon EBS volumes ten times more reliable than typical commodity disk drives\. For more information, see [Amazon EBS Availability and Durability](https://aws.amazon.com/ebs/details/#Amazon_EBS_Availability_and_Durability) in the Amazon EBS product detail pages\.
 
@@ -11,33 +11,28 @@ If you need to create a RAID array on a Linux instance, see [RAID configuration 
 
 **Topics**
 + [RAID configuration options](#raid-config-options)
-+ [Create a RAID array on Windows](#windows-raid)
++ [Create a RAID 0 array on Windows](#windows-raid)
 + [Create snapshots of volumes in a RAID array](#ebs-snapshots-raid-array)
 
 ## RAID configuration options<a name="raid-config-options"></a>
 
-The following table compares the common RAID 0 and RAID 1 options\.
+Creating a RAID 0 array allows you to achieve a higher level of performance for a file system than you can provision on a single Amazon EBS volume\. Use RAID 0 when I/O performance is of the utmost importance\. With RAID 0, I/O is distributed across the volumes in a stripe\. If you add a volume, you get the straight addition of throughput and IOPS\. However, keep in mind that performance of the stripe is limited to the worst performing volume in the set, and that the loss of a single volume in the set results in a complete data loss for the array\.
 
-
-| Configuration | Use | Advantages | Disadvantages | 
-| --- | --- | --- | --- | 
-|  RAID 0  |  When I/O performance is more important than fault tolerance; for example, as in a heavily used database \(where data replication is already set up separately\)\.  |  I/O is distributed across the volumes in a stripe\. If you add a volume, you get the straight addition of throughput and IOPS\.  |  Performance of the stripe is limited to the worst performing volume in the set\. Loss of a single volume results in a complete data loss for the array\.  | 
-|  RAID 1  |  When fault tolerance is more important than I/O performance; for example, as in a critical application\.  |  Safer from the standpoint of data durability\.  |  Does not provide a write performance improvement; requires more Amazon EC2 to Amazon EBS bandwidth than non\-RAID configurations because the data is written to multiple volumes simultaneously\.   | 
+The resulting size of a RAID 0 array is the sum of the sizes of the volumes within it, and the bandwidth is the sum of the available bandwidth of the volumes within it\. For example, two 500 GiB `io1` volumes with 4,000 provisioned IOPS each create a 1000 GiB RAID 0 array with an available bandwidth of 8,000 IOPS and 1,000 MiB/s of throughput\.
 
 **Important**  
-RAID 5 and RAID 6 are not recommended for Amazon EBS because the parity write operations of these RAID modes consume some of the IOPS available to your volumes\. Depending on the configuration of your RAID array, these RAID modes provide 20\-30% fewer usable IOPS than a RAID 0 configuration\. Increased cost is a factor with these RAID modes as well; when using identical volume sizes and speeds, a 2\-volume RAID 0 array can outperform a 4\-volume RAID 6 array that costs twice as much\. 
+RAID 5 and RAID 6 are not recommended for Amazon EBS because the parity write operations of these RAID modes consume some of the IOPS available to your volumes\. Depending on the configuration of your RAID array, these RAID modes provide 20\-30% fewer usable IOPS than a RAID 0 configuration\. Increased cost is a factor with these RAID modes as well; when using identical volume sizes and speeds, a 2\-volume RAID 0 array can outperform a 4\-volume RAID 6 array that costs twice as much\.  
+RAID 1 is also not recommended for use with Amazon EBS\. RAID 1 requires more Amazon EC2 to Amazon EBS bandwidth than non\-RAID configurations because the data is written to multiple volumes simultaneously\. In addition, RAID 1 does not provide any write performance improvement\. 
 
-Creating a RAID 0 array allows you to achieve a higher level of performance for a file system than you can provision on a single Amazon EBS volume\. A RAID 1 array offers a "mirror" of your data for extra redundancy\. Before you perform this procedure, you need to decide how large your RAID array should be and how many IOPS you want to provision\.
+## Create a RAID 0 array on Windows<a name="windows-raid"></a>
 
-The resulting size of a RAID 0 array is the sum of the sizes of the volumes within it, and the bandwidth is the sum of the available bandwidth of the volumes within it\. The resulting size and bandwidth of a RAID 1 array is equal to the size and bandwidth of the volumes in the array\. For example, two 500 GiB `io1` volumes with 4,000 provisioned IOPS each create a 1000 GiB RAID 0 array with an available bandwidth of 8,000 IOPS and 1,000 MiB/s of throughput or a 500 GiB RAID 1 array with an available bandwidth of 4,000 IOPS and 500 MiB/s of throughput\.
+This documentation provides a basic RAID 0 setup example\.
 
-This documentation provides basic RAID setup examples\. For more information about RAID configuration, performance, and recovery, see the Linux RAID Wiki at [https://raid\.wiki\.kernel\.org/index\.php/Linux\_Raid](https://raid.wiki.kernel.org/index.php/Linux_Raid)\.
+Before you perform this procedure, you need to decide how large your RAID 0 array should be and how many IOPS you want to provision\.
 
-## Create a RAID array on Windows<a name="windows-raid"></a>
+Use the following procedure to create the RAID 0 array\. Note that you can get directions for Linux instances from [Create a RAID 0 array on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html#linux-raid) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-Use the following procedure to create the RAID array\. Note that you can get directions for Linux instances from [Create a RAID array on Linux](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/raid-config.html#linux-raid) in the *Amazon EC2 User Guide for Linux Instances*\.
-
-**To create a RAID array on Windows**
+**To create a RAID 0 array on Windows**
 
 1. Create the Amazon EBS volumes for your array\. For more information, see [Create an Amazon EBS volume](ebs-creating-volume.md)\.
 **Important**  
@@ -67,10 +62,6 @@ Create volumes with identical size and IOPS performance values for your array\. 
      Disk 0    Online           30 GB      0 B
      Disk 1    Online            8 GB      0 B
      Disk 2    Online            8 GB      0 B
-     Disk 3    Online            8 GB      0 B
-     Disk 4    Online            8 GB      0 B
-     Disk 5    Online          419 GB      0 B
-     Disk 6    Online          419 GB      0 B
    ```
 
    Identify the disks you want to use in your array and take note of their disk numbers\.
@@ -146,7 +137,7 @@ This destroys any existing data on the volume\.
 
    1. Repeat [Step 6](#windows_raid_disk_step) for each disk you want to use in your array\.
 
-1. Verify that the disks you want to use are now dynamic\.
+1. Verify that the disks you want to use are now dynamic\. In this case, we're using disks 1 and 2 for the RAID volume\.
 
    ```
    DISKPART> list disk
@@ -156,27 +147,14 @@ This destroys any existing data on the volume\.
      Disk 0    Online           30 GB      0 B
      Disk 1    Online            8 GB      0 B   *
      Disk 2    Online            8 GB      0 B   *
-     Disk 3    Online            8 GB      0 B   *
-   * Disk 4    Online            8 GB      0 B   *
-     Disk 5    Online          419 GB      0 B
-     Disk 6    Online          419 GB      0 B
    ```
 
-1. Create your raid array\. On Windows, a RAID 0 volume is referred to as a striped volume and a RAID 1 volume is referred to as a mirrored volume\.
+1. Create your raid array\. On Windows, a RAID 0 volume is referred to as a striped volume\.
 
-   \(Striped volumes only\) To create a striped volume array on disks 1 and 2, use the following command \(note the `stripe` option to stripe the array\):
+   To create a striped volume array on disks 1 and 2, use the following command \(note the `stripe` option to stripe the array\):
 
    ```
    DISKPART> create volume stripe disk=1,2
-   
-   DiskPart successfully created the volume.
-   ```
-
-   \(Mirrored volumes only\) To create a mirrored volume array on disks 3 and 4, use the following command \(note the `mirror` option to mirror the array\):
-
-   ```
-   DISKPART> create volume mirror disk=3,4
-   
    DiskPart successfully created the volume.
    ```
 
@@ -185,16 +163,15 @@ This destroys any existing data on the volume\.
    ```
    DISKPART> list volume
    
+     DISKPART> list volume
+   
      Volume ###  Ltr  Label        Fs     Type        Size     Status     Info
      ----------  ---  -----------  -----  ----------  -------  ---------  --------
      Volume 0     C                NTFS   Partition     29 GB  Healthy    System
-   * Volume 1                      RAW    Mirror      8190 MB  Healthy
-     Volume 2                      RAW    Stripe        15 GB  Healthy
-     Volume 5     Z   Temporary S  NTFS   Partition    419 GB  Healthy
-     Volume 6     Y   Temporary S  NTFS   Partition    419 GB  Healthy
+     Volume 1                      RAW    Stripe        15 GB  Healthy
    ```
 
-   Note that for this example the `Type` column lists a `Mirror` volume and a `Stripe` volume\.
+   Note that the `Type` column now indicates that Volume 1 is a `stripe` volume\.
 
 1. Select and format your volume so that you can begin using it\.
 
