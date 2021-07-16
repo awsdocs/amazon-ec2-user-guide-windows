@@ -133,10 +133,9 @@ To enable EC2Launch to run on every boot:
    Then select `Run EC2Launch on every boot`\. You can specify that your EC2 instance `Shutdown without Sysprep` or `Shutdown with Sysprep`\.
 
 **Note**  
-When you enable EC2Launch to run on every boot, the following changes will be made to the `LaunchConfig.json` the next time EC2Launch runs:  
-`AdminPasswordType` will be set back to `DoNothing` so that the password does not change on each boot\.
-`HandleUserData` will be set back to `false` unless the user data has `persist` set to `true`\. For more information about user data scripts, see [User Data Scripts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html#user-data-scripts) in the Amazon EC2 User Guide\.
-Similarly, if you do not want your password reset on the next boot, you should set `AdminPasswordType` to `DoNothing` before rebooting\.
+When you enable EC2Launch to run on every boot, the following happens the next time EC2Launch runs:  
+If `AdminPasswordType` is still set to `Random`, EC2Launch will generate a new password at the next boot\. After that boot, `AdminPasswordType` is automatically set to `DoNothing` to prevent EC2Launch from generating new passwords on subsequent boots\. To prevent EC2Launch from generating a new password on the first boot, manually set `AdminPasswordType` to `DoNothing` before you reboot\.
+`HandleUserData` will be set back to `false` unless the user data has `persist` set to `true`\. For more information about user data scripts, see [ User Data Scripts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html#user-data-scripts) in the Amazon EC2 User Guide\.
 
 ### Initialize drives and map drive letters<a name="ec2launch-mapping"></a>
 

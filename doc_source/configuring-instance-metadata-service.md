@@ -115,6 +115,7 @@ If your PowerShell version is earlier than 4\.0, you must [update to Windows Man
 You should proceed cautiously and conduct careful testing before making any changes\. Take note of the following:  
 If you enforce the use of IMDSv2, applications or agents that use IMDSv1 for instance metadata access will break\.
 If you turn off all access to instance metadata, applications or agents that rely on instance metadata access to function will break\.
+For IMDSv2, you must use `/latest/api/` token when retrieving the token\.
 
 **Topics**
 + [Configure instance metadata options for new instances](#configuring-IMDS-new-instances)

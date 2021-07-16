@@ -195,7 +195,7 @@ https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-Tro
 AWS CLI:  
 
 ```
-aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id,NLASettingAction
+aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id,NLASettingAction=Disable" --region region_code
 ```
 AWS Systems Manager console:  
 

@@ -13,6 +13,8 @@ When you use local timezones rather than UTC, make sure that you account for asp
 
 Use the following procedures to configure the Amazon Time Sync Service on your instance from the command prompt\. Alternatively, you can use external NTP sources\. For more information about NTP and public time sources, see [http://www\.ntp\.org/](http://www.ntp.org/)\. An instance must have access to the internet for the external NTP time sources to work\.
 
+For Linux instances, see [Set the time for your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html)\.
+
 **Topics**
 + [Change the time zone](#windows-changing-time-zone)
 + [Configure network time protocol \(NTP\)](#windows-configuring-ntp)
