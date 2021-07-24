@@ -156,7 +156,7 @@ The following is a summary of network performance for general purpose instances 
 | Instance type | Network performance | Enhanced networking | 
 | --- | --- | --- | 
 | t2\.nano \| t2\.micro \| t2\.small \| t2\.medium \| t2\.large \| t2\.xlarge \| t2\.2xlarge | Up to 1 Gbps | Not supported | 
-| t3\.nano \| t3\.micro \| t3\.small \| t3\.medium \| t3\.large \| t3\.xlarge \| t3\.2xlarge \| t3a\.nano \| t3a\.micro \| t3a\.small \| t3a\.medium \| t3a\.large \| t3a\.xlarge \| t3a\.2xlarge | Up to 5 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| t3\.nano \| t3\.micro \| t3\.small \| t3\.medium \| t3\.large \| t3\.xlarge \| t3\.2xlarge \| t3a\.nano \| t3a\.micro \| t3a\.small \| t3a\.medium \| t3a\.large \| t3a\.xlarge \| t3a\.2xlarge | Up to 5 Gbps | [ENA](enhanced-networking-ena.md) | 
 | m4\.large | Moderate | [Intel 82599 VF](sriov-networking.md) | 
 |  m4\.xlarge \| m4\.2xlarge \| m4\.4xlarge  | High | [Intel 82599 VF](sriov-networking.md) | 
 |  m5\.4xlarge and smaller \| m5a\.8xlarge and smaller \| m5ad\.8xlarge and smaller \| m5d\.4xlarge and smaller  | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
@@ -170,7 +170,39 @@ The following is a summary of network performance for general purpose instances 
 |  m5dn\.16xlarge \| m5n\.16xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5dn\.24xlarge \| m5dn\.metal \| m5n\.24xlarge \| m5n\.metal \| m5zn\.12xlarge \| m5zn\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
-† These instances use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. They accrue credits when their bandwidth is below their baseline bandwidth, and can use these credits when they perform network data transfers\. For more information, open a support case and ask about baseline bandwidth for the specific instance types that you are interested in\.
+† These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
+
+
+| Instance type | Baseline bandwidth \(Gbps\) | Burst bandwidth \(Gbps\) | 
+| --- | --- | --- | 
+| m5\.large | \.75 | 10 | 
+| m5\.xlarge | 1\.25 | 10 | 
+| m5\.2xlarge | 2\.5 | 10 | 
+| m5\.4xlarge | 5 | 10 | 
+| m5a\.large | \.75 | 10 | 
+| m5a\.xlarge | 1\.25 | 10 | 
+| m5a\.2xlarge | 2\.5 | 10 | 
+| m5a\.4xlarge | 5 | 10 | 
+| m5ad\.large | \.75 | 10 | 
+| m5ad\.xlarge | 1\.25 | 10 | 
+| m5ad\.2xlarge | 2\.5 | 10 | 
+| m5ad\.4xlarge | 5 | 10 | 
+| m5d\.large | \.75 | 10 | 
+| m5d\.xlarge | 1\.25 | 10 | 
+| m5d\.2xlarge | 2\.5 | 10 | 
+| m5d\.4xlarge | 5 | 10 | 
+| m5dn\.large | 2\.1 | 25 | 
+| m5dn\.xlarge | 4\.1 | 25 | 
+| m5dn\.2xlarge | 8\.125 | 25 | 
+| m5dn\.4xlarge | 16\.25 | 25 | 
+| m5n\.large | 2\.1 | 25 | 
+| m5n\.xlarge | 4\.1 | 25 | 
+| m5n\.2xlarge | 8\.125 | 25 | 
+| m5n\.4xlarge | 16\.25 | 25 | 
+| m5zn\.large | 3 | 25 | 
+| m5zn\.xlarge | 5 | 25 | 
+| m5zn\.2xlarge | 10 | 25 | 
+| m5zn\.3xlarge | 15 | 25 | 
 
 ## SSD I/O performance<a name="general-purpose-ssd-perf"></a>
 

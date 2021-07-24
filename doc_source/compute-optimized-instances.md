@@ -107,7 +107,31 @@ The following is a summary of network performance for compute optimized instance
 | c5n\.9xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5n\.18xlarge \| c5n\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
-† These instances use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. They accrue credits when their bandwidth is below their baseline bandwidth, and can use these credits when they perform network data transfers\. For more information, open a support case and ask about baseline bandwidth for the specific instance types that you are interested in\.
+† These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
+
+
+| Instance type | Baseline bandwidth \(Gbps\) | Burst bandwidth \(Gbps\) | 
+| --- | --- | --- | 
+| c5\.large | \.75 | 10 | 
+| c5\.xlarge | 1\.25 | 10 | 
+| c5\.2xlarge | 2\.5 | 10 | 
+| c5\.4xlarge | 5 | 10 | 
+| c5a\.large | \.75 | 10 | 
+| c5a\.xlarge | 1\.25 | 10 | 
+| c5a\.2xlarge | 2\.5 | 10 | 
+| c5a\.4xlarge | 5 | 10 | 
+| c5ad\.large | \.75 | 10 | 
+| c5ad\.xlarge | 1\.25 | 10 | 
+| c5ad\.2xlarge | 2\.5 | 10 | 
+| c5ad\.4xlarge | 5 | 10 | 
+| c5d\.large | \.75 | 10 | 
+| c5d\.xlarge | 1\.25 | 10 | 
+| c5d\.2xlarge | 2\.5 | 10 | 
+| c5d\.4xlarge | 5 | 10 | 
+| c5n\.large | 3 | 25 | 
+| c5n\.xlarge | 5 | 25 | 
+| c5n\.2xlarge | 10 | 25 | 
+| c5n\.4xlarge | 15 | 25 | 
 
 ## SSD I/O performance<a name="compute-ssd-perf"></a>
 

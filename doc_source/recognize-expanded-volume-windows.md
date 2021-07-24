@@ -47,15 +47,21 @@ Use the following procedure to extend a Windows file system using PowerShell\.
 
 1. Run PowerShell as an administrator\.
 
-1. Run the `Get-Partition` command\. PowerShell returns the disk path, and, for each partition, the corresponding partition number, drive letter, offset, size, and type\. Note the drive letter of the partition to extend\.
+1. Run the `Get-Partition` command\. PowerShell returns the corresponding partition number for each partition, the drive letter, offset, size, and type\. Note the drive letter of the partition to extend\.
 
-1. Run the following command, using the drive letter you noted in the previous step in place of **<drive\-letter>**\. PowerShell returns the minimum and maximum size of the partition allowed, in bytes\.
+1. Run the following command to rescan the disk\.
+
+   ```
+   "rescan" | diskpart
+   ```
+
+1. Run the following command, using the drive letter you noted in step 4 in place of **<drive\-letter>**\. PowerShell returns the minimum and maximum size of the partition allowed, in bytes\.
 
    ```
    Get-PartitionSupportedSize -DriveLetter <drive-letter>
    ```
 
-1. To extend the partition, run the following command, entering the new size of the volume in place of **<size>**\. You can enter the size in `KB`, `MB`, and `GB`; for example `24MB`\.
+1. To extend the partition, run the following command, entering the new size of the volume in place of **<size>**\. You can enter the size in `KB`, `MB`, and `GB`; for example, `24GB`\.
 
    ```
    Resize-Partition -DriveLetter <drive-letter> -Size <size>
@@ -63,4 +69,4 @@ Use the following procedure to extend a Windows file system using PowerShell\.
 
 The following shows the complete command and response flow for extending a file system using PowerShell\.
 
-![\[Extend a partition using PowerShell\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs-extend-powershell.PNG)
+![\[Extend a partition using PowerShell\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs-extend-powershell-v2.PNG)

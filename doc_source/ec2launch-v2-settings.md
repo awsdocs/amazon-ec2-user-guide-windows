@@ -567,6 +567,8 @@ Executes a script with optional arguments and a specified frequency\.
 
 `runAs`: \(string\) one of `admin` or `localSystem`
 
+`detach`: \(boolean\) defaults to `false`\. Set to `true` if the script should be run in detached mode, where EC2Launch runs it and continues with other tasks\. Script exit codes have no effect in this mode\.
+
 *Example*
 
 ```
@@ -642,7 +644,7 @@ task: extendRootParitition
 
 ### initializeVolume<a name="ec2launch-v2-initializevolume"></a>
 
-Initializes volumes attached to the instance so that they are activated and partitioned\. Any volumes that are detected as not empty are not initialized\. A volume is considered empty if the first 4 KiB of a volume are empty, or if a volume does not have a [Windows\-recognizable drive layout](https://docs.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_ex)\.
+Initializes volumes attached to the instance so that they are activated and partitioned\. Any volumes that are detected as not empty are not initialized\. A volume is considered empty if the first 4 KiB of a volume are empty, or if a volume does not have a [Windows\-recognizable drive layout](https://docs.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_ex)\. The volume `letter` field is always applied when this task runs, regardless of whether the drive is already initialized\.
 
 *Frequency* — always
 
