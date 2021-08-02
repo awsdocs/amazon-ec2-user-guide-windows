@@ -1,8 +1,6 @@
 # Tutorial: Get started with Amazon EC2 Windows instances<a name="EC2_GetStarted"></a>
 
-Use this tutorial to get started with Amazon Elastic Compute Cloud \(Amazon EC2\)\. You'll learn how to launch, connect to, and use a Windows instance\. An *instance* is a virtual server in the AWS cloud\. With Amazon EC2, you can set up and configure the operating system and applications that run on your instance\.
-
-To get started with a Linux instance, see [Getting started with Amazon EC2 Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\.
+Use this tutorial to get started with Amazon Elastic Compute Cloud \(Amazon EC2\)\. You'll learn how to launch, connect to, and use a Windows instance\. An *instance* is a virtual server in the AWS Cloud\. With Amazon EC2, you can set up and configure the operating system and applications that run on your instance\.
 
 When you sign up for AWS, you can get started with Amazon EC2 using the [AWS Free Tier](https://aws.amazon.com/free/)\. If you created your AWS account less than 12 months ago, and have not already exceeded the free tier benefits for Amazon EC2, it will not cost you anything to complete this tutorial, because we help you select options that are within the free tier benefits\. Otherwise, you'll incur the standard Amazon EC2 usage fees from the time that you launch the instance until you terminate the instance \(which is the final task of this tutorial\), even if it remains idle\.
 
@@ -14,25 +12,15 @@ When you sign up for AWS, you can get started with Amazon EC2 using the [AWS Fre
 + [Step 3: Clean up your instance](#ec2-clean-up-your-instance)
 + [Next steps](#ec2-next-steps)
 
+**Related tutorials**
++ If you'd prefer to launch a Linux instance, see this tutorial in the *Amazon EC2 User Guide for Linux Instances*: [Get started with Amazon EC2 Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\.
++ If you'd prefer to use the command line, see this tutorial in the *AWS Command Line Interface User Guide*: [Using Amazon EC2 through the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-ec2.html)\.
+
 ## Overview<a name="ec2-get-started-overview"></a>
 
 The instance is an Amazon EBS\-backed instance \(meaning that the root volume is an EBS volume\)\. You can either specify the Availability Zone in which your instance runs, or let Amazon EC2 select an Availability Zone for you\. When you launch your instance, you secure it by specifying a key pair and security group\. When you connect to your instance, you must specify the private key of the key pair that you specified when launching your instance\.
 
 ![\[An Amazon EBS-backed instance with an additional Amazon EBS volume\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/overview_getting_started.png)
-
-**Tasks**
-
-To complete this tutorial, perform the following tasks:
-
-1. [Launch an instance](#ec2-launch-instance)
-
-1. [Connect to your instance](#ec2-connect-to-instance-windows)
-
-1. [Clean up your instance](#ec2-clean-up-your-instance)
-
-**Related tutorials**
-+ If you'd prefer to launch a Linux instance, see this tutorial in the *Amazon EC2 User Guide for Linux Instances*: [Get started with Amazon EC2 Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)\.
-+ If you'd prefer to use the command line, see this tutorial in the *AWS Command Line Interface User Guide*: [Using Amazon EC2 through the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-using-ec2.html)\.
 
 ## Prerequisites<a name="ec2-getstarted-prereqs"></a>
 
@@ -78,11 +66,11 @@ Don't select **Proceed without a key pair**\. If you launch your instance withou
 
 ## Step 2: Connect to your instance<a name="ec2-connect-to-instance-windows"></a>
 
-To connect to a Windows instance, you must retrieve the initial administrator password and then specify this password when you connect to your instance using Remote Desktop\. It takes a few minutes after instance launch before this password is available\.
+To connect to a Windows instance, you must retrieve the initial administrator password and then enter this password when you connect to your instance using Remote Desktop\. It takes a few minutes after instance launch before this password is available\.
 
-The name of the administrator account depends on the language of the operating system\. For example, for English, it's Administrator, for French it's Administrateur, and for Portuguese it's Administrador\. For more information, see [Localized Names for Administrator Account in Windows](http://social.technet.microsoft.com/wiki/contents/articles/13813.localized-names-for-administrator-account-in-windows.aspx) in the Microsoft TechNet Wiki\.
+The name of the administrator account depends on the language of the operating system\. For example, for English, it's `Administrator`, for French it's `Administrateur`, and for Portuguese it's `Administrador`\. For more information, see [Localized Names for Administrator Account in Windows](http://social.technet.microsoft.com/wiki/contents/articles/13813.localized-names-for-administrator-account-in-windows.aspx) in the Microsoft TechNet Wiki\.
 
-If you've joined your instance to a domain, you can connect to your instance using domain credentials you've defined in AWS Directory Service\. On the Remote Desktop login screen, instead of using the local computer name and the generated password, use the fully\-qualified user name for the administrator \(for example, **corp\.example\.com\\Admin**\) and the password for this account\.
+If you've joined your instance to a domain, you can connect to your instance using domain credentials you've defined in AWS Directory Service\. On the Remote Desktop login screen, instead of using the local computer name and the generated password, use the fully\-qualified user name for the administrator \(for example, **corp\.example\.com\\Admin**\), and the password for this account\.
 
 If you receive an error while attempting to connect to your instance, see [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.
 
@@ -95,23 +83,27 @@ If you receive an error while attempting to connect to your instance, see [Remot
 
 1. In the navigation pane, select **Instances**\. Select the instance and then choose **Connect**\.
 
-1. In the **Connect to instance** page, choose **RDP client** and then choose **Get password**\.
+1. On the **Connect to instance** page, choose the **RDP client** tab, and then choose **Get password**\.  
+![\[Get password for RDP.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-get-password.png)
 
-1. Choose **Browse** and navigate to the private key file you created when you launched the instance\. Select the file and choose **Open** to copy the entire contents of the file to this page\.
+1. Choose **Browse** and navigate to the private key \(`.pem`\) file you created when you launched the instance\. Select the file and choose **Open** to copy the entire contents of the file to this window\.
 
-1. Choose **Decrypt Password**\. The console displays the default administrator password for the instance in **Password**, replacing the **Get password** link shown previously\. Save the password in a safe place\. You need this password to connect to the instance\.
+1. Choose **Decrypt Password**\. The console displays the default administrator password for the instance under **Password**, replacing the **Get password** link shown previously\. Save the password in a safe place\. This password is required to connect to the instance\.  
+![\[Password location for RDP.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-password.png)
 
-1. Choose **Download remote desktop file**\. Your browser prompts you to either open or save the RDP shortcut file\. Select the option to save the file\. When you have finished downloading the file, choose **Cancel** to return to the **Instances** page\.
+1. Choose **Download remote desktop file**\. Your browser prompts you to either open or save the RDP shortcut file\. When you have finished downloading the file, choose **Cancel** to return to the **Instances** page\.
+   + If you opened the RDP file, you'll see the **Remote Desktop Connection** dialog box\.
+   + If you saved the RDP file, navigate to your downloads directory, and open the RDP file to display the dialog box\.
 
-1. Navigate to your downloads directory and open the RDP shortcut file\.
-
-1. You might get a warning that the publisher of the remote connection is unknown\. Choose **Connect** to continue to connect to your instance\.
+1. You may get a warning that the publisher of the remote connection is unknown\. Choose **Connect** to continue to connect to your instance\.  
+![\[Unknown publisher message.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-unknown-publisher.png)
 
 1. The administrator account is chosen by default\. Copy and paste the password that you saved previously\.
 **Tip**  
 If you receive a "Password Failed" error, try entering the password manually\. Copying and pasting content can corrupt it\.
 
-1. Due to the nature of self\-signed certificates, you might get a warning that the security certificate could not be authenticated\. Use the following steps to verify the identity of the remote computer, or simply choose **Yes** \(Windows\) or **Continue** \(Mac OS X\) if you trust the certificate\.
+1. Due to the nature of self\-signed certificates, you may get a warning that the security certificate could not be authenticated\. Use the following steps to verify the identity of the remote computer, or simply choose **Yes** \(Windows\) or **Continue** \(Mac OS X\) if you trust the certificate\.  
+![\["Identity cannot be verified" window.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-identity.png)
 
    1. If you are using **Remote Desktop Connection** on a Windows computer, choose **View certificate**\. If you are using **Microsoft Remote Desktop** on a Mac, choose **Show Certificate**\.
 
@@ -136,7 +128,7 @@ If you receive a "Password Failed" error, try entering the password manually\. C
 
 1. In the **Connect To Your Instance** dialog box, choose **Get Password** \(it will take a few minutes after the instance is launched before the password is available\)\.
 
-1. Choose **Browse** and navigate to the private key file you created when you launched the instance\. Select the file and choose **Open** to copy the entire contents of the file into the **Contents** field\.
+1. Choose **Browse** and navigate to the private key \(\.pem\) file you created when you launched the instance\. Select the file and choose **Open** to copy the entire contents of the file into the **Contents** field\.
 
 1. Choose **Decrypt Password**\. The console displays the default administrator password for the instance in the **Connect To Your Instance** dialog box, replacing the link to **Get Password** shown previously with the actual password\.
 

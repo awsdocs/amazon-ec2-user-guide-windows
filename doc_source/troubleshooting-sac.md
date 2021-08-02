@@ -18,9 +18,9 @@ If you launch an instance with an AMI that comes preconfigured with SAC, the EC2
 
 1. Grant access to the serial console\. For more information, see [Configure access to the EC2 Serial Console](configure-access-to-serial-console.md)\.
 
-1. Connect to the serial console\. For more information, see [Connect to the EC2 Serial Console](connect-to-serial-console.md)\.
-
 1. Enable SAC and the boot menu\. For more information, see [Enable SAC and the boot menu](#configure-sac-bootmenu)\.
+
+1. Connect to the serial console\. For more information, see [Connect to the EC2 Serial Console](connect-to-serial-console.md)\.
 
 ### Enable SAC and the boot menu<a name="configure-sac-bootmenu"></a>
 
@@ -31,7 +31,7 @@ Use one of the following methods to enable SAC and the boot menu on an instance\
 
 **To enable SAC and the boot menu on a Windows instance**
 
-1. [Connect](connecting_to_windows_instance.md) to your instance and perform the following steps from the PowerShell command line\.
+1. [Connect](connecting_to_windows_instance.md) to your instance and perform the following steps from an elevated PowerShell command line\.
 
 1. Enable SAC\.
 
@@ -86,28 +86,31 @@ Use one of the following methods to enable SAC and the boot menu on an instance\
 
 ## Use SAC<a name="use-sac"></a>
 
-If SAC has been enabled on the instance, the serial console displays the following:
+**To use SAC**
 
+1. [Connect to the serial console\.](connect-to-serial-console.md)
+
+   If SAC is enabled on the instance, the serial console displays the `SAC>` prompt\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win-boot-3.png)
 
-**To display the available SAC commands**  
-Enter `?` and then press **Enter**\.
+1. To display the SAC commands, enter **?**, and then press **Enter**\.
 
-The output is as follows\.
-
+   Expected output  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win-boot-4.png)
 
-**To switch to channels created by cmd**  
-Press **ESC\+TAB\+channel number** together\.
+1. To create a command prompt channel \(such as `cmd0001` or `cmd0002`\), enter **cmd**, and then press **Enter**\.
 
+1. To view the command prompt channel, press **ESC**, and then press **TAB**\.
+
+   Expected output  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win-boot-5.png)
 
-The command prompt requires credentials\.
+1. To switch channels, press **ESC\+TAB\+channel number** together\. For example, to switch to the `cmd0002` channel \(if it has been created\), press **ESC\+TAB\+2**\.
 
+1. Enter the credentials required by the command prompt channel\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win-boot-6.png)
 
-The command prompt is the same full\-featured command shell that you get on a desktop, but with the exception that it does not allow the reading of characters that were already output\.
-
+   The command prompt is the same full\-featured command shell that you get on a desktop, but with the exception that it does not allow the reading of characters that were already output\.  
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win-boot-7.png)
 
 **PowerShell can also be used from the command prompt\.**

@@ -725,7 +725,7 @@ Sets attributes for the default administrator account that is created on the loc
 
 `type`: \(string\) strategy to set the password, either as `static`, `random`, or `doNothing`
 
-`doNothing`: \(string\) stores data if the `type` field is static
+`data`: \(string\) stores data if the `type` field is static
 
 *Example*
 
