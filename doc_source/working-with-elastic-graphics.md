@@ -12,31 +12,63 @@ You can launch an instance and associate it with an Elastic Graphics accelerator
 
 ## Configure your security groups<a name="elastic-graphics-security"></a>
 
-If you use the Amazon EC2 console to launch your instance with an Elastic Graphics accelerator and create a security group for you, the console adds the inbound and outbound rules that are required to allow traffic on the Elastic Graphics port\. If you are launching your instance using the AWS CLI or an SDK, you must ensure that your security group allows traffic on the Elastic Graphics port\.
+Elastic Graphics requires a self\-referencing security group that allows inbound and outbound traffic to and from the security group itself\. The security group must include the following inbound and outbound rules:
 
-**To create a security group for Elastic Graphics**
+
+|  | 
+| --- |
+| Inbound rule | 
+| Type | Protocol | Port | Source | 
+| Elastic Graphics | TCP | 2007 | The security group ID \(its own resource ID\) | 
+| Outbound rule  | 
+| Type | Protocol | Port range | Destination | 
+| Elastic Graphics | TCP | 2007 | The security group ID \(its own resource ID\) | 
+
+If you use the Amazon EC2 console to launch your instance with an Elastic Graphics accelerator, you can either allow the launch instance wizard to automatically create the required security group rules, or you can select a security that you created previously\.
+
+If you are launching your instance using the AWS CLI or an SDK, you must specify a security group that you created previously\.
+
+**To create security group for Elastic Graphics**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Security Groups**\.
+1. In the navigation pane, choose **Security Groups** and then choose **Create security group**\.
 
-1. Choose **Create security group**\.
+1. In the **Create security group** window, do the following:
 
-1. Enter a name for your security group, such as "Elastic Graphics security group", and a description for the security group\. Select the VPC that you will use to launch your instance with an Elastic Graphics accelerator\.
+   1. For **Security group name**, enter a descriptive name for the security group, such as `Elastic Graphics security group`\.
 
-1. On the **Inbound rules** panel, create an inbound security group rule as follows:
+   1. \(Optional\) For **Description**, enter a brief description of the security group\.
+
+   1. For **VPC**, select the VPC into which you intend to use Elastic Graphics\.
+
+   1. Choose **Create security group**\.
+
+1. In the navigation pane, choose **Security Groups**, select the security group that you just created, and on the **Details** tab, copy the **Security group ID**\.
+
+1. On the **Inbound rules** tab, choose **Edit inbound rules** and then do the following:
+
+   1. Choose **Add rule**\.
 
    1. For **Type**, choose **Elastic Graphics**\.
 
-   1. For **Source**, choose **Custom** and enter the ID of the security group\.
+   1. For **Source type**, choose **Custom**\.
 
-1. On the **Outbound rules** panel, create an outbound security group rule as follows:
+   1. For **Source**, paste the security group ID that you copied previously\.
 
-   1. For **Type**, choose **All TCP**\.
+   1. Choose **Save rules**\.
 
-   1. For **Destination**, choose **Custom** and enter the ID of the security group\.
+1. On the **Outbound rules** tab, choose **Edit outbound rules** and then do the following:
 
-1. Choose **Create security group**\.
+   1. Choose **Add rule**\.
+
+   1. For **Type**, choose **Elastic Graphics**\.
+
+   1. For **Destination type**, choose **Custom**\.
+
+   1. For **Destination**, paste the security group ID that you copied previously\.
+
+   1. Choose **Save rules**\.
 
 For more information, see [Amazon EC2 security groups for Windows instances](ec2-security-groups.md)\.
 

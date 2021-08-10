@@ -56,20 +56,20 @@ For information about how hibernation differs from reboot, stop, and terminate, 
 ## Hibernation prerequisites<a name="hibernating-prerequisites"></a>
 
 To hibernate an On\-Demand Instance or Reserved Instance, the following prerequisites must be in place:
-+ **Supported instance families**
-  + Xen: C3, C4, I3, M3, M4, R3, R4, T2
-  + Nitro: C5, M5, M5a, M5ad, R5, R5a, R5ad, T3\*, T3a\*
-
-    \* For hibernation, we recommend that you use a T3 or T3a instance with at least 1 GB of RAM\.
-+ **Instance RAM size** \- must be up to 16 GB\.
-+ **Instance size** \- not supported for bare metal instances\.
-+ **Supported AMIs** \(must be an HVM AMI that supports hibernation\):
++ **Supported Windows AMIs** \(must be an HVM AMI that supports hibernation\):
   + Windows Server 2012 AMI released 2019\.09\.11 or later\.
   + Windows Server 2012 R2 AMI released 2019\.09\.11 or later\.
   + Windows Server 2016 AMI released 2019\.09\.11 or later\.
   + Windows Server 2019 AMI released 2019\.09\.11 or later\.
 
   For information about the supported AMIs for Linux, see [Hibernation prerequisites](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites) in the *Amazon EC2 User Guide for Linux Instances*\.
++ **Supported instance families**
+  + Xen: C3, C4, I3, M3, M4, R3, R4, T2
+  + Nitro: C5, M5, M5a, M5ad, R5, R5a, R5ad, T3\*, T3a\*
+
+    \* For hibernation, we recommend that you use a T3 or T3a instance with at least 1 GB of RAM\.
++ **Instance size** \- not supported for bare metal instances\.
++ **Instance RAM size** \- must be up to 16 GB\.
 + **Root volume type** \- must be an EBS volume, not an instance store volume\.
 + **Supported EBS volume types** \- General Purpose SSD \(`gp2` and `gp3`\) or Provisioned IOPS SSD \(`io1` and `io2`\)\. If you choose a Provisioned IOPS SSD volume type, to achieve optimum performance for hibernation, you must provision the EBS volume with the appropriate IOPS\. For more information, see [Amazon EBS volume types](ebs-volume-types.md)\.
 + **EBS root volume size** \- must be large enough to store the RAM contents and accommodate your expected usage, for example, OS or applications\. If you enable hibernation, space is allocated on the root volume at launch to store the RAM\.
