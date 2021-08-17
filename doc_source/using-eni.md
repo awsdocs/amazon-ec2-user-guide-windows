@@ -259,6 +259,15 @@ The following table lists the maximum number of network interfaces per instance 
 | m5zn\.6xlarge | 8 | 30 | 30 | 
 | m5zn\.12xlarge | 15 | 50 | 50 | 
 | m5zn\.metal | 15 | 50 | 50 | 
+| m6i\.large | 3 | 10 | 10 | 
+| m6i\.xlarge | 4 | 15 | 15 | 
+| m6i\.2xlarge | 4 | 15 | 15 | 
+| m6i\.4xlarge | 8 | 30 | 30 | 
+| m6i\.8xlarge | 8 | 30 | 30 | 
+| m6i\.12xlarge | 8 | 30 | 30 | 
+| m6i\.16xlarge | 15 | 50 | 50 | 
+| m6i\.24xlarge | 15 | 50 | 50 | 
+| m6i\.32xlarge | 15 | 50 | 50 | 
 | p2\.xlarge | 4 | 15 | 15 | 
 | p2\.8xlarge | 8 | 30 | 30 | 
 | p2\.16xlarge | 8 | 30 | 30 | 

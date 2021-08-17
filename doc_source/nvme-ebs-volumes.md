@@ -1,6 +1,6 @@
 # Amazon EBS and NVMe on Windows instances<a name="nvme-ebs-volumes"></a>
 
-EBS volumes are exposed as NVMe block devices on instances built on the [Nitro System](instance-types.md#ec2-nitro-instances)\. 
+EBS volumes are exposed as NVMe block devices on instances built on the [Nitro System](instance-types.md#ec2-nitro-instances)\. When you attach a volume to your instance, you include a device name for the volume\. This device name is used by Amazon EC2\. The block device driver for the instance assigns the actual volume name when mounting the volume, and the name assigned can be different from the name that Amazon EC2 uses\.
 
 The EBS performance guarantees stated in [Amazon EBS Product Details](http://aws.amazon.com/ebs/details/) are valid regardless of the block\-device interface\.
 
@@ -16,7 +16,7 @@ The AWS Windows AMIs for Windows Server 2008 R2 and later include the AWS NVMe d
 
 ## Identify the EBS device<a name="identify-nvme-ebs-device"></a>
 
-EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachments on Nitro\-based instances using the NVMe specification\. These devices rely on standard NVMe drivers on the operating system\. These drivers typically discover attached devices by scanning the PCI bus during instance boot, and create device nodes based on the order in which the devices respond, not on how the devices are specified in the block device mapping\. 
+EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachments on Nitro\-based instances using the NVMe specification\. These devices rely on standard NVMe drivers on the operating system\. These drivers typically discover attached devices by scanning the PCI bus during instance boot, and create device nodes based on the order in which the devices respond, not on how the devices are specified in the block device mapping\. Additionally, the device name assigned by the block device driver can be different from the name specified in the block device mapping\.
 
 ### Windows Server 2008 R2 and later<a name="nvme-windows"></a>
 

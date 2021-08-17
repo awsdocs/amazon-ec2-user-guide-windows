@@ -48,7 +48,7 @@ The new volume must not be a volume restored from a snapshot\.
   + For a root volume, stop the instance, apply the modifications, and then restart the instance\.
 + Modification time is increased for volumes that are not fully initialized\. For more information see [Initialize Amazon EBS volumes](ebs-initialize.md)\.
 + The new volume size can't exceed the supported capacity of its file system and partitioning scheme\. For more information, see [Constraints on the size and configuration of an EBS volume](volume_constraints.md)\.
-+ If you modify the volume type of a volume, the size and performance must be within the limits if the target volume type\. For more information, see [Amazon EBS volume types](ebs-volume-types.md)
++ If you modify the volume type of a volume, the size and performance must be within the limits of the target volume type\. For more information, see [Amazon EBS volume types](ebs-volume-types.md)
 + You can't decrease the size of an EBS volume\. However, you can create a smaller volume and then migrate your data to it using an application\-level tool such as  robocopy\.
 + After provisioning over 32,000 IOPS on an existing `io1` or `io2` volume, you might need to detach and re\-attach the volume, or restart the instance to see the full performance improvements\.
 + For `io2` volumes, you can't increase the size beyond `16` TiB or the IOPS beyond `64,000` while the volume is attached to an instance type that does not support `io2` Block Express volumes\. Currently, only `R5b` instances support `io2` Block Express volumes volumes\. For more information, see [`io2` Block Express volumes](ebs-volume-types.md#io2-block-express)

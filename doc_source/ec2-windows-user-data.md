@@ -120,7 +120,7 @@ The following is an example that decodes using PowerShell\.
 $Script = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($UserData))
 ```
 
-For more information about base64 encoding, see [http://tools\.ietf\.org/html/rfc4648](http://tools.ietf.org/html/rfc4648)\.
+For more information about base64 encoding, see [https://www\.ietf\.org/rfc/rfc4648\.txt](https://www.ietf.org/rfc/rfc4648.txt)\.
 
 ## User data execution<a name="user-data-execution"></a>
 
