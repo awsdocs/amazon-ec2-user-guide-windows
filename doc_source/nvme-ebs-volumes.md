@@ -18,6 +18,10 @@ The AWS Windows AMIs for Windows Server 2008 R2 and later include the AWS NVMe d
 
 EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachments on Nitro\-based instances using the NVMe specification\. These devices rely on standard NVMe drivers on the operating system\. These drivers typically discover attached devices by scanning the PCI bus during instance boot, and create device nodes based on the order in which the devices respond, not on how the devices are specified in the block device mapping\. Additionally, the device name assigned by the block device driver can be different from the name specified in the block device mapping\.
 
+The following example shows the command and output for a volume attached during instance launch\. Note that the NVMe device name does not include the `/dev/` prefix\.
+
+The following example shows the command and output for a volume attached after instance launch\. Note that the NVMe device name includes the `/dev/` prefix\.
+
 ### Windows Server 2008 R2 and later<a name="nvme-windows"></a>
 
 You can also run the **ebsnvme\-id** command to map the NVMe device disk number to an EBS volume ID and device name\. By default, all EBS NVMe devices are enumerated\. You can pass a disk number to enumerate information for a specific device\. Ebsnvme\-id is included in the latest AWS provided Windows Server AMIs located in C:\\PROGRAMDATA\\AMAZON\\Tools\.

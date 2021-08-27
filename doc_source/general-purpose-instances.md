@@ -35,6 +35,8 @@ These instances are well suited for general\-purpose workloads such as the follo
 + Small and midsize databases
 + Caching fleets
 
+For more information, see [Amazon EC2 M6i Instances](http://aws.amazon.com/ec2/instance-types/m6i)\.
+
 **T2, T3, and T3a instances**
 
 These instances provide a baseline level of CPU performance with the ability to burst to a higher level when required by your workload\. An Unlimited instance can sustain high CPU performance for any period of time whenever required\. For more information, see [Burstable performance instances](burstable-performance-instances.md)\. They are well\-suited for the following:

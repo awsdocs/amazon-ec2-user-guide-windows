@@ -217,7 +217,7 @@ The following table summarizes the networking and storage features supported by 
 | T3a | Yes | Yes | No | No | ENA | 
 | High memory \(u\-\*\) | Yes | Yes | No |  Virtualized: Yes Bare metal: No  | ENA | 
 | X1 | No | No | SSD \* | Yes | ENA | 
-| X1e | No | Yes | SSD \* | Yes | ENA | 
+| X1e | No | No | SSD \* | Yes | ENA | 
 | z1d | No | Yes | NVMe \* | Yes | ENA | 
 
 \* The root device volume must be an Amazon EBS volume\.

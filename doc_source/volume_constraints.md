@@ -18,20 +18,20 @@ The following table summarizes the theoretical and implemented storage capacitie
 | Partitioning scheme | Max addressable blocks  | Theoretical max size \(blocks × block size\) | Ext4 implemented max size\* | XFS implemented max size\*\* | NTFS implemented max size | Max supported by EBS | 
 | --- | --- | --- | --- | --- | --- | --- | 
 | MBR | 232 | 2 TiB | 2 TiB | 2 TiB | 2 TiB | 2 TiB | 
-| GPT † | 264 |  64 ZiB  | 1 EiB =10242 TiB \(50 TiB certified on RHEL7\) |  500 TiB \(certified on RHEL7\)  | 256 TiB | 16 TiB | 
+| GPT | 264 |  64 ZiB  | 1 EiB =10242 TiB \(50 TiB certified on RHEL7\) |  500 TiB \(certified on RHEL7\)  | 256 TiB | 64 TiB † | 
 
 \* [https://ext4.wiki.kernel.org/index.php/Ext4_Howto](https://ext4.wiki.kernel.org/index.php/Ext4_Howto) and [https://access.redhat.com/solutions/1532](https://access.redhat.com/solutions/1532)
 
 \*\* [https://access.redhat.com/solutions/1532](https://access.redhat.com/solutions/1532)
 
-† `io2` Block Express volumes support up to 64 TiB for GPT partitions\.
+† `io2` Block Express volumes support up to 64 TiB for GPT partitions\. For more information, see [`io2` Block Express volumes](ebs-volume-types.md#io2-block-express)\.
 
 ## Service limitations<a name="aws_limits"></a>
 
 Amazon EBS abstracts the massively distributed storage of a data center into virtual hard disk drives\. To an operating system installed on an EC2 instance, an attached EBS volume appears to be a physical hard disk drive containing 512\-byte disk sectors\. The OS manages the allocation of data blocks \(or clusters\) onto those virtual sectors through its storage management utilities\. The allocation is in conformity with a volume partitioning scheme, such as master boot record \(MBR\) or GUID partition table \(GPT\), and within the capabilities of the installed file system \(ext4, NTFS, and so on\)\. 
 
 EBS is not aware of the data contained in its virtual disk sectors; it only ensures the integrity of the sectors\. This means that AWS actions and OS actions are independent of each other\. When you are selecting a volume size, be aware of the capabilities and limits of both, as in the following cases: 
-+ EBS currently supports a maximum volume size of 16 TiB\. This means that you can create an EBS volume as large as 16 TiB, but whether the OS recognizes all of that capacity depends on its own design characteristics and on how the volume is partitioned\.
++ EBS currently supports a maximum volume size of 64 TiB\. This means that you can create an EBS volume as large as 64 TiB, but whether the OS recognizes all of that capacity depends on its own design characteristics and on how the volume is partitioned\.
 + Amazon EC2 requires Windows boot volumes to use MBR partitioning\. As discussed in [Partitioning schemes](#partitioning), this means that boot volumes cannot be larger than 2 TiB\. Windows data volumes are not subject to this limitation and can use GPT partitioning\. If a Windows boot volume that is 2 TiB or larger is converted to use a dynamic MBR partition table, you will see an error for the volume in Disk Manager\.
 + Windows non\-boot volumes that are 2 TiB \(2048 GiB\) or larger must use a GPT partition table to access the entire volume\. If an EBS volume over 2 TiB in size is attached to a Windows instance at launch, it is automatically formatted with a GPT partition table\. If you attach an EBS volume over 2 TiB in size to a Windows instance after launch, you must initialize it with a GPT table manually\. For more information, see [Make an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 

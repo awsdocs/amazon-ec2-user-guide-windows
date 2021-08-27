@@ -4,7 +4,10 @@ A consistent and accurate time reference is crucial for many server tasks and pr
 
 Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 instances, and is also used by other AWS services\. This service uses a fleet of satellite\-connected and atomic reference clocks in each Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard through Network Time Protocol \(NTP\)\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. 
 
-The Amazon Time Sync Service is available through NTP at the `169.254.169.123` IP address for any instance running in a VPC\. Your instance does not require access to the internet, and you do not have to configure your security group rules or your network ACL rules to allow access\. The latest versions of AWS Windows AMIs synchronize with the Amazon Time Sync Service by default\.
+The Amazon Time Sync Service is available through NTP at the `169.254.169.123` IPv4 address or the `fd00:ec2::123` IPv6 address for any instance running in a VPC\. Your instance does not require access to the internet, and you do not have to configure your security group rules or your network ACL rules to allow access\. The latest versions of AWS Windows AMIs synchronize with the Amazon Time Sync Service by default\.
+
+**Note**  
+The examples in this section use the IPv4 address of the Amazon Time Sync Service: `169.254.169.253`\. If you are retrieving time for EC2 instances over the IPv6 address, ensure that you use the IPv6 address instead: `fd00:ec2::253`\. The IPv6 address is only accessible on [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances)\.
 
 **Should I use UTC for my instances?**  
 We recommend that you use Coordinated Universal Time \(UTC\) for your instances to avoid human error and to facilitate synchronization across your CloudWatch Logs, Metrics, local logs, and other services\. You can, however, choose to use a different time zone to better suit your requirements\.
@@ -49,7 +52,7 @@ Windows instances are set to the UTC time zone by default\. You can change the t
 
 ## Configure network time protocol \(NTP\)<a name="windows-configuring-ntp"></a>
 
-Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 instances, and is also used by other AWS services\. We recommend that you configure your instance to use the Amazon Time Sync Service\. This service uses a fleet of satellite\-connected and atomic reference clocks in each AWS Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. This service is available at the `169.254.169.123` IP address for any instance running in a VPC, and your instance does not require internet access to use it\. Starting with the August 2018 release, Windows AMIs use the Amazon Time Sync Service by default\.
+Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 instances, and is also used by other AWS services\. We recommend that you configure your instance to use the Amazon Time Sync Service\. This service uses a fleet of satellite\-connected and atomic reference clocks in each AWS Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. This service is available at the `169.254.169.123` IPv4 address or the `fd00:ec2::123` IPv6 address for any instance running in a VPC, and your instance does not require internet access to use it\. Starting with the August 2018 release, Windows AMIs use the Amazon Time Sync Service by default\.
 
 **To verify the NTP configuration**
 

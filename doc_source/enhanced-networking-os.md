@@ -1,6 +1,6 @@
 # Operating system optimizations<a name="enhanced-networking-os"></a>
 
-To achieve the maximum network performance on instances with enhanced networking, you may need to modify the default operating system configuration\. We recommend the following configuration changes for applications that require high network performance\. Other optimizations \(such as turning on checksum offloading and enabling RSS, for example\) are already in place on official Windows AMIs\.
+To achieve the maximum network performance on instances with enhanced networking, you might need to modify the default operating system configuration\. We recommend the following configuration changes for applications that require high network performance\. Other optimizations \(such as turning on checksum offloading and enabling RSS, for example\) are already in place on official Windows AMIs\.
 
 **Note**  
 TCP chimney offloading should be disabled in most use cases, and has been deprecated as of Windows Server 2016\.

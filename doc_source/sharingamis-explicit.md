@@ -20,9 +20,7 @@ There is no limit to the number of AWS accounts with which an AMI can be shared\
 
 1. Specify the AWS account number of the user with whom you want to share the AMI in the **AWS Account Number** field, then choose **Add Permission**\.
 
-   To share this AMI with multiple users, repeat this step until you have added all the required users\. 
-
-1. To allow create volume permissions for snapshots, select ** Add "create volume" permissions to the following associated snapshots when creating permissions\.** 
+   To share this AMI with multiple users, repeat this step until you have added all the required users\.
 **Note**  
 You do not need to share the Amazon EBS snapshots that an AMI references in order to share the AMI\. Only the AMI itself needs to be shared; the system automatically provides the instance access to the referenced Amazon EBS snapshots for the launch\. However, you do need to share any KMS keys used to encrypt snapshots that the AMI references\. For more information, see [Share an Amazon EBS snapshot](ebs-modifying-snapshot-permissions.md)\.
 
@@ -41,12 +39,6 @@ The following command grants launch permissions for the specified AMI to the spe
 PS C:\> Edit-EC2ImageAttribute -ImageId ami-0abcdef1234567890 -Attribute launchPermission -OperationType add -UserId "123456789012"
 ```
 
-The following command grants create volume permission for a snapshot\.
-
-```
-PS C:\> Edit-EC2SnapshotAttribute -SnapshotId snap-1234567890abcdef0 -Attribute CreateVolumePermission -OperationType add -UserId 123456789012
-```
-
 **Note**  
 You do not need to share the Amazon EBS snapshots that an AMI references in order to share the AMI\. Only the AMI itself needs to be shared; the system automatically provides the instance access to the referenced Amazon EBS snapshots for the launch\. However, you do need to share any KMS keys used to encrypt snapshots that the AMI references\. For more information, see [Share an Amazon EBS snapshot](ebs-modifying-snapshot-permissions.md)\.
 
@@ -55,12 +47,6 @@ The following command removes launch permissions for the specified AMI from the 
 
 ```
 PS C:\> Edit-EC2ImageAttribute -ImageId ami-0abcdef1234567890 -Attribute launchPermission -OperationType remove -UserId "123456789012"
-```
-
-The following command removes create volume permission for a snapshot\.
-
-```
-PS C:\> Edit-EC2SnapshotAttribute -SnapshotId snap-1234567890abcdef0 -Attribute CreateVolumePermission -OperationTtype remove -UserId 123456789012
 ```
 
 **To remove all launch permissions**  
@@ -83,16 +69,6 @@ aws ec2 modify-image-attribute \
     --launch-permission "Add=[{UserId=123456789012}]"
 ```
 
-The following command grants create volume permission for a snapshot\.
-
-```
-aws ec2 modify-snapshot-attribute \
-    --snapshot-id snap-1234567890abcdef0 \
-    --attribute createVolumePermission \
-    --operation-type add \
-    --user-ids 123456789012
-```
-
 **Note**  
 You do not need to share the Amazon EBS snapshots that an AMI references in order to share the AMI\. Only the AMI itself needs to be shared; the system automatically provides the instance access to the referenced Amazon EBS snapshots for the launch\. However, you do need to share any KMS keys used to encrypt snapshots that the AMI references\. For more information, see [Share an Amazon EBS snapshot](ebs-modifying-snapshot-permissions.md)\.
 
@@ -103,16 +79,6 @@ The following command removes launch permissions for the specified AMI from the 
 aws ec2 modify-image-attribute \
     --image-id ami-0abcdef1234567890 \
     --launch-permission "Remove=[{UserId=123456789012}]"
-```
-
-The following command removes create volume permission for a snapshot\.
-
-```
-aws ec2 modify-snapshot-attribute \
-    --snapshot-id snap-1234567890abcdef0 \
-    --attribute createVolumePermission \
-    --operation-type remove \
-    --user-ids 123456789012
 ```
 
 **To remove all launch permissions**  

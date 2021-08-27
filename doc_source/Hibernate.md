@@ -56,16 +56,16 @@ For information about how hibernation differs from reboot, stop, and terminate, 
 ## Hibernation prerequisites<a name="hibernating-prerequisites"></a>
 
 To hibernate an On\-Demand Instance or Reserved Instance, the following prerequisites must be in place:
-+ **Supported Windows AMIs** \(must be an HVM AMI that supports hibernation\):
-  + Windows Server 2012 AMI released 2019\.09\.11 or later\.
-  + Windows Server 2012 R2 AMI released 2019\.09\.11 or later\.
-  + Windows Server 2016 AMI released 2019\.09\.11 or later\.
-  + Windows Server 2019 AMI released 2019\.09\.11 or later\.
++ **Supported Windows AMIs** \(must be an HVM AMI that supports hibernation\)
+  + Windows Server 2012 AMI released 2019\.09\.11 or later
+  + Windows Server 2012 R2 AMI released 2019\.09\.11 or later
+  + Windows Server 2016 AMI released 2019\.09\.11 or later
+  + Windows Server 2019 AMI released 2019\.09\.11 or later
 
-  For information about the supported AMIs for Linux, see [Hibernation prerequisites](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites) in the *Amazon EC2 User Guide for Linux Instances*\.
+  For information about the supported Linux AMIs, see [Hibernation prerequisites](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites) in the *Amazon EC2 User Guide for Linux Instances*\.
 + **Supported instance families**
   + Xen: C3, C4, I3, M3, M4, R3, R4, T2
-  + Nitro: C5, M5, M5a, M5ad, `m6i.xlarge` and smaller, R5, R5a, R5ad, T3\*, T3a\*
+  + Nitro: C5, C5d, M5, M5a, M5ad, M5d, R5, R5a, R5ad, R5d, T3\*, T3a\*
 
     \* For hibernation, we recommend that you use a T3 or T3a instance with at least 1 GB of RAM\.
 + **Instance size** \- not supported for bare metal instances\.
