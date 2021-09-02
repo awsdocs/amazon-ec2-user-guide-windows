@@ -1,4 +1,4 @@
-# Compatibility for resizing instances<a name="resize-limitations"></a>
+# Compatibility for changing the instance type<a name="resize-limitations"></a>
 
 You can resize an instance only if its current instance type and the new instance type that you want are compatible in the following ways:
 + **Architecture**: AMIs are specific to the architecture of the processor, so you must select an instance type with the same processor architecture as the current instance type\. For example:

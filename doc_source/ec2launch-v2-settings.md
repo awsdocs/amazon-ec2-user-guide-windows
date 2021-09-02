@@ -145,7 +145,7 @@ The `%ProgramFiles%\Amazon\EC2Launch` directory contains binaries and supporting
 The `%ProgramData%\Amazon\EC2Launch` directory contains the following subdirectories\. All of the data produced by the service, including logs, configuration, and state, is stored in this directory\.
 + `config` — Configuration
 
-  The service configuration file is stored in this directory as `agent-config.yml`\. This file can be updated to modify, add, or remove tasks run by the service by default\.
+  The service configuration file is stored in this directory as `agent-config.yml`\. This file can be updated to modify, add, or remove default tasks run by the service\. Permission to create files in this directory is restricted to the administrator account to prevent privilege escalation\.
 + `log` — Instance logs
 
   Logs for the service \(`agent.log`\), console \(`console.log`\), performance \(`bench.log`\), and errors \(`error.log`\) are stored in this directory\. Log files are appended to on subsequent executions of the service\.
@@ -271,6 +271,10 @@ ec2launch reset -c
 
 **Flags**
 
+`-b`, `--block`
+
+blocks the `reset` command until the service stops\. If the reset command is run with the `--block` flag as part of the `executeScript` task, the `detach` argument must be set to true\. For more information, see Example 4 under [executeScript ](#ec2launch-v2-executescript)\. 
+
 `-c`, `--clean`
 
 cleans instance logs before `reset`
@@ -305,6 +309,13 @@ Gets the status of the EC2Launch service\. Optionally blocks the process until t
 + `0` — the service ran and was successful\.
 + `1` — the service ran and failed\.
 + `2` — the service is still running\.
++ `3` — the service is in an unknown state\. The service state is not running or stopped\.
++ `4` — an error occurred when attempting to retrieve the service state\.
++ `5` — the service is not running and the status of the last known run is unknown\. This could mean one of the following:
+  + both the `state.json` and `previous-state.json` are deleted\.
+  + the `previous-state.json` is corrupted\.
+
+  This is the service state after running the [`reset`](#ec2launch-v2-reset) command\.
 
 **Example:**
 
@@ -341,6 +352,10 @@ ec2launch sysprep
 `ec2launch sysprep [flags]`
 
 **Flags**
+
+`-b`,`--block`
+
+blocks the `sysprep` command until the service stops\. If the reset command is run with the `--block` flag as part of the `executeScript` task, the `detach` argument must be set to true\. For more information, see Example 4 under [executeScript ](#ec2launch-v2-executescript)\. 
 
 `-c`,`--clean`
 
@@ -549,13 +564,15 @@ inputs:
 
 ### executeScript<a name="ec2launch-v2-executescript"></a>
 
-Executes a script with optional arguments and a specified frequency\.
+Runs a script with optional arguments and a specified frequency\.
 
 *Frequency* — see *Inputs*
 
 *AllowedStages* — `[PostReady, UserData]`
 
 *Inputs* — 
+
+`detach`: \(Boolean\) denotes whether the script runs as a detached process\. When enabled, EC2Launch v2 runs the script concurrently with other tasks, and will not handle exit codes, such as `3010`, to restart the instance\.
 
 `frequency`: \(string\) one of `once` or `always`
 
@@ -624,6 +641,21 @@ inputs:
       Install-WindowsFeature -Name "Telnet-Client"
       exit 3010 
     }
+```
+
+*Example 4*
+
+You can run EC2Launch v2 CLI commands as part of scripts\. `reset` and `sysprep` commands must include the `--block` flag because they depend on the agent finishing first\. When the `--block` flag is used, the `detach` argument for this task must be set to true\. A deadlock results when you use the `--block` flag in a non\-detached script\. The commands detect the potential deadlock and exit with an error\. The following example shows a script that resets the agent state after the agent finishes running\.
+
+```
+task: executeScript
+inputs:
+- frequency: always
+  type: powershell
+  runAs: localSystem
+  detach: true
+  content: |-
+    & 'C:\Program Files\Amazon\EC2Launch\ec2launch.exe' reset -c -b
 ```
 
 ### extendRootPartition<a name="ec2launch-v2-extendrootpartition"></a>
@@ -935,7 +967,7 @@ tasks:
       New-Item -Path 'C:\PowerShellTest.txt' -ItemType File
 ```
 
-The following format is compatible with the previous version of this service\.
+The following format is compatible with the previous version of this service\. It is run as an `executeScript` task in the `UserData` stage\. To mimic the behavior of the previous version, it will be set to run as a detached process\.
 
 ```
 <powershell>
