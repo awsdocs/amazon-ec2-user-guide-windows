@@ -7,6 +7,7 @@ This service uses a configuration file to control its operation\. You can update
 EC2Launch v2 publishes Windows event logs to help you troubleshoot errors and set triggers\. For more information, see [Windows event logs](ec2launchv2-troubleshooting.md#ec2launchv2-windows-event-logs)\. 
 
 **Supported operating systems**
++ Windows Server 2022
 + Windows Server 2019 \(Long\-Term Servicing Channel and Semi\-Annual Channel\)
 + Windows Server 2016
 + Windows Server 2012 and 2012 R2

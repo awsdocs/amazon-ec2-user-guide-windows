@@ -513,7 +513,7 @@ Enables Windows OpenSSH and adds the public key for the instance to the authoriz
 
 *Example*
 
-The following example shows how to enable OpenSSH on an instance, and to add the public key for the instance to the authorized keys folder\. This configuration works only on instances running Windows Server 2019\.
+The following example shows how to enable OpenSSH on an instance, and to add the public key for the instance to the authorized keys folder\. This configuration works only on instances running Windows Server 2019 and later versions\.
 
 ```
 task: enableOpenSsh

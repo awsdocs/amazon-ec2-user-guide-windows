@@ -42,6 +42,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
 1. In the navigation pane, choose **Images**, **AMIs**\.
 
 1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **Amazon images**\. Choose **Source** from the menu and type one of the following, depending on the version of Windows Server that you need:
+   + **amazon/Windows\_Server\-2022**
    + **amazon/Windows\_Server\-2019**
    + **amazon/Windows\_Server\-2016**
    + **amazon/Windows\_Server\-2012**
@@ -59,7 +60,8 @@ You can create an AMI using the AWS Management Console or the command line\. The
    + Create a new user account and add it to the Administrators group
 
      If you are sharing your AMI, these credentials can be supplied for RDP access without disclosing your default administrator password\.
-   + \[Windows Server 2016 and later\] Configure settings using EC2Launch\. To generate a random password at launch time, use the `adminPasswordType` setting\. For more information, see [Configure EC2Launch](ec2launch.md#ec2launch-config)\.
+   + \[Windows Server 2022 and later\] Configure settings using EC2Launch v2\. To generate a random password at launch time, configure the `setAdminAccount` task\. For more information, see [setAdminAccount](ec2launch-v2-settings.md#ec2launch-v2-setadminaccount)\.
+   + \[Windows Server 2016 and 2019\] Configure settings using EC2Launch\. To generate a random password at launch time, use the `adminPasswordType` setting\. For more information, see [Configure EC2Launch](ec2launch.md#ec2launch-config)\.
    + \[Windows Server 2012 R2 and earlier\] Configure settings using EC2Config\. To generate a random password at launch time, enable the `Ec2SetPassword` plugin; otherwise, the current administrator password is used\. For more information, see [EC2Config settings files](ec2config-service.md#UsingConfigXML_WinAMI)\.
    + \[Windows Server 2008 R2\] If the instance uses RedHat drivers to access Xen virtualized hardware, upgrade to Citrix drivers before you create an AMI\. For more information, see [Upgrade Windows Server 2008 and 2008 R2 instances \(Redhat to Citrix PV upgrade\)](Upgrading_PV_drivers.md#win2008-citrix-upgrade)\.
 
@@ -100,7 +102,7 @@ The Microsoft System Preparation \(Sysprep\) tool simplifies the process of dupl
 
 We recommend that you use [EC2 Image Builder](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html) to automate the creation, management, and deployment of customized, secure, and up\-to\-date "golden" server images that are pre\-installed and preconfigured with software and settings\.
 
-If you use Sysprep to create a standardized AMI, we recommend that you run Sysprep with [EC2Launch v2](ec2launch-v2.md)\. If you are still using the EC2Config \(Windows Server 2012 R2 and earlier\) or EC2Launch \(Windows Server 2016 and later\) agents, see the documentation for using Sysprep with EC2Config and EC2Launch below\.
+If you use Sysprep to create a standardized AMI, we recommend that you run Sysprep with [EC2Launch v2](ec2launch-v2.md)\. If you are still using the EC2Config \(Windows Server 2012 R2 and earlier\) or EC2Launch \(Windows Server 2016 and 2019\) agents, see the documentation for using Sysprep with EC2Config and EC2Launch below\.
 
 **Important**  
 Do not use Sysprep to create an instance backup\. Sysprep removes system\-specific information; removing this information might have unintended consequences for an instance backup\.

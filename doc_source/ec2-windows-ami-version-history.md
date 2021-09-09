@@ -16,8 +16,9 @@ The following tables summarize the changes to each release of the AWS Windows AM
 + [Monthly AMI updates for 2011 and earlier](#amis-2011)
 
 For more information about components included in these AMIs, see the following:
-+ [EC2Config version history](ec2config-version-details.md)
++ [EC2Launch v2 version history](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html#ec2launchv2-version-history)
 + [EC2Launch version history](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)
++ [EC2Config version history](ec2config-version-details.md)
 + [Systems Manager SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/master/RELEASENOTES.md)
 + [Amazon ENA driver versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#ena-adapter-driver-versions)
 + [AWS PV drivers](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html#xen-driver-awspv)
@@ -29,6 +30,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2021\.09\.01 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Windows Server 2022 AMIs include EC2Launch v2 by default\. For more information, see [EC2Launch v2 overview](ec2launch-v2-overview.md)\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2021\.08\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated April 14th, 2021 and earlier were made private\.  | 
 | 2021\.07\.14 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2021\.07\.07 |   All AMIs Out\-of\-band AMI release that applies the July out\-of\-band security update recently released by Microsoft as an additional mitigation to CVE\-34527\.   `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Printers\PointAndPrint` is not defined on AWS\-provided windows AMIs, which is the default state\.  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated March 10th, 2021 and earlier were made private\.  | 
