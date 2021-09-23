@@ -35,7 +35,7 @@ For information about other customizations, see [AWS Windows AMIs](windows-ami-v
 AWS provides AMIs with a variety of configurations for all supported Windows Operating System versions\. For each of these images, AWS:
 + Installs all Microsoft recommended Windows security patches\. We release images shortly after the monthly Microsoft patches are made available\.
 + Installs the latest drivers for AWS hardware, including network and disk drivers, EC2WinUtil for troubleshooting, as well as GPU drivers in selected AMIs\.
-+ Includes AWS helper software, like [Configure a Windows instance using the EC2Config service](ec2config-service.md) for Server 2012 R2 and earlier, or [Configure a Windows instance using EC2Launch](ec2launch.md) for Server 2016 and later\.
++ Includes AWS helper software, like [EC2Config](ec2config-service.md) for Server 2012 R2 and earlier, [EC2Launch](ec2launch.md) for Server 2016 and 2019, or [EC2Launch v2](ec2launch-v2.md) for Server 2022\.
 + Configures Windows Time to use the [Set the time for a Windows instance](windows-set-time.md)\.
 + Makes changes in all power schemes to set the display to never turn off\.
 + Performs minor bug fixes – generally one\-line registry changes to enable or disable features that we have found to improve performance on AWS\.

@@ -352,7 +352,7 @@ You can use the Amazon EC2 console to create alarm actions that stop or terminat
 ------
 #### [ New console ]
 
-![\[Manage Cloudwarch alarms page\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/manage-cloudwatch-alarms.png)
+![\[Manage Cloudwatch alarms page\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/manage-cloudwatch-alarms.png)
 
 ------
 #### [ Old console ]

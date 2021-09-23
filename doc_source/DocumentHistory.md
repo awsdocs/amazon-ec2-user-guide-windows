@@ -4,6 +4,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [EC2 Fleet and targeted On\-Demand Capacity Reservations](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-fleet-on-demand-backup.html#ec2-fleet-on-demand-capacity-reservations) | EC2 Fleet can launch On\-Demand Instances into `targeted` Capacity Reservations\. | September 22, 2021 | 
 | [T3 instances on Dedicated Hosts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/dedicated-hosts-overview.html#burstable-t3) | Support for T3 instances on Amazon EC2 Dedicated Host\. | September 14, 2021 | 
 | [Hibernation support for RHEL, Fedora, and CentOS](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/hibernating-prerequisites.html#hibernation-prereqs-supported-amis) | Hibernate your newly\-launched instances that were launched from RHEL, Fedora, and CentOS AMIs\. | September 9, 2021 | 
 | [New Local Zones added](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-regions-availability-zones.html#local-zones-available) | Add Local Zones in Chicago, Minneapolis, and Kansas City\. | September 8, 2021 | 
