@@ -8,6 +8,7 @@ The following are troubleshooting tips to help you solve common issues with EC2 
 + [Instance loses network connectivity or scheduled tasks don't run when expected](#instance-loses-network-connectivity)
 + [Unable to get console output](#no-console-output)
 + [Windows Server 2012 R2 not available on the network](#server-2012-network-loss)
++ [Disk signature collision](#disk-signature-collision)
 
 ## EBS volumes don't initialize on Windows Server 2016 and later<a name="init-disks-win2k16"></a>
 
@@ -148,3 +149,57 @@ For instances running Windows Server 2012 R2 and earlier, if the console output 
 ## Windows Server 2012 R2 not available on the network<a name="server-2012-network-loss"></a>
 
 For information about troubleshooting a Windows Server 2012 R2 instance that is not available on the network, see [Windows Server 2012 R2 loses network and storage connectivity after an instance reboot](pvdrivers-troubleshooting.md#server2012R2-instance-unavailable)\.
+
+## Disk signature collision<a name="disk-signature-collision"></a>
+
+You can check for and resolve disk signature collisions using [EC2Rescue for Windows Server](Windows-Server-EC2Rescue.md)\. Or, you can manually resolve disk signature issues by performing the following steps:
+**Warning**  
+The following procedure describes how to edit the Windows Registry using Registry Editor\. If you are not familiar with the Windows Registry or how to safely make changes using Registry Editor, see [Configure the Registry](https://technet.microsoft.com/en-us/library/cc725612.aspx)\.
+
+1. Open a command prompt, type regedit\.exe, and press Enter\.
+
+1. In the **Registry Editor**, choose **HKEY\_LOCAL\_MACHINE** from the context menu \(right\-click\), and then choose **Find**\.
+
+1. Type Windows Boot Manager and then choose **Find Next**\.
+
+1. Choose the key named `11000001`\. This key is a sibling of the key you found in the previous step\.
+
+1. In the right pane, choose `Element` and then choose **Modify** from the context menu \(right\-click\)\.
+
+1. Locate the four\-byte disk signature at offset 0x38 in the data\. This is the Boot Configuration Database signature \(BCD\)\. Reverse the bytes to create the disk signature, and write it down\. For example, the disk signature represented by the following data is `E9EB3AA5`:
+
+   ```
+   ...
+   0030  00 00 00 00 01 00 00 00
+   0038  A5 3A EB E9 00 00 00 00
+   0040  00 00 00 00 00 00 00 00
+   ...
+   ```
+
+1. In a Command Prompt window, run the following command to start Microsoft DiskPart\.
+
+   ```
+   diskpart
+   ```
+
+1. Run the following DiskPart command to select the volume\. \(You can verify that the disk number is 1 using the **Disk Management** utility\.\)
+
+   ```
+   DISKPART> select disk 1
+   
+   Disk 1 is now the selected disk.
+   ```
+
+1. Run the following DiskPart command to get the disk signature\.
+
+   ```
+   DISKPART>  uniqueid disk
+   
+   Disk ID: 0C764FA8
+   ```
+
+1. If the disk signature shown in the previous step doesn't match the disk signature from BCD that you wrote down earlier, use the following DiskPart command to change the disk signature so that it matches:
+
+   ```
+   DISKPART> uniqueid disk id=E9EB3AA5
+   ```

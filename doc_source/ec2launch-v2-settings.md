@@ -817,7 +817,15 @@ inputs:
 
 ### setWallpaper<a name="ec2launch-v2-setwallpaper"></a>
 
-Sets up the instance with custom wallpaper that displays instance attributes\.
+Creates the `setwallpaper.lnk` shortcut file in the startup folder of each existing user except for `Default User`\. This shortcut file runs when the user logs in for the first time after instance boot\. It sets up the instance with a custom wallpaper that displays the instance attributes\. 
+
+The shortcut path is:
+
+```
+$env:SystemDrive/Users/<user>/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/setwallpaper.lnk
+```
+
+ Note that removing the `setWallpaper` task does not delete this shortcut file\. For more information, see [`setWallpaper` task is not enabled but the wallpaper resets at reboot](ec2launchv2-troubleshooting.md#ec2launchv2-troubleshooting-wallpaper-resets)\.
 
 *Frequency* — always
 

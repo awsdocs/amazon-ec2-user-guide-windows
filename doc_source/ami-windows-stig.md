@@ -41,7 +41,7 @@ STIG\-compliant Amazon EC2 AMIs are designed for use as standalone servers, and 
 
 Some STIG settings are not automatically applied\. This can be due to technical limitations – for instance, the STIG setting might not be applicable for standalone servers\. Organization\-specific policies can also prevent automatic application of STIG settings, such as a requirement for administrators to review document settings\. For more details about which STIGs are applied to Amazon EC2 Windows AMIs, you can download our [spreadsheet](https://aws-windows-downloads-us-west-1.s3.us-west-1.amazonaws.com/STIG/Win+STIG.xlsx)\.
 
-For a complete list of Windows STIGs, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For information about how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
+For a complete list of Windows STIGs, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For information about how to view the complete list, see [SRG / STIG Tools](https://public.cyber.mil/stigs/srg-stig-tools/)\.
 
 ### Windows Server 2019 STIG V2 Release 2<a name="win-server-2019"></a>
 
@@ -86,7 +86,7 @@ All of the following STIG settings for Windows operating systems are applied:
 
 The following list contains STIG settings that are applied to Windows operating system components for STIG\-compliant Amazon EC2 AMIs\. Some STIG settings are not automatically applied\. This can be due to technical limitations – for instance, the STIG setting might not be applicable for standalone servers\. Organization\-specific policies can also prevent automatic application of STIG settings, such as a requirement for administrators to review document settings\. For more details about which STIGs are applied to Amazon EC2 Windows AMIs, you can download our [spreadsheet](https://aws-windows-downloads-us-west-1.s3.us-west-1.amazonaws.com/STIG/Win+STIG.xlsx)\.
 
-For a complete list of Windows STIGs, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For information about how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
+For a complete list of Windows STIGs, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For information about how to view the complete list, see [SRG / STIG Tools](https://public.cyber.mil/stigs/srg-stig-tools/)\.
 + **Windows\\Low**
 
   No STIG settings are applied to the Microsoft \.NET Framework for Category III vulnerabilities\.
@@ -101,7 +101,7 @@ For a complete list of Windows STIGs, see the [STIGs Document Library](https://p
 
 The following list contains STIG settings that are applied to Windows operating system components for STIG\-compliant Amazon EC2 AMIs\. Some STIG settings are not automatically applied\. This can be due to technical limitations – for instance, the STIG setting might not be applicable for standalone servers\. Organization\-specific policies can also prevent automatic application of STIG settings, such as a requirement for administrators to review document settings\. For more details about which STIGs are applied to Amazon EC2 Windows AMIs, you can download our [spreadsheet](https://aws-windows-downloads-us-west-1.s3.us-west-1.amazonaws.com/STIG/Win+STIG.xlsx)\.
 
-For a complete list of Windows STIGs, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For information about how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
+For a complete list of Windows STIGs, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For information about how to view the complete list, see [SRG / STIG Tools](https://public.cyber.mil/stigs/srg-stig-tools/)\.
 + **Windows\\Low**
 
   V\-17425, V\-17426, V\-17427, V\-17435, V\-17436, V\-17437, V\-17445, V\-17446, and V\-17447
@@ -116,7 +116,7 @@ For a complete list of Windows STIGs, see the [STIGs Document Library](https://p
 
 The following list contains STIG settings that are applied to Windows operating system components for STIG\-compliant Amazon EC2 AMIs\. Some STIG settings are not automatically applied\. This can be due to technical limitations – for instance, the STIG setting might not be applicable for standalone servers\. Organization\-specific policies can also prevent automatic application of STIG settings, such as a requirement for administrators to review document settings\. For more details about which STIGs are applied to Amazon EC2 Windows AMIs, you can download our [spreadsheet](https://aws-windows-downloads-us-west-1.s3.us-west-1.amazonaws.com/STIG/Win+STIG.xlsx)\.
 
-For a complete list of Windows STIGs, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For information about how to view the complete list, see [How to View SRGs and STIGs ](https://dl.dod.cyber.mil/wp-content/uploads/stigs/doc/HOW_TO_VIEW_SRGs_and_STIGs.doc)\.
+For a complete list of Windows STIGs, see the [STIGs Document Library](https://public.cyber.mil/stigs/downloads/?_dl_facet_stigs=windows)\. For information about how to view the complete list, see [SRG / STIG Tools](https://public.cyber.mil/stigs/srg-stig-tools/)\.
 + **Windows\\Low**
 
   V\-46477, V\-46629, and V\-97527

@@ -22,7 +22,7 @@ The command adds the class to the current PowerShell session only\. If you start
 #### [ IMDSv2 ]
 
    ```
-   PS C:\> $Token = (Invoke-WebRequest -Method Put -Headers @{'X-aws-ec2-metadata-token-ttl-seconds' = '21600'} http://169.254.169.254/latest/api/token).Content
+   PS C:\> [string]$token = (Invoke-WebRequest -Method Put -Headers @{'X-aws-ec2-metadata-token-ttl-seconds' = '21600'} http://169.254.169.254/latest/api/token).Content
    ```
 
    ```

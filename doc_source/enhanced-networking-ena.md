@@ -145,12 +145,27 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
 
 ## Amazon ENA driver versions<a name="ena-adapter-driver-versions"></a>
 
-Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The following table summarizes the changes for each release\.
+Windows AMIs include the Amazon ENA driver to enable enhanced networking\. 
+
+The following table shows the corresponding ENA driver version to download for each Windows Server version\.
+
+
+| Windows Server version | ENA driver version | 
+| --- | --- | 
+|  Windows Server 2022  |  2\.2\.4 and later  | 
+| Windows Server 2019 |  latest  | 
+| Windows Server 2016 | latest | 
+| Windows Server 2012 R2 | latest | 
+| Windows Server 2012 | latest | 
+| Windows Server 2008 R2 | 2\.2\.3 and earlier | 
+
+The following table summarizes the changes for each release\.
 
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
-|  [2\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/x64/2.2.3/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | March 25, 2021 | 
+|  [2\.2\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/x64/2.2.4/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | October 26, 2021 | 
+|  [2\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/x64/2.2.3/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Windows ENA driver version 2\.2\.3 is the final version that supports Windows Server 2008 R2\. Currently available instance types that use ENA will continue to be supported on Windows Server 2008 R2, and the drivers are available by download\. No future instance types will support Windows Server 2008 R2, and you cannot launch, import, or migrate Windows Server 2008 R2 images to future instance types\.   | March 25, 2021 | 
 |  [2\.2\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.2.2/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | December 21, 2020 | 
 |  [2\.2\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.2.1/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | October 1, 2020 | 
 |  [2\.2\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.2.0/AwsEnaNetworkDriver.zip)  |  New Features [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Performance Optimizations [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | August 12, 2020 | 

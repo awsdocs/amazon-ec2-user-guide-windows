@@ -61,12 +61,20 @@ Use the following procedure to extend a Windows file system using PowerShell\.
    Get-PartitionSupportedSize -DriveLetter <drive-letter>
    ```
 
-1. To extend the partition, run the following command, entering the new size of the volume in place of **<size>**\. You can enter the size in `KB`, `MB`, and `GB`; for example, `24GB`\.
+1. To extend the partition to a specified amount, run the following command, entering the new size of the volume in place of **<size>**\. You can enter the size in `KB`, `MB`, and `GB`; for example, `50GB`\.
 
    ```
    Resize-Partition -DriveLetter <drive-letter> -Size <size>
    ```
 
-The following shows the complete command and response flow for extending a file system using PowerShell\.
+   To extend the partition to the maximum available size, run the following command\.
 
-![\[Extend a partition using PowerShell\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs-extend-powershell-v2.PNG)
+   ```
+   Resize-Partition -DriveLetter <drive-letter> -Size $(Get-PartitionSupportedSize -DriveLetter <drive-letter>).SizeMax
+   ```
+
+   The following PowerShell commands show the complete command and response flow for extending a file system to a specific size\.  
+![\[Extend a partition using PowerShell - specific\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs-extend-powershell-v3-specific.png)
+
+   The following PowerShell commands show the complete command and response flow for extending a file system to the maximum available size\.  
+![\[Extend a partition using PowerShell - max\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs-extend-powershell-v3-max.png)

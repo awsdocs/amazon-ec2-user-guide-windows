@@ -41,3 +41,22 @@ To keep the custom settings from the `config.xml` file that you saved, run `EC2I
 1. If you are running EC2Config version 4\.0 or later, you must restart SSM Agent on the instance from the Microsoft Services snap\-in\.
 **Note**  
 The updated EC2Config version information will not appear in the instance System Log or Trusted Advisor check until you reboot or stop and start your instance\.
+
+**To download and install the latest version of EC2Config using PowerShell**  
+To download, unzip, and install the latest version of EC2Config using PowerShell, run the following commands from a PowerShell window:
+
+```
+$Url = "https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip"
+$DownloadZipFile = "$env:USERPROFILE\Desktop\" + $(Split-Path -Path $Url -Leaf)
+$ExtractPath = "$env:USERPROFILE\Desktop\"
+Invoke-WebRequest -Uri $Url -OutFile $DownloadZipFile
+$ExtractShell = New-Object -ComObject Shell.Application 
+$ExtractFiles = $ExtractShell.Namespace($DownloadZipFile).Items() 
+$ExtractShell.NameSpace($ExtractPath).CopyHere($ExtractFiles) 
+Start-Process $ExtractPath
+Start-Process `
+    -FilePath $env:USERPROFILE\Desktop\EC2Install.exe `
+    -ArgumentList "/S"
+```
+
+Verify the installation by checking `C:\Program Files\Amazon\` for the `Ec2ConfigService` directory\.

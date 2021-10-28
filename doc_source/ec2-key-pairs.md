@@ -8,7 +8,7 @@ Because Amazon EC2 doesn't keep a copy of your private key, there is no way to r
 
 You can use Amazon EC2 to create your key pairs\. You can also use a third\-party tool to create your key pairs, and then import the public keys to Amazon EC2\.
 
-The keys that Amazon EC2 uses are ED25519 or 2048\-bit SSH\-2 RSA keys\.
+Amazon EC2 supports 2048\-bit SSH\-2 RSA keys for Windows instances\.
 
 You can have up to 5,000 key pairs per Region\.
 
@@ -40,11 +40,9 @@ You can create a key pair using one of the following methods\.
 
 1. For **Name**, enter a descriptive name for the key pair\. Amazon EC2 associates the public key with the name that you specify as the key name\. A key name can include up to 255 ASCII characters\. It can’t include leading or trailing spaces\.
 
-1. For **Key pair type**, choose either **RSA** or **ED25519**\. Note that **ED25519** keys are not supported for Windows instances, EC2 Instance Connect, or EC2 Serial Console\.
+1. For **Key pair type**, choose **RSA** \. Note that **ED25519** keys are not supported for Windows instances, EC2 Instance Connect, or EC2 Serial Console\.
 
 1. For **Private key file format**, choose the format in which to save the private key\. To save the private key in a format that can be used with OpenSSH, choose **pem**\. To save the private key in a format that can be used with PuTTY, choose **ppk**\.
-
-   If you chose **ED25519** in the previous step, the **Private key file format** options do not appear, and the private key format defaults to **pem**\.
 
 1. To add a tag to the public key, choose **Add tag**, and enter the key and value for the tag\. Repeat for each tag\. 
 
@@ -98,10 +96,10 @@ PS C:\> (New-EC2KeyPair -KeyName "my-key-pair" -KeyType "rsa").KeyMaterial | Out
 
 ## Create a key pair using a third\-party tool and import the public key to Amazon EC2<a name="how-to-generate-your-own-key-and-import-it-to-aws"></a>
 
-Instead of using Amazon EC2 to create your key pair, you can create an RSA or ED25519 key pair by using a third\-party tool, and then import the public key to Amazon EC2\.
+Instead of using Amazon EC2 to create your key pair, you can create an RSA key pair by using a third\-party tool, and then import the public key to Amazon EC2\.
 
 **Requirements for key pairs**
-+ Supported types: RSA and ED25519\. Amazon EC2 does not accept DSA keys\.
++ Supported types: RSA\. Amazon EC2 does not accept DSA keys\.
   + Note that ED25519 keys are not supported for Windows instances, EC2 Instance Connect, and EC2 Serial Console\.
 + Supported formats:
   + OpenSSH public key format 
@@ -112,7 +110,7 @@ Instead of using Amazon EC2 to create your key pair, you can create an RSA or ED
 
 **To create a key pair using a third\-party tool**
 
-1. Generate a key pair with a third\-party tool of your choice\. For example, you can use ssh\-keygen \(a tool provided with the standard OpenSSH installation\)\. Alternatively, Java, Ruby, Python, and many other programming languages provide standard libraries that you can use to create an RSA or ED25519 key pair\.
+1. Generate a key pair with a third\-party tool of your choice\. For example, you can use ssh\-keygen \(a tool provided with the standard OpenSSH installation\)\. Alternatively, Java, Ruby, Python, and many other programming languages provide standard libraries that you can use to create an RSA key pair\.
 **Important**  
 The private key must be in the PEM format\. For example, use `ssh-keygen -m PEM` to generate the OpenSSH key in the PEM format\.
 
@@ -331,8 +329,6 @@ For RSA key pairs:
 ```
 $ ssh-keygen -ef path_to_private_key -m PEM | openssl rsa -RSAPublicKey_in -outform DER | openssl md5 -c
 ```
-
-For ED25519 key pairs:
 
 ```
 $ ssh-keygen -l -f path_to_private_key.pem

@@ -22,7 +22,7 @@ Depending on the size of the volumes, it can take several minutes for the AMI\-c
 After the process completes, you have a new AMI and snapshot created from the root volume of the instance\. When you launch an instance using the new AMI, we create a new EBS volume for its root volume using the snapshot\.
 
 **Note**  
-A Windows AMI must be created from an Amazon EC2 instance\. Creation of a Windows AMI from an EBS snapshots is not supported\.
+A Windows AMI must be created from an Amazon EC2 instance\. Creation of a Windows AMI from an EBS snapshot is currently not supported as it might cause issues with billing, performance, and general operation\.
 
 If you add instance store volumes or Amazon Elastic Block Store \(Amazon EBS\) volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block device mappings](block-device-mapping-concepts.md)\.
 
@@ -39,14 +39,13 @@ You can create an AMI using the AWS Management Console or the command line\. The
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Images**, **AMIs**\.
+1. In the navigation pane, under **Images**, choose **AMIs**\.
 
-1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **Amazon images**\. Choose **Source** from the menu and type one of the following, depending on the version of Windows Server that you need:
+1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **Amazon images**\. Choose **Source** from the menu and enter one of the following, depending on the version of Windows Server that you need:
    + **amazon/Windows\_Server\-2022**
    + **amazon/Windows\_Server\-2019**
    + **amazon/Windows\_Server\-2016**
    + **amazon/Windows\_Server\-2012**
-   + **amazon/Windows\_Server\-2008**
 
    Add any other filters that you need\. When you have chosen an AMI, select its check box\.
 

@@ -51,4 +51,4 @@ aws s3 sync s3://remote_S3_bucket local_directory
 ```
 
 **Amazon S3 API**  
-If you are a developer, you can use an API to access data in Amazon S3\. For more information, see the [Amazon Simple Storage Service Developer Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/)\. You can use this API and its examples to help develop your application and integrate it with other APIs and SDKs, such as the boto Python interface\.
+If you are a developer, you can use an API to access data in Amazon S3\. For more information, see the [Amazon Simple Storage Service User Guide](https://docs.aws.amazon.com/AmazonS3/latest/dev/)\. You can use this API and its examples to help develop your application and integrate it with other APIs and SDKs, such as the boto Python interface\.

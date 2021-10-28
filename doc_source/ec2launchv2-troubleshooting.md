@@ -20,6 +20,7 @@ This section shows common troubleshooting scenarios and steps for resolution\.
 + [Scheduled tasks from EC2Launch v1 fail to run after migration to EC2Launch v2](#ec2launchv2-troubleshooting-scheduled-tasks-migration)
 + [Service fails to run a task](#ec2launchv2-troubleshooting-task-failed)
 + [Service initializes an EBS volume that is not empty](#ec2launchv2-troubleshooting-ebs-initialize)
++ [`setWallpaper` task is not enabled but the wallpaper resets at reboot](#ec2launchv2-troubleshooting-wallpaper-resets)
 
 ### Service fails to set the wallpaper<a name="ec2launchv2-troubleshooting-wallpaper"></a>
 
@@ -105,6 +106,36 @@ The migration tool does not detect any scheduled tasks linked to EC2Launch v1 sc
 
 **Resolution**  
 Before it initializes a volume, EC2Launch v2 attempts to detect whether it is empty\. If a volume is not empty, it skips the initialization\. Any volumes that are detected as not empty are not initialized\. A volume is considered empty if the first 4 KiB of a volume are empty, or if a volume does not have a [Windows\-recognizable drive layout](https://docs.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_ex)\. A volume that was initialized and formatted on a Linux system does not have a Windows\-recognizable drive layout, for example MBR or GPT\. Therefore, it will be considered as empty and initialized\. If you want to preserve this data, do not rely on EC2Launch v2 empty drive detection\. Instead, specify volumes that you would like to initialize in the [EC2Launch v2 settings dialog box](ec2launch-v2-settings.md#ec2launch-v2-ui) \(see step 6\) or in the [`agent-config.yml`](ec2launch-v2-settings.md#ec2launch-v2-initializevolume)\.
+
+### `setWallpaper` task is not enabled but the wallpaper resets at reboot<a name="ec2launchv2-troubleshooting-wallpaper-resets"></a>
+
+The `setWallpaper` task creates the `setwallpaper.lnk` shortcut file in the startup folder of each existing user except for `Default User`\. This shortcut file runs when the user logs in for the first time after instance boot\. It sets up the instance with a custom wallpaper that displays the instance attributes\. Removing the `setWallpaper` task does not delete this shortcut file\. You must manually delete this file or delete it using a script\.
+
+The shortcut path is:
+
+```
+$env:SystemDrive/Users/<user>/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/setwallpaper.lnk
+```
+
+**Resolution**  
+Manually delete this file, or delete it using a script\.
+
+**Example PowerShell script to delete shortcut file**
+
+```
+foreach ($userDir in (Get-ChildItem "C:\Users" -Force -Directory).FullName)
+{
+    $startupPath = Join-Path $userDir -ChildPath "AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+    if (Test-Path $startupPath)
+    {
+        $wallpaperSetupPath = Join-Path $startupPath -ChildPath "setwallpaper.lnk"
+        if (Test-Path $wallpaperSetupPath)
+        {
+            Remove-Item $wallpaperSetupPath -Force -Confirm:$false
+        }
+    }
+}
+```
 
 ## Windows event logs<a name="ec2launchv2-windows-event-logs"></a>
 

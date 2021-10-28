@@ -81,7 +81,7 @@ The first time that you use Systems Manager, you must provide AWS credentials\. 
        {
          "Effect": "Allow",
          "Action": [
-           "iam:ListInstanceProfiles", "iam:PassRole", 
+           "iam:ListInstanceProfiles", 
            "ec2:Describe*", "ec2:CreateKeyPair",
            "ec2:CreateTags", "ec2:DeleteTags",
            "ec2:RunInstances", "ec2:GetPasswordData",

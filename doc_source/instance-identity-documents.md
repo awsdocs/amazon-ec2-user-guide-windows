@@ -37,7 +37,7 @@ Connect to the instance and run one of the following commands depending on the I
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $Token = (Invoke-WebRequest -Method Put -Headers @{'X-aws-ec2-metadata-token-ttl-seconds' = '21600'} http://169.254.169.254/latest/api/token).Content
+PS C:\> [string]$token = (Invoke-WebRequest -Method Put -Headers @{'X-aws-ec2-metadata-token-ttl-seconds' = '21600'} http://169.254.169.254/latest/api/token).Content
 ```
 
 ```
@@ -85,9 +85,6 @@ The plaintext instance identity document is accompanied by three hashed and encr
 + RSA\-2048 signature—This is a SHA256 hash of the instance identity document that is encrypted using an RSA\-2048 key pair\.
 
 Each signature is available at a different endpoint in the instance metadata\. You can use any one of these signatures depending on your hashing and encryption requirements\. To verify the signatures, you must use the corresponding AWS public certificate\.
-
-**Important**  
-To validate the instance identity document using the base64\-encoded signature or RSA2048 signature, you must request the corresponding AWS public certificate from [ AWS Support](https://console.aws.amazon.com/support/home#/)\. 
 
 The following topics provide detailed steps for validating the instance identity document using each signature\.
 + [Use the PKCS7 signature to verify the instance identity document](verify-pkcs7.md)
