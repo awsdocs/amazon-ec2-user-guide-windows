@@ -40,6 +40,7 @@ For the best performance, we recommend that you use the following instance types
 | C5ad | c5ad\.large \| c5ad\.xlarge \| c5ad\.2xlarge \| c5ad\.4xlarge \| c5ad\.8xlarge \| c5ad\.12xlarge \| c5ad\.16xlarge \| c5ad\.24xlarge | [Compute optimized](compute-optimized-instances.md) | 
 | C5d | c5d\.large \| c5d\.xlarge \| c5d\.2xlarge \| c5d\.4xlarge \| c5d\.9xlarge \| c5d\.12xlarge \| c5d\.18xlarge \| c5d\.24xlarge \| c5d\.metal  | [Compute optimized](compute-optimized-instances.md) | 
 | C5n | c5n\.large \| c5n\.xlarge \| c5n\.2xlarge \| c5n\.4xlarge \| c5n\.9xlarge \| c5n\.18xlarge \| c5n\.metal | [Compute optimized](compute-optimized-instances.md) | 
+| C6i | c6i\.large \| c6i\.xlarge \| c6i\.2xlarge \| c6i\.4xlarge \| c6i\.8xlarge \| c6i\.12xlarge \| c6i\.16xlarge \| c6i\.24xlarge \| c6i\.32xlarge  | [Compute optimized](compute-optimized-instances.md) | 
 | D2 | d2\.xlarge \| d2\.2xlarge \| d2\.4xlarge \| d2\.8xlarge | [Storage optimized](storage-optimized-instances.md) | 
 | D3 | d3\.xlarge \| d3\.2xlarge \| d3\.4xlarge \| d3\.8xlarge | [Storage optimized](storage-optimized-instances.md) | 
 | D3en | d3en\.large \| d3en\.xlarge \| d3en\.2xlarge \| d3en\.4xlarge \| d3en\.6xlarge \| d3en\.8xlarge \| d3en\.12xlarge | [Storage optimized](storage-optimized-instances.md) | 
@@ -140,7 +141,7 @@ The following components are part of the Nitro System:
 **Instance types**
 
 The following instances are built on the Nitro System:
-+ **Virtualized**: C5, C5a, C5ad, C5d, C5n, D3, D3en, G4, I3en, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6i, `p3dn.24xlarge`, R5, R5a, R5ad, R5b, R5d, R5dn, R5n, T3, T3a, high memory \(u\-\*\), and z1d
++ **Virtualized**: C5, C5a, C5ad, C5d, C5n, C6i,  D3, D3en, G4, I3en, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6i, `p3dn.24xlarge`, R5, R5a, R5ad, R5b, R5d, R5dn, R5n, T3, T3a, high memory \(u\-\*\), and z1d
 + **Bare metal**: `c5.metal`, `c5d.metal`, `c5n.metal`, `i3.metal`, `i3en.metal`, `m5.metal`, `m5d.metal`, `m5dn.metal`, `m5n.metal`, `m5zn.metal`, `r5.metal`, `r5b.metal`, `r5d.metal`, `r5dn.metal`, `r5n.metal`, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, and `z1d.metal`
 
 **Learn more**
@@ -182,6 +183,7 @@ The following table summarizes the networking and storage features supported by 
 | C5ad | No | Yes | NVMe \* | Yes | ENA | 
 | C5d | No | Yes | NVMe \* | Yes | ENA | 
 | C5n | Yes | Yes | No | Yes | ENA | 
+| C6i | Yes | Yes | No | Yes | ENA | 
 | D2 | No | No | HDD | Yes | Intel 82599 VF | 
 | D3 | No | Yes | NVMe \* | Yes | ENA | 
 | D3en | No | Yes | NVMe \* | Yes | ENA | 

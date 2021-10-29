@@ -17,6 +17,18 @@ Bare metal instances, such as `c5.metal`, provide your applications with direct 
 
 For more information, see [Amazon EC2 C5 Instances](https://aws.amazon.com/ec2/instance-types/c5)\.
 
+**C6i instances**
+
+These instances are ideal for running advanced, compute\-intensive workloads, such as the following:
++ High\-performance computing \(HPC\)
++ Batch processing
++ Ad serving
++ Video encoding
++ Distributed analytics
++ Highly scalable multiplayer gaming
+
+For more information, see [Amazon EC2 C6i Instances](http://aws.amazon.com/ec2/instance-types/c6i)\.
+
 **Topics**
 + [Hardware specifications](#compute-instances-hardware)
 + [Instance performance](#compute-performance)
@@ -78,6 +90,15 @@ The following is a summary of the hardware specifications for compute optimized 
 | c5n\.9xlarge | 36 | 96 | 
 | c5n\.18xlarge | 72 | 192 | 
 | c5n\.metal | 72 | 192 | 
+| c6i\.large | 2 | 4 | 
+| c6i\.xlarge | 4 | 8 | 
+| c6i\.2xlarge | 8 | 16 | 
+| c6i\.4xlarge | 16 | 32 | 
+| c6i\.8xlarge | 32 | 64 | 
+| c6i\.12xlarge | 48 | 96 | 
+| c6i\.16xlarge | 64 | 128 | 
+| c6i\.24xlarge | 96 | 192 | 
+| c6i\.32xlarge | 128 | 256 | 
 
 For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
@@ -102,9 +123,13 @@ The following is a summary of network performance for compute optimized instance
 | c4\.8xlarge | 10 Gbps | [Intel 82599 VF](sriov-networking.md) | 
 | c5\.9xlarge \| c5a\.8xlarge \| c5ad\.8xlarge \| c5d\.9xlarge | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5\.12xlarge \| c5a\.12xlarge \| c5ad\.12xlarge \| c5d\.12xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  c6i\.4xlarge and smaller  | Up to 12\.5 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  c6i\.8xlarge  | 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  c6i\.12xlarge  | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5n\.4xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
-| c5\.18xlarge \| c5\.24xlarge \| c5\.metal \| c5d\.18xlarge \| c5d\.24xlarge \| c5d\.metal  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
-| c5n\.9xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c5\.18xlarge \| c5\.24xlarge \| c5\.metal \| c5d\.18xlarge \| c5d\.24xlarge \| c5d\.metal  \| c6i\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  c6i\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c5n\.9xlarge  \| c6i\.32xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5n\.18xlarge \| c5n\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
 † These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
@@ -132,6 +157,10 @@ The following is a summary of network performance for compute optimized instance
 | c5n\.xlarge | 5 | 25 | 
 | c5n\.2xlarge | 10 | 25 | 
 | c5n\.4xlarge | 15 | 25 | 
+| c6i\.large | \.781 | 12\.5 | 
+| c6i\.xlarge | 1\.562 | 12\.5 | 
+| c6i\.2xlarge | 3\.125 | 12\.5 | 
+| c6i\.4xlarge | 6\.25 | 12\.5 | 
 
 ## SSD I/O performance<a name="compute-ssd-perf"></a>
 
@@ -179,6 +208,7 @@ The following is a summary of features for compute optimized instances:
 | C5ad | No | Yes | NVMe \* | Yes | 
 | C5d | No | Yes | NVMe \* | Yes | 
 | C5n | Yes | Yes | No | Yes | 
+| C6i | Yes | Yes | No | Yes | 
 
 **\*** The root device volume must be an Amazon EBS volume\.
 
@@ -196,6 +226,8 @@ For more information, see the following:
   + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
   The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
++ To get the best performance from your C6i instances, ensure that they have ENA driver version 2\.2\.3 or later\. Using an ENA driver earlier than version 2\.0\.0 with these instances causes network interface attachment failures\. The following AMIs have a compatible ENA driver\.
+  + AWS Windows AMI from May 2021 or later
 + Instances built on the Nitro System instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. For more information, see [Nitro System volume limits](volume_limits.md#instance-type-volume-limits)\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.
