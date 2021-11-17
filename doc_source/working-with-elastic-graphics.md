@@ -28,7 +28,7 @@ If you use the Amazon EC2 console to launch your instance with an Elastic Graphi
 
 If you are launching your instance using the AWS CLI or an SDK, you must specify a security group that you created previously\.
 
-**To create security group for Elastic Graphics**
+**To create a security group for Elastic Graphics**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -264,7 +264,7 @@ Use the following commands:
 
 ## Submit feedback<a name="elastic-gpu-feedback"></a>
 
-You can submit feedback about your experience with Elastic Graphics so the team can make further improvements\.
+You can submit feedback about your experience with Elastic Graphics so that the team can make further improvements\.
 
 **To submit feedback using the Elastic Graphics Status Monitor**
 

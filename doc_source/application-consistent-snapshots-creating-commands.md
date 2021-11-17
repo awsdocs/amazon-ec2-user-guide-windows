@@ -20,6 +20,8 @@ Use the following procedure to download and install the `AwsVssComponents` packa
 1. Install and configure the AWS CLI, if you have not already\.
 
    For information, see [Install or Upgrade and then Configure the AWS CLI](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-cli.html) in the *AWS Systems Manager User Guide*\.
+**Tip**  
+You can also use [AWS CloudShell](https://docs.aws.amazon.com/cloudshell/latest/userguide/welcome.html) for a browser\-based, pre\-authenticated shell launched directly from the AWS Management Console\.
 
 1. Run the following command to download and install the required VSS components for Systems Manager\.
 
@@ -32,6 +34,12 @@ Use the following procedure to download and install the `AwsVssComponents` packa
 Use the following procedure to download and install the `AwsVssComponents` package on your instances by using Run Command from the Tools for Windows PowerShell\. The package installs two components: a VSS requestor and a VSS provider\. The system copies these components to a directory on the instance, and then registers the provider DLL as a VSS provider\.
 
 **To install the VSS package by using AWS Tools for Windows PowerShell**
+
+1. Install and configure the AWS Tools for Windows PowerShell, if you have not already\.
+
+   For information, see [Install or Upgrade and then Configure the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-cli.html) in the *AWS Systems Manager User Guide*\.
+**Tip**  
+You can also use [AWS CloudShell](https://docs.aws.amazon.com/cloudshell/latest/userguide/welcome.html) for a browser\-based, pre\-authenticated shell launched directly from the AWS Management Console\.
 
 1. Open AWS Tools for Windows PowerShell and run the following command to specify your credentials\. You must either have administrator privileges in Amazon EC2 or have been granted the appropriate permission in IAM\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 
@@ -70,6 +78,8 @@ Use the following procedure to create VSS\-enabled EBS snapshots by using the AW
 1. Install and configure the AWS CLI, if you have not already\.
 
    For information, see [Install or Upgrade and then Configure the AWS CLI](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-cli.html) in the *AWS Systems Manager User Guide*\.
+**Tip**  
+You can also use [AWS CloudShell](https://docs.aws.amazon.com/cloudshell/latest/userguide/welcome.html) for a browser\-based, pre\-authenticated shell launched directly from the AWS Management Console\.
 
 1. Run the following command to create VSS\-enabled EBS snapshots\.
 
@@ -92,6 +102,12 @@ Use the following procedure to create VSS\-enabled EBS snapshots by using the AW
 + Exclude Boot Volume \(Optional\): Use this parameter to exclude boot volumes from the backup process\.
 
 **To create VSS\-enabled EBS snapshots by using AWS Tools for Windows PowerShell**
+
+1. Install and configure the AWS Tools for Windows PowerShell, if you have not already\.
+
+   For information, see [Install or Upgrade and then Configure the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-cli.html) in the *AWS Systems Manager User Guide*\.
+**Tip**  
+You can also use [AWS CloudShell](https://docs.aws.amazon.com/cloudshell/latest/userguide/welcome.html) for a browser\-based, pre\-authenticated shell launched directly from the AWS Management Console\.
 
 1. Open AWS Tools for Windows PowerShell and run the following command to specify your credentials\. You must either have administrator privileges in Amazon EC2, or you must have been granted the appropriate permission in IAM\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 

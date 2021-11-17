@@ -54,6 +54,7 @@ The following table summarizes the supported NVIDIA drivers for each GPU instanc
 | G2 | No | Yes | No | 
 | G3 | Yes | Yes | No | 
 | G4dn | Yes | Yes | Yes | 
+| G5 | Yes | Yes | Yes | 
 | P2 | Yes | No | No | 
 | P3 | Yes | Yes † | No | 
 
@@ -93,6 +94,7 @@ Log on to your Windows instance and download the 64\-bit NVIDIA driver appropria
 | G2 | GRID | GRID Series | GRID K520 | 
 | G3 | Tesla | M\-Class | M60 | 
 | G4dn † | Tesla | T\-Series | T4 | 
+| G5 | Tesla | A\-Series | A10 | 
 | P2 | Tesla | K\-Series | K80 | 
 | P3 | Tesla | V\-Series | V100 | 
 

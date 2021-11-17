@@ -4,6 +4,9 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [G5 instances](#DocumentHistory) | New accelerated computing instances featuring up to 8 NVIDIA A10G GPUs and second generation AMD EPY processors\. | November 11, 2021 | 
+| [Spot Fleet launch\-before\-terminate](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/spot-fleet-capacity-rebalance.html) | Spot Fleet can terminate the Spot Instances that receive a rebalance notification after new replacement Spot Instances are launched\. | November 4, 2021 | 
+| [EC2 Fleet launch\-before\-terminate](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-fleet-capacity-rebalance.html) | EC2 Fleet can terminate the Spot Instances that receive a rebalance notification after new replacement Spot Instances are launched\. | November 4, 2021 | 
 | [Share AMIs with organizations and OUs](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/share-amis-with-organizations-and-OUs.html) | You can now share AMIs with the following AWS resources: organizations and organizational units \(OUs\)\. | October 29, 2021 | 
 | [C6i instances](#DocumentHistory) | New compute optimized instances featuring Intel Xeon Scalable processors \(Ice Lake\)\. | October 28, 2021 | 
 | [Spot placement score](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/spot-placement-score.html) | Get a recommendation for an AWS Region or Availability Zone based on your Spot capacity requirements\. | October 27, 2021 | 

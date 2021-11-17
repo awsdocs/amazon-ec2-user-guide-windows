@@ -2,25 +2,13 @@
 
 The following tables summarize the changes to each release of the AWS Windows AMIs\. Note that some changes apply to all AWS Windows AMIs while others apply to only a subset of these AMIs\.
 
-**Topics**
-+ [Monthly AMI updates for 2021 \(to date\)](#amis-2021)
-+ [Monthly AMI updates for 2020 \(to date\)](#amis-2020)
-+ [Monthly AMI updates for 2019](#amis-2019)
-+ [Monthly AMI updates for 2018](#amis-2018)
-+ [Monthly AMI updates for 2017](#amis-2017)
-+ [Monthly AMI updates for 2016](#amis-2016)
-+ [Monthly AMI updates for 2015](#amis-2015)
-+ [Monthly AMI updates for 2014](#amis-2014)
-+ [Monthly AMI updates for 2013](#amis-2013)
-+ [Monthly AMI updates for 2012](#amis-2012)
-+ [Monthly AMI updates for 2011 and earlier](#amis-2011)
-
 For more information about components included in these AMIs, see the following:
 + [EC2Launch v2 version history](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html#ec2launchv2-version-history)
 + [EC2Launch version history](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html)
 + [EC2Config version history](ec2config-version-details.md)
 + [Systems Manager SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/master/RELEASENOTES.md)
 + [Amazon ENA driver versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#ena-adapter-driver-versions)
++ [AWS NVME driver versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-nvme-drivers.html#nvme-driver-version-history)
 + [AWS PV drivers](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html#xen-driver-awspv)
 
 ## Monthly AMI updates for 2021 \(to date\)<a name="amis-2021"></a>
@@ -30,7 +18,8 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
-| 2021\.10\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) EC2LaunchV2\_Preview AMIs are discontinued, and will not be updated with new versions\. However, earlier versions will continue to be available until January 2022\. Existing images and custom images based on EC2LaunchV2\_Preview AMIs will not be impacted, and you can continue to use them in our account\. We recommend that you use the new EC2Launch v2 AMIs going forward to receive security and software updates\.   | 
+| 2021\.11\.10 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
+| 2021\.10\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) EC2LaunchV2\_Preview AMIs are discontinued, and will not be updated with new versions\. However, earlier versions will continue to be available until January 2022\. Existing images and custom images based on EC2LaunchV2\_Preview AMIs will not be impacted, and you can continue to use them in our account\. We recommend that you use the new EC2Launch v2 AMIs going forward to receive security and software updates\.  Windows Server 2004 will reach End\-of\-support on December 14th, 2021\. All public versions of the following images will be made private on December 14th, 2021\. Existing instances and custom images owned by your account that are based on Windows Server 2004 will not be impacted\. If you want to retain access to Windows Server 2004, create a custom image in your account prior to December 14th\.  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated July 14th, 2021 and earlier were made private\.  | 
 | 2021\.09\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated June 9th, 2021 and earlier were made private\.  | 
 | 2021\.09\.01 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Windows Server 2022 AMIs include EC2Launch v2 by default\. For more information, see [EC2Launch v2 overview](ec2launch-v2-overview.md)\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated May 12th, 2021 and earlier were made private\.  | 
 | 2021\.08\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated April 14th, 2021 and earlier were made private\.  | 
@@ -43,7 +32,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 | 2021\.02\.10 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Beginning in March 2021, AWS\-provided Windows AMIs include Amazon Root CAs in the certificate store to minimize potential disruption from the upcoming S3 and CloudFront certificate migration, which is scheduled for March 23rd, 2021\. For more information, see the following: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Additionally, AWS will apply "update for Removal of Adobe Flash Player" \(KB4577586\) to all Windows AMIs in March to remove the built\-in Adobe Flash player, which ended support on December 31st, 2020\. If your use case requires the built\-in Adobe Flash player, we recommend creating a custom image based on AMIs with version 2021\.02\.10 or earlier\. For more information on the End of Support of Adobe Flash Player, see: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2021\.01\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 
-## Monthly AMI updates for 2020 \(to date\)<a name="amis-2020"></a>
+## Monthly AMI updates for 2020<a name="amis-2020"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2020](https://support.microsoft.com/en-us/help/4602108/software-update-services-and-windows-server-update-services-2020)\.
 

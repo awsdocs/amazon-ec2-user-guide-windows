@@ -4,6 +4,7 @@ EC2Launch is a set of Windows PowerShell scripts that replaced the EC2Config ser
 
 **Topics**
 + [EC2Launch tasks](#ec2launch-tasks)
++ [Telemetry](#ec2launch-telemetry)
 + [Install the latest version of EC2Launch](ec2launch-download.md)
 + [Verify the EC2Launch version](#ec2launch-verify-version)
 + [EC2Launch directory structure](#ec2launch-directories)
@@ -31,6 +32,53 @@ The following tasks help to maintain backward compatibility with the EC2Config s
 + Send the *Windows is ready to use* message to the EC2 console\.
 
 For more information about Windows Server 2019, see [Compare Features in Windows Server Versions](https://www.microsoft.com/en-us/cloud-platform/windows-server-comparison) on Microsoft\.com\.
+
+## Telemetry<a name="ec2launch-telemetry"></a>
+
+Telemetry is additional information that helps AWS to better understand your requirements, diagnose issues, and deliver features to improve your experience with AWS services\.
+
+EC2Launch version `1.3.2003463` and later collect telemetry, such as usage metrics and errors\. This data is collected from the Amazon EC2 instance on which EC2Launch runs\. This includes all Windows AMIs owned by AWS\.
+
+The following types of telemetry are collected by EC2Launch:
++ **Usage information** — agent commands, install method, and scheduled run frequency\.
++ **Errors and diagnostic information** — agent installation and run error codes\.
+
+Examples of collected data:
+
+```
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: IsAgentScheduledPerBoot=true
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: IsUserDataScheduledPerBoot=true
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentCommandCode=1
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentCommandErrorCode=5
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentInstallCode=2
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentInstallErrorCode=0
+```
+
+Telemetry is enabled by default\. You can disable telemetry collection at any time\. If telemetry is enabled, EC2Launch sends telemetry data without additional customer notifications\.
+
+Your choice to enable or disable telemetry is collected\.
+
+You can opt in or out of telemetry collection\. Your selection to opt in or out of telemetry is collected to ensure that we adhere to your telemetry option\.
+
+**Telemetry visibility**  
+When telemetry is enabled, it appears in the Amazon EC2 console output as follows:
+
+```
+2021/07/15 21:44:12Z: Telemetry: <Data>
+```
+
+**Disable telemetry on an instance**  
+To disable telemetry by setting a system environment variable, run the following command as an administrator:
+
+```
+setx /M EC2LAUNCH_TELEMETRY 0
+```
+
+To disable telemetry during installation, run `install.ps1` as follows:
+
+```
+. .\install.ps1 -EnableTelemetry:$false
+```
 
 ## Verify the EC2Launch version<a name="ec2launch-verify-version"></a>
 

@@ -40,7 +40,7 @@ $Url = "https://s3.amazonaws.com/amazon-ec2launch-v2/windows/386/latest/AmazonEC
 ```
 $DownloadFile = "$env:USERPROFILE\Desktop\EC2Launchv2\" + $(Split-Path -Path $Url -Leaf)
 Invoke-WebRequest -Uri $Url -OutFile $DownloadFile
-msiexec /i "C:\Administrator\Desktop\EC2Launch\AmazonEC2Launch.msi"
+msiexec /i "C:\Administrator\Desktop\EC2Launchv2\AmazonEC2Launch.msi"
 ```
 
 The installation wizard will open\. Verify the installation by checking `C:\ProgramData\Amazon\EC2Launch`\.
@@ -79,5 +79,5 @@ When you install EC2Launch v2, choose the **Default Configuration** option under
 To perform a clean installation of EC2Launch v2 using the command line, run the following Windows command:
 
 ```
-msiexec /i "C:\Users\Administrator\Desktop\AmazonEC2Launch.msi" ADDLOCAL="Basic,Clean" /q
+msiexec /i "C:\Users\Administrator\Desktop\EC2Launchv2\AmazonEC2Launch.msi" ADDLOCAL="Basic,Clean" /q
 ```
