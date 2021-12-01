@@ -340,11 +340,6 @@ You can also view this information programatically using the AWS CLI\. For more 
 | x1e\.8xlarge | 3,500 | 437\.5 | 20,000 | 
 | x1e\.16xlarge | 7,000 | 875 | 40,000 | 
 | x1e\.32xlarge | 14,000 | 1,750 | 80,000 | 
-| x2ezn\.2xlarge | 3,170 | 396\.25 | 13,333 | 
-| x2ezn\.4xlarge | 4,750 | 593\.75 | 20,000 | 
-| x2ezn\.6xlarge | 9,500 | 1,187\.5 | 40,000 | 
-| x2ezn\.8xlarge | 12,000 | 1,500 | 55,000 | 
-| x2ezn\.12xlarge | 19,000 | 2,375 | 80,000 | 
 | z1d\.large \* | 3,170 | 396\.25 | 13,333 | 
 | z1d\.xlarge \* | 3,170 | 396\.25 | 13,333 | 
 | z1d\.2xlarge | 3,170 | 396\.25 | 13,333 | 

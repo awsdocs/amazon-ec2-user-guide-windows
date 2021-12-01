@@ -80,7 +80,6 @@ For the best performance, we recommend that you use the following instance types
 | High memory \(u\-\*\) |  u\-6tb1\.56xlarge \| u\-6tb1\.112xlarge \| u\-6tb1\.metal \| u\-9tb1\.112xlarge \| u\-9tb1\.metal \| u\-12tb1\.112xlarge \| u\-12tb1\.metal \| u\-18tb1\.metal \| u\-24tb1\.metal | [Memory optimized](memory-optimized-instances.md) | 
 | X1 | x1\.16xlarge \| x1\.32xlarge | [Memory optimized](memory-optimized-instances.md) | 
 | X1e | x1e\.xlarge \| x1e\.2xlarge \| x1e\.4xlarge \| x1e\.8xlarge \| x1e\.16xlarge \| x1e\.32xlarge | [Memory optimized](memory-optimized-instances.md) | 
-| X2ezn | x2ezn\.2xlarge \| x2ezn\.4xlarge \| x2ezn\.6xlarge \| x2ezn\.8xlarge \| x2ezn\.12xlarge  | [Memory optimized](memory-optimized-instances.md) | 
 | z1d | z1d\.large \| z1d\.xlarge \| z1d\.2xlarge \| z1d\.3xlarge \| z1d\.6xlarge \| z1d\.12xlarge \| z1d\.metal | [Memory optimized](memory-optimized-instances.md) | 
 
 ### Previous generation instances<a name="previous-gen-instances"></a>
@@ -154,7 +153,7 @@ The following components are part of the Nitro System:
 **Instance types**
 
 The following instances are built on the Nitro System:
-+ **Virtualized**: C5, C5a, C5ad, C5d, C5n, C6i, D3, D3en, G4, G4ad, G5, I3en, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6a, M6i, `p3dn.24xlarge`, R5, R5a, R5ad, R5b, R5d, R5dn, R5n, R6i, T3, T3a, high memory \(u\-\*\), X2ezn, and z1d
++ **Virtualized**: C5, C5a, C5ad, C5d, C5n, C6i, D3, D3en, G4, G4ad, G5, I3en, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6a, M6i, `p3dn.24xlarge`, R5, R5a, R5ad, R5b, R5d, R5dn, R5n, R6i, T3, T3a, high memory \(u\-\*\), and z1d
 + **Bare metal**: `c5.metal`, `c5d.metal`, `c5n.metal`, `i3.metal`, `i3en.metal`, `m5.metal`, `m5d.metal`, `m5dn.metal`, `m5n.metal`, `m5zn.metal`, `r5.metal`, `r5b.metal`, `r5d.metal`, `r5dn.metal`, `r5n.metal`, `r6i.metal`, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, and `z1d.metal`
 
 **Learn more**
@@ -236,7 +235,6 @@ The following table summarizes the networking and storage features supported by 
 | High memory \(u\-\*\) | Yes | Yes | No |  Virtualized: Yes Bare metal: No  | ENA | 
 | X1 | No | No | SSD \* | Yes | ENA | 
 | X1e | No | No | SSD \* | Yes | ENA | 
-| X2ezn | Yes | Yes | No | Yes | ENA | 
 | z1d | No | Yes | NVMe \* | Yes | ENA | 
 
 \* The root device volume must be an Amazon EBS volume\.

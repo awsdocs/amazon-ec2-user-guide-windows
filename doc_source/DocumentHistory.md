@@ -4,7 +4,6 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
-| [X2ezn instances](#DocumentHistory) | New memory optimized instances featuring Intel Xeon Platinum processors \(Cascade Lake\)\. | November 29, 2021 | 
 | [Recycle Bin for Amazon EBS snapshots](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/recycle-bin.html) | Recycle Bin for Amazon EBS snapshots is a snapshot recovery feature that enables you to restore accidentally deleted snapshots\. | November 29, 2021 | 
 | [M6a instances](#DocumentHistory) | New general purpose instances powered by AMD 3rd Generation EPYC processors\. | November 29, 2021 | 
 | [Amazon EBS Snapshots Archive](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/snapshot-archive.html) | Amazon EBS Snapshots Archive is a new storage tier that you can use for low\-cost, long\-term storage of your rarely\-accessed snapshots\. | November 29, 2021 | 
