@@ -4,7 +4,7 @@ Amazon EBS volumes and instance store volumes are exposed as NVMe block devices 
 
 For more information about EBS and NVMe, see [Amazon EBS and NVMe on Windows instances](nvme-ebs-volumes.md)\. For more information about SSD instance store and NVMe, see [SSD instance store volumes](ssd-instance-store.md)\.
 
-## Install or upgrade AWS NVMe drivers<a name="install-nvme-drivers"></a>
+## Install or upgrade AWS NVMe drivers using PowerShell<a name="install-nvme-drivers"></a>
 
 If you are not using the latest AWS Windows AMIs provided by Amazon, use the following procedure to install the current AWS NVMe driver\. You should perform this update at a time when it is convenient to reboot your instance\. Either the install script will reboot your instance or you must reboot it as the final step\.
 
@@ -41,17 +41,49 @@ PowerShell 3\.0 or later
      expand-archive $env:userprofile\nvme_driver.zip -DestinationPath $env:userprofile\nvme_driver
      ```
 
-1. Install the driver to your instance by running the `install.ps1` PowerShell script from the `nvme_driver` directory \(`.\install.ps1`\)\. If you get an error, make sure you are using PowerShell 3\.0 or later\.
+1. Install the driver to your instance by running the `install.ps1` PowerShell script from the `nvme_driver` directory \(`.\install.ps1`\)\. If you get an error, make sure you are using PowerShell 3\.0 or later\. 
+
+   `install.ps1` allows you to specify whether the `ebsnvme-id` tool should be installed with the driver\. To install the `ebsnvme-id` tool, specify `InstallEBSNVMeIdTool ‘Yes’`\. If you do not want to install the tool, specify `InstallEBSNVMeIdTool ‘No’`\. If you do not specify `InstallEBSNVMeIdTool`, and the tool is already present at `C:\ProgramData\Amazon\Tools`, the package will upgrade the tool by default\. If the tool is not present, `install.ps1` will not upgrade the tool by default\. If you do not want to install the tool as part of the package, and want to install it later, you can download it from Amazon S3:
+
+   [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/EBSNVMeID/Latest/ebsnvme-id.zip) the latest `ebsnvme-id` tool\.
+
+1. If the installer does not reboot your instance, reboot the instance\.
+
+## Install or upgrade AWS NVMe drivers with SSM Distributor<a name="install-nvme-drivers-ssm-distributor"></a>
+
+You can install the NVMe driver package with SSM Distributor one time, or with scheduled updates\.
+
+1. For instructions for how to install the NVMe driver package using SSM Distributor, see the procedures in [Install or update packages](https://docs.aws.amazon.com/systems-manager/latest/userguide/distributor-working-with-packages-deploy.html) in the *Amazon EC2 Systems Manager User Guide*\.
+
+1. For **Document version**, select the `AWSNVMe` package\.
+
+1. To install the `ebsnvme-id` tool , specify `{"SSM_InstallEBSNVMeIdTool": "Yes"}` for **Additional Arguments**\. If you do not want to install the tool, specify `{"SSM_InstallEBSNVMeIdTool": "No"}`\.
+
+   If `SSM_InstallEBSNVMeIdTool` is not specified for **Additional Arguments**, and the tool is already present at `C:\ProgramData\Amazon\Tools`, the package will upgrade the tool by default\. If the tool is not present, the package will not upgrade the tool by default\. **Additional Arguments** must be formatted using valid JSON syntax\. For examples of how to pass additional arguments for the `aws configure` package, see the [Amazon EC2 Systems Manager documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-plugins.html#aws-configurepackage)\. If you do not want to install the tool as part of the package, and want to install it later, you can download it from Amazon S3:
+
+   [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/EBSNVMeID/Latest/ebsnvme-id.zip) the latest `ebsnvme-id` tool\.
 
 1. If the installer does not reboot your instance, reboot the instance\.
 
 ## AWS NVMe driver version history<a name="nvme-driver-version-history"></a>
+
+The following table shows the corresponding NVMe driver version to download for each Windows Server version on Amazon EC2\. 
+
+
+| Windows Server version | AWSNVMe driver version | 
+| --- | --- | 
+| Windows Server 2019 |  latest  | 
+| Windows Server 2016 | latest | 
+| Windows Server 2012 R2 | latest | 
+| Windows Server 2012 | latest | 
+| Windows Server 2008 R2 | 1\.3\.2 and earlier | 
 
 The following table describes the released versions of the AWS NVMe driver\.
 
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+| 1\.4\.0 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-nvme-drivers.html)  | 23 November 2021 | 
 | 1\.3\.2 |  Fixed issue with modifying EBS volumes actively processing IO, which may result in data corruption\. Customers who do not modify online EBS volumes \(for example, resizing or changing type\) are not impacted\.  | 10 September 2019 | 
 | 1\.3\.1 |  Reliability Improvements | 21 May 2019 | 
 | 1\.3\.0 | Device optimization improvements | 31 August 2018 | 
@@ -94,7 +126,7 @@ Whenever new EC2 Windows drivers are released, we send notifications to subscrib
 
 1. In the navigation pane, choose **Subscriptions**\.
 
-1. Select the checkbox for the subscription and then choose **Actions**, **Delete subscriptions**\. When prompted for confirmation, choose **Delete**\.
+1. Select the check box for the subscription and then choose **Actions**, **Delete subscriptions**\. When prompted for confirmation, choose **Delete**\.
 
 **To subscribe to EC2 notifications using the AWS CLI**  
 To subscribe to EC2 notifications with the AWS CLI, use the following command\. 

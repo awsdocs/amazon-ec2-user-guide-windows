@@ -17,6 +17,16 @@ Bare metal instances, such as `r5.metal`, provide your applications with direct 
 
 For more information, see [Amazon EC2 R5 Instances](https://aws.amazon.com/ec2/instance-types/r5)\.
 
+**R6i instances**
+
+These instances are ideal for running memory\-intensive workloads, such as the following:
++ High\-performance databases \(relational and NoSQL\)
++ In\-memory databases, such as SAP HANA
++ Distributed web scale in\-memory caches, such as Memcached and Redis
++ Real\-time big data analytics, such as Hadoop and Spark clusters
+
+For more information, see [Amazon EC2 R6i Instances](http://aws.amazon.com/ec2/instance-types/r6i)\.
+
 **High memory \(u\-\*\) instances**  
 These instances offer 6 TiB, 9 TiB, 12 TiB, 18 TiB, and 24 TiB of memory per instance\. They are designed to run large in\-memory databases, including production deployments of the SAP HANA in\-memory database\.
 
@@ -135,6 +145,16 @@ The following is a summary of the hardware specifications for memory optimized i
 | r5n\.16xlarge | 64 | 512 | 
 | r5n\.24xlarge | 96 | 768 | 
 | r5n\.metal | 96 | 768 | 
+| r6i\.large | 2 | 16 | 
+| r6i\.xlarge | 4 | 32 | 
+| r6i\.2xlarge | 8 | 64 | 
+| r6i\.4xlarge | 16 | 128 | 
+| r6i\.8xlarge | 32 | 256 | 
+| r6i\.12xlarge | 48 | 384 | 
+| r6i\.16xlarge | 64 | 512 | 
+| r6i\.24xlarge | 96 | 768 | 
+| r6i\.32xlarge | 128 | 1,024 | 
+| r6i\.metal | 128 | 1,024 | 
 | u\-6tb1\.56xlarge | 224 | 6,144 | 
 | u\-6tb1\.112xlarge | 448 | 6,144 | 
 | u\-6tb1\.metal | 448 \* | 6,144 | 
@@ -152,6 +172,11 @@ The following is a summary of the hardware specifications for memory optimized i
 | x1e\.8xlarge | 32 | 976 | 
 | x1e\.16xlarge | 64 | 1,952 | 
 | x1e\.32xlarge | 128 | 3,904 | 
+| x2ezn\.2xlarge | 8 | 256 | 
+| x2ezn\.4xlarge | 16 | 512 | 
+| x2ezn\.6xlarge | 24 | 768 | 
+| x2ezn\.8xlarge | 32 | 1,024 | 
+| x2ezn\.12xlarge | 48 | 1,536 | 
 | z1d\.large | 2 | 16 | 
 | z1d\.xlarge | 4 | 32 | 
 | z1d\.2xlarge | 8 | 64 | 
@@ -190,12 +215,16 @@ The following is a summary of network performance for memory optimized instances
 |  r4\.4xlarge and smaller \| r5\.4xlarge and smaller \| r5a\.8xlarge and smaller \| r5ad\.8xlarge and smaller \| r5b\.4xlarge and smaller \| r5d\.4xlarge and smaller \| x1e\.8xlarge and smaller \| z1d\.3xlarge and smaller  | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
 |  r4\.8xlarge \| r5\.8xlarge \| r5\.12xlarge \| r5a\.12xlarge \| r5ad\.12xlarge \| r5b\.8xlarge \| r5b\.12xlarge \| r5d\.8xlarge \| r5d\.12xlarge \| x1\.16xlarge \| x1e\.16xlarge \| z1d\.6xlarge  | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  r5a\.16xlarge \| r5ad\.16xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  r6i\.4xlarge and smaller  | Up to 12\.5 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  r6i\.8xlarge  | 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  r6i\.12xlarge  | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  r5\.16xlarge \| r5a\.24xlarge \| r5ad\.24xlarge \| r5b\.16xlarge \| r5d\.16xlarge  | 20 Gbps | [ENA](enhanced-networking-ena.md) | 
-| r5dn\.4xlarge and smaller \| r5n\.4xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
-|  r4\.16xlarge \| r5\.24xlarge \| r5\.metal \| r5b\.24xlarge \| r5b\.metal \| r5d\.24xlarge \| r5d\.metal \| r5dn\.8xlarge \| r5n\.8xlarge \| x1\.32xlarge \| x1e\.32xlarge \| z1d\.12xlarge \| z1d\.metal  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
-| r5dn\.12xlarge \| r5n\.12xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
-| r5dn\.16xlarge \| r5n\.16xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  r5dn\.24xlarge \| r5dn\.metal \| r5n\.24xlarge \| r5n\.metal \| u\-6tb1\.56xlarge \| u\-6tb1\.112xlarge \| u\-6tb1\.metal \* \| u\-9tb1\.112xlarge \| u\-9tb1\.metal \* \| u\-12tb1\.112xlarge \| u\-12tb1\.metal \* \| u\-18tb1\.metal \| u\-24tb1\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+| r5dn\.4xlarge and smaller \| r5n\.4xlarge and smaller  \| x2ezn\.4xlarge and smaller | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  r4\.16xlarge \| r5\.24xlarge \| r5\.metal \| r5b\.24xlarge \| r5b\.metal \| r5d\.24xlarge \| r5d\.metal \| r5dn\.8xlarge \| r5n\.8xlarge \| r6i\.16xlarge \| x1\.32xlarge \| x1e\.32xlarge \| z1d\.12xlarge \| z1d\.metal  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  r6i\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+| r5dn\.12xlarge \| r5n\.12xlarge \| r6i\.32xlarge \| r6i\.metal  \| x2ezn\.6xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+| r5dn\.16xlarge \| r5n\.16xlarge  \| x2ezn\.8xlarge | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  r5dn\.24xlarge \| r5dn\.metal \| r5n\.24xlarge \| r5n\.metal \| u\-6tb1\.56xlarge \| u\-6tb1\.112xlarge \| u\-6tb1\.metal \* \| u\-9tb1\.112xlarge \| u\-9tb1\.metal \* \| u\-12tb1\.112xlarge \| u\-12tb1\.metal \* \| u\-18tb1\.metal \| u\-24tb1\.metal  \| x2ezn\.12xlarge  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
 \* Instances of this type launched after March 12, 2020 provide network performance of 100 Gbps\. Instances of this type launched before March 12, 2020 might only provide network performance of 25 Gbps\. To ensure that instances launched before March 12, 2020 have a network performance of 100 Gbps, contact your account team to upgrade your instance at no additional cost\.
 
@@ -238,10 +267,16 @@ The following is a summary of network performance for memory optimized instances
 | r5n\.xlarge | 4\.1 | 25 | 
 | r5n\.2xlarge | 8\.125 | 25 | 
 | r5n\.4xlarge | 16\.25 | 25 | 
+| r6i\.large | \.781 | 12\.5 | 
+| r6i\.xlarge | 1\.562 | 12\.5 | 
+| r6i\.2xlarge | 3\.125 | 12\.5 | 
+| r6i\.4xlarge | 6\.25 | 12\.5 | 
 | x1e\.xlarge | \.625 | 10 | 
 | x1e\.2xlarge | 1\.25 | 10 | 
 | x1e\.4xlarge | 2\.5 | 10 | 
 | x1e\.8xlarge | 5 | 10 | 
+| x2ezn\.2xlarge | 12\.5 | 25 | 
+| x2ezn\.4xlarge | 15 | 25 | 
 | z1d\.large | \.75 | 10 | 
 | z1d\.xlarge | 1\.25 | 10 | 
 | z1d\.2xlarge | 2\.5 | 10 | 
@@ -311,8 +346,10 @@ The following is a summary of features for memory optimized instances\.
 | R5d | No | Yes | NVME \* | Yes | 
 | R5dn | No | Yes | NVME \* | Yes | 
 | R5n | Yes | Yes | No | Yes | 
+| R6i | Yes | Yes | No | Yes | 
 | High memory | Yes | Yes | No | Virtualized: Yes Bare metal: No  | 
 | X1 | No | No | SSD | Yes | 
+| X2ezn | Yes | Yes | No | Yes | 
 | X1e | No | No | SSD \* | Yes | 
 | z1d | No | Yes | NVME \* | Yes | 
 
@@ -356,11 +393,14 @@ The following AMIs support launching memory optimized instances:
 + R5a and R5ad instances feature a 2\.5 GHz AMD EPYC 7000 series processor\.
 + High memory instances \(`u-6tb1.metal`, `u-9tb1.metal`, and `u-12tb1.metal`\) are the first instances to be powered by an eight\-socket platform with the latest generation Intel Xeon Platinum 8176M \(Skylake\) processors that are optimized for mission\-critical enterprise workloads\. High Memory instances with 18 TB and 24 TB of memory \(`u-18tb1.metal` and `u-24tb1.metal`\) are the first instances powered by an 8\-socket platform with 2nd Generation Intel Xeon Scalable 8280L \(Cascade Lake\) processors\.
 + X1e and X1 instances feature up to 128 vCPUs and are powered by four Intel Xeon E7\-8880 v3 processors that feature high\-memory bandwidth and larger L3 caches to boost the performance of in\-memory applications\.
++ X2ezn instances feature a custom Intel Xeon Scalable processor \(Cascade Lake\)\.
 + Instances built on the Nitro System have the following requirements:
   + [NVMe drivers](nvme-ebs-volumes.md) must be installed
   + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
   The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
++ To get the best performance from your R6i instances, ensure that they have ENA driver version 2\.2\.3 or later\. Using an ENA driver earlier than version 2\.0\.0 with these instances causes network interface attachment failures\. The following AMIs have a compatible ENA driver\.
+  + AWS Windows AMI from May 2021 or later
 + Instances built on the Nitro System instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. For more information, see [Nitro System volume limits](volume_limits.md#instance-type-volume-limits)\.
 + All `io2` volumes attached to an R5b instance during or after launch automatically run on EBS Block Express\. For more information, see [ `io2` Block Express volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#io2-block-express)\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.

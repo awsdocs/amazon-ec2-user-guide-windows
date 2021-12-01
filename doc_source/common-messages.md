@@ -194,7 +194,9 @@ If you encounter a Windows activation issue, use the following procedure to reso
 
 If this does not resolve the activation issue, follow these additional steps\.
 
-1. Set the AWS KMS target: C:\\> slmgr\.vbs /skms 169\.254\.169\.250:1688
+1. Set the AWS KMS target: C:\\> slmgr\.vbs /skms 169\.254\.169\.250:1688 if the Windows OS is configured to use IPv4 still or set the AWS KMS target: C:\\> slmgr\.vbs /skms \[fd00:ec2::240\]:1688 if the Windows OS has IPv4 network protocol stack disabled\.
+**Note**  
+Even if your EC2 instance is running in an IPv6\-only subnet, the IPv4 link\-local address can be used to activate Windows on the instance as long as the Windows OS has the IPv4 network protocol enabled\.
 
 1. Activate Windows: C:\\> slmgr\.vbs /ato
 
