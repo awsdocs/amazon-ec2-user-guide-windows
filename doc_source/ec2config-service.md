@@ -35,9 +35,7 @@ EC2Config performs the following tasks every time the instance starts:
 + Mount all Amazon EBS volumes and instance store volumes, and map volume names to drive letters\.
 + Write event log entries to the console to help with troubleshooting \(this task is disabled by default and must be enabled in order to run at instance start\)\.
 + Write to the console that Windows is ready\.
-+ Add a custom route to the primary network adapter to enable the following IP addresses when a single NIC or multiple NICs are attached: `169.254.169.250`, `169.254.169.251`, and `169.254.169.254`\. These addresses are used by Windows Activation and when you access instance metadata\.
-**Note**  
-If the Windows OS is configured to use IPv4, these IPv4 link\-local addresses can be used\. If the Windows OS has the IPv4 network protocol stack disabled and uses IPv6 instead, add `[fd00:ec2::240]` in place of `169.254.169.250` and `169.254.169.251`\. Then add `[fd00:ec2::254]` in place of `169.254.169.254`\.
++ Add a custom route to the primary network adapter to enable the following IP addresses when a single NIC or multiple NICs are attached: 169\.254\.169\.250, 169\.254\.169\.251, and 169\.254\.169\.254\. These addresses are used by Windows Activation and when you access instance metadata\.
 
 EC2Config performs the following task every time a user logs in:
 + Display wallpaper information to the desktop background\.
@@ -359,8 +357,6 @@ You can specify proxy settings in a `system.net` element in the `Ec2Config.exe.c
            <add address="169.254.169.250" />
            <add address="169.254.169.251" />
            <add address="169.254.169.254" />
-           <add address="[fd00:ec2::250]" />
-           <add address="[fd00:ec2::254]" />
        </bypasslist>
    </defaultProxy>
    ```

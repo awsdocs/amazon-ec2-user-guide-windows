@@ -406,7 +406,7 @@ You can create a Spot Fleet by using parameters that you define\.
 
       If you have more than one subnet in an Availability Zone, choose the appropriate subnet from **Subnet**\. To add subnets, choose **Create new subnet** to go to the Amazon VPC console\. When you are done, return to the wizard and refresh the list\.
 
-1. For **Instance type requirements**, you can either specify instance attributes and let Amazon EC2 identify the optimal instance types with these attributes, or you can specify a list of instances\. For more information, see [Attribute\-based instance type selection for Spot Fleet](spot-fleet-attribute-based-instance-type-selection.md)\.
+1. For **Instance type requirements**, you can either specify instance attributes and let let Amazon EC2 identify the optimal instance types with these attributes, or you can specify a list of instances\. For more information, see [Attribute\-based instance type selection for Spot Fleet](spot-fleet-attribute-based-instance-type-selection.md)\.
 
    1. If you choose **Specify instance attributes that match your compute requirements**, specify your instance attributes as follows:
 

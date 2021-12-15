@@ -40,7 +40,7 @@ $Url = "https://s3.amazonaws.com/amazon-ec2launch-v2/windows/386/latest/AmazonEC
 ```
 $DownloadFile = "$env:USERPROFILE\Desktop\EC2Launchv2\" + $(Split-Path -Path $Url -Leaf)
 Invoke-WebRequest -Uri $Url -OutFile $DownloadFile
-msiexec /i "$DownloadFile"
+msiexec /i "C:\Administrator\Desktop\EC2Launchv2\AmazonEC2Launch.msi"
 ```
 
 The installation wizard will open\. Verify the installation by checking `C:\ProgramData\Amazon\EC2Launch`\.

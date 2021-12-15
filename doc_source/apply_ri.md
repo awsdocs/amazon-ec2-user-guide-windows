@@ -1,10 +1,8 @@
 # How Reserved Instances are applied<a name="apply_ri"></a>
 
-Reserved Instances are not physical instances, but rather a billing discount that is applied to the running On\-Demand Instances in your account\. The On\-Demand Instances must match certain specifications of the Reserved Instances in order to benefit from the billing discount\.
+If you purchase a Reserved Instance and you already have a running instance that matches the specifications of the Reserved Instance, the billing benefit is immediately applied\. You do not have to restart your instances\. If you do not have an eligible running instance, launch an instance and ensure that you match the same criteria that you specified for your Reserved Instance\. For more information, see [Use your Reserved Instances](using-reserved-instances.md)\.
 
-If you purchase a Reserved Instance and you already have a running On\-Demand Instance that matches the specifications of the Reserved Instance, the billing discount is applied immediately and automatically\. You do not have to restart your instances\. If you do not have an eligible running On\-Demand Instance, launch an On\-Demand Instance with the same specifications as your Reserved Instance\. For more information, see [Use your Reserved Instances](using-reserved-instances.md)\.
-
-The offering class \(Standard or Convertible\) of the Reserved Instance does not affect how the billing discount is applied\.
+Reserved Instances apply to usage in the same manner, irrespective of the offering class \(Standard or Convertible\), and are automatically applied to running On\-Demand Instances with matching attributes\.
 
 ## How zonal Reserved Instances are applied<a name="apply-zonal-ri"></a>
 

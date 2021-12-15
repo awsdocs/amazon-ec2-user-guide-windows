@@ -30,7 +30,7 @@ You can find Windows AMIs using the Amazon EC2 console\. You can select from the
 
 1. On the **Quick Start** tab, select from one of the commonly used AMIs in the list\. If you don't see the AMI that you need, select the **My AMIs**, **AWS Marketplace**, or **Community AMIs** tab to find additional AMIs\. For more information, see [Step 1: Choose an Amazon Machine Image \(AMI\)](launching-instance.md#step-1-AMI)\.
 
-**To find a Windows AMI using the AMIs page**
+**To find a Windows AMI using the Images page**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -40,9 +40,9 @@ You can find Windows AMIs using the Amazon EC2 console\. You can select from the
 
 1. \(Optional\) Use the **Filter** options to scope the list of displayed AMIs to see only the AMIs that interest you\. For example, to list all Windows AMIs provided by AWS, select **Public images**\. Choose the Search bar and select **Owner** from the menu, then select **Amazon images**\. Choose the Search bar again to select **Platform** and then the operating system from the list provided\.
 
-1. \(Optional\) Choose the **Preferences** icon \(new console\) or **Show/Hide Columns** icon \(old console\) to select which image attributes to display, such as the root device type\. Alternatively, you can select an AMI from the list and view its properties on the **Details** tab\.
+1. \(Optional\) Choose the **Show/Hide Columns** icon to select which image attributes to display, such as the root device type\. Alternatively, you can select an AMI from the list and view its properties in the **Details** tab\.
 
-1. To launch an instance from this AMI, select it and then choose **Launch instance from image** \(new console\) or **Launch** \(old console\)\. For more information about launching an instance using the console, see [Launching your instance from an AMI](launching-instance.md#choose-an-instance-type-page)\. If you're not ready to launch the instance now, make note of the AMI ID for later\.
+1. To launch an instance from this AMI, select it and then choose **Launch**\. For more information about launching an instance using the console, see [Launching your instance from an AMI](launching-instance.md#choose-an-instance-type-page)\. If you're not ready to launch the instance now, make note of the AMI ID for later\.
 
 ## Find an AMI using the AWS Tools for Windows PowerShell<a name="finding-an-ami-psh"></a>
 

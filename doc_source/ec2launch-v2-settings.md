@@ -441,7 +441,7 @@ help for `wallpaper`
 
 ## EC2Launch v2 task configuration<a name="ec2launch-v2-task-configuration"></a>
 
-This section includes the configuration tasks, details, and examples for `agent-config.yml` and user data\.
+This section includes the configuration tasks, details, and examples for the `agent-config.yml` and `user-data.yml` files\.
 
 **Topics**
 + [activateWindows](#ec2launch-v2-activatewindows)

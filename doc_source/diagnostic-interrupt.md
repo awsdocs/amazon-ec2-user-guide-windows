@@ -53,5 +53,5 @@ aws ec2 send-diagnostic-interrupt --instance-id i-1234567890abcdef0
 Use the [Send\-EC2DiagnosticInterrupt](https://docs.aws.amazon.com/powershell/latest/reference/items/Send-EC2DiagnosticInterrupt.html) cmdlt and specify the instance ID\.
 
 ```
-PS C:\> Send-EC2DiagnosticInterrupt -InstanceId i-1234567890abcdef0
+PS C:\> Send-EC2DiagnosticInterrupt-InstanceId i-1234567890abcdef0
 ```

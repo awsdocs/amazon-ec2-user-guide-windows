@@ -29,11 +29,6 @@ There are several GPU setting optimizations that you can perform to achieve the 
      ```
      .\nvidia-smi -ac "5001,1590"
      ```
-   + G5 instances:
-
-     ```
-     .\nvidia-smi -ac "6250,1710"
-     ```
    + P2 instances:
 
      ```

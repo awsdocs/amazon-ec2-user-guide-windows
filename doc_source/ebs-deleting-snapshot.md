@@ -28,27 +28,13 @@ The following considerations apply to deleting snapshots:
 + You can't delete a snapshot that is managed by the AWS Backup service using Amazon EC2\. Instead, use AWS Backup to delete the corresponding recovery points in the backup vault\.
 + You can create, retain, and delete snapshots manually, or you can use Amazon Data Lifecycle Manager to manage your snapshots for you\. For more information, see [Amazon Data Lifecycle Manager](snapshot-lifecycle.md)\.
 + Although you can delete a snapshot that is still in progress, the snapshot must complete before the deletion takes effect\. This might take a long time\. If you are also at your concurrent snapshot limit, and you attempt to take an additional snapshot, you might get a `ConcurrentSnapshotLimitExceeded` error\. For more information, see the [Service Quotas](https://docs.aws.amazon.com/general/latest/gr/ebs-service.html#limits_ebs) for Amazon EBS in the *Amazon Web Services General Reference*\.
-+ If you delete a snapshot that matches an Recycle Bin for Amazon EBS snapshots retention rule, the snapshot is retained in the Recycle Bin instead of being immediately deleted\. For more information, see [Recycle Bin for Amazon EBS snapshots](recycle-bin.md)\.
 
 ## Delete a snapshot<a name="ebs-delete-snapshot"></a>
 
 To delete a snapshot, use one of the following methods\. 
 
 ------
-#### [ New console ]
-
-**To delete a snapshot using the console**
-
-1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
-
-1. In the navigation pane, choose **Snapshots**\.
-
-1. Select the snapshot to delete, and then choose **Actions**, **Delete snapshot**\.
-
-1. Choose **Delete**\.
-
-------
-#### [ Old console ]
+#### [ Console ]
 
 **To delete a snapshot using the console**
 

@@ -12,7 +12,7 @@ The EBS performance guarantees stated in [Amazon EBS Product Details](http://aws
 
 ## Install or upgrade the NVMe driver<a name="install-nvme-driver"></a>
 
-The AWS Windows AMIs for Windows Server 2008 R2 and later include the AWS NVMe driver\. If you are not using the latest AWS Windows AMIs provided by Amazon, see [Install or upgrade AWS NVMe drivers using PowerShell](aws-nvme-drivers.md#install-nvme-drivers)\.
+The AWS Windows AMIs for Windows Server 2008 R2 and later include the AWS NVMe driver\. If you are not using the latest AWS Windows AMIs provided by Amazon, see [Install or upgrade AWS NVMe drivers](aws-nvme-drivers.md#install-nvme-drivers)\.
 
 ## Identify the EBS device<a name="identify-nvme-ebs-device"></a>
 
