@@ -12,15 +12,11 @@ The EBS performance guarantees stated in [Amazon EBS Product Details](http://aws
 
 ## Install or upgrade the NVMe driver<a name="install-nvme-driver"></a>
 
-The AWS Windows AMIs for Windows Server 2008 R2 and later include the AWS NVMe driver\. If you are not using the latest AWS Windows AMIs provided by Amazon, see [Install or upgrade AWS NVMe drivers](aws-nvme-drivers.md#install-nvme-drivers)\.
+The AWS Windows AMIs for Windows Server 2008 R2 and later include the AWS NVMe driver\. If you are not using the latest AWS Windows AMIs provided by Amazon, see [Install or upgrade AWS NVMe drivers using PowerShell](aws-nvme-drivers.md#install-nvme-drivers)\.
 
 ## Identify the EBS device<a name="identify-nvme-ebs-device"></a>
 
 EBS uses single\-root I/O virtualization \(SR\-IOV\) to provide volume attachments on Nitro\-based instances using the NVMe specification\. These devices rely on standard NVMe drivers on the operating system\. These drivers typically discover attached devices by scanning the PCI bus during instance boot, and create device nodes based on the order in which the devices respond, not on how the devices are specified in the block device mapping\. Additionally, the device name assigned by the block device driver can be different from the name specified in the block device mapping\.
-
-The following example shows the command and output for a volume attached during instance launch\. Note that the NVMe device name does not include the `/dev/` prefix\.
-
-The following example shows the command and output for a volume attached after instance launch\. Note that the NVMe device name includes the `/dev/` prefix\.
 
 ### Windows Server 2008 R2 and later<a name="nvme-windows"></a>
 

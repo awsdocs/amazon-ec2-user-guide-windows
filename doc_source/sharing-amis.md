@@ -14,4 +14,4 @@ For information about creating an AMI, see [Create a custom Windows AMI](https:/
 + [Share an AMI with specific organizations or organizational units](share-amis-with-organizations-and-OUs.md)
 + [Share an AMI with specific AWS accounts](sharingamis-explicit.md)
 + [Use bookmarks](using-bookmarks.md)
-+ [Best Practices for shared Windows AMIs](windows-amis-guidelines.md)
++ [Best practices for shared Windows AMIs](windows-amis-guidelines.md)

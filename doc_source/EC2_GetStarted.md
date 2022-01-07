@@ -18,7 +18,9 @@ When you sign up for AWS, you can get started with Amazon EC2 using the [AWS Fre
 
 ## Overview<a name="ec2-get-started-overview"></a>
 
-The instance is an Amazon EBS\-backed instance \(meaning that the root volume is an EBS volume\)\. You can either specify the Availability Zone in which your instance runs, or let Amazon EC2 select an Availability Zone for you\. When you launch your instance, you secure it by specifying a key pair and security group\. When you connect to your instance, you must specify the private key of the key pair that you specified when launching your instance\.
+The instance is an Amazon EBS\-backed instance \(meaning that the root volume is an EBS volume\)\. You can either specify the Availability Zone in which your instance runs, or let Amazon EC2 select an Availability Zone for you\. You can think of an Availability Zone as an isolated data center\.
+
+When you launch your instance, you secure it by specifying a key pair \(to prove your identity\) and a security group \(which acts as a virtual firewall to control ingoing and outgoing traffic\)\. When you connect to your instance, you must specify the private key of the key pair that you specified when launching your instance\.
 
 ![\[An Amazon EBS-backed instance with an additional Amazon EBS volume\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/overview_getting_started.png)
 
@@ -52,7 +54,7 @@ You can launch a Windows instance using the AWS Management Console as described 
 
 1. On the **Review Instance Launch** page, choose **Launch**\.
 
-1. When prompted for a key pair, select **Choose an existing key pair**, then select the key pair that you created when getting set up\.
+1. When prompted for a key pair, select **Choose an existing key pair**, then select the key pair that you created when getting set up\. Note that you must select an **RSA** key\. **ED25519** keys are not supported for Windows instances\.
 **Warning**  
 Don't select **Proceed without a key pair**\. If you launch your instance without a key pair, then you can't connect to it\.
 

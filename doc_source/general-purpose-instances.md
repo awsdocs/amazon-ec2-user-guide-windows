@@ -35,6 +35,8 @@ These instances are well suited for general\-purpose workloads such as the follo
 + Small and midsize databases
 + Caching fleets
 
+Bare metal instances, such as `m6i.metal`, provide your applications with direct access to physical resources of the host server, such as processors and memory\.
+
 For more information, see [Amazon EC2 M6i Instances](http://aws.amazon.com/ec2/instance-types/m6i)\.
 
 **T2, T3, and T3a instances**
@@ -128,6 +130,16 @@ The following is a summary of the hardware specifications for general purpose in
 | m5zn\.6xlarge | 24 | 96 | 
 | m5zn\.12xlarge | 48 | 192 | 
 | m5zn\.metal | 48 | 192 | 
+| m6a\.large | 2 | 8 | 
+| m6a\.xlarge | 4 | 16 | 
+| m6a\.2xlarge | 8 | 32 | 
+| m6a\.4xlarge | 16 | 64 | 
+| m6a\.8xlarge | 32 | 128 | 
+| m6a\.12xlarge | 48 | 192 | 
+| m6a\.16xlarge | 64 | 256 | 
+| m6a\.24xlarge | 96 | 256 | 
+| m6a\.32xlarge | 128 | 256 | 
+| m6a\.48xlarge | 192 | 256 | 
 | m6i\.large | 2 | 8 | 
 | m6i\.xlarge | 4 | 16 | 
 | m6i\.2xlarge | 8 | 32 | 
@@ -137,6 +149,7 @@ The following is a summary of the hardware specifications for general purpose in
 | m6i\.16xlarge | 64 | 256 | 
 | m6i\.24xlarge | 96 | 384 | 
 | m6i\.32xlarge | 128 | 512 | 
+| m6i\.metal | 128 | 512 | 
 | t2\.nano | 1 | 0\.5 | 
 | t2\.micro | 1 | 1 | 
 | t2\.small | 1 | 2 | 
@@ -184,14 +197,14 @@ The following is a summary of network performance for general purpose instances 
 | m4\.10xlarge | 10 Gbps | [Intel 82599 VF](sriov-networking.md) | 
 |  m5\.8xlarge \| m5a\.12xlarge \| m5ad\.12xlarge \| m5d\.8xlarge \| m5d\.12xlarge  | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
 | m5\.12xlarge \| m5a\.16xlarge \| m5ad\.16xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m6i\.4xlarge and smaller  | Up to 12\.5 Gbps † | [ENA](enhanced-networking-ena.md) | 
-|  m6i\.8xlarge  | 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m6i\.12xlarge  | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m6a\.4xlarge and smaller \| m6i\.4xlarge and smaller  | Up to 12\.5 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  m6a\.8xlarge \| m6i\.8xlarge  | 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m6a\.12xlarge \| m6i\.12xlarge  | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5\.16xlarge \| m5a\.24xlarge \| m5ad\.24xlarge \| m5d\.16xlarge  | 20 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5dn\.4xlarge and smaller \| m5n\.4xlarge and smaller \| m5zn\.3xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
-|  m4\.16xlarge \| m5\.24xlarge \| m5\.metal \| m5d\.24xlarge \| m5d\.metal \| m5dn\.8xlarge \| m5n\.8xlarge \| m6i\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m6i\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5dn\.12xlarge \| m5n\.12xlarge \| m5zn\.6xlarge \| m6i\.32xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m4\.16xlarge \| m5\.24xlarge \| m5\.metal \| m5d\.24xlarge \| m5d\.metal \| m5dn\.8xlarge \| m5n\.8xlarge \| m6a\.16xlarge \| m6i\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m6a\.24xlarge \| m6i\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.12xlarge \| m5n\.12xlarge \| m5zn\.6xlarge \| m6a\.32xlarge \| m6a\.48xlarge \| m6i\.32xlarge \| m6i\.metal  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5dn\.16xlarge \| m5n\.16xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5dn\.24xlarge \| m5dn\.metal \| m5n\.24xlarge \| m5n\.metal \| m5zn\.12xlarge \| m5zn\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
@@ -228,6 +241,10 @@ The following is a summary of network performance for general purpose instances 
 | m5zn\.xlarge | 5 | 25 | 
 | m5zn\.2xlarge | 10 | 25 | 
 | m5zn\.3xlarge | 15 | 25 | 
+| m6a\.large | \.781 | 12\.5 | 
+| m6a\.xlarge | 1\.562 | 12\.5 | 
+| m6a\.2xlarge | 3\.125 | 12\.5 | 
+| m6a\.4xlarge | 6\.25 | 12\.5 | 
 | m6i\.large | \.781 | 12\.5 | 
 | m6i\.xlarge | 1\.562 | 12\.5 | 
 | m6i\.2xlarge | 3\.125 | 12\.5 | 
@@ -249,39 +266,37 @@ The following is a summary of network performance for general purpose instances 
 
 ## SSD I/O performance<a name="general-purpose-ssd-perf"></a>
 
-If you use all the SSD\-based instance store volumes available to your instance, you get the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
+If you use all the SSD\-based instance store volumes available to your instance, you can get up to the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
 
 
 | Instance Size | 100% Random Read IOPS | Write IOPS | 
 | --- | --- | --- | 
-| m5ad\.large \* | 30,000 | 15,000 | 
-| m5ad\.xlarge \* | 59,000 | 29,000 | 
-| m5ad\.2xlarge \* | 117,000 | 57,000 | 
-| m5ad\.4xlarge \* | 234,000 | 114,000 | 
+| m5ad\.large | 30,000 | 15,000 | 
+| m5ad\.xlarge | 59,000 | 29,000 | 
+| m5ad\.2xlarge | 117,000 | 57,000 | 
+| m5ad\.4xlarge | 234,000 | 114,000 | 
 | m5ad\.8xlarge | 466,666 | 233,333 | 
 | m5ad\.12xlarge | 700,000 | 340,000 | 
 | m5ad\.16xlarge  | 933,333 | 466,666 | 
 | m5ad\.24xlarge | 1,400,000 | 680,000 | 
-| m5d\.large \* | 30,000 | 15,000 | 
-| m5d\.xlarge \* | 59,000 | 29,000 | 
-| m5d\.2xlarge \* | 117,000 | 57,000 | 
-| m5d\.4xlarge \* | 234,000 | 114,000 | 
+| m5d\.large | 30,000 | 15,000 | 
+| m5d\.xlarge | 59,000 | 29,000 | 
+| m5d\.2xlarge | 117,000 | 57,000 | 
+| m5d\.4xlarge | 234,000 | 114,000 | 
 | m5d\.8xlarge | 466,666 | 233,333 | 
 | m5d\.12xlarge  | 700,000 | 340,000 | 
 | m5d\.16xlarge | 933,333 | 466,666 | 
 | m5d\.24xlarge | 1,400,000 | 680,000 | 
 | m5d\.metal | 1,400,000 | 680,000 | 
-| m5dn\.large \* | 30,000 | 15,000 | 
-| m5dn\.xlarge \* | 59,000 | 29,000 | 
-| m5dn\.2xlarge \*  | 117,000 | 57,000 | 
-| m5dn\.4xlarge \* | 234,000 | 114,000 | 
+| m5dn\.large | 30,000 | 15,000 | 
+| m5dn\.xlarge | 59,000 | 29,000 | 
+| m5dn\.2xlarge  | 117,000 | 57,000 | 
+| m5dn\.4xlarge | 234,000 | 114,000 | 
 | m5dn\.8xlarge | 466,666 | 233,333 | 
 | m5dn\.12xlarge | 700,000 | 340,000 | 
 | m5dn\.16xlarge | 933,333 | 466,666 | 
 | m5dn\.24xlarge  | 1,400,000 | 680,000 | 
 | m5dn\.metal  | 1,400,000 | 680,000 | 
-
-\* For these instances, you can get up to the specified performance\.
 
 As you fill the SSD\-based instance store volumes for your instance, the number of write IOPS that you can achieve decreases\. This is due to the extra work the SSD controller must do to find available space, rewrite existing data, and erase unused space so that it can be rewritten\. This process of garbage collection results in internal write amplification to the SSD, expressed as the ratio of SSD write operations to user write operations\. This decrease in performance is even larger if the write operations are not in multiples of 4,096 bytes or not aligned to a 4,096\-byte boundary\. If you write a smaller amount of bytes or bytes that are not aligned, the SSD controller must read the surrounding data and store the result in a new location\. This pattern results in significantly increased write amplification, increased latency, and dramatically reduced I/O performance\.
 
@@ -304,6 +319,7 @@ The following is a summary of features for general purpose instances:
 | M5dn | No | Yes | NVMe \* | Yes | 
 | M5n | Yes | Yes | No | Yes | 
 | M5zn | Yes | Yes | No | Yes | 
+| M6a | Yes | Yes | No | Yes | 
 | M6i | Yes | Yes | No | Yes | 
 | T2 | Yes | No | No | No | 
 | T3 | Yes | Yes | No | No | 

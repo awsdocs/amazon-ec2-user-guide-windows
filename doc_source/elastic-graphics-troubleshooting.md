@@ -10,6 +10,7 @@ The following are common errors and troubleshooting steps\.
   + [Stop and start the instance](#elastic-graphics-start-and-stop)
   + [Verify the installed components](#elastic-graphics-verify)
   + [Check the Elastic Graphics logs](#elastic-graphics-check-logs)
++ [Why am I seeing multiple ENIs?](#elastic-graphics-multiple-enis)
 
 ## Investigate application performance issues<a name="elastic-graphics-troubleshooting_performance"></a>
 
@@ -101,3 +102,11 @@ If any of these items are missing, you must install them manually\. For more inf
 Open the Windows Event Viewer, expand the **Application and Services Logs** section, and search for errors in the following event logs:
 + EC2ElasticGPUs
 + EC2ElasticGPUs GUI
+
+## Why am I seeing multiple ENIs?<a name="elastic-graphics-multiple-enis"></a>
+
+When calling [StartInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html) on an EC2 instance with an Elastic Graphics accelerator, a new Elastic Network Interface \(ENI\) is created on the instance to allow OpenGL commands to be sent to the remotely attached graphics card\.
+
+If you call [StartInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html) many times in a short period of time \(a few seconds or less\) on the same EC2 instance, a new network interface is created on each call\. However: 
++ Only one network interface will be used by the Elastic Graphics accelerator\.
++ Extra network interfaces don't incur any charges and will be automatically released in 24 hours\.

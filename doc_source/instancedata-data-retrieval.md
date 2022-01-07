@@ -16,7 +16,7 @@ This IPv4 address is a link\-local address and it is valid only from the instanc
 http://[fd00:ec2::254]/latest/meta-data/
 ```
 
-This IPv6 address is a unique local address\. It is routable within the private network only\. It is not routable on the Internet\. For more information, see [Unique local address](https://en.wikipedia.org/wiki/Unique_local_address) on Wikipedia\.
+The IP addresses are link\-local address and are valid only from the instance\. For more information, see [Link\-local address](https://en.wikipedia.org/wiki/Link-local_address) on Wikipedia\.
 
 **Note**  
 The examples in this section use the IPv4 address of the instance metadata service: `169.254.169.254`\. If you are retrieving instance metadata for EC2 instances over the IPv6 address, ensure that you enable and use the IPv6 address instead: `fd00:ec2::254`\. The IPv6 address of the instance metadata service is compatible with IMDSv2 commands\. The IPv6 address is only accessible on [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances)\.
@@ -83,6 +83,7 @@ For requests made using Instance Metadata Service Version 2, the following HTTP 
 + [Show the formats in which public key 0 is available](#instance-metadata-ex-4)
 + [Get public key 0 \(in the OpenSSH key format\)](#instance-metadata-ex-5)
 + [Get the subnet ID for an instance](#instance-metadata-ex-6)
++ [Get the instance tags for an instance](#instance-metadata-ex-7)
 
 ### Get the available versions of the instance metadata<a name="instance-metadata-ex-1"></a>
 
@@ -420,6 +421,56 @@ subnet-be9b61d7
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/network/interfaces/macs/02:29:96:8f:6a:2d/subnet-id
 subnet-be9b61d7
+```
+
+------
+
+### Get the instance tags for an instance<a name="instance-metadata-ex-7"></a>
+
+In the following examples, the sample instance has [tags on instance metadata enabled](Using_Tags.md#allow-access-to-tags-in-IMDS) and the instance tags `Name=MyInstance` and `Environment=Dev`\.
+
+This example gets all the instance tag keys for an instance\.
+
+------
+#### [ IMDSv2 ]
+
+```
+PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+```
+
+```
+PS C:\> Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token" = $token} -Method GET -Uri http://169.254.169.254/latest/meta-data/tags/instance
+Name
+Environment
+```
+
+------
+#### [ IMDSv1 ]
+
+```
+PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/tags/instance
+Name
+Environment
+```
+
+------
+
+The following example gets the value of the `Name` key that was obtained in the preceding example\. The IMDSv2 request uses the stored token that was created in the preceding example command, assuming it has not expired\.
+
+------
+#### [ IMDSv2 ]
+
+```
+PS C:\> Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token" = $token} -Method GET -Uri http://169.254.169.254/latest/meta-data/tags/instance/Name
+MyInstance
+```
+
+------
+#### [ IMDSv1 ]
+
+```
+PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/tags/instance/Name
+MyInstance
 ```
 
 ------

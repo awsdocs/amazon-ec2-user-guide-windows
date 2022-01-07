@@ -11,13 +11,29 @@ You can share your AMIs with other AWS accounts\. To allow all AWS accounts to u
 ## Considerations<a name="considerations-for-sharing-public-AMIs"></a>
 + AMIs with encrypted volumes cannot be made public\.
 + If an AMI has a product code, or contains a snapshot of an encrypted volume, you can't make it public; you can share the AMI only with specific AWS accounts\.
-+ AMIs are a regional resource\. When you share an AMI, its only available in that Region\. To make an AMI available in a different Region, copy the AMI to the Region and then share it\. For more information, see [Copy an AMI](CopyingAMIs.md)\.
++ AMIs are a regional resource\. When you share an AMI, it is only available in that Region\. To make an AMI available in a different Region, copy the AMI to the Region and then share it\. For more information, see [Copy an AMI](CopyingAMIs.md)\.
 + You are not billed when your AMI is used by other AWS accounts to launch instances\. The accounts that launch instances using the AMI are billed for the instances that they launch\. 
 + When you share an AMI, users can only launch instances from the AMI\. They can’t delete, share, or modify it\. However, after they have launched an instance using your AMI, they can then create an AMI from their instance\.
 
 ## Share an AMI with all AWS accounts \(console\)<a name="sharingamis-intro-console"></a>
 
 After you make an AMI public, it is available in **Community AMIs** when you launch an instance in the same Region using the console\. Note that it can take a short while for an AMI to appear in **Community AMIs** after you make it public\. It can also take a short while for an AMI to be removed from **Community AMIs** after you make it private again\.
+
+------
+#### [ New console ]
+
+**To share a public AMI using the console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **AMIs**\.
+
+1. Select your AMI from the list, and then choose **Actions**, **Edit AMI permissions**\.
+
+1. Choose **Public**, and then choose **Save changes**\.
+
+------
+#### [ Old console ]
 
 **To share a public AMI using the console**
 
@@ -27,7 +43,9 @@ After you make an AMI public, it is available in **Community AMIs** when you lau
 
 1. Select your AMI from the list, and then choose **Actions**, **Modify Image Permissions**\.
 
-1. Choose **Public** and choose **Save**\.
+1. Choose **Public**, and then choose **Save**\.
+
+------
 
 ## Share an AMI with all AWS accounts \(Tools for Windows PowerShell\)<a name="sharingamis-powershell"></a>
 

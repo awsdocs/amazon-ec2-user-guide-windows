@@ -2,16 +2,12 @@
 
 An instance with an attached NVIDIA GPU, such as a P3 or G4dn instance, must have the appropriate NVIDIA driver installed\. Depending on the instance type, you can either download a public NVIDIA driver, download a driver from Amazon S3 that is available only to AWS customers, or use an AMI with the driver pre\-installed\.
 
-To install AMD drivers on an instance with an attached AMD GPU, such as a G4ad instance, see [Install AMD drivers on Windows instances](install-amd-driver.md) instead\.
+To install AMD drivers on a Linux instance with an attached AMD GPU, such as a G4ad instance, see [Install AMD drivers](install-amd-driver.md) instead\.  To install NVIDIA drivers on a Linux instance, see [Install NVIDIA drivers on a Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-nvidia-driver.html)\.
 
 **Contents**
 + [Types of NVIDIA drivers](#nvidia-driver-types)
 + [Available drivers by instance type](#nvidia-driver-instance-type)
 + [Installation options](#nvidia-installation-options)
-  + [Option 1: AMIs with the NVIDIA drivers installed](#preinstalled-nvidia-driver)
-  + [Option 2: Public NVIDIA drivers](#public-nvidia-driver)
-  + [Option 3: GRID drivers \(G3 and G4dn instances\)](#nvidia-GRID-driver)
-  + [Option 4: NVIDIA gaming drivers \(G4dn instances\)](#nvidia-gaming-driver)
 + [Install an additional version of CUDA](#gpu-instance-install-cuda)
 
 ## Types of NVIDIA drivers<a name="nvidia-driver-types"></a>
@@ -51,23 +47,18 @@ The following table summarizes the supported NVIDIA drivers for each GPU instanc
 
 | Instance type | Tesla driver | GRID driver | Gaming driver | 
 | --- | --- | --- | --- | 
-| G2 | No | Yes | No | 
+| G2 | Yes | No | No | 
 | G3 | Yes | Yes | No | 
 | G4dn | Yes | Yes | Yes | 
+| G5 | Yes | Yes | Yes | 
 | P2 | Yes | No | No | 
-| P3 | Yes | Yes † | No | 
+| P3 | Yes | Yes ² | No | 
 
-† Using Marketplace AMIs only
+¹ This Tesla driver also supports optimized graphics applications specific to the ARM64 platform
 
 ## Installation options<a name="nvidia-installation-options"></a>
 
 Use one of the following options to get the NVIDIA drivers required for your GPU instance\.
-
-**Topics**
-+ [Option 1: AMIs with the NVIDIA drivers installed](#preinstalled-nvidia-driver)
-+ [Option 2: Public NVIDIA drivers](#public-nvidia-driver)
-+ [Option 3: GRID drivers \(G3 and G4dn instances\)](#nvidia-GRID-driver)
-+ [Option 4: NVIDIA gaming drivers \(G4dn instances\)](#nvidia-gaming-driver)
 
 ### Option 1: AMIs with the NVIDIA drivers installed<a name="preinstalled-nvidia-driver"></a>
 
@@ -82,7 +73,7 @@ If you create a custom Windows AMI using one of the AWS Marketplace offerings, t
 
 The options offered by AWS come with the necessary license for the driver\. Alternatively, you can install the public drivers and bring your own license\. To install a public driver, download it from the NVIDIA site as described here\.
 
-Alternatively, you can use the options offered by AWS instead of the public drivers\. To use a GRID driver on a P3 instance, use the AWS Marketplace AMIs as described in [Option 1](#preinstalled-nvidia-driver)\. To use a GRID driver on a G3 or G4dn instance, use the AWS Marketplace AMIs, as described in Option 1 or install the NVIDIA drivers provided by AWS as described in [Option 3](#nvidia-GRID-driver)\.
+Alternatively, you can use the options offered by AWS instead of the public drivers\. To use a GRID driver on a P3 instance, use the AWS Marketplace AMIs as described in [Option 1](#preinstalled-nvidia-driver)\. To use a GRID driver on a G5, G4dn, or G3 instance, use the AWS Marketplace AMIs, as described in Option 1 or install the NVIDIA drivers provided by AWS as described in [Option 3](#nvidia-GRID-driver)\.
 
 **To download a public NVIDIA driver**  
 Log on to your Windows instance and download the 64\-bit NVIDIA driver appropriate for the instance type from [http://www\.nvidia\.com/Download/Find\.aspx](http://www.nvidia.com/Download/Find.aspx)\. For **Product Type**, **Product Series**, and **Product**, use the options in the following table\.
@@ -92,11 +83,14 @@ Log on to your Windows instance and download the 64\-bit NVIDIA driver appropria
 | --- | --- | --- | --- | 
 | G2 | GRID | GRID Series | GRID K520 | 
 | G3 | Tesla | M\-Class | M60 | 
-| G4dn † | Tesla | T\-Series | T4 | 
+| G4dn | Tesla | T\-Series | T4 | 
+| G5 ¹ | Tesla | A\-Series | A10 | 
 | P2 | Tesla | K\-Series | K80 | 
 | P3 | Tesla | V\-Series | V100 | 
 
-† G4dn instances require driver version 426\.00 or later\.
+¹ G5 instances require driver version 470\.00 or later
+
+³ P4d instances require driver version 460
 
 **To install the NVIDIA driver on Windows**
 
@@ -108,9 +102,9 @@ Log on to your Windows instance and download the 64\-bit NVIDIA driver appropria
 
 1. To achieve the best performance from your GPU, complete the optimization steps in [Optimize GPU settings](optimize_gpu.md)\.
 
-### Option 3: GRID drivers \(G3 and G4dn instances\)<a name="nvidia-GRID-driver"></a>
+### Option 3: GRID drivers \(G5, G4dn, and G3 instances\)<a name="nvidia-GRID-driver"></a>
 
-These downloads are available to AWS customers only\. By downloading, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 or NVIDIA Tesla M60 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
+These downloads are available to AWS customers only\. By downloading, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA A10G, NVIDIA Tesla T4, or NVIDIA Tesla M60 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
 **Prerequisites**
 + If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the GRID driver works\.
@@ -141,6 +135,8 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
    Starting with GRID version 11\.0, you can use the drivers under `latest` for both G3 and G4dn instances\. We will not add versions later than 11\.0 to `g4/latest`, but will keep version 11\.0 and the earlier versions specific to G4dn under `g4/latest`\.
 
+   G5 instances require GRID 13\.1 or later \(or GRID 12\.4 or later\)\.
+
 1. Navigate to the desktop and double\-click the installation file to launch it \(choose the driver version that corresponds to your instance OS version\)\. Follow the instructions to install the driver and reboot your instance as required\. To verify that the GPU is working properly, check Device Manager\.
 
 1. \(Optional\) Use the following command to disable the licensing page in the control panel to prevent users from accidentally changing the product type \(NVIDIA GRID Virtual Workstation is enabled by default\)\. For more information, see the [GRID Licensing User Guide](http://docs.nvidia.com/grid/4.6/grid-licensing-user-guide/index.html)\.
@@ -155,9 +151,9 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
    1. NVIDIA Quadro Virtual Workstation mode is enabled by default\. To activate GRID Virtual Applications for RDSH Application hosting capabilities, complete the GRID Virtual Application activation steps in [Activate NVIDIA GRID Virtual Applications](activate_grid.md)\.
 
-### Option 4: NVIDIA gaming drivers \(G4dn instances\)<a name="nvidia-gaming-driver"></a>
+### Option 4: NVIDIA gaming drivers \(G5 and G4dn instances\)<a name="nvidia-gaming-driver"></a>
 
-These drivers are available to AWS customers only\. By downloading them, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA Tesla T4 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
+These drivers are available to AWS customers only\. By downloading them, you agree to use the downloaded software only to develop AMIs for use with the NVIDIA A10G and NVIDIA Tesla T4 hardware\. Upon installation of the software, you are bound by the terms of the [NVIDIA GRID Cloud End User License Agreement](https://aws-nvidia-license-agreement.s3.amazonaws.com/NvidiaGridAWSUserLicenseAgreement.DOCX)\.
 
 **Prerequisites**
 + If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the gaming driver works\.

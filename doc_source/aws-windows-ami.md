@@ -145,7 +145,7 @@ For Windows instances, you can install updates to the following services or appl
 + [Install the latest version of EC2Config](UsingConfig_Install.md)
 + [AWS Systems Manager SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
 + [Enable enhanced networking on Windows](enhanced-networking-ena.md#enable-enhanced-networking-ena-WIN)
-+ [Install or upgrade AWS NVMe drivers](aws-nvme-drivers.md#install-nvme-drivers)
++ [Install or upgrade AWS NVMe drivers using PowerShell](aws-nvme-drivers.md#install-nvme-drivers)
 + [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)
 + [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell)
 + [AWS CloudFormation helper scripts](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html)

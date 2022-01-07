@@ -245,6 +245,7 @@ CloudWatch prevents you from adding a recovery action to an alarm that is on an 
 
 When the `StatusCheckFailed_System` alarm is triggered, and the recover action is initiated, you are notified by the Amazon SNS topic that you chose when you created the alarm and associated the recover action\. During instance recovery, the instance is migrated during an instance reboot, and any data that is in\-memory is lost\. When the process is complete, information is published to the SNS topic you've configured for the alarm\. Anyone who is subscribed to this SNS topic receives an email notification that includes the status of the recovery attempt and any further instructions\. You notice an instance reboot on the recovered instance\.
 
+**Note**  
 The recover action can be used only with `StatusCheckFailed_System`, not with `StatusCheckFailed_Instance`\.
 
 The following problems can cause system status checks to fail:
@@ -254,7 +255,7 @@ The following problems can cause system status checks to fail:
 + Hardware issues on the physical host that impact network reachability
 
 The recover action is supported only on instances with the following characteristics:
-+ Use one of the following instance types: C3, C4, C5, C5a, C5n, C6i, M3, M4, M5, M5a, M5n, M5zn, M6i, P3, R3, R4, R5, R5a, R5b, R5n, T2, T3, T3a, high memory \(virtualized only\), X1, X1e
++ Use one of the following instance types: C3, C4, C5, C5a, C5n, C6i, M3, M4, M5, M5a, M5n, M5zn, M6i, P3, R3, R4, R5, R5a, R5b, R5n, R6i, T2, T3, T3a, high memory \(virtualized only\), X1, X1e
 + Use `default` or `dedicated` instance tenancy
 + Use EBS volumes only \(do not configure instance store volumes\)\. For more information, see ['Recover this instance' is disabled](https://aws.amazon.com/premiumsupport/knowledge-center/recover-this-instance-cloudwatch-enable/)\.
 

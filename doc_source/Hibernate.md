@@ -22,7 +22,7 @@ If you no longer need an instance, you can terminate it at any time, including w
 
 **Note**  
 For information about using hibernation on Linux instances, see [Hibernate your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in the *Amazon EC2 User Guide for Linux Instances*\.  
-For information about hibernating Spot Instances, see [Hibernate interrupted Spot Instances](spot-interruptions.md#hibernate-spot-instances)\.
+For information about hibernating Spot Instances, see [Hibernate interrupted Spot Instances](hibernate-spot-instances.md)\.
 
 **Topics**
 + [Overview of hibernation](instance-hibernate-overview.md)

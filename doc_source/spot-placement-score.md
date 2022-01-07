@@ -88,7 +88,7 @@ If you specified your target capacity in terms of the number of vCPUs or the amo
 ## Limitations<a name="sps-limitations"></a>
 + **Target capacity limit** – Your Spot placement score target capacity limit is based on your recent Spot usage, while accounting for potential usage growth\. If you have no recent Spot usage, we provide you with a low default limit aligned with your Spot request limit\.
 + **Request configurations limit** – We can limit the number of new request configurations within a 24\-hour period if we detect patterns not associated with the intended use of the Spot placement score feature\. If you reach the limit, you can retry the request configurations that you've already used, but you can't specify new request configurations until the next 24\-hour period\.
-+ **Minimum number of instance types** – You must specify at least three different instant types in your Spot placement configuration\. If you specify instance attributes for attribute\-based instance type selection, they must resolve to at least three different instance types\. Instance types are considered different if they have a different name\. For example, m5\.8xlarge, m5a\.8xlarge, and m5\.12xlarge are all considered different\.
++ **Minimum number of instance types** – If you specify instance types, you must specify at least three different instance types, otherwise Amazon EC2 will return a low Spot placement score\. Similarly, if you specify instance attributes, they must resolve to at least three different instance types\. Instance types are considered different if they have a different name\. For example, m5\.8xlarge, m5a\.8xlarge, and m5\.12xlarge are all considered different\.
 
 ## Required IAM permission<a name="sps-iam-permission"></a>
 
