@@ -60,7 +60,7 @@ This is the only chance for you to save the private key file\.
 
   For `--key-name`, specify a name for the public key\. The name can be up to 255 ASCII characters\.
 
-  For `--key-type`, specify either `rsa` or `ed25519`\. If you do not include the `--key-type` parameter, an `rsa` key is created by default\. Note that ED25519 keys are not supported for Windows instances, EC2 Instance Connect, and EC2 Serial Console\.
+  For `--key-type`, specify either `rsa` or `ed25519`\. If you do not include the `--key-type` parameter, an `rsa` key is created by default\. Note that ED25519 keys are not supported for Windows instances\.
 
   `--query "KeyMaterial"` prints the private key material to the output\.
 
@@ -82,7 +82,7 @@ Use the [New\-EC2KeyPair](https://docs.aws.amazon.com/powershell/latest/referenc
 
 For `-KeyName`, specify a name for the public key\. The name can be up to 255 ASCII characters\.
 
-For `-KeyType`, specify either `rsa` or `ed25519`\. If you do not include the `-KeyType` parameter, an `rsa` key is created by default\. Note that ED25519 keys are not supported for Windows instances, EC2 Instance Connect, and EC2 Serial Console\.
+For `-KeyType`, specify either `rsa` or `ed25519`\. If you do not include the `-KeyType` parameter, an `rsa` key is created by default\. Note that ED25519 keys are not supported for Windows instances\.
 
 `KeyMaterial` prints the private key material to the output\.
 
@@ -100,7 +100,7 @@ Instead of using Amazon EC2 to create your key pair, you can create an RSA key p
 
 **Requirements for key pairs**
 + Supported types: RSA\. Amazon EC2 does not accept DSA keys\.
-  + Note that ED25519 keys are not supported for Windows instances, EC2 Instance Connect, and EC2 Serial Console\.
+  + Note that ED25519 keys are not supported for Windows instances\.
 + Supported formats:
   + OpenSSH public key format 
   + SSH private key file format must be PEM

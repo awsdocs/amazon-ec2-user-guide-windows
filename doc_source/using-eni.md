@@ -425,6 +425,12 @@ The following table lists the maximum number of network interfaces per instance 
 | x1e\.8xlarge | 4 | 15 | 15 | 
 | x1e\.16xlarge | 8 | 30 | 30 | 
 | x1e\.32xlarge | 8 | 30 | 30 | 
+| x2iezn\.2xlarge | 4 | 15 | 15 | 
+| x2iezn\.4xlarge | 8 | 30 | 30 | 
+| x2iezn\.6xlarge | 8 | 30 | 30 | 
+| x2iezn\.8xlarge | 8 | 30 | 30 | 
+| x2iezn\.12xlarge | 15 | 50 | 50 | 
+| x2iezn\.metal | 15 | 50 | 50 | 
 | z1d\.large | 3 | 10 | 10 | 
 | z1d\.xlarge | 4 | 15 | 15 | 
 | z1d\.2xlarge | 4 | 15 | 15 | 

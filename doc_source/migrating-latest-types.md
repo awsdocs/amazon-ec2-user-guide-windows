@@ -9,7 +9,7 @@ When migrating to [Nitro\-based](instance-types.md#ec2-nitro-instances) instance
 For more information, see [Amazon EC2 Update — Additional Instance Types, Nitro System, and CPU Options](http://aws.amazon.com/blogs/aws/amazon-ec2-update-additional-instance-types-nitro-system-and-cpu-options/)\.
 
 **Note**  
-The following migration procedures can be performed on Windows Server version 2008 R2 and later\.
+The following migration procedures can be performed on Windows Server version 2008 R2 and later\. To migrate Linux instances to the latest generation instance types, see [Change the instance type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html)\.
 
 **Contents**
 + [Part 1: Install and upgrade AWS PV drivers](#upgrade-pv)

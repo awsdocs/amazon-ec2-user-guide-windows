@@ -22,12 +22,12 @@ Instances created from Amazon Machine Images \(AMIs\) for Windows Server 2016 an
 
    ```
    {
-     "driveLetterMapping": [
-       {
-         "volumeName": "sample volume",
-         "driveLetter": "H"
-       }
-     ]
+   "driveLetterMapping": [
+   {
+     "volumeName": "sample volume",
+     "driveLetter": "H"
+   }
+   ]
    }
    ```
 

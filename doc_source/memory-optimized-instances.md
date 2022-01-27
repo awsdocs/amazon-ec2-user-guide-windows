@@ -11,7 +11,7 @@ These instances are well suited for the following:
 + Applications performing real\-time processing of big unstructured data \(financial services, Hadoop/Spark clusters\)\.
 + High\-performance computing \(HPC\) and Electronic Design Automation \(EDA\) applications\.
 
-R5b instances support `io2` Block Express volumes\. All `io2` volumes attached to an R5b instance during or after launch automatically run on EBS Block Express\. For more information, see [ `io2` Block Express volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#io2-block-express)\.
+R5b instances support `io2` Block Express volumes\. All `io2` volumes attached to an R5b instance during or after launch automatically run on EBS Block Express\. For more information, see [`io2` Block Express volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#io2-block-express)\.
 
 Bare metal instances, such as `r5.metal`, provide your applications with direct access to physical resources of the host server, such as processors and memory\.
 
@@ -49,6 +49,16 @@ These instances are well suited for the following:
 + Memory\-intensive enterprise applications\.
 
 For more information, see [Amazon EC2 X1e Instances](https://aws.amazon.com/ec2/instance-types/x1e)\.
+
+**X2iezn instances**
+
+These instances are well suited for the following:
++ In\-memory databases, such as Redis and Memcached\.
++ Relational databases, such as MySQL and PostGreSQL\.
++ Electronic design automation \(EDA\) workloads, such as physical verification and layout tools\.
++ Memory\-intensive workloads, such as real\-time analytics and real\-time caching servers\.
+
+For more information, see [Amazon EC2 X2i Instances](https://aws.amazon.com/ec2/instance-types/x2i/)\.
 
 **z1d instances**
 
@@ -172,6 +182,12 @@ The following is a summary of the hardware specifications for memory optimized i
 | x1e\.8xlarge | 32 | 976 | 
 | x1e\.16xlarge | 64 | 1,952 | 
 | x1e\.32xlarge | 128 | 3,904 | 
+| x2iezn\.2xlarge | 8 | 256 | 
+| x2iezn\.4xlarge | 16 | 512 | 
+| x2iezn\.6xlarge | 24 | 768 | 
+| x2iezn\.8xlarge | 32 | 1,024 | 
+| x2iezn\.12xlarge | 48 | 1,536 | 
+| x2iezn\.metal | 48 | 1,536 | 
 | z1d\.large | 2 | 16 | 
 | z1d\.xlarge | 4 | 32 | 
 | z1d\.2xlarge | 8 | 64 | 
@@ -214,12 +230,12 @@ The following is a summary of network performance for memory optimized instances
 |  r6i\.8xlarge  | 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  r6i\.12xlarge  | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  r5\.16xlarge \| r5a\.24xlarge \| r5ad\.24xlarge \| r5b\.16xlarge \| r5d\.16xlarge  | 20 Gbps | [ENA](enhanced-networking-ena.md) | 
-| r5dn\.4xlarge and smaller \| r5n\.4xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| r5dn\.4xlarge and smaller \| r5n\.4xlarge and smaller \| x2iezn\.4xlarge and smaller | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
 |  r4\.16xlarge \| r5\.24xlarge \| r5\.metal \| r5b\.24xlarge \| r5b\.metal \| r5d\.24xlarge \| r5d\.metal \| r5dn\.8xlarge \| r5n\.8xlarge \| r6i\.16xlarge \| x1\.32xlarge \| x1e\.32xlarge \| z1d\.12xlarge \| z1d\.metal  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  r6i\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
-| r5dn\.12xlarge \| r5n\.12xlarge \| r6i\.32xlarge \| r6i\.metal  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
-| r5dn\.16xlarge \| r5n\.16xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  r5dn\.24xlarge \| r5dn\.metal \| r5n\.24xlarge \| r5n\.metal \| u\-6tb1\.56xlarge \| u\-6tb1\.112xlarge \| u\-6tb1\.metal \* \| u\-9tb1\.112xlarge \| u\-9tb1\.metal \* \| u\-12tb1\.112xlarge \| u\-12tb1\.metal \* \| u\-18tb1\.metal \| u\-24tb1\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+| r5dn\.12xlarge \| r5n\.12xlarge \| r6i\.32xlarge \| r6i\.metal \| x2iezn\.6xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+| r5dn\.16xlarge \| r5n\.16xlarge \| x2iezn\.8xlarge | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  r5dn\.24xlarge \| r5dn\.metal \| r5n\.24xlarge \| r5n\.metal \| u\-6tb1\.56xlarge \| u\-6tb1\.112xlarge \| u\-6tb1\.metal \* \| u\-9tb1\.112xlarge \| u\-9tb1\.metal \* \| u\-12tb1\.112xlarge \| u\-12tb1\.metal \* \| u\-18tb1\.metal \| u\-24tb1\.metal \| x2iezn\.12xlarge \| x2iezn\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
 \* Instances of this type launched after March 12, 2020 provide network performance of 100 Gbps\. Instances of this type launched before March 12, 2020 might only provide network performance of 25 Gbps\. To ensure that instances launched before March 12, 2020 have a network performance of 100 Gbps, contact your account team to upgrade your instance at no additional cost\.
 
@@ -270,6 +286,8 @@ The following is a summary of network performance for memory optimized instances
 | x1e\.2xlarge | 1\.25 | 10 | 
 | x1e\.4xlarge | 2\.5 | 10 | 
 | x1e\.8xlarge | 5 | 10 | 
+| x2iezn\.2xlarge | 12\.5 | 25 | 
+| x2iezn\.4xlarge | 15 | 25 | 
 | z1d\.large | \.75 | 10 | 
 | z1d\.xlarge | 1\.25 | 10 | 
 | z1d\.2xlarge | 2\.5 | 10 | 
@@ -340,6 +358,7 @@ The following is a summary of features for memory optimized instances\.
 | R6i | Yes | Yes | No | Yes | 
 | High memory | Yes | Yes | No | Virtualized: Yes Bare metal: No  | 
 | X1 | No | No | SSD | Yes | 
+| X2iezn | Yes | Yes | No | Yes | 
 | X1e | No | No | SSD \* | Yes | 
 | z1d | No | Yes | NVME \* | Yes | 
 
@@ -383,6 +402,7 @@ The following AMIs support launching memory optimized instances:
 + R5a and R5ad instances feature a 2\.5 GHz AMD EPYC 7000 series processor\.
 + High memory instances \(`u-6tb1.metal`, `u-9tb1.metal`, and `u-12tb1.metal`\) are the first instances to be powered by an eight\-socket platform with the latest generation Intel Xeon Platinum 8176M \(Skylake\) processors that are optimized for mission\-critical enterprise workloads\. High Memory instances with 18 TB and 24 TB of memory \(`u-18tb1.metal` and `u-24tb1.metal`\) are the first instances powered by an 8\-socket platform with 2nd Generation Intel Xeon Scalable 8280L \(Cascade Lake\) processors\.
 + X1e and X1 instances feature up to 128 vCPUs and are powered by four Intel Xeon E7\-8880 v3 processors that feature high\-memory bandwidth and larger L3 caches to boost the performance of in\-memory applications\.
++ X2iezn instances feature a custom Intel Xeon Scalable processor \(Cascade Lake\)\.
 + Instances built on the Nitro System have the following requirements:
   + [NVMe drivers](nvme-ebs-volumes.md) must be installed
   + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
@@ -391,7 +411,7 @@ The following AMIs support launching memory optimized instances:
 + To get the best performance from your R6i instances, ensure that they have ENA driver version 2\.2\.3 or later\. Using an ENA driver earlier than version 2\.0\.0 with these instances causes network interface attachment failures\. The following AMIs have a compatible ENA driver\.
   + AWS Windows AMI from May 2021 or later
 + Instances built on the Nitro System instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. For more information, see [Nitro System volume limits](volume_limits.md#instance-type-volume-limits)\.
-+ All `io2` volumes attached to an R5b instance during or after launch automatically run on EBS Block Express\. For more information, see [ `io2` Block Express volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#io2-block-express)\.
++ All `io2` volumes attached to an R5b instance during or after launch automatically run on EBS Block Express\. For more information, see [`io2` Block Express volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#io2-block-express)\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.
 + Bare metal instances use a PCI\-based serial device rather than an I/O port\-based serial device\. The upstream Linux kernel and the latest Amazon Linux AMIs support this device\. Bare metal instances also provide an ACPI SPCR table to enable the system to automatically use the PCI\-based serial device\. The latest Windows AMIs automatically use the PCI\-based serial device\.

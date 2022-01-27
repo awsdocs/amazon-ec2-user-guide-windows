@@ -206,7 +206,7 @@ AWS provides AMIs for Windows Server 2016 and later\. These AMIs include the fol
 + To accommodate the change from \.NET Framework to \.NET Core, the EC2Config service has been deprecated on Windows Server 2016 AMIs and replaced by EC2Launch\. EC2Launch is a bundle of Windows PowerShell scripts that perform many of the tasks performed by the EC2Config service\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md)\. EC2Launch v2 replaces EC2Launch in Windows Server 2022 and later\. For more information, see [Configure a Windows instance using EC2Launch v2](ec2launch-v2.md)\.
 + On earlier versions of Windows Server AMIs, you can use the EC2Config service to join an EC2 instance to a domain and configure integration with Amazon CloudWatch\. On Windows Server 2016 and later AMIs, you can use the CloudWatch agent to configure integration with Amazon CloudWatch\. For more information about configuring instances to send log data to CloudWatch, see [Collect Metrics and Logs from Amazon EC2 Instances and On\-Premises Servers with the CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html)\. For information about joining an EC2 instance to a domain, see [ Join an Instance to a Domain Using the `AWS-JoinDirectoryServiceDomain` JSON Document](https://docs.aws.amazon.com/systems-manager/latest/userguide/walkthrough-powershell.html#walkthrough-powershell-domain-join) in the *AWS Systems Manager User Guide*\.
 
-**Other Differences**
+**Other differences**
 
 Note these additional important differences for instances created from Windows Server 2016 and later AMIs\.
 + By default, EC2Launch does not initialize secondary EBS volumes\. You can configure EC2Launch to initialize disks automatically by either scheduling the script to run or by calling EC2Launch in user data\. For the procedure to initialize disks using EC2Launch, see "Initialize Drives and Drive Letter Mappings" in [Configure EC2Launch](ec2launch.md#ec2launch-config)\.
@@ -263,7 +263,7 @@ To mitigate the issue, you can use one of the following procedures to add the mi
    Restart-Service EC2HibernateAgent
    ```
 
-**Command Prompt**
+**Command prompt**
 
 1. On your Windows instance, open a Command Prompt window\.
 

@@ -290,10 +290,10 @@ You can also view this information programatically using the AWS CLI\. For more 
 | r5dn\.16xlarge | 13,600 | 1,700 | 60,000 | 
 | r5dn\.24xlarge | 19,000 | 2,375 | 80,000 | 
 | r5dn\.metal | 19,000 | 2,375 | 80,000 | 
-| r5n\.large \* | 4,750 | 593\.75 | 18,750 | 
-| r5n\.xlarge \* | 4,750 | 593\.75 | 18,750 | 
-| r5n\.2xlarge \* | 4,750 | 593\.75 | 18,750 | 
-| r5n\.4xlarge | 4,750 | 593\.75 | 18,750 | 
+| r5n\.large \* | 4,750 | 593\.75 | 15,000 | 
+| r5n\.xlarge \* | 4,750 | 593\.75 | 15,000 | 
+| r5n\.2xlarge \* | 4,750 | 593\.75 | 15,000 | 
+| r5n\.4xlarge | 4,750 | 593\.75 | 15,000 | 
 | r5n\.8xlarge | 6,800 | 850 | 30,000 | 
 | r5n\.12xlarge | 9,500 | 1,187\.5 | 40,000 | 
 | r5n\.16xlarge | 13,600 | 1,700 | 60,000 | 
@@ -340,6 +340,12 @@ You can also view this information programatically using the AWS CLI\. For more 
 | x1e\.8xlarge | 3,500 | 437\.5 | 20,000 | 
 | x1e\.16xlarge | 7,000 | 875 | 40,000 | 
 | x1e\.32xlarge | 14,000 | 1,750 | 80,000 | 
+| x2iezn\.2xlarge | 3,170 | 396\.25 | 13,333 | 
+| x2iezn\.4xlarge | 4,750 | 593\.75 | 20,000 | 
+| x2iezn\.6xlarge | 9,500 | 1,187\.5 | 40,000 | 
+| x2iezn\.8xlarge | 12,000 | 1,500 | 55,000 | 
+| x2iezn\.12xlarge | 19,000 | 2,375 | 80,000 | 
+| x2iezn\.metal | 19,000 | 2,375 | 80,000 | 
 | z1d\.large \* | 3,170 | 396\.25 | 13,333 | 
 | z1d\.xlarge \* | 3,170 | 396\.25 | 13,333 | 
 | z1d\.2xlarge | 3,170 | 396\.25 | 13,333 | 
@@ -509,7 +515,7 @@ You can use the AWS CLI to view the instances types in the current Region that s
 Use the following [ describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command\.
 
 ```
-C:\>  aws ec2 describe-instance-types \
+aws ec2 describe-instance-types \
 --query 'InstanceTypes[].{InstanceType:InstanceType,"MaxBandwidth(Mb/s)":EbsInfo.EbsOptimizedInfo.MaximumBandwidthInMbps,MaxIOPS:EbsInfo.EbsOptimizedInfo.MaximumIops,"MaxThroughput(MB/s)":EbsInfo.EbsOptimizedInfo.MaximumThroughputInMBps}' \
 --filters Name=ebs-info.ebs-optimized-support,Values=default --output=table
 ```
@@ -534,7 +540,7 @@ Example output for `eu-west-1`:
 Use the following [ describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command\.
 
 ```
-C:\>  aws ec2 describe-instance-types \
+aws ec2 describe-instance-types \
 --query 'InstanceTypes[].{InstanceType:InstanceType,"MaxBandwidth(Mb/s)":EbsInfo.EbsOptimizedInfo.MaximumBandwidthInMbps,MaxIOPS:EbsInfo.EbsOptimizedInfo.MaximumIops,"MaxThroughput(MB/s)":EbsInfo.EbsOptimizedInfo.MaximumThroughputInMBps}' \
 --filters Name=ebs-info.ebs-optimized-support,Values=supported --output=table
 ```

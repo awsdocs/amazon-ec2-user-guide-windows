@@ -29,28 +29,23 @@ For information about the supported Linux AMIs, see [Supported Linux AMIs](https
   \* For hibernation, we recommend that you use a T3 or T3a instance with at least 1 GB of RAM\.
 
 **To see the available instance types that support hibernation in a specific Region**  
-The available instance types vary by Region\. To see the available instance types that support hibernation in a Region, use the [describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command with the `--region` parameter\. Include the `--filters` parameter to see only the instance types that support hibernation\.
+The available instance types vary by Region\. To see the available instance types that support hibernation in a Region, use the [describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command with the `--region` parameter\. Include the `--filters` parameter to scope the results to the instance types that support hibernation and the `--query` parameter to scope the output to the value of `InstanceType`\.
 
 ```
-C:\> aws ec2 describe-instance-types \
---region us-east-2 \
---filters Name=hibernation-supported,Values=true \
---query "InstanceTypes[*].[InstanceType]" \
---output table
+aws ec2 describe-instance-types --filters Name=hibernation-supported,Values=true --query "InstanceTypes[*].[InstanceType]" --output text | sort
 ```
 
 Example output
 
 ```
------------------------
-|DescribeInstanceTypes|
-+---------------------+
-|  r5a.xlarge         |
-|  c4.4xlarge         |
-|  m5ad.large         |
-|  c5.4xlarge         |
-|  m4.4xlarge         |
-|  t3.2xlarge         |
+c3.2xlarge
+c3.4xlarge
+c3.8xlarge
+c3.large
+c3.xlarge
+c4.2xlarge
+c4.4xlarge
+c4.8xlarge
 ...
 ```
 

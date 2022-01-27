@@ -33,7 +33,13 @@ Windows instances are set to the UTC time zone by default\. You can change the t
 
 1. From your instance, open a Command Prompt window\.
 
-1. Identify the time zone to use on the instance\. To get a list of time zones, use the following command: tzutil /l\. This command returns a list of all available time zones, using the following format:
+1. Identify the time zone to use on the instance\. To get a list of time zones, use the following command:
+
+   ```
+   tzutil /l
+   ```
+
+   This command returns a list of all available time zones, using the following format:
 
    ```
    display name
@@ -42,13 +48,20 @@ Windows instances are set to the UTC time zone by default\. You can change the t
 
 1. Locate the time zone ID to assign to the instance\.
 
-1. Assign the time zone to the instance by using the following command:
+1. Assign to an alternate time zone by using the following command:
 
    ```
    tzutil /s "Pacific Standard Time"
    ```
 
    The new time zone should take effect immediately\.
+
+**Note**  
+You can assign the recommended UTC time zone by using the following command:  
+
+```
+tzutil /s "UTC"
+```
 
 ## Configure network time protocol \(NTP\)<a name="windows-configuring-ntp"></a>
 

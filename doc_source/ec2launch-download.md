@@ -27,7 +27,7 @@ Invoke-WebRequest -Uri $Url -OutFile $DownloadZipFile
 $Url = "https://s3.amazonaws.com/ec2-downloads-windows/EC2Launch/latest/install.ps1"
 $DownloadZipFile = "$env:USERPROFILE\Desktop\EC2Launch\" + $(Split-Path -Path $Url -Leaf)
 Invoke-WebRequest -Uri $Url -OutFile $DownloadZipFile
-C:\Users\Administrator\Desktop\EC2Launch\install.ps1
+& $env:USERPROFILE\Desktop\EC2Launch\install.ps1
 ```
 
 Verify the installation by checking `C:\ProgramData\Amazon\EC2-Windows\Launch`\.

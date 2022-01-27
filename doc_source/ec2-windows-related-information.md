@@ -10,7 +10,7 @@ The following related resources can help you as you work with this service\.
 + **[AWS Optimization and Licensing Assessment](http://aws.amazon.com/windows/optimization-and-licensing-assessment/)** – Evaluate your Windows environment to reduce costs and optimize compute\.
 + **[EC2 Image Builder](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html)** – automate the creation, management, and deployment of customized, secure, and up\-to\-date server images that are pre\-installed and pre\-configured with software settings to meet specific IT standards\.
 + **[AWS Launch Wizard](https://docs.aws.amazon.com/launchwizard)** – AWS Launch Wizard guides you through the sizing, configuration, and deployment of applications on AWS following the AWS Well\-Architected Framework\.
-+ **[Microsoft SQL Server on AWS ](http://aws.amazon.com/sql)** – Overview of Microsoft SQL Server on AWS workloads and services\. 
++ **[Microsoft SQL Server on AWS](http://aws.amazon.com/sql)** – Overview of Microsoft SQL Server on AWS workloads and services\. 
 
 **Forum**  
 **[Amazon EC2 forum](https://forums.aws.amazon.com/forum.jspa?forumID=30)** – AWS Discussion forum for Amazon EC2 to post questions and feedback\. 
