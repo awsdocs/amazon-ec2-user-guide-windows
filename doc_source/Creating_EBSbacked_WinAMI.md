@@ -41,7 +41,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
 
 1. In the navigation pane, under **Images**, choose **AMIs**\.
 
-1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **Amazon images**\. Choose **Source** from the menu and enter one of the following, depending on the version of Windows Server that you need:
+1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **amazon**\. Choose **Source** from the menu and enter one of the following, depending on the version of Windows Server that you need:
    + **amazon/Windows\_Server\-2022**
    + **amazon/Windows\_Server\-2019**
    + **amazon/Windows\_Server\-2016**
@@ -83,7 +83,7 @@ If you choose **No reboot**, we can't guarantee the file system integrity of the
 
    When you are finished, choose **Create Image**\.
 
-1. While your AMI is being created, you can choose **AMIs** in the navigation pane to view its status\. Initially, this is `pending`\. After a few minutes, the status should change to `available`\.
+1. While your AMI is being created, you can choose **AMIs** in the navigation pane to view its status\. Clear your previous filters, and choose **Owned by me** from the drop\-down list\. Initially, the status is `pending`\. After a few minutes, the status should change to `available`\.
 
    \(Optional\) Choose **Snapshots** in the navigation pane to view the snapshot that was created for the new AMI\. When you launch an instance from this AMI, we use this snapshot to create its root device volume\.
 

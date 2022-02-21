@@ -38,7 +38,7 @@ This policy is attached to the service\-linked role named **AWSServiceRoleForEC2
 
 ## AWS managed policy: EC2FastLaunchServiceRolePolicy<a name="security-iam-awsmanpol-EC2FastLaunchServiceRolePolicy"></a>
 
-This policy is attached to the service\-linked role named **AWSServiceRoleForEC2FastLaunch** to allow Amazon EC2 to create and manage a set of pre\-provisioned snapshots that reduce the time it takes to launch instances from your Windows faster launching\-enabled AMI\. For more information, see the service\-linked role section in [Configure your AMI for faster launching](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/windows-ami-version-history.html#win-ami-config-fast-launch)\.
+This policy is attached to the service\-linked role named **AWSServiceRoleForEC2FastLaunch** to allow Amazon EC2 to create and manage a set of pre\-provisioned snapshots that reduce the time it takes to launch instances from your Windows faster launching\-enabled AMI\. For more information, see [Service\-linked role for faster launching for EC2 Windows instances](win-ami-config-fast-launch.md#slr-windows-fast-launch)\.
 
 ## Amazon EC2 updates to AWS managed policies<a name="security-iam-awsmanpol-updates"></a>
 

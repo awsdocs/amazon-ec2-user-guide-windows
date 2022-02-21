@@ -7,6 +7,10 @@ Before you can launch an instance, you must select an AMI to use\. As you select
 + The provider \(for example, Amazon Web Services\)
 + Additional software \(for example, SQL server\)
 
+If you need to find a Ubuntu AMI, see their [EC2 AMI Locator](https://cloud-images.ubuntu.com/locator/ec2/)\.
+
+If you need to find an RedHat AMI, see the RHEL [knowledgebase article](https://access.redhat.com/solutions/15356)\.
+
 If you need to find a Linux AMI, see [Find a Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Topics**

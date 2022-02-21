@@ -133,11 +133,13 @@ The Elastic Graphics packages on your instance include tools that you can use to
 
 If your instance was launched with an AMI that does not have the Elastic Graphics packages pre\-installed, you can download and install them yourself\. For more information, see [Install the required software for Elastic Graphics](#elastic-graphics-install-libraries)\.
 
-**Topics**
-+ [Use the Elastic Graphics status monitor](#elastic-graphics-verify-status)
-+ [Use the Elastic Graphics command line tool](#elastic-graphics-command-tools)
+You can use one of the following methods to verify Elastic Graphics functionality on your instance\.
 
-### Use the Elastic Graphics status monitor<a name="elastic-graphics-verify-status"></a>
+**Note**  
+If the Elastic Graphics status monitor or command line tool returns an unexpected result, see [Resolve unhealthy status issues](elastic-graphics-troubleshooting.md#elastic-graphics-troubleshooting_unhealthy_status)\.
+
+------
+#### [ Elastic Graphics status monitor ]
 
 You can use the status monitor tool to view information about the status of an attached Elastic Graphics accelerator\. By default, this tool is available in the notification area of the taskbar in your Windows instance and shows the status of the graphics accelerator\. The following are the possible values\.
 
@@ -150,7 +152,8 @@ The status of the Elastic Graphics accelerator is currently updating\. It might 
 **Out of service**  
 The Elastic Graphics accelerator is out of service\. To get more information about the error, choose **Read More**\.
 
-### Use the Elastic Graphics command line tool<a name="elastic-graphics-command-tools"></a>
+------
+#### [ Elastic Graphics command line tool ]
 
 You can use the Elastic Graphics command line tool, `egcli.exe`, to check the status of the accelerator\. If there is a problem with the accelerator, the tool returns an error message\.
 
@@ -211,6 +214,8 @@ An error occurred loading the Elastic Graphics driver\.
 
 `ERROR_EGPU_CONNECTIVITY`  
 The Elastic Graphics accelerator is unreacheable\.
+
+------
 
 ## View Elastic Graphics information<a name="viewing-elastic-graphics"></a>
 

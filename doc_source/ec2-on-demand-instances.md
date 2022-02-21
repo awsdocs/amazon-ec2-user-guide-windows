@@ -22,7 +22,7 @@ You can work with On\-Demand Instances in the following ways:
 + [Launch your instance](LaunchingAndUsingInstances.md)
 + [Connect to your Windows instance](connecting_to_windows_instance.md)
 + [Stop and start your instance](Stop_Start.md)
-+ [Hibernate your On\-Demand or Reserved Windows instance](Hibernate.md)
++ [Hibernate your On\-Demand Windows instance](Hibernate.md)
 + [Reboot your instance](ec2-instance-reboot.md)
 + [Instance retirement](instance-retirement.md)
 + [Terminate your instance](terminating-instances.md)

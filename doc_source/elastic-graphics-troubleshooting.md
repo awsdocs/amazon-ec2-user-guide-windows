@@ -7,6 +7,7 @@ The following are common errors and troubleshooting steps\.
   + [OpenGL rendering performance issues](#elastic-graphics-opengl-performance)
   + [Remote access performance issues](#elastic-graphics-remote-performance)
 + [Resolve unhealthy status issues](#elastic-graphics-troubleshooting_unhealthy_status)
+  + [Check the instance configuration](#elastic-graphics-instance-config)
   + [Stop and start the instance](#elastic-graphics-start-and-stop)
   + [Verify the installed components](#elastic-graphics-verify)
   + [Check the Elastic Graphics logs](#elastic-graphics-check-logs)
@@ -80,6 +81,16 @@ For more information about optimization, see the specific protocol\.
 ## Resolve unhealthy status issues<a name="elastic-graphics-troubleshooting_unhealthy_status"></a>
 
 If the Elastic Graphics accelerator is in an unhealthy state, use the following troubleshooting steps to resolve the issue\.
+
+### Check the instance configuration<a name="elastic-graphics-instance-config"></a>
+
+If the Elastic Graphics command line tool, `egcli.exe`, returns output similar to the following, ensure that your [security group is properly configured](working-with-elastic-graphics.md#elastic-graphics-security) and that you launched the instance with Instance Metadata Service enabled\.
+
+```
+EG Version 1.0.7.4240 (Manager) / N/A (OpenGL Library) / N/A (OpenGL Redirector)
+EG Status: Out Of Service
+Something prevented the EG Infrastructure to work properly.
+```
 
 ### Stop and start the instance<a name="elastic-graphics-start-and-stop"></a>
 

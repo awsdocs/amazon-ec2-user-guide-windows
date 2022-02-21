@@ -90,8 +90,6 @@ Log on to your Windows instance and download the 64\-bit NVIDIA driver appropria
 
 ¹ G5 instances require driver version 470\.00 or later
 
-³ P4d instances require driver version 460
-
 **To install the NVIDIA driver on Windows**
 
 1. Open the folder where you downloaded the driver and launch the installation file\. Follow the instructions to install the driver and reboot your instance as required\.

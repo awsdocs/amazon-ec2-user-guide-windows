@@ -184,7 +184,7 @@ If you've [enabled your VPC for IPv6](https://docs.aws.amazon.com/vpc/latest/use
 
 Session Manager is a fully\-managed AWS Systems Manager capability for managing your Amazon EC2 instances through an interactive, one\-click, browser\-based shell, or through the AWS CLI\. You can use Session Manager to start a session with an instance in your account\. After the session is started, you can run PowerShell commands as you would for any other connection type\. For more information about Session Manager, see [AWS Systems Manager Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) in the *AWS Systems Manager User Guide*\. 
 
-Before attempting to connect to an instance using Session Manager, ensure that the necessary setup steps have been completed\. For more information, see [Getting Started with Session Manager\.](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started.html)
+Before attempting to connect to an instance using Session Manager, ensure that the necessary setup steps have been completed\. For more information, see [Setting up Session Manager\.](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started.html)
 
 **To connect to a Windows instance using Session Manager on the Amazon EC2 console**
 
@@ -199,7 +199,7 @@ Before attempting to connect to an instance using Session Manager, ensure that t
 1. Choose **Connect**\.  
 ![\[Session Manager connection.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-session-manager.png)
 **Tip**  
-If you receive an error that you’re not authorized to perform one or more Systems Manager actions \(`ssm:command-name`\), then you must update your policies to allow you to start sessions from the Amazon EC2 console\. For more information and instructions, see [ Quickstart Default IAM Policies for Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-restrict-access-quickstart.html) in the *AWS Systems Manager User Guide*\.
+If you receive an error that you’re not authorized to perform one or more Systems Manager actions \(`ssm:command-name`\), then you must update your policies to allow you to start sessions from the Amazon EC2 console\. For more information and instructions, see [ Quickstart default IAM policies for Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-restrict-access-quickstart.html) in the *AWS Systems Manager User Guide*\.
 
 ## Configure your accounts<a name="configure-admin-accounts"></a>
 
@@ -210,19 +210,30 @@ After you connect, we recommend that you perform the following:
 
 ## Transfer files to Windows instances<a name="AccessingInstancesWindowsFileTransfer"></a>
 
-You can work with your Windows instance the same way that you would work with any Windows server\. For example, you can transfer files between a Windows instance and your local computer using the local file sharing feature of the Microsoft Remote Desktop Connection software\. If you enable this option, you can access your local files from your Windows instances\. You can access local files on hard disk drives, DVD drives, portable media drives, and mapped network drives\. 
+You can work with your Windows instance in the same way that you would work with any Windows server\. For example, you can transfer files between a Windows instance and your local computer using the local file sharing feature of the Microsoft Remote Desktop Connection software\. You can access local files on hard disk drives, DVD drives, portable media drives, and mapped network drives\.
 
-To make local devices and resources available to a remote session on Windows, map the remote session drive to your local drive\.
+To access your local files from your Windows instances, you must enable the local file sharing feature by mapping the remote session drive to your local drive\. The steps are slightly different depending on whether your local computer operating system is Windows or macOS X\.
 
-**To map the remote session drive to your local drive**
+------
+#### [ Windows ]
+
+**To map the remote session drive to your local drive on your local Windows computer**
 
 1. Open the Remote Desktop Connection client\.
 
 1. Choose **Show Options**\.
 
+1. Add the instance host name to the **Computer** field and user name to the **User name** field, as follows:
+
+   1. Under **Connection settings**, choose **Open\.\.\.**, and browse to the RDP shortcut file that you downloaded from the Amazon EC2 console\. The file contains the Public IPv4 DNS host name, which identifies the instance, and the Administrator user name\.
+
+   1. Select the file and choose **Open**\. The **Computer** and **User name** fields are populated with the values from the RDP shortcut file\.
+
+   1. Choose **Save**\.
+
 1. Choose the **Local Resources** tab\.
 
-1. Under **Local Devices and resources**, choose **More\.\.\.**  
+1. Under **Local devices and resources**, choose **More\.\.\.**  
 ![\[RDP Local Resources window.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-rdp-local-resources.png)
 
 1. Open **Drives** and select the local drive to map to your Windows instance\.
@@ -232,4 +243,29 @@ To make local devices and resources available to a remote session on Windows, ma
 
 1. Choose **Connect** to connect to your Windows instance\.
 
-For more information on making local devices available to a remote session on a Mac computer, see [Get Started with Remote Desktop on Mac](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)\.
+------
+#### [ macOS X ]
+
+**To map the remote session drive to your local folder on your local macOS X computer**
+
+1. Open the Remote Desktop Connection client\.
+
+1. Browse to the RDP file that you downloaded from the Amazon EC2 console \(when you initially connected to the instance\), and drag it onto the Remote Desktop Connection client\.
+
+1. Right\-click the RDP file, and choose **Edit**\. 
+
+1. Choose the **Folders** tab, and select the **Redirect folders** check box\.  
+![\[Microsoft Remote Desktop Edit PC window.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/mac-map-folder-1.png)
+
+1. Choose the **\+** icon at bottom left, browse to the folder to map, and choose **Open**\. Repeat this step for every folder to map\.
+
+1. Choose **Save**\.
+
+1. Choose **Connect** to connect to your Windows instance\. You'll be prompted for the password\.
+
+1. On the instance, in File Explorer, expand **This PC**, and find the shared folder from which you can access your local files\. In the following screenshot, the **Desktop** folder on the local computer was mapped to the remote session drive on the instance\.  
+![\[Microsoft Remote Desktop Edit PC window.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/mac-map-folder-2.png)
+
+For more information on making local devices available to a remote session on a Mac computer, see [Get started with the macOS client](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)\.
+
+------
