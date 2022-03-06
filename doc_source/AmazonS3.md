@@ -28,7 +28,7 @@ PS C:\> Copy-S3Object -BucketName my_bucket -Key path-to-file -LocalFile my_copi
 **AWS Command Line Interface**  
 The AWS Command Line Interface \(AWS CLI\) is a unified tool to manage your AWS services\. The AWS CLI enables users to authenticate themselves and download restricted items from Amazon S3 and also to upload items\. For more information, such as how to install and configure the tools, see the [AWS Command Line Interface detail page](https://aws.amazon.com/cli/)\.
 
-The aws s3 cp command is similar to the Unix cp command\. You can copy files from Amazon S3 to your instance, copy files from your instance to Amazon S3, and copy files from one Amazon S3 location to another\.
+The `aws s3 cp` command is similar to the `cp` command in Unix\. You can copy files from Amazon S3 to your instance, copy files from your instance to Amazon S3, and copy files from one Amazon S3 location to another\.
 
 Use the following command to copy an object from Amazon S3 to your instance\.
 
@@ -42,7 +42,7 @@ Use the following command to copy an object from your instance back into Amazon 
 aws s3 cp my_copied_file.ext s3://my_bucket/my_folder/my_file.ext
 ```
 
-The aws s3 sync command can synchronize an entire Amazon S3 bucket to a local directory location\. This can be helpful for downloading a data set and keeping the local copy up\-to\-date with the remote set\. If you have the proper permissions on the Amazon S3 bucket, you can push your local directory back up to the cloud when you are finished by reversing the source and destination locations in the command\.
+The `aws s3 sync` command can synchronize an entire Amazon S3 bucket to a local directory location\. This can be helpful for downloading a data set and keeping the local copy up\-to\-date with the remote set\. If you have the proper permissions on the Amazon S3 bucket, you can push your local directory back up to the cloud when you are finished by reversing the source and destination locations in the command\.
 
 Use the following command to download an entire Amazon S3 bucket to a local directory on your instance\.
 
