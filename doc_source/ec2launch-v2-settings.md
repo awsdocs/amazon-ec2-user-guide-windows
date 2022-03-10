@@ -572,8 +572,6 @@ Runs a script with optional arguments and a specified frequency\.
 
 *Inputs* — 
 
-`detach`: \(Boolean\) denotes whether the script runs as a detached process\. When enabled, EC2Launch v2 runs the script concurrently with other tasks, and will not handle exit codes, such as `3010`, to restart the instance\.
-
 `frequency`: \(string\) one of `once` or `always`
 
 `type`: \(string\) one of `batch` or `powershell`
@@ -584,7 +582,7 @@ Runs a script with optional arguments and a specified frequency\.
 
 `runAs`: \(string\) one of `admin` or `localSystem`
 
-`detach`: \(boolean\) defaults to `false`\. Set to `true` if the script should be run in detached mode, where EC2Launch runs it and continues with other tasks\. Script exit codes have no effect in this mode\.
+`detach`: \(boolean\) defaults to `false`\. Set to `true` if the script should be run in detached mode, where EC2Launch runs it concurrently with other tasks\. Script exit codes (including `3010`) have no effect in this mode\.
 
 *Example*
 
