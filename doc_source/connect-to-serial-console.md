@@ -13,20 +13,19 @@ You can connect to the serial console of your EC2 instance by using the Amazon E
 + The serial console connection typically lasts for one hour unless you terminate it\. However, during system maintenance, Amazon EC2 will terminate the serial console session\.
 + It takes 30 seconds to tear down a session after you've disconnected from the serial console in order to allow a new session\.
 + Supported serial console port for Windows: COM1
-
-When you connect to the serial console, you might observe a slight drop in your instance’s throughput\.
++ When you connect to the serial console, you might observe a slight drop in your instance’s throughput\.
 
 ## Prerequisites<a name="sc-prerequisites"></a>
-+ Supported AWS Regions: US East \(N\. Virginia\), US East \(Ohio\), US West \(Oregon\) Europe \(Ireland\), Europe \(Frankfurt\), Asia Pacific \(Sydney\), Asia Pacific \(Tokyo\), Asia Pacific \(Singapore\)
-+ Supported instance families:
-  + A1
-  + C5, C5a, C5ad, C5d, C5n, C6g, C6gd
-  + M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6g, M6gd
-  + R5, R5a, R5ad, R5d, R5dn, R5n, R6, R6gd
-  + T3, T3a, T4g
-  + Z1d
-+ All IAM users who will use the serial console must have the required permissions\. For more information, see [Configure IAM policies for EC2 Serial Console access](configure-access-to-serial-console.md#serial-console-iam)\.
-+ The instance must be in the `pending`, `running`, `stopping`, or `shutting-down` state\. If the instance is `terminated` or `stopped`, you can't connect to the serial console\. For more information about the instance states, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
++ Supported in all AWS Regions except Africa \(Cape Town\), Asia Pacific \(Hong Kong\), Asia Pacific \(Osaka\), China \(Beijing\), China \(Ningxia\), Europe \(Milan\), and Middle East \(Bahrain\)\.
++ Not supported in Local Zones, Wavelength Zones, or AWS Outposts\.
++ Supported for all virtualized instances built on the [Nitro System](instance-types.md#nitro-instance-types)\.
++ Not supported on bare metal instances\.
++ Configure access to the EC2 Serial Console, as follows:
+  + [Manage account access to the EC2 Serial Console](configure-access-to-serial-console.md#serial-console-account-access)\.
+  + [Configure IAM policies for EC2 Serial Console access](configure-access-to-serial-console.md#serial-console-iam)\. All IAM users who will use the serial console must have the required permissions\.
++ To connect to the serial console [using the browser\-based client](#sc-connect-browser-based-client), your browser must support WebSocket\. If your browser does not support WebSocket, connect to the serial console [using your own key and an SSH client\.](#sc-connect-SSH)
++ The instance must be in the `running` state\. If the instance is in the `pending`, `stopping`, `stopped`, `shutting-down`, or `terminated` state, you can't connect to the serial console\. For more information about the instance states, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
++ If the instance uses Amazon EC2 Systems Manager, then SSM Agent version 3\.0\.854\.0 or later must be installed on the instance\. For information about SSM Agent, see [Working with SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) in the *AWS Systems Manager User Guide*\.
 
 You do not need an sshd server installed or running on your instance\.
 
@@ -48,9 +47,9 @@ EC2 serial console works from most browsers, and supports keyboard and mouse inp
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Select the instance and choose **Connect**, **EC2 Serial Console**, **Connect**\.
+1. Select the instance and choose **Actions**, **Monitor and troubleshoot**, **EC2 Serial Console**, **Connect**\.
 
-   Alternatively, you can select the instance and choose **Actions**, **Monitor and troubleshoot**, **EC2 Serial Console**, **Connect**\.
+   Alternatively, select the instance and choose **Connect**, **EC2 Serial Console**, **Connect**\.
 
    An in\-browser terminal window opens\.
 
@@ -76,7 +75,7 @@ You can use your own SSH key and connect to your instance from the SSH client of
    C:\> aws ec2-instance-connect send-serial-console-ssh-public-key \
        --instance-id i-001234a4bf70dec41EXAMPLE \
        --serial-port 0 \
-       --ssh-public-key file://my_rsa_key.pub \
+       --ssh-public-key file://my_key.pub \
        --region us-east-1
    ```
 
@@ -90,10 +89,20 @@ You can use your own SSH key and connect to your instance from the SSH client of
 
    The user name format is `instance-id.port0`, which comprises the instance ID and port 0\. In the following example, the user name is `i-001234a4bf70dec41EXAMPLE.port0`\.
 
+   **For all supported AWS Regions, except AWS GovCloud \(US\) Regions:**
+
    The format of the public DNS name of the serial console service is `serial-console.ec2-instance-connect.region.aws`\. In the following example, the serial console service is in the *us\-east\-1* Region\.
 
    ```
-   C:\> ssh -i my_rsa_key i-001234a4bf70dec41EXAMPLE.port0@serial-console.ec2-instance-connect.us-east-1.aws
+   C:\> ssh -i my_key i-001234a4bf70dec41EXAMPLE.port0@serial-console.ec2-instance-connect.us-east-1.aws
+   ```
+
+   **For AWS GovCloud \(US\) Regions only:**
+
+   The format of the public DNS name of the serial console service in the AWS GovCloud \(US\) Regions is `serial-console.ec2-instance-connect.GovCloud-region.amazonaws.com`\. In the following example, the serial console service is in the *us\-gov\-east\-1* Region\.
+
+   ```
+   C:\> ssh -i my_key i-001234a4bf70dec41EXAMPLE.port0@serial-console.ec2-instance-connect.us-gov-east-1.amazonaws.com
    ```
 
 1. 
@@ -119,20 +128,35 @@ The fingerprint only appears the first time you connect to the serial console\.
 ## EC2 Serial Console fingerprints<a name="sc-fingerprints"></a>
 
 The EC2 Serial Console fingerprint is unique for each AWS Region\.
-+ us\-east\-2 – US East \(Ohio\)
-
-  ```
-  SHA256:EhwPkTzRtTY7TRSzz26XbB0/HvV9jRM7mCZN0xw/d/0
-  ```
 + us\-east\-1 – US East \(N\. Virginia\)
 
   ```
   SHA256:dXwn5ma/xadVMeBZGEru5l2gx+yI5LDiJaLUcz0FMmw
   ```
++ us\-east\-2 – US East \(Ohio\)
+
+  ```
+  SHA256:EhwPkTzRtTY7TRSzz26XbB0/HvV9jRM7mCZN0xw/d/0
+  ```
++ us\-west\-1 – US West \(N\. California\)
+
+  ```
+  SHA256:OHldlcMET8u7QLSX3jmRTRAPFHVtqbyoLZBMUCqiH3Y
+  ```
 + us\-west\-2 – US West \(Oregon\)
 
   ```
   SHA256:EMCIe23TqKaBI6yGHainqZcMwqNkDhhAVHa1O2JxVUc
+  ```
++ ap\-south\-1 – Asia Pacific \(Mumbai\)
+
+  ```
+  SHA256:oBLXcYmklqHHEbliARxEgH8IsO51rezTPiSM35BsU40
+  ```
++ ap\-northeast\-2 – Asia Pacific \(Seoul\)
+
+  ```
+  SHA256:FoqWXNX+DZ++GuNTztg9PK49WYMqBX+FrcZM2dSrqrI
   ```
 + ap\-southeast\-1 – Asia Pacific \(Singapore\)
 
@@ -149,6 +173,11 @@ The EC2 Serial Console fingerprint is unique for each AWS Region\.
   ```
   SHA256:RQfsDCZTOfQawewTRDV1t9Em/HMrFQe+CRlIOT5um4k
   ```
++ ca\-central\-1 – Canada \(Central\)
+
+  ```
+  SHA256:P2O2jOZwmpMwkpO6YW738FIOTHdUTyEv2gczYMMO7s4
+  ```
 + eu\-central\-1 – Europe \(Frankfurt\)
 
   ```
@@ -158,4 +187,34 @@ The EC2 Serial Console fingerprint is unique for each AWS Region\.
 
   ```
   SHA256:h2AaGAWO4Hathhtm6ezs3Bj7udgUxi2qTrHjZAwCW6E
+  ```
++ eu\-west\-2 – Europe \(London\)
+
+  ```
+  SHA256:a69rd5CE/AEG4Amm53I6lkD1ZPvS/BCV3tTPW2RnJg8
+  ```
++ eu\-west\-3 – Europe \(Paris\)
+
+  ```
+  SHA256:q8ldnAf9pymeNe8BnFVngY3RPAr/kxswJUzfrlxeEWs
+  ```
++ eu\-north\-1 – Europe \(Stockholm\)
+
+  ```
+  SHA256:tkGFFUVUDvocDiGSS3Cu8Gdl6w2uI32EPNpKFKLwX84
+  ```
++ sa\-east\-1 – South America \(São Paulo\)
+
+  ```
+  SHA256:rd2+/32Ognjew1yVIemENaQzC+Botbih62OqAPDq1dI
+  ```
++ us\-gov\-east\-1 – AWS GovCloud \(US\-East\)
+
+  ```
+  SHA256:tIwe19GWsoyLClrtvu38YEEh+DHIkqnDcZnmtebvF28
+  ```
++ us\-gov\-west\-1 – AWS GovCloud \(US\-West\)
+
+  ```
+  SHA256:kfOFRWLaOZfB+utbd3bRf8OlPf8nGO2YZLqXZiIw5DQ
   ```

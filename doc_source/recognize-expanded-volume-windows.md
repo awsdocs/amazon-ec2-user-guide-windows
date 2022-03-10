@@ -47,20 +47,34 @@ Use the following procedure to extend a Windows file system using PowerShell\.
 
 1. Run PowerShell as an administrator\.
 
-1. Run the `Get-Partition` command\. PowerShell returns the disk path, and, for each partition, the corresponding partition number, drive letter, offset, size, and type\. Note the drive letter of the partition to extend\.
+1. Run the `Get-Partition` command\. PowerShell returns the corresponding partition number for each partition, the drive letter, offset, size, and type\. Note the drive letter of the partition to extend\.
 
-1. Run the following command, using the drive letter you noted in the previous step in place of **<drive\-letter>**\. PowerShell returns the minimum and maximum size of the partition allowed, in bytes\.
+1. Run the following command to rescan the disk\.
+
+   ```
+   "rescan" | diskpart
+   ```
+
+1. Run the following command, using the drive letter you noted in step 4 in place of **<drive\-letter>**\. PowerShell returns the minimum and maximum size of the partition allowed, in bytes\.
 
    ```
    Get-PartitionSupportedSize -DriveLetter <drive-letter>
    ```
 
-1. To extend the partition, run the following command, entering the new size of the volume in place of **<size>**\. You can enter the size in `KB`, `MB`, and `GB`; for example `24MB`\.
+1. To extend the partition to a specified amount, run the following command, entering the new size of the volume in place of **<size>**\. You can enter the size in `KB`, `MB`, and `GB`; for example, `50GB`\.
 
    ```
    Resize-Partition -DriveLetter <drive-letter> -Size <size>
    ```
 
-The following shows the complete command and response flow for extending a file system using PowerShell\.
+   To extend the partition to the maximum available size, run the following command\.
 
-![\[Extend a partition using PowerShell\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs-extend-powershell.PNG)
+   ```
+   Resize-Partition -DriveLetter <drive-letter> -Size $(Get-PartitionSupportedSize -DriveLetter <drive-letter>).SizeMax
+   ```
+
+   The following PowerShell commands show the complete command and response flow for extending a file system to a specific size\.  
+![\[Extend a partition using PowerShell - specific\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs-extend-powershell-v3-specific.png)
+
+   The following PowerShell commands show the complete command and response flow for extending a file system to the maximum available size\.  
+![\[Extend a partition using PowerShell - max\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs-extend-powershell-v3-max.png)

@@ -145,7 +145,7 @@ The `%ProgramFiles%\Amazon\EC2Launch` directory contains binaries and supporting
 The `%ProgramData%\Amazon\EC2Launch` directory contains the following subdirectories\. All of the data produced by the service, including logs, configuration, and state, is stored in this directory\.
 + `config` — Configuration
 
-  The service configuration file is stored in this directory as `agent-config.yml`\. This file can be updated to modify, add, or remove tasks run by the service by default\.
+  The service configuration file is stored in this directory as `agent-config.yml`\. This file can be updated to modify, add, or remove default tasks run by the service\. Permission to create files in this directory is restricted to the administrator account to prevent privilege escalation\.
 + `log` — Instance logs
 
   Logs for the service \(`agent.log`\), console \(`console.log`\), performance \(`bench.log`\), and errors \(`error.log`\) are stored in this directory\. Log files are appended to on subsequent executions of the service\.
@@ -271,6 +271,10 @@ ec2launch reset -c
 
 **Flags**
 
+`-b`, `--block`
+
+blocks the `reset` command until the service stops\. If the reset command is run with the `--block` flag as part of the `executeScript` task, the `detach` argument must be set to true\. For more information, see Example 4 under [executeScript ](#ec2launch-v2-executescript)\. 
+
 `-c`, `--clean`
 
 cleans instance logs before `reset`
@@ -305,6 +309,13 @@ Gets the status of the EC2Launch service\. Optionally blocks the process until t
 + `0` — the service ran and was successful\.
 + `1` — the service ran and failed\.
 + `2` — the service is still running\.
++ `3` — the service is in an unknown state\. The service state is not running or stopped\.
++ `4` — an error occurred when attempting to retrieve the service state\.
++ `5` — the service is not running and the status of the last known run is unknown\. This could mean one of the following:
+  + both the `state.json` and `previous-state.json` are deleted\.
+  + the `previous-state.json` is corrupted\.
+
+  This is the service state after running the [`reset`](#ec2launch-v2-reset) command\.
 
 **Example:**
 
@@ -341,6 +352,10 @@ ec2launch sysprep
 `ec2launch sysprep [flags]`
 
 **Flags**
+
+`-b`,`--block`
+
+blocks the `sysprep` command until the service stops\. If the reset command is run with the `--block` flag as part of the `executeScript` task, the `detach` argument must be set to true\. For more information, see Example 4 under [executeScript ](#ec2launch-v2-executescript)\. 
 
 `-c`,`--clean`
 
@@ -426,7 +441,7 @@ help for `wallpaper`
 
 ## EC2Launch v2 task configuration<a name="ec2launch-v2-task-configuration"></a>
 
-This section includes the configuration tasks, details, and examples for the `agent-config.yml` and `user-data.yml` files\.
+This section includes the configuration tasks, details, and examples for `agent-config.yml` and user data\.
 
 **Topics**
 + [activateWindows](#ec2launch-v2-activatewindows)
@@ -449,7 +464,7 @@ This section includes the configuration tasks, details, and examples for the `ag
 
 ### activateWindows<a name="ec2launch-v2-activatewindows"></a>
 
-Activates Windows against a set of KMS servers\.
+Activates Windows against a set of AWS KMS servers\.
 
 *Frequency* — once
 
@@ -498,7 +513,7 @@ Enables Windows OpenSSH and adds the public key for the instance to the authoriz
 
 *Example*
 
-The following example shows how to enable OpenSSH on an instance, and to add the public key for the instance to the authorized keys folder\. This configuration works only on instances running Windows Server 2019\.
+The following example shows how to enable OpenSSH on an instance, and to add the public key for the instance to the authorized keys folder\. This configuration works only on instances running Windows Server 2019 and later versions\.
 
 ```
 task: enableOpenSsh
@@ -549,7 +564,7 @@ inputs:
 
 ### executeScript<a name="ec2launch-v2-executescript"></a>
 
-Executes a script with optional arguments and a specified frequency\.
+Runs a script with optional arguments and a specified frequency\.
 
 *Frequency* — see *Inputs*
 
@@ -561,11 +576,13 @@ Executes a script with optional arguments and a specified frequency\.
 
 `type`: \(string\) one of `batch` or `powershell`
 
-`arguments`: \(list of strings\) list of string arguments to pass to the shell
+`arguments`: \(list of strings\) list of string arguments to pass to the shell\. This parameter is not supported when `type` is set to `batch`\.
 
 `content`: \(string\) contents of the script
 
 `runAs`: \(string\) one of `admin` or `localSystem`
+
+`detach`: \(Boolean\) defaults to `false`\. Set to `true` if the script should run in detached mode, where EC2Launch runs it concurrently with other tasks\. Script exit codes \(including `3010`\) have no effect when `detach` is set to `true`\.
 
 *Example*
 
@@ -624,6 +641,21 @@ inputs:
     }
 ```
 
+*Example 4*
+
+You can run EC2Launch v2 CLI commands as part of scripts\. `reset` and `sysprep` commands must include the `--block` flag because they depend on the agent finishing first\. When the `--block` flag is used, the `detach` argument for this task must be set to true\. A deadlock results when you use the `--block` flag in a non\-detached script\. The commands detect the potential deadlock and exit with an error\. The following example shows a script that resets the agent state after the agent finishes running\.
+
+```
+task: executeScript
+inputs:
+- frequency: always
+  type: powershell
+  runAs: localSystem
+  detach: true
+  content: |-
+    & 'C:\Program Files\Amazon\EC2Launch\ec2launch.exe' reset -c -b
+```
+
 ### extendRootPartition<a name="ec2launch-v2-extendrootpartition"></a>
 
 Extends the root volume to use all of the available space on the disk\.
@@ -642,7 +674,7 @@ task: extendRootParitition
 
 ### initializeVolume<a name="ec2launch-v2-initializevolume"></a>
 
-Initializes volumes attached to the instance so that they are activated and partitioned\. Any volumes that are detected as not empty are not initialized\. A volume is considered empty if the first 4 KiB of a volume are empty, or if a volume does not have a [Windows\-recognizable drive layout](https://docs.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_ex)\.
+Initializes volumes attached to the instance so that they are activated and partitioned\. Any volumes that are detected as not empty are not initialized\. A volume is considered empty if the first 4 KiB of a volume are empty, or if a volume does not have a [Windows\-recognizable drive layout](https://docs.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_ex)\. The volume `letter` field is always applied when this task runs, regardless of whether the drive is already initialized\.
 
 *Frequency* — always
 
@@ -723,7 +755,7 @@ Sets attributes for the default administrator account that is created on the loc
 
 `type`: \(string\) strategy to set the password, either as `static`, `random`, or `doNothing`
 
-`doNothing`: \(string\) stores data if the `type` field is static
+`data`: \(string\) stores data if the `type` field is static
 
 *Example*
 
@@ -783,7 +815,15 @@ inputs:
 
 ### setWallpaper<a name="ec2launch-v2-setwallpaper"></a>
 
-Sets up the instance with custom wallpaper that displays instance attributes\.
+Creates the `setwallpaper.lnk` shortcut file in the startup folder of each existing user except for `Default User`\. This shortcut file runs when the user logs in for the first time after instance boot\. It sets up the instance with a custom wallpaper that displays the instance attributes\. 
+
+The shortcut path is:
+
+```
+$env:SystemDrive/Users/<user>/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/setwallpaper.lnk
+```
+
+ Note that removing the `setWallpaper` task does not delete this shortcut file\. For more information, see [`setWallpaper` task is not enabled but the wallpaper resets at reboot](ec2launchv2-troubleshooting.md#ec2launchv2-troubleshooting-wallpaper-resets)\.
 
 *Frequency* — always
 
@@ -933,7 +973,7 @@ tasks:
       New-Item -Path 'C:\PowerShellTest.txt' -ItemType File
 ```
 
-The following format is compatible with the previous version of this service\.
+The following format is compatible with the previous version of this service\. It is run as an `executeScript` task in the `UserData` stage\. To mimic the behavior of the previous version, it will be set to run as a detached process\.
 
 ```
 <powershell>

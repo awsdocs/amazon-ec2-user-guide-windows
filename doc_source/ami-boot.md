@@ -1,12 +1,12 @@
 # Boot modes<a name="ami-boot"></a>
 
-When a computer boots up, the first software that it runs is responsible for initializing the platform and providing an interface for the operating system to perform platform\-specific operations\.
+When a computer boots, the first software that it runs is responsible for initializing the platform and providing an interface for the operating system to perform platform\-specific operations\.
 
 **Default boot modes**  
 In EC2, two variants of the boot mode software are supported: Legacy BIOS and Unified Extensible Firmware Interface \(UEFI\)\. By default, Intel and AMD instance types run on Legacy BIOS, and Graviton instance types run on UEFI\.
 
-**Intel and AMD instances types that can optionally run on UEFI**  
-[Most Intel and AMD instance types](#UEFI-supported-types) can also run on UEFI instead of on the default Legacy BIOS\. To use UEFI, you must select an AMI with the boot mode parameter set to **uefi**, and the operating system contained in the AMI must be configured to support UEFI\.
+**Running Intel and AMD instances types on UEFI**  
+[Most Intel and AMD instance types](#UEFI-supported-types) can run on both UEFI and Legacy BIOS\. To use UEFI, you must select an AMI with the boot mode parameter set to **uefi**, and the operating system contained in the AMI must be configured to support UEFI\.
 
 **Purpose of the AMI boot mode parameter**  
 The AMI boot mode parameter signals to EC2 which boot mode to use when launching an instance\. When the boot mode parameter is set to **uefi**, EC2 attempts to launch the instance on UEFI\. If the operating system is not configured to support UEFI, the instance launch might be unsuccessful\.
@@ -25,15 +25,15 @@ The AMI boot mode parameter is optional\. An AMI can have one of the following b
 + [Determine the boot mode of an instance](#instance-boot-mode)
 + [Determine the boot mode of the OS](#os-boot-mode)
 + [Set the boot mode of an AMI](#set-ami-boot-mode)
++ [UEFI variables](#uefi-variables)
 
 ## Considerations<a name="boot-considerations"></a>
-
-**Default boot modes**
-+ Intel and AMD instance types: Legacy BIOS
-+ Graviton instance types: UEFI
-
-**Intel and AMD instance types that support UEFI, in addition to Legacy BIOS**
-+ Virtualized: C5, C5a, C5ad, C5d, C5n, D3, D3en, G4, I3en, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, R5, R5a, R5ad, R5b, R5d, R5dn, R5n, T3, T3a, and z1d
++ Default boot modes:
+  + Intel and AMD instance types: Legacy BIOS
+  + Graviton instance types: UEFI
++ Intel and AMD instance types that support UEFI, in addition to Legacy BIOS:
+  + Virtualized: C5, C5a, C5ad, C5d, C5n, D3, D3en, G4, I3en, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6i, R5, R5a, R5ad, R5b, R5d, R5dn, R5n, T3, T3a, and z1d
++ UEFI Secure Boot is currently not supported\.
 
 ## Requirements for launching an instance with UEFI<a name="uefi-requirements"></a>
 
@@ -42,8 +42,8 @@ To launch an instance in UEFI mode, you must select an instance type that suppor
 + **AMI** – When launching an instance, you must select an AMI that is configured for UEFI\. The AMI must be configured as follows:
   + **OS** – The operating system contained in the AMI must be configured to use UEFI; otherwise, the instance launch will fail\. For more information, see [Determine the boot mode of the OS](#os-boot-mode)\.
   + **AMI boot mode parameter** – The boot mode parameter of the AMI must be set to `uefi`\. For more information, see [Determine the boot mode parameter of an AMI](#ami-boot-mode)\.
-**Note**  
-Currently AWS does not provide AMIs that are already configured to support UEFI\. To use an AMI that supports UEFI, you must either create the AMI or import it through CloudEndure\. For more information, see [Set the boot mode of an AMI](#set-ami-boot-mode) and the [CloudEndure Documentation](https://docs.cloudendure.com/)\.
+
+AWS does not provide AMIs that are already configured to support UEFI\. You must [configure the AMI](#set-ami-boot-mode), import the AMI through [VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/), or import the AMI through [CloudEndure](https://docs.cloudendure.com/)\.
 
 ## Determine the boot mode parameter of an AMI<a name="ami-boot-mode"></a>
 
@@ -62,7 +62,7 @@ Some AMIs do not have a boot mode parameter\. When an AMI has no boot mode param
 **To determine the boot mode parameter of an AMI when launching an instance \(console\)**  
 When launching an instance using the launch instance wizard, at the step to select an AMI, inspect the **Boot mode** field\. For more information, see [Step 1: Choose an Amazon Machine Image \(AMI\)](launching-instance.md#step-1-AMI)\.
 
-**To determine the boot mode parameter of an AMI \(AWS CLI\)**  
+**To determine the boot mode parameter of an AMI \(AWS CLI version 1\.19\.34 and later and version 2\.1\.32 and later\)**  
 Use the [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) command to determine the boot mode of an AMI\.
 
 ```
@@ -93,7 +93,7 @@ Expected output
 
 ## Determine the supported boot modes of an instance type<a name="instance-type-boot-mode"></a>
 
-**To determine the supported boot modes of an instance type \(AWS CLI\)**  
+**To determine the supported boot modes of an instance type \(AWS CLI version 1\.19\.34 and later and version 2\.1\.32 and later\)**  
 Use the [describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command to determine the supported boot modes of an instance type\. By including the `--query` parameter, you can filter the output\. In this example, the output is filtered to return only the supported boot modes\.
 
 The following example shows that `m5.2xlarge` supports both UEFI and Legacy BIOS boot modes\.
@@ -146,7 +146,7 @@ The value of the instance's boot mode parameter determines the mode in which it 
 
 1. On the **Details** tab, inspect the **Boot mode** field\.
 
-**To determine the boot mode of an instance \(AWS CLI\)**  
+**To determine the boot mode of an instance \(AWS CLI version 1\.19\.34 and later and version 2\.1\.32 and later\)**  
 Use the [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) command to determine the boot mode of an instance\.
 
 ```
@@ -199,7 +199,7 @@ You can't set the boot mode of an AMI using the [create\-image](https://docs.aws
 **Warning**  
 Before proceeding with these steps, you must first make suitable modifications to the instance's volume and OS to support booting via the selected boot mode; otherwise, the resulting AMI will not be usable\. For example, if you are converting a Legacy BIOS\-based instance to UEFI, you can use the [MBR2GPT](https://docs.microsoft.com/en-us/windows/deployment/mbr-to-gpt) tool from Microsoft to convert the system disk from MBR to GPT\. The modifications that are required are operating system\-specific\. For more information, see the manual for your operating system\.
 
-**To set the boot mode of an AMI \(AWS CLI\)**
+**To set the boot mode of an AMI \(AWS CLI version 1\.19\.34 and later and version 2\.1\.32 and later\)**
 
 1. Make suitable modifications to the instance's volume and OS to support booting via the selected boot mode\. The modifications that are required are operating system\-specific\. For more information, see the manual for your operating system\.
 **Note**  
@@ -327,3 +327,12 @@ If you don't perform this step, the AMI will not be usable\.
 1. Launch a new instance using the newly\-created AMI\. All new instances created from this AMI will inherit the same boot mode\.
 
 1. To verify that the new instance has the expected boot mode, use the [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) command\.
+
+## UEFI variables<a name="uefi-variables"></a>
+
+When you launch an instance where the boot mode is set to UEFI, a key\-value store for variables is created\. The store can be used by UEFI and the instance operating system for storing UEFI variables\.
+
+UEFI variables are used by the boot loader and the OS to configure early system startup\. They allow the OS to manage certain settings of the boot process, like the boot order\.
+
+**Warning**  
+Operating systems often provide read access to local processes for any UEFI variable\. You should never store sensitive data, such as passwords or personally identifiable information, in the UEFI variable store\.

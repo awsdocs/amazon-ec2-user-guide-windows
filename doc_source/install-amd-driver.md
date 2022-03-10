@@ -2,7 +2,7 @@
 
 An instance with an attached AMD GPU, such as a G4ad instance, must have the appropriate AMD driver installed\. Depending on your requirements, you can either use an AMI with the driver preinstalled or download a driver from Amazon S3\.
 
-To install NVIDIA drivers on an instance with an attached NVIDIA GPU, such as a G4dn instance, see [Install NVIDIA drivers on Windows instances](install-nvidia-driver.md) instead\.
+To install NVIDIA drivers on an instance with an attached NVIDIA GPU, such as a G4dn instance, see [Install NVIDIA drivers](install-nvidia-driver.md) instead\.  To install AMD drivers on a Linux instance, see [Install AMD drivers on a Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/install-amd-driver.html)\.
 
 **Contents**
 + [AMD Radeon Pro Software for Enterprise Driver](#amd-radeon-pro-software-for-enterprise-driver)
@@ -57,10 +57,26 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 1. Unzip the downloaded driver file and run the installer using the following PowerShell commands\.
 
    ```
-   Expand-Archive $LocalFilePath -DestinationPath $home\Desktop -Verbose
+   Expand-Archive $LocalFilePath -DestinationPath $home\Desktop\AMD\latest -Verbose
    $Driverdir = Get-ChildItem $home\Desktop\ -Directory -Filter "*WHQL*"
    Write-Host $Driverdir
-   pnputil /add-driver $home\Desktop\$Driverdir\Drivers\Display\WT6A_INF\*inf /install
+   ```
+
+   Now, check the name of the new directory\. It may vary but a simple `ls` command will display the current name\. Example:
+
+   ```
+   PS C:\Users\Administrator>  ls C:\Users\Administrator\Desktop\AMD\latest\
+       Directory: C:\Users\Administrator\Desktop\AMD\latest
+   
+   Mode                LastWriteTime         Length Name
+   ----                -------------         ------ ----
+   d-----       10/13/2021  12:52 AM                210414a-365562C-Retail_End_User.2
+   ```
+
+   Note the correct file path and install the drivers:
+
+   ```
+   pnputil /add-driver $home\Desktop\AMD\latest\210414a-365562C-Retail_End_User.2\packages\Drivers\Display\WT6A_INF/*.inf /install
    ```
 
 1. Follow the instructions to install the driver and reboot your instance as required\.

@@ -7,9 +7,11 @@ The following are common errors and troubleshooting steps\.
   + [OpenGL rendering performance issues](#elastic-graphics-opengl-performance)
   + [Remote access performance issues](#elastic-graphics-remote-performance)
 + [Resolve unhealthy status issues](#elastic-graphics-troubleshooting_unhealthy_status)
+  + [Check the instance configuration](#elastic-graphics-instance-config)
   + [Stop and start the instance](#elastic-graphics-start-and-stop)
   + [Verify the installed components](#elastic-graphics-verify)
   + [Check the Elastic Graphics logs](#elastic-graphics-check-logs)
++ [Why am I seeing multiple ENIs?](#elastic-graphics-multiple-enis)
 
 ## Investigate application performance issues<a name="elastic-graphics-troubleshooting_performance"></a>
 
@@ -80,6 +82,16 @@ For more information about optimization, see the specific protocol\.
 
 If the Elastic Graphics accelerator is in an unhealthy state, use the following troubleshooting steps to resolve the issue\.
 
+### Check the instance configuration<a name="elastic-graphics-instance-config"></a>
+
+If the Elastic Graphics command line tool, `egcli.exe`, returns output similar to the following, ensure that your [security group is properly configured](working-with-elastic-graphics.md#elastic-graphics-security) and that you launched the instance with Instance Metadata Service enabled\.
+
+```
+EG Version 1.0.7.4240 (Manager) / N/A (OpenGL Library) / N/A (OpenGL Redirector)
+EG Status: Out Of Service
+Something prevented the EG Infrastructure to work properly.
+```
+
 ### Stop and start the instance<a name="elastic-graphics-start-and-stop"></a>
 
 If your Elastic Graphics accelerator is in an unhealthy state, stopping the instance and starting it again is the simplest option\. For more information, see [Stop and start your instances](Stop_Start.md#starting-stopping-instances)\.
@@ -101,3 +113,11 @@ If any of these items are missing, you must install them manually\. For more inf
 Open the Windows Event Viewer, expand the **Application and Services Logs** section, and search for errors in the following event logs:
 + EC2ElasticGPUs
 + EC2ElasticGPUs GUI
+
+## Why am I seeing multiple ENIs?<a name="elastic-graphics-multiple-enis"></a>
+
+When calling [StartInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html) on an EC2 instance with an Elastic Graphics accelerator, a new Elastic Network Interface \(ENI\) is created on the instance to allow OpenGL commands to be sent to the remotely attached graphics card\.
+
+If you call [StartInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html) many times in a short period of time \(a few seconds or less\) on the same EC2 instance, a new network interface is created on each call\. However: 
++ Only one network interface will be used by the Elastic Graphics accelerator\.
++ Extra network interfaces don't incur any charges and will be automatically released in 24 hours\.

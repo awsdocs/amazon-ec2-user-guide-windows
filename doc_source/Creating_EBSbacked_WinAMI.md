@@ -15,11 +15,14 @@ To create a custom Linux AMI, use the procedure for the type of volume for the i
 
 First, launch an instance from an AMI that's similar to the AMI that you'd like to create\. You can connect to your instance and customize it\. When the instance is set up the way you want it, ensure data integrity by stopping the instance before you create an AMI and then create the image\. We automatically register the AMI for you\.
 
-During the AMI\-creation process, Amazon EC2 creates snapshots of your instance's root volume and any other EBS volumes attached to your instance\. You're charged for the snapshots until you deregister the AMI and delete the snapshots\. For more information, see [Deregister your Windows AMI](deregister-ami.md)\. If any volumes attached to the instance are encrypted, the new AMI only launches successfully on instance types that support Amazon EBS encryption\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
+During the AMI\-creation process, Amazon EC2 creates snapshots of your instance's root volume and any other EBS volumes attached to your instance\. You're charged for the snapshots until you deregister the AMI and delete the snapshots\. For more information, see [Deregister your AMI](deregister-ami.md)\. If any volumes attached to the instance are encrypted, the new AMI only launches successfully on instance types that support Amazon EBS encryption\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
 
 Depending on the size of the volumes, it can take several minutes for the AMI\-creation process to complete \(sometimes up to 24 hours\)\. You may find it more efficient to create snapshots of your volumes prior to creating your AMI\. This way, only small, incremental snapshots need to be created when the AMI is created, and the process completes more quickly \(the total time for snapshot creation remains the same\)\. For more information, see [Create Amazon EBS snapshots](ebs-creating-snapshot.md)\.
 
 After the process completes, you have a new AMI and snapshot created from the root volume of the instance\. When you launch an instance using the new AMI, we create a new EBS volume for its root volume using the snapshot\.
+
+**Note**  
+A Windows AMI must be created from an Amazon EC2 instance\. Creation of a Windows AMI from an EBS snapshot is currently not supported as it might cause issues with billing, performance, and general operation\.
 
 If you add instance store volumes or Amazon Elastic Block Store \(Amazon EBS\) volumes to your instance in addition to the root device volume, the block device mapping for the new AMI contains information for these volumes, and the block device mappings for instances that you launch from the new AMI automatically contain information for these volumes\. The instance store volumes specified in the block device mapping for the new instance are new and don't contain any data from the instance store volumes of the instance you used to create the AMI\. The data on EBS volumes persists\. For more information, see [Block device mappings](block-device-mapping-concepts.md)\.
 
@@ -36,17 +39,17 @@ You can create an AMI using the AWS Management Console or the command line\. The
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Images**, **AMIs**\.
+1. In the navigation pane, under **Images**, choose **AMIs**\.
 
-1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **Amazon images**\. Choose **Source** from the menu and type one of the following, depending on the version of Windows Server that you need:
+1. Use the **Filter** options to scope the list of AMIs to the Windows AMIs that meet your needs\. For example, to view the Windows AMIs provided by AWS, choose **Public images** from the drop\-down list\. Choose the Search bar\. Choose **Owner** from the menu and choose **amazon**\. Choose **Source** from the menu and enter one of the following, depending on the version of Windows Server that you need:
+   + **amazon/Windows\_Server\-2022**
    + **amazon/Windows\_Server\-2019**
    + **amazon/Windows\_Server\-2016**
    + **amazon/Windows\_Server\-2012**
-   + **amazon/Windows\_Server\-2008**
 
    Add any other filters that you need\. When you have chosen an AMI, select its check box\.
 
-1. Choose **Launch**\. Accept the default values as you step through the wizard\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\. When the instance is ready, connect to it\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
+1. Choose **Launch instance from image** \(new console\) or **Launch** \(old console\)\. Accept the default values as you step through the wizard\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\. When the instance is ready, connect to it\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. You can perform any of the following actions on your instance to customize it for your needs:
    + Install software and applications
@@ -56,7 +59,8 @@ You can create an AMI using the AWS Management Console or the command line\. The
    + Create a new user account and add it to the Administrators group
 
      If you are sharing your AMI, these credentials can be supplied for RDP access without disclosing your default administrator password\.
-   + \[Windows Server 2016 and later\] Configure settings using EC2Launch\. To generate a random password at launch time, use the `adminPasswordType` setting\. For more information, see [Configure EC2Launch](ec2launch.md#ec2launch-config)\.
+   + \[Windows Server 2022 and later\] Configure settings using EC2Launch v2\. To generate a random password at launch time, configure the `setAdminAccount` task\. For more information, see [setAdminAccount](ec2launch-v2-settings.md#ec2launch-v2-setadminaccount)\.
+   + \[Windows Server 2016 and 2019\] Configure settings using EC2Launch\. To generate a random password at launch time, use the `adminPasswordType` setting\. For more information, see [Configure EC2Launch](ec2launch.md#ec2launch-config)\.
    + \[Windows Server 2012 R2 and earlier\] Configure settings using EC2Config\. To generate a random password at launch time, enable the `Ec2SetPassword` plugin; otherwise, the current administrator password is used\. For more information, see [EC2Config settings files](ec2config-service.md#UsingConfigXML_WinAMI)\.
    + \[Windows Server 2008 R2\] If the instance uses RedHat drivers to access Xen virtualized hardware, upgrade to Citrix drivers before you create an AMI\. For more information, see [Upgrade Windows Server 2008 and 2008 R2 instances \(Redhat to Citrix PV upgrade\)](Upgrading_PV_drivers.md#win2008-citrix-upgrade)\.
 
@@ -79,7 +83,7 @@ If you choose **No reboot**, we can't guarantee the file system integrity of the
 
    When you are finished, choose **Create Image**\.
 
-1. While your AMI is being created, you can choose **AMIs** in the navigation pane to view its status\. Initially, this is `pending`\. After a few minutes, the status should change to `available`\.
+1. While your AMI is being created, you can choose **AMIs** in the navigation pane to view its status\. Clear your previous filters, and choose **Owned by me** from the drop\-down list\. Initially, the status is `pending`\. After a few minutes, the status should change to `available`\.
 
    \(Optional\) Choose **Snapshots** in the navigation pane to view the snapshot that was created for the new AMI\. When you launch an instance from this AMI, we use this snapshot to create its root device volume\.
 
@@ -97,7 +101,7 @@ The Microsoft System Preparation \(Sysprep\) tool simplifies the process of dupl
 
 We recommend that you use [EC2 Image Builder](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html) to automate the creation, management, and deployment of customized, secure, and up\-to\-date "golden" server images that are pre\-installed and preconfigured with software and settings\.
 
-If you use Sysprep to create a standardized AMI, we recommend that you run Sysprep with [EC2Launch v2](ec2launch-v2.md)\. If you are still using the EC2Config \(Windows Server 2012 R2 and earlier\) or EC2Launch \(Windows Server 2016 and later\) agents, see the documentation for using Sysprep with EC2Config and EC2Launch below\.
+If you use Sysprep to create a standardized AMI, we recommend that you run Sysprep with [EC2Launch v2](ec2launch-v2.md)\. If you are still using the EC2Config \(Windows Server 2012 R2 and earlier\) or EC2Launch \(Windows Server 2016 and 2019\) agents, see the documentation for using Sysprep with EC2Config and EC2Launch below\.
 
 **Important**  
 Do not use Sysprep to create an instance backup\. Sysprep removes system\-specific information; removing this information might have unintended consequences for an instance backup\.
@@ -239,7 +243,9 @@ When you are asked to confirm that you want to run Sysprep and shut down the ins
 
 You can manually invoke the Sysprep tool from the command line using the following command:
 
-"%programfiles%\\amazon\\ec2launch\\ec2launch\.exe" sysprep
+```
+"%programfiles%\amazon\ec2launch\ec2launch.exe" sysprep --shutdown=true
+```
 
 ### Use Sysprep with EC2Launch<a name="ec2launch-sysprep"></a>
 

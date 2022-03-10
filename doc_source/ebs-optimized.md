@@ -7,6 +7,7 @@ EBS–optimized instances deliver dedicated bandwidth to Amazon EBS\. When attac
 **Topics**
 + [Supported instance types](#ebs-optimization-support)
 + [Get maximum performance](#ebs-optimization-performance)
++ [View instances types that support EBS optimization](#describe-ebs-optimization)
 + [Enable EBS optimization at launch](#enable-ebs-optimization)
 + [Enable EBS optimization for an existing instance](#modify-ebs-optimized-attribute)
 
@@ -17,6 +18,9 @@ The following tables show which instance types support EBS optimization\. They i
 ### EBS optimized by default<a name="current"></a>
 
 The following table lists the instance types that support EBS optimization and EBS optimization is enabled by default\. There is no need to enable EBS optimization and no effect if you disable EBS optimization\.
+
+**Note**  
+You can also view this information programatically using the AWS CLI\. For more information, see [View instances types that support EBS optimization](#describe-ebs-optimization)\.
 
 
 | Instance size | Maximum bandwidth \(Mbps\) | Maximum throughput \(MB/s, 128 KiB I/O\) | Maximum IOPS \(16 KiB I/O\) | 
@@ -67,6 +71,26 @@ The following table lists the instance types that support EBS optimization and E
 | c5n\.9xlarge | 9,500 | 1,187\.5 | 40,000 | 
 | c5n\.18xlarge | 19,000 | 2,375 | 80,000 | 
 | c5n\.metal | 19,000 | 2,375 | 80,000 | 
+| c6a\.large | 6,666\.664 | 833\.333 | 26,667 | 
+| c6a\.xlarge | 6,666\.664 | 833\.333 | 26,667 | 
+| c6a\.2xlarge | 6,666\.664 | 833\.333 | 26,667 | 
+| c6a\.4xlarge | 6,666\.664 | 833\.333 | 26,667 | 
+| c6a\.8xlarge | 6,666\.664 | 833\.333 | 26,667 | 
+| c6a\.12xlarge | 10,000 | 1,250 | 40,000 | 
+| c6a\.16xlarge | 13,300 | 1,662\.5 | 53,333 | 
+| c6a\.24xlarge | 20,000 | 2,500 | 80,000 | 
+| c6a\.32xlarge | 26,666\.664 | 3,333\.333 | 100,000 | 
+| c6a\.48xlarge | 40,000 | 5,000 | 160,000 | 
+| c6i\.large \* | 10,000 | 1,250 | 40,000 | 
+| c6i\.xlarge \* | 10,000 | 1,250 | 40,000 | 
+| c6i\.2xlarge \* | 10,000 | 1,250 | 40,000 | 
+| c6i\.4xlarge \* | 10,000 | 1,250 | 40,000 | 
+| c6i\.8xlarge | 10,000 | 1,250 | 40,000 | 
+| c6i\.12xlarge | 15,000 | 1,875 | 60,000 | 
+| c6i\.16xlarge | 20,000 | 2,500 | 80,000 | 
+| c6i\.24xlarge | 30,000 | 3,750 | 120,000 | 
+| c6i\.32xlarge | 40,000 | 5,000 | 160,000 | 
+| c6i\.metal | 40,000 | 5,000 | 160,000 | 
 | d2\.xlarge | 750 | 93\.75 | 6,000 | 
 | d2\.2xlarge | 1,000 | 125 | 8,000 | 
 | d2\.4xlarge | 2,000 | 250 | 16,000 | 
@@ -87,6 +111,8 @@ The following table lists the instance types that support EBS optimization and E
 | g3\.4xlarge | 3,500 | 437\.5 | 20,000 | 
 | g3\.8xlarge | 7,000 | 875 | 40,000 | 
 | g3\.16xlarge | 14,000 | 1,750 | 80,000 | 
+| g4ad\.xlarge \* | 3,170 | 396\.25 | 13,333 | 
+| g4ad\.2xlarge \* | 3,170 | 396\.25 | 13,333 | 
 | g4ad\.4xlarge \* | 3,170 | 396\.25 | 13,333 | 
 | g4ad\.8xlarge | 3,170 | 396\.25 | 13,333 | 
 | g4ad\.16xlarge | 6,300 | 787\.5 | 26,667 | 
@@ -97,6 +123,14 @@ The following table lists the instance types that support EBS optimization and E
 | g4dn\.12xlarge | 9,500 | 1,187\.5 | 40,000 | 
 | g4dn\.16xlarge | 9,500 | 1,187\.5 | 40,000 | 
 | g4dn\.metal | 19,000 | 2,375 | 80,000 | 
+| g5\.xlarge \* | 3,500 | 437\.5 | 15,000 | 
+| g5\.2xlarge \* | 3,500 | 437\.5 | 15,000 | 
+| g5\.4xlarge | 4,750 | 593\.75 | 20,000 | 
+| g5\.8xlarge | 16,000 | 2,000 | 65,000 | 
+| g5\.12xlarge | 16,000 | 2,000 | 65,000 | 
+| g5\.16xlarge | 16,000 | 2,000 | 65,000 | 
+| g5\.24xlarge | 19,000 | 2,375 | 80,000 | 
+| g5\.48xlarge | 19,000 | 2,375 | 80,000 | 
 | h1\.2xlarge | 1,750 | 218\.75 | 12,000 | 
 | h1\.4xlarge | 3,500 | 437\.5 | 20,000 | 
 | h1\.8xlarge | 7,000 | 875 | 40,000 | 
@@ -181,6 +215,26 @@ The following table lists the instance types that support EBS optimization and E
 | m5zn\.6xlarge | 9,500 | 1187\.5 | 40,000 | 
 | m5zn\.12xlarge | 19,000 | 2,375 | 80,000 | 
 | m5zn\.metal | 19,000 | 2,375 | 80,000 | 
+| m6a\.large \* | 6,666\.666664 | 833\.333333 | 26,667 | 
+| m6a\.xlarge \* | 6,666\.666664 | 833\.333333 | 26,667 | 
+| m6a\.2xlarge \* | 6,666\.666664 | 833\.333333 | 26,667 | 
+| m6a\.4xlarge \* | 6,666\.666664 | 833\.333333 | 26,667 | 
+| m6a\.8xlarge | 6,666\.666664 | 833\.333333 | 26,667 | 
+| m6a\.12xlarge | 10,000 | 1,250 | 40,000 | 
+| m6a\.16xlarge | 13,300 | 1,662\.5 | 53,333 | 
+| m6a\.24xlarge | 20,000 | 2,500 | 80,000 | 
+| m6a\.32xlarge | 26,666\.666664 | 3,333\.333333 | 100,000 | 
+| m6a\.48xlarge | 40,000 | 5,000 | 160,000 | 
+| m6i\.large \* | 10,000 | 1,250 | 40,000 | 
+| m6i\.xlarge \* | 10,000 | 1,250 | 40,000 | 
+| m6i\.2xlarge \* | 10,000 | 1,250 | 40,000 | 
+| m6i\.4xlarge \* | 10,000 | 1,250 | 40,000 | 
+| m6i\.8xlarge | 10,000 | 1,250 | 40,000 | 
+| m6i\.12xlarge | 15,000 | 1,875 | 60,000 | 
+| m6i\.16xlarge | 20,000 | 2,500 | 80,000 | 
+| m6i\.24xlarge | 30,000 | 3,750 | 120,000 | 
+| m6i\.32xlarge | 40,000 | 5,000 | 160,000 | 
+| m6i\.metal | 40,000 | 5,000 | 160,000 | 
 | p2\.xlarge | 750 | 93\.75 | 6,000 | 
 | p2\.8xlarge | 5,000 | 625 | 32,500 | 
 | p2\.16xlarge | 10,000 | 1,250 | 65,000 | 
@@ -255,6 +309,16 @@ The following table lists the instance types that support EBS optimization and E
 | r5n\.16xlarge | 13,600 | 1,700 | 60,000 | 
 | r5n\.24xlarge | 19,000 | 2,375 | 80,000 | 
 | r5n\.metal | 19,000 | 2,375 | 80,000 | 
+| r6i\.large \* | 10,000 | 1,250 | 40,000 | 
+| r6i\.xlarge \* | 10,000 | 1,250 | 40,000 | 
+| r6i\.2xlarge \* | 10,000 | 1,250 | 40,000 | 
+| r6i\.4xlarge \* | 10,000 | 1,250 | 40,000 | 
+| r6i\.8xlarge | 10,000 | 1,250 | 40,000 | 
+| r6i\.12xlarge | 15,000 | 1,875 | 60,000 | 
+| r6i\.16xlarge | 20,000 | 2,500 | 80,000 | 
+| r6i\.24xlarge | 30,000 | 3,750 | 120,000 | 
+| r6i\.32xlarge | 40,000 | 5,000 | 160,000 | 
+| r6i\.metal | 40,000 | 5,000 | 160,000 | 
 | t3\.nano \* | 2,085 | 260\.57 | 11,800 | 
 | t3\.micro \* | 2,085 | 260\.57 | 11,800 | 
 | t3\.small \* | 2,085 | 260\.57 | 11,800 | 
@@ -269,8 +333,13 @@ The following table lists the instance types that support EBS optimization and E
 | t3a\.large \* | 2,780 | 347\.5 | 15,700 | 
 | t3a\.xlarge \* | 2,780 | 347\.5 | 15,700 | 
 | t3a\.2xlarge \* | 2,780 | 347\.5 | 15,700 | 
+| u\-3tb1\.56xlarge | 19,000 | 2,375 | 80,000 | 
+| u\-6tb1\.56xlarge | 38,000 | 4,750 | 160,000 | 
+| u\-6tb1\.112xlarge | 38,000 | 4,750 | 160,000 | 
 | u\-6tb1\.metal | 38,000 | 4,750 | 160,000 | 
+| u\-9tb1\.112xlarge | 38,000 | 4,750 | 160,000 | 
 | u\-9tb1\.metal | 38,000 | 4,750 | 160,000 | 
+| u\-12tb1\.112xlarge | 38,000 | 4,750 | 160,000 | 
 | u\-12tb1\.metal | 38,000 | 4,750 | 160,000 | 
 | u\-18tb1\.metal | 38,000 | 4,750 | 160,000 | 
 | u\-24tb1\.metal | 38,000 | 4,750 | 160,000 | 
@@ -282,6 +351,12 @@ The following table lists the instance types that support EBS optimization and E
 | x1e\.8xlarge | 3,500 | 437\.5 | 20,000 | 
 | x1e\.16xlarge | 7,000 | 875 | 40,000 | 
 | x1e\.32xlarge | 14,000 | 1,750 | 80,000 | 
+| x2iezn\.2xlarge | 3,170 | 396\.25 | 13,333 | 
+| x2iezn\.4xlarge | 4,750 | 593\.75 | 20,000 | 
+| x2iezn\.6xlarge | 9,500 | 1,187\.5 | 40,000 | 
+| x2iezn\.8xlarge | 12,000 | 1,500 | 55,000 | 
+| x2iezn\.12xlarge | 19,000 | 2,375 | 80,000 | 
+| x2iezn\.metal | 19,000 | 2,375 | 80,000 | 
 | z1d\.large \* | 3,170 | 396\.25 | 13,333 | 
 | z1d\.xlarge \* | 3,170 | 396\.25 | 13,333 | 
 | z1d\.2xlarge | 3,170 | 396\.25 | 13,333 | 
@@ -312,14 +387,26 @@ The following table lists the instance types that support EBS optimization and E
 | c5n\.large | 650 | 81\.25 | 4,000 | 
 | c5n\.xlarge | 1,150 | 143\.75 | 6,000 | 
 | c5n\.2xlarge | 2,300 | 287\.5 | 10,000 | 
+| c6a\.large | 531 | 66\.375 | 3,600 | 
+| c6a\.xlarge | 1,061 | 132\.625 | 6,000 | 
+| c6a\.2xlarge | 2,122 | 265\.25 | 8,333 | 
+| c6a\.4xlarge | 4,245 | 530\.625 | 16,000 | 
+| c6i\.large | 650 | 81\.25 | 3,600 | 
+| c6i\.xlarge | 1,250 | 156\.25 | 6,000 | 
+| c6i\.2xlarge | 2,500 | 312\.5 | 12,000 | 
+| c6i\.4xlarge | 5,000 | 625 | 20,000 | 
 | d3\.xlarge | 850 | 106\.25 | 5,000 | 
 | d3\.2xlarge | 1,700 | 212\.5 | 10,000 | 
 | d3en\.large | 425 | 53\.125 | 2,500 | 
 | d3en\.xlarge | 850 | 106\.25 | 5,000 | 
 | d3en\.2xlarge | 1,700 | 212\.5 | 10,000 | 
+| g4ad\.xlarge | 400 | 50 | 1,700 | 
+| g4ad\.2xlarge | 800 | 100 | 3,400 | 
 | g4ad\.4xlarge | 1,580 | 197\.5 | 6,700 | 
 | g4dn\.xlarge | 950 | 118\.75 | 3,000 | 
 | g4dn\.2xlarge | 1,150 | 143\.75 | 6,000 | 
+| g5\.xlarge | 700 | 87\.5 | 3,000 | 
+| g5\.2xlarge | 850 | 106\.25 | 3,500 | 
 | i3en\.large | 577 | 72\.1 | 3,000 | 
 | i3en\.xlarge | 1,154 | 144\.2 | 6,000 | 
 | i3en\.2xlarge | 2,307 | 288\.39 | 12,000 | 
@@ -344,6 +431,14 @@ The following table lists the instance types that support EBS optimization and E
 | m5n\.2xlarge | 2,300 | 287\.5 | 12,000 | 
 | m5zn\.large | 800 | 100 | 3,333 | 
 | m5zn\.xlarge | 1,580 | 195\.5 | 6,667 | 
+| m6a\.large | 531 | 66\.375 | 3,600 | 
+| m6a\.xlarge | 1,061 | 132\.625 | 6,000 | 
+| m6a\.2xlarge | 2,122 | 265\.25 | 8,333 | 
+| m6a\.4xlarge | 4,245 | 530\.625 | 16,000 | 
+| m6i\.large | 650 | 81\.25 | 3,600 | 
+| m6i\.xlarge | 1,250 | 156\.25 | 6,000 | 
+| m6i\.2xlarge | 2,500 | 312\.5 | 12,000 | 
+| m6i\.4xlarge | 5,000 | 625 | 20,000 | 
 | r5\.large | 650 | 81\.25 | 3,600 | 
 | r5\.xlarge | 1,150 | 143\.75 | 6,000 | 
 | r5\.2xlarge | 2,300 | 287\.5 | 12,000 | 
@@ -365,6 +460,10 @@ The following table lists the instance types that support EBS optimization and E
 | r5n\.large | 650 | 81\.25 | 3,600 | 
 | r5n\.xlarge | 1,150 | 143\.75 | 6,000 | 
 | r5n\.2xlarge | 2,300 | 287\.5 | 12,000 | 
+| r6i\.large | 650 | 81\.25 | 3,600 | 
+| r6i\.xlarge | 1,250 | 156\.25 | 6,000 | 
+| r6i\.2xlarge | 2,500 | 312\.5 | 12,000 | 
+| r6i\.4xlarge | 5,000 | 625 | 20,000 | 
 | t3\.nano | 43 | 5\.43 | 250 | 
 | t3\.micro | 87 | 10\.86 | 500 | 
 | t3\.small | 174 | 21\.71 | 1,000 | 
@@ -385,6 +484,9 @@ The following table lists the instance types that support EBS optimization and E
 ### EBS optimization supported<a name="previous"></a>
 
 The following table lists the instance types that support EBS optimization but EBS optimization is not enabled by default\. You can enable EBS optimization when you launch these instances or after they are running\. Instances must have EBS optimization enabled to achieve the level of performance described\. When you enable EBS optimization for an instance that is not EBS\-optimized by default, you pay an additional low, hourly fee for the dedicated capacity\. For pricing information, see EBS\-Optimized Instances on the [Amazon EC2 Pricing, On\-Demand Pricing page](http://aws.amazon.com/ec2/pricing/on-demand/)\.
+
+**Note**  
+You can also view this information programatically using the AWS CLI\. For more information, see [View instances types that support EBS optimization](#describe-ebs-optimization)\.
 
 
 | Instance size | Maximum bandwidth \(Mbps\) | Maximum throughput \(MB/s, 128 KiB I/O\) | Maximum IOPS \(16 KiB I/O\) | 
@@ -419,6 +521,60 @@ The high memory instances are designed to run large in\-memory databases, includ
 + G4dn, I3en, M5a, M5ad, R5a, R5ad, T3, T3a, and Z1d instances launched after February 26, 2020 provide the maximum performance listed in the table above\. To get the maximum performance from an instance launched before February 26, 2020, stop and start it\.
 + C5, C5d, C5n, M5, M5d, M5n, M5dn, R5, R5d, R5n, R5dn, and P3dn instances launched after December 3, 2019 provide the maximum performance listed in the table above\. To get the maximum performance from an instance launched before December 3, 2019, stop and start it\.
 + `u-6tb1.metal`, `u-9tb1.metal`, and `u-12tb1.metal` instances launched after March 12, 2020 provide the performance in the table above\. Instances of these types launched before March 12, 2020 might provide lower performance\. To get the maximum performance from an instance launched before March 12, 2020, contact your account team to upgrade the instance at no additional cost\.
+
+## View instances types that support EBS optimization<a name="describe-ebs-optimization"></a>
+
+You can use the AWS CLI to view the instances types in the current Region that support EBS optimization\.
+
+**To view the instance types that support EBS optimization and that have it enabled by default**  
+Use the following [ describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command\.
+
+```
+aws ec2 describe-instance-types \
+--query 'InstanceTypes[].{InstanceType:InstanceType,"MaxBandwidth(Mb/s)":EbsInfo.EbsOptimizedInfo.MaximumBandwidthInMbps,MaxIOPS:EbsInfo.EbsOptimizedInfo.MaximumIops,"MaxThroughput(MB/s)":EbsInfo.EbsOptimizedInfo.MaximumThroughputInMBps}' \
+--filters Name=ebs-info.ebs-optimized-support,Values=default --output=table
+```
+
+Example output for `eu-west-1`:
+
+```
+-----------------------------------------------------------------------------------------------
+|                                    DescribeInstanceTypes                                    |
++--------------+--------------------+---------------------+-----------+-----------------------+
+| EBSOptimized |   InstanceType     | MaxBandwidth(Mb/s)  |  MaxIOPS  |  MaxThroughput(MB/s)  |
++--------------+--------------------+---------------------+-----------+-----------------------+
+|  default     |  m5dn.8xlarge      |  6800               |  30000    |  850.0                |
+|  default     |  m6gd.xlarge       |  4750               |  20000    |  593.75               |
+|  default     |  c4.4xlarge        |  2000               |  16000    |  250.0                |
+|  default     |  r4.16xlarge       |  14000              |  75000    |  1750.0               |
+|  default     |  m5ad.large        |  2880               |  16000    |  360.0                |
+...
+```
+
+**To view the instance types that support EBS optimization but do not have it enabled by default**  
+Use the following [ describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command\.
+
+```
+aws ec2 describe-instance-types \
+--query 'InstanceTypes[].{InstanceType:InstanceType,"MaxBandwidth(Mb/s)":EbsInfo.EbsOptimizedInfo.MaximumBandwidthInMbps,MaxIOPS:EbsInfo.EbsOptimizedInfo.MaximumIops,"MaxThroughput(MB/s)":EbsInfo.EbsOptimizedInfo.MaximumThroughputInMBps}' \
+--filters Name=ebs-info.ebs-optimized-support,Values=supported --output=table
+```
+
+Example output for `eu-west-1`:
+
+```
+------------------------------------------------------------------------------------------
+|                                  DescribeInstanceTypes                                 |
++--------------+---------------+----------------------+----------+-----------------------+
+| EBSOptimized | InstanceType  | MaxBandwidth(Mb/s)   | MaxIOPS  |  MaxThroughput(MB/s)  |
++--------------+---------------+----------------------+----------+-----------------------+
+|  supported   |  m2.4xlarge   |  1000                |  8000    |  125.0                |
+|  supported   |  i2.2xlarge   |  1000                |  8000    |  125.0                |
+|  supported   |  r3.4xlarge   |  2000                |  16000   |  250.0                |
+|  supported   |  m3.xlarge    |  500                 |  4000    |  62.5                 |
+|  supported   |  r3.2xlarge   |  1000                |  8000    |  125.0                |
+...
+```
 
 ## Enable EBS optimization at launch<a name="enable-ebs-optimization"></a>
 

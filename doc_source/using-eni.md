@@ -11,7 +11,7 @@ An *elastic network interface* is a logical networking component in a VPC that r
 + A source/destination check flag
 + A description
 
-You can create and configure network interfaces in your account and attach them to instances in your VPC\. Your account might also have *requester\-managed* network interfaces, which are created and managed by AWS services to enable you to use other resources and services\. You cannot manage these network interfaces yourself\. For more information, see [Requester\-managed network interfaces](requester-managed-eni.md)\.
+You can create and configure network interfaces and attach them to instances in the same Availability Zone\. Your account might also have *requester\-managed* network interfaces, which are created and managed by AWS services to enable you to use other resources and services\. You cannot manage these network interfaces yourself\. For more information, see [Requester\-managed network interfaces](requester-managed-eni.md)\.
 
 This AWS resource is referred to as a *network interface* in the AWS Management Console and the Amazon EC2 API\. Therefore, we use "network interface" in this documentation instead of "elastic network interface"\. The term "network interface" in this documentation always means "elastic network interface"\.
 
@@ -19,8 +19,8 @@ This AWS resource is referred to as a *network interface* in the AWS Management 
 + [Network interface basics](#eni-basics)
 + [IP addresses per network interface per instance type](#AvailableIpPerENI)
 + [Work with network interfaces](#working-with-enis)
-+ [Scenarios for network interfaces](scenarios-enis.md)
 + [Best practices for configuring network interfaces](best-practices-for-configuring-network-interfaces.md)
++ [Scenarios for network interfaces](scenarios-enis.md)
 + [Requester\-managed network interfaces](requester-managed-eni.md)
 
 ## Network interface basics<a name="eni-basics"></a>
@@ -35,7 +35,7 @@ In a VPC, all subnets have a modifiable attribute that determines whether networ
 
 When you create a network interface, it inherits the public IPv4 addressing attribute from the subnet\. If you later modify the public IPv4 addressing attribute of the subnet, the network interface keeps the setting that was in effect when it was created\. If you launch an instance and specify an existing network interface as the primary network interface, the public IPv4 address attribute is determined by this network interface\.
 
-For more information, see [Public IPv4 addresses and external DNS hostnames](using-instance-addressing.md#concepts-public-addresses)\.
+For more information, see [Public IPv4 addresses](using-instance-addressing.md#concepts-public-addresses)\.
 
 **Elastic IP addresses for network interface**  
 If you have an Elastic IP address, you can associate it with one of the private IPv4 addresses for the network interface\. You can associate one Elastic IP address with each private IPv4 address\.
@@ -48,6 +48,9 @@ If you associate IPv6 CIDR blocks with your VPC and subnet, you can assign one o
 All subnets have a modifiable attribute that determines whether network interfaces created in that subnet \(and therefore instances launched into that subnet\) are automatically assigned an IPv6 address from the range of the subnet\. For more information, see [IP addressing behavior for your subnet](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html#vpc-ip-addressing-subnet) in the *Amazon VPC User Guide*\. When you launch an instance, the IPv6 address is assigned to the primary network interface that's created\.
 
 For more information, see [IPv6 addresses](using-instance-addressing.md#ipv6-addressing)\.
+
+**Prefix Delegation**  
+ A Prefix Delegation prefix is a reserved private IPv4 or IPv6 CIDR range that you allocate for automatic or manual assignment to network interfaces that are associated with an instance\. By using Delegated Prefixes, you can launch services faster by assigning a range of IP addresses as a single prefix\. 
 
 **Termination behavior**  
 You can set the termination behavior for a network interface that's attached to an instance\. You can specify whether the network interface should be automatically deleted when you terminate the instance to which it's attached\.
@@ -118,6 +121,26 @@ The following table lists the maximum number of network interfaces per instance 
 | c5n\.9xlarge | 8 | 30 | 30 | 
 | c5n\.18xlarge | 15 | 50 | 50 | 
 | c5n\.metal | 15 | 50 | 50 | 
+| c6a\.large | 3 | 10 | 10 | 
+| c6a\.xlarge | 4 | 15 | 15 | 
+| c6a\.2xlarge | 4 | 15 | 15 | 
+| c6a\.4xlarge | 8 | 30 | 30 | 
+| c6a\.8xlarge | 8 | 30 | 30 | 
+| c6a\.12xlarge | 8 | 30 | 30 | 
+| c6a\.16xlarge | 15 | 50 | 50 | 
+| c6a\.24xlarge | 15 | 50 | 50 | 
+| c6a\.32xlarge | 15 | 50 | 50 | 
+| c6a\.48xlarge | 15 | 50 | 50 | 
+| c6i\.large | 3 | 10 | 10 | 
+| c6i\.xlarge | 4 | 15 | 15 | 
+| c6i\.2xlarge | 4 | 15 | 15 | 
+| c6i\.4xlarge | 8 | 30 | 30 | 
+| c6i\.8xlarge | 8 | 30 | 30 | 
+| c6i\.12xlarge | 8 | 30 | 30 | 
+| c6i\.16xlarge | 15 | 50 | 50 | 
+| c6i\.24xlarge | 15 | 50 | 50 | 
+| c6i\.32xlarge | 15 | 50 | 50 | 
+| c6i\.metal | 15 | 50 | 50 | 
 | cc2\.8xlarge |  8  |  30  | IPv6 not supported | 
 | cr1\.8xlarge |  8  |  30  | IPv6 not supported | 
 | d2\.xlarge |  4  |  15  | 15 | 
@@ -144,6 +167,8 @@ The following table lists the maximum number of network interfaces per instance 
 | g3\.4xlarge | 8 | 30 | 30 | 
 | g3\.8xlarge | 8 | 30 | 30 | 
 | g3\.16xlarge | 15 | 50 | 50 | 
+| g4ad\.xlarge | 2 | 4 | 4 | 
+| g4ad\.2xlarge | 2 | 4 | 4 | 
 | g4ad\.4xlarge | 3 | 10 | 10 | 
 | g4ad\.8xlarge | 4 | 15 | 15 | 
 | g4ad\.16xlarge | 8 | 30 | 30 | 
@@ -154,6 +179,14 @@ The following table lists the maximum number of network interfaces per instance 
 | g4dn\.12xlarge | 8 | 30 | 30 | 
 | g4dn\.16xlarge | 4 | 15 | 15 | 
 | g4dn\.metal | 15 | 50 | 50 | 
+| g5\.xlarge | 4 | 15 | 15 | 
+| g5\.2xlarge | 4 | 15 | 15 | 
+| g5\.4xlarge | 8 | 30 | 30 | 
+| g5\.8xlarge | 8 | 30 | 30 | 
+| g5\.12xlarge | 15 | 50 | 50 | 
+| g5\.16xlarge | 8 | 30 | 30 | 
+| g5\.24xlarge | 15 | 50 | 50 | 
+| g5\.48xlarge | 15 | 50 | 50 | 
 | h1\.2xlarge | 4 | 15 | 15 | 
 | h1\.4xlarge | 8 | 30 | 30 | 
 | h1\.8xlarge | 8 | 30 | 30 | 
@@ -254,6 +287,26 @@ The following table lists the maximum number of network interfaces per instance 
 | m5zn\.6xlarge | 8 | 30 | 30 | 
 | m5zn\.12xlarge | 15 | 50 | 50 | 
 | m5zn\.metal | 15 | 50 | 50 | 
+| m6a\.large | 3 | 10 | 10 | 
+| m6a\.xlarge | 4 | 15 | 15 | 
+| m6a\.2xlarge | 4 | 15 | 15 | 
+| m6a\.4xlarge | 8 | 30 | 30 | 
+| m6a\.8xlarge | 8 | 30 | 30 | 
+| m6a\.12xlarge | 8 | 30 | 30 | 
+| m6a\.16xlarge | 15 | 50 | 50 | 
+| m6a\.24xlarge | 15 | 50 | 50 | 
+| m6a\.32xlarge | 15 | 50 | 50 | 
+| m6a\.48xlarge | 15 | 50 | 50 | 
+| m6i\.large | 3 | 10 | 10 | 
+| m6i\.xlarge | 4 | 15 | 15 | 
+| m6i\.2xlarge | 4 | 15 | 15 | 
+| m6i\.4xlarge | 8 | 30 | 30 | 
+| m6i\.8xlarge | 8 | 30 | 30 | 
+| m6i\.12xlarge | 8 | 30 | 30 | 
+| m6i\.16xlarge | 15 | 50 | 50 | 
+| m6i\.24xlarge | 15 | 50 | 50 | 
+| m6i\.32xlarge | 15 | 50 | 50 | 
+| m6i\.metal | 15 | 50 | 50 | 
 | p2\.xlarge | 4 | 15 | 15 | 
 | p2\.8xlarge | 8 | 30 | 30 | 
 | p2\.16xlarge | 8 | 30 | 30 | 
@@ -333,6 +386,16 @@ The following table lists the maximum number of network interfaces per instance 
 | r5n\.16xlarge | 15 | 50 | 50 | 
 | r5n\.24xlarge | 15 | 50 | 50 | 
 | r5n\.metal | 15 | 50 | 50 | 
+| r6i\.large | 3 | 10 | 10 | 
+| r6i\.xlarge | 4 | 15 | 15 | 
+| r6i\.2xlarge | 4 | 15 | 15 | 
+| r6i\.4xlarge | 8 | 30 | 30 | 
+| r6i\.8xlarge | 8 | 30 | 30 | 
+| r6i\.12xlarge | 8 | 30 | 30 | 
+| r6i\.16xlarge | 15 | 50 | 50 | 
+| r6i\.24xlarge | 15 | 50 | 50 | 
+| r6i\.32xlarge | 15 | 50 | 50 | 
+| r6i\.metal | 15 | 50 | 50 | 
 | t1\.micro |  2  |  2  | IPv6 not supported | 
 | t2\.nano |  2  |  2  | 2 | 
 | t2\.micro |  2  |  2  | 2 | 
@@ -355,9 +418,14 @@ The following table lists the maximum number of network interfaces per instance 
 | t3a\.large |  3  |  12  | 12 | 
 | t3a\.xlarge |  4  |  15  |  15  | 
 | t3a\.2xlarge |  4  |  15  |  15  | 
-| u\-6tb1\.metal | 5 | 30 | 30 | 
-| u\-9tb1\.metal | 5 | 30 | 30 | 
-| u\-12tb1\.metal | 5 | 30 | 30 | 
+| u\-3tb1\.56xlarge | 8 | 30 | 30 | 
+| u\-6tb1\.56xlarge | 15 | 50 | 50 | 
+| u\-6tb1\.112xlarge | 15 | 50 | 50 | 
+| u\-6tb1\.metal | 15 | 50 | 50 | 
+| u\-9tb1\.112xlarge | 15 | 50 | 50 | 
+| u\-9tb1\.metal | 15 | 50 | 50 | 
+| u\-12tb1\.112xlarge | 15 | 50 | 50 | 
+| u\-12tb1\.metal | 15 | 50 | 50 | 
 | u\-18tb1\.metal | 15 | 50 | 50 | 
 | u\-24tb1\.metal | 15 | 50 | 50 | 
 | x1\.16xlarge | 8 | 30 | 30 | 
@@ -368,6 +436,12 @@ The following table lists the maximum number of network interfaces per instance 
 | x1e\.8xlarge | 4 | 15 | 15 | 
 | x1e\.16xlarge | 8 | 30 | 30 | 
 | x1e\.32xlarge | 8 | 30 | 30 | 
+| x2iezn\.2xlarge | 4 | 15 | 15 | 
+| x2iezn\.4xlarge | 8 | 30 | 30 | 
+| x2iezn\.6xlarge | 8 | 30 | 30 | 
+| x2iezn\.8xlarge | 8 | 30 | 30 | 
+| x2iezn\.12xlarge | 15 | 50 | 50 | 
+| x2iezn\.metal | 15 | 50 | 50 | 
 | z1d\.large | 3 | 10 | 10 | 
 | z1d\.xlarge | 4 | 15 | 15 | 
 | z1d\.2xlarge | 4 | 15 | 15 | 
@@ -379,7 +453,7 @@ The following table lists the maximum number of network interfaces per instance 
 You can use the [describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) AWS CLI command to display information about an instance type, such as the supported network interfaces and IP addresses per interface\. The following example displays this information for all C5 instances\.
 
 ```
-aws ec2 describe-instance-types --filters Name=instance-type,Values=c5.* --query "InstanceTypes[].{Type: InstanceType, MaxENI: NetworkInfo.MaximumNetworkInterfaces, IPv4addr: NetworkInfo.Ipv4AddressesPerInterface}" --output table
+aws ec2 describe-instance-types --filters "Name=instance-type,Values=c5.*" --query "InstanceTypes[].{Type: InstanceType, MaxENI: NetworkInfo.MaximumNetworkInterfaces, IPv4addr: NetworkInfo.Ipv4AddressesPerInterface}" --output table
 ---------------------------------------
 |        DescribeInstanceTypes        |
 +----------+----------+---------------+
@@ -413,7 +487,7 @@ You can work with network interfaces using the Amazon EC2 console or the command
 
 ### Create a network interface<a name="create_eni"></a>
 
-You can create a network interface in a subnet\. You can't move the network interface to another subnet after it's created, and you can only attach the network interface to instances in the same Availability Zone\.
+You can create a network interface in a subnet\. You can't move the network interface to another subnet after it's created\. You must attach a network interface to an instance in the same Availability Zone\.
 
 ------
 #### [ New console ]
@@ -428,7 +502,7 @@ You can create a network interface in a subnet\. You can't move the network inte
 
 1. \(Optional\) For **Description**, enter a descriptive name\.
 
-1. For **Subnet**, select a subnet\.
+1. For **Subnet**, select a subnet\. The options available in the subsequent steps change depending on the type of subnet you select \(IPv4\-only, IPv6\-only, or dual\-stack \(IPv4 and IPv6\)\)\.
 
 1. For **Private IPv4 address**, do one of the following:
    + Choose **Auto\-assign** to allow Amazon EC2 to select an IPv4 address from the subnet\.
@@ -526,9 +600,12 @@ You can use one of the following commands\. For more information about these com
 
 ### Attach a network interface to an instance<a name="attach_eni"></a>
 
-You can attach a network interface to any of your stopped or running instances, using either the **Instances** or **Network Interfaces** pages of the Amazon EC2 console\. Alternatively, you can specify an existing network interface or attach an additional network interface when you [launch an instance](launching-instance.md)\.
+You can attach a network interface to any instance in the same Availability Zone as the network interface, using either the **Instances** or **Network Interfaces** page of the Amazon EC2 console\. Alternatively, you can specify existing network interfaces when you [launch instances](launching-instance.md)\.
 
-If the public IPv4 address on your instance is released, it does not receive a new one if there is more than one network interface attached to the instance\. For more information about the behavior of public IPv4 addresses, see [Public IPv4 addresses and external DNS hostnames](using-instance-addressing.md#concepts-public-addresses)\.
+**Important**  
+For EC2 instances in an IPv6\-only subnet, if you attach a secondary network interface to the instance, the private DNS hostname of the second network interface will resolve to the first IPv6 address on the instance's first network interface\. For more information about EC2 instance private DNS hostnames, see [Amazon EC2 instance hostname types](ec2-instance-naming.md)\.
+
+If the public IPv4 address on your instance is released, it does not receive a new one if there is more than one network interface attached to the instance\. For more information about the behavior of public IPv4 addresses, see [Public IPv4 addresses](using-instance-addressing.md#concepts-public-addresses)\.
 
 ------
 #### [ Instances page ]
@@ -576,7 +653,7 @@ You can use one of the following commands\. For more information about these com
 
 You can detach a secondary network interface that is attached to an EC2 instance at any time, using either the **Instances** or **Network Interfaces** page of the Amazon EC2 console\.
 
-You can't use the Amazon EC2 console to detach a network interface that is attached to a resource from another service, such as an Elastic Load Balancing load balancer, a Lambda function, a WorkSpace, or a NAT gateway\. The network interfaces for those resources are deleted when the resource is deleted\.
+If you try to detach a network interface that is attached to a resource from another service, such as an Elastic Load Balancing load balancer, a Lambda function, a WorkSpace, or a NAT gateway, you get an error that you do not have permission to access the resource\. To find which service created the resource attached to a network interface, check the description of the network interface\. If you delete the resource, then its network interface is deleted\.
 
 ------
 #### [ Instances page ]
@@ -797,7 +874,9 @@ You can use one of the following commands\. For more information about these com
 
 ### Delete a network interface<a name="delete_eni"></a>
 
-To delete an instance, you must first detach the network interface\. Deleting a network interface releases all attributes associated with the interface and releases any private IP addresses or Elastic IP addresses to be used by another instance\.
+Deleting a network interface releases all attributes associated with the interface and releases any private IP addresses or Elastic IP addresses to be used by another instance\.
+
+You cannot delete a network interface that is in use\. First, you must [detach the network interface](#detach_eni)\.
 
 ------
 #### [ New console ]

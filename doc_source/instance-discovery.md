@@ -41,7 +41,7 @@ You can use AWS CLI commands for Amazon EC2 to find an instance type that meet y
 1. Use the [describe\-instance\-types](https://docs.aws.amazon.com/goto/aws-cli/ec2-2016-11-15/DescribeInstanceTypes) command to filter instance types based on instance attributes\. For example, you can use the following command to display only instance types with 48 vCPUs\.
 
    ```
-   aws ec2 describe-instance-types --filters "Name=vcpu-info.default-vcpus,Values=48"
+   aws ec2 describe-instance-types --filters "Name=vcpu-info.default-vcpus,Values=48" --query "InstanceTypes[*].[InstanceType]" --output text | sort
    ```
 
 1. Use the [describe\-instance\-type\-offerings](https://docs.aws.amazon.com/goto/aws-cli/ec2-2016-11-15/DescribeInstanceTypeOfferings) command to filter instance types offered by location \(Region or Availability Zone\)\. For example, you can use the following command to display the instance types offered in the specified Availability Zone\. 
@@ -50,4 +50,4 @@ You can use AWS CLI commands for Amazon EC2 to find an instance type that meet y
    aws ec2 describe-instance-type-offerings --location-type "availability-zone" --filters Name=location,Values=us-east-2a --region us-east-2
    ```
 
-1. After locating instance types that meet your needs, make note of them so that you can use these instance types when you launch instances\. For more information, see [Launching an Instance Using the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-launch.html#launching-instances) in the *AWS Command Line Interface User Guide*\.
+1. After locating instance types that meet your needs, make note of them so that you can use these instance types when you launch instances\. For more information, see [Launching your instance](https://docs.aws.amazon.com/cli/latest/userguide/cli-ec2-launch.html#launching-instances) in the *AWS Command Line Interface User Guide*\.

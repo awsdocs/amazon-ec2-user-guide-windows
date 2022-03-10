@@ -1,6 +1,6 @@
 # Request modifications to your EBS volumes<a name="requesting-ebs-volume-modifications"></a>
 
-With Elastic Volumes, you can dynamically modify the size, performance, and volume type of your Amazon EBS volumes without detaching them\.
+With Elastic Volumes, you can dynamically increase the size, increase or decrease the performance, and change the volume type of your Amazon EBS volumes without detaching them\.
 
 Use the following process when modifying a volume:
 
@@ -13,14 +13,44 @@ Use the following process when modifying a volume:
 1. If the size of the volume was modified, extend the volume's file system to take advantage of the increased storage capacity\. For more information, see [Extend a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
 
 **Topics**
-+ [Modify an EBS volume using Elastic Volumes \(console\)](#modify-ebs-volume)
-+ [Modify an EBS volume using Elastic Volumes \(AWS CLI\)](#modify-ebs-volume-cli)
++ [Modify an EBS volume using Elastic Volumes](#modify-ebs-volume)
 + [Initialize Elastic Volumes support \(if needed\)](#initialize-modification-support)
 + [Modify an EBS volume if Elastic Volumes is not supported](#modify-volume-stop-start)
 
-## Modify an EBS volume using Elastic Volumes \(console\)<a name="modify-ebs-volume"></a>
+## Modify an EBS volume using Elastic Volumes<a name="modify-ebs-volume"></a>
 
-Use the following procedure to modify an EBS volume\.<a name="console-modify-size"></a>
+You can only increase volume size\. You can increase or decrease volume performance\. If you are not changing the volume type, then volume size and performance modifications must be within the limits of the current volume type\. If you are changing the volume type, then volume size and performance modifications must be within the limits of the target volume type\.
+
+**Note**  
+You can't cancel or undo a volume modification request after it has been submitted\.
+
+To modify an EBS volume, use one of the following methods\.
+
+------
+#### [ New console ]<a name="console-modify-size"></a>
+
+**To modify an EBS volume using the console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Volumes**\.
+
+1. Select the volume to modify and choose **Actions**, **Modify volume**\.
+
+1. The **Modify volume** screen displays the volume ID and the volume's current configuration, including type, size, IOPS, and throughput\. Set new configuration values as follows:
+   + To modify the type, choose a value for **Volume type**\.
+   + To modify the size, enter a new value for **Size**\.
+   + \(`gp3`, `io1`, and `io2` only\) To modify the IOPS, enter a new value for **IOPS**\.
+   + \(`gp3` only\) To modify the throughput, enter a new value for **Throughput**\.
+
+1. After you have finished changing the volume settings, choose **Modify**\. When prompted for confirmation, choose **Modify**\.
+
+1. Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extend a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
+
+1. If you increase the size of an NVMe volume on an instance that does not have the AWS NVMe drivers, you must reboot the instance to enable Windows to see the new volume size\. For more information about installing the AWS NVMe drivers, see [AWS NVMe drivers for Windows instances](aws-nvme-drivers.md)\.
+
+------
+#### [ Old console ]<a name="console-modify-size"></a>
 
 **To modify an EBS volume using the console**
 
@@ -40,8 +70,10 @@ Use the following procedure to modify an EBS volume\.<a name="console-modify-siz
 
 1. If you increase the size of an NVMe volume on an instance that does not have the AWS NVMe drivers, you must reboot the instance to enable Windows to see the new volume size\. For more information about installing the AWS NVMe drivers, see [AWS NVMe drivers for Windows instances](aws-nvme-drivers.md)\.
 
-## Modify an EBS volume using Elastic Volumes \(AWS CLI\)<a name="modify-ebs-volume-cli"></a>
+------
+#### [ AWS CLI ]
 
+**To modify an EBS volume using the AWS CLI**  
 Use the [modify\-volume](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-volume.html) command to modify one or more configuration settings for a volume\. For example, if you have a volume of type `gp2` with a size of 100 GiB, the following command changes its configuration to a volume of type `io1` with 10,000 IOPS and a size of 200 GiB\.
 
 ```
@@ -68,6 +100,8 @@ The following is example output:
 ```
 
 Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extend a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
+
+------
 
 ## Initialize Elastic Volumes support \(if needed\)<a name="initialize-modification-support"></a>
 
@@ -105,6 +139,7 @@ Use one of the following procedures to determine whether your instances are read
 ![\[Check the Launch Time and Block Devices columns.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/check-volume-modification-support.png)
 
 ------
+#### [ AWS CLI ]
 
 **To determine whether your instances are ready using the CLI**  
 Use the following [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) command to determine whether the volume was attached before November 3, 2016 23:40 UTC\.
@@ -126,6 +161,8 @@ False
 i-e3d172ed              False
 True
 ```
+
+------
 
 ## Modify an EBS volume if Elastic Volumes is not supported<a name="modify-volume-stop-start"></a>
 

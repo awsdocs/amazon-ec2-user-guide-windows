@@ -2,10 +2,11 @@
 
 You can delete your instance when you no longer need it\. This is referred to as *terminating* your instance\. As soon as the state of an instance changes to `shutting-down` or `terminated`, you stop incurring charges for that instance\.
 
-You can't connect to or start an instance after you've terminated it\. However, you can launch additional instances using the same AMI\. If you'd rather stop and start your instance, or hibernate it, see [Stop and start your instance](Stop_Start.md) or [Hibernate your On\-Demand or Reserved Windows instance](Hibernate.md)\. For more information, see [Differences between reboot, stop, hibernate, and terminate](ec2-instance-lifecycle.md#lifecycle-differences)\.
+You can't connect to or start an instance after you've terminated it\. However, you can launch additional instances using the same AMI\. If you'd rather stop and start your instance, or hibernate it, see [Stop and start your instance](Stop_Start.md) or [Hibernate your On\-Demand Windows instance](Hibernate.md)\. For more information, see [Differences between reboot, stop, hibernate, and terminate](ec2-instance-lifecycle.md#lifecycle-differences)\.
 
 **Topics**
 + [Instance termination](#termination-overview)
++ [Terminating multiple instances with termination protection across Availability Zones](#terminate-multiple)
 + [What happens when you terminate an instance](#what-happens-terminate)
 + [Terminate an instance](#terminating-instances-console)
 + [Enable termination protection](#Using_ChangingDisableAPITermination)
@@ -25,6 +26,20 @@ You can prevent an instance from being terminated accidentally by someone using 
 You can control whether an instance should stop or terminate when shutdown is initiated from the instance using an operating system command for system shutdown\. For more information, see [Change the instance initiated shutdown behavior](#Using_ChangingInstanceInitiatedShutdownBehavior)\.
 
 If you run a script on instance termination, your instance might have an abnormal termination, because we have no way to ensure that shutdown scripts run\. Amazon EC2 attempts to shut an instance down cleanly and run any system shutdown scripts; however, certain events \(such as hardware failure\) may prevent these system shutdown scripts from running\.
+
+## Terminating multiple instances with termination protection across Availability Zones<a name="terminate-multiple"></a>
+
+If you terminate multiple instances across multiple Availability Zones, and one or more of the specified instances are enabled for termination protection, the request fails with the following results:
++ The specified instances that are in the same Availability Zone as the protected instance are not terminated\.
++ The specified instances that are in different Availability Zones, where no other specified instances are protected, are successfully terminated\.
+
+For example, say you have the following instances:
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/terminating-instances.html)
+
+If you attempt to terminate all of these instances in the same request, the request reports failure with the following results:
++ **Instance A** and **Instance B** are successfully terminated because none of the specified instances in `us-east-1a` are enabled for termination protection\.
++ **Instance C** and **Instance D** fail to terminate because at least one of the specified instances in `us-east-1b` \(**Instance C**\) is enabled for termination protection\.
 
 ## What happens when you terminate an instance<a name="what-happens-terminate"></a>
 
@@ -51,7 +66,7 @@ By default, when you initiate a shutdown from an Amazon EBS\-backed instance \(u
 
 1. In the navigation pane, choose **Instances**\.
 
-1. Select the instance, and choose **Actions**, **Instance state**, **Terminate instance**\.
+1. Select the instance, and choose **Instance state**, **Terminate instance**\.
 
 1. Choose **Terminate** when prompted for confirmation\.
 
@@ -78,6 +93,9 @@ You can use one of the following commands\. For more information about these com
 + [terminate\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/terminate-instances.html) \(AWS CLI\)
 + [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)
 
+**To run a controlled fault injection experiment**  
+You can use AWS Fault Injection Simulator to test how your application responds when your instance is terminated\. For more information, see the [AWS Fault Injection Simulator User Guide](https://docs.aws.amazon.com/fis/latest/userguide)\.
+
 ## Enable termination protection<a name="Using_ChangingDisableAPITermination"></a>
 
 By default, you can terminate your instance using the Amazon EC2 console, command line interface, or API\. To prevent your instance from being accidentally terminated using Amazon EC2, you can enable *termination protection* for the instance\. The `DisableApiTermination` attribute controls whether the instance can be terminated using the console, CLI, or API\. By default, termination protection is disabled for your instance\. You can set the value of this attribute when you launch the instance, while the instance is running, or while the instance is stopped \(for Amazon EBS\-backed instances\)\. 
@@ -88,7 +106,7 @@ The `DisableApiTermination` attribute does not prevent you from terminating an i
 You can't enable termination protection for Spot Instances—a Spot Instance is terminated when the Spot price exceeds the amount you're willing to pay for Spot Instances\. However, you can prepare your application to handle Spot Instance interruptions\. For more information, see [Spot Instance interruptions](spot-interruptions.md)\.
 
 The `DisableApiTermination` attribute does not prevent Amazon EC2 Auto Scaling from terminating an instance\. For instances in an Auto Scaling group, use the following Amazon EC2 Auto Scaling features instead of Amazon EC2 termination protection:
-+ To prevent instances that are part of an Auto Scaling group from terminating on scale in, use instance protection\. For more information, see [Instance Protection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection) in the *Amazon EC2 Auto Scaling User Guide*\.
++ To prevent instances that are part of an Auto Scaling group from terminating on scale in, use instance scale\-in protection\. For more information, see [Using instance scale\-in protection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-instance-protection.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 + To prevent Amazon EC2 Auto Scaling from terminating unhealthy instances, suspend the `ReplaceUnhealthy` process\. For more information, see [Suspending and Resuming Scaling Processes](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 + To specify which instances Amazon EC2 Auto Scaling should terminate first, choose a termination policy\. For more information, see [Customizing the Termination Policy](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#custom-termination-policy) in the *Amazon EC2 Auto Scaling User Guide*\.
 
@@ -181,7 +199,9 @@ Using the console, you can change the `DeleteOnTermination` attribute when you l
 
 1. Complete the remaining wizard pages, and then choose **Launch**\.
 
-You can verify the setting by viewing details for the root device volume on the instance's details pane\. Next to **Block devices**, choose the entry for the root device volume\. By default, **Delete on termination** is `True`\. If you change the default behavior, **Delete on termination** is `False`\.
+In the new console experience, you can verify the setting by viewing details for the root device volume on the instance's details pane\. On the **Storage** tab, under **Block devices**, scroll right to view the **Delete on termination** setting for the volume\. By default, **Delete on termination** is `Yes`\. If you change the default behavior, **Delete on termination** is `No`\.
+
+In the old console experience, you can verify the setting by viewing details for the root device volume on the instance's details pane\. Next to **Block devices**, choose the entry for the root device volume\. By default, **Delete on termination** is `True`\. If you change the default behavior, **Delete on termination** is `False`\.
 
 ### Change the root volume to persist at launch using the command line<a name="delete-on-termination-cli"></a>
 

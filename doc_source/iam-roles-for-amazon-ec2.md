@@ -49,7 +49,7 @@ The following command retrieves the security credentials for an IAM role named `
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -85,9 +85,15 @@ For more information about instance metadata, see [Instance metadata and user da
 
 ## Grant an IAM user permission to pass an IAM role to an instance<a name="permission-to-pass-iam-roles"></a>
 
-To enable an IAM user to launch an instance with an IAM role or to attach or replace an IAM role for an existing instance, you must grant the user permission to pass the role to the instance\.
+To enable an IAM user to launch an instance with an IAM role or to attach or replace an IAM role for an existing instance, you must grant the user permission to use the following API actions:
++ `iam:PassRole`
++ `ec2:AssociateIamInstanceProfile` 
++ `ec2:ReplaceIamInstanceProfileAssociation`
 
-The following IAM policy grants users permission to launch instances \(`ec2:RunInstances`\) with an IAM role, or to attach or replace an IAM role for an existing instance \(`ec2:AssociateIamInstanceProfile` and `ec2:ReplaceIamInstanceProfileAssociation`\)\.
+For example, the following IAM policy grants users permission to launch instances with an IAM role, or to attach or replace an IAM role for an existing instance using the AWS CLI\.
+
+**Note**  
+If you want the policy to grant IAM users access to all of your roles, specify the resource as `*` in the policy\. However, please consider the principle of [least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege) as a best\-practice \.
 
 ```
 {
@@ -105,13 +111,13 @@ The following IAM policy grants users permission to launch instances \(`ec2:RunI
     {
       "Effect": "Allow",
       "Action": "iam:PassRole",
-      "Resource": "*"
+      "Resource": "arn:aws:iam::123456789012:role/DevTeam*"
     }
   ]
 }
 ```
 
-This policy grants IAM users access to all your roles by specifying the resource as "\*" in the policy\. However, consider whether users who launch instances with your roles \(ones that exist or that you create later on\) might be granted permissions that they don't need or shouldn't have\.
+To grant users permission to launch instances with an IAM role, or to attach or replace an IAM role for an existing instance using the Amazon EC2 console, you must grant them permission to use `iam:ListInstanceProfiles`, `iam:PassRole`, `ec2:AssociateIamInstanceProfile`, and `ec2:ReplaceIamInstanceProfileAssociation` in addition to any other permissions they might need\. For example policies, see [Example policies for working in the Amazon EC2 console](iam-policies-ec2-console.md)\.
 
 ## Work with IAM roles<a name="working-with-iam-roles"></a>
 
@@ -163,7 +169,14 @@ Alternatively, you can use the AWS CLI to create an IAM role\. The following exa
 1. Create the `s3access` role and specify the trust policy that you created using the [create\-role](https://docs.aws.amazon.com/cli/latest/reference/iam/create-role.html) command\.
 
    ```
-   aws iam create-role --role-name s3access --assume-role-policy-document file://ec2-role-trust-policy.json
+   aws iam create-role \
+       --role-name s3access \
+       --assume-role-policy-document file://ec2-role-trust-policy.json
+   ```
+
+   Example response
+
+   ```
    {
        "Role": {
            "AssumeRolePolicyDocument": {
@@ -205,13 +218,21 @@ Alternatively, you can use the AWS CLI to create an IAM role\. The following exa
 1. Attach the access policy to the role using the [put\-role\-policy](https://docs.aws.amazon.com/cli/latest/reference/iam/put-role-policy.html) command\.
 
    ```
-   aws iam put-role-policy --role-name s3access --policy-name S3-Permissions --policy-document file://ec2-role-access-policy.json
+   aws iam put-role-policy \
+       --role-name s3access \
+       --policy-name S3-Permissions \
+       --policy-document file://ec2-role-access-policy.json
    ```
 
 1. Create an instance profile named `s3access-profile` using the [create\-instance\-profile](https://docs.aws.amazon.com/cli/latest/reference/iam/create-instance-profile.html) command\.
 
    ```
    aws iam create-instance-profile --instance-profile-name s3access-profile
+   ```
+
+   Example response
+
+   ```
    {
        "InstanceProfile": {
            "InstanceProfileId": "AIPAJTLBPJLEGREXAMPLE",
@@ -227,7 +248,9 @@ Alternatively, you can use the AWS CLI to create an IAM role\. The following exa
 1. Add the `s3access` role to the `s3access-profile` instance profile\.
 
    ```
-   aws iam add-role-to-instance-profile --instance-profile-name s3access-profile --role-name s3access
+   aws iam add-role-to-instance-profile \
+       --instance-profile-name s3access-profile \
+       --role-name s3access
    ```
 
 Alternatively, you can use the following AWS Tools for Windows PowerShell commands:
@@ -264,7 +287,7 @@ The **IAM role** list displays the name of the instance profile that you created
 #### [ IMDSv2 ]
 
    ```
-   PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+   PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
    ```
 
    ```
@@ -349,7 +372,11 @@ To attach an IAM role to an instance that has no role, the instance can be in th
    aws ec2 associate-iam-instance-profile \
        --instance-id i-1234567890abcdef0 \
        --iam-instance-profile Name="TestRole-1"
-   
+   ```
+
+   Example response
+
+   ```
    {
        "IamInstanceProfileAssociation": {
            "InstanceId": "i-1234567890abcdef0", 
@@ -413,7 +440,11 @@ To replace the IAM role on an instance that already has an attached IAM role, th
    aws ec2 replace-iam-instance-profile-association \
        --association-id iip-assoc-0044d817db6c0a4ba \
        --iam-instance-profile Name="TestRole-2"
-   
+   ```
+
+   Example response
+
+   ```
    {
        "IamInstanceProfileAssociation": {
            "InstanceId": "i-087711ddaf98f9489", 
@@ -473,7 +504,11 @@ You can detach an IAM role from a running or stopped instance\.
 
    ```
    aws ec2 describe-iam-instance-profile-associations
-   
+   ```
+
+   Example response
+
+   ```
    {
        "IamInstanceProfileAssociations": [
            {
@@ -493,7 +528,11 @@ You can detach an IAM role from a running or stopped instance\.
 
    ```
    aws ec2 disassociate-iam-instance-profile --association-id iip-assoc-0044d817db6c0a4ba
-   
+   ```
+
+   Example response
+
+   ```
    {
        "IamInstanceProfileAssociation": {
            "InstanceId": "i-087711ddaf98f9489", 

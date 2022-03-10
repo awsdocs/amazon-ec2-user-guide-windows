@@ -5,8 +5,8 @@ The maximum transmission unit \(MTU\) of a network connection is the size, in by
 Ethernet frames can come in different formats, and the most common format is the standard Ethernet v2 frame format\. It supports 1500 MTU, which is the largest Ethernet packet size supported over most of the internet\. The maximum supported MTU for an instance depends on its instance type\. All Amazon EC2 instance types support 1500 MTU, and many current instance sizes support 9001 MTU, or jumbo frames\.
 
 The following rules apply to instances that are in Wavelength Zones:
-+ Traffic that goes from one instances to another within a VPC in the same Wavelength Zone has an MTU of 1300\.
-+ Traffic that goes from one instances to another that uses the carrier IP within a Wavelength Zone has an MTU of 1500\.
++ Traffic that goes from one instance to another within a VPC in the same Wavelength Zone has an MTU of 1300\.
++ Traffic that goes from one instance to another that uses the carrier IP within a Wavelength Zone has an MTU of 1500\.
 + Traffic that goes from one instance to another between a Wavelength Zone and the Region that uses a public IP address has an MTU of 1500\.
 + Traffic that goes from one instance to another between a Wavelength Zone and the Region that uses a private IP address has an MTU of 1300\.
 
@@ -21,7 +21,13 @@ To see Network MTU information for Linux instances, switch to this page in the *
 
 ## Jumbo frames \(9001 MTU\)<a name="jumbo_frame_instances"></a>
 
-Jumbo frames allow more than 1500 bytes of data by increasing the payload size per packet, and thus increasing the percentage of the packet that is not packet overhead\. Fewer packets are needed to send the same amount of usable data\. However, outside of a given AWS Region \(EC2\-Classic\), a single VPC, or a VPC peering connection, you will experience a maximum path of 1500 MTU\. VPN connections and traffic sent over an internet gateway are limited to 1500 MTU\. If packets are over 1500 bytes, they are fragmented, or they are dropped if the `Don't Fragment` flag is set in the IP header\.
+Jumbo frames allow more than 1500 bytes of data by increasing the payload size per packet, and thus increasing the percentage of the packet that is not packet overhead\. Fewer packets are needed to send the same amount of usable data\. However, traffic is limited to a maximum MTU of 1500 in the following cases:
++ Traffic over an internet gateway
++ Traffic over an inter\-region VPC peering connection
++ Traffic over VPN connections
++ Traffic outside of a given AWS Region for EC2\-Classic
+
+If packets are over 1500 bytes, they are fragmented, or they are dropped if the `Don't Fragment` flag is set in the IP header\.
 
 Jumbo frames should be used with caution for internet\-bound traffic or any traffic that leaves a VPC\. Packets are fragmented by intermediate systems, which slows down this traffic\. To use jumbo frames inside a VPC and not slow traffic that's bound for outside the VPC, you can configure the MTU size by route, or use multiple elastic network interfaces with different MTU sizes and different routes\.
 
@@ -35,13 +41,13 @@ For more information about supported MTU sizes for transit gateways, see [MTU](h
 
 ## Path MTU Discovery<a name="path_mtu_discovery"></a>
 
-Path MTU Discovery is used to determine the path MTU between two devices\. The path MTU is the maximum packet size that's supported on the path between the originating host and the receiving host\. 
+Path MTU Discovery \(PMTUD\) is used to determine the path MTU between two devices\. The path MTU is the maximum packet size that's supported on the path between the originating host and the receiving host\. When there is a difference in the MTU size in the network between two hosts, PMTUD enables the receiving host to respond to the originating host with an ICMP message\. This ICMP message instructs the originating host to use the lowest MTU size along the network path and to resend the request\. Without this negotiation, packet drop can occur because the request is too large for the receiving host to accept\.
 
 For IPv4, when a host sends a packet that's larger than the MTU of the receiving host or that's larger than the MTU of a device along the path, the receiving host or device drops the packet, and then returns the following ICMP message: `Destination Unreachable: Fragmentation Needed and Don't Fragment was Set` \(Type 3, Code 4\)\. This instructs the transmitting host to split the payload into multiple smaller packets, and then retransmit them\. 
 
 The IPv6 protocol does not support fragmentation in the network\. When a host sends a packet that's larger than the MTU of the receiving host or that's larger than the MTU of a device along the path, the receiving host or device drops the packet, and then returns the following ICMP message: `ICMPv6 Packet Too Big (PTB)` \(Type 2\)\. This instructs the transmitting host to split the payload into multiple smaller packets, and then retransmit them\. 
 
-By default, security groups do not allow any inbound ICMP traffic\. However, security groups are stateful, therefore ICMP responses to outbound requests are allowed to flow in, regardless of security group rules\. Therefore, you do not need to explicitly add an inbound ICMP rule to ensure that your instance can receive the ICMP message response\. For more information about configuring ICMP rules in a network ACL, see [Path MTU Discovery](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#path_mtu_discovery) in the *Amazon VPC User Guide*\.
+By default, security groups do not allow any inbound ICMP traffic\. If you don't explicitly configure an ICMP inbound rule for your security group, PMTUD is blocked\. For more information about configuring ICMP rules in a network ACL, see [Path MTU Discovery](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#path_mtu_discovery) in the *Amazon VPC User Guide*\.
 
 **Important**  
 Path MTU Discovery does not guarantee that jumbo frames will not be dropped by some routers\. An internet gateway in your VPC will forward packets up to 1500 bytes only\. 1500 MTU packets are recommended for internet traffic\.

@@ -97,7 +97,7 @@ In addition to setting the Cluster Resource parameter to **0**, you must ensure 
 
 ## Elastic Network Adapters \(ENAs\)<a name="sql-clustering-ena"></a>
 
-AWS has identified known issues with some clustering workloads running on ENA driver version 1\.2\.3\. We recommend upgrading to version 1\.5\.0 or later and adjusting settings on the NIC in the OS\. For the latest versions, see [Amazon ENA Driver Versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#ena-adapter-driver-versions)\. The first setting, which applies to all systems, increases Receive Buffers, which can be done with the following example PowerShell command\.
+AWS has identified known issues with some clustering workloads running on ENA driver version 1\.2\.3\. We recommend upgrading to the latest version, and adjusting settings on the NIC in the OS\. For the latest versions, see [Amazon ENA Driver Versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#ena-adapter-driver-versions)\. The first setting, which applies to all systems, increases Receive Buffers, which can be done with the following example PowerShell command\.
 
 ```
 Set-NetAdapterAdvancedProperty -Name (Get-NetAdapter | Where-Object {$_.InterfaceDescription -like '*Elastic*'}).Name -DisplayName "Receive Buffers" -DisplayValue 8192

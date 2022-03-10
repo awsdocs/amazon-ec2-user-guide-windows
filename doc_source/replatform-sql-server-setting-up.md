@@ -33,29 +33,35 @@ In order to run the Windows to Linux replatforming assistant for Microsoft SQL S
      "Version": "2012-10-17",
      "Statement": [
        {
+         "Sid": "VisualEditor0",
+         "Effect": "Allow",
+         "Action": "iam:PassRole",
+         "Resource": "arn:aws:iam::123456789012:role/DevTeam*"
+       },
+       {
+         "Sid": "VisualEditor1",
          "Effect": "Allow",
          "Action": [
            "ec2:RebootInstances",
-           "ec2:DescribeInstanceStatus",
-           "ec2:DescribeInstances",
-           "ec2:CreateTags",
-           "ec2:RunInstances",
-           "ec2:DescribeImages",
-           "iam:PassRole",
-           "ssm:StartAutomationExecution",
-           "ssm:DescribeInstanceInformation",
-           "ssm:ListCommandInvocations",
-           "ssm:ListCommands",
            "ssm:SendCommand",
            "ssm:GetAutomationExecution",
+           "ec2:DescribeInstances",
+           "ssm:ListCommands",
+           "ec2:CreateTags",
+           "s3:CreateBucket",
+           "ec2:RunInstances",
+           "s3:ListBucket",
            "ssm:GetCommandInvocation",
            "s3:PutEncryptionConfiguration",
-           "s3:CreateBucket",
-           "s3:ListBucket",
+           "ec2:DescribeImages",
            "s3:PutObject",
            "s3:GetObject",
+           "ssm:StartAutomationExecution",
+           "ssm:DescribeInstanceInformation",
            "s3:DeleteObject",
-           "s3:DeleteBucket"
+           "ssm:ListCommandInvocations",
+           "s3:DeleteBucket",
+           "ec2:DescribeInstanceStatus"
          ],
          "Resource": "*"
        }

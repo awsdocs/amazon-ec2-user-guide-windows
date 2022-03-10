@@ -26,10 +26,10 @@ PS C:\> Get-WmiObject -query "select uuid from Win32_ComputerSystemProduct" | Se
 In the following example output, the UUID starts with "EC2", which indicates that the system is probably an EC2 instance\.  
 
 ```
-EC2AE145-D1DC-13B2-94ED-01234ABCDEF
+EC2AE145-D1DC-13B2-94ED-012345ABCDEF
 ```
 For instances using SMBIOS 2\.4, the UUID might be represented in little\-endian format; for example:  
 
 ```
-45E12AEC-DCD1-B213-94ED-01234ABCDEF
+45E12AEC-DCD1-B213-94ED-012345ABCDEF
 ```

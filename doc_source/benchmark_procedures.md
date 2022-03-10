@@ -40,7 +40,7 @@ The following table lists some of the possible tools you can use to benchmark th
 
 | Tool | Description | 
 | --- | --- | 
-| [DiskSpd](https://gallery.technet.microsoft.com/DiskSpd-A-Robust-Storage-6ef84e62) | DiskSpd is a storage performance tool from the Windows, Windows Server, and Cloud Server Infrastructure engineering teams at Microsoft\. It is available for download at [https://gallery\.technet\.microsoft\.com/DiskSpd\-A\-Robust\-Storage\-6ef84e62/file/199535/2/DiskSpd\-2\.0\.21a\.zip]( https://gallery.technet.microsoft.com/DiskSpd-A-Robust-Storage-6ef84e62/file/199535/2/DiskSpd-2.0.21a.zip)\. After you download the `diskspd.exe` executable file, open a command prompt with administrative rights \(by choosing "Run as Administrator"\), and then navigate to the directory where you copied the `diskspd.exe` file\.  Copy the desired `diskspd.exe` executable file from the appropriate executable folder \(`amd64fre`, `armfre` or `x86fre)` to a short, simple path like `C:\DiskSpd`\. In most cases you will want the 64\-bit version of DiskSpd from the `amd64fre` folder\.  The source code for DiskSpd is hosted on GitHub at: [https://github\.com/Microsoft/diskspd](https://github.com/Microsoft/diskspd)\. | 
+| [DiskSpd](https://github.com/microsoft/diskspd/releases) | DiskSpd is a storage performance tool from the Windows, Windows Server, and Cloud Server Infrastructure engineering teams at Microsoft\. It is available for download at [https://github\.com/Microsoft/diskspd/releases](https://github.com/Microsoft/diskspd/releases)\. After you download the `diskspd.exe` executable file, open a command prompt with administrative rights \(by choosing "Run as Administrator"\), and then navigate to the directory where you copied the `diskspd.exe` file\.  Copy the desired `diskspd.exe` executable file from the appropriate executable folder \(`amd64fre`, `armfre` or `x86fre)` to a short, simple path like `C:\DiskSpd`\. In most cases you will want the 64\-bit version of DiskSpd from the `amd64fre` folder\.  The source code for DiskSpd is hosted on GitHub at: [https://github\.com/Microsoft/diskspd](https://github.com/Microsoft/diskspd)\. | 
 |  CrystalDiskMark  | CrystalDiskMark is a simple disk benchmark software\. It is available for download at [https://crystalmark\.info/en/software/crystaldiskmark/](https://crystalmark.info/en/software/crystaldiskmark/)\. | 
 
 These benchmarking tools support a wide variety of test parameters\. You should use commands that approximate the workloads your volumes will support\. These commands provided below are intended as examples to help you get started\.
@@ -70,37 +70,37 @@ You can disable C\-states on Windows as follows:
 1. In PowerShell, get the current active power scheme\.
 
    ```
-   C:\> $current_scheme = powercfg /getactivescheme
+   $current_scheme = powercfg /getactivescheme
    ```
 
 1. Get the power scheme GUID\.
 
    ```
-   C:\> (Get-WmiObject -class Win32_PowerPlan -Namespace "root\cimv2\power" -Filter "ElementName='High performance'").InstanceID          
+   (Get-WmiObject -class Win32_PowerPlan -Namespace "root\cimv2\power" -Filter "ElementName='High performance'").InstanceID          
    ```
 
 1. Get the power setting GUID\.
 
    ```
-   C:\> (Get-WmiObject -class Win32_PowerSetting -Namespace "root\cimv2\power" -Filter "ElementName='Processor idle disable'").InstanceID                  
+   (Get-WmiObject -class Win32_PowerSetting -Namespace "root\cimv2\power" -Filter "ElementName='Processor idle disable'").InstanceID                  
    ```
 
 1. Get the power setting subgroup GUID\.
 
    ```
-   C:\> (Get-WmiObject -class Win32_PowerSettingSubgroup -Namespace "root\cimv2\power" -Filter "ElementName='Processor power management'").InstanceID
+   (Get-WmiObject -class Win32_PowerSettingSubgroup -Namespace "root\cimv2\power" -Filter "ElementName='Processor power management'").InstanceID
    ```
 
 1. Disable C\-states by setting the value of the index to 1\. A value of 0 indicates that C\-states are disabled\.
 
    ```
-   C:\> powercfg /setacvalueindex <power_scheme_guid> <power_setting_subgroup_guid> <power_setting_guid> 1
+   powercfg /setacvalueindex <power_scheme_guid> <power_setting_subgroup_guid> <power_setting_guid> 1
    ```
 
 1. Set active scheme to ensure the settings are saved\.
 
    ```
-   C:\> powercfg /setactive <power_scheme_guid>
+   powercfg /setactive <power_scheme_guid>
    ```
 
 ## Perform benchmarking<a name="perform_benchmarking"></a>
@@ -115,7 +115,7 @@ When you are finished testing your volumes, see the following topics for help cl
 
 Run DiskSpd on the volume that you created\.
 
-The following command will run a 30 second random I/O test using a 20GB test file located on the `T:` drive, with a 25% write and 75% read ratio, and an 8K block size\. It will use eight worker threads, each with four outstanding I/Os, and a write entropy value seed of 1GB\. The results of the test will be saved to a text file called `DiskSpeedResults.txt`\. These parameters simulate a SQL Server OLTP workload\.
+The following command will run a 30 second random I/O test using a 20GB test file located on the `C:` drive, with a 25% write and 75% read ratio, and an 8K block size\. It will use eight worker threads, each with four outstanding I/Os, and a write entropy value seed of 1GB\. The results of the test will be saved to a text file called `DiskSpeedResults.txt`\. These parameters simulate a SQL Server OLTP workload\.
 
 ```
 diskspd -b8K -d30 -o4 -t8 -h -r -w25 -L -Z1G -c20G C:\iotest.dat > DiskSpeedResults.txt

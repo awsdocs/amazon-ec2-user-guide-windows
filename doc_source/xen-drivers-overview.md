@@ -14,11 +14,12 @@ The following table shows which PV drivers you should run on each version of Win
 
 | Windows Server version | PV driver version | 
 | --- | --- | 
+| Windows Server 2022 | AWS PV latest version | 
 | Windows Server 2019 | AWS PV latest version | 
 | Windows Server 2016 | AWS PV latest version | 
 | Windows Server 2012 R2 | AWS PV latest version | 
 | Windows Server 2012  | AWS PV latest version | 
-| Windows Server 2008 R2 | AWS PV version 8\.3\.4 and earlier | 
+| Windows Server 2008 R2 | AWS PV version 8\.3\.5 | 
 | Windows Server 2008 | Citrix PV 5\.9 | 
 | Windows Server 2003 | Citrix PV 5\.9 | 
 
@@ -58,7 +59,9 @@ The following table shows the changes to AWS PV drivers for each driver release\
 
 | Package version | Details | Release date | 
 | --- | --- | --- | 
+|  [8\.4\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.4.1/AWSPVDriver.zip)  | Improved package installer\. | 7 January 2022 | 
 |  [8\.4\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.4.0/AWSPVDriver.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 2 March 2021 | 
+|  [8\.3\.5](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.5/AWSPVDriver.zip)  |  Improved package installer\.  | 7 January 2022 | 
 |  [8\.3\.4](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.4/AWSPVDriver.zip)  | Improved reliability of network device attachment\. | 4 August 2020 | 
 |  [8\.3\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.3/AWSPVDriver.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html) To update this driver on Windows Server 2008 R2 instances, you must first verify that the appropriate patches are installed to address the following Microsoft Security Advisory: [Microsoft Security Advisory 3033929](https://docs.microsoft.com/en-us/security-updates/SecurityAdvisories/2015/3033929)\.  | 4 February 2020 | 
 |  [8\.3\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.3.2/AWSPVDriver.zip)  |  Enhanced reliability of networking components\.  | 30 July 2019 | 

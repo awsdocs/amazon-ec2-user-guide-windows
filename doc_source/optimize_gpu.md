@@ -10,9 +10,7 @@ There are several GPU setting optimizations that you can perform to achieve the 
    cd "C:\Program Files\NVIDIA Corporation\NVSMI"
    ```
 
-1. G2, G3, and P2 instances: Disable the autoboost feature for all GPUs on the instance\.
-**Note**  
-GPUs on G4dn, P3, and P3dn instances do not support autoboost\.
+1. \[G2, G3, and P2 instances only\] Disable the autoboost feature for all GPUs on the instance\.
 
    ```
    .\nvidia-smi --auto-boost-default=0
@@ -30,6 +28,11 @@ GPUs on G4dn, P3, and P3dn instances do not support autoboost\.
 
      ```
      .\nvidia-smi -ac "5001,1590"
+     ```
+   + G5 instances:
+
+     ```
+     .\nvidia-smi -ac "6250,1710"
      ```
    + P2 instances:
 

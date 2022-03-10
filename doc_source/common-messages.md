@@ -168,7 +168,7 @@ http://169.254.169.254/latest/meta-data/
 If you can't contact the metadata server, try the following to resolve the issue:
 + [Download](https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip) and install the latest version of the EC2Config service\. For more information about installing this service, see [Install the latest version of EC2Config](UsingConfig_Install.md)\. 
 + Check whether the Windows instance is running RedHat PV drivers\. If so, update to Citrix PV drivers\. For more information, see [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)\.
-+ Verify that the firewall, IPSec, and proxy settings do not block outgoing traffic to the metadata service \(`169.254.169.254`\) or the KMS servers \(the addresses are specified in `TargetKMSServer` elements in `C:\Program Files\Amazon\Ec2ConfigService\Settings\ActivationSettings.xml`\)\.
++ Verify that the firewall, IPSec, and proxy settings do not block outgoing traffic to the metadata service \(`169.254.169.254`\) or the AWS KMS servers \(the addresses are specified in `TargetKMSServer` elements in `C:\Program Files\Amazon\Ec2ConfigService\Settings\ActivationSettings.xml`\)\.
 + Verify that you have a route to the metadata service \(`169.254.169.254`\) using the following command\.
 
   ```
@@ -178,7 +178,7 @@ If you can't contact the metadata server, try the following to resolve the issue
 
 ## "Unable to activate Windows"<a name="activate-windows"></a>
 
-Windows instances use Windows KMS activation\. You can receive this message: `A problem occurred when Windows tried to activate. Error Code 0xC004F074`, if your instance can't reach the KMS server\. Windows must be activated every 180 days\. EC2Config attempts to contact the KMS server before the activation period expires to ensure that Windows remains activated\.
+Windows instances use Windows AWS KMS activation\. You can receive this message: `A problem occurred when Windows tried to activate. Error Code 0xC004F074`, if your instance can't reach the AWS KMS server\. Windows must be activated every 180 days\. EC2Config attempts to contact the AWS KMS server before the activation period expires to ensure that Windows remains activated\.
 
 If you encounter a Windows activation issue, use the following procedure to resolve the issue\.
 
@@ -194,7 +194,7 @@ If you encounter a Windows activation issue, use the following procedure to reso
 
 If this does not resolve the activation issue, follow these additional steps\.
 
-1. Set the KMS target: C:\\> slmgr\.vbs /skms 169\.254\.169\.250:1688
+1. Set the AWS KMS target: C:\\> slmgr\.vbs /skms 169\.254\.169\.250:1688
 
 1. Activate Windows: C:\\> slmgr\.vbs /ato
 
@@ -225,18 +225,18 @@ If this does not resolve the activation issue, follow these additional steps\.
    ```
 
  For both EC2Config and EC2Launch, if you are still receiving an activation error, verify the following information\.
-+ Verify that you have routes to the KMS servers\. Open `C:\Program Files\Amazon\Ec2ConfigService\Settings\ActivationSettings.xml` and locate the `TargetKMSServer` elements\. Run the following command and check whether the addresses for these KMS servers are listed\.
++ Verify that you have routes to the AWS KMS servers\. Open `C:\Program Files\Amazon\Ec2ConfigService\Settings\ActivationSettings.xml` and locate the `TargetKMSServer` elements\. Run the following command and check whether the addresses for these AWS KMS servers are listed\.
 
   ```
   route print
   ```
-+ Verify that the KMS client key is set\. Run the following command and check the output\.
++ Verify that the AWS KMS client key is set\. Run the following command and check the output\.
 
   ```
   C:\Windows\System32\slmgr.vbs /dlv
   ```
 
-  If the output contains Error: product key not found, the KMS client key isn't set\. If the KMS client key isn't set, look up the client key as described in this Microsoft article: [KMS Client Setup Keys](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys), and then run the following command to set the KMS client key\.
+  If the output contains Error: product key not found, the AWS KMS client key isn't set\. If the AWS KMS client key isn't set, look up the client key as described in this Microsoft article: [AWS KMS Client Setup Keys](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys), and then run the following command to set the AWS KMS client key\.
 
   ```
   C:\Windows\System32\slmgr.vbs /ipk client_key
@@ -250,7 +250,7 @@ If this does not resolve the activation issue, follow these additional steps\.
 
 ## "Windows is not genuine \(0x80070005\)"<a name="windows-not-genuine"></a>
 
-Windows instances use Windows KMS activation\. If an instance is unable to complete the activation process, it reports that the copy of Windows is not genuine\.
+Windows instances use Windows AWS KMS activation\. If an instance is unable to complete the activation process, it reports that the copy of Windows is not genuine\.
 
 Try the suggestions for ["Unable to activate Windows"](#activate-windows)\.
 

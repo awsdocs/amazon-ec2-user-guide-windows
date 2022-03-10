@@ -9,6 +9,7 @@ Elastic Graphics is suited for applications that require a small or intermittent
 + [Pricing for Elastic Graphics](#elastic-graphics-pricing)
 + [Elastic Graphics limitations](#elastic-graphics-limitations)
 + [Work with Elastic Graphics](working-with-elastic-graphics.md)
++ [Elastic Graphics maintenance](elastic-graphics-maintenance.md)
 + [Use CloudWatch metrics to monitor Elastic Graphics](elastic-graphics-cloudwatch.md)
 + [Troubleshoot](elastic-graphics-troubleshooting.md)
 
@@ -49,6 +50,8 @@ The Elastic Graphics network interface is created in the same subnet and VPC as 
 
 ![\[An Elastic Graphics accelerator attached to an instance\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elastic-graphics.png)
 
+![\[An Elastic Graphics accelerator attached to an instance\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/)
+
 Elastic Graphics accelerators support the API standards for OpenGL 4\.3 API and earlier, which can be used for batch applications or 3D\-graphics acceleration\. An Amazon\-optimized OpenGL library on your instance detects the attached accelerator\. It directs OpenGL API calls from your instance to the accelerator, which then processes the requests and returns the results\. Traffic between the instance and the accelerator uses the same bandwidth as the instance's network traffic so we recommend that you have adequate network bandwidth available\. Consult your software vendor for any OpenGL compliance and version questions\.
 
 By default, the default security group for your VPC is associated with the Elastic Graphics network interface\. The Elastic Graphics network traffic uses the TCP protocol and port 2007\. Ensure that the security group for your instance allows for this\. For more information, see [Configure your security groups](working-with-elastic-graphics.md#elastic-graphics-security)\.
@@ -74,4 +77,3 @@ Before you start using Elastic Graphics accelerators, be aware of the following 
 + The Elastic Graphics accelerator is not visible or accessible through the device manager of your instance\.
 + You can't reserve or schedule accelerator capacity\.
 + You can't attach accelerators to instances in EC2\-Classic\.
-+ You can't attach accelerators to instances that are configured to use Instance Metadata Service v2 \(IMDSv2\)\. 

@@ -16,11 +16,19 @@ The AWS Free Tier is available for new AWS accounts\. If you are using the AWS F
 
 Reserved Instances are billed for every clock\-hour during the term that you select, regardless of whether an instance is running\. Each clock\-hour starts on the hour \(zero minutes and zero seconds past the hour\) of a standard 24\-hour clock\. For example, 1:00:00 to 1:59:59 is one clock\-hour\. For more information about instance states, see [Instance lifecycle](ec2-instance-lifecycle.md)\.
 
-Reserved Instance billing benefits only apply to one instance\-hour per clock\-hour\. An instance\-hour begins when an instance is started and continues for 60 minutes or until the instance is stopped or terminated—whichever happens first\.
+A Reserved Instance billing benefit can be applied to a running instance on a per\-second basis\. 
 
-A new instance\-hour begins after an instance has run for 60 continuous minutes, or if an instance is stopped and then started\. Rebooting an instance does not reset the running instance\-hour\.
+A Reserved Instance billing benefit can apply to a maximum of 3600 seconds \(one hour\) of instance usage per clock\-hour\. You can run multiple instances concurrently, but can only receive the benefit of the Reserved Instance discount for a total of 3600 seconds per clock\-hour; instance usage that exceeds 3600 seconds in a clock\-hour is billed at the On\-Demand rate\.
 
-For example, if an instance is stopped and then started again during a clock\-hour and continues running for two more clock\-hours, the first instance\-hour \(before the restart\) is charged at the discounted Reserved Instance rate\. The next instance\-hour \(after restart\) is charged at the On\-Demand rate and the next two instance\-hours are charged at the discounted Reserved Instance rate\.
+For example, if you purchase one `m4.xlarge` Reserved Instance and run four `m4.xlarge` instances concurrently for one hour, one instance is charged at one hour of Reserved Instance usage and the other three instances are charged at three hours of On\-Demand usage\.
+
+However, if you purchase one `m4.xlarge` Reserved Instance and run four `m4.xlarge` instances for 15 minutes \(900 seconds\) each within the same hour, the total running time for the instances is one hour, which results in one hour of Reserved Instance usage and 0 hours of On\-Demand usage\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ri-per-second-billing.png)
+
+If multiple eligible instances are running concurrently, the Reserved Instance billing benefit is applied to all the instances at the same time up to a maximum of 3600 seconds in a clock\-hour; thereafter, On\-Demand rates apply\.
+
+![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ri-per-second-billing-concurrent.png)
 
 **Cost Explorer** on the [Billing and Cost Management](https://console.aws.amazon.com/billing) console enables you to analyze the savings against running On\-Demand Instances\. The [Reserved Instances FAQ](https://aws.amazon.com/ec2/faqs/#reserved-instances) includes an example of a list value calculation\.
 
@@ -38,9 +46,9 @@ You can also track your Reserved Instance utilization using the AWS Cost and Usa
 
 ## Reserved Instances and consolidated billing<a name="concepts-reserved-instances-billing"></a>
 
-The pricing benefits of Reserved Instances are shared when the purchasing account is part of a set of accounts billed under one consolidated billing payer account\. The instance usage across all member accounts is aggregated in the payer account every month\. This is typically useful for companies in which there are different functional teams or groups; then, the normal Reserved Instance logic is applied to calculate the bill\. For more information, see [Consolidated Billing and AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_from-consolidatedbilling.html) in the *AWS Organizations User Guide*\.
+The pricing benefits of Reserved Instances are shared when the purchasing account is part of a set of accounts billed under one consolidated billing payer account\. The instance usage across all member accounts is aggregated in the payer account every month\. This is typically useful for companies in which there are different functional teams or groups; then, the normal Reserved Instance logic is applied to calculate the bill\. For more information, see [Consolidated billing for AWS Organizations](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/consolidated-billing.html)\.
 
-If you close the account that purchased the Reserved Instance, the payer account will continue being charged for the Reserved Instance until either the Reserved Instance expires or the closed account is permanently deleted\. The closed account is permanently deleted after 90 days\. After it is deleted, the member accounts will stop benefitting from the Reserved Instance billing discount\. For more information about closing an account, see [Closing an AWS Account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html) in the *AWS Organizations User Guide*\.
+If you close the account that purchased the Reserved Instance, the payer account is charged for the Reserved Instance until the Reserved Instance expires\. After the closed account is permanently deleted in 90 days, the member accounts no longer benefit from the Reserved Instance billing discount\.
 
 ## Reserved Instance discount pricing tiers<a name="reserved-instances-discounts"></a>
 
@@ -104,7 +112,7 @@ For example, for a 1\-year Partial Upfront `t2.small` Reserved Instance, assume 
 
 ### Buy with a discount tier<a name="buying-discount-tier"></a>
 
-When you buy Reserved Instances, Amazon EC2 automatically applies any discounts to the part of your purchase that falls within a discount pricing tier\. You don't need to do anything differently, and you can buy Reserved Instances using any of the Amazon EC2 tools\. For more information, see [Buying Reserved Instances](ri-market-concepts-buying.md)\.
+When you buy Reserved Instances, Amazon EC2 automatically applies any discounts to the part of your purchase that falls within a discount pricing tier\. You don't need to do anything differently, and you can buy Reserved Instances using any of the Amazon EC2 tools\. For more information, see [Buy Reserved Instances](ri-market-concepts-buying.md)\.
 
 After the list value of your active Reserved Instances in a Region crosses into a discount pricing tier, any future purchase of Reserved Instances in that Region are charged at a discounted rate\. If a single purchase of Reserved Instances in a Region takes you over the threshold of a discount tier, then the portion of the purchase that is above the price threshold is charged at the discounted rate\. For more information about the temporary Reserved Instance IDs that are created during the purchase process, see [Crossing pricing tiers](#crossing-pricing-tiers)\.
 

@@ -3,7 +3,7 @@
 By default, the EC2Config service is included in AMIs prior to Windows Server 2016\. When the EC2Config service is updated, new Windows AMIs from AWS include the latest version of the service\. However, you need to update your own Windows AMIs and instances with the latest version of EC2Config\.
 
 **Note**  
-EC2Launch replaces EC2Config on Windows Server 2016 and later AMIs\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md)\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
+EC2Launch replaces EC2Config on Windows Server 2016 and 2019\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md)\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
 For information about how to receive notifications for EC2Config updates, see [Subscribe to EC2Config service notifications](ec2config-version-details.md#ec2-subscribe-notifications)\. For information about the changes in each version, see the [EC2Config version history](ec2config-version-details.md)\.
 
@@ -41,3 +41,22 @@ To keep the custom settings from the `config.xml` file that you saved, run `EC2I
 1. If you are running EC2Config version 4\.0 or later, you must restart SSM Agent on the instance from the Microsoft Services snap\-in\.
 **Note**  
 The updated EC2Config version information will not appear in the instance System Log or Trusted Advisor check until you reboot or stop and start your instance\.
+
+**To download and install the latest version of EC2Config using PowerShell**  
+To download, unzip, and install the latest version of EC2Config using PowerShell, run the following commands from a PowerShell window:
+
+```
+$Url = "https://s3.amazonaws.com/ec2-downloads-windows/EC2Config/EC2Install.zip"
+$DownloadZipFile = "$env:USERPROFILE\Desktop\" + $(Split-Path -Path $Url -Leaf)
+$ExtractPath = "$env:USERPROFILE\Desktop\"
+Invoke-WebRequest -Uri $Url -OutFile $DownloadZipFile
+$ExtractShell = New-Object -ComObject Shell.Application 
+$ExtractFiles = $ExtractShell.Namespace($DownloadZipFile).Items() 
+$ExtractShell.NameSpace($ExtractPath).CopyHere($ExtractFiles) 
+Start-Process $ExtractPath
+Start-Process `
+    -FilePath $env:USERPROFILE\Desktop\EC2Install.exe `
+    -ArgumentList "/S"
+```
+
+Verify the installation by checking `C:\Program Files\Amazon\` for the `Ec2ConfigService` directory\.

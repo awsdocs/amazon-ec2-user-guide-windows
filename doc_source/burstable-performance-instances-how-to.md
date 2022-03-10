@@ -1,7 +1,8 @@
 # Work with burstable performance instances<a name="burstable-performance-instances-how-to"></a>
 
 The steps for launching, monitoring, and modifying these instances are similar\. The key difference is the default credit specification when they launch\. If you do not change the default credit specification, the default is that:
-+ T3 instances launch as `unlimited`
++ T3a and T3 instances launch as `unlimited`
++ T3 instances on a Dedicated Host launch as `standard`
 + T2 instances launch as `standard`
 
 **Topics**
@@ -24,7 +25,7 @@ You can launch your instances as `unlimited` or `standard` using the Amazon EC2 
 
 1. Choose a credit specification\.
 
-   1. To launch a T3 instance as `standard`, clear **Unlimited**\.
+   1. To launch a T3a and T3 instance as `standard`, clear **Unlimited**\.
 
    1. To launch a T2 instance as `unlimited`, select **Unlimited**\.
 
@@ -32,7 +33,7 @@ You can launch your instances as `unlimited` or `standard` using the Amazon EC2 
 
 **To launch a burstable performance instance as Unlimited or Standard \(AWS CLI\)**  
 Use the [run\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) command to launch your instances\. Specify the credit specification using the `--credit-specification CpuCredits=` parameter\. Valid credit specifications are `unlimited` and `standard`\.
-+ For T3, if you do not include the `--credit-specification` parameter, the instance launches as `unlimited` by default\.
++ For T3a and T3, if you do not include the `--credit-specification` parameter, the instance launches as `unlimited` by default\.
 + For T2, if you do not include the `--credit-specification` parameter, the instance launches as `standard` by default\.
 
 ```
@@ -47,6 +48,9 @@ When burstable performance instances are launched or started, they require CPU c
 
 You must use a *launch template* for launching instances as `unlimited` in an Auto Scaling group\. A launch configuration does not support launching instances as `unlimited`\.
 
+**Note**  
+`unlimited` mode is not supported for T3 instances that are launched on a Dedicated Host\.
+
 **To create a launch template that launches instances as Unlimited \(console\)**
 
 1. Follow the [Creating a Launch Template for an Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html) procedure\.
@@ -59,7 +63,7 @@ You must use a *launch template* for launching instances as `unlimited` in an Au
 
 **To create a launch template that launches instances as Unlimited \(AWS CLI\)**  
 Use the [create\-launch\-template](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-launch-template.html) command and specify `unlimited` as the credit specification\.
-+ For T3, if you do not include the `CreditSpecification={CpuCredits=unlimited}` value, the instance launches as `unlimited` by default\.
++ For T3a and T3, if you do not include the `CreditSpecification={CpuCredits=unlimited}` value, the instance launches as `unlimited` by default\.
 + For T2, if you do not include the `CreditSpecification={CpuCredits=unlimited}` value, the instance launches as `standard` by default\.
 
 ```

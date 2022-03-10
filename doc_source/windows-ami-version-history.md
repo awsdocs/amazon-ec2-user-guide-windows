@@ -4,26 +4,28 @@ AWS provides a set of publicly available AMIs that contain software configuratio
 
 When you launch an instance from a Windows AMI, the root device for the Windows instance is an Amazon Elastic Block Store \(Amazon EBS\) volume\. Windows AMIs do not support instance store for the root device\.
 
+Windows AMIs that have been configured for faster launching are pre\-provisioned, using snapshots to launch instances up to 65% faster\. To learn more about faster launching for Windows AMIs, including how you can configure faster launching for your Windows AMI, see [Configure your Windows AMI for faster launching](win-ami-config-fast-launch.md)\.
+
 Some Windows AMIs include an edition of Microsoft SQL Server \(SQL Enterprise Edition, SQL Server Standard, SQL Server Express, or SQL Server Web\)\. Launching an instance from a Windows AMI with Microsoft SQL Server enables you to run the instance as a database server\. Alternatively, you can launch an instance from any Windows AMI and then install the database software that you need on the instance\.
 
-Microsoft no longer supports Windows Server 2003 \(see [Microsoft Windows Server 2003 End\-of\-Support](https://aws.amazon.com/windows/products/ec2/server2003/)\)\. We recommend that you launch new EC2 instances using a supported version of Windows Server\. If you have existing EC2 instances that are running an unsupported version of Windows Server, we recommend that you upgrade those instances to a supported version of Windows Server\. For more information, see [Upgrade an Amazon EC2 Windows instance to a newer version of Windows Server](serverupgrade.md)\.
+**Note**  
+Microsoft no longer supports Windows Server 2003, 2008, and 2008 R2\. We recommend that you launch new EC2 instances using a supported version of Windows Server\. If you have existing EC2 instances that are running an unsupported version of Windows Server, we recommend that you upgrade those instances to a supported version of Windows Server\. For more information, see [Upgrade an Amazon EC2 Windows instance to a newer version of Windows Server](serverupgrade.md)\.
 
 **Topics**
 + [Select an initial Windows AMI](#select-windows-ami)
 + [Keep your AMIs up\-to\-date](#WinAMI_Updating)
 + [Virtualization types](#virtualization-types)
++ [Configure your Windows AMI for faster launching](win-ami-config-fast-launch.md)
 + [Managed AWS Windows AMIs](aws-windows-ami.md)
-+ [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)
-+ [Deregister your Windows AMI](deregister-ami.md)
 + [Specialized Windows AMIs](ami-windows-specialized.md)
-+ [AWS Windows AMI Version History](ec2-windows-ami-version-history.md)
++ [AWS Windows AMI version history](ec2-windows-ami-version-history.md)
 
 ## Select an initial Windows AMI<a name="select-windows-ami"></a>
 
 To view the Windows AMIs provided by AWS, you can use the Amazon EC2 console or [AWS Marketplace](https://aws.amazon.com/marketplace/)\. For more information, see [Find a Windows AMI](finding-an-ami.md)\.
 
-You can also create an AMI from your own Windows computer\. For more information, see the following services:
-+ [AWS Server Migration Service](https://docs.aws.amazon.com/server-migration-service/latest/userguide/)
+You can also create an AMI from software running on your own Windows computer\. For more information, see the following services:
++ [AWS Application Migration Service](https://docs.aws.amazon.com/mgn/latest/ug/)
 + [VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/)
 
 ## Keep your AMIs up\-to\-date<a name="WinAMI_Updating"></a>

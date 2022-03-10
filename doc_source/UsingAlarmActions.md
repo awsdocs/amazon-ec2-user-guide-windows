@@ -9,7 +9,7 @@ There are a number of scenarios in which you might want to automatically stop or
 You can add the stop, terminate, reboot, or recover actions to any alarm that is set on an Amazon EC2 per\-instance metric, including basic and detailed monitoring metrics provided by Amazon CloudWatch \(in the `AWS/EC2` namespace\), as well as any custom metrics that include the `InstanceId` dimension, as long as its value refers to a valid running Amazon EC2 instance\.
 
 **Console support**  
-You can create alarms using the Amazon EC2 console or the CloudWatch console\. The procedures in this documentation use the Amazon EC2 console\. For procedures that use the CloudWatch console, see [Create Alarms That Stop, Terminate, Reboot, or Recover an Instance](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingAlarmActions.html) in the *Amazon CloudWatch User Guide*\.
+You can create alarms using the Amazon EC2 console or the CloudWatch console\. The procedures in this documentation use the Amazon EC2 console\. For procedures that use the CloudWatch console, see [Create alarms that stop, terminate, reboot, or recover an instance](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/UsingAlarmActions.html) in the *Amazon CloudWatch User Guide*\.
 
 **Permissions**  
 If you are an AWS Identity and Access Management \(IAM\) user, you must have the `iam:CreateServiceLinkedRole` to create or modify an alarm that performs EC2 alarm actions\.
@@ -51,7 +51,7 @@ Instances that use an Amazon EBS volume as the root device can be stopped or ter
 
    1. For **Group samples by** and **Type of data to sample**, choose a statistic and a metric\. In this example, choose **Average** and **CPU utilization**\.
 
-   1. For **Alarm When** and **Percent**, specify the metric threshold\. In this example, specify **>=** and **10** percent\.
+   1. For **Alarm When** and **Percent**, specify the metric threshold\. In this example, specify **<=** and **10** percent\.
 
    1. For **Consecutive period** and **Period**, specify the evaluation period for the alarm\. In this example, specify **1** consecutive period of **5 Minutes**\.
 
@@ -172,7 +172,7 @@ You can adjust the alarm configuration based on your own requirements before cre
 
 You can create an Amazon CloudWatch alarm that monitors an Amazon EC2 instance and automatically reboots the instance\. The reboot alarm action is recommended for Instance Health Check failures \(as opposed to the recover alarm action, which is suited for System Health Check failures\)\. An instance reboot is equivalent to an operating system reboot\. In most cases, it takes only a few minutes to reboot your instance\. When you reboot an instance, it remains on the same physical host, so your instance keeps its public DNS name, private IP address, and any data on its instance store volumes\.
 
-Rebooting an instance doesn't start a new instance billing hour, unlike stopping and restarting your instance\. For more information, see [Reboot your instance](ec2-instance-reboot.md)\.
+Rebooting an instance doesn't start a new instance billing period \(with a minimum one\-minute charge\), unlike stopping and restarting your instance\. For more information, see [Reboot your instance](ec2-instance-reboot.md)\.
 
 **Important**  
 To avoid a race condition between the reboot and recover actions, avoid setting the same number of evaluation periods for a reboot alarm and a recover alarm\. We recommend that you set reboot alarms to three evaluation periods of one minute each\. For more information, see [Evaluating an alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation) in the *Amazon CloudWatch User Guide*\.
@@ -245,6 +245,7 @@ CloudWatch prevents you from adding a recovery action to an alarm that is on an 
 
 When the `StatusCheckFailed_System` alarm is triggered, and the recover action is initiated, you are notified by the Amazon SNS topic that you chose when you created the alarm and associated the recover action\. During instance recovery, the instance is migrated during an instance reboot, and any data that is in\-memory is lost\. When the process is complete, information is published to the SNS topic you've configured for the alarm\. Anyone who is subscribed to this SNS topic receives an email notification that includes the status of the recovery attempt and any further instructions\. You notice an instance reboot on the recovered instance\.
 
+**Note**  
 The recover action can be used only with `StatusCheckFailed_System`, not with `StatusCheckFailed_Instance`\.
 
 The following problems can cause system status checks to fail:
@@ -253,15 +254,12 @@ The following problems can cause system status checks to fail:
 + Software issues on the physical host
 + Hardware issues on the physical host that impact network reachability
 
-The recover action is supported only on instances with the following characteristics:
-+ Use one of the following instance types: C3, C4, C5, C5a, C5n, M3, M4, M5, M5a, M5n, M5zn, P3, R3, R4, R5, R5a, R5b, R5n, T2, T3, T3a, X1, or X1e
-+ Use `default` or `dedicated` instance tenancy
-+ Use EBS volumes only \(do not configure instance store volumes\)\. For more information, see ['Recover this instance' is disabled](https://aws.amazon.com/premiumsupport/knowledge-center/recover-this-instance-cloudwatch-enable/)\.
+The recover action is supported only on instances that meet certain characteristics\. For more information, see [Requirements](ec2-instance-recover.md#instance-recovery-requirements)\.
 
 If your instance has a public IP address, it retains the public IP address after recovery\.
 
 **Important**  
-To avoid a race condition between the reboot and recover actions, avoid setting the same number of evaluation periods for a reboot alarm and a recover alarm\. We recommend that you set recover alarms to two evaluation periods of one minute each\. For more information, see [Evaluating an Alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation) in the *Amazon CloudWatch User Guide*\.
+To avoid a race condition between the reboot and recover actions, avoid setting the same number of evaluation periods for a reboot alarm and a recover alarm\. We recommend that you set recover alarms to two evaluation periods of one minute each\. For more information, see [Evaluating an alarm](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html#alarm-evaluation) in the *Amazon CloudWatch User Guide*\.
 
 ------
 #### [ New console ]
@@ -352,7 +350,7 @@ You can use the Amazon EC2 console to create alarm actions that stop or terminat
 ------
 #### [ New console ]
 
-![\[Manage Cloudwarch alarms page\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/manage-cloudwatch-alarms.png)
+![\[Manage Cloudwatch alarms page\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/manage-cloudwatch-alarms.png)
 
 ------
 #### [ Old console ]

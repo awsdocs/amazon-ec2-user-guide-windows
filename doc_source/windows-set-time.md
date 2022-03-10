@@ -4,7 +4,10 @@ A consistent and accurate time reference is crucial for many server tasks and pr
 
 Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 instances, and is also used by other AWS services\. This service uses a fleet of satellite\-connected and atomic reference clocks in each Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard through Network Time Protocol \(NTP\)\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. 
 
-The Amazon Time Sync Service is available through NTP at the `169.254.169.123` IP address for any instance running in a VPC\. Your instance does not require access to the internet, and you do not have to configure your security group rules or your network ACL rules to allow access\. The latest versions of AWS Windows AMIs synchronize with the Amazon Time Sync Service by default\.
+The Amazon Time Sync Service is available through NTP at the 169\.254\.169\.123 IPv4 address or the fd00:ec2::123 IPv6 address for any instance running in a VPC\. Your instance does not require access to the internet, and you do not have to configure your security group rules or your network ACL rules to allow access\. The latest versions of AWS Windows AMIs synchronize with the Amazon Time Sync Service by default\.
+
+**Note**  
+The examples in this section use the IPv4 address of the Amazon Time Sync Service: 169\.254\.169\.123\. If you are retrieving time for EC2 instances over the IPv6 address, ensure that you use the IPv6 address instead: fd00:ec2::123\. The IPv6 address is only accessible on [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances)\.
 
 **Should I use UTC for my instances?**  
 We recommend that you use Coordinated Universal Time \(UTC\) for your instances to avoid human error and to facilitate synchronization across your CloudWatch Logs, Metrics, local logs, and other services\. You can, however, choose to use a different time zone to better suit your requirements\.
@@ -12,6 +15,8 @@ We recommend that you use Coordinated Universal Time \(UTC\) for your instances 
 When you use local timezones rather than UTC, make sure that you account for aspects such as daylight savings time \(when applicable\) for automation, code, scheduled jobs, troubleshooting activities \(correlating logs\), and more\.
 
 Use the following procedures to configure the Amazon Time Sync Service on your instance from the command prompt\. Alternatively, you can use external NTP sources\. For more information about NTP and public time sources, see [http://www\.ntp\.org/](http://www.ntp.org/)\. An instance must have access to the internet for the external NTP time sources to work\.
+
+For Linux instances, see [Set the time for your Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/set-time.html)\.
 
 **Topics**
 + [Change the time zone](#windows-changing-time-zone)
@@ -28,7 +33,13 @@ Windows instances are set to the UTC time zone by default\. You can change the t
 
 1. From your instance, open a Command Prompt window\.
 
-1. Identify the time zone to use on the instance\. To get a list of time zones, use the following command: tzutil /l\. This command returns a list of all available time zones, using the following format:
+1. Identify the time zone to use on the instance\. To get a list of time zones, use the following command:
+
+   ```
+   tzutil /l
+   ```
+
+   This command returns a list of all available time zones, using the following format:
 
    ```
    display name
@@ -37,7 +48,7 @@ Windows instances are set to the UTC time zone by default\. You can change the t
 
 1. Locate the time zone ID to assign to the instance\.
 
-1. Assign the time zone to the instance by using the following command:
+1. Assign to an alternate time zone by using the following command:
 
    ```
    tzutil /s "Pacific Standard Time"
@@ -45,9 +56,16 @@ Windows instances are set to the UTC time zone by default\. You can change the t
 
    The new time zone should take effect immediately\.
 
+**Note**  
+You can assign the recommended UTC time zone by using the following command:  
+
+```
+tzutil /s "UTC"
+```
+
 ## Configure network time protocol \(NTP\)<a name="windows-configuring-ntp"></a>
 
-Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 instances, and is also used by other AWS services\. We recommend that you configure your instance to use the Amazon Time Sync Service\. This service uses a fleet of satellite\-connected and atomic reference clocks in each AWS Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. This service is available at the `169.254.169.123` IP address for any instance running in a VPC, and your instance does not require internet access to use it\. Starting with the August 2018 release, Windows AMIs use the Amazon Time Sync Service by default\.
+Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 instances, and is also used by other AWS services\. We recommend that you configure your instance to use the Amazon Time Sync Service\. This service uses a fleet of satellite\-connected and atomic reference clocks in each AWS Region to deliver accurate current time readings of the Coordinated Universal Time \(UTC\) global standard\. The Amazon Time Sync Service automatically smooths any leap seconds that are added to UTC\. This service is available at the 169\.254\.169\.123 IPv4 address or the fd00:ec2::123 IPv6 address for any instance running in a VPC, and your instance does not require internet access to use it\. Starting with the August 2018 release, Windows AMIs use the Amazon Time Sync Service by default\.
 
 **To verify the NTP configuration**
 
@@ -83,7 +101,7 @@ Amazon provides the Amazon Time Sync Service, which is accessible from all EC2 i
    w32tm /query /configuration
    ```
 
-   In the output that's returned, verify that `NtpServer` displays the `169.254.169.123` IP address\.
+   In the output that's returned, verify that `NtpServer` displays the 169\.254\.169\.123 IP address\.
 
 You can change the instance to use a different set of NTP servers if required\. For example, if you have Windows instances that do not have internet access, you can configure them to use an NTP server located within your private network\. If your instance is within a domain, you should change the settings to use the domain controllers as the time source to avoid time skew\. The security group of your instance must be configured to allow outbound UDP traffic on port 123 \(NTP\)\.
 

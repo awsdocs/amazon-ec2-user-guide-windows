@@ -8,8 +8,9 @@ For more information, see [Using Events](https://docs.aws.amazon.com/AmazonCloud
 
 **Topics**
 + [EBS volume events](#volume-events)
-+ [EBS snapshot events](#snapshot-events)
 + [EBS volume modification events](#volume-modification-events)
++ [EBS snapshot events](#snapshot-events)
++ [EBS Snapshots Archive events](#snapshot-archive-events)
 + [EBS fast snapshot restore events](#fast-snapshot-restore-events)
 + [Using AWS Lambda to handle CloudWatch events](#using_lambda)
 
@@ -26,7 +27,7 @@ Amazon EBS sends events to CloudWatch Events when the following volume events oc
 
 ### Create volume \(createVolume\)<a name="create-volume"></a>
 
-The `createVolume` event is sent to your AWS account when an action to create a volume completes\. However it is not saved, logged, or archived\. This event can have a result of either `available` or `failed`\. Creation will fail if an invalid KMS key was provided, as shown in the examples below\.
+The `createVolume` event is sent to your AWS account when an action to create a volume completes\. However it is not saved, logged, or archived\. This event can have a result of either `available` or `failed`\. Creation will fail if an invalid AWS KMS key was provided, as shown in the examples below\.
 
 **Event data**  
 The listing below is an example of a JSON object emitted by EBS for a successful `createVolume` event\. 
@@ -128,7 +129,7 @@ The listing below is an example of a JSON object emitted by EBS for a successful
 
 ### Volume attach or reattach \(attachVolume, reattachVolume\)<a name="attach-fail-key"></a>
 
-The `attachVolume` or `reattachVolume` event is sent to your AWS account if a volume fails to attach or reattach to an instance\. However it is not saved, logged, or archived\. If you use a KMS key to encrypt an EBS volume and the key becomes invalid, EBS will emit an event if that key is later used to attach or reattach to an instance, as shown in the examples below\.
+The `attachVolume` or `reattachVolume` event is sent to your AWS account if a volume fails to attach or reattach to an instance\. However it is not saved, logged, or archived\. If you use a KMS key to encrypt an EBS volume and the KMS key becomes invalid, EBS will emit an event if that KMS key is later used to attach or reattach to an instance, as shown in the examples below\.
 
 **Event data**  
 The listing below is an example of a JSON object emitted by EBS after a failed `attachVolume` event\. The cause for the failure was a KMS key pending deletion\.
@@ -179,6 +180,31 @@ The listing below is an example of a JSON object emitted by EBS after a failed `
     "cause": "arn:aws:kms:us-east-1:0123456789ab:key/01234567-0123-0123-0123-0123456789ab is pending deletion.",
     "request-id": ""
   }
+}
+```
+
+## EBS volume modification events<a name="volume-modification-events"></a>
+
+Amazon EBS sends `modifyVolume` events to CloudWatch Events when a volume is modified\. However it is not saved, logged, or archived\.
+
+```
+{
+   "version": "0",
+   "id": "01234567-0123-0123-0123-012345678901",
+   "detail-type": "EBS Volume Notification",
+   "source": "aws.ec2",
+   "account": "012345678901",
+   "time": "yyyy-mm-ddThh:mm:ssZ",
+   "region": "us-east-1",
+   "resources": [
+      "arn:aws:ec2:us-east-1:012345678901:volume/vol-03a55cf56513fa1b6"
+   ],
+   "detail": {
+      "result": "optimizing",
+      "cause": "",
+      "event": "modifyVolume",
+      "request-id": "01234567-0123-0123-0123-0123456789ab"
+   }
 }
 ```
 
@@ -266,7 +292,7 @@ The listing below is an example of a JSON object emitted by EBS for a successful
 }
 ```
 
-The listing below is an example of a JSON object emitted by EBS after a failed `createSnapshots` event\. The cause for the failure was one or more snapshots failed to complete\. The values of `snapshot_id` are the ARNs of the failed snapshots\. `startTime` and `endTime` represent when the create\-snapshots action started and ended\. 
+The listing below is an example of a JSON object emitted by EBS after a failed `createSnapshots` event\. The cause for the failure was one or more snapshots for the multi\-volume snapshot set failed to complete\. The values of `snapshot_id` are the ARNs of the failed snapshots\. `startTime` and `endTime` represent when the create\-snapshots action started and ended\.
 
 ```
 {
@@ -281,11 +307,11 @@ The listing below is an example of a JSON object emitted by EBS after a failed `
     "arn:aws:ec2::us-east-1:snapshot/snap-01234567",
     "arn:aws:ec2::us-east-1:snapshot/snap-012345678"
   ],
- "detail": {
+"detail": {
     "event": "createSnapshots",
     "result": "failed",
-    "cause": "Snapshot snap-01234567 is in status deleted",
-    "request-id": "",
+    "cause": "Snapshot snap-01234567 is in status error",
+   "request-id": "",
     "startTime": "yyyy-mm-ddThh:mm:ssZ",
     "endTime": "yyyy-mm-ddThh:mm:ssZ",
     "snapshots": [
@@ -297,7 +323,7 @@ The listing below is an example of a JSON object emitted by EBS after a failed `
       {
         "snapshot_id": "arn:aws:ec2::us-east-1:snapshot/snap-012345678",
         "source": "arn:aws:ec2::us-east-1:volume/vol-012345678",
-        "status": "deleted"
+        "status": "error"
       }
     ]
   }
@@ -332,7 +358,7 @@ The listing below is an example of a JSON object emitted by EBS after a successf
     "source": "arn:aws:ec2:eu-west-1::snapshot/snap-76543210",
     "startTime": "yyyy-mm-ddThh:mm:ssZ",
     "endTime": "yyyy-mm-ddThh:mm:ssZ",
-    "Incremental": "True"
+    "Incremental": "true"
   }
 }
 ```
@@ -396,30 +422,9 @@ The following is an example of a JSON object emitted by EBS after a completed `s
 }
 ```
 
-## EBS volume modification events<a name="volume-modification-events"></a>
+## EBS Snapshots Archive events<a name="snapshot-archive-events"></a>
 
-Amazon EBS sends `modifyVolume` events to CloudWatch Events when a volume is modified\. However it is not saved, logged, or archived\.
-
-```
-{
-   "version": "0",
-   "id": "01234567-0123-0123-0123-012345678901",
-   "detail-type": "EBS Volume Notification",
-   "source": "aws.ec2",
-   "account": "012345678901",
-   "time": "yyyy-mm-ddThh:mm:ssZ",
-   "region": "us-east-1",
-   "resources": [
-      "arn:aws:ec2:us-east-1:012345678901:volume/vol-03a55cf56513fa1b6"
-   ],
-   "detail": {
-      "result": "optimizing",
-      "cause": "",
-      "event": "modifyVolume",
-      "request-id": "01234567-0123-0123-0123-0123456789ab"
-   }
-}
-```
+Amazon EBS emits events related to snapshot archiving actions\. For more information, see [Monitor snapshot archiving](monitor-snapshot-archiving.md)\.
 
 ## EBS fast snapshot restore events<a name="fast-snapshot-restore-events"></a>
 
@@ -507,7 +512,7 @@ The following procedure uses the `createSnapshot` event to automatically copy a 
 1. Define a function in Lambda that will be available from the CloudWatch console\. The sample Lambda function below, written in Node\.js, is invoked by CloudWatch when a matching `createSnapshot` event is emitted by Amazon EBS \(signifying that a snapshot was completed\)\. When invoked, the function copies the snapshot from `us-east-2` to `us-east-1`\.
 
    ```
-   // Sample Lambda function to copy an EBS snapshot to a different region
+   // Sample Lambda function to copy an EBS snapshot to a different Region
     
    var AWS = require('aws-sdk');
    var ec2 = new AWS.EC2();
@@ -559,17 +564,19 @@ The following procedure uses the `createSnapshot` event to automatically copy a 
 
 1. Open the CloudWatch console at [https://console\.aws\.amazon\.com/cloudwatch/](https://console.aws.amazon.com/cloudwatch/)\.
 
-1. Choose **Events**, **Create rule**, **Select event source**, and **Amazon EBS Snapshots**\.
+1. In the navigation panel, expand **Events** and choose **Rules**, and then choose **Create rule**\.
 
-1. For **Specific Event\(s\)**, choose **createSnapshot** and for **Specific Result\(s\)**, choose **succeeded**\.
+1. Select **Event Pattern\.**\. For **Service Name**, choose **EC2**, and for **Event Type**, choose **EBS Snapshot Notification**\.
 
-1. For **Rule target**, find and choose the sample function that you previously created\.
+1. Select **Specific event\(s\)** and then choose **createSnapshot**\.
 
-1. Choose **Target**, **Add Target**\.
+1. Select **Specific result\(s\)** and then choose **succeeded**\.
 
-1. For **Lambda function**, select the Lambda function that you previously created and choose **Configure details**\.
+1. In the **Targets** section, choose **Add target**, and then for **Function**, choose the Lambda function that you created previously\.
 
-1. On the **Configure rule details** page, type values for **Name** and **Description**\. Select the **State** check box to activate the function \(setting it to **Enabled**\)\. 
+1. Choose **Configure details**\.
+
+1. On the **Configure rule details** page, enter values for **Name** and **Description**\. Select the **State** check box to activate the function\.
 
 1. Choose **Create rule**\.
 

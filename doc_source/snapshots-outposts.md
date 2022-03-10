@@ -6,7 +6,7 @@ By default, snapshots of EBS volumes on an Outpost are stored in Amazon S3 in th
 
 This topic provides information about working with Amazon EBS local snapshots on Outposts\. For more information about Amazon EBS snapshots and about working with snapshots in an AWS Region, see [Amazon EBS snapshots](EBSSnapshots.md)\.
 
-For more information about AWS Outposts, see [ AWS Outposts Features](http://aws.amazon.com/outposts/features/) and the [AWS Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html)\. For pricing information, see [AWS Outposts pricing](http://aws.amazon.com/outposts/pricing/)\.
+For more information about AWS Outposts, see [AWS Outposts Features](http://aws.amazon.com/outposts/features/) and the [AWS Outposts User Guide](https://docs.aws.amazon.com/outposts/latest/userguide/what-is-outposts.html)\. For pricing information, see [AWS Outposts pricing](http://aws.amazon.com/outposts/pricing/)\.
 
 **Topics**
 + [Frequently asked questions](#faq)
@@ -37,30 +37,33 @@ You can create snapshots manually using the AWS Command Line Interface \(AWS CLI
 No\. The Outpost must have connectivity with its Region as the Region provides the access, authorization, logging, and monitoring services that are critical for your snapshots' health\. If there is no connectivity, you can't create new local snapshots, create volumes or launch instances from existing local snapshots, or delete local snapshots\.
 
 **7\. How quickly is Amazon S3 storage capacity made available after deleting local snapshots?**  
-Amazon S3 storage capacity becomes available within 48 hours after deleting local snapshots and the volumes that reference them\.
+Amazon S3 storage capacity becomes available within 72 hours after deleting local snapshots and the volumes that reference them\.
 
 **8\. How can I ensure that I do not run out of Amazon S3 capacity on my Outpost?**  
 We recommend that you use Amazon CloudWatch alarms to monitor your Amazon S3 storage capacity, and delete snapshots and volumes that you no longer need to avoid running out of storage capacity\. If you are using Amazon Data Lifecycle Manager to automate the lifecycle of local snapshots, ensure that your snapshot retention policies do not retain snapshots for longer than is needed\.
 
-**9\. Can I use local snapshots and AMIs backed by local snapshots with Spot Instances and Spot Fleet?**  
+**9\. What happens if I run out of local Amazon S3 capacity on my Outposts?**  
+If you run out of local Amazon S3 capacity on your Outposts, Amazon Data Lifecycle Manager will not be able to successfully create local snapshots on the Outposts\. Amazon Data Lifecycle Manager will attempt to create the local snapshots on the Outposts, but the snapshots immediately transition to the `error` state and they are eventually deleted by Amazon Data Lifecycle Manager\. We recommend that you use the `SnapshotsCreateFailed` Amazon CloudWatch metric to monitor your snapshot lifecycle policies for snapshot creation failures\. For more information, see [Monitor your policies using Amazon CloudWatch](monitor-dlm-cw-metrics.md)\.
+
+**10\. Can I use local snapshots and AMIs backed by local snapshots with Spot Instances and Spot Fleet?**  
 No, you can't use local snapshots or AMIs backed by local snapshots to launch Spot Instances or a Spot Fleet\.
 
-**10\. Can I use local snapshots and AMIs backed by local snapshots with Amazon EC2 Auto Scaling?**  
-Yes, you can use local snapshots and AMIs backed by local snapshots to launch Auto Scaling groups in a subnet that is on the same Outpost as the snapshots\. The Amazon EC2 Auto Scaling group service\-linked role must have permission to use the KMS encryption key used to encrypt the snapshots\.  
+**11\. Can I use local snapshots and AMIs backed by local snapshots with Amazon EC2 Auto Scaling?**  
+Yes, you can use local snapshots and AMIs backed by local snapshots to launch Auto Scaling groups in a subnet that is on the same Outpost as the snapshots\. The Amazon EC2 Auto Scaling group service\-linked role must have permission to use the KMS key used to encrypt the snapshots\.  
 You can't use local snapshots or AMIs backed by local snapshots to launch Auto Scaling groups in an AWS Region\.
 
 ## Prerequisites<a name="prereqs"></a>
 
-To store snapshots on an Outpost, you must have an Outpost that is provisioned with Amazon S3 on Outposts\. For more information about Amazon S3 on Outposts, see [Using Amazon S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html) in the *Amazon Simple Storage Service Developer Guide*\.
+To store snapshots on an Outpost, you must have an Outpost that is provisioned with Amazon S3 on Outposts\. For more information about Amazon S3 on Outposts, see [Using Amazon S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html) in the *Amazon Simple Storage Service User Guide*\.
 
 ## Considerations<a name="considerations"></a>
 
 Keep the following in mind when working with local snapshots\.
-+ Outposts must have connectivity their AWS Region to use local snapshots\.
++ Outposts must have connectivity to their AWS Region to use local snapshots\.
 + Snapshot metadata is stored in the AWS Region associated with the Outpost\. This does not include any snapshot data\.
-+ Snapshots stored on Outposts are encrypted by default\. Unencrypted snapshots are not supported\. Snapshots that are created on an Outpost and snapshots that are copied to an Outpost are encrypted using the default encryption key for the Region or a different key that you specify at the time of the request\.
-+ When you create a volume on an Outpost from a local snapshot, you cannot re\-encrypt the volume using a different encryption key\. Volumes created from local snapshots must be encrypted using the same key as the source snapshot\.
-+ After you delete local snapshots from an Outpost, the Amazon S3 storage capacity used by the deleted snapshots becomes available within 48 hours\. For more information, see [Delete local snapshots](#delete-snapshots)\.
++ Snapshots stored on Outposts are encrypted by default\. Unencrypted snapshots are not supported\. Snapshots that are created on an Outpost and snapshots that are copied to an Outpost are encrypted using the default KMS key for the Region or a different KMS key that you specify at the time of the request\.
++ When you create a volume on an Outpost from a local snapshot, you cannot re\-encrypt the volume using a different KMS key\. Volumes created from local snapshots must be encrypted using the same KMS key as the source snapshot\.
++ After you delete local snapshots from an Outpost, the Amazon S3 storage capacity used by the deleted snapshots becomes available within 72 hours\. For more information, see [Delete local snapshots](#delete-snapshots)\.
 + You can't export local snapshots from an Outpost\.
 + You can't enable fast snapshot restore for local snapshots\.
 + EBS direct APIs are not supported with local snapshots\.
@@ -195,7 +198,7 @@ You can create local snapshots from volumes on an Outpost using one of the follo
 ------
 #### [ Console ]
 
-**To create local snapshots fom volumes on an Outpost**
+**To create local snapshots from volumes on an Outpost**
 
 Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -282,11 +285,7 @@ You can create Amazon Machine Images \(AMIs\) using a combination of local snaps
 
 **Note**  
 You can't create AMIs that include backing snapshots stored across multiple Outposts\.
-
-**Note**  
 You can’t currently create AMIs directly from instances on an Outposts using **CreateImage** API or the Amazon EC2 console for Outposts that are enabled with Amazon S3 on Outposts\.
-
-**Note**  
 AMIs that are backed by local snapshots can be used to launch instances on the same Outpost only\.
 
 **To create an AMI on an Outpost from snapshots in a Region**
@@ -311,6 +310,7 @@ AMIs that are backed by local snapshots can be used to launch instances on the s
 
 You can copy snapshots from an AWS Region to an Outpost\. You can do this only if the snapshots are in the Region for the Outpost\. If the snapshots are in a different Region, you must first copy the snapshot to the Region for the Outpost, and then copy it from that Region to the Outpost\.
 
+**Note**  
 You can't copy local snapshots from an Outpost to a Region, from one Outpost to another, or within the same Outpost\.
 
 You can copy snapshots from a Region to an Outpost using one of the following methods\.
@@ -336,7 +336,7 @@ Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://
 
 1. \(Optional\) For **Description**, enter a brief description of the copied snapshot\.
 
-1. Encryption is enabled by default for the snapshot copy\. Encryption cannot be disabled\. For **Master Key**, choose the encryption key to use\.
+1. Encryption is enabled by default for the snapshot copy\. Encryption cannot be disabled\. For **KMS key**, choose the KMS key to use\.
 
 1. Choose **Copy**\.
 
@@ -360,6 +360,7 @@ You can copy AMIs from an AWS Region to an Outpost\. When you copy an AMI from a
 
 You can copy an AMI from a Region to an Outpost only if the snapshots associated with the AMI are in the Region for the Outpost\. If the snapshots are in a different Region, you must first copy the AMI to the Region for the Outpost, and then copy it from that Region to the Outpost\.
 
+**Note**  
 You can't copy an AMI from an Outpost to a Region, from one Outpost to another, or within an Outpost\.
 
 You can copy AMIs from a Region to an Outpost using the AWS CLI only\.
@@ -382,7 +383,7 @@ $ aws ec2 copy-image --source-region us-east-1 --source-image-id ami-1234567890a
 
 You can create volumes on Outposts from local snapshots\. Volumes must be created on the same Outpost as the source snapshots\. You cannot use local snapshots to create volumes in the Region for the Outpost\.
 
-When you create a volume from a local snapshot, you cannot re\-encrypt the volume using different encryption key\. Volumes created from local snapshots must be encrypted using the same encryption key as the source snapshot\.
+When you create a volume from a local snapshot, you cannot re\-encrypt the volume using different KMS key\. Volumes created from local snapshots must be encrypted using the same KMS key as the source snapshot\.
 
 For more information, see [Create a volume from a snapshot](ebs-creating-volume.md#ebs-create-volume-from-snapshot)\.
 
@@ -392,7 +393,7 @@ You can launch instances from AMIs that are backed by local snapshots\. You must
 
 ### Delete local snapshots<a name="delete-snapshots"></a>
 
-You can delete local snapshots from an Outpost\. After you delete a snapshot from an Outpost, the Amazon S3 storage capacity used by the deleted snapshot becomes available within 48 hours after deleting the snapshot and the volumes that reference that snapshot\. 
+You can delete local snapshots from an Outpost\. After you delete a snapshot from an Outpost, the Amazon S3 storage capacity used by the deleted snapshot becomes available within 72 hours after deleting the snapshot and the volumes that reference that snapshot\. 
 
 Because Amazon S3 storage capacity does not become available immediately, we recommend that you use Amazon CloudWatch alarms to monitor your Amazon S3 storage capacity\. Delete snapshots and volumes that you no longer need to avoid running out of storage capacity\.
 

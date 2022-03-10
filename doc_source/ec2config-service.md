@@ -1,11 +1,11 @@
 # Configure a Windows instance using the EC2Config service<a name="ec2config-service"></a>
 
-The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
+The latest launch service for Windows Server 2022 is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
 Windows AMIs for Windows Server 2012 R2 and earlier include an optional service, the EC2Config service \(`EC2Config.exe`\)\. EC2Config starts when the instance boots and performs tasks during startup and each time you stop or start the instance\. EC2Config can also perform tasks on demand\. Some of these tasks are automatically enabled, while others must be enabled manually\. Although optional, this service provides access to advanced features that aren't otherwise available\. This service runs in the LocalSystem account\.
 
 **Note**  
-EC2Launch replaced EC2Config on Windows AMIs for Windows Server 2016 and later\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md)\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
+EC2Launch replaced EC2Config on Windows AMIs for Windows Server 2016 and 2019\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md)\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
 
 EC2Config uses settings files to control its operation\. You can update these settings files using either a graphical tool or by directly editing XML files\. The service binaries and additional files are contained in the `%ProgramFiles%\Amazon\EC2ConfigService` directory\.
 
@@ -35,13 +35,15 @@ EC2Config performs the following tasks every time the instance starts:
 + Mount all Amazon EBS volumes and instance store volumes, and map volume names to drive letters\.
 + Write event log entries to the console to help with troubleshooting \(this task is disabled by default and must be enabled in order to run at instance start\)\.
 + Write to the console that Windows is ready\.
-+ Add a custom route to the primary network adapter to enable the following IP addresses when multiple NICs are attached: 169\.254\.169\.250, 169\.254\.169\.251, and 169\.254\.169\.254\. These addresses are used by Windows Activation and when you access instance metadata\.
++ Add a custom route to the primary network adapter to enable the following IP addresses when a single NIC or multiple NICs are attached: `169.254.169.250`, `169.254.169.251`, and `169.254.169.254`\. These addresses are used by Windows Activation and when you access instance metadata\.
+**Note**  
+If the Windows OS is configured to use IPv4, these IPv4 link\-local addresses can be used\. If the Windows OS has the IPv4 network protocol stack disabled and uses IPv6 instead, add `[fd00:ec2::240]` in place of `169.254.169.250` and `169.254.169.251`\. Then add `[fd00:ec2::254]` in place of `169.254.169.254`\.
 
 EC2Config performs the following task every time a user logs in:
 + Display wallpaper information to the desktop background\.
 
 While the instance is running, you can request that EC2Config perform the following task on demand:
-+ Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep ](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
++ Run Sysprep and shut down the instance so that you can create an AMI from it\. For more information, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
 ## Stop, restart, delete, or uninstall EC2Config<a name="UsingConfig_StopDelete"></a>
 
@@ -143,12 +145,12 @@ To choose the drive letters for your volumes, click **Mappings**\. In the **Driv
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_driver_letter_mapping.png)
 After you specify a drive letter mapping and attach a volume with same label as one of the volume names that you specified, EC2Config automatically assigns your specified drive letter to that volume\. However, the drive letter mapping fails if the drive letter is already in use\. Note that EC2Config doesn't change the drive letters of volumes that were already mounted when you specified the drive letter mapping\.
 
-1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep ](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
+1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
 ## EC2Config settings files<a name="UsingConfigXML_WinAMI"></a>
 
 The settings files control the operation of the EC2Config service\. These files are located in the `C:\Program Files\Amazon\Ec2ConfigService\Settings` directory:
-+ `ActivationSettings.xml`—Controls product activation using a key management server \(KMS\)\.
++ `ActivationSettings.xml`—Controls product activation using a key management server \(AWS KMS\)\.
 + `AWS.EC2.Windows.CloudWatch.json`—Controls which performance counters to send to CloudWatch and which logs to send to CloudWatch Logs\.
 + `BundleConfig.xml`—Controls how EC2Config prepares an instance store\-backed instance for AMI creation\.
 + `Config.xml`—Controls the primary settings\.
@@ -160,12 +162,12 @@ The settings files control the operation of the EC2Config service\. These files 
 
 **ActivationSettings\.xml**
 
-This file contains settings that control product activation\. When Windows boots, the EC2Config service checks whether Windows is already activated\. If Windows is not already activated, it attempts to activate Windows by searching for the specified KMS server\.
-+ `SetAutodiscover`—Indicates whether to detect a KMS automatically\.
-+ `TargetKMSServer`—Stores the private IP address of a KMS\. The KMS must be in the same Region as your instance\.
-+ `DiscoverFromZone`—Discovers the KMS server from the specified DNS zone\.
-+ `ReadFromUserData`—Gets the KMS server from UserData\.
-+ `LegacySearchZones`—Discovers the KMS server from the specified DNS zone\.
+This file contains settings that control product activation\. When Windows boots, the EC2Config service checks whether Windows is already activated\. If Windows is not already activated, it attempts to activate Windows by searching for the specified AWS KMS server\.
++ `SetAutodiscover`—Indicates whether to detect a AWS KMS automatically\.
++ `TargetKMSServer`—Stores the private IP address of a AWS KMS\. The AWS KMS must be in the same Region as your instance\.
++ `DiscoverFromZone`—Discovers the AWS KMS server from the specified DNS zone\.
++ `ReadFromUserData`—Gets the AWS KMS server from UserData\.
++ `LegacySearchZones`—Discovers the AWS KMS server from the specified DNS zone\.
 + `DoActivate`—Attempts activation using the specified settings in the section\. This value can be `true` or `false`\.
 + `LogResultToConsole`—Displays the result to the console\.
 
@@ -190,9 +192,9 @@ This file contains settings that control how EC2Config prepares an instance for 
 + `Ec2ConfigureRDP`—Sets up a self\-signed certificate on the instance, so users can securely access the instance using Remote Desktop\. This feature is disabled on Windows Server 2008 and Windows Server 2012 instances because they can generate their own certificates\.  
 + `Ec2OutputRDPCert`—Displays the Remote Desktop certificate information to the console so that the user can verify it against the thumbprint\. 
 + `Ec2SetDriveLetter`—Sets the drive letters of the mounted volumes based on user\-defined settings\. By default, when an Amazon EBS volume is attached to an instance, it can be mounted using the drive letter on the instance\. To specify your drive letter mappings, edit the `DriveLetterConfig.xml` file located in the `EC2ConfigService\Settings` directory\.
-+ `Ec2WindowsActivate`—The plug\-in handles Windows activation\. It checks to see if Windows is activated\. If not, it updates the KMS client settings, and then activates Windows\.
++ `Ec2WindowsActivate`—The plug\-in handles Windows activation\. It checks to see if Windows is activated\. If not, it updates the AWS KMS client settings, and then activates Windows\.
 
-  To modify the KMS settings, edit the `ActivationSettings.xml` file located in the `EC2ConfigService\Settings` directory\.
+  To modify the AWS KMS settings, edit the `ActivationSettings.xml` file located in the `EC2ConfigService\Settings` directory\.
 + `Ec2DynamicBootVolumeSize`—Extends Disk 0/Volume 0 to include any unpartitioned space\.
 + `Ec2HandleUserData`—Creates and runs scripts created by the user on the first launch of an instance after Sysprep is run\. Commands wrapped in script tags are saved to a batch file, and commands wrapped in PowerShell tags are saved to a \.ps1 file \(corresponds to the User Data check box on the Ec2 Service Properties dialog box\)\.
 + `Ec2ElasticGpuSetup`—Installs the Elastic GPU software package if the instance is associated with an elastic GPU\.
@@ -357,6 +359,8 @@ You can specify proxy settings in a `system.net` element in the `Ec2Config.exe.c
            <add address="169.254.169.250" />
            <add address="169.254.169.251" />
            <add address="169.254.169.254" />
+           <add address="[fd00:ec2::250]" />
+           <add address="[fd00:ec2::254]" />
        </bypasslist>
    </defaultProxy>
    ```

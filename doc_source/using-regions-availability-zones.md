@@ -21,10 +21,6 @@ To help you determine which deployment is best for you, see [AWS Wavelength FAQs
 
 Each Amazon EC2 Region is designed to be isolated from the other Amazon EC2 Regions\. This achieves the greatest possible fault tolerance and stability\.
 
-The following diagram illustrates multiple AWS Regions\.
-
-![\[Regions\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws-region.png)
-
 When you view your resources, you see only the resources that are tied to the Region that you specified\. This is because Regions are isolated from each other, and we don't automatically replicate resources across Regions\.
 
 When you launch an instance, you must select an AMI that's in the same Region\. If the AMI is in another Region, you can copy the AMI to the Region you're using\. For more information, see [Copy an AMI](CopyingAMIs.md)\.
@@ -47,32 +43,33 @@ Your account determines the Regions that are available to you\.
 
 The following table lists the Regions provided by an AWS account\. You can't describe or access additional Regions from an AWS account, such as AWS GovCloud \(US\) Region or the China Regions\. To use a Region introduced after March 20, 2019, you must enable the Region\. For more information, see [Managing AWS Regions](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html) in the *AWS General Reference*\.
 
-For information about available Wavelength Zones, see [Available Wavelength Zones](https://docs.aws.amazon.com/wavelength/latest/developerguide/wavelength-quotas.html#concepts-available-zones) in the *AWS Wavelength Developer Guide*\.
+For information about available Wavelength Zones, see [Available Wavelength Zones](https://docs.aws.amazon.com/wavelength/latest/developerguide/wavelength-quotas.html#concepts-available-zones) in the *AWS Wavelength Developer Guide*\. For information about available Local Zones, see [Available Local Zones](#local-zones-available)\.
 
 
-| Code | Name | Opt\-in Status | Local Zone | 
-| --- | --- | --- | --- | 
-| us\-east\-2 | US East \(Ohio\) | Not required | Not available | 
-| us\-east\-1 | US East \(N\. Virginia\) | Not required | The following Local Zones are in preview:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-regions-availability-zones.html) | 
-| us\-west\-1 | US West \(N\. California\) | Not required | Not available | 
-| us\-west\-2 | US West \(Oregon\) | Not required | The following Local Zones are in Los Angeles:[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-regions-availability-zones.html) | 
-| af\-south\-1 | Africa \(Cape Town\) | Required | Not available | 
-| ap\-east\-1 | Asia Pacific \(Hong Kong\) | Required | Not available | 
-| ap\-south\-1 | Asia Pacific \(Mumbai\) | Not required | Not available | 
-| ap\-northeast\-3 | Asia Pacific \(Osaka\) | Not required | Not available | 
-| ap\-northeast\-2 | Asia Pacific \(Seoul\) | Not required | Not available | 
-| ap\-southeast\-1 | Asia Pacific \(Singapore\) | Not required | Not available | 
-| ap\-southeast\-2 | Asia Pacific \(Sydney\) | Not required | Not available | 
-| ap\-northeast\-1 | Asia Pacific \(Tokyo\) | Not required | Not available | 
-| ca\-central\-1 | Canada \(Central\) | Not required | Not available | 
-| eu\-central\-1 | Europe \(Frankfurt\) | Not required | Not available | 
-| eu\-west\-1 | Europe \(Ireland\) | Not required | Not available | 
-| eu\-west\-2 | Europe \(London\) | Not required | Not available | 
-| eu\-south\-1 | Europe \(Milan\) | Required | Not available | 
-| eu\-west\-3 | Europe \(Paris\) | Not required | Not available | 
-| eu\-north\-1 | Europe \(Stockholm\) | Not required | Not available | 
-| me\-south\-1 | Middle East \(Bahrain\) | Required | Not available | 
-| sa\-east\-1 | South America \(São Paulo\) | Not required | Not available | 
+| Code | Name | Opt\-in Status | 
+| --- | --- | --- | 
+| us\-east\-2 | US East \(Ohio\) | Not required | 
+| us\-east\-1 | US East \(N\. Virginia\) | Not required | 
+| us\-west\-1 | US West \(N\. California\) | Not required | 
+| us\-west\-2 | US West \(Oregon\) | Not required | 
+| af\-south\-1 | Africa \(Cape Town\) | Required | 
+| ap\-east\-1 | Asia Pacific \(Hong Kong\) | Required | 
+| ap\-southeast\-3 | Asia Pacific \(Jakarta\) | Required | 
+| ap\-south\-1 | Asia Pacific \(Mumbai\) | Not required | 
+| ap\-northeast\-3 | Asia Pacific \(Osaka\) | Not required | 
+| ap\-northeast\-2 | Asia Pacific \(Seoul\) | Not required | 
+| ap\-southeast\-1 | Asia Pacific \(Singapore\) | Not required | 
+| ap\-southeast\-2 | Asia Pacific \(Sydney\) | Not required | 
+| ap\-northeast\-1 | Asia Pacific \(Tokyo\) | Not required | 
+| ca\-central\-1 | Canada \(Central\) | Not required | 
+| eu\-central\-1 | Europe \(Frankfurt\) | Not required | 
+| eu\-west\-1 | Europe \(Ireland\) | Not required | 
+| eu\-west\-2 | Europe \(London\) | Not required | 
+| eu\-south\-1 | Europe \(Milan\) | Required | 
+| eu\-west\-3 | Europe \(Paris\) | Not required | 
+| eu\-north\-1 | Europe \(Stockholm\) | Not required | 
+| me\-south\-1 | Middle East \(Bahrain\) | Required | 
+| sa\-east\-1 | South America \(São Paulo\) | Not required | 
 
 For more information, see [AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/)\.
 
@@ -165,26 +162,31 @@ For more information about the endpoints for Amazon EC2, see [Amazon Elastic Com
 
 ## Availability Zones<a name="concepts-availability-zones"></a>
 
-Each Region has multiple, isolated locations known as *Availability Zones*\. When you launch an instance, you can select an Availability Zone or let us choose one for you\. If you distribute your instances across multiple Availability Zones and one instance fails, you can design your application so that an instance in another Availability Zone can handle requests\.
+Each Region has multiple, isolated locations known as *Availability Zones*\. The code for Availability Zone is its Region code followed by a letter identifier\. For example, `us-east-1a`\.
 
-The following diagram illustrates multiple Availability Zones in an AWS Region\.
+When you launch an instance, you select a Region and a virtual private cloud \(VPC\), and then you can either select a subnet from one of the Availability Zones or let us choose one for you\. If you distribute your instances across multiple Availability Zones and one instance fails, you can design your application so that an instance in another Availability Zone can handle requests\. You can also use Elastic IP addresses to mask the failure of an instance in one Availability Zone by rapidly remapping the address to an instance in another Availability Zone\.
 
-![\[Regions\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws-az.png)
+The following diagram illustrates multiple Availability Zones in an AWS Region\. Availability Zone A and Availability Zone B each have one subnet, and each subnet has instances\. Availability Zone C has no subnets, therefore you can't launch instances into this Availability Zone\.
 
-You can also use Elastic IP addresses to mask the failure of an instance in one Availability Zone by rapidly remapping the address to an instance in another Availability Zone\. For more information, see [Elastic IP addresses](elastic-ip-addresses-eip.md)\. 
+![\[A Region with instances in one Availability Zone.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/region-with-azs.png)
 
-An Availability Zone is represented by a Region code followed by a letter identifier; for example, `us-east-1a`\. To ensure that resources are distributed across the Availability Zones for a Region, we independently map Availability Zones to names for each AWS account\. For example, the Availability Zone `us-east-1a` for your AWS account might not be the same location as `us-east-1a` for another AWS account\.
-
-To coordinate Availability Zones across accounts, you must use the *AZ ID*, which is a unique and consistent identifier for an Availability Zone\. For example, `use1-az1` is an AZ ID for the `us-east-1` Region and it has the same location in every AWS account\.
-
-You can view AZ IDs to determine the location of resources in one account relative to the resources in another account\. For example, if you share a subnet in the Availability Zone with the AZ ID `use-az2` with another account, this subnet is available to that account in the Availability Zone whose AZ ID is also `use-az2`\. The AZ ID for each VPC and subnet is displayed in the Amazon VPC console\. For more information, see [Working with Shared VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html) in the *Amazon VPC User Guide*\.
-
-As Availability Zones grow over time, our ability to expand them can become constrained\. If this happens, we might restrict you from launching an instance in a constrained Availability Zone unless you already have an instance in that Availability Zone\. Eventually, we might also remove the constrained Availability Zone from the list of Availability Zones for new accounts\. Therefore, your account might have a different number of available Availability Zones in a Region than another account\. 
+As Availability Zones grow over time, our ability to expand them can become constrained\. If this happens, we might restrict you from launching an instance in a constrained Availability Zone unless you already have an instance in that Availability Zone\. Eventually, we might also remove the constrained Availability Zone from the list of Availability Zones for new accounts\. Therefore, your account might have a different number of available Availability Zones in a Region than another account\.
 
 **Topics**
++ [AZ IDs](#az-ids)
 + [Describe your Availability Zones](#availability-zones-describe)
 + [Launch instances in an Availability Zone](#using-regions-availability-zones-launching)
 + [Migrate an instance to another Availability Zone](#migrating-instance-availability-zone)
+
+### AZ IDs<a name="az-ids"></a>
+
+To ensure that resources are distributed across the Availability Zones for a Region, we independently map Availability Zones to codes for each AWS account\. For example, the Availability Zone `us-east-1a` for your AWS account might not be the same physical location as `us-east-1a` for another AWS account\.
+
+To coordinate Availability Zones across accounts, you must use the *AZ ID*, which is a unique and consistent identifier for an Availability Zone\. For example, `use1-az1` is an AZ ID for the `us-east-1` Region and it has the same physical location in every AWS account\. You can view the AZ IDs for your account to determine the physical location of your resources relative to the resources in another account\. For example, if you share a subnet in the Availability Zone with the AZ ID `use1-az2` with another account, this subnet is available to that account in the Availability Zone whose AZ ID is also `use1-az2`\.
+
+The following diagram illustrates two accounts with different mappings of Availability Zone code to AZ ID\.
+
+![\[Two accounts with different mappings of Availability Zone code to AZ ID.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/availability-zone-mapping.png)
 
 ### Describe your Availability Zones<a name="availability-zones-describe"></a>
 
@@ -198,7 +200,7 @@ You can use the Amazon EC2 console or the command line interface to determine wh
 
 1. On the navigation pane, choose **EC2 Dashboard**\.
 
-1. The Availability Zones are listed under **Service health**, **Zone status**\.
+1. The Availability Zones are listed in the **Service health** pane\.
 
 **To find your Availability Zones using the AWS CLI**
 
@@ -225,11 +227,11 @@ PS C:\> Get-EC2AvailabilityZone -Region region-name
 
 When you launch an instance, select a Region that puts your instances closer to specific customers, or meets the legal or other requirements that you have\. By launching your instances in separate Availability Zones, you can protect your applications from the failure of a single location\. 
 
-When you launch an instance, you can optionally specify an Availability Zone in the Region that you are using\. If you do not specify an Availability Zone, we select an Availability Zone for you\. When you launch your initial instances, we recommend that you accept the default Availability Zone, because this allows us to select the best Availability Zone for you based on system health and available capacity\. If you launch additional instances, specify a Zone only if your new instances must be close to, or separated from, your running instances\.
+When you launch an instance, you can optionally specify an Availability Zone in the Region that you are using\. If you do not specify an Availability Zone, we select an Availability Zone for you\. When you launch your initial instances, we recommend that you accept the default Availability Zone, because this allows us to select the best Availability Zone for you based on system health and available capacity\. If you launch additional instances, specify an Availability Zone only if your new instances must be close to, or separated from, your running instances\.
 
 ### Migrate an instance to another Availability Zone<a name="migrating-instance-availability-zone"></a>
 
-If necessary, you can migrate an instance from one Availability Zone to another\. For example, let's say you are trying to modify the instance type of your instance and we can't launch an instance of the new instance type in the current Availability Zone\. In this case, you can migrate the instance to an Availability Zone where we are able to launch an instance of that instance type\.
+If necessary, you can migrate an instance from one Availability Zone to another\. For example, if you try to modify the instance type of your instance and we can't launch an instance of the new instance type in the current Availability Zone, you can migrate the instance to an Availability Zone with capacity for the new instance type\.
 
 The migration process involves:
 + Creating an AMI from the original instance
@@ -255,32 +257,58 @@ The migration process involves:
 
 ## Local Zones<a name="concepts-local-zones"></a>
 
-A Local Zone is an extension of an AWS Region in geographic proximity to your users\. Local Zones have their own connections to the internet and support AWS Direct Connect, so that resources created in a Local Zone can serve local users with low\-latency communications\. For more information, see [AWS Local Zones](http://aws.amazon.com/about-aws/global-infrastructure/localzones/)\. 
+A Local Zone is an extension of an AWS Region in geographic proximity to your users\. Local Zones have their own connections to the internet and support AWS Direct Connect, so that resources created in a Local Zone can serve local users with low\-latency communications\. For more information, see [AWS Local Zones](http://aws.amazon.com/about-aws/global-infrastructure/localzones/)\.
 
-![\[Local Zones\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws-lz.png)
+The code for a Local Zone is its Region code followed by an identifier that indicates its physical location\. For example, `us-west-2-lax-1` in Los Angeles\. For more information, see [Available Local Zones](#local-zones-available)\.
 
-A Local Zone is represented by a Region code followed by an identifier that indicates the location, for example, `us-west-2-lax-1a`\.
+The following diagram illustrates the AWS Region `us-west-2`, two of its Availability Zones, and two of its Local Zones\. The VPC spans the Availability Zones and one of the Local Zones\. Each zone in the VPC has one subnet\.
 
-To use a Local Zone, you must first enable it\. For more information, see [Opt in to Local Zones](#opt-in-local-zone)\. Next, create a subnet in the Local Zone\. Finally, launch any of the following resources in the Local Zone subnet, so that your applications are close to your end users:
-+ Amazon EC2 instances
-+ Amazon EBS volumes
-+ Amazon ECS
-+ Amazon EKS
+![\[A VPC with Availability Zones and Local Zones.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/region-with-lzs.png)
 
-In addition to the above list, the following resources are available in the Los Angeles Local Zones\. 
-+ Amazon FSx file servers
-+ Elastic Load Balancing
-+ Amazon EMR
-+ Amazon ElastiCache
-+ Amazon Relational Database Service
-+ Dedicated Hosts
-
-For information about the available Local Zones, see [Available Regions](#concepts-available-regions)\.
+To use a Local Zone, you must first enable it\. For more information, see [Opt in to Local Zones](#opt-in-local-zone)\. Next, create a subnet in the Local Zone\. Finally, launch resources in the Local Zone subnet, such as instances, so that your applications are close to your end users\.
 
 **Topics**
++ [Available Local Zones](#local-zones-available)
 + [Describe your Local Zones](#local-zones-describe)
 + [Opt in to Local Zones](#opt-in-local-zone)
 + [Launch instances in a Local Zone](#local-zones-launching)
+
+### Available Local Zones<a name="local-zones-available"></a>
+
+The following tables list the available Local Zones by parent Regions\. For information about how to opt in, see [Opt in to Local Zones](#opt-in-local-zone)\.
+
+**US East \(N\. Virginia\) Local Zones**  
+The following table lists Local Zones in US East \(N\. Virginia\):
+
+
+| Parent Region | Zone Name | Location \(metro area\) | 
+| --- | --- | --- | 
+| US East \(N\. Virginia\) | us\-east\-1\-atl\-1a | Atlanta | 
+| US East \(N\. Virginia\) | us\-east\-1\-bos\-1a | Boston | 
+| US East \(N\. Virginia\) | us\-east\-1\-chi\-1a | Chicago | 
+| US East \(N\. Virginia\) | us\-east\-1\-dfw\-1a | Dallas | 
+| US East \(N\. Virginia\) | us\-east\-1\-iah\-1a | Houston | 
+| US East \(N\. Virginia\) | us\-east\-1\-mci\-1a | Kansas City | 
+| US East \(N\. Virginia\) | us\-east\-1\-mia\-1a | Miami | 
+| US East \(N\. Virginia\) | us\-east\-1\-msp\-1a | Minneapolis | 
+| US East \(N\. Virginia\) | us\-east\-1\-nyc\-1a | New York City \* | 
+| US East \(N\. Virginia\) | us\-east\-1\-phl\-1a | Philadelphia | 
+
+\*Located in New Jersey\.
+
+**US West \(Oregon\) Local Zones**  
+The following table lists Local Zones in US West \(Oregon\):
+
+
+| Parent Region | Zone Name | Location \(metro area\) | 
+| --- | --- | --- | 
+| US West \(Oregon\) | us\-west\-2\-den\-1a | Denver | 
+| US West \(Oregon\) | us\-west\-2\-las\-1a | Las Vegas | 
+| US West \(Oregon\) | us\-west\-2\-lax\-1a | Los Angeles | 
+| US West \(Oregon\) | us\-west\-2\-lax\-1b | Los Angeles | 
+| US West \(Oregon\) | us\-west\-2\-phx\-1a | Phoenix | 
+| US West \(Oregon\) | us\-west\-2\-pdx\-1a | Portland | 
+| US West \(Oregon\) | us\-west\-2\-sea\-1a | Seattle | 
 
 ### Describe your Local Zones<a name="local-zones-describe"></a>
 
@@ -321,8 +349,6 @@ PS C:\> Get-EC2AvailabilityZone -Region region-name
 
 Before you can specify a Local Zone for a resource or service, you must opt in to Local Zones\.
 
-If you need to opt in to a Local Zone that is in preview \(Boston, Houston, or Miami\), request access by filling in the [AWS Local Zone Signup Form](https://pages.awscloud.com/local-zones-signup-form.html)\.
-
 **Consideration**  
 Some AWS resources might not be available in all Regions\. Make sure that you can create the resources that you need in the desired Regions or Local Zones before launching an instance in a specific Local Zone\.
 
@@ -349,11 +375,11 @@ Some AWS resources might not be available in all Regions\. Make sure that you ca
 
 ### Launch instances in a Local Zone<a name="local-zones-launching"></a>
 
-When you launch an instance, you can specify a subnet which is in a Local Zone\. You also allocate an IP address from a network border group, which is a unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS advertises IP addresses, for example, `us-west-2-lax-1a`\.
+When you launch an instance, you can specify a subnet that is in a Local Zone\. You also allocate an IP address from a network border group\. A network border group is a unique set of Availability Zones, Local Zones, or Wavelength Zones from which AWS advertises IP addresses, for example, `us-west-2-lax-1a`\.
 
 You can allocate the following IP addresses from a network border group:
-+ Elastic IPv4 addresses that Amazon provides
-+ IPv6 Amazon\-provided VPC addresses
++ Amazon\-provided Elastic IPv4 addresses
++ Amazon\-provided IPv6 VPC addresses
 
 **To launch an instance in a Local Zone:**
 
@@ -363,7 +389,7 @@ You can allocate the following IP addresses from a network border group:
 
 1. Create a subnet\. Select the Local Zone when you create the subnet\. For more information, see [Creating a subnet in your VPC](https://docs.aws.amazon.com/vpc/latest/userguide/working-with-vpcs.html#AddaSubnet) in the *Amazon VPC User Guide*\.
 
-1. Launch an instance, and select the subnet you created in the Local Zone\. For more information, see [Launch your instance](LaunchingAndUsingInstances.md)\.
+1. Launch an instance, and select the subnet that you created in the Local Zone\. For more information, see [Launch your instance](LaunchingAndUsingInstances.md)\.
 
 ## Wavelength Zones<a name="concepts-wavelength-zones"></a>
 
@@ -371,9 +397,11 @@ AWS Wavelength enables developers to build applications that deliver ultra\-low 
 
 A Wavelength Zone is an isolated zone in the carrier location where the Wavelength infrastructure is deployed\. Wavelength Zones are tied to a Region\. A Wavelength Zone is a logical extension of a Region, and is managed by the control plane in the Region\.
 
-![\[Wavelength Zones\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws-wz.png)
+The code for a Wavelength Zone is its Region code followed by an identifier that indicates the physical location\. For example, `us-east-1-wl1-bos-wlz-1` in Boston\.
 
-A Wavelength Zone is represented by a Region code followed by an identifier that indicates the Wavelength Zone, for example, `us-east-1-wl1-bos-wlz-1`\.
+The following diagram illustrates the AWS Region `us-west-2`, two of its Availability Zones, and a Wavelength Zone\. The VPC spans the Availability Zones and the Wavelength Zone\. Each zone in the VPC has one subnet, and each subnet has an instance\.
+
+![\[A VPC with Availability Zones and a Wavelength Zone.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/region-with-wavelength-zones.png)
 
 To use a Wavelength Zone, you must first opt in to the Zone\. For more information, see [Enable Wavelength Zones](#opt-in-wavelength-zone)\. Next, create a subnet in the Wavelength Zone\. Finally, launch your resources in the Wavelength Zones subnet, so that your applications are closer to your end users\.
 
@@ -421,10 +449,9 @@ PS C:\> Get-EC2AvailabilityZone -Region region-name
 
 ### Enable Wavelength Zones<a name="opt-in-wavelength-zone"></a>
 
-Before you specify a Wavelength Zone for a resource or service, you must enable Wavelength Zones\.
+Before you specify a Wavelength Zone for a resource or service, you must opt in to Wavelength Zones\.
 
 **Considerations**
-+ You must request access in order to use Wavelength Zones\. For information about how to request Wavelength Zone access, see [AWS Wavelength](http://aws.amazon.com/wavelength/)\.
 + Some AWS resources are not available in all Regions\. Make sure that you can create the resources that you need in the desired Region or Wavelength Zone before launching an instance in a specific Wavelength Zone\.
 
 **To opt in to Wavelength Zone using the console**
@@ -439,9 +466,11 @@ Before you specify a Wavelength Zone for a resource or service, you must enable 
 
 1. In the upper\-right corner of the page, choose **Account attributes**, **Zones**\.
 
-1. Under **Wavelength Zones**, turn on each Wavelength Zone\.
+1. Under **Wavelength Zones**, choose **Manage** for the Wavelength Zone\.
 
-1. Enable the Wavelength Zone\.
+1. Choose **Enable**\.
+
+1. Choose **Update zone group**\.
 
 **To enable Wavelength Zones using the AWS CLI**  
 Use the [modify\-availability\-zone\-group](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-availability-zone-group.html) command\.

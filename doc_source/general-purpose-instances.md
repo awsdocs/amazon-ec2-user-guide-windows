@@ -25,6 +25,20 @@ For more information, see [Amazon EC2 M5 Instances](https://aws.amazon.com/ec2/i
 
 Bare metal instances, such as `m5zn.metal`, provide your applications with direct access to physical resources of the host server, such as processors and memory\.
 
+**M6i instances**
+
+These instances are well suited for general\-purpose workloads such as the following:
++ Application servers and web servers
++ Microservices
++ High performance computing
++ App development
++ Small and midsize databases
++ Caching fleets
+
+Bare metal instances, such as `m6i.metal`, provide your applications with direct access to physical resources of the host server, such as processors and memory\.
+
+For more information, see [Amazon EC2 M6i Instances](http://aws.amazon.com/ec2/instance-types/m6i)\.
+
 **T2, T3, and T3a instances**
 
 These instances provide a baseline level of CPU performance with the ability to burst to a higher level when required by your workload\. An Unlimited instance can sustain high CPU performance for any period of time whenever required\. For more information, see [Burstable performance instances](burstable-performance-instances.md)\. They are well\-suited for the following:
@@ -41,7 +55,7 @@ For more information, see [Amazon EC2 T2 Instances](http://aws.amazon.com/ec2/in
 + [Network performance](#general-purpose-network-performance)
 + [SSD I/O performance](#general-purpose-ssd-perf)
 + [Instance features](#general-purpose-features)
-+ [Release notes](#general-purpose-instances-limits)
++ [Release notes](#general-purpose-instances-release-notes)
 + [Burstable performance instances](burstable-performance-instances.md)
 
 ## Hardware specifications<a name="general-purpose-hardware"></a>
@@ -116,6 +130,26 @@ The following is a summary of the hardware specifications for general purpose in
 | m5zn\.6xlarge | 24 | 96 | 
 | m5zn\.12xlarge | 48 | 192 | 
 | m5zn\.metal | 48 | 192 | 
+| m6a\.large | 2 | 8 | 
+| m6a\.xlarge | 4 | 16 | 
+| m6a\.2xlarge | 8 | 32 | 
+| m6a\.4xlarge | 16 | 64 | 
+| m6a\.8xlarge | 32 | 128 | 
+| m6a\.12xlarge | 48 | 192 | 
+| m6a\.16xlarge | 64 | 256 | 
+| m6a\.24xlarge | 96 | 256 | 
+| m6a\.32xlarge | 128 | 256 | 
+| m6a\.48xlarge | 192 | 256 | 
+| m6i\.large | 2 | 8 | 
+| m6i\.xlarge | 4 | 16 | 
+| m6i\.2xlarge | 8 | 32 | 
+| m6i\.4xlarge | 16 | 64 | 
+| m6i\.8xlarge | 32 | 128 | 
+| m6i\.12xlarge | 48 | 192 | 
+| m6i\.16xlarge | 64 | 256 | 
+| m6i\.24xlarge | 96 | 384 | 
+| m6i\.32xlarge | 128 | 512 | 
+| m6i\.metal | 128 | 512 | 
 | t2\.nano | 1 | 0\.5 | 
 | t2\.micro | 1 | 1 | 
 | t2\.small | 1 | 2 | 
@@ -155,58 +189,114 @@ The following is a summary of network performance for general purpose instances 
 
 | Instance type | Network performance | Enhanced networking | 
 | --- | --- | --- | 
-| t2\.nano \| t2\.micro \| t2\.small \| t2\.medium \| t2\.large \| t2\.xlarge \| t2\.2xlarge | Up to 1 Gbps | Not supported | 
-| t3\.nano \| t3\.micro \| t3\.small \| t3\.medium \| t3\.large \| t3\.xlarge \| t3\.2xlarge \| t3a\.nano \| t3a\.micro \| t3a\.small \| t3a\.medium \| t3a\.large \| t3a\.xlarge \| t3a\.2xlarge | Up to 5 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| T2 | Up to 1 Gbps | Not supported | 
+| T3 \| T3a | Up to 5 Gbps † | [ENA](enhanced-networking-ena.md) | 
 | m4\.large | Moderate | [Intel 82599 VF](sriov-networking.md) | 
 |  m4\.xlarge \| m4\.2xlarge \| m4\.4xlarge  | High | [Intel 82599 VF](sriov-networking.md) | 
 |  m5\.4xlarge and smaller \| m5a\.8xlarge and smaller \| m5ad\.8xlarge and smaller \| m5d\.4xlarge and smaller  | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
 | m4\.10xlarge | 10 Gbps | [Intel 82599 VF](sriov-networking.md) | 
-|  m5\.8xlarge \| m5a\.12xlarge \| m5ad\.12xlarge \| m5d\.8xlarge  | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5\.12xlarge \| m5a\.16xlarge \| m5ad\.16xlarge \| m5d\.12xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m5\.8xlarge \| m5a\.12xlarge \| m5ad\.12xlarge \| m5d\.8xlarge \| m5d\.12xlarge  | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
+| m5\.12xlarge \| m5a\.16xlarge \| m5ad\.16xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m6a\.4xlarge and smaller \| m6i\.4xlarge and smaller  | Up to 12\.5 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  m6a\.8xlarge \| m6i\.8xlarge  | 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m6a\.12xlarge \| m6i\.12xlarge  | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5\.16xlarge \| m5a\.24xlarge \| m5ad\.24xlarge \| m5d\.16xlarge  | 20 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5dn\.4xlarge and smaller \| m5n\.4xlarge and smaller \| m5zn\.3xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
-|  m4\.16xlarge \| m5\.24xlarge \| m5\.metal \| m5d\.24xlarge \| m5d\.metal \| m5dn\.8xlarge \| m5n\.8xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5dn\.12xlarge \| m5n\.12xlarge \| m5zn\.6xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m4\.16xlarge \| m5\.24xlarge \| m5\.metal \| m5d\.24xlarge \| m5d\.metal \| m5dn\.8xlarge \| m5n\.8xlarge \| m6a\.16xlarge \| m6i\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m6a\.24xlarge \| m6i\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.12xlarge \| m5n\.12xlarge \| m5zn\.6xlarge \| m6a\.32xlarge \| m6a\.48xlarge \| m6i\.32xlarge \| m6i\.metal  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5dn\.16xlarge \| m5n\.16xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5dn\.24xlarge \| m5dn\.metal \| m5n\.24xlarge \| m5n\.metal \| m5zn\.12xlarge \| m5zn\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
-† These instances use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. They accrue credits when their bandwidth is below their baseline bandwidth, and can use these credits when they perform network data transfers\. For more information, open a support case and ask about baseline bandwidth for the specific instance types that you are interested in\.
+† These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
+
+
+| Instance type | Baseline bandwidth \(Gbps\) | Burst bandwidth \(Gbps\) | 
+| --- | --- | --- | 
+| m5\.large | \.75 | 10 | 
+| m5\.xlarge | 1\.25 | 10 | 
+| m5\.2xlarge | 2\.5 | 10 | 
+| m5\.4xlarge | 5 | 10 | 
+| m5a\.large | \.75 | 10 | 
+| m5a\.xlarge | 1\.25 | 10 | 
+| m5a\.2xlarge | 2\.5 | 10 | 
+| m5a\.4xlarge | 5 | 10 | 
+| m5ad\.large | \.75 | 10 | 
+| m5ad\.xlarge | 1\.25 | 10 | 
+| m5ad\.2xlarge | 2\.5 | 10 | 
+| m5ad\.4xlarge | 5 | 10 | 
+| m5d\.large | \.75 | 10 | 
+| m5d\.xlarge | 1\.25 | 10 | 
+| m5d\.2xlarge | 2\.5 | 10 | 
+| m5d\.4xlarge | 5 | 10 | 
+| m5dn\.large | 2\.1 | 25 | 
+| m5dn\.xlarge | 4\.1 | 25 | 
+| m5dn\.2xlarge | 8\.125 | 25 | 
+| m5dn\.4xlarge | 16\.25 | 25 | 
+| m5n\.large | 2\.1 | 25 | 
+| m5n\.xlarge | 4\.1 | 25 | 
+| m5n\.2xlarge | 8\.125 | 25 | 
+| m5n\.4xlarge | 16\.25 | 25 | 
+| m5zn\.large | 3 | 25 | 
+| m5zn\.xlarge | 5 | 25 | 
+| m5zn\.2xlarge | 10 | 25 | 
+| m5zn\.3xlarge | 15 | 25 | 
+| m6a\.large | \.781 | 12\.5 | 
+| m6a\.xlarge | 1\.562 | 12\.5 | 
+| m6a\.2xlarge | 3\.125 | 12\.5 | 
+| m6a\.4xlarge | 6\.25 | 12\.5 | 
+| m6i\.large | \.781 | 12\.5 | 
+| m6i\.xlarge | 1\.562 | 12\.5 | 
+| m6i\.2xlarge | 3\.125 | 12\.5 | 
+| m6i\.4xlarge | 6\.25 | 12\.5 | 
+| t3\.nano | \.032 | 5 | 
+| t3\.micro | \.064 | 5 | 
+| t3\.small | \.128 | 5 | 
+| t3\.medium | \.256 | 5 | 
+| t3\.large | \.512 | 5 | 
+| t3\.xlarge | 1\.024 | 5 | 
+| t3\.2xlarge | 2\.048 | 5 | 
+| t3a\.nano | \.032 | 5 | 
+| t3a\.micro | \.064 | 5 | 
+| t3a\.small | \.128 | 5 | 
+| t3a\.medium | \.256 | 5 | 
+| t3a\.large | \.512 | 5 | 
+| t3a\.xlarge | 1\.024 | 5 | 
+| t3a\.2xlarge | 2\.048 | 5 | 
 
 ## SSD I/O performance<a name="general-purpose-ssd-perf"></a>
 
-If you use all the SSD\-based instance store volumes available to your instance, you get the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
+If you use all the SSD\-based instance store volumes available to your instance, you can get up to the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
 
 
 | Instance Size | 100% Random Read IOPS | Write IOPS | 
 | --- | --- | --- | 
-| m5ad\.large \* | 30,000 | 15,000 | 
-| m5ad\.xlarge \* |  59,000  |  29,000  | 
-| m5ad\.2xlarge \* |  117,000  |  57,000  | 
-| m5ad\.4xlarge \* |  234,000  |  114,000  | 
-| m5ad\.8xlarge |  466,666  |  233,333  | 
-| m5ad\.12xlarge |  700,000  |  340,000  | 
-| m5ad\.16xlarge  |  933,333  |  466,666  | 
-| m5ad\.24xlarge |  1,400,000  |  680,000  | 
-| m5d\.large \* |  30,000  |  15,000  | 
-| m5d\.xlarge \* |  59,000  |  29,000  | 
-| m5d\.2xlarge \* |  117,000  |  57,000  | 
-| m5d\.4xlarge \* |  234,000  |  114,000  | 
-| m5d\.8xlarge |  466,666  |  233,333  | 
-| m5d\.12xlarge  |  700,000  |  340,000  | 
-| m5d\.16xlarge |  933,333  |  466,666  | 
-| m5d\.24xlarge |  1,400,000  |  680,000  | 
-| m5d\.metal |  1,400,000  |  680,000  | 
-| m5dn\.large \* |  30,000  |  15,000  | 
-| m5dn\.xlarge \* |  59,000  |  29,000  | 
-| m5dn\.2xlarge \*  |  117,000  |  57,000  | 
-| m5dn\.4xlarge \* |  234,000  |  114,000  | 
-| m5dn\.8xlarge |  466,666  |  233,333  | 
-| m5dn\.12xlarge |  700,000  |  340,000  | 
-| m5dn\.16xlarge | 933,333 |  466,666  | 
-| m5dn\.24xlarge  |  1,400,000  |  680,000  | 
+| m5ad\.large | 30,000 | 15,000 | 
+| m5ad\.xlarge | 59,000 | 29,000 | 
+| m5ad\.2xlarge | 117,000 | 57,000 | 
+| m5ad\.4xlarge | 234,000 | 114,000 | 
+| m5ad\.8xlarge | 466,666 | 233,333 | 
+| m5ad\.12xlarge | 700,000 | 340,000 | 
+| m5ad\.16xlarge  | 933,333 | 466,666 | 
+| m5ad\.24xlarge | 1,400,000 | 680,000 | 
+| m5d\.large | 30,000 | 15,000 | 
+| m5d\.xlarge | 59,000 | 29,000 | 
+| m5d\.2xlarge | 117,000 | 57,000 | 
+| m5d\.4xlarge | 234,000 | 114,000 | 
+| m5d\.8xlarge | 466,666 | 233,333 | 
+| m5d\.12xlarge  | 700,000 | 340,000 | 
+| m5d\.16xlarge | 933,333 | 466,666 | 
+| m5d\.24xlarge | 1,400,000 | 680,000 | 
+| m5d\.metal | 1,400,000 | 680,000 | 
+| m5dn\.large | 30,000 | 15,000 | 
+| m5dn\.xlarge | 59,000 | 29,000 | 
+| m5dn\.2xlarge  | 117,000 | 57,000 | 
+| m5dn\.4xlarge | 234,000 | 114,000 | 
+| m5dn\.8xlarge | 466,666 | 233,333 | 
+| m5dn\.12xlarge | 700,000 | 340,000 | 
+| m5dn\.16xlarge | 933,333 | 466,666 | 
+| m5dn\.24xlarge  | 1,400,000 | 680,000 | 
 | m5dn\.metal  | 1,400,000 | 680,000 | 
-
-\* For these instances, you can get up to the specified performance\.
 
 As you fill the SSD\-based instance store volumes for your instance, the number of write IOPS that you can achieve decreases\. This is due to the extra work the SSD controller must do to find available space, rewrite existing data, and erase unused space so that it can be rewritten\. This process of garbage collection results in internal write amplification to the SSD, expressed as the ratio of SSD write operations to user write operations\. This decrease in performance is even larger if the write operations are not in multiples of 4,096 bytes or not aligned to a 4,096\-byte boundary\. If you write a smaller amount of bytes or bytes that are not aligned, the SSD controller must read the surrounding data and store the result in a new location\. This pattern results in significantly increased write amplification, increased latency, and dramatically reduced I/O performance\.
 
@@ -229,6 +319,8 @@ The following is a summary of features for general purpose instances:
 | M5dn | No | Yes | NVMe \* | Yes | 
 | M5n | Yes | Yes | No | Yes | 
 | M5zn | Yes | Yes | No | Yes | 
+| M6a | Yes | Yes | No | Yes | 
+| M6i | Yes | Yes | No | Yes | 
 | T2 | Yes | No | No | No | 
 | T3 | Yes | Yes | No | No | 
 | T3a | Yes | Yes | No | No | 
@@ -240,16 +332,19 @@ For more information, see the following:
 + [Amazon EC2 instance store](InstanceStorage.md)
 + [Placement groups](placement-groups.md)
 
-## Release notes<a name="general-purpose-instances-limits"></a>
+## Release notes<a name="general-purpose-instances-release-notes"></a>
 + M5, M5d, and T3 instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor from either the first generation \(Skylake\-SP\) or second generation \(Cascade Lake\)\.
 + M5a, M5ad, and T3a instances feature a 2\.5 GHz AMD EPYC 7000 series processor\.
 + M5zn instances are powered by Intel Cascade Lake CPUs that deliver all\-core turbo frequency of up to 4\.5 GHz and up to 100 Gbps network bandwidth\.
-+ M4, M5, M5a, M5ad, M5d, `t2.large` and larger, and `t3.large` and larger, and `t3a.large` and larger instance types require 64\-bit HVM AMIs\. They have high\-memory, and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
++ M6i instances feature third generation Intel Xeon Scalable processors \(Ice Lake\) and support the Intel Advanced Vector Extensions 512 \(Intel AVX\-512\) instruction set\.
++ Instances built on the [Nitro System](instance-types.md#ec2-nitro-instances), M4, `t2.large` and larger, `t3.large` and larger, and `t3a.large` and larger instance types require 64\-bit HVM AMIs\. They have high\-memory, and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
 + Instances built on the [Nitro System](instance-types.md#ec2-nitro-instances) have the following requirements:
   + [NVMe drivers](nvme-ebs-volumes.md) must be installed
   + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
   The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
++ To get the best performance from your M6i instances, ensure that they have ENA driver version 2\.2\.3 or later\. Using an ENA driver earlier than version 2\.0\.0 with these instances causes network interface attachment failures\. The following AMIs have a compatible ENA driver\.
+  + AWS Windows AMI from May 2021 or later
 + Instances built on the Nitro System support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. For more information, see [Nitro System volume limits](volume_limits.md#instance-type-volume-limits)\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.

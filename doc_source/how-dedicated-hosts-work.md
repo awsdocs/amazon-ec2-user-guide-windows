@@ -228,7 +228,34 @@ When you launch an instance into a host resource group that has a Dedicated Host
 You can launch an instance into a host resource group using the following methods\.
 
 ------
-#### [ Console ]
+#### [ New console ]
+
+**To launch an instance into a host resource group**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Instances**, **Launch Instances**\.
+
+1. Select an AMI\.
+
+1. Select the type of instance to launch and choose **Next: Configure Instance Details**\.
+
+1. On the **Configure Instance Details** page, configure the instance settings to suit your needs, and then do the following:
+
+   1. For **Tenancy**, choose **Dedicated Host**\.
+
+   1. For **Host resource group**, choose **Launch instance into a host resource group**\.
+
+   1. For **Host resource group name**, choose the host resource group in which to launch the instance\.
+
+1. Choose **Review and Launch**\.
+
+1. On the **Review Instance Launch** page, choose **Launch**\.
+
+1. When prompted, select an existing key pair or create a new one, and then choose **Launch Instances**\.
+
+------
+#### [ Old console ]
 
 **To launch an instance into a host resource group**
 
@@ -443,6 +470,9 @@ PS C:\> Edit-EC2Host --InstanceType m5.xlarge --HostId h-012a3456b7890cdef
 ## Modify instance tenancy and affinity<a name="moving-instances-dedicated-hosts"></a>
 
 You can change the tenancy of an instance from `dedicated` to `host`, or from `host` to `dedicated`, after you have launched it\. You can also modify the affinity between the instance and the host\. To modify either instance tenancy or affinity, the instance must be in the `stopped` state\.
+
+**Note**  
+For T3 instances, you can't change the tenancy from `dedicated` to `host`, or from `host` to `dedicated`\. Attempting to make one of these unsupported tenancy changes results in the `InvalidTenancy` error code\.
 
 You can modify an instance's tenancy and affinity using the following methods\.
 

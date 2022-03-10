@@ -6,6 +6,7 @@ EC2Launch v2 is a service that performs tasks during instance startup and runs i
 + [Compare Amazon EC2 launch services](#ec2launch-v2-agent-compare)
 + [EC2Launch v2 concepts](#ec2launch-v2-concepts)
 + [EC2Launch v2 tasks](#ec2launch-v2-tasks)
++ [Telemetry](#ec2launch-v2-telemetry)
 
 ## Compare Amazon EC2 launch services<a name="ec2launch-v2-agent-compare"></a>
 
@@ -15,7 +16,7 @@ The following table shows the major functional differences between EC2Config, EC
 | Feature | EC2Config | EC2Launch v1 | EC2Launch v2 | 
 | --- | --- | --- | --- | 
 | Executed as | Windows Service |  PowerShell Scripts  | Windows Service | 
-| Supports |  Windows 2003 Windows 2008 Windows 2008 R2 Windows 2012 Windows 2012 R2  |  Windows 2016 Windows 2019 \(LTSC and SAC\)  |  Windows 2008 Windows 2008 R2 Windows 2012 Windows 2012 R2 Windows 2016 Windows 2019 \(LTSC and SAC\)  | 
+| Supports |  Windows 2003 Windows 2008 Windows 2008 R2 Windows 2012 Windows 2012 R2  |  Windows 2016 Windows 2019 \(LTSC and SAC\)  |  Windows 2008 Windows 2008 R2 Windows 2012 Windows 2012 R2 Windows 2016 Windows 2019 \(LTSC and SAC\) Windows 2022  | 
 |  Configuration file  | XML | XML |  YAML  | 
 |  Set Administrator username  | No | No |  Yes  | 
 |  User data size  | 16 KB | 16 KB |  60 KB \(compressed\)  | 
@@ -82,7 +83,7 @@ EC2Launch v2 can perform the following tasks at each boot:
 + Send the RDP certificate thumbprint to the EC2 console\.
 + Dynamically extend the operating system partition to include any unpartitioned space\.
 + Execute user data\. For more information about specifying user data, see [EC2Launch v2 task configuration](ec2launch-v2-settings.md#ec2launch-v2-task-configuration)\.
-+ Set persistent static routes to reach the metadata service and KMS servers\.
++ Set persistent static routes to reach the metadata service and AWS KMS servers\.
 + Set non\-boot partitions to MBR or GPT\.
 + Start the Systems Manager \(SSM\) service following Sysprep\.
 + Optimize ENA settings\.
@@ -90,3 +91,48 @@ EC2Launch v2 can perform the following tasks at each boot:
 + Enable Jumbo Frames\.
 + Set Sysprep to run with EC2Launch v2\.
 + Publish Windows event logs\.
+
+## Telemetry<a name="ec2launch-v2-telemetry"></a>
+
+Telemetry is additional information that helps AWS to better understand your requirements, diagnose issues, and deliver features to improve your experience with AWS services\.
+
+EC2Launch v2 version `2.0.592` and later collect telemetry, such as usage metrics and errors\. This data is collected from the Amazon EC2 instance on which EC2Launch v2 runs\. This includes all Windows AMIs owned by AWS\.
+
+The following types of telemetry are collected by EC2Launch v2:
++ **Usage information** — agent commands, install method, and scheduled run frequency\.
++ **Errors and diagnostic information** — agent installation and run error codes\.
+
+Examples of collected data:
+
+```
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: IsAgentScheduledPerBoot=true
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: IsUserDataScheduledPerBoot=true
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentCommandCode=1
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentCommandErrorCode=5
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentInstallCode=2
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentInstallErrorCode=0
+```
+
+Telemetry is enabled by default\. You can disable telemetry collection at any time\. If telemetry is enabled, EC2Launch v2 sends telemetry data without additional customer notifications\.
+
+**Telemetry visibility**  
+When telemetry is enabled, it appears in the Amazon EC2 console output as follows:
+
+```
+2021/07/15 21:44:12Z: Telemetry: <Data>
+```
+
+**Disable telemetry on an instance**  
+To disable telemetry for a single instance, you can either set a system environment variable, or use the MSI to modify the installation\.
+
+To disable telemetry by setting a system environment variable, run the following command as an administrator:
+
+```
+setx /M EC2LAUNCH_TELEMETRY 0
+```
+
+To disable telemetry using the MSI, run the following command after you [download the MSI](ec2launch-v2-install.md): 
+
+```
+msiexec /i ".\AmazonEC2Launch.msi" Remove="Telemetry" /q
+```

@@ -12,31 +12,63 @@ You can launch an instance and associate it with an Elastic Graphics accelerator
 
 ## Configure your security groups<a name="elastic-graphics-security"></a>
 
-If you use the Amazon EC2 console to launch your instance with an Elastic Graphics accelerator and create a security group for you, the console adds the inbound and outbound rules that are required to allow traffic on the Elastic Graphics port\. If you are launching your instance using the AWS CLI or an SDK, you must ensure that your security group allows traffic on the Elastic Graphics port\.
+Elastic Graphics requires a self\-referencing security group that allows inbound and outbound traffic to and from the security group itself\. The security group must include the following inbound and outbound rules:
+
+
+|  | 
+| --- |
+| Inbound rule | 
+| Type | Protocol | Port | Source | 
+| Elastic Graphics | TCP | 2007 | The security group ID \(its own resource ID\) | 
+| Outbound rule  | 
+| Type | Protocol | Port range | Destination | 
+| Elastic Graphics | TCP | 2007 | The security group ID \(its own resource ID\) | 
+
+If you use the Amazon EC2 console to launch your instance with an Elastic Graphics accelerator, you can either allow the launch instance wizard to automatically create the required security group rules, or you can select a security that you created previously\.
+
+If you are launching your instance using the AWS CLI or an SDK, you must specify a security group that you created previously\.
 
 **To create a security group for Elastic Graphics**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Security Groups**\.
+1. In the navigation pane, choose **Security Groups** and then choose **Create security group**\.
 
-1. Choose **Create security group**\.
+1. In the **Create security group** window, do the following:
 
-1. Enter a name for your security group, such as "Elastic Graphics security group", and a description for the security group\. Select the VPC that you will use to launch your instance with an Elastic Graphics accelerator\.
+   1. For **Security group name**, enter a descriptive name for the security group, such as `Elastic Graphics security group`\.
 
-1. On the **Inbound rules** panel, create an inbound security group rule as follows:
+   1. \(Optional\) For **Description**, enter a brief description of the security group\.
+
+   1. For **VPC**, select the VPC into which you intend to use Elastic Graphics\.
+
+   1. Choose **Create security group**\.
+
+1. In the navigation pane, choose **Security Groups**, select the security group that you just created, and on the **Details** tab, copy the **Security group ID**\.
+
+1. On the **Inbound rules** tab, choose **Edit inbound rules** and then do the following:
+
+   1. Choose **Add rule**\.
 
    1. For **Type**, choose **Elastic Graphics**\.
 
-   1. For **Source**, choose **Custom** and enter the ID of the security group\.
+   1. For **Source type**, choose **Custom**\.
 
-1. On the **Outbound rules** panel, create an outbound security group rule as follows:
+   1. For **Source**, paste the security group ID that you copied previously\.
 
-   1. For **Type**, choose **All TCP**\.
+   1. Choose **Save rules**\.
 
-   1. For **Destination**, choose **Custom** and enter the ID of the security group\.
+1. On the **Outbound rules** tab, choose **Edit outbound rules** and then do the following:
 
-1. Choose **Create security group**\.
+   1. Choose **Add rule**\.
+
+   1. For **Type**, choose **Elastic Graphics**\.
+
+   1. For **Destination type**, choose **Custom**\.
+
+   1. For **Destination**, paste the security group ID that you copied previously\.
+
+   1. Choose **Save rules**\.
 
 For more information, see [Amazon EC2 security groups for Windows instances](ec2-security-groups.md)\.
 
@@ -88,6 +120,8 @@ If you launched your instance using a current AWS Windows AMI, the required soft
 1. Connect to the instance\.
 
 1. Download the [Elastic Graphics installer](http://ec2-elasticgpus.s3-website.us-east-1.amazonaws.com/latest) and open it\. The installation manager connects to the Elastic Graphics endpoint and downloads the latest version of the required software\.
+**Note**  
+If the download link does not work, try a different browser, or copy the link address and paste it into a new browser tab\.
 
 1. Reboot the instance to verify\.
 
@@ -99,11 +133,13 @@ The Elastic Graphics packages on your instance include tools that you can use to
 
 If your instance was launched with an AMI that does not have the Elastic Graphics packages pre\-installed, you can download and install them yourself\. For more information, see [Install the required software for Elastic Graphics](#elastic-graphics-install-libraries)\.
 
-**Topics**
-+ [Use the Elastic Graphics status monitor](#elastic-graphics-verify-status)
-+ [Use the Elastic Graphics command line tool](#elastic-graphics-command-tools)
+You can use one of the following methods to verify Elastic Graphics functionality on your instance\.
 
-### Use the Elastic Graphics status monitor<a name="elastic-graphics-verify-status"></a>
+**Note**  
+If the Elastic Graphics status monitor or command line tool returns an unexpected result, see [Resolve unhealthy status issues](elastic-graphics-troubleshooting.md#elastic-graphics-troubleshooting_unhealthy_status)\.
+
+------
+#### [ Elastic Graphics status monitor ]
 
 You can use the status monitor tool to view information about the status of an attached Elastic Graphics accelerator\. By default, this tool is available in the notification area of the taskbar in your Windows instance and shows the status of the graphics accelerator\. The following are the possible values\.
 
@@ -116,7 +152,8 @@ The status of the Elastic Graphics accelerator is currently updating\. It might 
 **Out of service**  
 The Elastic Graphics accelerator is out of service\. To get more information about the error, choose **Read More**\.
 
-### Use the Elastic Graphics command line tool<a name="elastic-graphics-command-tools"></a>
+------
+#### [ Elastic Graphics command line tool ]
 
 You can use the Elastic Graphics command line tool, `egcli.exe`, to check the status of the accelerator\. If there is a problem with the accelerator, the tool returns an error message\.
 
@@ -178,6 +215,8 @@ An error occurred loading the Elastic Graphics driver\.
 `ERROR_EGPU_CONNECTIVITY`  
 The Elastic Graphics accelerator is unreacheable\.
 
+------
+
 ## View Elastic Graphics information<a name="viewing-elastic-graphics"></a>
 
 You can view information about the Elastic Graphics accelerator attached to your instance\.
@@ -230,7 +269,7 @@ Use the following commands:
 
 ## Submit feedback<a name="elastic-gpu-feedback"></a>
 
-You can submit feedback about your experience with Elastic Graphics so the team can make further improvements\.
+You can submit feedback about your experience with Elastic Graphics so that the team can make further improvements\.
 
 **To submit feedback using the Elastic Graphics Status Monitor**
 

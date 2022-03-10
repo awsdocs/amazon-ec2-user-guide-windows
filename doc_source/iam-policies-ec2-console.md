@@ -113,7 +113,7 @@ You can add API actions to your policy to provide more options for users, for ex
 + To add outbound rules to VPC security groups, users must be granted permission to use the `ec2:AuthorizeSecurityGroupEgress` API action\. To modify or delete existing rules, users must be granted permission to use the relevant `ec2:RevokeSecurityGroup*` API action\.
 + `ec2:CreateTags`: To tag the resources that are created by `RunInstances`\. For more information, see [Grant permission to tag resources during creation](supported-iam-actions-tagging.md)\. If users do not have permission to use this action and they attempt to apply tags on the tagging page of the launch wizard, the launch fails\.
 **Important**  
-Be careful about granting users permission to use the `ec2:CreateTags` action, because doing so limits your ability to use the `ec2:ResourceTag` condition key to restrict their use of other resources\. If you grant users permission to use the `ec2:CreateTags` action, they can change a resource's tag in order to bypass those restrictions\. For more information, see [Control access to EC2 resources using resource tags](control-access-with-tags.md)\.
+Be careful about granting users permission to use the `ec2:CreateTags` action, because doing so limits your ability to use the `aws:ResourceTag` condition key to restrict their use of other resources\. If you grant users permission to use the `ec2:CreateTags` action, they can change a resource's tag in order to bypass those restrictions\. For more information, see [Control access to EC2 resources using resource tags](control-access-with-tags.md)\.
 + To use Systems Manager parameters when selecting an AMI, you must add `ssm:DescribeParameters` and `ssm:GetParameters` to your policy\. `ssm:DescribeParameters` grants your IAM users the permission to view and select Systems Manager parameters\. `ssm:GetParameters` grants your IAM users the permission to get the values of the Systems Manager parameters\. You can also restrict access to specific Systems Manager parameters\. For more information, see **Restrict access to specific Systems Manager parameters** later in this section\.
 
 Currently, the Amazon EC2 `Describe*` API actions do not support resource\-level permissions, so you cannot restrict which individual resources users can view in the launch wizard\. However, you can apply resource\-level permissions on the `ec2:RunInstances` API action to restrict which resources users can use to launch an instance\. The launch fails if users select options that they are not authorized to use\. 
@@ -201,9 +201,9 @@ The first statement grants users the permission to view Systems Manager paramete
    {
       "Effect": "Allow",
       "Action": [
-      "ssm:GetParameters"
-   ],
-   "Resource": "arn:aws:ssm:us-east-2:123456123:parameter/prod-*"
+         "ssm:GetParameters"
+      ],
+     "Resource": "arn:aws:ssm:us-east-2:123456123:parameter/prod-*"
    }
    ]
 }
@@ -241,7 +241,7 @@ Users cannot tag the volumes that they create \(either during or after volume cr
       "Resource": "arn:aws:ec2:region:111122223333:instance/*",
       "Condition": {
         "StringEquals": {
-          "ec2:ResourceTag/purpose": "test"
+          "aws:ResourceTag/purpose": "test"
         }
      }
    },
@@ -261,7 +261,7 @@ Users cannot tag the volumes that they create \(either during or after volume cr
 
 **View security groups and add and remove rules**
 
-The following policy grants users permission to view security groups in the Amazon EC2 console, to add and remove inbound and outbound rules, and to modify rule descriptions for existing security groups that have the tag `Department=Test`\.
+The following policy grants users permission to view security groups in the Amazon EC2 console, to add and remove inbound and outbound rules, and to list and modify rule descriptions for existing security groups that have the tag `Department=Test`\.
 
 In the first statement, the `ec2:DescribeTags` action allows users to view tags in the console, which makes it easier for users to identify the security groups that they are allowed to modify\.
 
@@ -272,6 +272,7 @@ In the first statement, the `ec2:DescribeTags` action allows users to view tags 
       "Effect": "Allow",
       "Action": [
          "ec2:DescribeSecurityGroups", 
+         "ec2:DescribeSecurityGroupRules", 
          "ec2:DescribeTags"
       ],
       "Resource": "*"
@@ -283,6 +284,7 @@ In the first statement, the `ec2:DescribeTags` action allows users to view tags 
          "ec2:RevokeSecurityGroupIngress", 
          "ec2:AuthorizeSecurityGroupEgress", 
          "ec2:RevokeSecurityGroupEgress", 
+         "ec2:ModifySecurityGroupRules", 
          "ec2:UpdateSecurityGroupRuleDescriptionsIngress", 
          "ec2:UpdateSecurityGroupRuleDescriptionsEgress"
       ],
@@ -291,12 +293,20 @@ In the first statement, the `ec2:DescribeTags` action allows users to view tags 
       ],
       "Condition": {
          "StringEquals": {
-            "ec2:ResourceTag/Department": "Test"
+            "aws:ResourceTag/Department": "Test"
          }
       }
+   },
+   {
+      "Effect": "Allow",
+      "Action": [
+         "ec2:ModifySecurityGroupRules"
+      ],
+      "Resource": [
+         "arn:aws:ec2:region:111122223333:security-group-rule/*"
+      ]
    }
-   ]
-}
+]}
 ```
 
 **Work with the Create Security Group dialog box**
@@ -313,6 +323,8 @@ With these permissions, users can create a new security group successfully, but 
 + `ec2:DeleteSecurityGroup`: To cater for when invalid rules cannot be saved\. The console first creates the security group, and then adds the specified rules\. If the rules are invalid, the action fails, and the console attempts to delete the security group\. The user remains in the **Create Security Group** dialog box so that they can correct the invalid rule and try to create the security group again\. This API action is not required, but if a user is not granted permission to use it and attempts to create a security group with invalid rules, the security group is created without any rules, and the user must add them afterward\.
 + `ec2:UpdateSecurityGroupRuleDescriptionsIngress`: To add or update descriptions of ingress \(inbound\) security group rules\.
 + `ec2:UpdateSecurityGroupRuleDescriptionsEgress`: To add or update descriptions of egress \(outbound\) security group rules\.
++ `ec2:ModifySecurityGroupRules`: To modify security group rules\.
++ `ec2:DescribeSecurityGroupRules`: To list security group rules\.
 
 The following policy grants users permission to use the **Create Security Group** dialog box, and to create inbound and outbound rules for security groups that are associated with a specific VPC \(`vpc-1a2b3c4d`\)\. Users can create security groups for EC2\-Classic or another VPC, but they cannot add any rules to them\. Similarly, users cannot add any rules to any existing security group that's not associated with VPC `vpc-1a2b3c4d`\. Users are also granted permission to view all security groups in the console\. This makes it easier for users to identify the security groups to which they can add inbound rules\. This policy also grants users permission to delete security groups that are associated with VPC `vpc-1a2b3c4d`\. 
 

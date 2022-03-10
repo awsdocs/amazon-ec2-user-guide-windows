@@ -3,9 +3,13 @@
 Before you can launch an instance, you must select an AMI to use\. As you select an AMI, consider the following requirements you might have for the instances that you'll launch:
 + The Region
 + The operating system
-+ The architecture: 32\-bit \(`i386`\), 64\-bit \(`x86_64`\), or 64\-bit ARM \(arm64\)
++ The architecture: 32\-bit \(`i386`\) or 64\-bit \(`x86_64`\)
 + The provider \(for example, Amazon Web Services\)
 + Additional software \(for example, SQL server\)
+
+If you need to find a Ubuntu AMI, see their [EC2 AMI Locator](https://cloud-images.ubuntu.com/locator/ec2/)\.
+
+If you need to find an RedHat AMI, see the RHEL [knowledgebase article](https://access.redhat.com/solutions/15356)\.
 
 If you need to find a Linux AMI, see [Find a Linux AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
@@ -20,7 +24,7 @@ If you need to find a Linux AMI, see [Find a Linux AMI](https://docs.aws.amazon.
 
 You can find Windows AMIs using the Amazon EC2 console\. You can select from the list of AMIs when you use the launch wizard to launch an instance, or you can search through all available AMIs using the **Images** page\. AMI IDs are unique to each AWS Region\.
 
-**To find a Windows AMI using the launch wizard**
+**To find a Windows AMI using the launch instance wizard**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -28,9 +32,9 @@ You can find Windows AMIs using the Amazon EC2 console\. You can select from the
 
 1. From the console dashboard, choose **Launch instance**\.
 
-1. On the **Quick Start** tab, select from one of the commonly used AMIs in the list\. If you don't see the AMI that you need, select the **My AMIs**, **AWS Marketplace**, or **Community AMIs** tab to find additional AMIs\. For more information, see [Step 1: Choose an Amazon Machine Image \(AMI\)](launching-instance.md#step-1-AMI)\.
+1. On the **Quick Start** tab, select from one of the commonly used AMIs in the list\. If you don't see the AMI that you need, choose the **My AMIs**, **AWS Marketplace**, or **Community AMIs** tab to find additional AMIs\. For more information, see [Step 1: Choose an Amazon Machine Image \(AMI\)](launching-instance.md#step-1-AMI)\.
 
-**To find a Windows AMI using the Images page**
+**To find a Windows AMI using the AMIs page**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -38,11 +42,11 @@ You can find Windows AMIs using the Amazon EC2 console\. You can select from the
 
 1. In the navigation pane, choose **AMIs**\.
 
-1. \(Optional\) Use the **Filter** options to scope the list of displayed AMIs to see only the AMIs that interest you\. For example, to list all Windows AMIs provided by AWS, select **Public images**\. Choose the Search bar and select **Owner** from the menu, then select **Amazon images**\. Choose the Search bar again to select **Platform** and then the operating system from the list provided\.
+1. \(Optional\) Use the Filter and Search options to scope the list of displayed AMIs to see only the AMIs that interest you\. For example, to list all Windows AMIs provided by AWS, choose **Public images**\. Then use the Search options to further scope the list of displayed AMIs\. Choose the Search bar and, from the menu, choose **Owner alias**, then the **=** operator, and then the value **amazon**\. Choose the Search bar again to choose **Platform**, then the **=** operator, and then the operating system from the list provided\.
 
-1. \(Optional\) Choose the **Show/Hide Columns** icon to select which image attributes to display, such as the root device type\. Alternatively, you can select an AMI from the list and view its properties in the **Details** tab\.
+1. \(Optional\) Choose the **Preferences** icon \(new console\) or **Show/Hide Columns** icon \(old console\) to select which image attributes to display, such as the root device type\. Alternatively, you can select an AMI from the list and view its properties on the **Details** tab\.
 
-1. To launch an instance from this AMI, select it and then choose **Launch**\. For more information about launching an instance using the console, see [Launching your instance from an AMI](launching-instance.md#choose-an-instance-type-page)\. If you're not ready to launch the instance now, make note of the AMI ID for later\.
+1. To launch an instance from this AMI, select it and then choose **Launch instance from image** \(new console\) or **Launch** \(old console\)\. For more information about launching an instance using the console, see [Launching your instance from an AMI](launching-instance.md#choose-an-instance-type-page)\. If you're not ready to launch the instance now, make note of the AMI ID for later\.
 
 ## Find an AMI using the AWS Tools for Windows PowerShell<a name="finding-an-ami-psh"></a>
 
@@ -79,7 +83,7 @@ For information and examples, see [Query for the Latest Windows AMI Using System
 
 ## Find the latest Windows AMI using Systems Manager<a name="finding-an-ami-parameter-store"></a>
 
-Amazon EC2 provides AWS Systems Manager public parameters for AWS\-maintained public AMIs that you can use when launching instances\. 
+Amazon EC2 provides AWS Systems Manager public parameters for public AMIs maintained by AWS that you can use when launching instances\. 
 
 The Amazon EC2 AMI public parameters are available from the following path:
 

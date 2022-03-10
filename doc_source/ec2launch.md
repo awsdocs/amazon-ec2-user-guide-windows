@@ -1,9 +1,10 @@
 # Configure a Windows instance using EC2Launch<a name="ec2launch"></a>
 
-EC2Launch is a set of Windows PowerShell scripts that replaced the EC2Config service on Windows Server 2016 and later AMIs\. The latest launch service for all supported Windows Server versions is [EC2Launch v2](ec2launch-v2.md), which replaces both EC2Config and EC2Launch\.
+EC2Launch is a set of Windows PowerShell scripts that replaced the EC2Config service on Windows Server 2016 and 2019 AMIs\. Windows Server 2022 uses [EC2Launch v2](ec2launch-v2.md), the latest launch service for all supported Windows versions, which replaces both EC2Config and EC2Launch\.
 
 **Topics**
 + [EC2Launch tasks](#ec2launch-tasks)
++ [Telemetry](#ec2launch-telemetry)
 + [Install the latest version of EC2Launch](ec2launch-download.md)
 + [Verify the EC2Launch version](#ec2launch-verify-version)
 + [EC2Launch directory structure](#ec2launch-directories)
@@ -21,7 +22,7 @@ EC2Launch performs the following tasks by default during the initial instance bo
 + Adds DNS suffixes\.
 + Dynamically extends the operating system partition to include any unpartitioned space\.
 + Executes user data \(if specified\)\. For more information about specifying user data, see [Work with instance user data](instancedata-add-user-data.md)\.
-+  Sets persistent static routes to reach the metadata service and KMS servers\. 
++  Sets persistent static routes to reach the metadata service and AWS KMS servers\. 
 **Important**  
  If a custom AMI is created from this instance, these routes are captured as part of the OS configuration and any new instances launched from the AMI will retain the same routes, regardless of subnet placement\. In order to update the routes, see [Update metadata/KMS routes for Server 2016 and later when launching a custom AMI](Creating_EBSbacked_WinAMI.md#update-metadata-KMS)\. 
 
@@ -31,6 +32,53 @@ The following tasks help to maintain backward compatibility with the EC2Config s
 + Send the *Windows is ready to use* message to the EC2 console\.
 
 For more information about Windows Server 2019, see [Compare Features in Windows Server Versions](https://www.microsoft.com/en-us/cloud-platform/windows-server-comparison) on Microsoft\.com\.
+
+## Telemetry<a name="ec2launch-telemetry"></a>
+
+Telemetry is additional information that helps AWS to better understand your requirements, diagnose issues, and deliver features to improve your experience with AWS services\.
+
+EC2Launch version `1.3.2003463` and later collect telemetry, such as usage metrics and errors\. This data is collected from the Amazon EC2 instance on which EC2Launch runs\. This includes all Windows AMIs owned by AWS\.
+
+The following types of telemetry are collected by EC2Launch:
++ **Usage information** — agent commands, install method, and scheduled run frequency\.
++ **Errors and diagnostic information** — agent installation and run error codes\.
+
+Examples of collected data:
+
+```
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: IsAgentScheduledPerBoot=true
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: IsUserDataScheduledPerBoot=true
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentCommandCode=1
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentCommandErrorCode=5
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentInstallCode=2
+2021/07/15 21:44:12Z: EC2LaunchTelemetry: AgentInstallErrorCode=0
+```
+
+Telemetry is enabled by default\. You can disable telemetry collection at any time\. If telemetry is enabled, EC2Launch sends telemetry data without additional customer notifications\.
+
+Your choice to enable or disable telemetry is collected\.
+
+You can opt in or out of telemetry collection\. Your selection to opt in or out of telemetry is collected to ensure that we adhere to your telemetry option\.
+
+**Telemetry visibility**  
+When telemetry is enabled, it appears in the Amazon EC2 console output as follows:
+
+```
+2021/07/15 21:44:12Z: Telemetry: <Data>
+```
+
+**Disable telemetry on an instance**  
+To disable telemetry by setting a system environment variable, run the following command as an administrator:
+
+```
+setx /M EC2LAUNCH_TELEMETRY 0
+```
+
+To disable telemetry during installation, run `install.ps1` as follows:
+
+```
+. .\install.ps1 -EnableTelemetry:$false
+```
 
 ## Verify the EC2Launch version<a name="ec2launch-verify-version"></a>
 
@@ -133,14 +181,13 @@ To enable EC2Launch to run on every boot:
    Then select `Run EC2Launch on every boot`\. You can specify that your EC2 instance `Shutdown without Sysprep` or `Shutdown with Sysprep`\.
 
 **Note**  
-When you enable EC2Launch to run on every boot, the following changes will be made to the `LaunchConfig.json` the next time EC2Launch runs:  
-`AdminPasswordType` will be set back to `DoNothing` so that the password does not change on each boot\.
-`HandleUserData` will be set back to `false` unless the user data has `persist` set to `true`\. For more information about user data scripts, see [User Data Scripts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html#user-data-scripts) in the Amazon EC2 User Guide\.
-Similarly, if you do not want your password reset on the next boot, you should set `AdminPasswordType` to `DoNothing` before rebooting\.
+When you enable EC2Launch to run on every boot, the following happens the next time EC2Launch runs:  
+If `AdminPasswordType` is still set to `Random`, EC2Launch will generate a new password at the next boot\. After that boot, `AdminPasswordType` is automatically set to `DoNothing` to prevent EC2Launch from generating new passwords on subsequent boots\. To prevent EC2Launch from generating a new password on the first boot, manually set `AdminPasswordType` to `DoNothing` before you reboot\.
+`HandleUserData` will be set back to `false` unless the user data has `persist` set to `true`\. For more information about user data scripts, see [ User Data Scripts](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-user-data.html#user-data-scripts) in the Amazon EC2 User Guide\.
 
 ### Initialize drives and map drive letters<a name="ec2launch-mapping"></a>
 
-Specify settings in the `DriveLetterMappingConfig.json` file to map drive letters to volumes on your EC2 instance\. The script performs this operation if the drives have not already been initialized and partitioned\.
+Specify settings in the `DriveLetterMappingConfig.json` file to map drive letters to volumes on your EC2 instance\. The script initializes drives that are not already initialized and partitioned\.
 
 **To map drive letters to volumes**
 

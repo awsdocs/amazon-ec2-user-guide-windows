@@ -26,11 +26,13 @@ After the snapshots are created, each snapshot is treated as an individual snaps
 
 Multi\-volume, crash\-consistent snapshots are typically restored as a set\. It is helpful to identify the snapshots that are in a crash\-consistent set by tagging your set with the instance ID, name, or other relevant details\. You can also choose to automatically copy tags from the source volume to the corresponding snapshots\. This helps you to set the snapshot metadata, such as access policies, attachment information, and cost allocation, to match the source volume\. 
 
-After creating your snapshots, they appear in your EC2 console created at the exact point\-in\-time\. The snapshots are collectively managed and, therefore, if any one snapshot for the volume set fails, all of the other snapshots display an error status\.
+After creating your snapshots, they appear in your EC2 console created at the exact point\-in\-time\.
+
+If any one snapshot for the multi\-volume snapshot set fails, all of the other snapshots display an error status and a `createSnapshots` CloudWatch event with a result of `failed` is sent to your AWS account\. For more information, see [Create snapshots \(createSnapshots\)](ebs-cloud-watch-events.md#create-snapshots-complete)\.
 
 ## Amazon Data Lifecycle Manager<a name="automate-snapshots"></a>
 
-You can create, retain, and delete snapshots manually, or you can use Amazon Data Lifecycle Manager to manage your snapshots for you\. For more information, see [Data Lifecycle Manager](snapshot-lifecycle.md)\.
+You can create, retain, and delete snapshots manually, or you can use Amazon Data Lifecycle Manager to manage your snapshots for you\. For more information, see [Amazon Data Lifecycle Manager](snapshot-lifecycle.md)\.
 
 ## Considerations<a name="ebs-create-snapshot-limitations"></a>
 
@@ -44,7 +46,31 @@ The following considerations apply to creating snapshots:
 
 ## Create a snapshot<a name="ebs-create-snapshot"></a>
 
-Use the following procedure to create a snapshot from the specified volume\.
+To create a snapshot from the specified volume, use one of the following methods\.
+
+------
+#### [ New console ]
+
+**To create a snapshot using the console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Snapshots**, **Create snapshot**\.
+
+1. For **Resource type**, choose **Volume**\.
+
+1. For **Volume ID**, select the volume from which to create the snapshot\.
+
+   The **Encryption** field indicates the selected volume's encryption status\. If the selected volume is encrypted, the snapshot is automatically encrypted using the same KMS key\. If the selected volume is unencrypted, the snapshot is not encrypted\.
+
+1. \(Optional\) For **Description**, enter a brief description for the snapshot\.
+
+1. \(Optional\) To assign custom tags to the snapshot, in the **Tags** section, choose **Add tag**, and then enter the key\-value pair\. You can add up to 50 tags\.
+
+1. Choose **Create snapshot**\.
+
+------
+#### [ Old console ]
 
 **To create a snapshot using the console**
 
@@ -64,15 +90,50 @@ Use the following procedure to create a snapshot from the specified volume\.
 
 1. Choose **Create Snapshot**\.
 
+------
+#### [ AWS CLI ]
+
 **To create a snapshot using the command line**
 
 You can use one of the following commands\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
 + [create\-snapshot](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-snapshot.html) \(AWS CLI\)
 + [New\-EC2Snapshot](https://docs.aws.amazon.com/powershell/latest/reference/items/New-EC2Snapshot.html) \(AWS Tools for Windows PowerShell\)
 
+------
+
 ## Create a multi\-volume snapshot<a name="ebs-create-snapshots"></a>
 
-Use the following procedure to create a snapshot from the volumes of an instance\.
+To create a snapshot from the volumes of an instance, use one of the following methods\.
+
+------
+#### [ New console ]
+
+**To create multi\-volume snapshots using the console**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation panel, choose **Snapshots**, **Create snapshot**\.
+
+1. For **Resource type**, choose **Instance**\.
+
+1. For **Instance ID**, choose the instance from which to create the snapshots\. Multi\-volume snapshots support up to 40 EBS volumes for each instance\.
+
+   The **Attached volumes** section lists all of the volumes that are attached to the selected instance, along with their encryption statuses\. Snapshots get the same encryption status as their source volume\.
+
+1. For **Description**, enter a brief description for the snapshots\. This description is applied to all of the snapshots\.
+
+1. To create snapshots from all of the instance's volumes, including its root volume, for **Root volume**, choose **Include**\. To create snapshots from the instance's data volumes only, for **Root volume**, choose **Exclude**\.
+
+1. \(Optional\) To automatically copy tags from the source volumes to the corresponding snapshots, for **Copy tags from source volume**, select **Enable**\. This sets snapshot metadata—such as access policies, attachment information, and cost allocation—to match the source volume\.
+
+1. \(Optional\) To assign custom tags to the snapshots, in the **Tags** section, choose **Add tag**, and then enter the key\-value pair\. You can add up to 50 tags\.
+
+1. Choose **Create snapshot**\.
+
+   During snapshot creation, the snapshots are managed together\. If one of the snapshots in the volume set fails, the other snapshots are moved to error status for the volume set\. You can monitor the progress of your snapshots using [CloudWatch Events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html)\. After the snapshot creation process completes, CloudWatch generates an event that contains the status and all of the relevant snapshot details for the affected instance\.
+
+------
+#### [ Old console ]
 
 **To create multi\-volume snapshots using the console**
 
@@ -94,7 +155,8 @@ Use the following procedure to create a snapshot from the volumes of an instance
 
 1. Choose **Create Snapshot**\.
 
-   During snapshot creation, the snapshots are managed together\. If one of the snapshots in the volume set fails, the other snapshots are moved to error status for the volume set\. You can monitor the progress of your snapshots using [CloudWatch Events](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/WhatIsCloudWatchEvents.html)\. After the snapshot creation process completes, CloudWatch generates an event that contains the status and all of the relevant snapshots details for the affected instance\.
+------
+#### [ AWS CLI ]
 
 **To create multi\-volume snapshots using the command line**
 
@@ -104,6 +166,10 @@ You can use one of the following commands\. For more information about these com
 
 **To create application\-consistent snapshots using Systems Manager Run Command**  
 You can use Systems Manager Run Command to take application\-consistent snapshots of all EBS volumes attached to your Amazon EC2 Windows instances\. The snapshot process uses the Windows [Volume Shadow Copy Service \(VSS\)](https://technet.microsoft.com/en-us/library/ee923636(v=ws.10).aspx) to take image\-level backups of VSS\-aware applications, including data from pending transactions between these applications and the disk\. You don't need to shut down your instances or disconnect them when you back up all attached volumes\. For more information, see [Create a VSS application\-consistent snapshotRestore volumes from VSS\-enabled EBS snapshots](application-consistent-snapshots.md)\.
+
+------
+
+If all of the snapshots complete successfully, a `createSnapshots` CloudWatch event with a result of `succeeded` is sent to your AWS account\. If any one snapshot for the multi\-volume snapshot set fails, all of the other snapshots display an error status and a `createSnapshots` CloudWatch event with a result of `failed` is sent to your AWS account\. For more information, see [Create snapshots \(createSnapshots\)](ebs-cloud-watch-events.md#create-snapshots-complete)\.
 
 ## Work with EBS snapshots<a name="using-snapshots"></a>
 

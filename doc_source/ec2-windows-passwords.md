@@ -18,7 +18,7 @@ Store the new password in a safe place\. You won't be able to retrieve the new p
 
 1. Connect to the instance and open a command prompt\.
 
-1. Run the following command\. If your new password includes special characters, ensure that you enclose the password in double quotes:
+1. Run the following command\. If your new password includes special characters, enclose the password in double quotes\.
 
    ```
    net user Administrator "new_password"

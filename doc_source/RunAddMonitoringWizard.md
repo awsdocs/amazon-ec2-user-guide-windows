@@ -15,7 +15,7 @@ You can configure the AWS Management Pack to monitor a particular AWS account by
 1. On the **General Properties** page, in the **Name** box, enter a name \(for example, "My AWS Resources"\)\. In the **Description** box, enter a description\. 
 
 1. In the **Select destination management pack** list, select an existing management pack \(or click **New** to create one\) where you want to save the settings\. Click **Next**\.  
-![\[Configuring the AWS Management Pack for monitoring an AWS account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AddMonitoringWizard-Step2.png)
+![\[Configuring the AWS Management Pack for monitoring an AWS account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AddMonitoringWizard-Step2-b.png)
 
    By default, when you create a management pack object, disable a rule or monitor, or create an override, Operations Manager saves the setting to the default management pack\. As a best practice, you should create a separate management pack for each sealed management pack that you want to customize, instead of saving your customized settings to the default management pack\.
 
@@ -33,8 +33,7 @@ You can configure the AWS Management Pack to monitor a particular AWS account by
    1. On the **Pool Membership** page, remove the management servers that should not monitor AWS resources\.  
 ![\[Configuring the AWS Management Pack for monitoring an AWS account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ResourcePool-MemberServers.png)
 
-1. After the AWS Management Pack is configured, it shows up as a sub\-folder of the `Amazon Web Services` folder in the **Monitoring** workspace of the Operations console\.  
-![\[Configuring the AWS Management Pack for monitoring an AWS account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AddMonitoringWizard-CreatedNodeInMonitoring.png)
+1. After the AWS Management Pack is configured, it shows up as a sub\-folder of the `Amazon Web Services` folder in the **Monitoring** workspace of the Operations console\.
 
 ## System Center 2007 R2<a name="add-monitoring-2007"></a>
 
@@ -59,8 +58,7 @@ You can configure the AWS Management Pack to monitor a particular AWS account by
 
 1. After the AWS Management Pack is configured, it first discovers the watcher node\. To verify that the watcher node was discovered successfully, navigate to the **Monitoring** workspace in the Operations console\. You should see a new `Amazon Web Services` folder and an `Amazon Watcher Nodes` subfolder under it\. This subfolder displays the watcher nodes\. The AWS Management Pack automatically checks and monitors the watcher node connectivity to AWS\. When the watcher node is discovered, it shows up in this list\. When the watcher node is ready, its state changes to `Healthy`\.
 **Note**  
-To establish connectivity with AWS, the AWS Management Pack requires that you deploy the AWS SDK for \.NET, modules, and scripts to the watcher node\. This can take about ten minutes\. If the watcher node doesn't appear, or if you see the state as `Not Monitored`, verify your Internet connectivity and IAM permissions\. For more information, see [Troubleshoot the AWS Management Pack](TroubleshootingAWSmp.md)\.  
-![\[Checking the watcher node discovery\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/check_watcher_node_discovery.png)
+To establish connectivity with AWS, the AWS Management Pack requires that you deploy the AWS SDK for \.NET, modules, and scripts to the watcher node\. This can take about ten minutes\. If the watcher node doesn't appear, or if you see the state as `Not Monitored`, verify your Internet connectivity and IAM permissions\. For more information, see [Troubleshoot the AWS Management Pack](TroubleshootingAWSmp.md)\.
 
 1. After the watcher node is discovered, dependent discoveries are triggered, and the AWS resources are added to the **Monitoring** workspace of the Operations console\.
 

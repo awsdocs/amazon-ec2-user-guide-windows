@@ -2,7 +2,10 @@
 
 Each instance that you launch has an instance identity document that provides information about the instance itself\. You can use the instance identity document to validate the attributes of the instance\.
 
-The instance identity document is generated when the instance is launched and it is exposed \(in plaintext JSON format\) through the Instance Metadata Service\. The IP address `169.254.169.254` is a link\-local address and is valid only from the instance\. For more information, see [Link\-local address](https://en.wikipedia.org/wiki/Link-local_address) on Wikipedia\.
+The instance identity document is generated when the instance is stopped and started, restarted, or launched\. The instance identity document is exposed \(in plaintext JSON format\) through the Instance Metadata Service\. The IPv4 address `169.254.169.254` is a link\-local address and is valid only from the instance\. For more information, see [Link\-local address](https://en.wikipedia.org/wiki/Link-local_address) on Wikipedia\. The IPv6 address `fd00:ec2::254 ` is a unique local address and is valid only from the instance\. For more information, see [Unique local address](https://en.wikipedia.org/wiki/Unique_local_address) on Wikipedia\.
+
+**Note**  
+The examples in this section use the IPv4 address of the instance metadata service: `169.254.169.254`\. If you are retrieving instance metadata for EC2 instances over the IPv6 address, ensure that you enable and use the IPv6 address instead: `fd00:ec2::254`\. The IPv6 address of the instance metadata service is compatible with IMDSv2 commands\. The IPv6 address is only accessible on [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances)\.
 
 You can retrieve the instance identity document from a running instance at any time\. The instance identity document includes the following information:
 
@@ -15,7 +18,7 @@ You can retrieve the instance identity document from a running instance at any t
 | privateIp | The private IPv4 address of the instance\. | 
 | version | The version of the instance identity document format\. | 
 | instanceId | The ID of the instance\. | 
-| billingProducts | The billing product code of the AMI used to launch the instance\. | 
+| billingProducts | The billing products of the instance\. | 
 | instanceType | The instance type of the instance\. | 
 | accountId | The ID of the AWS account that launched the instance\. | 
 | imageId | The ID of the AMI used to launch the instance\. | 
@@ -34,7 +37,7 @@ Connect to the instance and run one of the following commands depending on the I
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $Token = (Invoke-WebRequest -Method Put -Headers @{'X-aws-ec2-metadata-token-ttl-seconds' = '21600'} http://169.254.169.254/latest/api/token).Content
+PS C:\> [string]$token = (Invoke-WebRequest -Method Put -Headers @{'X-aws-ec2-metadata-token-ttl-seconds' = '21600'} http://169.254.169.254/latest/api/token).Content
 ```
 
 ```
@@ -82,9 +85,6 @@ The plaintext instance identity document is accompanied by three hashed and encr
 + RSA\-2048 signature—This is a SHA256 hash of the instance identity document that is encrypted using an RSA\-2048 key pair\.
 
 Each signature is available at a different endpoint in the instance metadata\. You can use any one of these signatures depending on your hashing and encryption requirements\. To verify the signatures, you must use the corresponding AWS public certificate\.
-
-**Important**  
-To validate the instance identity document using the base64\-encoded signature or RSA2048 signature, you must request the corresponding AWS public certificate from [ AWS Support](https://console.aws.amazon.com/support/home#/)\. 
 
 The following topics provide detailed steps for validating the instance identity document using each signature\.
 + [Use the PKCS7 signature to verify the instance identity document](verify-pkcs7.md)

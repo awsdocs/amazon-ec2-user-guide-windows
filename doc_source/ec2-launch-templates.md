@@ -1,6 +1,6 @@
 # Launch an instance from a launch template<a name="ec2-launch-templates"></a>
 
-You can create a *launch template* that contains the configuration information to launch an instance\. Launch templates enable you to store launch parameters so that you do not have to specify them every time you launch an instance\. For example, a launch template can contain the AMI ID, instance type, and network settings that you typically use to launch instances\. When you launch an instance using the Amazon EC2 console, an AWS SDK, or a command line tool, you can specify the launch template to use\.
+You can create a *launch template* that contains the configuration information to launch an instance\. You can use launch templates to store launch parameters so that you do not have to specify them every time you launch an instance\. For example, a launch template can contain the AMI ID, instance type, and network settings that you typically use to launch instances\. When you launch an instance using the Amazon EC2 console, an AWS SDK, or a command line tool, you can specify the launch template to use\.
 
 For each launch template, you can create one or more numbered *launch template versions*\. Each version can have different launch parameters\. When you launch an instance from a launch template, you can use any version of the launch template\. If you do not specify a version, the default version is used\. You can set any version of the launch template as the default version—by default, it's the first version of the launch template\.
 
@@ -13,7 +13,7 @@ The following diagram shows a launch template with three versions\. The first ve
 + [Use launch templates to control launch parameters](#launch-templates-authorization)
 + [Control the use of launch templates](#launch-template-permissions)
 + [Create a launch template](#create-launch-template)
-+ [Manage launch template versions](#manage-launch-template-versions)
++ [Modify a launch template \(manage launch template versions\)](#manage-launch-template-versions)
 + [Launch an instance from a launch template](#launch-instance-from-launch-template)
 + [Use launch templates with Amazon EC2 Auto Scaling](#launch-templates-as)
 + [Use launch templates with EC2 Fleet](#launch-templates-ec2-fleet)
@@ -27,6 +27,7 @@ The following rules apply to launch templates and launch template versions:
 + Launch template parameters are optional\. However, you must ensure that your request to launch an instance includes all required parameters\. For example, if your launch template does not include an AMI ID, you must specify both the launch template and an AMI ID when you launch an instance\.
 + Launch template parameters are not fully validated when you create the launch template\. If you specify incorrect values for parameters, or if you do not use supported parameter combinations, no instances can launch using this launch template\. Ensure that you specify the correct values for the parameters and that you use supported parameter combinations\. For example, to launch an instance in a placement group, you must specify a supported instance type\.
 + You can tag a launch template, but you cannot tag a launch template version\.
++ Launch templates are immutable\. To modify a launch template, you must create a new version of the launch template\.
 + Launch template versions are numbered in the order in which they are created\. When you create a launch template version, you cannot specify the version number yourself\.
 
 ## Use launch templates to control launch parameters<a name="launch-templates-authorization"></a>
@@ -36,7 +37,7 @@ A launch template can contain all or some of the parameters to launch an instanc
 **Note**  
 You cannot remove launch template parameters during launch \(for example, you cannot specify a null value for the parameter\)\. To remove a parameter, create a new version of the launch template without the parameter and use that version to launch the instance\.
 
-To launch instances, IAM users must have permissions to use the `ec2:RunInstances` action\. You must also have permissions to create or use the resources that are created or associated with the instance\. You can use resource\-level permissions for the `ec2:RunInstances` action to control the launch parameters that users can specify\. Alternatively, you can grant users permissions to launch an instance using a launch template\. This enables you to manage launch parameters in a launch template rather than in an IAM policy, and to use a launch template as an authorization vehicle for launching instances\. For example, you can specify that users can only launch instances using a launch template, and that they can only use a specific launch template\. You can also control the launch parameters that users can override in the launch template\. For example policies, see [Launch templates](ExamplePolicies_EC2.md#iam-example-runinstances-launch-templates)\.
+To launch instances, IAM users must have permissions to use the `ec2:RunInstances` action\. IAM users must also have permissions to create or use the resources that are created or associated with the instance\. You can use resource\-level permissions for the `ec2:RunInstances` action to control the launch parameters that users can specify\. Alternatively, you can grant users permissions to launch an instance using a launch template\. This enables you to manage launch parameters in a launch template rather than in an IAM policy, and to use a launch template as an authorization vehicle for launching instances\. For example, you can specify that users can only launch instances using a launch template, and that they can only use a specific launch template\. You can also control the launch parameters that users can override in the launch template\. For example policies, see [Launch templates](ExamplePolicies_EC2.md#iam-example-runinstances-launch-templates)\.
 
 ## Control the use of launch templates<a name="launch-template-permissions"></a>
 
@@ -66,63 +67,83 @@ Create a new launch template using parameters that you define, or use an existin
 
 1. For **Launch template name**, enter a descriptive name for the launch template\.
 
-1. For **Template version description**, provide a brief description of the launch template version\.
+1. For **Template version description**, provide a brief description of this version of the launch template\.
 
 1. To tag the launch template on creation, expand **Template tags**, choose **Add tag**, and then enter a tag key and value pair\.
 
-1. For **Launch template contents**, provide the following information:
+1. For **Amazon machine image \(AMI\)**, provide the following information:
    + **AMI**: An AMI from which to launch the instance\. To search through all available AMIs, choose **Search for AMI**\. To select a commonly used AMI, choose **Quick Start**\. Or, choose **AWS Marketplace** or **Community AMIs**\. You can use an AMI that you own or [find a suitable AMI](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/finding-an-ami.html)\.
-   + **Instance type**: Ensure that the instance type is compatible with the AMI that you've specified\. For more information, see [Instance types](instance-types.md)\. 
+
+1. For **Instance type**, you can either select an instance type, or you can specify instance attributes and let Amazon EC2 identify the instance types with those attributes\.
+**Note**  
+Specifying instance attributes is supported only when using Auto Scaling groups, EC2 Fleet, and Spot Fleet to launch instances\. For more information, see [Creating an Auto Scaling group using attribute\-based instance type selection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-instance-type-requirements.html), [Attribute\-based instance type selection for EC2 Fleet](ec2-fleet-attribute-based-instance-type-selection.md), and [Attribute\-based instance type selection for Spot Fleet](spot-fleet-attribute-based-instance-type-selection.md)\.  
+If you plan to use the launch template in the launch instance wizard or with the RunInstances API, you must select an instance type\.
+   + **Instance type**: Ensure that the instance type is compatible with the AMI that you've specified\. For more information, see [Instance types](instance-types.md)\.
+   + **Advanced**: To specify instance attributes and let Amazon EC2 identify the instance types with those attributes, choose **Advanced**, and then choose **Specify instance type attributes**\.
+     + **Number of vCPUs**: Enter the minimum and maximum number of vCPUs for your compute requirements\. To indicate no limits, enter a minimum of 0, and leave the maximum blank\.
+     + **Amount of memory \(MiB\)**: Enter the minimum and maximum amount of memory, in MiB, for your compute requirements\. To indicate no limits, enter a minimum of 0, and leave the maximum blank\.
+     + Expand **Optional instance type attributes** and choose **Add attribute** to express your compute requirements in more detail\. For information about each attribute, see [InstanceRequirementsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceRequirementsRequest.html) in the *Amazon EC2 API Reference*\.
+     + **Resulting instance types**: You can preview the instance types that match the specified attributes\. To exclude instance types, choose **Add attribute**, and from the **Attribute** list, choose **Excluded instance types**\. From the **Attribute value** list, select the instance types to exclude\.
+
+1. For **Key pair \(login\)**, provide the following information:
    + **Key pair name**: The key pair for the instance\. For more information, see [Amazon EC2 key pairs and Windows instances](ec2-key-pairs.md)\.
-   + **Network platform**: If applicable, whether to launch the instance into a VPC or EC2\-Classic\. If you choose **VPC**, specify the subnet in the **Network interfaces** section\. If you choose **Classic**, ensure that the specified instance type is supported in EC2\-Classic and specify the Availability Zone for the instance\.
+
+1. For **Network settings**, provide the following information:
+   + **Networking platform**: If applicable, whether to launch the instance into a VPC or EC2\-Classic\. If you choose **Virtual Private Cloud \(VPC\)**, specify the subnet in the **Network interfaces** section\. If you choose **EC2\-Classic**, ensure that the specified instance type is supported in EC2\-Classic and specify the Availability Zone for the instance\. Note that we are retiring EC2\-Classic on August 15, 2022\.
    + **Security groups**: One or more security groups to associate with the instance\. If you add a network interface to the launch template, omit this setting and specify the security groups as part of the network interface specification\. You cannot launch an instance from a launch template that specifies security groups and a network interface\. For more information, see [Amazon EC2 security groups for Windows instances](ec2-security-groups.md)\.
 
 1. For **Storage \(volumes\)**, specify volumes to attach to the instance besides the volumes specified by the AMI \(**Volume 1 \(AMI Root\)**\)\. To add a new volume, choose **Add new volume**\.
    + **Volume type**: The instance store or Amazon EBS volumes with which to associate your instance\. The type of volume depends on the instance type that you've chosen\. For more information, see [Amazon EC2 instance store](InstanceStorage.md) and [Amazon EBS volumes](ebs-volumes.md)\.
    + **Device name**: A device name for the volume\.
    + **Snapshot**: The ID of the snapshot from which to create the volume\.
-   + **Size**: For Amazon EBS volumes, the storage size\.
+   + **Size \(GiB\)**: For Amazon EBS volumes, the storage size\.
    + **Volume type**: For Amazon EBS volumes, the volume type\. For more information, see [Amazon EBS volume types](ebs-volume-types.md)\.
    + **IOPS**: For the Provisioned IOPS SSD volume type, the number of I/O operations per second \(IOPS\) that the volume can support\.
    + **Delete on termination**: For Amazon EBS volumes, whether to delete the volume when the instance is terminated\. For more information, see [Preserve Amazon EBS volumes on instance termination](terminating-instances.md#preserving-volumes-on-termination)\.
    + **Encrypted**: If the instance type supports EBS encryption, you can enable encryption for the volume\. If you have enabled encryption by default in this Region, encryption is enabled for you\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
-   + **Key**: The CMK to use for EBS encryption\. You can specify the ARN of any customer master key \(CMK\) that you created using the AWS Key Management Service\. If you specify a CMK, you must also use **Encrypted** to enable encryption\.
+   + **Key**: The customer managed key to use for EBS encryption\. You can specify the ARN of any customer managed key that you created using the customer managed key\. If you specify a customer managed key, you must also use **Encrypted** to enable encryption\.
 
-1. For **Resource tags**, specify [tags](Using_Tags.md) by providing key and value combinations\. You can tag the instance, the volumes, Spot Instance requests, or all three\.
+1. For **Resource tags**, specify [tags](Using_Tags.md) by providing key and value combinations\. You can tag the instance, the volumes, elastic graphics, Spot Instance requests, and network interfaces\.
 
 1. For **Network interfaces**, you can specify up to two [network interfaces](using-eni.md) for the instance\.
    + **Device index**: The device number for the network interface, for example, `eth0` for the primary network interface\. If you leave the field blank, AWS creates the primary network interface\.
    + **Network interface**: The ID of the network interface, or leave blank to let AWS create a new network interface\.
    + **Description**: \(Optional\) A description for the new network interface\.
    + **Subnet**: The subnet in which to create a new network interface\. For the primary network interface \(`eth0`\), this is the subnet in which the instance is launched\. If you've entered an existing network interface for `eth0`, the instance is launched in the subnet in which the network interface is located\.
+   + **Security groups**: One or more security groups in your VPC with which to associate the network interface\.
    + **Auto\-assign public IP**: Whether to automatically assign a public IP address to the network interface with the device index of `eth0`\. This setting can only be enabled for a single, new network interface\.
    + **Primary IP**: A private IPv4 address from the range of your subnet\. Leave blank to let AWS choose a private IPv4 address for you\.
    + **Secondary IP**: A secondary private IPv4 address from the range of your subnet\. Leave blank to let AWS choose one for you\.
    + \(IPv6\-only\) **IPv6 IPs**: An IPv6 address from the range of the subnet\.
-   + **Security groups**: One or more security groups in your VPC with which to associate the network interface\.
+   + **IPv4 Prefixes**: The IPv4 prefixes for the network interface\.
+   + **IPv6 Prefixes**: The IPv6 prefixes for the network interface\.
    + **Delete on termination**: Whether the network interface is deleted when the instance is deleted\.
    + **Network card index**: The index of the network card\. The primary network interface must be assigned to network card index 0\. Some instance types support multiple network cards\.
 
 1. For **Advanced details**, expand the section to view the fields and specify any additional parameters for the instance\.
    + **Purchasing option**: The purchasing model\. Choose **Request Spot Instances** to request Spot Instances at the Spot price, capped at the On\-Demand price, and choose **Customize** to change the default Spot Instance settings\. If you do not request a Spot Instance, EC2 launches an On\-Demand Instance by default\. For more information, see [Spot Instances](using-spot-instances.md)\.
    + **IAM instance profile**: An AWS Identity and Access Management \(IAM\) instance profile to associate with the instance\. For more information, see [IAM roles for Amazon EC2](iam-roles-for-amazon-ec2.md)\.
+   + **Hostname type**: Determines if you want the guest OS hostname of the EC2 instance to be the Resource name \(RBN\) or IP name \(IPBN\)\. For more information, see [Amazon EC2 instance hostname types](ec2-instance-naming.md)\.
+   + **DNS Hostname**: Determines if the DNS queries to the IP name and/or the Resource name will respond with the IPv4 address \(A record\), IPv6 address \(AAAA record\), or both\. For more information, see [Amazon EC2 instance hostname types](ec2-instance-naming.md)\.
    + **Shutdown behavior**: Whether the instance should stop or terminate when shut down\. For more information, see [Change the instance initiated shutdown behavior](terminating-instances.md#Using_ChangingInstanceInitiatedShutdownBehavior)\.
-   + **Stop \- Hibernate behavior**: Whether the instance is enabled for hibernation\. This field is only valid for instances that meet the hibernation prerequisites\. For more information, see [Hibernate your On\-Demand or Reserved Windows instance](Hibernate.md)\.
+   + **Stop \- Hibernate behavior**: Whether the instance is enabled for hibernation\. This field is only valid for instances that meet the hibernation prerequisites\. For more information, see [Hibernate your On\-Demand Windows instance](Hibernate.md)\.
    + **Termination protection**: Whether to prevent accidental termination\. For more information, see [Enable termination protection](terminating-instances.md#Using_ChangingDisableAPITermination)\.
    + **Detailed CloudWatch monitoring**: Whether to enable detailed monitoring of the instance using Amazon CloudWatch\. Additional charges apply\. For more information, see [Monitor your instances using CloudWatch](using-cloudwatch.md)\.
    + **Elastic GPU**: An Elastic Graphics accelerator to attach to the instance\. Not all instance types support Elastic Graphics\. For more information, see [Amazon Elastic Graphics](elastic-graphics.md)\.
    + **Elastic inference**: An elastic inference accelerator to attach to your EC2 CPU instance\. For more information, see [Working with Amazon Elastic Inference](https://docs.aws.amazon.com/elastic-inference/latest/developerguide/working-with-ei.html) in the *Amazon Elastic Inference Developer Guide*\.
-   + **T2/T3 Unlimited**: Whether to enable applications to burst beyond the baseline for as long as needed\. This field is only valid for T2, T3, and T3a instances\. Additional charges may apply\. For more information, see [Burstable performance instances](burstable-performance-instances.md)\.
+   + **Credit specification**: Whether to enable applications to burst beyond the baseline for as long as needed\. This field is only valid for T instances\. Additional charges may apply\. For more information, see [Burstable performance instances](burstable-performance-instances.md)\.
    + **Placement group name**: Specify a placement group in which to launch the instance\. Not all instance types can be launched in a placement group\. For more information, see [Placement groups](placement-groups.md)\.
    + **EBS\-optimized instance**: Provides additional, dedicated capacity for Amazon EBS I/O\. Not all instance types support this feature, and additional charges apply\. For more information, see [Amazon EBS–optimized instances](ebs-optimized.md)\.
-   + **Capacity Reservation**: Specify whether to launch the instance into shared capacity, any `open` Capacity Reservation, a specific Capacity Reservation, or a Capacity Reservation group\. For more information, see [Launch instances into an existing Capacity Reservation](capacity-reservations-using.md#capacity-reservations-launch)\.
+   + **Capacity Reservation**: Specify whether to launch the instance into any `open` Capacity Reservation \(`Open`\), a specific Capacity Reservation \(`Target by ID`\), or a Capacity Reservation group \(`Target by group`\)\. To specify that a Capacity Reservation should not be used, choose `None`\. For more information, see [Launch instances into an existing Capacity Reservation](capacity-reservations-using.md#capacity-reservations-launch)\.
    + **Tenancy**: Choose whether to run your instance on shared hardware \(**Shared**\), isolated, dedicated hardware \(**Dedicated**\), or on a Dedicated Host \(**Dedicated host**\)\. If you choose to launch the instance onto a Dedicated Host, you can specify whether to launch the instance into a host resource group or you can target a specific Dedicated Host\. Additional charges may apply\. For more information, see [Dedicated Instances](dedicated-instance.md) and [Dedicated Hosts](dedicated-hosts-overview.md)\.
    + **RAM disk ID**: \(Only valid for paravirtual \(PV\) AMIs\) A RAM disk for the instance\. If you have specified a kernel, you may need to specify a specific RAM disk with the drivers to support it\.
    + **Kernel ID**: \(Only valid for paravirtual \(PV\) AMIs\) A kernel for the instance\.
+   + **Nitro Enclave**: Allows you to create isolated execution environments, called enclaves, from Amazon EC2 instances\. For more information, see [What is AWS Nitro Enclaves?](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html) in the *AWS Nitro Enclaves User Guide*\.
    + **License configurations**: You can launch instances against the specified license configuration to track your license usage\. For more information, see [Create a License Configuration](https://docs.aws.amazon.com/license-manager/latest/userguide/create-license-configuration.html) in the *AWS License Manager User Guide*\.
-   + **Metadata accessible**: Whether to enable or disable access to the instance metadata\. For more information, see [Configure the instance metadata service](configuring-instance-metadata-service.md)\.
-   + **Metadata version**: If you enable access to the instance metadata, you can choose to require the use of Instance Metadata Service Version 2 when requesting instance metadata\. For more information, see [Configure instance metadata options for new instances](configuring-instance-metadata-service.md#configuring-IMDS-new-instances)\.
-   + **Metadata response hop limit**: If you enable instance metadata, you can set the allowable number of network hops for the metadata token\. For more information, see [Configure the instance metadata service](configuring-instance-metadata-service.md)\.
+   + **Metadata accessible**: Whether to enable or disable access to the instance metadata\. For more information, see [Use IMDSv2](configuring-instance-metadata-service.md)\.
+   + **Metadata transport**: Whether to enable or disable the access method to the instance metadata service that's available for this EC2 instance based on the IP address type \(IPv4, IPv6, or IPv4 and IPv6\) of the instance\. For more information, see [Retrieve instance metadata](instancedata-data-retrieval.md)\.
+   + **Metadata version**: If you enable access to the instance metadata, you can choose to require the use of Instance Metadata Service Version 2 when requesting instance metadata\. For more information, see [Configure instance metadata options for new instances](configuring-instance-metadata-options.md#configuring-IMDS-new-instances)\.
+   + **Metadata response hop limit**: If you enable instance metadata, you can set the allowable number of network hops for the metadata token\. For more information, see [Use IMDSv2](configuring-instance-metadata-service.md)\.
    + **User data**: You can specify user data to configure an instance during launch, or to run a configuration script\. For more information, see [Run commands on your Windows instance at launch](ec2-windows-user-data.md)\.
 
 1. Choose **Create launch template**\.
@@ -200,7 +221,7 @@ Create a new launch template using parameters that you define, or use an existin
 
 1. For **Launch template name**, enter a descriptive name for the launch template\.
 
-1. For **Template version description**, provide a brief description of the launch template version\.
+1. For **Template version description**, provide a brief description of this version of the launch template\.
 
 1. To tag the launch template on creation, expand **Template tags**, choose **Add tag**, and then enter a tag key and value pair\.
 
@@ -302,9 +323,11 @@ Use the [create\-launch\-template](https://docs.aws.amazon.com/cli/latest/refere
 
 ------
 
-## Manage launch template versions<a name="manage-launch-template-versions"></a>
+## Modify a launch template \(manage launch template versions\)<a name="manage-launch-template-versions"></a>
 
-You can create launch template versions for a specific launch template, set the default version, describe a launch template version, and delete versions that you no longer require\.
+Launch templates are immutable; after you create a launch template, you can't modify it\. Instead, you can create a new version of the launch template that includes any changes you require\.
+
+You can create different versions of a launch template, set the default version, describe a launch template version, and delete versions that you no longer require\.
 
 **Topics**
 + [Create a launch template version](#create-launch-template-version)
@@ -327,7 +350,7 @@ When you create a launch template version, you can specify new launch parameters
 
 1. Select a launch template, and then choose **Actions**, **Modify template \(Create new version\)**\.
 
-1. For **Template version description**, enter a description for the launch template version\.
+1. For **Template version description**, enter a description for this version of the launch template\.
 
 1. \(Optional\) Expand **Source template** and select a version of the launch template to use as a base for the new launch template version\. The new launch template version inherits the launch parameters from this launch template version\.
 
@@ -529,11 +552,11 @@ Before you can create an Auto Scaling group using a launch template, you must cr
 
 1. For **Launch template name**, enter a descriptive name for the launch template\.
 
-1. For **Template version description**, provide a brief description of the launch template version\.
+1. For **Template version description**, provide a brief description of this version of the launch template\.
 
-1. Under **Auto Scaling guidance**, select the checkbox to have Amazon EC2 provide guidance to help create a template to use with Auto Scaling\.
+1. Under **Auto Scaling guidance**, select the check box to have Amazon EC2 provide guidance to help create a template to use with Auto Scaling\.
 
-1. Modify the launch parameters as required\. Because you selected Auto Scaling guidance, some fields are required and some fields are not available\. For considerations to keep in mind when creating a launch template, and for information about how to configure the launch parameters for Auto Scaling, see [Creating a Launch Template for an Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html) in the *Amazon EC2 Auto Scaling User Guide*\.
+1. Modify the launch parameters as required\. Because you selected Auto Scaling guidance, some fields are required and some fields are not available\. For considerations to keep in mind when creating a launch template, and for information about how to configure the launch parameters for Auto Scaling, see [Creating a launch template for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
 1. Choose **Create launch template**\.
 
@@ -555,7 +578,7 @@ For more information, see [Create an EC2 Fleet](manage-ec2-fleet.md#create-ec2-f
 
 You can create a Spot Fleet request and specify a launch template in the instance configuration\. When Amazon EC2 fulfills the Spot Fleet request, it uses the launch parameters defined in the associated launch template\. You can override some of the parameters that are specified in the launch template\.
 
-For more information, see [Spot Fleet requests](spot-fleet-requests.md)\.
+For more information, see [Spot Fleet request types](spot-fleet-requests.md)\.
 
 **To create a Spot Fleet request with a launch template using the AWS CLI**
 + Use the [request\-spot\-fleet](https://docs.aws.amazon.com/cli/latest/reference/ec2/request-spot-fleet.html) command\. Use the `LaunchTemplateConfigs` parameter to specify the launch template and any overrides for the launch template\.

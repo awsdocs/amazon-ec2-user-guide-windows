@@ -3,6 +3,9 @@
 You can specify multiple private IPv4 addresses for your instances\. After you assign a secondary private IPv4 address to an instance, you must configure the operating system on the instance to recognize the secondary private IPv4 address\.
 
 Configuring the operating system on a Windows instance to recognize a secondary private IPv4 address requires the following:
+
+**Topics**
++ [Prerequisite steps](#prereq-steps)
 + [Step 1: Configure static IP addressing on your instance](#step1)
 + [Step 2: Configure a secondary private IP address for your instance](#step2)
 + [Step 3: Configure applications to Use the secondary private IP address](#step3)
@@ -10,12 +13,14 @@ Configuring the operating system on a Windows instance to recognize a secondary 
 **Note**  
 These instructions are based on Windows Server 2008 R2\. The implementation of these steps may vary based on the operating system of the Windows instance\.
 
-## Prerequisites<a name="prerequisites"></a>
+**Before you begin**  
+As a best practice, launch your Windows instances using the latest AMIs\. If you are using an older Windows AMI, ensure that it has the Microsoft hot fix referenced in [http://support\.microsoft\.com/kb/2582281](http://support.microsoft.com/kb/2582281)\.
 
-Before you begin, make sure you meet the following requirements:
-+ As a best practice, launch your Windows instances using the latest AMIs\. If you are using an older Windows AMI, ensure that it has the Microsoft hot fix referenced in [http://support\.microsoft\.com/kb/2582281](http://support.microsoft.com/kb/2582281)\.
-+ After you launch your instance in your VPC, add a secondary private IP address\. For more information, see [Assign a secondary private IPv4 address](MultipleIP.md#ManageMultipleIP)\.
-+ To allow Internet requests to your website after you complete the tasks in these steps, you must configure an Elastic IP address and associate it with the secondary private IP address\. For more information, see [Associate an Elastic IP address with the secondary private IPv4 address](MultipleIP.md#StepThreeEIP)\.
+## Prerequisite steps<a name="prereq-steps"></a>
+
+1. Assign the secondary private IPv4 address to the network interface for the instance\. You can assign the secondary private IPv4 address when you launch the instance, or after the instance is running\. For more information, see [Assign a secondary private IPv4 address](MultipleIP.md#ManageMultipleIP)\.
+
+1. Allocate an Elastic IP address and associate it with the secondary private IPv4 address\. For more information, see [Allocate an Elastic IP address](elastic-ip-addresses-eip.md#using-instance-addressing-eips-allocating) and [Associate an Elastic IP address with the secondary private IPv4 address](MultipleIP.md#StepThreeEIP)\.
 
 ## Step 1: Configure static IP addressing on your instance<a name="step1"></a>
 

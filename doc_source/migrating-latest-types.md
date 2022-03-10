@@ -1,10 +1,15 @@
 # Migrate to latest generation instance types<a name="migrating-latest-types"></a>
 
-The AWS Windows AMIs are configured with the default settings used by the Microsoft installation media, with some customizations\. The customizations include drivers and configurations that support the latest generation instance types\. However, when migrating to the latest generation of EC2 instances and Nitro instances, including bare metal instances, we recommend that you follow the steps in this topic in the following cases:
+The AWS Windows AMIs are configured with the default settings used by the Microsoft installation media, with some customizations\. The customizations include drivers and configurations that support the latest generation instance types, which are instances built on the [Nitro System](instance-types.md#ec2-nitro-instances), such as an M5 or C5\.
+
+When migrating to [Nitro\-based](instance-types.md#ec2-nitro-instances) instances, including bare metal instances, we recommend that you follow the steps in this topic in the following cases:
 + If you are launching instances from custom Windows AMIs
 + If you are launching instances from Windows AMIs provided by Amazon that were created before August 2018
 
 For more information, see [Amazon EC2 Update — Additional Instance Types, Nitro System, and CPU Options](http://aws.amazon.com/blogs/aws/amazon-ec2-update-additional-instance-types-nitro-system-and-cpu-options/)\.
+
+**Note**  
+The following migration procedures can be performed on Windows Server version 2008 R2 and later\. To migrate Linux instances to the latest generation instance types, see [Change the instance type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-resize.html)\.
 
 **Contents**
 + [Part 1: Install and upgrade AWS PV drivers](#upgrade-pv)
@@ -133,7 +138,7 @@ The `i3.metal` instance type uses a PCI\-based serial device rather than an I/O 
 
 1. [Download](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPCISerialDriver/Latest/AWSPCISerialDriver.zip) the serial driver package to the instance\. 
 
-1. Extract the contents of the folder, open the context \(right\-click\) menu for aws\_ser\.INF, and choose **install**\. 
+1. Extract the contents of the folder, open the context \(right\-click\) menu for `aws_ser.INF`, and choose **install**\. 
 
 1. Choose **Okay**\.
 

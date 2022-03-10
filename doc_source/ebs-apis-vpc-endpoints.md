@@ -1,4 +1,4 @@
-# EBS direct APIs and interface VPC endpoints<a name="ebs-apis-vpc-endpoints"></a>
+# Using interface VPC endpoints with EBS direct APIs<a name="ebs-apis-vpc-endpoints"></a>
 
 You can establish a private connection between your VPC and EBS direct APIs by creating an *interface VPC endpoint*\. Interface endpoints are powered by [AWS PrivateLink](http://aws.amazon.com/privatelink), a technology that enables you to privately access EBS direct APIs without an internet gateway, NAT device, VPN connection, or AWS Direct Connect connection\. Instances in your VPC don't need public IP addresses to communicate with EBS direct APIs\. Traffic between your VPC and EBS direct APIs does not leave the Amazon network\. 
 
@@ -14,7 +14,7 @@ VPC endpoint policies are not supported for EBS direct APIs\. By default, full a
 
 ## Create an interface VPC endpoint for EBS direct APIs<a name="vpc-endpoint-create"></a>
 
-You can create a VPC endpoint for the EBS direct APIs service using either the Amazon VPC console or the AWS Command Line Interface \(AWS CLI\)\. For more information, see [Creating an interface endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint) in the *Amazon VPC User Guide*\.
+You can create a VPC endpoint for EBS direct APIs using either the Amazon VPC console or the AWS Command Line Interface \(AWS CLI\)\. For more information, see [ Creating an interface endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html#create-interface-endpoint) in the *Amazon VPC User Guide*\.
 
 Create a VPC endpoint for EBS direct APIs using the following service name: 
 + `com.amazonaws.region.ebs`

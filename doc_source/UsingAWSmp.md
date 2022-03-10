@@ -42,7 +42,7 @@ When you select an EC2 instance, you can perform instance health tasks:
 **EC2 Instances Diagram View**  
 Shows the relationship of an instance with other components\.
 
-![\[EC2 instance diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_diagram_view.png)
+![\[EC2 instance diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_diagram_view-2.png)
 
 ### Amazon EBS Volumes<a name="awsmp-ebs-volumes-view"></a>
 
@@ -59,7 +59,7 @@ Shows an Amazon EBS volume and any associated alarms\. The following illustratio
 
 Shows the health state of all the load balancers for a particular AWS account from all regions\.
 
-![\[Elastic Load Balancing view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_view.png)
+![\[Elastic Load Balancing view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_view-2.png)
 
 **Elastic Load Balancing Diagram View**  
 Shows the Elastic Load Balancing relationship with other components\. The following illustration shows an example:
@@ -70,7 +70,7 @@ Shows the Elastic Load Balancing relationship with other components\. The follow
 
 Shows the state of all discovered AWS Elastic Beanstalk applications\.
 
-![\[AWS Elastic Beanstalk application state view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/beanstalk_state_view.png)
+![\[AWS Elastic Beanstalk application state view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/beanstalk_state_view-2.png)
 
 **AWS Elastic Beanstalk Applications Diagram View**  
 Shows the AWS Elastic Beanstalk application, application environment, application configuration, and application resources objects\.
@@ -81,7 +81,7 @@ Shows the AWS Elastic Beanstalk application, application environment, applicatio
 
 Shows the health state of all the AWS CloudFormation stacks for a particular AWS account from all regions\.
 
-![\[AWS CloudFormation stack state view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_view.png)
+![\[AWS CloudFormation stack state view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_view-2.png)
 
 **AWS CloudFormation stacks diagram view**  
 Shows the AWS CloudFormation stack relationship with other components\. An AWS CloudFormation stack might contain Amazon EC2 or Elastic Load Balancing resources\. The following illustration shows an example:
@@ -92,19 +92,19 @@ Shows the AWS CloudFormation stack relationship with other components\. An AWS C
 
 Shows the Amazon CloudWatch metrics for Amazon EC2, Amazon EBS, and Elastic Load Balancing, custom metrics, and metrics created from CloudWatch alarms\. In addition, there are separate performance views for each resource\. The **Other Metrics** performance view contains custom metrics, and metrics created from CloudWatch alarms\. For more information about these metrics, see [AWS Services That Publish CloudWatch Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html) in the *Amazon CloudWatch User Guide*\. The following illustration shows an example\. 
 
-![\[Amazon performance views\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_performance_view.png)
+![\[Amazon performance views\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_performance_view-2.png)
 
 ### Amazon CloudWatch metric alarms<a name="awsmp-metric-alarms-view"></a>
 
 Shows Amazon CloudWatch alarms related to the discovered AWS resources\.
 
-![\[Amazon CloudWatch metric alarms\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudwatch_alarms_view.png)
+![\[Amazon CloudWatch metric alarms\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudwatch_alarms_view-2.png)
 
 ### AWS alerts<a name="awsmp-aws-alerts-view"></a>
 
 Shows the alerts that the AWS management pack produces when the health of an object is in a critical state\. 
 
-![\[AWS Alerts\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_alerts_view.png)
+![\[AWS Alerts\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_alerts_view-2.png)
 
 ### Watcher nodes \(System Center Operations Manager 2007 R2\)<a name="awsmp-watcher-nodes-view"></a>
 

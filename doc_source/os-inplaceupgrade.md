@@ -46,25 +46,29 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 1. Create a new volume from a Windows Server installation media snapshot\.
 
-   1. In the navigation pane, choose **Snapshots**, **Public Snapshots**\.
+   1. In the left navigation pane, under **Elastic Block Store**, choose **Snapshots**\. In the search bar filter, choose **Public Snapshots**\.
 
-   1. Add the **Owner** filter and choose **Amazon images**\.
+   1. Add the **Owner alias** filter to the search bar and choose **amazon**\.
 
-   1. Add the **Description** filter and enter **Windows**\. Press Enter\.
+   1. Add the **Description** filter and enter **Windows**\. Select Enter\.
 
    1. Select the snapshot that matches the system architecture and language preference you are upgrading to\. For example, select **Windows 2019 English Installation Media** to upgrade to Windows Server 2019\.
 
    1. Choose **Actions**, **Create Volume**\.
 
-   1. In the **Create Volume** dialog box, choose the Availability Zone that matches your Windows instance, and choose **Create**\.
+   1. In the **Create Volume** dialog box, choose the Availability Zone that matches your Windows instance, and choose **Create Volume**\.
 
-1. In the **Volume Successfully Created** message, choose the volume that you just created\.
+1. In the **Create Volume Request Succeeded** message, choose the volume that you just created\.
 
 1. Choose **Actions**, **Attach Volume**\.
 
-1. In the **Attach Volume** dialog box, enter the instance ID and choose **Attach**\.
+1. In the **Attach Volume** dialog box, enter the instance ID of your Windows instance and choose **Attach**\.
 
-1. Begin the upgrade by using Windows PowerShell to open the installation media volume you attached to the instance\.
+1. Make the new volume available for use by following the steps at [Make an Amazon EBS volume available for use on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-using-volumes.html)\.
+**Important**  
+Do not initialize the disk because doing so will delete the existing data\.
+
+1. In Windows PowerShell, switch to the new volume drive\. Begin the upgrade by opening the installation media volume you attached to the instance\.
 
    1. If you are upgrading to Windows Server 2016 or later, run the following:
 
@@ -180,6 +184,6 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 
 1. Install Microsoft hotfix [KB2922223](http://support.microsoft.com/en-us/kb/2922223)\.
 
-1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance , we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Install or upgrade AWS NVMe drivers](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
+1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance , we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Install or upgrade AWS NVMe drivers using PowerShell](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
 
 1. Re\-enable antivirus and anti\-spyware software and firewalls\.

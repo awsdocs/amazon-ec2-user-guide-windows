@@ -1,7 +1,7 @@
 # Instance purchasing options<a name="instance-purchasing-options"></a>
 
 Amazon EC2 provides the following purchasing options to enable you to optimize your costs based on your needs:
-+ **On\-Demand Instances** – Pay, by the hour, for the instances that you launch\.
++ **On\-Demand Instances** – Pay, by the second, for the instances that you launch\.
 + **Savings Plans** – Reduce your Amazon EC2 costs by making a commitment to a consistent amount of usage, in USD per hour, for a term of 1 or 3 years\.
 + **Reserved Instances** – Reduce your Amazon EC2 costs by making a commitment to a consistent instance configuration, including instance type and Region, for a term of 1 or 3 years\.
 + **Spot Instances** – Request unused EC2 instances, which can reduce your Amazon EC2 costs significantly\.

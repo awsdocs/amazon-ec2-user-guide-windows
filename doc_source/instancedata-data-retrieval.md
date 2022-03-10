@@ -4,15 +4,24 @@ Because your instance metadata is available from your running instance, you do n
 
 Instance metadata is divided into categories\. For a description of each instance metadata category, see [Instance metadata categories](instancedata-data-categories.md)\.
 
-To view all categories of instance metadata from within a running instance, use the following URI\.
+To view all categories of instance metadata from within a running instance, use the following IPv4 or IPv6 URIs:
 
 ```
 http://169.254.169.254/latest/meta-data/
 ```
 
-The IP address `169.254.169.254` is a link\-local address and is valid only from the instance\. For more information, see [Link\-local address](https://en.wikipedia.org/wiki/Link-local_address) on Wikipedia\.
+This IPv4 address is a link\-local address and it is valid only from the instance\. For more information, see [ Link\-local address](https://en.wikipedia.org/wiki/Link-local_address) on Wikipedia\.
 
-The command format is different, depending on whether you use IMDSv1 or IMDSv2\. By default, you can use both instance metadata services\. To require the use of IMDSv2, see [Configure the instance metadata service](configuring-instance-metadata-service.md)\.
+```
+http://[fd00:ec2::254]/latest/meta-data/
+```
+
+The IP addresses are link\-local address and are valid only from the instance\. For more information, see [Link\-local address](https://en.wikipedia.org/wiki/Link-local_address) on Wikipedia\.
+
+**Note**  
+The examples in this section use the IPv4 address of the instance metadata service: `169.254.169.254`\. If you are retrieving instance metadata for EC2 instances over the IPv6 address, ensure that you enable and use the IPv6 address instead: `fd00:ec2::254`\. The IPv6 address of the instance metadata service is compatible with IMDSv2 commands\. The IPv6 address is only accessible on [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances)\.
+
+The command format is different, depending on whether you use IMDSv1 or IMDSv2\. By default, you can use both instance metadata services\. To require the use of IMDSv2, see [Use IMDSv2](configuring-instance-metadata-service.md)\.
 
 You can use PowerShell cmdlets to retrieve the URI\. For example, if you are running version 3\.0 or later of PowerShell, use the following cmdlet\.
 
@@ -20,7 +29,7 @@ You can use PowerShell cmdlets to retrieve the URI\. For example, if you are run
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -46,8 +55,11 @@ Note that you are not billed for HTTP requests used to retrieve instance metadat
 ## Considerations<a name="imds-considerations"></a>
 
 To avoid problems with instance metadata retrieval, consider the following:
-+ The AWS SDKs use IMDSv2 calls by default\. If the IMDSv2 call receives no response, the SDK retries the call and, if still unsuccessful, uses IMDSv1\. This can result in a delay\. In a container environment, if the hop limit is 1, the IMDSv2 response does not return because going to the container is considered an additional network hop\. To avoid the process of falling back to IMDSv1 and the resultant delay, in a container environment we recommend that you set the hop limit to 2\. For more information, see [Configure the instance metadata options](configuring-instance-metadata-service.md#configuring-instance-metadata-options)\.
++ The AWS SDKs use IMDSv2 calls by default\. If the IMDSv2 call receives no response, the SDK retries the call and, if still unsuccessful, uses IMDSv1\. This can result in a delay\. In a container environment, if the hop limit is 1, the IMDSv2 response does not return because going to the container is considered an additional network hop\. To avoid the process of falling back to IMDSv1 and the resultant delay, in a container environment we recommend that you set the hop limit to 2\. For more information, see [Configure the instance metadata options](configuring-instance-metadata-options.md)\.
 + If you launch a Windows instance using a custom Windows AMI, to ensure that the instance metadata service works on the instance, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\. Otherwise, the instance metadata service won't work\.
++ For IMDSv2, you must use `/latest/api/token` when retrieving the token\. Issuing `PUT` requests to any version\-specific path, for example `/2021-03-23/api/token`, will result in the metadata service returning 403 Forbidden errors\. This behavior is intended\. 
+
+  
 
 ## Responses and error messages<a name="instance-metadata-returns"></a>
 
@@ -71,6 +83,7 @@ For requests made using Instance Metadata Service Version 2, the following HTTP 
 + [Show the formats in which public key 0 is available](#instance-metadata-ex-4)
 + [Get public key 0 \(in the OpenSSH key format\)](#instance-metadata-ex-5)
 + [Get the subnet ID for an instance](#instance-metadata-ex-6)
++ [Get the instance tags for an instance](#instance-metadata-ex-7)
 
 ### Get the available versions of the instance metadata<a name="instance-metadata-ex-1"></a>
 
@@ -80,7 +93,7 @@ This example gets the available versions of the instance metadata\. These versio
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -142,7 +155,7 @@ This example gets the top\-level metadata items\. For more information, see [Ins
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -291,7 +304,7 @@ This example gets the list of available public keys\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -316,7 +329,7 @@ This example shows the formats in which public key 0 is available\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -342,7 +355,7 @@ This example gets public key 0 \(in the OpenSSH key format\)\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -394,7 +407,7 @@ This example gets the subnet ID for an instance\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -412,6 +425,56 @@ subnet-be9b61d7
 
 ------
 
+### Get the instance tags for an instance<a name="instance-metadata-ex-7"></a>
+
+In the following examples, the sample instance has [tags on instance metadata enabled](Using_Tags.md#allow-access-to-tags-in-IMDS) and the instance tags `Name=MyInstance` and `Environment=Dev`\.
+
+This example gets all the instance tag keys for an instance\.
+
+------
+#### [ IMDSv2 ]
+
+```
+PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+```
+
+```
+PS C:\> Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token" = $token} -Method GET -Uri http://169.254.169.254/latest/meta-data/tags/instance
+Name
+Environment
+```
+
+------
+#### [ IMDSv1 ]
+
+```
+PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/tags/instance
+Name
+Environment
+```
+
+------
+
+The following example gets the value of the `Name` key that was obtained in the preceding example\. The IMDSv2 request uses the stored token that was created in the preceding example command, assuming it has not expired\.
+
+------
+#### [ IMDSv2 ]
+
+```
+PS C:\> Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token" = $token} -Method GET -Uri http://169.254.169.254/latest/meta-data/tags/instance/Name
+MyInstance
+```
+
+------
+#### [ IMDSv1 ]
+
+```
+PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/tags/instance/Name
+MyInstance
+```
+
+------
+
 ## Query throttling<a name="instancedata-throttling"></a>
 
 We throttle queries to the instance metadata service on a per\-instance basis, and we place limits on the number of simultaneous connections from an instance to the instance metadata service\. 
@@ -423,6 +486,9 @@ If you are throttled while accessing the instance metadata service, retry your q
 ## Limit instance metadata service access<a name="instance-metadata-limiting-access"></a>
 
 You can consider using local firewall rules to disable access from some or all processes to the instance metadata service\.
+
+**Note**  
+For [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances), IMDS can be reached from your own network when a network appliance within your VPC, such as a virtual router, forwards packets to the IMDS address, and the default [source/destination check](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html#EIP_Disable_SrcDestCheck) on the instance is disabled\. To prevent a source from outside your VPC reaching IMDS, we recommend that you modify the configuration of the network appliance to drop packets with the destination IPv4 address of IMDS 169\.254\.169\.254 and, if you enabled the IPv6 endpoint, the IPv6 address of IMDS fd00:ec2::254\.
 
 **Using Windows firewall to limit access**
 

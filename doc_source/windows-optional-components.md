@@ -18,25 +18,29 @@ Use the following procedure to use the AWS Management Console to add Windows com
 
 1. In the navigation pane, choose **Snapshots**\.
 
-1. From the **Filter** bar, choose **Public Snapshots**\.
+1. From the **Filter** bar, choose **Public snapshots**\.
 
-1. Add the **Owner** filter and choose **Amazon images**\.
+1. Add the **Owner Alias** filter and choose **amazon**\.
 
-1. Add the **Description** filter and type **Windows**\.
+1. Add the **Description** filter and enter **Windows**\.
 
 1. Press Enter
 
 1. Select the snapshot that matches your system architecture and language preference\. For example, select **Windows 2019 English Installation Media** if your instance is running Windows Server 2019\.
 
-1. Choose **Actions**, **Create Volume**\.
+1. Choose **Actions**, **Create volume from snapshot**\.
 
-1. For **Availability Zone**, select the Availability Zone that matches your Windows instance\. Choose **Add Tag** and specify **Name** for the tag key and a descriptive name for the tag value\. Choose **Create Volume**\.
+1. For **Availability Zone**, select the Availability Zone that matches your Windows instance\. Choose **Add tag** and enter **Name** for the tag key and a descriptive name for the tag value\. Choose **Create volume**\.
 
-1. In the **Volume Successfully Created** message, choose the volume that you just created\.
+1. In the **Successfully created volume** message \(green banner\), choose the volume that you just created\.
 
-1. Choose **Actions**, **Attach Volume**\.
+1. Choose **Actions**, **Attach volume**\.
 
-1. Type the instance ID and the name of the device for the attachment, and choose **Attach**\. If you need help with the device name, see [Device Naming](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/device_naming.html)\.
+1. From **Instance**, select the instance ID\.
+
+1. For **Device name**, enter the name of the device for the attachment\. If you need help with the device name, see [Device names on Windows instances](device_naming.md)\.
+
+1. Choose **Attach volume**\. 
 
 1. Connect to your instance and make the volume available\. For more information, see [Make an Amazon EBS volume available for use on Windows](ebs-using-volumes.md)\.
 **Important**  

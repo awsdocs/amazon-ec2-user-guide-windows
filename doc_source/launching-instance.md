@@ -16,6 +16,7 @@ When you launch an instance that's not within the [AWS Free Tier](https://aws.am
 + [Step 5: Add Tags](#step-5-add-tags)
 + [Step 6: Configure Security Group](#step-6-configure-security-group)
 + [Step 7: Review Instance Launch and Select Key Pair](#step-7-review-instance-launch)
++ [Launch an instance using the new launch instance wizard – beta](ec2-launch-instance-wizard.md)
 
 ## Initiate instance launch<a name="initiate-instance-launch"></a>
 
@@ -90,15 +91,17 @@ If Amazon EC2 Auto Scaling marks an instance that is in an Auto Scaling group as
   To launch the instance in a Local Zone, select a subnet that you created in the Local Zone\. 
 
   To launch an instance in an Outpost, select a subnet in a VPC that you associated with an Outpost\.
-+ **Auto\-assign Public IP**: Specify whether your instance receives a public IPv4 address\. By default, instances in a default subnet receive a public IPv4 address and instances in a nondefault subnet do not\. You can select **Enable** or **Disable** to override the subnet's default setting\. For more information, see [Public IPv4 addresses and external DNS hostnames](using-instance-addressing.md#concepts-public-addresses)\.
++ **Auto\-assign Public IP**: Specify whether your instance receives a public IPv4 address\. By default, instances in a default subnet receive a public IPv4 address and instances in a nondefault subnet do not\. You can select **Enable** or **Disable** to override the subnet's default setting\. For more information, see [Public IPv4 addresses](using-instance-addressing.md#concepts-public-addresses)\.
 + **Auto\-assign IPv6 IP**: Specify whether your instance receives an IPv6 address from the range of the subnet\. Select **Enable** or **Disable** to override the subnet's default setting\. This option is only available if you've associated an IPv6 CIDR block with your VPC and subnet\. For more information, see [Your VPC and Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) in the *Amazon VPC User Guide*\.
++  **Hostname type**: Select if you want the guest OS hostname of the EC2 instance to be the Resource name or IP name\. For more information about hostname type and these options, see [Amazon EC2 instance hostname types](ec2-instance-naming.md)\. 
++  **DNS Hostname**: Determines if the DNS queries to the IP name and/or the Resource name will respond with the IPv4 address \(A record\), IPv6 address \(AAAA record\), or both\. For more information about these options, see [Amazon EC2 instance hostname types](ec2-instance-naming.md)\.
 + **Domain join directory**: Select the AWS Directory Service directory \(domain\) to which your Windows instance is joined after launch\. If you select a domain, you must select an IAM role with the required permissions\. For more information, see [Seamlessly Join a Windows EC2 Instance](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/launching_instance.html)\.
 + **Placement group**: A placement group determines the placement strategy of your instances\. Select an existing placement group, or create a new one\. This option is only available if you've selected an instance type that supports placement groups\. For more information, see [Placement groups](placement-groups.md)\.
-+ **Capacity Reservation**: Specify whether to launch the instance into shared capacity, any `open` Capacity Reservation, a specific Capacity Reservation, or a Capacity Reservation group\. For more information, see [Launch instances into an existing Capacity Reservation](capacity-reservations-using.md#capacity-reservations-launch)\.\.
++ **Capacity Reservation**: Specify whether to launch the instance into shared capacity, any `open` Capacity Reservation, a specific Capacity Reservation, or a Capacity Reservation group\. For more information, see [Launch instances into an existing Capacity Reservation](capacity-reservations-using.md#capacity-reservations-launch)\.
 + **IAM role**: Select an AWS Identity and Access Management \(IAM\) role to associate with the instance\. For more information, see [IAM roles for Amazon EC2](iam-roles-for-amazon-ec2.md)\.
 + **CPU options**: Choose **Specify CPU options** to specify a custom number of vCPUs during launch\. Set the number of CPU cores and threads per core\. For more information, see [Optimize CPU options](instance-optimize-cpu.md)\.
 + **Shutdown behavior**: Select whether the instance should stop or terminate when shut down\. For more information, see [Change the instance initiated shutdown behavior](terminating-instances.md#Using_ChangingInstanceInitiatedShutdownBehavior)\.
-+ **Stop \- Hibernate behavior**: To enable hibernation, select this check box\. This option is only available if your instance meets the hibernation prerequisites\. For more information, see [Hibernate your On\-Demand or Reserved Windows instance](Hibernate.md)\.
++ **Stop \- Hibernate behavior**: To enable hibernation, select this check box\. This option is only available if your instance meets the hibernation prerequisites\. For more information, see [Hibernate your On\-Demand Windows instance](Hibernate.md)\.
 + **Enable termination protection**: To prevent accidental termination, select this check box\. For more information, see [Enable termination protection](terminating-instances.md#Using_ChangingDisableAPITermination)\.
 + **Monitoring**: Select this check box to enable detailed monitoring of your instance using Amazon CloudWatch\. Additional charges apply\. For more information, see [Monitor your instances using CloudWatch](using-cloudwatch.md)\.
 + **EBS\-optimized instance**: An Amazon EBS\-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O\. If the instance type supports this feature, select this check box to enable it\. Additional charges apply\. For more information, see [Amazon EBS–optimized instances](ebs-optimized.md)\.
@@ -116,9 +119,10 @@ If Amazon EC2 Auto Scaling marks an instance that is in an Auto Scaling group as
 + **Kernel ID**: \(Only valid for paravirtual \(PV\) AMIs\) Select **Use default** unless you want to use a specific kernel\.
 + **RAM disk ID**: \(Only valid for paravirtual \(PV\) AMIs\) Select **Use default** unless you want to use a specific RAM disk\. If you have selected a kernel, you may need to select a specific RAM disk with the drivers to support it\.
 + **Enclave**: Select **Enable** to enable the instance for AWS Nitro Enclaves\. For more information, see [ What is AWS Nitro Enclaves?](https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html) in the *AWS Nitro Enclaves User Guide*\.
-+ **Metadata accessible**: You can enable or disable access to the instance metadata\. For more information, see [Configure the instance metadata service](configuring-instance-metadata-service.md)\.
-+ **Metadata version**: If you enable access to the instance metadata, you can choose to require the use of Instance Metadata Service Version 2 when requesting instance metadata\. For more information, see [Configure instance metadata options for new instances](configuring-instance-metadata-service.md#configuring-IMDS-new-instances)\.
-+ **Metadata token response hop limit**: If you enable instance metadata, you can set the allowable number of network hops for the metadata token\. For more information, see [Configure the instance metadata service](configuring-instance-metadata-service.md)\.
++ **Metadata accessible**: You can enable or disable access to the instance metadata\. For more information, see [Use IMDSv2](configuring-instance-metadata-service.md)\.
++ **Metadata transport**: You can enable or disable the access method to the instance metadata service that's available for this EC2 instance based on the IP address type \(IPv4, IPv6, or IPv4 and IPv6\) of the instance\. For more information, see [Retrieve instance metadata](instancedata-data-retrieval.md)\.
++ **Metadata version**: If you enable access to the instance metadata, you can choose to require the use of Instance Metadata Service Version 2 when requesting instance metadata\. For more information, see [Configure instance metadata options for new instances](configuring-instance-metadata-options.md#configuring-IMDS-new-instances)\.
++ **Metadata token response hop limit**: If you enable instance metadata, you can set the allowable number of network hops for the metadata token\. For more information, see [Use IMDSv2](configuring-instance-metadata-service.md)\.
 + **User data**: You can specify user data to configure an instance during launch, or to run a configuration script\. To attach a file, select the **As file** option and browse for the file to attach\.
 
 ## Step 4: Add Storage<a name="step-4-add-storage"></a>
@@ -131,7 +135,7 @@ The AMI you selected includes one or more volumes of storage, including the root
 + **Volume Type**: For EBS volumes, select a volume type\. For more information, see [Amazon EBS volume types](ebs-volume-types.md)\.
 + **IOPS**: If you have selected a Provisioned IOPS SSD volume type, then you can enter the number of I/O operations per second \(IOPS\) that the volume can support\.
 + **Delete on Termination**: For Amazon EBS volumes, select this check box to delete the volume when the instance is terminated\. For more information, see [Preserve Amazon EBS volumes on instance termination](terminating-instances.md#preserving-volumes-on-termination)\.
-+ **Encrypted**: If the instance type supports EBS encryption, you can specify the encryption state of the volume\. If you have enabled encryption by default in this Region, the default CMK is selected for you\. You can select a different key or disable encryption\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
++ **Encrypted**: If the instance type supports EBS encryption, you can specify the encryption state of the volume\. If you have enabled encryption by default in this Region, the default customer managed key is selected for you\. You can select a different key or disable encryption\. For more information, see [Amazon EBS encryption](EBSEncryption.md)\.
 
 ## Step 5: Add Tags<a name="step-5-add-tags"></a>
 

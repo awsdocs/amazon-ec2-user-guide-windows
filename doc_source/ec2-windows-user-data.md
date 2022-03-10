@@ -120,7 +120,7 @@ The following is an example that decodes using PowerShell\.
 $Script = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($UserData))
 ```
 
-For more information about base64 encoding, see [http://tools\.ietf\.org/html/rfc4648](http://tools.ietf.org/html/rfc4648)\.
+For more information about base64 encoding, see [https://www\.ietf\.org/rfc/rfc4648\.txt](https://www.ietf.org/rfc/rfc4648.txt)\.
 
 ## User data execution<a name="user-data-execution"></a>
 
@@ -307,7 +307,7 @@ New-Item $file -ItemType file
 ```
 
 **Example: Rename the instance to match the tag value**  
-To read the tag value, rename the instance on first boot to match the tag value, and reboot, use the [Get\-EC2Tag](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Tag.html) command\. To run this command successfully, you must have a role with `ec2:DescribeTags` permissions because tag information is unavailable in the metadata and must be retrieved by API call\. For more information on how to attach a role to an instance, see [Attaching an IAM Role to an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role)\.
+You can use the [Get\-EC2Tag](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Tag.html) command to read the tag value, rename the instance on first boot to match the tag value, and reboot\. To run this command successfully, you must have a role with `ec2:DescribeTags` permissions attached to the instance because tag information is retrieved by the API call\. For more information on settings permissions by using IAM roles, see [Attaching an IAM Role to an Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role)\.
 
 **Note**  
 This script fails on Windows Server versions prior to 2008\.
@@ -317,7 +317,28 @@ This script fails on Windows Server versions prior to 2008\.
 $instanceId = (invoke-webrequest http://169.254.169.254/latest/meta-data/instance-id -UseBasicParsing).content
 $nameValue = (get-ec2tag -filter @{Name="resource-id";Value=$instanceid},@{Name="key";Value="Name"}).Value
 $pattern = "^(?![0-9]{1,15}$)[a-zA-Z0-9-]{1,15}$"
-##Verify Name Value satisfies best practices for Windows hostnames
+#Verify Name Value satisfies best practices for Windows hostnames
+If ($nameValue -match $pattern) 
+    {Try
+        {Rename-Computer -NewName $nameValue -Restart -ErrorAction Stop} 
+    Catch
+        {$ErrorMessage = $_.Exception.Message
+        Write-Output "Rename failed: $ErrorMessage"}}
+Else
+    {Throw "Provided name not a valid hostname. Please ensure Name value is between 1 and 15 characters in length and contains only alphanumeric or hyphen characters"}
+</powershell>
+```
+
+You can also rename the instance using tags in instance metadata, if your instance is configured to [ access tags from the instance metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#work-with-tags-in-IMDS)\.
+
+**Note**  
+This script fails on Windows Server versions prior to 2008\.
+
+```
+<powershell>
+$nameValue = Get-EC2InstanceMetadata -Path /tags/instance/Name
+$pattern = "^(?![0-9]{1,15}$)[a-zA-Z0-9-]{1,15}$"
+#Verify Name Value satisfies best practices for Windows hostnames
 If ($nameValue -match $pattern) 
     {Try
         {Rename-Computer -NewName $nameValue -Restart -ErrorAction Stop} 

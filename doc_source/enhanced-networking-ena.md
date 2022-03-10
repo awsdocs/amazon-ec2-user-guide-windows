@@ -16,7 +16,7 @@ To prepare for enhanced networking using the ENA, set up your instance as follow
 + Launch the instance using a [current generation](instance-types.md#current-gen-instances) instance type, other than C4, D2, M4 instances smaller than `m4.16xlarge`, or T2\.
 + If the instance is running Windows Server 2008 R2 SP1, ensure that is has the [SHA\-2 code signing support update](https://support.microsoft.com/en-us/help/4474419/sha-2-code-signing-support-update)\.
 + Ensure that the instance has internet connectivity\.
-+ Install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Access Amazon EC2](concepts.md#access-ec2)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
++ Use [AWS CloudShell](https://console.aws.amazon.com/cloudshell) from the AWS Management Console, or install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html) or the [AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/) on any computer you choose, preferably your local desktop or laptop\. For more information, see [Access Amazon EC2](concepts.md#access-ec2) or the [AWS CloudShell User Guide](https://docs.aws.amazon.com/cloudshell/latest/userguide/welcome.html)\. Enhanced networking cannot be managed from the Amazon EC2 console\.
 + If you have important data on the instance that you want to preserve, you should back that data up now by creating an AMI from your instance\. Updating kernels and kernel modules, as well as enabling the `enaSupport` attribute, might render incompatible instances or operating systems unreachable\. If you have a recent backup, your data will still be retained if this happens\.
 
 ## Enhanced networking performance<a name="ena-performance"></a>
@@ -35,7 +35,7 @@ To test whether enhanced networking is already enabled, verify that the driver i
 **Instance attribute \(enaSupport\)**
 
 To check whether an instance has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
-+ [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
++ [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI/AWS CloudShell\)
 
   ```
   aws ec2 describe-instances --instance-ids instance_id --query "Reservations[].Instances[].EnaSupport"
@@ -48,7 +48,7 @@ To check whether an instance has the enhanced networking `enaSupport` attribute 
 
 **Image attribute \(enaSupport\)**  
 To check whether an AMI has the enhanced networking `enaSupport` attribute set, use one of the following commands\. If the attribute is set, the response is true\.
-+ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI\)
++ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI/AWS CloudShell\)
 
   ```
   aws ec2 describe-images --image-id ami_id --query "Images[].EnaSupport"
@@ -67,7 +67,7 @@ If you launched your instance and it does not have enhanced networking enabled a
 
 1. Connect to your instance and log in as the local administrator\.
 
-1. \[Windows Server 2016 and later\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
+1. \[Windows Server 2016 and later only\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
 
    ```
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
@@ -83,12 +83,12 @@ If you launched your instance and it does not have enhanced networking enabled a
 **Note**  
 If you get an execution policy error, set the policy to `Unrestricted` \(by default it is set to `Restricted` or `RemoteSigned`\)\. In a command line, run `Set-ExecutionPolicy -ExecutionPolicy Unrestricted`, and then run the `install.ps1` PowerShell script again\.
 
-1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
+1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI/AWS CloudShell\), [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
 
 1. Enable ENA support on your instance as follows:
 
    1. From your local computer, check the EC2 instance ENA support attribute on your instance by running one of the following commands\. If the attribute is not enabled, the output will be "\[\]" or blank\. `EnaSupport` is set to `false` by default\.
-      + [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI\)
+      + [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html) \(AWS CLI/AWS CloudShell\)
 
         ```
         aws ec2 describe-instances --instance-ids instance_id --query "Reservations[].Instances[].EnaSupport"
@@ -100,7 +100,7 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
         ```
 
    1. To enable ENA support, run one of the following commands:
-      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
+      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
 
         ```
         aws ec2 modify-instance-attribute --instance-id instance_id --ena-support
@@ -112,7 +112,7 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
         ```
 
       If you encounter problems when you restart the instance, you can also disable ENA support using one of the following commands:
-      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI\)
+      + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
 
         ```
         aws ec2 modify-instance-attribute --instance-id instance_id --no-ena-support
@@ -131,7 +131,7 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
       ]
       ```
 
-1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\), [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance using the AWS OpsWorks console so that the instance state remains in sync\.
+1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI/AWS CloudShell\), [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance using the AWS OpsWorks console so that the instance state remains in sync\.
 
 1. On the instance, validate that the ENA driver is installed and enabled as follows:
 
@@ -145,12 +145,27 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
 
 ## Amazon ENA driver versions<a name="ena-adapter-driver-versions"></a>
 
-Windows AMIs include the Amazon ENA driver to enable enhanced networking\. The following table summarizes the changes for each release\.
+Windows AMIs include the Amazon ENA driver to enable enhanced networking\. 
+
+The following table shows the corresponding ENA driver version to download for each Windows Server version\.
+
+
+| Windows Server version | ENA driver version | 
+| --- | --- | 
+|  Windows Server 2022  |  2\.2\.3 and later  | 
+| Windows Server 2019 |  latest  | 
+| Windows Server 2016 | latest | 
+| Windows Server 2012 R2 | latest | 
+| Windows Server 2012 | latest | 
+| Windows Server 2008 R2 | 2\.2\.3 and earlier | 
+
+The following table summarizes the changes for each release\.
 
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
-|  [2\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/x64/2.2.3/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | March 25, 2021 | 
+|   2\.2\.4  |   Announcement ENA Windows driver version 2\.2\.4 has been rolled back due to potential performance degradation on the sixth generation EC2 instances\. We recommend that you downgrade the driver, using one of the following methods:  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | October 26, 2021 | 
+|  [2\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/x64/2.2.3/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Windows ENA driver version 2\.2\.3 is the final version that supports Windows Server 2008 R2\. Currently available instance types that use ENA will continue to be supported on Windows Server 2008 R2, and the drivers are available by download\. No future instance types will support Windows Server 2008 R2, and you cannot launch, import, or migrate Windows Server 2008 R2 images to future instance types\.   | March 25, 2021 | 
 |  [2\.2\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.2.2/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | December 21, 2020 | 
 |  [2\.2\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.2.1/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | October 1, 2020 | 
 |  [2\.2\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.2.0/AwsEnaNetworkDriver.zip)  |  New Features [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Performance Optimizations [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | August 12, 2020 | 

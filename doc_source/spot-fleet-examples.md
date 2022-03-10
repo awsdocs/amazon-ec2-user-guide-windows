@@ -1,6 +1,6 @@
 # Spot Fleet example configurations<a name="spot-fleet-examples"></a>
 
-The following examples show launch configurations that you can use with the [request\-spot\-fleet](https://docs.aws.amazon.com/cli/latest/reference/ec2/request-spot-fleet.html) command to create a Spot Fleet request\. For more information, see [Create a Spot Fleet request](spot-fleet-requests.md#create-spot-fleet)\.
+The following examples show launch configurations that you can use with the [request\-spot\-fleet](https://docs.aws.amazon.com/cli/latest/reference/ec2/request-spot-fleet.html) command to create a Spot Fleet request\. For more information, see [Create a Spot Fleet request](work-with-spot-fleets.md#create-spot-fleet)\.
 
 **Note**  
 For Spot Fleet, you can't specify an network interface ID in a launch specification\. Make sure you omit the `NetworkInterfaceID` parameter in your launch specification\.
@@ -14,6 +14,8 @@ For Spot Fleet, you can't specify an network interface ID in a launch specificat
 + [Example 6: Launch a Spot Fleet using instance weighting](#fleet-config6)
 + [Example 7: Launch a Spot Fleet with On\-Demand capacity](#fleet-config7)
 + [Example 8: Configure Capacity Rebalancing to launch replacement Spot Instances](#fleet-config8)
++ [Example 9: Launch Spot Instances in a capacity\-optimized fleet](#fleet-config9)
++ [Example 10: Launch Spot Instances in a capacity\-optimized fleet with priorities](#fleet-config10)
 
 ## Example 1: Launch Spot Instances using the lowest\-priced Availability Zone or subnet in the Region<a name="fleet-config1"></a>
 
@@ -268,7 +270,7 @@ The following examples specify a maximum price for the fleet request and maximum
 
 ## Example 5: Launch a Spot Fleet using the diversified allocation strategy<a name="fleet-config5"></a>
 
-The following example uses the `diversified` allocation strategy\. The launch specifications have different instance types but the same AMI and Availability Zone or subnet\. The Spot Fleet distributes the 30 instances across the three launch specifications, such that there are 10 instances of each type\. For more information, see [Allocation strategy for Spot Instances](spot-fleet.md#spot-fleet-allocation-strategy)\.
+The following example uses the `diversified` allocation strategy\. The launch specifications have different instance types but the same AMI and Availability Zone or subnet\. The Spot Fleet distributes the 30 instances across the three launch specifications, such that there are 10 instances of each type\. For more information, see [Allocation strategy for Spot Instances](spot-fleet-allocation-strategy.md)\.
 
 **Availability Zone**
 
@@ -404,7 +406,7 @@ If the `r3.2xlarge` request is successful, Spot provisions 4 of these instances\
 
 If the `c3.xlarge` request is successful, Spot provisions 7 of these instances\. Divide 20 by 3 for a total of 6\.66 instances, then round up to 7 instances\.
 
-For more information, see [Spot Fleet instance weighting](spot-fleet.md#spot-instance-weighting)\.
+For more information, see [Spot Fleet instance weighting](spot-instance-weighting.md)\.
 
 **Availability Zone**
 
@@ -464,7 +466,7 @@ To ensure that you always have instance capacity, you can include a request for 
 
 The following example specifies the desired target capacity as 10, of which 5 must be On\-Demand capacity\. Spot capacity is not specified; it is implied in the balance of the target capacity minus the On\-Demand capacity\. Amazon EC2 launches 5 capacity units as On\-Demand, and 5 capacity units \(10\-5=5\) as Spot if there is available Amazon EC2 capacity and availability\. 
 
-For more information, see [On\-Demand in Spot Fleet](spot-fleet.md#on-demand-in-spot)\.
+For more information, see [On\-Demand in Spot Fleet](on-demand-in-spot.md)\.
 
 ```
 {
@@ -498,12 +500,12 @@ For more information, see [On\-Demand in Spot Fleet](spot-fleet.md#on-demand-in-
 
 ## Example 8: Configure Capacity Rebalancing to launch replacement Spot Instances<a name="fleet-config8"></a>
 
-The following example configures the Spot Fleet to launch a replacement Spot Instance when Amazon EC2 emits a rebalance recommendation for a Spot Instance in the fleet\. To configure the automatic replacement of Spot Instances, for `ReplacementStrategy`, specify `launch`\.
+The following example configures the Spot Fleet to launch a replacement Spot Instance when Amazon EC2 emits a rebalance recommendation for a Spot Instance in the fleet\. To configure the automatic replacement of Spot Instances, for `ReplacementStrategy`, specify `launch-before-terminate`\. To configure the time delay from the launch of the new replacement Spot Instances to the automatic deletion of the old Spot Instances, for `termination-delay`, specify a value in seconds\. For more information, see [Configuration options](spot-fleet-capacity-rebalance.md#spot-fleet-capacity-rebalance-config-options)\.
 
 **Note**  
-When a replacement instance is launched, the instance marked for rebalance is not automatically terminated\. You can terminate it, or you can leave it running\. You are charged for both instances while they are running\. 
+We recommend using `launch-before-terminate` only if you can predict how long your instance shutdown procedures will take to complete\. This ensures that the old instances are terminated only after the shutdown procedures are completed\. You are charged for all instances while they are running\.
 
-The effectiveness of the Capacity Rebalancing strategy depends on the number of Spot capacity pools specified in the Spot Fleet request\. We recommend that you configure the fleet with a diversified set of instance types and Availability Zones, and for `AllocationStrategy`, specify `capacityOptimized`\. For more information about what you should consider when configuring a Spot Fleet for Capacity Rebalancing, see [Capacity Rebalancing](spot-fleet.md#spot-fleet-capacity-rebalance)\.
+The effectiveness of the Capacity Rebalancing strategy depends on the number of Spot capacity pools specified in the Spot Fleet request\. We recommend that you configure the fleet with a diversified set of instance types and Availability Zones, and for `AllocationStrategy`, specify `capacityOptimized`\. For more information about what you should consider when configuring a Spot Fleet for Capacity Rebalancing, see [Capacity Rebalancing](spot-fleet-capacity-rebalance.md)\.
 
 ```
 {
@@ -544,9 +546,91 @@ The effectiveness of the Capacity Rebalancing strategy depends on the number of 
         "TargetCapacity": 5,
         "SpotMaintenanceStrategies": {
             "CapacityRebalance": {
-                "ReplacementStrategy": "launch"
+                "ReplacementStrategy": "launch-before-terminate",
+                "TerminationDelay": "720"
             }
         }
     }
+}
+```
+
+## Example 9: Launch Spot Instances in a capacity\-optimized fleet<a name="fleet-config9"></a>
+
+The following example demonstrates how to configure a Spot Fleet with a Spot allocation strategy that optimizes for capacity\. To optimize for capacity, you must set `AllocationStrategy` to `capacityOptimized`\.
+
+In the following example, the three launch specifications specify three Spot capacity pools\. The target capacity is 50 Spot Instances\. The Spot Fleet attempts to launch 50 Spot Instances into the Spot capacity pool with optimal capacity for the number of instances that are launching\.
+
+```
+{
+    "TargetCapacity": "50",
+    "SpotFleetRequestConfig": {
+        "AllocationStrategy": "capacityOptimized",
+    },
+    "LaunchTemplateConfigs": [
+        {
+            "LaunchTemplateSpecification": {
+                "LaunchTemplateName": "my-launch-template",
+                "Version": "1"
+            },
+                 "Overrides": [
+                       {
+                           "InstanceType": "r4.2xlarge",  
+                           "AvailabilityZone": "us-west-2a"
+                      },
+                       {
+                           "InstanceType": "m4.2xlarge",
+                           "AvailabilityZone": "us-west-2b"
+                       }, 
+                       {
+                           "InstanceType": "c5.2xlarge",
+                           "AvailabilityZone": "us-west-2b"
+                       }
+                 ] 
+           }
+      ]
+}
+```
+
+## Example 10: Launch Spot Instances in a capacity\-optimized fleet with priorities<a name="fleet-config10"></a>
+
+The following example demonstrates how to configure a Spot Fleet with a Spot allocation strategy that optimizes for capacity while using priority on a best\-effort basis\.
+
+When using the `capacityOptimizedPrioritized` allocation strategy, you can use the `Priority` parameter to specify the priorities of the Spot capacity pools, where the lower the number the higher priority\. You can also set the same priority for several Spot capacity pools if you favor them equally\. If you do not set a priority for a pool, the pool will be considered last in terms of priority\.
+
+To prioritize Spot capacity pools, you must set `AllocationStrategy` to `capacityOptimizedPrioritized`\. Spot Fleet will optimize for capacity first, but will honor the priorities on a best\-effort basis \(for example, if honoring the priorities will not significantly affect Spot Fleet's ability to provision optimal capacity\)\. This is a good option for workloads where the possibility of disruption must be minimized and the preference for certain instance types matters\.
+
+In the following example, the three launch specifications specify three Spot capacity pools\. Each pool is prioritized, where the lower the number the higher priority\. The target capacity is 50 Spot Instances\. The Spot Fleet attempts to launch 50 Spot Instances into the Spot capacity pool with the highest priority on a best\-effort basis, but optimizes for capacity first\.
+
+```
+{
+    "TargetCapacity": "50",
+    "SpotFleetRequestConfig": {
+        "AllocationStrategy": "capacityOptimizedPrioritized"
+    },
+    "LaunchTemplateConfigs": [
+        {
+            "LaunchTemplateSpecification": {
+                "LaunchTemplateName": "my-launch-template",
+                "Version": "1"
+            },
+                 "Overrides": [
+                        {
+                           "InstanceType": "r4.2xlarge",    
+                           "Priority": 1,
+                           "AvailabilityZone": "us-west-2a"
+                      },
+                       {
+                           "InstanceType": "m4.2xlarge",
+                           "Priority": 2,
+                           "AvailabilityZone": "us-west-2b"
+                       }, 
+                       {
+                           "InstanceType": "c5.2xlarge",
+                           "Priority": 3,
+                           "AvailabilityZone": "us-west-2b"
+                       }
+                  ] 
+             }
+       ]
 }
 ```

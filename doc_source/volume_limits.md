@@ -16,8 +16,10 @@ Most of these instances support a maximum of 28 attachments\. For example, if yo
 For other instances, the following limits apply:
 + `d3.8xlarge` and `d3en.12xlarge` instances support a maximum of 3 EBS volumes\.
 + Most bare metal instances support a maximum of 31 EBS volumes\.
-+ `u-6tb1.metal`, `u-9tb1.metal`, and `u-12tb1.metal` instances support a maximum of 19 EBS volumes if launched after March 12, 2020 and a maximum of 14 EBS volumes otherwise\. To attach more than 14 EBS volumes to an instance launched before March 12, 2020, contact your account team to upgrade the instance at no additional cost\.
-+ `u-18tb1.metal` and `u-24tb1.metal` instances support a maximum of 19 EBS volumes\.
++ High memory virtualized instances support a maximum of 27 EBS volumes\.
++ High memory bare metal instances support a maximum of 19 EBS volumes\.
+
+  If you launched a `u-6tb1.metal`, `u-9tb1.metal`, or `u-12tb1.metal` high memory bare metal instance before March 12, 2020, it supports a maximum of 14 EBS volumes\. To attach up to 19 EBS volumes to these instances, contact your account team to upgrade the instance at no additional cost\.
 
 ## Windows\-specific volume limits<a name="windows-specific-volume-limits"></a>
 

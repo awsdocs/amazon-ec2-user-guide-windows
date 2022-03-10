@@ -17,13 +17,25 @@ Bare metal instances, such as `c5.metal`, provide your applications with direct 
 
 For more information, see [Amazon EC2 C5 Instances](https://aws.amazon.com/ec2/instance-types/c5)\.
 
+**C6i instances**
+
+These instances are ideal for running advanced, compute\-intensive workloads, such as the following:
++ High\-performance computing \(HPC\)
++ Batch processing
++ Ad serving
++ Video encoding
++ Distributed analytics
++ Highly scalable multiplayer gaming
+
+For more information, see [Amazon EC2 C6i Instances](http://aws.amazon.com/ec2/instance-types/c6i)\.
+
 **Topics**
 + [Hardware specifications](#compute-instances-hardware)
 + [Instance performance](#compute-performance)
 + [Network performance](#compute-network-performance)
 + [SSD I/O performance](#compute-ssd-perf)
 + [Instance features](#compute-instances-features)
-+ [Release notes](#compute-instance-limits)
++ [Release notes](#compute-instance-release-notes)
 
 ## Hardware specifications<a name="compute-instances-hardware"></a>
 
@@ -78,6 +90,26 @@ The following is a summary of the hardware specifications for compute optimized 
 | c5n\.9xlarge | 36 | 96 | 
 | c5n\.18xlarge | 72 | 192 | 
 | c5n\.metal | 72 | 192 | 
+| c6a\.large | 2 | 4 | 
+| c6a\.xlarge | 4 | 8 | 
+| c6a\.2xlarge | 8 | 16 | 
+| c6a\.4xlarge | 16 | 32 | 
+| c6a\.8xlarge | 32 | 64 | 
+| c6a\.12xlarge | 48 | 96 | 
+| c6a\.16xlarge | 64 | 128 | 
+| c6a\.24xlarge | 96 | 192 | 
+| c6a\.32xlarge | 128 | 256 | 
+| c6a\.48xlarge | 192 | 384 | 
+| c6i\.large | 2 | 4 | 
+| c6i\.xlarge | 4 | 8 | 
+| c6i\.2xlarge | 8 | 16 | 
+| c6i\.4xlarge | 16 | 32 | 
+| c6i\.8xlarge | 32 | 64 | 
+| c6i\.12xlarge | 48 | 96 | 
+| c6i\.16xlarge | 64 | 128 | 
+| c6i\.24xlarge | 96 | 192 | 
+| c6i\.32xlarge | 128 | 256 | 
+| c6i\.metal | 128 | 256 | 
 
 For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
@@ -98,20 +130,56 @@ The following is a summary of network performance for compute optimized instance
 | --- | --- | --- | 
 | c4\.large | Moderate | [Intel 82599 VF](sriov-networking.md) | 
 | c4\.xlarge \| c4\.2xlarge \| c4\.4xlarge | High | [Intel 82599 VF](sriov-networking.md) | 
-| c5\.4xlarge and smaller \| c5d\.4xlarge and smaller  | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| c5\.4xlarge and smaller \| c5a\.4xlarge and smaller \| c5ad\.4xlarge and smaller \| c5d\.4xlarge and smaller | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
 | c4\.8xlarge | 10 Gbps | [Intel 82599 VF](sriov-networking.md) | 
-| c5\.9xlarge \| c5d\.9xlarge | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
-| c5\.12xlarge \| c5d\.12xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c5\.9xlarge \| c5a\.8xlarge \| c5ad\.8xlarge \| c5d\.9xlarge | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c5\.12xlarge \| c5a\.12xlarge \| c5ad\.12xlarge \| c5d\.12xlarge  | 12 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  c6a\.4xlarge and smaller \|  c6i\.4xlarge and smaller  | Up to 12\.5 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| c6a\.8xlarge \|  c6i\.8xlarge  | 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c6a\.12xlarge c6i\.12xlarge  | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5n\.4xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
-| c5\.18xlarge \| c5\.24xlarge \| c5\.metal \| c5d\.18xlarge \| c5d\.24xlarge \| c5d\.metal  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
-| c5n\.9xlarge | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c5\.18xlarge \| c5\.24xlarge \| c5\.metal \| c5d\.18xlarge \| c5d\.24xlarge \| c5d\.metal  \| c6a\.16xlarge  \| c6i\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c6a\.24xlarge \|  c6i\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c5n\.9xlarge  \| c6a\.32xlarge \| c6a\.48xlarge \| c6i\.32xlarge \| c6i\.metal  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5n\.18xlarge \| c5n\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
-† These instances use a network I/O credit mechanism to allocate network bandwidth to instances based on average bandwidth utilization\. They accrue credits when their bandwidth is below their baseline bandwidth, and can use these credits when they perform network data transfers\. For more information, open a support case and ask about baseline bandwidth for the specific instance types that you are interested in\.
+† These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
+
+
+| Instance type | Baseline bandwidth \(Gbps\) | Burst bandwidth \(Gbps\) | 
+| --- | --- | --- | 
+| c5\.large | \.75 | 10 | 
+| c5\.xlarge | 1\.25 | 10 | 
+| c5\.2xlarge | 2\.5 | 10 | 
+| c5\.4xlarge | 5 | 10 | 
+| c5a\.large | \.75 | 10 | 
+| c5a\.xlarge | 1\.25 | 10 | 
+| c5a\.2xlarge | 2\.5 | 10 | 
+| c5a\.4xlarge | 5 | 10 | 
+| c5ad\.large | \.75 | 10 | 
+| c5ad\.xlarge | 1\.25 | 10 | 
+| c5ad\.2xlarge | 2\.5 | 10 | 
+| c5ad\.4xlarge | 5 | 10 | 
+| c5d\.large | \.75 | 10 | 
+| c5d\.xlarge | 1\.25 | 10 | 
+| c5d\.2xlarge | 2\.5 | 10 | 
+| c5d\.4xlarge | 5 | 10 | 
+| c5n\.large | 3 | 25 | 
+| c5n\.xlarge | 5 | 25 | 
+| c5n\.2xlarge | 10 | 25 | 
+| c5n\.4xlarge | 15 | 25 | 
+| c6a\.large | \.781 | 12 | 
+| c6a\.xlarge | 1\.562 | 12 | 
+| c6a\.2xlarge | 3\.125 | 12 | 
+| c6a\.4xlarge | 6\.25 | 12 | 
+| c6i\.large | \.781 | 12\.5 | 
+| c6i\.xlarge | 1\.562 | 12\.5 | 
+| c6i\.2xlarge | 3\.125 | 12\.5 | 
+| c6i\.4xlarge | 6\.25 | 12\.5 | 
 
 ## SSD I/O performance<a name="compute-ssd-perf"></a>
 
-If you use all the SSD\-based instance store volumes available to your instance, you get the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
+If you use all the SSD\-based instance store volumes available to your instance, you can get up to the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
 
 
 | Instance Size | 100% Random Read IOPS | Write IOPS | 
@@ -124,17 +192,15 @@ If you use all the SSD\-based instance store volumes available to your instance,
 | c5ad\.12xlarge | 412,500 | 180,000 | 
 | c5ad\.16xlarge | 521,053 | 227,368 | 
 | c5ad\.24xlarge | 825,000 | 360,000 | 
-| c5d\.large \* | 20,000 | 9,000 | 
-| c5d\.xlarge \* | 40,000 | 18,000 | 
-| c5d\.2xlarge \* | 80,000 | 37,000 | 
-| c5d\.4xlarge \* | 175,000 | 75,000 | 
+| c5d\.large | 20,000 | 9,000 | 
+| c5d\.xlarge | 40,000 | 18,000 | 
+| c5d\.2xlarge | 80,000 | 37,000 | 
+| c5d\.4xlarge | 175,000 | 75,000 | 
 | c5d\.9xlarge | 350,000 | 170,000 | 
 | c5d\.12xlarge | 700,000 | 340,000 | 
 | c5d\.18xlarge | 700,000 | 340,000 | 
 | c5d\.24xlarge | 1,400,000 | 680,000 | 
 | c5d\.metal | 1,400,000 | 680,000 | 
-
-\* For these instances, you can get up to the specified performance\.
 
 As you fill the SSD\-based instance store volumes for your instance, the number of write IOPS that you can achieve decreases\. This is due to the extra work the SSD controller must do to find available space, rewrite existing data, and erase unused space so that it can be rewritten\. This process of garbage collection results in internal write amplification to the SSD, expressed as the ratio of SSD write operations to user write operations\. This decrease in performance is even larger if the write operations are not in multiples of 4,096 bytes or not aligned to a 4,096\-byte boundary\. If you write a smaller amount of bytes or bytes that are not aligned, the SSD controller must read the surrounding data and store the result in a new location\. This pattern results in significantly increased write amplification, increased latency, and dramatically reduced I/O performance\.
 
@@ -155,6 +221,8 @@ The following is a summary of features for compute optimized instances:
 | C5ad | No | Yes | NVMe \* | Yes | 
 | C5d | No | Yes | NVMe \* | Yes | 
 | C5n | Yes | Yes | No | Yes | 
+| C6a | Yes | Yes | No | Yes | 
+| C6i | Yes | Yes | No | Yes | 
 
 **\*** The root device volume must be an Amazon EBS volume\.
 
@@ -163,7 +231,7 @@ For more information, see the following:
 + [Amazon EC2 instance store](InstanceStorage.md)
 + [Placement groups](placement-groups.md)
 
-## Release notes<a name="compute-instance-limits"></a>
+## Release notes<a name="compute-instance-release-notes"></a>
 + C5 and C5d instances feature a 3\.1 GHz Intel Xeon Platinum 8000 series processor from either the first generation \(Skylake\-SP\) or second generation \(Cascade Lake\)\.
 + C5a and C5ad instances feature a second\-generation AMD EPYC processor \(Rome\) running at frequencies as high as 3\.3\. GHz\.
 + C4 instances and instances built on the [Nitro System](instance-types.md#ec2-nitro-instances) require 64\-bit EBS\-backed HVM AMIs\. They have high\-memory and require a 64\-bit operating system to take advantage of that capacity\. HVM AMIs provide superior performance in comparison to paravirtual \(PV\) AMIs on high\-memory instance types\. In addition, you must use an HVM AMI to take advantage of enhanced networking\.
@@ -172,6 +240,8 @@ For more information, see the following:
   + [Elastic Network Adapter \(ENA\) drivers](enhanced-networking-ena.md) must be installed
 
   The current [AWS Windows AMIs](windows-ami-version-history.md) meet these requirements\.
++ To get the best performance from your C6i instances, ensure that they have ENA driver version 2\.2\.3 or later\. Using an ENA driver earlier than version 2\.0\.0 with these instances causes network interface attachment failures\. The following AMIs have a compatible ENA driver\.
+  + AWS Windows AMI from May 2021 or later
 + Instances built on the Nitro System instances support a maximum of 28 attachments, including network interfaces, EBS volumes, and NVMe instance store volumes\. For more information, see [Nitro System volume limits](volume_limits.md#instance-type-volume-limits)\.
 + Launching a bare metal instance boots the underlying server, which includes verifying all hardware and firmware components\. This means that it can take 20 minutes from the time the instance enters the running state until it becomes available over the network\.
 + To attach or detach EBS volumes or secondary network interfaces from a bare metal instance requires PCIe native hotplug support\.

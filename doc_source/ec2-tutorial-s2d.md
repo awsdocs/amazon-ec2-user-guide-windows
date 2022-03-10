@@ -63,7 +63,7 @@ We will deploy a two node cluster architecture using a file share witness hosted
    New-EC2Instance -ImageId ami-c49c0dac -MinCount 1 -MaxCount 1 -KeyName myPSKeyPair -SecurityGroupId mySGID -InstanceType i3.8xlarge -SubnetId mysubnetID
    ```
 
-   To create an AWS AD directory with PowerShell, use the [New\-DSMicrosoftAD](https://docs.aws.amazon.com/powershell/latest/reference/New-DSMicrosoftAD.html) command \(or, refer to [Create Your AWS Managed Microsoft AD Directory in AWS ](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/microsoftadbasestep2.html)\)\.
+   To create an AWS AD directory with PowerShell, use the [New\-DSMicrosoftAD](https://docs.aws.amazon.com/powershell/latest/reference/New-DSMicrosoftAD.html) command \(or, refer to [Create Your AWS Managed Microsoft AD Directory in AWS](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/microsoftadbasestep2.html)\)\.
 
    ```
    New-DSMicrosoftAD -Name corp.example.com –ShortName corp –Password P@ssw0rd –Description “AWS DS Managed” - VpcSettings_VpcId vpc-xxxxxxxx -VpcSettings_SubnetId subnet-xxxxxxxx, subnet-xxxxxxxx
