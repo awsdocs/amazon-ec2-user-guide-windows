@@ -212,6 +212,16 @@ The following table provides the quantity, size, type, and performance optimizat
 | x1e\.8xlarge | 1 x 960 GB | SSD |  |  | 
 | x1e\.16xlarge | 1 x 1,920 GB | SSD |  |  | 
 | x1e\.32xlarge | 2 x 1,920 GB \(3\.84 TB\) | SSD |  |  | 
+| x2idn\.16xlarge | 1 x 1,900 GB | NVMe SSD |  | ✔ | 
+| x2idn\.24xlarge | 2 x 1,425 GB \(2\.85 TB\) | NVMe SSD |  | ✔ | 
+| x2idn\.32xlarge | 2 x 1,900 GB \(3\.8 TB\) | NVMe SSD |  | ✔ | 
+| x2iedn\.xlarge | 1 x 118 GB | NVMe SSD |  | ✔ | 
+| x2iedn\.2xlarge | 1 x 237 GB | NVMe SSD |  | ✔ | 
+| x2iedn\.4xlarge | 1 x 475 GB | NVMe SSD |  | ✔ | 
+| x2iedn\.8xlarge | 1 x 950 GB | NVMe SSD |  | ✔ | 
+| x2iedn\.16xlarge | 1 x 1,900 GB | NVMe SSD |  | ✔ | 
+| x2iedn\.24xlarge | 2 x 1,425 GB \(2\.85 TB\) | NVMe SSD |  | ✔ | 
+| x2iedn\.32xlarge | 2 x 1,900 GB \(3\.8 TB\) | NVMe SSD |  | ✔ | 
 | z1d\.large | 1 x 75 GB | NVMe SSD |  | ✔ | 
 | z1d\.xlarge | 1 x 150 GB | NVMe SSD |  | ✔ | 
 | z1d\.2xlarge | 1 x 300 GB | NVMe SSD |  | ✔ | 

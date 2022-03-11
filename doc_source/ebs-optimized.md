@@ -351,6 +351,16 @@ You can also view this information programatically using the AWS CLI\. For more 
 | x1e\.8xlarge | 3,500 | 437\.5 | 20,000 | 
 | x1e\.16xlarge | 7,000 | 875 | 40,000 | 
 | x1e\.32xlarge | 14,000 | 1,750 | 80,000 | 
+| x2idn\.16xlarge | 40,000 | 5,000 | 130,000 | 
+| x2idn\.24xlarge | 60,000 | 7,500 | 195,000 | 
+| x2idn\.32xlarge | 80,000 | 10,000 | 260,000 | 
+| x2iedn\.xlarge \* | 20,000 | 2,500 | 65,000 | 
+| x2iedn\.2xlarge \* | 20,000 | 2,500 | 65,000 | 
+| x2iedn\.4xlarge \* | 20,000 | 2,500 | 65,000 | 
+| x2iedn\.8xlarge | 20,000 | 2,500 | 65,000 | 
+| x2iedn\.16xlarge | 40,000 | 5,000 | 130,000 | 
+| x2iedn\.24xlarge | 60,000 | 7,500 | 195,000 | 
+| x2iedn\.32xlarge | 80,000 | 10,000 | 260,000 | 
 | x2iezn\.2xlarge | 3,170 | 396\.25 | 13,333 | 
 | x2iezn\.4xlarge | 4,750 | 593\.75 | 20,000 | 
 | x2iezn\.6xlarge | 9,500 | 1,187\.5 | 40,000 | 
@@ -478,6 +488,9 @@ You can also view this information programatically using the AWS CLI\. For more 
 | t3a\.large | 695 | 86\.86 | 4,000 | 
 | t3a\.xlarge | 695 | 86\.86 | 4,000 | 
 | t3a\.2xlarge | 695 | 86\.86 | 4,000 | 
+| x2iedn\.xlarge | 2,500 | 312\.5 | 8,125 | 
+| x2iedn\.2xlarge | 5,000 | 625 | 16,250 | 
+| x2iedn\.4xlarge | 10,000 | 1,250 | 32,500 | 
 | z1d\.large | 800 | 100 | 3,333 | 
 | z1d\.xlarge | 1,580 | 197\.5 | 6,667 | 
 

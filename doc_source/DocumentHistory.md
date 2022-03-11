@@ -4,6 +4,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [X2idn and X2iedn instances](#DocumentHistory) | New memory optimized instances featuring Intel Xeon Scalable processors \(Ice Lake\)\. | March 10, 2022 | 
 | [AMI last launched time](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ami-deprecate.html#ami-last-launched-time) | The `lastLaunchedTime` indicates when your AMI was last used to launch an instance\. | February 28, 2022 | 
 | [C6a instances](#DocumentHistory) | New compute optimized instances featuring 3rd generation AMD EPYC processors \(Milan\)\. | February 14, 2022 | 
 | [Recycle Bin for AMIs](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/recycle-bin.html) | Recycle Bin enables you to restore accidentally deleted AMIs\. | February 3, 2022 | 

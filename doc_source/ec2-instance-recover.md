@@ -24,7 +24,7 @@ The recover action is supported by an instance if it has the following character
 + The instance does not have instance store volumes\.
 + The instance uses one of the following instance types: 
   + General purpose: M3 \| M4 \| M5 \| M5a \| M5n \| M5zn \| M6a \| M6i \| T1 \| T2 \| T3 \| T3a
-  + Compute optimized: C3 \| C4 \| C5 \| C5a \| C5n \| C6a \|  C6i 
+  + Compute optimized: C3 \| C4 \| C5 \| C5a \| C5n \| C6a \| C6i 
   + Memory optimized: R3 \| R4 \| R5 \| R5a \| R5b \| R5n \| R6i \| high memory \(u\-\*\), virtualized only \| X1 \| X1e
   + Accelerated computing: G3 \| P2 \| P3
 

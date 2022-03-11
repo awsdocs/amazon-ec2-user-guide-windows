@@ -181,6 +181,22 @@ Follow these steps to clean up your AMI
 When the AMI is used, there is a 24\-hour delay before that usage is reported\. 
 `lastLaunchedTime` data is available starting April 2017\. 
 
+------
+#### [ Console ]
+
+**To view the last launched time of an AMI**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the left navigator, choose **AMIs**\.
+
+1. From the filter bar, choose **Owned by me**\.
+
+1. Select the AMI, and then check the **Last launched time** field \(if you selected the check box next to the AMI, it's located on the **Details** tab\)\. The field shows the date and time when the AMI was last used to launch an instance\.
+
+------
+#### [ AWS CLI ]
+
 **To view the last launched time of an AMI**  
 Run the [describe\-image\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html) command and specify `--attribute lastLaunchedTime`\. You must be the AMI owner to run this command\.
 
@@ -200,3 +216,5 @@ Example output
     "ImageId": "ami-1234567890example",
 }
 ```
+
+------
