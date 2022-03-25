@@ -60,7 +60,7 @@ The following frequencies can be specified:
   + the EC2Launch service runs
   + `EC2Launch.exe run` is invoked
 
-**`agent-config`**  
+**agent\-config**  
 `agent-config` is a file that is located in the configuration folder for EC2Launch v2\. It includes configuration for the boot, network, preready, and postready stages\. This file is used to specify the configuration for an instance for tasks that should run when the AMI is either booted for the first time or for subsequent times\.
 
 By default, the EC2Launch v2 installation installs an `agent-config` file that includes recommended configurations that are used in standard Amazon Windows AMIs\. You can update the configuration file to alter the default boot experience for your AMI that EC2Launch v2 specifies\.

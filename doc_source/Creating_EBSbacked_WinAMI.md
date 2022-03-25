@@ -70,9 +70,9 @@ If this option is disabled, your instance isn't an Amazon EBS\-backed instance\.
 
 1. Specify a unique name for the image and an optional description \(up to 255 characters\)\.
 
-   By default, Amazon EC2 shuts down the instance, takes snapshots of any attached volumes, creates and registers the AMI, and then reboots the instance\. Choose **No reboot** if you don't want your instance to be shut down\.
+   By default, when Amazon EC2 creates the new AMI, it reboots the instance so that it can take snapshots of the attached volumes while data is at rest, in order to ensure a consistent state\. For the **No reboot** setting, you can select the **Enable** check box to prevent Amazon EC2 from shutting down and rebooting the instance\.
 **Warning**  
-If you choose **No reboot**, we can't guarantee the file system integrity of the created image\.
+If you choose to enable **No reboot**, we can't guarantee the file system integrity of the created image\.
 
    \(Optional\) Modify the root volume, EBS volumes, and instance store volumes as needed\. For example:
    + To change the size of the root volume, locate the **Root** volume in the **Type** column, and fill in the **Size** field\.

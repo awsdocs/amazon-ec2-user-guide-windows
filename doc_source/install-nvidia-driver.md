@@ -108,6 +108,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 + If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the GRID driver works\.
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 + IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
++ AWS provided DNS resolution is required for Grid licensing to work\.
 
 **To install the NVIDIA GRID driver on your Windows instance**
 
@@ -157,6 +158,7 @@ These drivers are available to AWS customers only\. By downloading them, you agr
 + If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the gaming driver works\.
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 + IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
++ AWS provided DNS resolution is required for Grid licensing to work\.
 
 **To install the NVIDIA gaming driver on your Windows instance**
 

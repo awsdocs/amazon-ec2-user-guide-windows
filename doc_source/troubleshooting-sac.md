@@ -10,7 +10,7 @@ The Special Admin Console \(SAC\) capability of Windows provides a way to troubl
 
 ## Limitations<a name="sac-limitations"></a>
 
-If you enable SAC on an instance, the EC2 services that rely on password retrieval will not work from the Amazon EC2 console\. For example, EC2Launch, EC2Launch v2, and EC2Config will not be able to retrieve the Administrator password through the Amazon EC2 console\.
+If you enable SAC on an instance, the EC2 services that rely on password retrieval will not work from the Amazon EC2 console\. Windows on Amazon EC2 launch agents \(EC2Config, EC2Launch v1, and EC2Launch v2\) rely on the serial console to execute various tasks\. These tasks do not perform successfully when you enable SAC on an instance\. For more information about Windows on Amazon EC2 launch agents, see [Configure your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-instances.html)\.
 
 ## Prerequisites<a name="sac-prerequisites"></a>
 

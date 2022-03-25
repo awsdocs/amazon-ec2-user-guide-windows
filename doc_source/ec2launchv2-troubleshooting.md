@@ -21,6 +21,7 @@ This section shows common troubleshooting scenarios and steps for resolution\.
 + [Service fails to run a task](#ec2launchv2-troubleshooting-task-failed)
 + [Service initializes an EBS volume that is not empty](#ec2launchv2-troubleshooting-ebs-initialize)
 + [`setWallpaper` task is not enabled but the wallpaper resets at reboot](#ec2launchv2-troubleshooting-wallpaper-resets)
++ [Service stuck in running status](#ec2launchv2-troubleshooting-service-stuck-running)
 
 ### Service fails to set the wallpaper<a name="ec2launchv2-troubleshooting-wallpaper"></a>
 
@@ -136,6 +137,41 @@ foreach ($userDir in (Get-ChildItem "C:\Users" -Force -Directory).FullName)
     }
 }
 ```
+
+### Service stuck in running status<a name="ec2launchv2-troubleshooting-service-stuck-running"></a>
+
+**Description**
++ Commands that run in blocking mode, such as [sysprep](ec2launch-v2-settings.md#ec2launch-v2-settings-sysprep) and [reset](ec2launch-v2-settings.md#ec2launch-v2-reset), are blocked with output similar to the following:
+
+  ```
+  PS C:\Program Files\Amazon\EC2Launch> .\EC2Launch.exe sysprep -c -s
+  'sysprep' command running in blocking mode.
+  service is still running...checking again in '5.000000' seconds
+  service is still running...checking again in '5.000000' seconds
+  service is still running...checking again in '5.000000' seconds
+  service is still running...checking again in '5.000000' seconds
+  ```
++ EC2Launch is blocked with logs \(`agent.log`\) similar to the following:
+
+  ```
+  2022-02-24 08:08:58 Info: *****************************************************************************************
+  2022-02-24 08:08:58 Info: EC2Launch Service starting
+  2022-02-24 08:08:58 Info: Windows event custom log exists: Amazon EC2Launch
+  2022-02-24 08:08:58 Info: ACPI SPCR table not supported. Bailing Out
+  2022-02-24 08:08:58 Info: Serial port is in use. Waiting for Serial Port...
+  2022-02-24 08:09:00 Info: ACPI SPCR table not supported. Bailing Out
+  2022-02-24 08:09:02 Info: ACPI SPCR table not supported. Bailing Out
+  2022-02-24 08:09:04 Info: ACPI SPCR table not supported. Bailing Out
+  2022-02-24 08:09:06 Info: ACPI SPCR table not supported. Bailing Out
+  ```
+
+**Possible cause**  
+SAC is enabled and using the serial port\. For more information, see [Use SAC to troubleshoot your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/troubleshooting-sac.html#troubleshooting-sac)\.
+
+**Resolution**  
+Try the following steps to resolve this issue:
++ Disable the service that is using the serial port\.
++ If you want the service to continue to use the serial port, write custom scripts to perform launch agent tasks and invoke them as scheduled tasks\. 
 
 ## Windows event logs<a name="ec2launchv2-windows-event-logs"></a>
 
