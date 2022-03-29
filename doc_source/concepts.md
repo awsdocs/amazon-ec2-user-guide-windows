@@ -96,7 +96,7 @@ When you sign up for AWS, you can get started with Amazon EC2 for free using the
 Amazon EC2 provides the following purchasing options for instances:
 
 **On\-Demand Instances**  
-Pay for the instances that you use by the hour, with no long\-term commitments or upfront payments\.
+Pay for the instances with Windows, Windows with SQL Enterprise, Windows with SQL Standard, and Windows with SQL Web Instances that you use by the seconds, with 60 seconds as minimum billing duration. There is no long\-term commitments or upfront payments required for On\-Demand Instances\.
 
 **Savings Plans**  
 You can reduce your Amazon EC2 costs by making a commitment to a consistent amount of usage, in USD per hour, for a term of 1 or 3 years\.
