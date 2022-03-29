@@ -31,7 +31,7 @@ You can use PowerShell cmdlets to retrieve the URI\. For example, if you are run
 #### [ IMDSv2 ]
 
 ```
-PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT -Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
