@@ -52,6 +52,8 @@ If you don't want to use PowerShell, you can install a third\-party tool such as
 **Important**  
 If you install a third\-party tool on a Windows instance, ensure that you read the accompanying documentation carefully, as the method of calling the HTTP and the output format might be different from what is documented here\.
 
+For the command to retrieve instance metadata from a Linux instance, see [Retrieve instance metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html) in the *Amazon EC2 User Guide for Windows Instances*\.
+
 ## Costs<a name="imds-costs"></a>
 
 You are not billed for HTTP requests used to retrieve instance metadata and user data\.
@@ -80,6 +82,8 @@ For requests made using Instance Metadata Service Version 2, the following HTTP 
 
 ## Examples of retrieving instance metadata<a name="instancedata-meta-data-retrieval-examples"></a>
 
+The following examples provide commands that you can use on a Windows instance\. For the commands to retrieve instance metadata from a Linux instance, see [Retrieve instance metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html) in the *Amazon EC2 User Guide for Windows Instances*\.
+
 **Topics**
 + [Get the available versions of the instance metadata](#instance-metadata-ex-1)
 + [Get the top\-level metadata items](#instance-metadata-ex-2)
@@ -101,7 +105,7 @@ To avoid having to update your code every time Amazon EC2 releases a new instanc
 #### [ IMDSv2 ]
 
 ```
-PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT -Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -161,7 +165,7 @@ This example gets the top\-level metadata items\. For more information, see [Ins
 #### [ IMDSv2 ]
 
 ```
-PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT -Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -310,7 +314,7 @@ This example gets the list of available public keys\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT -Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -335,7 +339,7 @@ This example shows the formats in which public key 0 is available\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT -Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -361,7 +365,7 @@ This example gets public key 0 \(in the OpenSSH key format\)\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT -Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -413,7 +417,7 @@ This example gets the subnet ID for an instance\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> [string]$token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT -Uri http://169.254.169.254/latest/api/token
 ```
 
 ```
@@ -441,7 +445,7 @@ This example gets all the instance tag keys for an instance\.
 #### [ IMDSv2 ]
 
 ```
-PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT –Uri http://169.254.169.254/latest/api/token
+PS C:\> $token = Invoke-RestMethod -Headers @{"X-aws-ec2-metadata-token-ttl-seconds" = "21600"} -Method PUT -Uri http://169.254.169.254/latest/api/token
 ```
 
 ```

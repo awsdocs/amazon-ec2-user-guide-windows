@@ -9,6 +9,7 @@ The following are possible problems you may have and error messages you may see 
 + [Unable to remotely log on to an instance with a user account that is not an administrator](#remote-failure)
 + [Troubleshooting Remote Desktop issues using AWS Systems Manager](#Troubleshooting-Remote-Desktop-Connection-issues-using-AWS-Systems-Manager)
 + [Enable Remote Desktop on an EC2 Instance With Remote Registry](#troubleshooting-windows-rdp-remote-registry)
++ [I've lost my private key\. How can I connect to my Windows instance?](#replacing-lost-key-pair-windows)
 
 ## Remote Desktop can't connect to the remote computer<a name="rdp-issues"></a>
 
@@ -314,3 +315,9 @@ If the value in the **Value data** field is `1`, then the instance will deny rem
 1. From the EC2 console, detach the root volume from the instance to which you attached it and reattach it to the unreachable instance\. When attaching the volume to the unreachable instance, enter `/dev/sda1` in the **device** field\.
 
 1. Restart the unreachable instance\. 
+
+## I've lost my private key\. How can I connect to my Windows instance?<a name="replacing-lost-key-pair-windows"></a>
+
+When you connect to a newly\-launched Windows instance, you decrypt the password for the Administrator account using the private key for the key pair that you specified when you launched the instance\.
+
+If you lose the Administrator password and you no longer have the private key, you must reset the password or create a new instance\. For more information, see [Reset a lost or expired Windows administrator password](ResettingAdminPassword.md)\. For steps to reset the password using an Systems Manager document, see [Walkthrough: Reset passwords and SSH keys on EC2 instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.

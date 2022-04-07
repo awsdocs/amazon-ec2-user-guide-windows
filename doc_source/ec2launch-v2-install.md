@@ -60,7 +60,7 @@ EC2Launch is also preinstalled on the following Windows Server AMIs\. You can fi
 + EC2LaunchV2\-Windows\_Server\-2019\-English\-Core\-Base
 + EC2LaunchV2\-Windows\_Server\-2016\-English\-Core\-Base
 + EC2LaunchV2\-Windows\_Server\-2019\-English\-Full\-ContainersLatest
-+ EC2LaunchV2\-Windows\_Server\-2012\-RTM\-English\-64Bit\-Base
++ EC2LaunchV2\-Windows\_Server\-2012\-RTM\-English\-Full\-Base
 
 EC2Launch Preview AMIs will be deprecated in December 2021\.
 

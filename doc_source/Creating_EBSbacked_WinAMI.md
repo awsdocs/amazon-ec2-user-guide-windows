@@ -49,7 +49,7 @@ You can create an AMI using the AWS Management Console or the command line\. The
 
    Add any other filters that you need\. When you have chosen an AMI, select its check box\.
 
-1. Choose **Launch instance from image** \(new console\) or **Launch** \(old console\)\. Accept the default values as you step through the wizard\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\. When the instance is ready, connect to it\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
+1. Choose **Launch instance from image** \(new console\) or **Launch** \(old console\)\. Accept the default values as you step through the wizard\. For more information, see [Launch an instance using the old launch instance wizard](launching-instance.md)\. When the instance is ready, connect to it\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
 
 1. You can perform any of the following actions on your instance to customize it for your needs:
    + Install software and applications
@@ -87,7 +87,7 @@ If you choose to enable **No reboot**, we can't guarantee the file system integr
 
    \(Optional\) Choose **Snapshots** in the navigation pane to view the snapshot that was created for the new AMI\. When you launch an instance from this AMI, we use this snapshot to create its root device volume\.
 
-1. Launch an instance from your new AMI\. For more information, see [Launch an instance using the Launch Instance Wizard](launching-instance.md)\. The new running instance contains all of the customizations you applied in previous steps, and any additional customization you add when launching the instance, such as user data \(scripts that run when the instance starts\)\.
+1. Launch an instance from your new AMI\. For more information, see [Launch an instance using the old launch instance wizard](launching-instance.md)\. The new running instance contains all of the customizations you applied in previous steps, and any additional customization you add when launching the instance, such as user data \(scripts that run when the instance starts\)\.
 
 ### Create an AMI from an instance using the command line<a name="create-windows-ami-cli"></a>
 

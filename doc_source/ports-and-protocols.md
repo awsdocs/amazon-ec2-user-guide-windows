@@ -13,9 +13,12 @@ The following tables list the ports, protocols, and directions by workload for W
 + [File and Printer Sharing](#file-and-print)
 + [File Server Remote Management](#file-server-remote)
 + [ICMP v4 All](#icmp-v4)
++ [Microsoft Edge](#protocol-edge)
++ [Microsoft Media Foundation Network Source](#protocol-media-foundation)
 + [Multicast](#multicast)
 + [Remote Desktop](#remote-desktop)
 + [Windows Device Management](#device-management)
++ [Windows Feature Experience Pack](#remote-management)
 + [Windows Firewall Remote Management](#firewall-remote)
 + [Windows Remote Management](#remote-management)
 
@@ -30,7 +33,12 @@ The following tables list the ports, protocols, and directions by workload for W
 ## Core Networking<a name="networking-ports"></a>
 
 ------
-#### [ Windows Server 2012, 2012 R2, 2016, and 2019 ]
+#### [ Windows Server 2016, 2019, and 2022 ]
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ports-and-protocols.html)
+
+------
+#### [ Windows Server 2012 and 2012 R2 ]
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ports-and-protocols.html)
 
@@ -48,12 +56,12 @@ The following tables list the ports, protocols, and directions by workload for W
 ## Diag Track<a name="diag"></a>
 
 ------
-#### [ Windows Server 2019 ]
+#### [ Windows Server 2019 and 2022 ]
 
 
 | OS | Rule | Definition | Port | Protocol | Direction | 
 | --- | --- | --- | --- | --- | --- | 
-| Windows Server 2019 | Connected User Experiences and Telemetry | Unified Telemetry Client Outbound Traffic |  Local: Any Remote: 443  | TCP | Out | 
+|  Windows Server 2019 Windows Server 2022  | Connected User Experiences and Telemetry | Unified Telemetry Client Outbound Traffic\. |  Local: Any Remote: 443  | TCP | Out | 
 
 ------
 #### [ Windows Server 2016 ]
@@ -61,7 +69,7 @@ The following tables list the ports, protocols, and directions by workload for W
 
 | OS | Rule | Definition | Port | Protocol | Direction | 
 | --- | --- | --- | --- | --- | --- | 
-| Windows Server 2016 | Connected User Experiences and Telemetry | Unified Telemetry Client Outbound Traffic |  Local: Any Remote: Any  | TCP | Out | 
+| Windows Server 2016 | Connected User Experiences and Telemetry | Unified Telemetry Client Outbound Traffic\. |  Local: Any Remote: Any  | TCP | Out | 
 
 ------
 
@@ -70,7 +78,7 @@ The following tables list the ports, protocols, and directions by workload for W
 
 | OS | Rule | Definition | Port | Protocol | Direction | 
 | --- | --- | --- | --- | --- | --- | 
-| Windows Server 2016 Windows Server 2019 | DIAL protocol server \(HTTP\-In\) | Inbound rule for DIAL protocol server to allow remote control of Apps using HTTP\.  |  Local: 10247 Remote: Any  | TCP | In | 
+| Windows Server 2016 Windows Server 2019 Windows Server 2022 | DIAL protocol server \(HTTP\-In\) | Inbound rule for DIAL protocol server to allow remote control of Apps using HTTP\.  |  Local: 10247 Remote: Any  | TCP | In | 
 
 ## Distributed File System \(DFS\) Management<a name="dfs"></a>
 
@@ -91,10 +99,21 @@ The following tables list the ports, protocols, and directions by workload for W
 | --- | --- | --- | --- | --- | 
 | Windows Server 2012 Windows Server 2012 R2 | All ICMP v4 | Local: 139 Remote: Any | ICMPv4 | In | 
 
+## Microsoft Edge<a name="protocol-edge"></a>
+
+
+| OS | Rule | Port | Protocol | Direction | 
+| --- | --- | --- | --- | --- | 
+| Windows Server 2022  | Microsoft Edge \(mDNS\-In\) | Local: 5353 Remote: Any | UDP | In | 
+
+## Microsoft Media Foundation Network Source<a name="protocol-media-foundation"></a>
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ports-and-protocols.html)
+
 ## Multicast<a name="multicast"></a>
 
 ------
-#### [ Windows Server 2019 ]
+#### [ Windows Server 2019 and 2022 ]
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ports-and-protocols.html)
 
@@ -108,7 +127,7 @@ The following tables list the ports, protocols, and directions by workload for W
 ## Remote Desktop<a name="remote-desktop"></a>
 
 ------
-#### [ Windows Server 2012 R2, 2016, and 2019 ]
+#### [ Windows Server 2012 R2, 2016, 2019, and 2022 ]
 
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ports-and-protocols.html)
 
@@ -131,7 +150,24 @@ The following tables list the ports, protocols, and directions by workload for W
 
 ## Windows Device Management<a name="device-management"></a>
 
+------
+#### [ Windows Server 2022 ]
+
 [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ports-and-protocols.html)
+
+------
+#### [ Windows Server 2019 ]
+
+[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ports-and-protocols.html)
+
+------
+
+## Windows Feature Experience Pack<a name="remote-management"></a>
+
+
+| OS | Rule | Definition | Port | Protocol | Direction | 
+| --- | --- | --- | --- | --- | --- | 
+|  Windows Server 2022  | Windows Feature Experience Pack | Windows Feature Experience Pack\. |  | Any | Out | 
 
 ## Windows Firewall Remote Management<a name="firewall-remote"></a>
 
@@ -142,6 +178,6 @@ The following tables list the ports, protocols, and directions by workload for W
 
 | OS | Rule | Definition | Port | Protocol | Direction | 
 | --- | --- | --- | --- | --- | --- | 
-| Windows Server 2008 R2 Windows Server 2008 SP2 Windows Server 2012 Windows Server 2012 R2 Windows Server 2016 Windows Server 2019  | Windows Remote Management \(HTTP\-In\) | Inbound rule for Windows Remote Management via WS\-Management\.  | Local: 5985 Remote: Any | TCP | In | 
+| Windows Server 2008 R2 Windows Server 2008 SP2 Windows Server 2012 Windows Server 2012 R2 Windows Server 2016 Windows Server 2019 Windows Server 2022  | Windows Remote Management \(HTTP\-In\) | Inbound rule for Windows Remote Management via WS\-Management\.  | Local: 5985 Remote: Any | TCP | In | 
 
  For more information about Amazon EC2 security groups, see [Amazon EC2 Security Groups for Windows Instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/using-network-security.html)\.
