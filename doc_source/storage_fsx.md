@@ -1,11 +1,152 @@
-# Use FSx for Windows File Server with Amazon EC2<a name="storage_fsx"></a>
+# Use Amazon FSx with Amazon EC2<a name="storage_fsx"></a>
 
-FSx for Windows File Server provides fully managed Windows file servers, backed by a fully–native Windows file system with the features, performance, and compatibility to easily lift and shift enterprise applications to AWS\.
+The Amazon FSx family of services makes it easy to launch, run, and scale shared storage powered by popular commercial and open\-source file systems\. You can use the *new launch instance wizard* to automatically attach the following types of Amazon FSx file systems to your Amazon EC2 instances at launch:
++ Amazon FSx for NetApp ONTAP provides fully managed shared storage in the AWS Cloud with the popular data access and management capabilities of NetApp ONTAP\. 
++ Amazon FSx for OpenZFS provides fully managed cost\-effective shared storage powered by the popular OpenZFS file system\. 
 
-Amazon FSx supports a broad set of enterprise Windows workloads with fully managed file storage built on Microsoft Windows Server\. Amazon FSx has native support for Windows file system features and for the industry\-standard Server Message Block \(SMB\) protocol to access file storage over a network\. Amazon FSx is optimized for enterprise applications in the AWS Cloud, with native Windows compatibility, enterprise performance and features, and consistent sub\-millisecond latencies\.
+**Note**  
+This functionality is available in the new launch instance wizard only\. For more information, see [Launch an instance using the new launch instance wizard](ec2-launch-instance-wizard.md)
+Amazon FSx for Windows File Server and Amazon FSx for Lustre file systems can't be mounted atlaunch\. You must mount these file systems manually after launch\.
 
-With file storage on Amazon FSx, the code, applications, and tools that Windows developers and administrators use today can continue to work unchanged\. The Windows applications and workloads that are ideal for Amazon FSx include business applications, home directories, web serving, content management, data analytics, software build setups, and media processing workloads\.
+You can choose to mount an existing file system that you created previously, or you can create a new file system to mount to an instance at launch\.
 
-As a fully managed service, FSx for Windows File Server eliminates the administrative overhead of setting up and provisioning file servers and storage volumes\. Additionally, it keeps Windows software up to date, detects and addresses hardware failures, and performs backups\. It also provides rich integration with other AWS services, including AWS Directory Service for Microsoft Active Directory, Amazon WorkSpaces, AWS Key Management Service, and AWS CloudTrail\.
+**Topics**
++ [Security groups and user data script](#sg-user-data)
++ [Mount an Amazon FSx file system at launch](#mount-fsx)
 
-For more information, see the [Amazon FSx for Windows File Server User Guide](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/)\. For pricing information, see [FSx for Windows File Server Pricing](http://aws.amazon.com/fsx/windows/pricing/)\.
+## Security groups and user data script<a name="sg-user-data"></a>
+
+When you mount an Amazon FSx file system to an instance using the launch instance wizard, you can choose whether to automatically create and attach the security groups needed to enable access to the file system, and whether to automatically include the user data scripts needed to mount the file system and make it available for use\.
+
+**Topics**
++ [Security groups](#fsx-sg)
++ [User data script](#fsx-user-data)
+
+### Security groups<a name="fsx-sg"></a>
+
+If you choose to automatically create the security groups that are needed to enable access to the file system, the launch instance wizard creates and attaches two security groups \- one security group is attached to the instance, and the other is attached to the file system\. For more information about the security group requirements, see [FSx for ONTAP file system access control with Amazon VPC](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/limit-access-security-groups.html) and [FSx for OpenZFS file system access control with Amazon VPC](https://docs.aws.amazon.com/fsx/latest/OpenZFSGuide/limit-access-security-groups.html)\.
+
+The security group that is **created and attached to the instance** is tagged with `Name=instance-sg-1`, and it includes the following inbound and outbound rules:
+
+**Note**  
+The value in the `Name` tag is automatically incremented each time the launch instance wizard creates a new security group for Amazon FSx file systems\.
+
+
+| 
+| 
+| **Inboud rules** | 
+| --- |
+| No inbound rules | 
+| **Outbound rules** | 
+| --- |
+| **Protocol type** | **Port number** | **Destination** | 
+| --- |--- |--- |
+| UDP | 111 | File system security group \(fsx\-sg\-1\) | 
+| UDP | 20001 \- 20003 | File system security group \(fsx\-sg\-1\) | 
+| UDP | 4049 | File system security group \(fsx\-sg\-1\) | 
+| UDP | 2049 | File system security group \(fsx\-sg\-1\) | 
+| UDP | 635 | File system security group \(fsx\-sg\-1\) | 
+| UDP | 4045 \- 4046 | File system security group \(fsx\-sg\-1\) | 
+| TCP | 4049 | File system security group \(fsx\-sg\-1\) | 
+| TCP | 635 | File system security group \(fsx\-sg\-1\) | 
+| TCP | 2049 | File system security group \(fsx\-sg\-1\) | 
+| TCP | 111 | File system security group \(fsx\-sg\-1\) | 
+| TCP | 4045 \- 4046 | File system security group \(fsx\-sg\-1\) | 
+| TCP | 20001 \- 20003 | File system security group \(fsx\-sg\-1\) | 
+| All | All | File system security group \(fsx\-sg\-1\) | 
+
+The security group that is **created and attached to the file system** is tagged with `Name=fsx-sg-1`, and it includes the following inbound and outbound rules:
+
+**Note**  
+The value in the `Name` tag is automatically incremented each time the launch instance wizard creates a new security group for Amazon FSx file systems\.
+
+
+| 
+| 
+| **Inbound rules** | 
+| --- |
+| **Protocol type** | **Port number** | **Source** | 
+| --- |--- |--- |
+| UDP | 2049 | Instance security group \(instance\-sg\-1\) | 
+| UDP | 20001 \- 20003 | Instance security group \(instance\-sg\-1\) | 
+| UDP | 4049 | Instance security group \(instance\-sg\-1\) | 
+| UDP | 111 | Instance security group \(instance\-sg\-1\) | 
+| UDP | 635 | Instance security group \(instance\-sg\-1\) | 
+| UDP | 4045 \- 4046 | Instance security group \(instance\-sg\-1\) | 
+| TCP | 4045 \- 4046 | Instance security group \(instance\-sg\-1\) | 
+| TCP | 635 | Instance security group \(instance\-sg\-1\) | 
+| TCP | 2049 | Instance security group \(instance\-sg\-1\) | 
+| TCP | 4049 | Instance security group \(instance\-sg\-1\) | 
+| TCP | 20001 \- 20003 | Instance security group \(instance\-sg\-1\) | 
+| TCP | 111 | Instance security group \(instance\-sg\-1\) | 
+| **Outbound rules** | 
+| --- |
+| **Protocol type** | **Port number** | **Destination** | 
+| --- |--- |--- |
+| All | All | 0\.0\.0\.0/0 | 
+
+### User data script<a name="fsx-user-data"></a>
+
+If you choose to automatically attach user data scripts, the launch instance wizard adds the following user data to the instance\. This script installs the necessary packages, mounts the file system, and updates your instance settings so that the file system will automatically re\-mount whenever the instance restarts\.
+
+```
+#cloud-config
+package_update: true
+package_upgrade: true
+runcmd:
+- yum install -y nfs-utils
+- apt-get -y install nfs-common
+- svm_id_1=svm_id
+- file_system_id_1=file_system_id
+- vol_path_1=/vol1
+- fsx_mount_point_1=/mnt/fsx/fs1
+- mkdir -p "${fsx_mount_point_1}"
+- if [ -z "$svm_id_1" ]; then printf "\n${file_system_id_1}.fsx.eu-north-1.amazonaws.com:/${vol_path_1} ${fsx_mount_point_1} nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0\n" >> /etc/fstab; else printf "\n${svm_id_1}.${file_system_id_1}.fsx.eu-north-1.amazonaws.com:/${vol_path_1} ${fsx_mount_point_1} nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0\n" >> /etc/fstab; fi
+- retryCnt=15; waitTime=30; while true; do mount -a -t nfs4 defaults; if [ $? = 0 ] || [ $retryCnt -lt 1 ]; then echo File system mounted successfully; break; fi; echo File system not available, retrying to mount.; ((retryCnt--)); sleep $waitTime; done;
+```
+
+## Mount an Amazon FSx file system at launch<a name="mount-fsx"></a>
+
+
+
+**To mount a new or existing Amazon FSx file system at launch**
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Instances** and then choose **Launch instance** to open the launch instance wizard\.
+
+1. In the **Application and OS Images** section, select the AMI to use\.
+
+1. In the **Instance type** section, select the instance type\.
+
+1. In the **Key pair** section, select an existing key pair or create a new one\.
+
+1. In the **Network settings** section, do the following:
+
+   1. Choose **Edit**\.
+
+   1. If you want to **mount an existing file system**, for **Subnet**, choose the file system's preferred subnet\. We recommend that you launch the instance into the sameAvailability Zone as the file system's preferred subnet to optimizeperformance\.
+
+      If you want to **create a new file system** to mount to an instance, for **Subnet**, choose the subnet into which to launch the instance\.
+**Important**  
+You must select a subnet to enable the Amazon FSx functionality in the new launch instance wizard\. If you do not select a subnet, you will not be able to mount an existing file system or create a new one\.
+
+1. In the **Storage** section, do the following:
+
+   1. Configure the volumes as needed\.
+
+   1. Expand the **File systems** section and select **FSx**\.
+
+   1. Choose **Add shared file system**\.
+
+   1. For **File system**, select the file system to mount\.
+**Note**  
+The list displays all Amazon FSx for NetApp ONTAP and Amazon FSx for OpenZFS file systems in the in your account in the selected Region\.
+
+   1. To automatically create and attach the security groups needed to enable access to the file system, select **Automatically create and attach security groups**\. If you prefer to create the security groups manually, clear the check box\. For more information, see [Security groups](#fsx-sg)\.
+
+   1. To automatically attach the user data scripts needed to mount the file system, select **Automatically mount shared file system by attaching required user data script**\. If you prefer to provide the user data scripts manually, clear the check box\. For more information, see [User data script](#fsx-user-data)\.
+
+1. In the **Advanced** section, configure the additional instance settings as needed\.
+
+1. Choose **Launch**\.

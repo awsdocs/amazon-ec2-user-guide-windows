@@ -1,6 +1,11 @@
 # Amazon EC2 Windows Server AMIs for STIG compliance<a name="ami-windows-stig"></a>
 
-Security Technical Implementation Guides \(STIGs\) are the configuration standards created by the Defense Information Systems Agency \(DISA\) to secure information systems and software\. DISA documents three levels of compliance risk, known as categories\. Category I is the highest level\. It covers the most severe risks, and includes any vulnerability that can result in a loss of confidentiality, availability, or integrity\. Categories II and III are medium and low risk, respectively\. Each compliance level includes all STIG settings from lower levels, which means that the highest level has all applicable settings from all levels\.
+Security Technical Implementation Guides \(STIGs\) are the configuration standards created by the Defense Information Systems Agency \(DISA\) to secure information systems and software\. DISA documents three levels of compliance risk, known as categories:
++ **Category I** — The highest level of risk\. It covers the most severe risks, and includes any vulnerability that can result in a loss of confidentiality, availability, or integrity\.
++ **Category II** — Medium risk\.
++ **Category III** — Low risk\.
+
+Each compliance level includes all STIG settings from lower levels, which means that the highest level includes all applicable settings from all levels\.
 
 To ensure that your systems are compliant with STIG standards, you must install, configure, and test a variety of security settings\. EC2 Windows Server AMIs for STIG Compliance are pre\-configured with over 160 required security settings\. STIG\-compliant operating systems include Windows Server 2012 R2, Windows Server 2016, and Windows Server 2019\. The STIG\-compliant AMIs include updated Department of Defense \(DoD\) certificates to help you get started and achieve STIG compliance\. There are no additional charges for using STIG\-compliant AMIs\.
 
@@ -9,7 +14,7 @@ EC2 Windows Server AMIs for STIG compliance are available in all public AWS and 
 The STIG\-compliant EC2 AMIs for Windows Server can be found in the Community AMIs when you create an instance\. The AMI names are as follows:
 
 **Note**  
-The date suffix for the AMI \(*YYYY\.MM\.DD*\) is the date on which the latest version was created\. You can search for the version without the date suffix\.
+The date suffix for the AMI \(*YYYY\.MM\.DD*\) is the date when the latest version was created\. You can search for the version without the date suffix\.
 + Windows\_Server\-2019\-English\-STIG\-Full\-*YYYY\.MM\.DD*
 + Windows\_Server\-2019\-English\-STIG\-Core\-*YYYY\.MM\.DD*
 + Windows\_Server\-2016\-English\-STIG\-Full\-*YYYY\.MM\.DD*
@@ -17,7 +22,7 @@ The date suffix for the AMI \(*YYYY\.MM\.DD*\) is the date on which the latest v
 + Windows\_Server\-2012\-R2\-English\-STIG\-Full\-*YYYY\.MM\.DD*
 + Windows\_Server\-2012\-R2\-English\-STIG\-Core\-*YYYY\.MM\.DD*
 
-The following sections show the STIGs that have been applied to Windows Operating Systems and components\.
+The following sections list the STIGs that have been applied to Windows Operating Systems and components\.
 
 **Topics**
 + [Core and base operating systems](#base-os-stig)
@@ -81,7 +86,7 @@ V\-46473, V\-46475, V\-46477, V\-46481, V\-46483, V\-46501, V\-46507, V\-46509, 
 
 ## Version history<a name="stig-version-history"></a>
 
-The following table shows version history updates for STIG settings that are applied to Windows operating systems and Windows components\.
+The following table provides version history updates for STIG settings that are applied to Windows operating systems and Windows components\.
 
 
 | Date | AMIs | Details | 

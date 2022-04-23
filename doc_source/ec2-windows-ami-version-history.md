@@ -1,6 +1,6 @@
 # AWS Windows AMI version history<a name="ec2-windows-ami-version-history"></a>
 
-The following tables summarize the changes to each release of the AWS Windows AMIs\. Note that some changes apply to all AWS Windows AMIs while others apply to only a subset of these AMIs\.
+The following tables summarize the changes to each release of the AWS Windows AMIs\. Note that some changes apply to all AWS Windows AMIs, while others apply to only a subset of these AMIs\.
 
 For more information about components included in these AMIs, see the following:
 + [EC2Launch v2 version history](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html#ec2launchv2-version-history)
@@ -9,7 +9,7 @@ For more information about components included in these AMIs, see the following:
 + [Systems Manager SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/mainline/RELEASENOTES.md)
 + [Amazon ENA driver versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#ena-adapter-driver-versions)
 + [AWS NVME driver versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-nvme-drivers.html#nvme-driver-version-history)
-+ [AWS PV drivers](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html#xen-driver-awspv)
++ [AWS PV driver package history](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/pv-driver-history)
 + [AWS Tools for PowerShell Change Log](https://github.com/aws/aws-tools-for-powershell/blob/master/CHANGELOG.md)
 
 ## Monthly AMI updates for 2022 \(to date\)<a name="amis-2022"></a>
@@ -19,7 +19,8 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
-| 2022\.03\.09 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
+| 2022\.04\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
+| 2022\.03\.09 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated December 12th, 2021 and earlier were made private\.  | 
 | 2022\.02\.10 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated November 16th, 2021 and earlier were made private\.  | 
 | 2022\.01\.19 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated October 13th, 2021 and earlier were made private\.  | 
 | 2022\.01\.12 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
@@ -118,7 +119,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 | 2018\.05\.09 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2018\.04\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2018\.03\.24 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
-| 2018\.03\.16 |  AWS has removed all Windows AMIs dated 2018\.03\.16 due to an issue with an unquoted path in the configuration for the Amazon EC2 Hibernate Agent\. For more information, see [Issue with the Hibernate Agent \(2018\.03\.16 AMIs\)](aws-windows-ami.md#ec2hibernateagent-2018-03-16)\.  | 
+| 2018\.03\.16 |  AWS has removed all Windows AMIs dated 2018\.03\.16 due to an issue with an unquoted path in the configuration for the Amazon EC2 Hibernate Agent\.  | 
 | 2018\.03\.06 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2018\.02\.23 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2018\.02\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 

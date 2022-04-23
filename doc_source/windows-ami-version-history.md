@@ -1,6 +1,6 @@
 # AWS Windows AMIs<a name="windows-ami-version-history"></a>
 
-AWS provides a set of publicly available AMIs that contain software configurations specific to the Windows platform\. Using these AMIs, you can quickly start building and deploying your applications using Amazon EC2\. First choose the AMI that meets your specific requirements, and then launch an instance using that AMI\. You retrieve the password for the administrator account and then log in to the instance using Remote Desktop Connection, just as you would with any other Windows server\.
+AWS provides a set of publicly available AMIs that contain software configurations specific to the Windows platform\. You can quickly start building and deploying your applications with Amazon EC2 by using these AMIs\. First choose the AMI that meets your specific requirements, and then launch an instance using that AMI\. You retrieve the password for the administrator account and then log in to the instance using Remote Desktop Connection, just as you would with any other Windows server\.
 
 When you launch an instance from a Windows AMI, the root device for the Windows instance is an Amazon Elastic Block Store \(Amazon EBS\) volume\. Windows AMIs do not support instance store for the root device\.
 

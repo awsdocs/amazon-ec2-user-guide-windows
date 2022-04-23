@@ -371,7 +371,7 @@ shuts down the instance after `sysprep`
 
 ### validate<a name="ec2launch-v2-validate"></a>
 
-Validates the `agent-config` file `C:\ProgramData\Amazon\EC2LaunchAgent\config\agent-config.yml`\.
+Validates the `agent-config` file `C:\ProgramData\Amazon\EC2Launch\config\agent-config.yml`\.
 
 **Example**
 

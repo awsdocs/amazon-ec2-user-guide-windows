@@ -7,4 +7,4 @@ There are many file storage solutions that exist, ranging from a single node fil
 **Topics**
 + [Use Amazon S3 with Amazon EC2](AmazonS3.md)
 + [Use Amazon EFS with Amazon EC2](AmazonEFS.md)
-+ [Use FSx for Windows File Server with Amazon EC2](storage_fsx.md)
++ [Use Amazon FSx with Amazon EC2](storage_fsx.md)

@@ -425,7 +425,7 @@ Amazon's trademarks and trade dress may not be used in
    + [File storage](file-storage.md)
       + [Use Amazon S3 with Amazon EC2](AmazonS3.md)
       + [Use Amazon EFS with Amazon EC2](AmazonEFS.md)
-      + [Use FSx for Windows File Server with Amazon EC2](storage_fsx.md)
+      + [Use Amazon FSx with Amazon EC2](storage_fsx.md)
    + [Instance volume limits](volume_limits.md)
    + [Amazon EC2 instance root device volume](ec2-root-device-storage-windows.md)
    + [Device names on Windows instances](device_naming.md)

@@ -1,6 +1,6 @@
 # Configure your Windows AMI for faster launching<a name="win-ami-config-fast-launch"></a>
 
-Every EC2 Windows instance must go through the standard Windows operating system \(OS\) launch steps, which include several reboots, and often take 15 minutes or longer to complete\. Windows AMIs that are optimized for faster launching complete some of those steps and reboots in advance, by launching a set of instances in the background, and then creating snapshots when they have completed the initial launch steps\. The use of these snapshots in the faster launching process can significantly reduce the time it takes to launch instances when they are needed\. This is not the same as EBS Fast Snapshot Restore\.
+Every EC2 Windows instance must go through the standard Windows operating system \(OS\) launch steps, which include several reboots, and often take 15 minutes or longer to complete\. Windows AMIs that are optimized for faster launching complete some of those steps and reboots in advance by launching a set of instances in the background, and then creating snapshots when they have completed the initial launch steps\. The use of these snapshots in the faster launching process can significantly reduce the time it takes to launch instances when they are needed\. This is not the same process as [EBS fast snapshot restore](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html)\.
 
 **Note**  
 Any account that has access to an AMI that is configured for faster launching can benefit from reduced launch times\. However, it is the AMI owner's account that provides the snapshots that are consumed for the launch\.
@@ -310,7 +310,7 @@ You can use the [describe\-fast\-launch\-images](https://docs.aws.amazon.com/cli
 Amazon EC2 provides the following details for each Windows AMI that is returned in the results:
 + The image ID that identifies the fast\-launch enabled Windows image\.
 + The resource type that is used for pre\-provisioning the Windows AMI\. Supported value: `snapshot`\.
-+ The snapshot configuration, which is a group of parameters that's used for pre\-provisioning the associated Windows AMI using snapshots\.
++ The snapshot configuration, which is a group of parameters that is used for pre\-provisioning the associated Windows AMI using snapshots\.
 + Launch template information, including the ID, name, and version of the launch template that the AMI uses when it launches Window instances from pre\-provisioned snapshots\.
 + The maximum number of parallel instances that are launched for creating resources\. 
 + The owner ID for the fast\-launch enabled Windows AMI\.

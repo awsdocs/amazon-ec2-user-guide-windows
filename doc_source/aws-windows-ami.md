@@ -26,7 +26,6 @@ For information about other customizations, see [AWS Windows AMIs](windows-ami-v
 + [Subscribe to Windows AMI notifications](#subscribe-notifications)
 + [Changes in Windows Server 2016 and later AMIs](#win2k16-amis)
 + [Docker container conflict on Windows Server 2016 instances](#ec2launch-docker)
-+ [Issue with the Hibernate Agent \(2018\.03\.16 AMIs\)](#ec2hibernateagent-2018-03-16)
 
 ## Details about AWS Windows AMI versions<a name="windows-ami-versions"></a>
 
@@ -36,7 +35,7 @@ AWS provides AMIs with a variety of configurations for all supported Windows Ope
 + Installs all Microsoft recommended Windows security patches\. We release images shortly after the monthly Microsoft patches are made available\.
 + Installs the latest drivers for AWS hardware, including network and disk drivers, EC2WinUtil for troubleshooting, as well as GPU drivers in selected AMIs\.
 + Includes AWS helper software, like [EC2Config](ec2config-service.md) for Server 2012 R2 and earlier, [EC2Launch](ec2launch.md) for Server 2016 and 2019, or [EC2Launch v2](ec2launch-v2.md) for Server 2022\.
-+ Configures Windows Time to use the [Set the time for a Windows instance](windows-set-time.md)\.
++ Configures Windows Time to use the [Amazon Time Sync Service](windows-set-time.md) \.
 + Makes changes in all power schemes to set the display to never turn off\.
 + Performs minor bug fixes – generally one\-line registry changes to enable or disable features that we have found to improve performance on AWS\.
 
@@ -46,20 +45,20 @@ Other than the adjustments listed above, we keep our AMIs as close as possible t
 
 Each AMI is extensively tested prior to release to the general public\. We periodically streamline our AMI offerings to simplify customer choice and to reduce costs\.
 + New AMI offerings are created for new OS releases\. You can count on AWS releasing “Base,” “Core/Container,” and “SQL Express/Standard/Web/Enterprise” offerings in English and other widely used languages\. The primary difference between Base and Core offerings is that Base offerings have a desktop/GUI whereas Core offerings are PowerShell command line only\. For more information about Windows Server Core, see [ https://docs\.microsoft\.com/en\-us/windows\-server/administration/server\-core/what\-is\-server\-core](https://docs.microsoft.com/en-us/windows-server/administration/server-core/what-is-server-core)\.
-+ New AMI offerings are created to support new platforms – for example, the Deep Learning and “NVidia” AMIs were created to support customers using our GPU\-based instance types \(P2 and P3, G2 and G3, etc\.\)\.
++ New AMI offerings are created to support new platforms – for example, the Deep Learning and “NVidia” AMIs were created to support customers using our GPU\-based instance types \(P2 and P3, G2 and G3, and more\)\.
 + Less popular AMIs are sometimes removed\. If we see a particular AMI is launched only a few times in its entire lifespan, we will remove it in favor of more widely used options\.
 
 If there is an AMI variant that you would like to see, let us know by filing a ticket with Cloud Support, or by providing feedback through [one of our established channels](https://aws.amazon.com/premiumsupport/knowledge-center/send-feedback-aws/)\.
 
 ### Patches, security updates, and AMI IDs<a name="ami-patches-security-ID"></a>
 
-AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. The new AMIs are available immediately through the **Images** page in the Amazon EC2 console\. The new AMIs are available in the AWS Marketplace and the **Quick Start** tab of the launch instance wizard within a few days of their release\.
+AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. The new AMIs are available immediately from the **Images** page in the Amazon EC2 console\. The new AMIs are available in the AWS Marketplace and the **Quick Start** tab of the launch instance wizard within a few days of their release\.
 
 **Note**  
 Instances launched from Windows Server 2019 and later AMIs may show a Windows Update dialog message stating "Some settings are managed by your organization\." This message appears as a result of changes in Windows Server 2019 and does not impact the behavior of Windows Update or your ability to manage update settings\.  
 To remove this warning, see ["Some settings are managed by your organization"](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/common-messages.html#some-settings-managed-by-org)\.
 
-To ensure that customers have the latest security updates by default, AWS keeps Windows AMIs available for three months\. After releasing new Windows AMIs, AWS makes the Windows AMIs that are older than three months private within 10 days\. After an AMI has been made private, if you look at an instance launched from that AMI in the console, the **AMI ID** field states, "Cannot load detail for ami\-xxxxx\. You may not be permitted to view it\." You can still retrieve the AMI ID using the AWS CLI or an AWS SDK\.
+To ensure that customers have the latest security updates by default, AWS keeps Windows AMIs available for three months\. After releasing new Windows AMIs, AWS makes the Windows AMIs that are older than three months private within 10 days\. After an AMI has been made private, when you look at an instance launched from that AMI in the console, the **AMI ID** field states, "Cannot load detail for ami\-xxxxx\. You may not be permitted to view it\." You can still retrieve the AMI ID using the AWS CLI or an AWS SDK\.
 
 The Windows AMIs in each release have new AMI IDs\. Therefore, we recommend that you write scripts that locate the latest AWS Windows AMIs by their names, rather than by their IDs\. For more information, see the following examples:
 + [Get\-EC2ImageByName](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-get-amis.html#pstools-ec2-get-ec2imagebyname) \(AWS Tools for Windows PowerShell\)
@@ -72,7 +71,7 @@ AWS provides Windows Server semiannual channel releases that combine the scale, 
 
 ## Configuration changes for AWS Windows AMIs<a name="windows-ami-configuration"></a>
 
-The following changes are applied to each AWS Windows AMI\.
+The following configuration changes are applied to each AWS Windows AMI\.
 
 
 **Clean and prepare**  
@@ -82,16 +81,16 @@ The following changes are applied to each AWS Windows AMI\.
 | Check for pending file renames or reboots, and reboot as needed | All AMIs | 
 | Delete `.dmp` files | All AMIs | 
 | Delete logs \(event logs, Systems Manager, EC2Config\) | All AMIs | 
-| Delete temporary folders and files for sysprep | All AMIs | 
-| Clear recent history \(Start menu, Windows Explorer, and so on\) | Windows Server 2012 R2 and earlier | 
+| Delete temporary folders and files for Sysprep | All AMIs | 
+| Clear recent history \(Start menu, Windows Explorer, and more\) | Windows Server 2012 R2 and earlier | 
 | Perform virus scan | All AMIs | 
-| Pre\-compile queued \.NET assemblies \(before sysprep\) | All AMIs | 
+| Pre\-compile queued \.NET assemblies \(before Sysprep\) | All AMIs | 
 | Run Windows maintenance tools | Windows Server 2012 R2 and later | 
 | Restore default values for Internet Explorer | All AMIs | 
 | Restore default values for EC2Config | Windows Server 2012 R2 and earlier | 
 | Set EC2Launch to run at the next launch | Windows Server 2016 and 2019 | 
 | Reset the Windows wallpaper | All AMIs | 
-| Run sysprep | All AMIs | 
+| Run Sysprep | All AMIs | 
 
 
 **Install and configure**  
@@ -150,7 +149,7 @@ For Windows instances, you can install updates to the following services or appl
 + [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell)
 + [AWS CloudFormation helper scripts](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-helper-scripts-reference.html)
 
-You can reboot a Windows instance after installing updates\. For more information, see [Reboot your instance](ec2-instance-reboot.md)\.
+We recommend that you reboot your Windows instance after installing updates\. For more information, see [Reboot your instance](ec2-instance-reboot.md)\.
 
 ## Upgrade or migrate to a newer version of Windows Server<a name="WinAMI_Upgrading"></a>
 
@@ -158,7 +157,7 @@ For information about how to upgrade or migrate a Windows instance to a newer ve
 
 ## Subscribe to Windows AMI notifications<a name="subscribe-notifications"></a>
 
-To be notified when new AMIs are released or when previously released AMIs are made private, subscribe for notifications using Amazon SNS\.
+To be notified when new AMIs are released or when previously released AMIs are made private, subscribe to notifications using Amazon SNS\.
 
 **To subscribe to Windows AMI notifications**
 
@@ -198,7 +197,7 @@ Whenever Windows AMIs are released, we send notifications to the subscribers of 
 
 1. In the navigation pane, choose **Subscriptions**\.
 
-1. Select the subscriptions and then choose **Actions**, **Delete subscriptions** When prompted for confirmation, choose **Delete**\.
+1. Select the subscriptions and then choose **Delete**\. When prompted for confirmation, choose **Delete**\.
 
 ## Changes in Windows Server 2016 and later AMIs<a name="win2k16-amis"></a>
 
@@ -208,7 +207,7 @@ AWS provides AMIs for Windows Server 2016 and later\. These AMIs include the fol
 
 **Other differences**
 
-Note these additional important differences for instances created from Windows Server 2016 and later AMIs\.
+Note the following additional important differences for instances created from Windows Server 2016 and later AMIs\.
 + By default, EC2Launch does not initialize secondary EBS volumes\. You can configure EC2Launch to initialize disks automatically by either scheduling the script to run or by calling EC2Launch in user data\. For the procedure to initialize disks using EC2Launch, see "Initialize Drives and Drive Letter Mappings" in [Configure EC2Launch](ec2launch.md#ec2launch-config)\.
 + If you previously enabled CloudWatch integration on your instances by using a local configuration file \(`AWS.EC2.Windows.CloudWatch.json`\), you can configure the file to work with the SSM Agent on instances created from Windows Server 2016 and later AMIs\.
 
@@ -219,80 +218,4 @@ For more information, see [Windows Server](https://www.microsoft.com/en-us/cloud
 If you run the Docker service on Windows Server 2016 AMIs, the service is configured to use a different CIDR value than the default internal IP address prefix value\. The default value is 172\.16\.0\.0/12\. Windows Server 2016 AMIs use 172\.17\.0\.0/16 to avoid a conflict with the default Amazon EC2 VPC/subnet\. If you don't change VPC/subnet settings for your EC2 instances, then you don't need to do anything\. The conflict is essentially avoided because of the different CIDR values\. If you do change VPC/subnet settings, be aware of these internal IP address prefix values and avoid creating a conflict\. For more information, read the following section\.
 
 **Important**  
-If you plan to run Docker on a Windows Server 2016 instance, you must create the instance from the following Amazon Machine Image \(AMI\) or an AMI based on an image with `Windows_Server-2016-English-Full-Containers` in the name\. Otherwise, if you use a different Windows Server 2016 AMI, instances fail to boot correctly after installing Docker and then running Sysprep\.
-
-## Issue with the Hibernate Agent \(2018\.03\.16 AMIs\)<a name="ec2hibernateagent-2018-03-16"></a>
-
-After the release of the 2018\.03\.16 Windows AMIs, we discovered an unquoted path in the configuration of the Amazon EC2 Hibernate Agent\. The agent was included in the AMIs for Windows Server 2008 through Windows Server 2016\. This issue does not impact the AMIs for Windows Server 2003\.
-
-AWS has removed the Windows AMIs dated 2018\.03\.16\. To be notified when new Windows AMIs are available, see [Subscribe to Windows AMI notifications](#subscribe-notifications)\.
-
-To mitigate the issue, you can use one of the following procedures to add the missing quotation marks\. If the agent is running, you must also restart the agent\. Alternatively, you can terminate any instances that you launched from a 2018\.03\.16 Windows AMI and replace them with instances launched using a different AMI\.
-
-**Windows PowerShell**
-
-1. On your Windows instance, open Windows Powershell\.
-
-1. Use the following command to update the configuration, adding the missing quotation marks:
-
-   ```
-   cmd /c 'sc config EC2HibernateAgent binPath="\"%ProgramFiles%\Amazon\Hibernate\EC2HibernateAgent.exe\""'
-   ```
-
-1. Use the following command to view the updated configuration:
-
-   ```
-   (Get-ItemProperty -Path Registry::HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EC2HibernateAgent\).ImagePath
-   ```
-
-   Verify that the response is enclosed in quotation marks, as shown in the following example:
-
-   ```
-   "C:\Program Files\Amazon\Hibernate\EC2HibernateAgent.exe"
-   ```
-
-1. Use the following command to check whether `Status` is `Running`:
-
-   ```
-   Get-Service EC2HibernateAgent
-   ```
-
-   If the agent is running, you must restart it using the following command so that the change takes effect:
-
-   ```
-   Restart-Service EC2HibernateAgent
-   ```
-
-**Command prompt**
-
-1. On your Windows instance, open a Command Prompt window\.
-
-1. Use the following command to update the configuration, adding the missing quotation marks:
-
-   ```
-   sc config EC2HibernateAgent binPath="\"%ProgramFiles%\Amazon\Hibernate\EC2HibernateAgent.exe\""
-   ```
-
-1. Use the following command to view the updated configuration:
-
-   ```
-   sc qc EC2HibernateAgent
-   ```
-
-   Verify that the path in `BINARY_PATH_NAME` is enclosed in quotation marks, as shown in the following example:
-
-   ```
-   "C:\Program Files\Amazon\Hibernate\EC2HibernateAgent.exe"
-   ```
-
-1. Use the following command to check whether `STATE` is `RUNNING`:
-
-   ```
-   sc query EC2HibernateAgent
-   ```
-
-   If the agent is running, you must restart it using the following command so that the change takes effect:
-
-   ```
-   sc stop EC2HibernateAgent && sc start EC2HibernateAgent
-   ```
+If you plan to run Docker on a Windows Server 2016 instance, you must create the instance from the following Amazon Machine Image \(AMI\) or an AMI based on an image with `Windows_Server-2016-English-Full-Containers` in the name\. If you use a different Windows Server 2016 AMI, instances fail to boot correctly after installing Docker and then running Sysprep\.
