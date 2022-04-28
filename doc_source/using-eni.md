@@ -131,6 +131,7 @@ The following table lists the maximum number of network interfaces per instance 
 | c6a\.24xlarge | 15 | 50 | 50 | 
 | c6a\.32xlarge | 15 | 50 | 50 | 
 | c6a\.48xlarge | 15 | 50 | 50 | 
+| c6a\.metal | 15 | 50 | 50 | 
 | c6i\.large | 3 | 10 | 10 | 
 | c6i\.xlarge | 4 | 15 | 15 | 
 | c6i\.2xlarge | 4 | 15 | 15 | 
@@ -211,6 +212,13 @@ The following table lists the maximum number of network interfaces per instance 
 | i3en\.12xlarge | 8 | 30 | 30 | 
 | i3en\.24xlarge | 15 | 50 | 50 | 
 | i3en\.metal | 15 | 50 | 50 | 
+| i4i\.large | 3 | 10 | 10 | 
+| i4i\.xlarge | 4 | 15 | 15 | 
+| i4i\.2xlarge | 4 | 15 | 15 | 
+| i4i\.4xlarge | 8 | 30 | 30 | 
+| i4i\.8xlarge | 8 | 30 | 30 | 
+| i4i\.16xlarge | 15 | 50 | 50 | 
+| i4i\.32xlarge | 15 | 50 | 50 | 
 | m1\.small |  2  |  4  | IPv6 not supported | 
 | m1\.medium |  2  |  6  | IPv6 not supported | 
 | m1\.large |  3  |  10  | IPv6 not supported | 
@@ -297,6 +305,7 @@ The following table lists the maximum number of network interfaces per instance 
 | m6a\.24xlarge | 15 | 50 | 50 | 
 | m6a\.32xlarge | 15 | 50 | 50 | 
 | m6a\.48xlarge | 15 | 50 | 50 | 
+| m6a\.metal | 15 | 50 | 50 | 
 | m6i\.large | 3 | 10 | 10 | 
 | m6i\.xlarge | 4 | 15 | 15 | 
 | m6i\.2xlarge | 4 | 15 | 15 | 

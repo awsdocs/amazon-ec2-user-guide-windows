@@ -81,6 +81,7 @@ You can also view this information programatically using the AWS CLI\. For more 
 | c6a\.24xlarge | 20,000 | 2,500 | 80,000 | 
 | c6a\.32xlarge | 26,666\.664 | 3,333\.333 | 100,000 | 
 | c6a\.48xlarge | 40,000 | 5,000 | 160,000 | 
+| c6a\.metal | 40,000 | 5,000 | 160,000 | 
 | c6i\.large \* | 10,000 | 1,250 | 40,000 | 
 | c6i\.xlarge \* | 10,000 | 1,250 | 40,000 | 
 | c6i\.2xlarge \* | 10,000 | 1,250 | 40,000 | 
@@ -150,6 +151,13 @@ You can also view this information programatically using the AWS CLI\. For more 
 | i3en\.12xlarge | 9,500 | 1,187\.5 | 40,000 | 
 | i3en\.24xlarge | 19,000 | 2,375 | 80,000 | 
 | i3en\.metal | 19,000 | 2,375 | 80,000 | 
+| i4i\.large \* | 10,000 | 1,250 | 40,000 | 
+| i4i\.xlarge \* | 10,000 | 1,250 | 40,000 | 
+| i4i\.2xlarge \* | 10,000 | 1,250 | 40,000 | 
+| i4i\.4xlarge \* | 10,000 | 1,250 | 40,000 | 
+| i4i\.8xlarge | 10,000 | 1,250 | 40,000 | 
+| i4i\.16xlarge | 20,000 | 2,500 | 80,000 | 
+| i4i\.32xlarge | 40,000 | 5,000 | 160,000 | 
 | m4\.large | 450 | 56\.25 | 3,600 | 
 | m4\.xlarge | 750 | 93\.75 | 6,000 | 
 | m4\.2xlarge | 1,000 | 125 | 8,000 | 
@@ -225,6 +233,7 @@ You can also view this information programatically using the AWS CLI\. For more 
 | m6a\.24xlarge | 20,000 | 2,500 | 80,000 | 
 | m6a\.32xlarge | 26,666\.666664 | 3,333\.333333 | 100,000 | 
 | m6a\.48xlarge | 40,000 | 5,000 | 160,000 | 
+| m6a\.metal | 40,000 | 5,000 | 160,000 | 
 | m6i\.large \* | 10,000 | 1,250 | 40,000 | 
 | m6i\.xlarge \* | 10,000 | 1,250 | 40,000 | 
 | m6i\.2xlarge \* | 10,000 | 1,250 | 40,000 | 
@@ -421,6 +430,10 @@ You can also view this information programatically using the AWS CLI\. For more 
 | i3en\.xlarge | 1,154 | 144\.2 | 6,000 | 
 | i3en\.2xlarge | 2,307 | 288\.39 | 12,000 | 
 | i3en\.3xlarge | 3,800 | 475 | 15,000 | 
+| i4i\.large | 625 | 78\.125 | 2,500 | 
+| i4i\.xlarge | 1,250 | 156\.25 | 5,000 | 
+| i4i\.2xlarge | 2,500 | 312\.5 | 10,000 | 
+| i4i\.4xlarge | 5,000 | 625 | 20,000 | 
 | m5\.large | 650 | 81\.25 | 3,600 | 
 | m5\.xlarge | 1,150 | 143\.75 | 6,000 | 
 | m5\.2xlarge | 2,300 | 287\.5 | 12,000 | 

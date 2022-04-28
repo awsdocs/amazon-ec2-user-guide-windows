@@ -46,7 +46,7 @@ You can find Windows AMIs using the Amazon EC2 console\. You can select from the
 
 1. \(Optional\) Choose the **Preferences** icon \(new console\) or **Show/Hide Columns** icon \(old console\) to select which image attributes to display, such as the root device type\. Alternatively, you can select an AMI from the list and view its properties on the **Details** tab\.
 
-1. To launch an instance from this AMI, select it and then choose **Launch instance from image** \(new console\) or **Launch** \(old console\)\. For more information about launching an instance using the console, see [Launching your instance from an AMI](launching-instance.md#choose-an-instance-type-page)\. If you're not ready to launch the instance now, make note of the AMI ID for later\.
+1. To launch an instance from this AMI, select it and then choose **Launch instance from image** \(new console\) or **Launch** \(old console\)\. For more information about launching an instance using the console, see [Launch an instance using the new launch instance wizard](ec2-launch-instance-wizard.md)\. If you're not ready to launch the instance now, make note of the AMI ID for later\.
 
 ## Find an AMI using the AWS Tools for Windows PowerShell<a name="finding-an-ami-psh"></a>
 

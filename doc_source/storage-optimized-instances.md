@@ -36,6 +36,11 @@ These instances are well suited for the following:
 Bare metal instances provide your applications with direct access to physical resources of the host server, such as processors and memory\.
 
 For more information, see [Amazon EC2 I3 Instances](https://aws.amazon.com/ec2/instance-types/i3)\.
+<a name="i4i-instances"></a>
+**I4i instances**  
+These instances are well suited for I/O intensive workloads that require small to medium sized data sets on local storage, such as transactional databases and NoSQL databases\.
+
+For more information, see [Amazon EC2 I4i Instances](https://aws.amazon.com/ec2/instance-types/i4i)\.
 
 **Topics**
 + [Hardware specifications](#storage-instances-hardware)
@@ -90,6 +95,13 @@ The following is a summary of the hardware specifications for storage optimized 
 | i3en\.12xlarge | 48 | 384 | 
 | i3en\.24xlarge | 96 | 768 | 
 | i3en\.metal | 96 | 768 | 
+| i4i\.large | 2 | 16 | 
+| i4i\.xlarge | 4 | 32 | 
+| i4i\.2xlarge | 8 | 64 | 
+| i4i\.4xlarge | 16 | 128 | 
+| i4i\.8xlarge | 32 | 256 | 
+| i4i\.16xlarge | 64 | 512 | 
+| i4i\.32xlarge | 128 | 1,024 | 
 
 For more information about the hardware specifications for each Amazon EC2 instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
@@ -112,15 +124,18 @@ The following is a summary of network performance for storage optimized instance
 | --- | --- | --- | 
 | d2\.xlarge | Moderate | [Intel 82599 VF](sriov-networking.md) | 
 | d2\.2xlarge \| d2\.4xlarge | High | [Intel 82599 VF](sriov-networking.md) | 
-| i3\.4xlarge and smaller  | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| i3\.4xlarge and smaller \| i4i\.xlarge and smaller | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
 | d2\.8xlarge | 10 Gbps | [Intel 82599 VF](sriov-networking.md) | 
 | i3\.8xlarge \| h1\.8xlarge | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
+| i4i\.2xlarge | Up to 12 Gbps † | [ENA](enhanced-networking-ena.md) | 
 | d3\.4xlarge and smaller | Up to 15 Gbps † | [ENA](enhanced-networking-ena.md) | 
-| d3en\.2xlarge and smaller \| i3en\.3xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| i4i\.8xlarge | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
+| d3en\.2xlarge and smaller \| i3en\.3xlarge and smaller \| i4i\.4xlarge  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
 | d3\.8xlarge \| d3en\.4xlarge \| h1\.16xlarge \| i3\.16xlarge \| i3\.metal \| i3en\.6xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+| i4i\.16xlarge | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
 | d3en\.6xlarge | 40 Gbps | [ENA](enhanced-networking-ena.md) | 
 | d3\.8xlarge \| d3en\.8xlarge \| i3en\.12xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
-| d3en\.12xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
+| d3en\.12xlarge \| i4i\.32xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  i3en\.24xlarge \| i3en\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
 † These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
@@ -142,6 +157,10 @@ The following is a summary of network performance for storage optimized instance
 | i3en\.xlarge | 4\.2 | 25 | 
 | i3en\.2xlarge | 8\.4 | 25 | 
 | i3en\.3xlarge | 12\.5 | 25 | 
+| i4i\.large | \.78125 | 10 | 
+| i4i\.xlarge | 1\.875 | 10 | 
+| i4i\.2xlarge | 4\.687 | 12 | 
+| i4i\.4xlarge | 9\.375 | 25 | 
 
 ## SSD I/O performance<a name="storage-instances-diskperf"></a>
 
@@ -165,6 +184,13 @@ If you use all the SSD\-based instance store volumes available to your instance,
 | i3en\.12xlarge | 1,000,000 | 800,000 | 
 | i3en\.24xlarge | 2,000,000 | 1,600,000 | 
 | i3en\.metal | 2,000,000 | 1,600,000 | 
+| i4i\.large | 50,000 | 27,500 | 
+| i4i\.xlarge | 100,000 | 55,000 | 
+| i4i\.2xlarge | 200,000 | 110,000 | 
+| i4i\.4xlarge | 400,000 | 220,000 | 
+| i4i\.8xlarge | 800,000 | 440,000 | 
+| i4i\.16xlarge | 1,600,000 | 880,000 | 
+| i4i\.32xlarge | 3,200,000 | 1,760,000 | 
 
 As you fill your SSD\-based instance store volumes, the I/O performance that you get decreases\. This is due to the extra work that the SSD controller must do to find available space, rewrite existing data, and erase unused space so that it can be rewritten\. This process of garbage collection results in internal write amplification to the SSD, expressed as the ratio of SSD write operations to user write operations\. This decrease in performance is even larger if the write operations are not in multiples of 4,096 bytes or not aligned to a 4,096\-byte boundary\. If you write a smaller amount of bytes or bytes that are not aligned, the SSD controller must read the surrounding data and store the result in a new location\. This pattern results in significantly increased write amplification, increased latency, and dramatically reduced I/O performance\.
 
@@ -185,6 +211,7 @@ The following is a summary of features for storage optimized instances:
 | H1 | No | HDD \* | Yes | 
 | I3 | No | NVMe \* | Yes | 
 | I3en | No | NVMe \* | Yes | 
+| I4i | No | NVMe \* | Yes | 
 
 **\*** The root device volume must be an Amazon EBS volume\.
 

@@ -9,7 +9,7 @@ For more information about components included in these AMIs, see the following:
 + [Systems Manager SSM Agent Release Notes](https://github.com/aws/amazon-ssm-agent/blob/mainline/RELEASENOTES.md)
 + [Amazon ENA driver versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#ena-adapter-driver-versions)
 + [AWS NVME driver versions](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-nvme-drivers.html#nvme-driver-version-history)
-+ [AWS PV driver package history](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/pv-driver-history)
++ [AWS PV driver package history](xen-drivers-overview.md#pv-driver-history)
 + [AWS Tools for PowerShell Change Log](https://github.com/aws/aws-tools-for-powershell/blob/master/CHANGELOG.md)
 
 ## Monthly AMI updates for 2022 \(to date\)<a name="amis-2022"></a>

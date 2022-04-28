@@ -100,6 +100,7 @@ The following is a summary of the hardware specifications for compute optimized 
 | c6a\.24xlarge | 96 | 192 | 
 | c6a\.32xlarge | 128 | 256 | 
 | c6a\.48xlarge | 192 | 384 | 
+| c6a\.metal | 192 | 384 | 
 | c6i\.large | 2 | 4 | 
 | c6i\.xlarge | 4 | 8 | 
 | c6i\.2xlarge | 8 | 16 | 
@@ -140,7 +141,7 @@ The following is a summary of network performance for compute optimized instance
 | c5n\.4xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
 | c5\.18xlarge \| c5\.24xlarge \| c5\.metal \| c5d\.18xlarge \| c5d\.24xlarge \| c5d\.metal \| c6a\.16xlarge \| c6i\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c6a\.24xlarge \| c6i\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
-| c5n\.9xlarge \| c6a\.32xlarge \| c6a\.48xlarge \| c6i\.32xlarge \| c6i\.metal  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+| c5n\.9xlarge \| c6a\.32xlarge \| c6a\.48xlarge \| c6a\.metal \| c6i\.32xlarge \| c6i\.metal  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 | c5n\.18xlarge \| c5n\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
 † These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
