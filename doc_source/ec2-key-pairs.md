@@ -6,11 +6,11 @@ Anyone who possesses your private key can connect to your instances, so it's imp
 
 When you launch an instance, you are [prompted for a key pair](launching-instance.md#step-7-review-instance-launch)\. If you plan to connect to the instance using RDP, you must specify a key pair\. You can choose an existing key pair or create a new one\. With Windows instances, you use the private key to obtain the administrator password and then log in using RDP\. For more information about connecting to your instance, see [Connect to your Windows instance](connecting_to_windows_instance.md)\. For more information about key pairs and Linux instances, see [Amazon EC2 key pairs and Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
-Because Amazon EC2 doesn't keep a copy of your private key, there is no way to recover a private key if you lose it\. However, there can still be a way to connect to instances for which you've lost the private key\. For more information, see [I've lost my private key\. How can I connect to my Windows instance?](troubleshoot-connect-windows-instance.md#replacing-lost-key-pair-windows)\.
+Because Amazon EC2 doesn't keep a copy of your private key, there is no way to recover a private key if you lose it\. However, there can still be a way to connect to instances for which you've lost the private key\. For more information, see [I've lost my private key\. How can I connect to my Windows instance?](troubleshoot-connect-windows-instance.md#replacing-lost-key-pair-windows)
 
 You can use Amazon EC2 to create your key pairs\. You can also use a third\-party tool to create your key pairs, and then import the public keys to Amazon EC2\.
 
-Amazon EC2 supports 2048\-bit SSH\-2 RSA keys for Windows instances\.
+Amazon EC2 supports 2048\-bit SSH\-2 RSA keys for Windows instances\. ED25519 keys are not supported for Windows instances\.
 
 You can have up to 5,000 key pairs per Region\.
 

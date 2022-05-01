@@ -4,6 +4,7 @@ You can delete public keys that are stored in Amazon EC2\. Deleting a public key
 
 When you delete a public key using the following methods, you're only deleting the public key that you stored in Amazon EC2 when you [created](create-key-pairs.md#having-ec2-create-your-key-pair) or [imported](create-key-pairs.md#how-to-generate-your-own-key-and-import-it-to-aws) the key pair\. Deleting a public key doesn't remove the public key from any instances to which you've added it, either when you launched the instance or later\. It also doesn't delete the private key on your local computer\. You can continue to connect to instances that you launched using a public key that you've deleted from Amazon EC2 as long as you still have the private key \(`.pem`\) file\.
 
+**Important**  
 If you're using an Auto Scaling group \(for example, in an Elastic Beanstalk environment\), ensure that the public key you're deleting is not specified in an associated launch template or launch configuration\. If Amazon EC2 Auto Scaling detects an unhealthy instance, it launches a replacement instance\. However, the instance launch fails if the public key cannot be found\. For more information, see [Launch templates](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchTemplates.html) in the *Amazon EC2 Auto Scaling User Guide*\.
 
 You can delete a public key on Amazon EC2 using the following methods\.

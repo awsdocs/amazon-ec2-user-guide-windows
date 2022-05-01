@@ -152,7 +152,7 @@ The following table shows the corresponding ENA driver version to download for e
 
 | Windows Server version | ENA driver version | 
 | --- | --- | 
-|  Windows Server 2022  |  2\.2\.3 and later  | 
+|  Windows Server 2022  |  2\.4\.0 and later  | 
 | Windows Server 2019 |  latest  | 
 | Windows Server 2016 | latest | 
 | Windows Server 2012 R2 | latest | 
@@ -164,6 +164,7 @@ The following table summarizes the changes for each release\.
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+|  [2\.4\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/x64/2.4.0/AwsEnaNetworkDriver.zip)  | New Features [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | April 28, 2022 | 
 |   2\.2\.4  |   Announcement ENA Windows driver version 2\.2\.4 has been rolled back due to potential performance degradation on the sixth generation EC2 instances\. We recommend that you downgrade the driver, using one of the following methods:  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | October 26, 2021 | 
 |  [2\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/x64/2.2.3/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Windows ENA driver version 2\.2\.3 is the final version that supports Windows Server 2008 R2\. Currently available instance types that use ENA will continue to be supported on Windows Server 2008 R2, and the drivers are available by download\. No future instance types will support Windows Server 2008 R2, and you cannot launch, import, or migrate Windows Server 2008 R2 images to future instance types\.   | March 25, 2021 | 
 |  [2\.2\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.2.2/AwsEnaNetworkDriver.zip)  | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) Bug Fix [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | December 21, 2020 | 
