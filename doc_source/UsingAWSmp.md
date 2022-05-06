@@ -18,7 +18,7 @@ The AWS Management Pack provides the following views, which are displayed in the
 **Topics**
 + [EC2 Instances](#awsmp-ec2-instances-view)
 + [Amazon EBS Volumes](#awsmp-ebs-volumes-view)
-+ [Elastic Load Balancers](#awsmp-load-balancers-view)
++ [Elastic Load Balancers \(Classic ELB\)](#awsmp-load-balancers-view)
 + [AWS Elastic Beanstalk applications](#awsmp-beanstalk-apps-view)
 + [AWS CloudFormation stacks](#awsmp-cfn-stacks-view)
 + [Amazon performance views](#awsmp-performance-views)
@@ -28,7 +28,7 @@ The AWS Management Pack provides the following views, which are displayed in the
 
 ### EC2 Instances<a name="awsmp-ec2-instances-view"></a>
 
-View the health state of the EC2 instances for a particular AWS account, from all Availability Zones and regions\. The view also includes EC2 instances running in a virtual private cloud \(VPC\)\. The AWS Management Pack retrieves tags, so you can search and filter the list using those tags\.
+View the health state of the EC2 instances for a particular AWS account, from all Availability Zones and Regions\. The view also includes EC2 instances running in a virtual private cloud \(VPC\)\. The AWS Management Pack retrieves tags, so you can search and filter the list using those tags\.
 
 ![\[EC2 instances view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2_instance_view.png)
 
@@ -46,7 +46,7 @@ Shows the relationship of an instance with other components\.
 
 ### Amazon EBS Volumes<a name="awsmp-ebs-volumes-view"></a>
 
-Shows the health state of all the Amazon EBS volumes for a particular AWS account from all Availability Zones and regions\.
+Shows the health state of all the Amazon EBS volumes for a particular AWS account from all Availability Zones and Regions\.
 
 ![\[Amazon Elastic Block Store volumes view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs_volume_view.png)
 
@@ -55,9 +55,9 @@ Shows an Amazon EBS volume and any associated alarms\. The following illustratio
 
 ![\[Amazon Elastic Block Store volume diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs_volume_diagram_view.png)
 
-### Elastic Load Balancers<a name="awsmp-load-balancers-view"></a>
+### Elastic Load Balancers \(Classic ELB\)<a name="awsmp-load-balancers-view"></a>
 
-Shows the health state of all the load balancers for a particular AWS account from all regions\.
+Shows the health state of all of the Classic ELB load balancers for a particular AWS account from all Regions\.
 
 ![\[Elastic Load Balancing view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_view-2.png)
 
@@ -79,7 +79,7 @@ Shows the AWS Elastic Beanstalk application, application environment, applicatio
 
 ### AWS CloudFormation stacks<a name="awsmp-cfn-stacks-view"></a>
 
-Shows the health state of all the AWS CloudFormation stacks for a particular AWS account from all regions\.
+Shows the health state of all the AWS CloudFormation stacks for a particular AWS account from all Regions\.
 
 ![\[AWS CloudFormation stack state view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_view-2.png)
 

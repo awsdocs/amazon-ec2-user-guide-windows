@@ -82,8 +82,8 @@ For the best performance, we recommend that you use the following instance types
 | High memory \(u\-\*\) | u\-3tb1\.56xlarge \| u\-6tb1\.56xlarge \| u\-6tb1\.112xlarge \| u\-6tb1\.metal \| u\-9tb1\.112xlarge \| u\-9tb1\.metal \| u\-12tb1\.112xlarge \| u\-12tb1\.metal \| u\-18tb1\.metal \| u\-24tb1\.metal | [Memory optimized](memory-optimized-instances.md) | 
 | X1 | x1\.16xlarge \| x1\.32xlarge | [Memory optimized](memory-optimized-instances.md) | 
 | X1e | x1e\.xlarge \| x1e\.2xlarge \| x1e\.4xlarge \| x1e\.8xlarge \| x1e\.16xlarge \| x1e\.32xlarge | [Memory optimized](memory-optimized-instances.md) | 
-| X2idn | x2idn\.16xlarge \| x2idn\.24xlarge \| x2idn\.32xlarge  | [Memory optimized](memory-optimized-instances.md) | 
-| X2iedn | x2iedn\.xlarge \| x2iedn\.2xlarge \| x2iedn\.4xlarge \| x2iedn\.8xlarge \| x2iedn\.16xlarge \| x2iedn\.24xlarge \| x2iedn\.32xlarge  | [Memory optimized](memory-optimized-instances.md) | 
+| X2idn | x2idn\.16xlarge \| x2idn\.24xlarge \| x2idn\.32xlarge \| x2idn\.metal | [Memory optimized](memory-optimized-instances.md) | 
+| X2iedn | x2iedn\.xlarge \| x2iedn\.2xlarge \| x2iedn\.4xlarge \| x2iedn\.8xlarge \| x2iedn\.16xlarge \| x2iedn\.24xlarge \| x2iedn\.32xlarge \| x2iedn\.metal | [Memory optimized](memory-optimized-instances.md) | 
 | X2iezn | x2iezn\.2xlarge \| x2iezn\.4xlarge \| x2iezn\.6xlarge \| x2iezn\.8xlarge \| x2iezn\.12xlarge \| x2iezn\.metal | [Memory optimized](memory-optimized-instances.md) | 
 | z1d | z1d\.large \| z1d\.xlarge \| z1d\.2xlarge \| z1d\.3xlarge \| z1d\.6xlarge \| z1d\.12xlarge \| z1d\.metal | [Memory optimized](memory-optimized-instances.md) | 
 
@@ -159,7 +159,7 @@ The following components are part of the Nitro System:
 
 The following instances are built on the Nitro System:
 + **Virtualized**: C5, C5a, C5ad, C5d, C5n, C6a, C6i, D3, D3en, G4, G4ad, G5, I3en, I4i, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6a, M6i, `p3dn.24xlarge`, R5, R5a, R5ad, R5b, R5d, R5dn, R5n, R6i, T3, T3a, `u-3tb1.56xlarge`, `u-6tb1.56xlarge`, `u-6tb1.112xlarge`, `u-9tb1.112xlarge`, `u-12tb1.112xlarge`, X2idn, X2iedn, X2iezn, and z1d
-+ **Bare metal**: `c5.metal`, `c5d.metal`, `c5n.metal`, `c6a.metal`, `i3.metal`, `i3en.metal`, `m5.metal`, `m5d.metal`, `m5dn.metal`, `m5n.metal`, `m5zn.metal`, `m6a.metal`, `r5.metal`, `r5b.metal`, `r5d.metal`, `r5dn.metal`, `r5n.metal`, `r6i.metal`, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, `x2iezn.metal`, and `z1d.metal`
++ **Bare metal**: `c5.metal`, `c5d.metal`, `c5n.metal`, `c6a.metal`, `c6i.metal`, `g4dn.metal`, `i3.metal`, `i3en.metal`, `m5.metal`, `m5d.metal`, `m5dn.metal`, `m5n.metal`, `m5zn.metal`, `m6a.metal`, `m6i.metal`, `r5.metal`, `r5b.metal`, `r5d.metal`, `r5dn.metal`, `r5n.metal`, `r6i.metal`, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, `x2idn.metal`, `x2iedn.metal`, `x2iezn.metal`, and `z1d.metal`
 
 **Learn more**
 

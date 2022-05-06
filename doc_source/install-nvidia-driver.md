@@ -196,7 +196,7 @@ These drivers are available to AWS customers only\. By downloading them, you agr
      reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global" /v vGamingMarketplace /t REG_DWORD /d 2
      ```
 
-1. Use the following command to download the certification file, rename the file `GridSwCert.txt`, and move the file to the Public Documents folder on your system drive\. Typically, the folder path is C:\\Users\\Public\\Public Documents \(Windows Explorer\) or C:\\Users\\Public\\Documents \(Command Prompt window\)\.
+1. Run the following command, which downloads the certification file, renames the file `GridSwCert.txt`, and moves the file to the Public Documents folder on your system drive\. Typically, the folder path is C:\\Users\\Public\\Public Documents \(Windows Explorer\) or C:\\Users\\Public\\Documents \(Command Prompt window\)\.
    + For version 461\.40 or later:
 
      ```
@@ -224,9 +224,9 @@ These drivers are available to AWS customers only\. By downloading them, you agr
    The output should be similar to the following\.
 
    ```
-   GRID Licensed Product
-       Product Name              : GRID vGaming
-       License Status            : Licensed
+   vGPU Software Licensed Product
+       Product Name              : NVIDIA Cloud Gaming
+       License Status            : Licensed (Expiry: N/A)
    ```
 
 1. \(Optional\) To help take advantage of the single display of up to 4K resolution, set up the high\-performance display protocol [NICE DCV](https://docs.aws.amazon.com/dcv)\. If you do not require this functionality, do not complete this step\.
