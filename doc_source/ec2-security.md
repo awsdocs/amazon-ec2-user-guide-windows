@@ -27,3 +27,4 @@ For security best practices for Amazon EC2 running Windows Server, see **Securit
 + [Change management in Amazon EC2](change-management.md)
 + [Compliance validation for Amazon EC2](compliance-validation.md)
 + [Audit and accountability in Amazon EC2](audit-accountability.md)
++ [NitroTPM](nitrotpm.md)

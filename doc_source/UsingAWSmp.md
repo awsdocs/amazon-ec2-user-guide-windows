@@ -18,7 +18,7 @@ The AWS Management Pack provides the following views, which are displayed in the
 **Topics**
 + [EC2 Instances](#awsmp-ec2-instances-view)
 + [Amazon EBS Volumes](#awsmp-ebs-volumes-view)
-+ [Elastic Load Balancers \(Classic ELB\)](#awsmp-load-balancers-view)
++ [Classic Load Balancers](#awsmp-load-balancers-view)
 + [AWS Elastic Beanstalk applications](#awsmp-beanstalk-apps-view)
 + [AWS CloudFormation stacks](#awsmp-cfn-stacks-view)
 + [Amazon performance views](#awsmp-performance-views)
@@ -55,9 +55,9 @@ Shows an Amazon EBS volume and any associated alarms\. The following illustratio
 
 ![\[Amazon Elastic Block Store volume diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs_volume_diagram_view.png)
 
-### Elastic Load Balancers \(Classic ELB\)<a name="awsmp-load-balancers-view"></a>
+### Classic Load Balancers<a name="awsmp-load-balancers-view"></a>
 
-Shows the health state of all of the Classic ELB load balancers for a particular AWS account from all Regions\.
+Shows the health state of all of the Classic Load Balancers for a particular AWS account from all Regions\.
 
 ![\[Elastic Load Balancing view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_view-2.png)
 

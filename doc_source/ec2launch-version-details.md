@@ -9,6 +9,7 @@ The following table describes the released versions of EC2Launch\. Note that the
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 1\.3\.2003639 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html) | 10 May 2022 | 
 | 1\.3\.2003498 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-version-details.html) | 31 January 2022 | 
 | 1\.3\.2003411 | Changed password generation logic to exclude passwords with low complexity\. | 04 August 2021 | 
 | 1\.3\.2003364 | Updated Install\-EgpuManager with IMDSv2 support\. | 07 June 2021 | 

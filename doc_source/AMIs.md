@@ -15,4 +15,5 @@ An AMI includes the following:
 + [Paid AMIs](paid-amis.md)
 + [AMI lifecycle](ami-lifecycle.md)
 + [Use encryption with EBS\-backed AMIs](AMIEncryption.md)
++ [Monitor AMI events using Amazon EventBridge](monitor-ami-events.md)
 + [Understand AMI billing information](ami-billing-info.md)

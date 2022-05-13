@@ -9,7 +9,7 @@ The AWS Management Pack uses Amazon CloudWatch metrics and alarms to monitor you
 You can monitor the following resources:
 + EC2 instances
 + EBS volumes
-+ Classic ELB load balancers
++ Classic Load Balancers
 + Amazon EC2 Auto Scaling groups and Availability Zones
 + Elastic Beanstalk applications
 + CloudFormation stacks
