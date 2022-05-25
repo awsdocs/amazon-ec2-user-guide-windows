@@ -14,7 +14,7 @@ This section contains information about how to configure settings for EC2Launch 
 
 The following procedure describes how to use the EC2Launch v2 settings dialog box to enable or disable settings\.
 **Note**  
-If you manually configured custom tasks in the agent\-config\.yml file, and you attempt to open the Amazon EC2Launch settings dialog box, you will receive an error\. To update launch settings after manually configuring custom tasks, continue to manually update the agent\-config\.yml file located at C:\\ProgramData\\Amazon\\EC2Launch\\config\. For task configuration details, see [EC2Launch v2 task configuration](#ec2launch-v2-task-configuration)\.
+If you improperly configure custom tasks in the agent\-config\.yml file, and you attempt to open the Amazon EC2Launch settings dialog box, you will receive an error\. For example schema, see [Example: `agent-config.yml`](#ec2launch-v2-example-agent-config)\.
 
 1. Launch and connect to your Windows instance\.
 

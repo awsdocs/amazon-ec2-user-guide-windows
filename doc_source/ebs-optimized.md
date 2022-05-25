@@ -158,6 +158,7 @@ You can also view this information programatically using the AWS CLI\. For more 
 | i4i\.8xlarge | 10,000 | 1,250 | 40,000 | 
 | i4i\.16xlarge | 20,000 | 2,500 | 80,000 | 
 | i4i\.32xlarge | 40,000 | 5,000 | 160,000 | 
+| i4i\.metal | 40,000 | 5,000 | 160,000 | 
 | m4\.large | 450 | 56\.25 | 3,600 | 
 | m4\.xlarge | 750 | 93\.75 | 6,000 | 
 | m4\.2xlarge | 1,000 | 125 | 8,000 | 

@@ -9,23 +9,7 @@ When you launch an instance from an AMI that has NitroTPM support enabled, the i
 
 ## Launch an instance with NitroTPM enabled<a name="launch-instance-with-nitrotpm"></a>
 
-When you launch an instance with the following prerequisites, NitroTPM is automatically enabled on the instance\. You can only enable NitroTPM on an instance at launch\. For information about launching an instance, see [Launch your instance](LaunchingAndUsingInstances.md)\.
-
-**Prerequisites for Windows instances**
-+ **AMI** – Requires an AMI with NitroTPM enabled\.
-
-  The following Windows AMIs are preconfigured to enable NitroTPM and UEFI Secure Boot with Microsoft keys:
-  + TPM\-Windows\_Server\-2022\-English\-Full\-Base
-  + TPM\-Windows\_Server\-2022\-English\-Core\-Base
-  + TPM\-Windows\_Server\-2019\-English\-Full\-Base
-  + TPM\-Windows\_Server\-2019\-English\-Core\-Base
-  + TPM\-Windows\_Server\-2016\-English\-Full\-Base
-  + TPM\-Windows\_Server\-2016\-English\-Core\-Base
-
-  Currently, we do not support importing Windows with NitroTPM by using the [import\-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html) command\.
-+ **Instance type** –Many virtualized instance types that support UEFI Secure Boot also support NitroTPM, such as `C5, C5a, C5ad, C5d, C5n, D3, D3en, I3en, Inf1, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, R5, R5a, R5ad, R5b, R5d, R5dn, R5n`, and `Z1d`\. Support on `C6a, C6i, G4ad, G4dn, G5, Hpc6a, I4i, M6a, M6i, P3dn, R6i, T3, T3a, U-12tb1, U-3tb1, U-6tb1, U-9tb1, X2idn, X2iedn`, and `X2iezn` are coming soon\!
-
-  For the instance types that support UEFI Secure Boot, see [Considerations](launch-instance-boot-mode.md#boot-considerations)\.
+When you launch an instance with the [ prerequisites](enable-nitrotpm-prerequisites.md), NitroTPM is automatically enabled on the instance\. You can only enable NitroTPM on an instance at launch\. For information about launching an instance, see [Launch your instance](LaunchingAndUsingInstances.md)\.
 
 ## Stop using NitroTPM on an instance<a name="disable-nitrotpm-support-on-instance"></a>
 

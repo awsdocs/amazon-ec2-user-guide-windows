@@ -19,4 +19,4 @@ UEFI Secure Boot protects your instance and its operating system against boot fl
   Currently, we do not support importing Windows with UEFI Secure Boot by using the [import\-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html) command\.
 + **Instance type** – All virtualized instance types that support UEFI also support UEFI Secure Boot\. Bare metal instance types do not support UEFI Secure Boot\. For the instance types that support UEFI Secure Boot, see [Considerations](launch-instance-boot-mode.md#boot-considerations)\.
 
-For the prerequisites for Linux instances, see [Launch an instance with UEFI Secure Boot support](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/uefi-secure-boot.html#launch-instance-with-uefi-sb) in the ***Amazon EC2 User Guide for Linux Instances*\.
+For the prerequisites for Linux instances, see [Launch an instance with UEFI Secure Boot support](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/launch-instance-with-uefi-sb) in the ***Amazon EC2 User Guide for Linux Instances*\.

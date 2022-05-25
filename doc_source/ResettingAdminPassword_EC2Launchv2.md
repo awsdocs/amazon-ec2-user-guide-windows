@@ -1,10 +1,10 @@
 # Reset the Windows administrator password using EC2Launch v2<a name="ResettingAdminPassword_EC2Launchv2"></a>
 
-If you have lost your Windows administrator password and are using a supported Windows AMI that includes the EC2Launch v2 service, you can use EC2Launch v2 to generate a new password\.
+If you have lost your Windows administrator password and are using a supported Windows AMI that includes the EC2Launch v2 agent, you can use EC2Launch v2 to generate a new password\.
 
-If you are using a Windows Server 2016 or later AMI that does not include the EC2Launch v2 service, see [Reset the Windows administrator password using EC2Launch](ResettingAdminPassword_EC2Launch.md)\.
+If you are using a Windows Server 2016 or later AMI that does not include the EC2Launch v2 agent, see [Reset the Windows administrator password using EC2Launch](ResettingAdminPassword_EC2Launch.md)\.
 
-If you are using a Windows Server AMI earlier than Windows Server 2016 that does not include the EC2Launch v2 service, see [Reset the Windows administrator password using EC2Config](ResettingAdminPassword_EC2Config.md)\.
+If you are using a Windows Server AMI earlier than Windows Server 2016 that does not include the EC2Launch v2 agent, see [Reset the Windows administrator password using EC2Config](ResettingAdminPassword_EC2Config.md)\.
 
 **Note**  
 If you have disabled the local administrator account on the instance and your instance is configured for Systems Manager, you can also re\-enable and reset your local administrator password by using EC2Rescue and Run Command\. For more information, see [Using EC2Rescue for Windows Server with Systems Manager Run Command](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2rw-ssm.html)\.

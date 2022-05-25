@@ -83,6 +83,7 @@ The following table describes the released versions of the AWS NVMe driver\.
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
+|  [1\.4\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.4.1/AWSNVMe.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-nvme-drivers.html)  | 20 May 2022 | 
 |  [1\.4\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.4.0/AWSNVMe.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-nvme-drivers.html)  | 23 November 2021 | 
 |  [1\.3\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.3.2/AWSNVMe.zip)  |  Fixed issue with modifying EBS volumes actively processing IO, which may result in data corruption\. Customers who do not modify online EBS volumes \(for example, resizing or changing type\) are not impacted\.  | 10 September 2019 | 
 |  [1\.3\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.3.1/AWSNVMe.zip)  |  Reliability Improvements | 21 May 2019 | 

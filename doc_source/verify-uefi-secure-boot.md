@@ -9,4 +9,4 @@
 
 You can also use the Windows PowerShell Cmdlet `Confirm-SecureBootUEFI` to check the the Secure Boot status\.
 
-To verify whether a Linux instance is enabled, see [Verify whether a Linux instance is supported for UEFI Secure Boot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/uefi-secure-boot.html#verify-uefi-secure-boot) in the ***Amazon EC2 User Guide for Linux Instances*\.
+To verify whether a Linux instance is enabled, see [Verify whether a Linux instance is supported for UEFI Secure Boot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/verify-uefi-secure-boot) in the ***Amazon EC2 User Guide for Linux Instances*\.

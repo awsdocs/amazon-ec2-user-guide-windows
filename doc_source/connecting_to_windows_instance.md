@@ -22,7 +22,7 @@ For information about connecting to a Linux instance, see [Connect to your Linux
   + \[Linux\] Use [Remmina](https://remmina.org/)\.
 + **Locate the private key**
 
-  Get the fully\-qualified path to the location on your computer of the `.pem` file for the key pair that you specified when you launched the instance\. For more information, see [Identify the key pair that was specified at launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-key-pairs.html#identify-key-pair-specified-at-launch)\. If you can't find your private key file, see [I've lost my private key\. How can I connect to my Windows instance?](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/troubleshoot-connect-windows-instance.html#replacing-lost-key-pair-windows)
+  Get the fully\-qualified path to the location on your computer of the `.pem` file for the key pair that you specified when you launched the instance\. For more information, see [Identify the public key specified at launch](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/describe-keys.html#identify-key-pair-specified-at-launch)\. If you can't find your private key file, see [I've lost my private key\. How can I connect to my Windows instance?](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/troubleshoot-connect-windows-instance.html#replacing-lost-key-pair-windows)
 + **Enable inbound RDP traffic from your IP address to your instance**
 
   Ensure that the security group associated with your instance allows incoming RDP traffic \(`port 3389`\) from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorize inbound traffic for your Windows instances](authorizing-access-to-an-instance.md)\.

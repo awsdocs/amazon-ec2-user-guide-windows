@@ -53,7 +53,7 @@ For the best performance, we recommend that you use the following instance types
 | H1 | h1\.2xlarge \| h1\.4xlarge \| h1\.8xlarge \| h1\.16xlarge | [Storage optimized](storage-optimized-instances.md) | 
 | I3 | i3\.large \| i3\.xlarge \| i3\.2xlarge \| i3\.4xlarge \| i3\.8xlarge \| i3\.16xlarge \| i3\.metal | [Storage optimized](storage-optimized-instances.md) | 
 | I3en | i3en\.large \| i3en\.xlarge \| i3en\.2xlarge \| i3en\.3xlarge \| i3en\.6xlarge \| i3en\.12xlarge \| i3en\.24xlarge \| i3en\.metal | [Storage optimized](storage-optimized-instances.md) | 
-| I4i | i4i\.large \| i4i\.xlarge \| i4i\.2xlarge \| i4i\.4xlarge \| i4i\.8xlarge \| i4i\.16xlarge \| i4i\.32xlarge  | [Storage optimized](storage-optimized-instances.md) | 
+| I4i | i4i\.large \| i4i\.xlarge \| i4i\.2xlarge \| i4i\.4xlarge \| i4i\.8xlarge \| i4i\.16xlarge \| i4i\.32xlarge \| i4i\.metal | [Storage optimized](storage-optimized-instances.md) | 
 | M4 | m4\.large \| m4\.xlarge \| m4\.2xlarge \| m4\.4xlarge \| m4\.10xlarge \| m4\.16xlarge | [General purpose](general-purpose-instances.md) | 
 | M5 | m5\.large \| m5\.xlarge \| m5\.2xlarge \| m5\.4xlarge \| m5\.8xlarge \| m5\.12xlarge \| m5\.16xlarge \| m5\.24xlarge \| m5\.metal | [General purpose](general-purpose-instances.md) | 
 | M5a | m5a\.large \| m5a\.xlarge \| m5a\.2xlarge \| m5a\.4xlarge \| m5a\.8xlarge \| m5a\.12xlarge \| m5a\.16xlarge \| m5a\.24xlarge | [General purpose](general-purpose-instances.md) | 
@@ -131,7 +131,7 @@ Amazon EC2 instances that run on Intel processors may include the following feat
 + **Intel Turbo Boost Technology** — Intel Turbo Boost Technology processors automatically run cores faster than the base operating frequency\.
 + **Intel Deep Learning Boost \(Intel DL Boost\)** — Accelerates AI deep learning use cases\. The 2nd Gen Intel Xeon Scalable processors extend Intel AVX\-512 with a new Vector Neural Network Instruction \(VNNI/INT8\) that significantly increases deep learning inference performance over previous generation Intel Xeon Scalable processors \(with FP32\) for image recognition/segmentation, object detection, speech recognition, language translation, recommendation systems, reinforcement learning, and more\. VNNI may not be compatible with all Linux distributions\. 
 
-  The following instances support VNNI: `M5n`, `R5n`, `M5dn`, `M5zn`, `R5b`, `R5dn`, `D3`, and `D3en`\. `C5` and `C5d` instances support VNNI for only `12xlarge`, `24xlarge`, and `metal` instances\. 
+  The following instances support VNNI: `M5n`, `R5n`, `M5dn`, `M5zn`, `R5b`, `R5dn`, `D3`, `D3en`, and `C6i`\. `C5` and `C5d` instances support VNNI for only `12xlarge`, `24xlarge`, and `metal` instances\.
 
 Confusion may result from industry naming conventions for 64\-bit CPUs\. Chip manufacturer Advanced Micro Devices \(AMD\) introduced the first commercially successful 64\-bit architecture based on the Intel x86 instruction set\. Consequently, the architecture is widely referred to as AMD64 regardless of the chip manufacturer\. Windows and several Linux distributions follow this practice\. This explains why the internal system information on an instance running Ubuntu or Windows displays the CPU architecture as AMD64 even though the instances are running on Intel hardware\.
 
@@ -159,7 +159,7 @@ The following components are part of the Nitro System:
 
 The following instances are built on the Nitro System:
 + **Virtualized**: C5, C5a, C5ad, C5d, C5n, C6a, C6i, D3, D3en, G4, G4ad, G5, I3en, I4i, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6a, M6i, `p3dn.24xlarge`, R5, R5a, R5ad, R5b, R5d, R5dn, R5n, R6i, T3, T3a, `u-3tb1.56xlarge`, `u-6tb1.56xlarge`, `u-6tb1.112xlarge`, `u-9tb1.112xlarge`, `u-12tb1.112xlarge`, X2idn, X2iedn, X2iezn, and z1d
-+ **Bare metal**: `c5.metal`, `c5d.metal`, `c5n.metal`, `c6a.metal`, `c6i.metal`, `g4dn.metal`, `i3.metal`, `i3en.metal`, `m5.metal`, `m5d.metal`, `m5dn.metal`, `m5n.metal`, `m5zn.metal`, `m6a.metal`, `m6i.metal`, `r5.metal`, `r5b.metal`, `r5d.metal`, `r5dn.metal`, `r5n.metal`, `r6i.metal`, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, `x2idn.metal`, `x2iedn.metal`, `x2iezn.metal`, and `z1d.metal`
++ **Bare metal**: `c5.metal`, `c5d.metal`, `c5n.metal`, `c6a.metal`, `c6i.metal`, `g4dn.metal`, `i3.metal`, `i3en.metal`, `i4i.metal`, `m5.metal`, `m5d.metal`, `m5dn.metal`, `m5n.metal`, `m5zn.metal`, `m6a.metal`, `m6i.metal`, `r5.metal`, `r5b.metal`, `r5d.metal`, `r5dn.metal`, `r5n.metal`, `r6i.metal`, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, `x2idn.metal`, `x2iedn.metal`, `x2iezn.metal`, and `z1d.metal`
 
 **Learn more**
 

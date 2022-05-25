@@ -98,6 +98,16 @@ The following is a summary of the hardware specifications for storage optimized 
 | i4i\.8xlarge | 32 | 256 | 
 | i4i\.16xlarge | 64 | 512 | 
 | i4i\.32xlarge | 128 | 1,024 | 
+| i4i\.metal | 128 | 1,024 | 
+
+The storage optimized instances use the following processors\.
+
+**Intel processors**
++ **Intel Xeon Scalable processors \(Haswell E5\-2676 v3\)**: D2
++ **Intel Xeon Scalable processors \(Broadwell E5\-2686 v4\)**: H1, I3
++ **Intel Xeon Scalable processors \(Skylake 8175M or Cascade Lake 8259CL\)**: I3en
++ **2nd generation Intel Xeon Scalable processors \(Cascade Lake 8259CL\)**: D3, D3en
++ **3rd generation Intel Xeon Scalable processors \(Ice Lake 8375C\)**: I4i
 
 For more information, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
@@ -129,7 +139,7 @@ The following is a summary of network performance for storage optimized instance
 | i4i\.16xlarge | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
 | d3en\.6xlarge | 40 Gbps | [ENA](enhanced-networking-ena.md) | 
 | d3\.8xlarge \| d3en\.8xlarge \| i3en\.12xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
-| d3en\.12xlarge \| i4i\.32xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
+| d3en\.12xlarge \| i4i\.32xlarge \| i4i\.metal | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  i3en\.24xlarge \| i3en\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
 
 † These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
@@ -189,6 +199,7 @@ If you use all the SSD\-based instance store volumes available to your instance,
 | i4i\.8xlarge | 800,000 | 440,000 | 
 | i4i\.16xlarge | 1,600,000 | 880,000 | 
 | i4i\.32xlarge | 3,200,000 | 1,760,000 | 
+| i4i\.metal | 3,200,000 | 1,760,000 | 
 
 As you fill your SSD\-based instance store volumes, the I/O performance that you get decreases\. This is due to the extra work that the SSD controller must do to find available space, rewrite existing data, and erase unused space so that it can be rewritten\. This process of garbage collection results in internal write amplification to the SSD, expressed as the ratio of SSD write operations to user write operations\. This decrease in performance is even larger if the write operations are not in multiples of 4,096 bytes or not aligned to a 4,096\-byte boundary\. If you write a smaller amount of bytes or bytes that are not aligned, the SSD controller must read the surrounding data and store the result in a new location\. This pattern results in significantly increased write amplification, increased latency, and dramatically reduced I/O performance\.
 

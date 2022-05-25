@@ -219,6 +219,7 @@ The following table lists the maximum number of network interfaces per instance 
 | i4i\.8xlarge | 8 | 30 | 30 | 
 | i4i\.16xlarge | 15 | 50 | 50 | 
 | i4i\.32xlarge | 15 | 50 | 50 | 
+| i4i\.metal | 15 | 50 | 50 | 
 | m1\.small |  2  |  4  | IPv6 not supported | 
 | m1\.medium |  2  |  6  | IPv6 not supported | 
 | m1\.large |  3  |  10  | IPv6 not supported | 
