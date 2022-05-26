@@ -53,6 +53,7 @@ The following table summarizes the supported NVIDIA drivers for each GPU instanc
 | G5 | Yes | Yes | Yes | 
 | P2 | Yes | No | No | 
 | P3 | Yes | Yes ² | No | 
+| Yes | No | No | 
 
 ¹ This Tesla driver also supports optimized graphics applications specific to the ARM64 platform
 

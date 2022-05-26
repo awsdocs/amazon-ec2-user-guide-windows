@@ -46,6 +46,8 @@ G3 instances support NVIDIA GRID Virtual Workstation and NVIDIA GRID Virtual App
 <a name="g2-instances"></a>
 **G2 instances**  
 These instances use NVIDIA GRID K520 GPUs and provide a cost\-effective, high\-performance platform for graphics applications using DirectX or OpenGL\. NVIDIA GRID GPUs also support NVIDIA’s fast capture and encode API operations\. Example applications include video creation services, 3D visualizations, streaming graphics\-intensive applications, and other server\-side graphics workloads\.
+
+P4de instances offer NVIDIA 80GB\-A100s GPUs
 <a name="p3-instances"></a>
 **P3 instances**  
 These instances use NVIDIA Tesla V100 GPUs and are designed for general purpose GPU computing using the CUDA or OpenCL programming models or through a machine learning framework\. P3 instances provide high\-bandwidth networking, powerful half, single, and double\-precision floating\-point capabilities, and up to 32 GiB of memory per GPU, which makes them ideal for deep learning, computational fluid dynamics, computational finance, seismic analysis, molecular modeling, genomics, rendering, and other server\-side GPU compute workloads\. Tesla V100 GPUs do not support graphics mode\.
@@ -192,14 +194,14 @@ The following is a summary of features for accelerated computing instances\.
 
 |  | EBS only | NVMe EBS | Instance store | Placement group | 
 | --- | --- | --- | --- | --- | 
-| F1 | No | No | NVMe \* | Yes | 
-| G2 | No | No | SSD | Yes | 
-| G3 | Yes | No | No | Yes | 
-| G4ad | No | Yes | NVMe \* | Yes | 
-| G4dn | No | Yes | NVMe \* | Yes | 
+|  F1  |  No  |  No  |  NVMe \*  |  Yes  | 
+|  G2  |  No  |  No  |  SSD  |  Yes  | 
+|  G3  |  Yes  |  No  |  No  |  Yes  | 
+|  G4ad  |  No  |  Yes  |  NVMe \*  |  Yes  | 
+|  G4dn  |  No  |  Yes  |  NVMe \*  |  Yes  | 
 | G5 | No | Yes | NVMe \* | Yes | 
-| P2 | Yes | No | No | Yes | 
-| P3 |  24xlarge: No All other sizes: Yes  |  24xlarge: Yes All other sizes: No  | 24xlarge: NVMe \* | Yes | 
+|  P2  |  Yes  |  No  |  No  |  Yes  | 
+|  P3  |  24xlarge: No All other sizes: Yes  |  24xlarge: Yes All other sizes: No  | 24xlarge: NVMe \* |  Yes  | 
 
 **\*** The root device volume must be an Amazon EBS volume\.
 
