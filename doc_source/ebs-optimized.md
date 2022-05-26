@@ -92,6 +92,16 @@ You can also view this information programatically using the AWS CLI\. For more 
 | c6i\.24xlarge | 30,000 | 3,750 | 120,000 | 
 | c6i\.32xlarge | 40,000 | 5,000 | 160,000 | 
 | c6i\.metal | 40,000 | 5,000 | 160,000 | 
+| c6id\.large \* | 10,000 | 1,250 | 40,000 | 
+| c6id\.xlarge \* | 10,000 | 1,250 | 40,000 | 
+| c6id\.2xlarge \* | 10,000 | 1,250 | 40,000 | 
+| c6id\.4xlarge \* | 10,000 | 1,250 | 40,000 | 
+| c6id\.8xlarge | 10,000 | 1,250 | 40,000 | 
+| c6id\.12xlarge | 15,000 | 1,875 | 60,000 | 
+| c6id\.16xlarge | 20,000 | 2,500 | 80,000 | 
+| c6id\.24xlarge | 30,000 | 3,750 | 120,000 | 
+| c6id\.32xlarge | 40,000 | 5,000 | 160,000 | 
+| c6id\.metal | 40,000 | 5,000 | 160,000 | 
 | d2\.xlarge | 750 | 93\.75 | 6,000 | 
 | d2\.2xlarge | 1,000 | 125 | 8,000 | 
 | d2\.4xlarge | 2,000 | 250 | 16,000 | 
@@ -245,6 +255,16 @@ You can also view this information programatically using the AWS CLI\. For more 
 | m6i\.24xlarge | 30,000 | 3,750 | 120,000 | 
 | m6i\.32xlarge | 40,000 | 5,000 | 160,000 | 
 | m6i\.metal | 40,000 | 5,000 | 160,000 | 
+| m6id\.large \* | 10,000 | 1,250 | 40,000 | 
+| m6id\.xlarge \* | 10,000 | 1,250 | 40,000 | 
+| m6id\.2xlarge \* | 10,000 | 1,250 | 40,000 | 
+| m6id\.4xlarge \* | 10,000 | 1,250 | 40,000 | 
+| m6id\.8xlarge | 10,000 | 1,250 | 40,000 | 
+| m6id\.12xlarge | 15,000 | 1,875 | 60,000 | 
+| m6id\.16xlarge | 20,000 | 2,500 | 80,000 | 
+| m6id\.24xlarge | 30,000 | 3,750 | 120,000 | 
+| m6id\.32xlarge | 40,000 | 5,000 | 160,000 | 
+| m6id\.metal | 40,000 | 5,000 | 160,000 | 
 | p2\.xlarge | 750 | 93\.75 | 6,000 | 
 | p2\.8xlarge | 5,000 | 625 | 32,500 | 
 | p2\.16xlarge | 10,000 | 1,250 | 65,000 | 
@@ -417,6 +437,10 @@ You can also view this information programatically using the AWS CLI\. For more 
 | c6i\.xlarge | 1,250 | 156\.25 | 6,000 | 
 | c6i\.2xlarge | 2,500 | 312\.5 | 12,000 | 
 | c6i\.4xlarge | 5,000 | 625 | 20,000 | 
+| c6id\.large | 650 | 81\.25 | 3,600 | 
+| c6id\.xlarge | 1,250 | 156\.25 | 6,000 | 
+| c6id\.2xlarge | 2,500 | 312\.5 | 12,000 | 
+| c6id\.4xlarge | 5,000 | 625 | 20,000 | 
 | d3\.xlarge | 850 | 106\.25 | 5,000 | 
 | d3\.2xlarge | 1,700 | 212\.5 | 10,000 | 
 | d3en\.large | 425 | 53\.125 | 2,500 | 
@@ -465,6 +489,10 @@ You can also view this information programatically using the AWS CLI\. For more 
 | m6i\.xlarge | 1,250 | 156\.25 | 6,000 | 
 | m6i\.2xlarge | 2,500 | 312\.5 | 12,000 | 
 | m6i\.4xlarge | 5,000 | 625 | 20,000 | 
+| m6id\.large | 650 | 81\.25 | 3,600 | 
+| m6id\.xlarge | 1,250 | 156\.25 | 6,000 | 
+| m6id\.2xlarge | 2,500 | 312\.5 | 12,000 | 
+| m6id\.4xlarge | 5,000 | 625 | 20,000 | 
 | r5\.large | 650 | 81\.25 | 3,600 | 
 | r5\.xlarge | 1,150 | 143\.75 | 6,000 | 
 | r5\.2xlarge | 2,300 | 287\.5 | 12,000 | 

@@ -69,6 +69,16 @@ The following table provides the quantity, size, type, and performance optimizat
 | c5d\.18xlarge | 2 x 900 GB \(1\.8 TB\) | NVMe SSD |  | ✔ | 
 | c5d\.24xlarge | 4 x 900 GB \(3\.6 TB\) | NVMe SSD |  | ✔ | 
 | c5d\.metal | 4 x 900 GB \(3\.6 TB\) | NVMe SSD |  | ✔ | 
+| c6id\.large | 1 x 118 GB  | NVMe SSD |  | ✔ | 
+| c6id\.xlarge | 1 x 237 GB | NVMe SSD |  | ✔ | 
+| c6id\.2xlarge | 1 x 474 GB | NVMe SSD |  | ✔ | 
+| c6id\.4xlarge | 1 x 950 GB | NVMe SSD |  | ✔ | 
+| c6id\.8xlarge | 1 x 1,900 GB | NVMe SSD |  | ✔ | 
+| c6id\.12xlarge | 2 x 1,425 GB \(2\.85 TB\) | NVMe SSD |  | ✔ | 
+| c6id\.16xlarge | 2 x 1,900 GB \(3\.8 TB\) | NVMe SSD |  | ✔ | 
+| c6id\.24xlarge | 4 x 1,425 GB \(5\.7 TB\) | NVMe SSD |  | ✔ | 
+| c6id\.32xlarge | 4 x 1,900 GB \(7\.6 TB\) | NVMe SSD |  | ✔ | 
+| c6id\.metal | 4 x 1,900 GB \(7\.6 TB\) | NVMe SSD |  | ✔ | 
 | cc2\.8xlarge | 4 x 840 GB \(3\.36 TB\) | HDD | ✔ |  | 
 | cr1\.8xlarge | 2 x 120 GB \(240 GB\) | SSD | ✔ |  | 
 | d2\.xlarge | 3 x 2,000 GB \(6 TB\) | HDD |  |  | 
@@ -180,6 +190,16 @@ The following table provides the quantity, size, type, and performance optimizat
 | m5dn\.16xlarge | 4 x 600 GB \(2\.4 TB\) | NVMe SSD |  | ✔ | 
 | m5dn\.24xlarge | 4 x 900 GB \(3\.6 TB\) | NVMe SSD |  | ✔ | 
 | m5dn\.metal | 4 x 900 GB \(3\.6 TB\) | NVMe SSD |  | ✔ | 
+| m6id\.large | 1 x 118 GB  | NVMe SSD |  | ✔ | 
+| m6id\.xlarge | 1 x 237 GB | NVMe SSD |  | ✔ | 
+| m6id\.2xlarge | 1 x 474 GB | NVMe SSD |  | ✔ | 
+| m6id\.4xlarge | 1 x 950 GB | NVMe SSD |  | ✔ | 
+| m6id\.8xlarge | 1 x 1,900 GB | NVMe SSD |  | ✔ | 
+| m6id\.12xlarge | 2 x 1,425 GB \(2\.85 TB\) | NVMe SSD |  | ✔ | 
+| m6id\.16xlarge | 2 x 1,900 GB \(3\.8 TB\) | NVMe SSD |  | ✔ | 
+| m6id\.24xlarge | 4 x 1,425 GB \(5\.7 TB\) | NVMe SSD |  | ✔ | 
+| m6id\.32xlarge | 4 x 1,900 GB \(7\.6 TB\) | NVMe SSD |  | ✔ | 
+| m6id\.metal | 4 x 1,900 GB \(7\.6 TB\) | NVMe SSD |  | ✔ | 
 | p3dn\.24xlarge | 2 x 900 GB \(1\.8 TB\) | NVMe SSD |  | ✔ | 
 | r3\.large | 1 x 32 GB | SSD |  | ✔ | 
 | r3\.xlarge | 1 x 80 GB | SSD |  | ✔ | 
