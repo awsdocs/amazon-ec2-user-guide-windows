@@ -150,4 +150,7 @@ Total # of bytes             : 32210153472
 Total # of avail free bytes  : 18113204224
 ```
 
+**Tip**  
+You can also use the CloudWatch agent to collect disk space usage metrics from an Amazon EC2 instance without connecting to the instance\. For more information, see [ Create the CloudWatch agent configuration file](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file.html) and [Installing the CloudWatch agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-EC2-Instance.html) in the *Amazon CloudWatch User Guide*\. If you need to monitor disk space usage for multiple instances, you can install and configure the CloudWatch agent on those instances using Systems Manager\. For more information, see [ Installing the CloudWatch agent using Systems Manager](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/installing-cloudwatch-agent-ssm.html)\.
+
 For information about viewing free disk space on a Linux instance, see [View free disk space](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-describing-volumes.html#ebs-view-free-disk-space) in the *Amazon EC2 User Guide for Linux Instances*\.

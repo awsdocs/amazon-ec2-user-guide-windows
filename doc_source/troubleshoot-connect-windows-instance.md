@@ -172,7 +172,7 @@ The following examples show you how to accomplish common troubleshooting tasks u
 AWS CLI:  
 
 ```
-aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id" --region region_code
+aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id, Action=Custom" --region region_code
 ```
 AWS Systems Manager console:  
 
@@ -184,7 +184,7 @@ https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-Tro
 AWS CLI:  
 
 ```
-aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id,Firewall=Disable" --region region_code
+aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id, Action=Custom, Firewall=Disable" --region region_code
 ```
 AWS Systems Manager console:  
 
@@ -196,7 +196,7 @@ https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-Tro
 AWS CLI:  
 
 ```
-aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id,NLASettingAction=Disable" --region region_code
+aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id, Action=Custom, NLASettingAction=Disable" --region region_code
 ```
 AWS Systems Manager console:  
 
@@ -208,7 +208,7 @@ https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-Tro
 AWS CLI:  
 
 ```
-aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id,RDPServiceStartupType=Auto, RDPServiceAction=Start" --region region_code
+aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id, Action=Custom, RDPServiceStartupType=Auto, RDPServiceAction=Start" --region region_code
 ```
 AWS Systems Manager console:  
 
@@ -220,7 +220,7 @@ https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-Tro
 AWS CLI:  
 
 ```
-aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id,RDPPortAction=Modify" --region region_code
+aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id, Action=Custom, RDPPortAction=Modify" --region region_code
 ```
 AWS Systems Manager console:  
 
@@ -232,7 +232,7 @@ https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-Tro
 AWS CLI:  
 
 ```
-aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id,RemoteConnections=Enable" --region region_code
+aws ssm start-automation-execution --document-name "AWSSupport-TroubleshootRDP" --parameters "InstanceId=instance_id, Action=Custom, RemoteConnections=Enable" --region region_code
 ```
 AWS Systems Manager console:  
 

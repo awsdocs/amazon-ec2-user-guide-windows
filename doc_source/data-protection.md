@@ -57,7 +57,7 @@ AWS provides secure and private connectivity between EC2 instances of all types\
 + The instances use the following instance types:
   + General purpose: M5dn \| M5n \| M5zn \| M6a \| M6i \| M6id
   + Compute optimized: C5a \| C5ad \| C5n \| C6a \| C6i \| C6id \| 
-  + Memory optimized: R5dn \| R5n \| R6i \| high memory \(u\-\*\), virtualized only \| X2idn \| X2iedn \| X2iezn
+  + Memory optimized: R5dn \| R5n \| R6i \| R6id \| high memory \(u\-\*\), virtualized only \| X2idn \| X2iedn \| X2iezn
   + Storage optimized: D3 \| D3en \| I3en \| I4i
   + Accelerated computing: G4ad \| G4dn \| G5 \| P3dn
 + The instances are in the same Region\.

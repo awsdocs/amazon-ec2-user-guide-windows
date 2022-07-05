@@ -13,6 +13,6 @@ There is no additional cost for using NitroTPM\. You pay only for the underlying
 
 **Topics**
 + [Considerations](nitrotpm-considerations.md)
-+ [Prerequisites](enable-nitrotpm-prerequisites.md)
++ [Prerequisites for launching Windows instances](enable-nitrotpm-prerequisites.md)
 + [Verify whether an AMI is enabled for NitroTPM](verify-nitrotpm-support-on-ami.md)
 + [Enable or stop using NitroTPM on an instance](nitrotpm-instance.md)

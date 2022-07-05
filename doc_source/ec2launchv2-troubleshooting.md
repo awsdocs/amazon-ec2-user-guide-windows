@@ -18,10 +18,11 @@ This section shows common troubleshooting scenarios and steps for resolution\.
 + [Service fails to run a task](#ec2launchv2-troubleshooting-task-failed)
 + [Service runs user data more than once](#ec2launchv2-troubleshooting-user-data-more-than-once)
 + [Scheduled tasks from EC2Launch v1 fail to run after migration to EC2Launch v2](#ec2launchv2-troubleshooting-scheduled-tasks-migration)
-+ [Service fails to run a task](#ec2launchv2-troubleshooting-task-failed)
 + [Service initializes an EBS volume that is not empty](#ec2launchv2-troubleshooting-ebs-initialize)
 + [`setWallpaper` task is not enabled but the wallpaper resets at reboot](#ec2launchv2-troubleshooting-wallpaper-resets)
 + [Service stuck in running status](#ec2launchv2-troubleshooting-service-stuck-running)
++ [Invalid `agent-config.yml` prevents opening EC2Launch v2 settings dialog box](#ec2launchv2-troubleshooting-invalid-agent-config)
++ [`task:executeScript should be unique and only invoked once`](#ec2launchv2-troubleshooting-executescript)
 
 ### Service fails to set the wallpaper<a name="ec2launchv2-troubleshooting-wallpaper"></a>
 
@@ -95,14 +96,6 @@ The following example idempotent script sets the computer name and joins a domai
 **Resolution**  
 The migration tool does not detect any scheduled tasks linked to EC2Launch v1 scripts; therefore, it does not automatically set up those tasks in EC2Launch v2\. To configure these tasks, edit the [`agent-config.yml`](ec2launch-v2-settings.md#ec2launch-v2-task-configuration) file, or use the [EC2Launch v2 settings dialog box](ec2launch-v2-settings.md#ec2launch-v2-ui)\. For example, if an instance has a scheduled task that runs `InitializeDisks.ps1`, then after you run the migration tool, you must specify the volumes you want to initialize in the EC2Launch v2 settings dialog box\. See Step 6 of the procedure to [Change settings using the EC2Launch v2 settings dialog box](ec2launch-v2-settings.md#ec2launch-v2-ui)\. 
 
-### Service fails to run a task<a name="ec2launchv2-troubleshooting-task-failed"></a>
-
-**Resolution**
-
-1. Check the latest entries in `%ProgramData%\Amazon\EC2Launch\log\agent.log`\.
-
-1. If no errors occurred, try running the service manually from `"%ProgramFiles%\Amazon\EC2Launch\EC2Launch.exe" run` to see if the tasks succeed\.
-
 ### Service initializes an EBS volume that is not empty<a name="ec2launchv2-troubleshooting-ebs-initialize"></a>
 
 **Resolution**  
@@ -172,6 +165,29 @@ SAC is enabled and using the serial port\. For more information, see [Use SAC to
 Try the following steps to resolve this issue:
 + Disable the service that is using the serial port\.
 + If you want the service to continue to use the serial port, write custom scripts to perform launch agent tasks and invoke them as scheduled tasks\. 
+
+### Invalid `agent-config.yml` prevents opening EC2Launch v2 settings dialog box<a name="ec2launchv2-troubleshooting-invalid-agent-config"></a>
+
+**Description**  
+EC2Launch v2 settings attempts to parse the `agent-config.yml` file before it opens the dialog box\. If the YAML configuration file does not follow the supported schema, the dialog box will show the following error:
+
+`Unable to parse configuration file agent-config.yml. Review configuration file. Exiting application.`
+
+**Resolution**
+
+1. Verify that the configuration file follows the [supported schema](ec2launch-v2-settings.md#ec2launch-v2-schema-agent-config)\.
+
+1. If you want to start from scratch, copy the default configuration file into `agent-config.yml`\. You can use the [example `agent-config.yml`](ec2launch-v2-settings.md#ec2launch-v2-example-agent-config) provided in the Task Configuration section\.
+
+1. You can also start over by deleting `agent-config.yml`\. EC2Launch v2 settings generates an empty configuration file\.
+
+### `task:executeScript should be unique and only invoked once`<a name="ec2launchv2-troubleshooting-executescript"></a>
+
+**Description**  
+A task cannot be repeated in the same stage\.
+
+**Resolution**  
+Some tasks must be input as an array, such as [**executeScript**](ec2launch-v2-settings.md#ec2launch-v2-executescript) and [**executeProgram**](ec2launch-v2-settings.md#ec2launch-v2-executeprogram)\. For an example of how to write the script as an array, see [**executeScript**](ec2launch-v2-settings.md#ec2launch-v2-executescript)\.
 
 ## Windows event logs<a name="ec2launchv2-windows-event-logs"></a>
 

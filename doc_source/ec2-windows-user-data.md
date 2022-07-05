@@ -126,6 +126,9 @@ For more information about base64 encoding, see [https://www\.ietf\.org/rfc/rfc4
 
 By default, all AWS Windows AMIs have user data execution enabled for the initial launch\. You can specify that user data scripts are run the next time the instance reboots or restarts\. Alternatively, you can specify that user data scripts are run every time the instance reboots or restarts\.
 
+**Note**  
+User data is not enabled to run by default after the initial launch\. To enable user data to run when you reboot or start the instance, see [Subsequent reboots or starts](#user-data-scripts-subsequent)\.
+
 User data scripts are run from the local administrator account when a random password is generated\. Otherwise, user data scripts are run from the System account\.
 
 ### Instance launch<a name="user-data-scripts-launch"></a>

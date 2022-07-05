@@ -19,6 +19,8 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
+| 2022\.06\.15 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
+| 2022\.05\.25 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated February 10, 2022 and earlier were made private\.  | 
 | 2022\.05\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2022\.05\.05 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2022\.04\.13 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated January 21st, 2022 and earlier were made private\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 

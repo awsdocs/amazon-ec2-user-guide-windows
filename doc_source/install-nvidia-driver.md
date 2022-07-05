@@ -53,7 +53,6 @@ The following table summarizes the supported NVIDIA drivers for each GPU instanc
 | G5 | Yes | Yes | Yes | 
 | P2 | Yes | No | No | 
 | P3 | Yes | Yes ² | No | 
-| Yes | No | No | 
 
 ¹ This Tesla driver also supports optimized graphics applications specific to the ARM64 platform
 
@@ -110,6 +109,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 + IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
 + G3 instances require AWS provided DNS resolution for GRID licensing to work\.
++ [IMDSv2](configuring-instance-metadata-service.md) is only supported with NVIDIA driver version 14\.0 or greater\. 
 
 **To install the NVIDIA GRID driver on your Windows instance**
 
@@ -145,6 +145,16 @@ These downloads are available to AWS customers only\. By downloading, you agree 
    New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global\GridLicensing" -Name "NvCplDisableManageLicensePage" -PropertyType "DWord" -Value "1"
    ```
 
+1. If you are using NVIDIA driver version 14\.x or greater on the G4dn or G5g instances, disable GSP with the following commands\. For more information, on why this is required visit [NVIDIA’s documentation](https://docs.nvidia.com/grid/latest/grid-vgpu-user-guide/index.html#disabling-gsp)\.
+
+   ```
+   sudo touch /etc/modprobe.d/nvidia.conf
+   ```
+
+   ```
+   echo "options nvidia NVreg_EnableGpuFirmware=0" | sudo tee --append /etc/modprobe.d/nvidia.conf
+   ```
+
 1. \(Optional\) Depending on your use case, you might complete the following optional steps\. If you do not require this functionality, do not complete these steps\.
 
    1. To help take advantage of the four displays of up to 4K resolution, set up the high\-performance display protocol, [NICE DCV](https://docs.aws.amazon.com/dcv/)\.
@@ -160,6 +170,7 @@ These drivers are available to AWS customers only\. By downloading them, you agr
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
 + IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
 + G3 instances require AWS provided DNS resolution for GRID licensing to work\.
++ [IMDSv2](configuring-instance-metadata-service.md) is only supported with NVIDIA driver version 495\.x or greater\. 
 
 **To install the NVIDIA gaming driver on your Windows instance**
 

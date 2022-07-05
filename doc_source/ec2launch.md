@@ -37,7 +37,7 @@ For more information about Windows Server 2019, see [Compare Features in Windows
 
 Telemetry is additional information that helps AWS to better understand your requirements, diagnose issues, and deliver features to improve your experience with AWS services\.
 
-EC2Launch version `1.3.2003463` and later collect telemetry, such as usage metrics and errors\. This data is collected from the Amazon EC2 instance on which EC2Launch runs\. This includes all Windows AMIs owned by AWS\.
+EC2Launch version `1.3.2003498` and later collect telemetry, such as usage metrics and errors\. This data is collected from the Amazon EC2 instance on which EC2Launch runs\. This includes all Windows AMIs owned by AWS\.
 
 The following types of telemetry are collected by EC2Launch:
 + **Usage information** — agent commands, install method, and scheduled run frequency\.

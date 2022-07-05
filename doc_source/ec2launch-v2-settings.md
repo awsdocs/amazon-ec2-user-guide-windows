@@ -259,7 +259,7 @@ help for `list-volumes`
 
 ### reset<a name="ec2launch-v2-reset"></a>
 
-Deletes the `.runonce` file so that tasks specified to run once will run on the next execution; optionally deletes the service and sysprep logs\.
+Deletes the `.run-once` file so that tasks specified to run once will run on the next execution; optionally deletes the service and sysprep logs\.
 
 **Example**
 
@@ -443,9 +443,11 @@ help for `wallpaper`
 
 ## EC2Launch v2 task configuration<a name="ec2launch-v2-task-configuration"></a>
 
-This section includes the configuration tasks, details, and examples for `agent-config.yml` and user data\.
+This section includes the configuration schema, tasks, details, and examples for `agent-config.yml` and user data\.
 
 **Topics**
++ [Schema: `agent-config.yml`](#ec2launch-v2-schema-agent-config)
++ [Schema: user data](#ec2launch-v2-schema-user-data)
 + [activateWindows](#ec2launch-v2-activatewindows)
 + [enableJumboFrames](#ec2launch-v2-enablejumboframes)
 + [enableOpenSsh](#ec2launch-v2-enableopenssh)
@@ -463,6 +465,79 @@ This section includes the configuration tasks, details, and examples for `agent-
 + [writeFile](#ec2-launch-v2-writefile)
 + [Example: `agent-config.yml`](#ec2launch-v2-example-agent-config)
 + [Example: user data](#ec2launch-v2-example-user-data)
+
+### Schema: `agent-config.yml`<a name="ec2launch-v2-schema-agent-config"></a>
+
+The structure of the `agent-config.yml` file is shown below\. Note that a task cannot be repeated in the same stage\. For task properties, see the task descriptions that follow\.
+
+**JSON**
+
+```
+{
+    "version": "1.0",
+    "config": [
+        {
+            "stage": "string",
+            "tasks": [
+                {
+                    "task": "string",
+                    "inputs": {
+                        ...
+                    }
+                },
+                ...
+            ]
+        },
+        ...
+    ]
+}
+```
+
+**YAML**
+
+```
+version: 1.0
+config:
+- stage: string
+  tasks:
+  - task: string
+    inputs:
+      ...
+  ...
+...
+```
+
+### Schema: user data<a name="ec2launch-v2-schema-user-data"></a>
+
+The structure of user data is shown below\. The `tasks` list is parsed and executed in the same manner as the `tasks` list in the [`agent-config.yml`](#ec2launch-v2-schema-agent-config) file\. A task cannot be repeated\. For task properties, see the task descriptions that follow\.
+
+**JSON**
+
+```
+{
+    "version": "1.0",
+    "tasks": [
+        {
+            "task": "string",
+            "inputs": {
+                ...
+            },
+        },
+        ...
+    ]
+}
+```
+
+**YAML**
+
+```
+version: 1.0
+tasks:
+- task: string
+  inputs:
+    ...
+...
+```
 
 ### activateWindows<a name="ec2launch-v2-activatewindows"></a>
 
@@ -596,6 +671,10 @@ inputs:
   content: |
     Get-Process | Out-File -FilePath .\Process.txt
   runAs: localSystem
+- frequency: always
+  type: batch
+  content: |
+    systeminfo
 ```
 
 *Example 2*
@@ -991,7 +1070,7 @@ You can use EC2Launch v2 to define how exit codes are handled by your scripts\. 
 
 If you want a script to reboot an instance, then you must specify `exit 3010` in your script, even when the reboot is the last step in your script\. `exit 3010` instructs EC2Launch v2 to reboot the instance and call the script again until it returns an exit code that is not `3010`, or until the maximum reboot count has been reached\. EC2Launch v2 permits a maximum of 5 reboots per task\. If you attempt to reboot an instance from a script by using a different mechanism, such as `Restart-Computer`, then the script run status will be inconsistent\. For example, it may get stuck in a restart loop or not perform the restart\.
 
-If you are using a legacy user data format that is compatible with older agents, the user data may run more times than you intend it to\. For more information, see [Service runs user data more than once](ec2launchv2-troubleshooting.md#ec2launchv2-troubleshooting-user-data-more-than-once) in the Troubleshooting section\.
+If you are using an XML user data format that is compatible with older agents, the user data may run more times than you intend it to\. For more information, see [Service runs user data more than once](ec2launchv2-troubleshooting.md#ec2launchv2-troubleshooting-user-data-more-than-once) in the Troubleshooting section\.
 
 ## EC2Launch v2 and Sysprep<a name="ec2launch-v2-sysprep"></a>
 

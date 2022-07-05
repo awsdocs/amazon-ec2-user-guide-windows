@@ -322,21 +322,7 @@ Use the [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/e
 When you view the block device mapping for your instance, you can see only the EBS volumes, not the instance store volumes\. The method you use to view the instance store volumes for your instance depends on the volume type\.
 
 **NVMe instance store volumes**  
-You can use the NVMe command line package, [nvme\-cli](https://github.com/linux-nvme/nvme-cli), to query the NVMe instance store volumes in the block device mapping\. Download and install the package on your instance, and then run the following command\.
-
-```
-[ec2-user ~]$ sudo nvme list
-```
-
-The following is example output for an instance\. The text in the Model column indicates whether the volume is an EBS volume or an instance store volume\. In this example, both `/dev/nvme1n1` and `/dev/nvme2n1` are instance store volumes\.
-
-```
-Node             SN                   Model                                    Namespace
----------------- -------------------- ---------------------------------------- ---------
-/dev/nvme0n1     vol06afc3f8715b7a597 Amazon Elastic Block Store               1        
-/dev/nvme1n1     AWS2C1436F5159EB6614 Amazon EC2 NVMe Instance Storage         1         
-/dev/nvme2n1     AWSB1F4FF0C0A6C281EA Amazon EC2 NVMe Instance Storage         1         ...
-```
+You can use Disk Management or PowerShell to list both EBS and instance store NVMe volumes\. For more information, see [List NVMe volumes](ec2-windows-volumes.md#windows-list-disks-nvme)\.
 
 **HDD or SSD instance store volumes**  
 You can use instance metadata to query the HDD or SSD instance store volumes in the block device mapping\. NVMe instance store volumes are not included\.
@@ -361,23 +347,6 @@ swap
 The `ami` device is the root device as seen by the instance\. The instance store volumes are named `ephemeral[0-23]`\. The `swap` device is for the page file\. If you've also mapped EBS volumes, they appear as `ebs1`, `ebs2`, and so on\.
 
 To get details about an individual block device in the block device mapping, append its name to the previous query, as shown here\.
-
-------
-#### [ IMDSv2 ]
-
-```
-[ec2-user ~]$ TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
-&& curl -H "X-aws-ec2-metadata-token: $TOKEN" –v http://169.254.169.254/latest/meta-data/block-device-mapping/ephemeral0
-```
-
-------
-#### [ IMDSv1 ]
-
-```
-[ec2-user ~]$ curl http://169.254.169.254/latest/meta-data/block-device-mapping/ephemeral0
-```
-
-------
 
 ```
 PS C:\> Invoke-RestMethod -uri http://169.254.169.254/latest/meta-data/block-device-mapping/ephemeral0

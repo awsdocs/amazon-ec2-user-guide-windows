@@ -14,6 +14,7 @@ Complete the following tasks and note the following important details before you
   + [Upgrade Options for Windows Server 2012 R2](https://technet.microsoft.com/en-us/library/dn303416.aspx)
   + [Upgrade and conversion options for Windows Server 2016](https://docs.microsoft.com/en-us/windows-server/get-started/supported-upgrade-paths)
   + [Upgrade and conversion options for Windows Server 2019](https://docs.microsoft.com/en-us/windows-server/get-started-19/install-upgrade-migrate-19)
+  + [Upgrade and conversion options for Windows Server 2022](https://docs.microsoft.com/en-us/windows-server/get-started/install-upgrade-migrate)
   + [Windows Server Upgrade Center](https://www.microsoft.com/upgradecenter)
 + We recommend performing an operating system upgrade on instances with at least 2 vCPUs and 4GB of RAM\. If needed, you can change the instance to a larger size of the same type \(t2\.small to t2\.large, for example\), perform the upgrade, and then resize it back to the original size\. If you are required to retain the instance size, you can monitor the progress using the [instance console screenshot](screenshot-service.md)\. For more information, see [Change the instance type](ec2-instance-resize.md)\.
 + Verify that the root volume on your Windows instance has enough free disk space\. The Windows Setup process might not warn you of insufficient disk space\. For information about how much disk space is required to upgrade a specific operating system, see the Microsoft documentation\. If the volume does not have enough space, it can be expanded\. For more information, see [Amazon EBS Elastic Volumes](ebs-modify-volume.md)\.
@@ -36,11 +37,11 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 1. In the navigation pane, choose **Instances**\. Locate the instance\. Make a note of the instance ID and Availability Zone for the instance\. You need this information later in this procedure\.
 
-1. If you are upgrading from Windows Server 2012 or 2012 R2 to Windows Server 2016 or 2019, do the following on your instance before proceeding:
+1. If you are upgrading from Windows Server 2012 or 2012 R2 to Windows Server 2016, 2019, or 2022 perform the following on your instance before proceeding:
 
    1. Uninstall the EC2Config service\. For more information, see [Stop, restart, delete, or uninstall EC2Config](ec2config-service.md#UsingConfig_StopDelete)\.
 
-   1. Install the EC2Launch service\. For more information, see [Install the latest version of EC2Launch](ec2launch-download.md)\.
+   1. Install EC2Launch or the EC2Launch v2 agent\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md) and [Configure a Windows instance using EC2Launch v2](ec2launch-v2.md)\.
 
    1. Install the AWS Systems Manager SSM Agent\. For more information, see [Working with SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) in the *AWS Systems Manager User Guide*\.
 
@@ -73,8 +74,10 @@ Do not initialize the disk because doing so will delete the existing data\.
    1. If you are upgrading to Windows Server 2016 or later, run the following:
 
       ```
-      ./setup.exe /auto upgrade
+      ./setup.exe /auto upgrade /dynamicupdate disable
       ```
+**Note**  
+Running the setup\.exe with the /dynamicupdate option set to disabled prevents Windows from installing updates during the Windows Server upgrade process, as installing updates during the upgrade can cause failures\. You can install updates with Windows Update after the upgrade completes\.
 
       If you are upgrading to an earlier version of Windows Server, run the following:
 

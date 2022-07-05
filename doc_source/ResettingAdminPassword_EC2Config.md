@@ -27,7 +27,9 @@ Before you attempt to reset the administrator password, verify that the EC2Confi
 
 1. In the navigation pane, choose **Instances** and then select the instance that requires a password reset\. This instance is referred to as the *original* instance in this procedure\.
 
-1. Choose **Actions**, **Monitor and troubleshoot**, **Get system log**\.
+1. \(New console\) Choose **Actions**, **Monitor and troubleshoot**, **Get system log**\.
+
+   \(Old console\) Choose **Actions**, **System Settings**, **Get System Log**\.
 
 1. Locate the EC2 Agent entry, for example, **EC2 Agent: Ec2Config service v3\.18\.1118**\. If you see this entry, the EC2Config service is running\.
 
