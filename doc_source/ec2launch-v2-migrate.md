@@ -5,6 +5,9 @@ The EC2Launch migration tool upgrades the installed launch agent \(EC2Config and
 You can download the migration tool or install with an SSM RunCommand document\. 
 
 You can download the tool from the following locations:
+
+**Note**  
+The 32\-bit migration tool link will be deprecated\. We recommend that you use the 64\-bit link to migrate to EC2Launch v2\. If you require a 32\-bit launch agent, use [EC2Config](ec2config-service.md)\.
 + **64Bit** — [https://s3\.amazonaws\.com/amazon\-ec2launch\-v2\-utils/MigrationTool/windows/amd64/latest/EC2LaunchMigrationTool\.zip](https://s3.amazonaws.com/amazon-ec2launch-v2-utils/MigrationTool/windows/amd64/latest/EC2LaunchMigrationTool.zip)
 + **32Bit** — [https://s3\.amazonaws\.com/amazon\-ec2launch\-v2\-utils/MigrationTool/windows/386/latest/EC2LaunchMigrationTool\.zip](https://s3.amazonaws.com/amazon-ec2launch-v2-utils/MigrationTool/windows/386/latest/EC2LaunchMigrationTool.zip)
 

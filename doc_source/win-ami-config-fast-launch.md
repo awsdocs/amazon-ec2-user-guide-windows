@@ -1,30 +1,32 @@
 # Configure your Windows AMI for faster launching<a name="win-ami-config-fast-launch"></a>
 
-Every EC2 Windows instance must go through the standard Windows operating system \(OS\) launch steps, which include several reboots, and often take 15 minutes or longer to complete\. Windows AMIs that are optimized for faster launching complete some of those steps and reboots in advance by launching a set of instances in the background, and then creating snapshots when they have completed the initial launch steps\. The use of these snapshots in the faster launching process can significantly reduce the time it takes to launch instances when they are needed\. This is not the same process as [EBS fast snapshot restore](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html)\.
+Every EC2 Windows instance must go through the standard Windows operating system \(OS\) launch steps, which include several reboots, and often take 15 minutes or longer to complete\. Windows AMIs that are optimized for faster launching complete some of those steps and reboots in advance by launching a set of instances in the background, and then creating snapshots when they have completed the initial launch steps\. The use of these snapshots in the faster launching process can significantly reduce the time it takes to launch instances when they are needed\.
+
+When you configure a Windows AMI for faster launching, Amazon EC2 automatically creates the snapshots for you, based on your settings, and you only pay for the resources that the process consumes\. This is not the same process as [EBS fast snapshot restore](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-fast-snapshot-restore.html)\. EBS fast snapshot restore must be explicitly enabled on a per\-snapshot basis, and has its own associated costs\.
 
 **Note**  
-Any account that has access to an AMI that is configured for faster launching can benefit from reduced launch times\. However, it is the AMI owner's account that provides the snapshots that are consumed for the launch\.
+Any account that has access to an AMI with faster launching enabled can benefit from reduced launch times\. However, it is the AMI owner's account that provides the snapshots that are consumed for the launch\.
 
 **Key terms**
-+ **Pre\-provisioned snapshot** – A snapshot of an instance that was launched from a Windows AMI with faster launching enabled, and that has completed the following Windows launch steps, rebooting as required\.
++ **Pre\-provisioned snapshot** – A snapshot of an instance that was launched from a Windows AMI with faster launching enabled, and that has completed the following Windows launch steps, rebooting as required\. Amazon EC2 creates these snapshots automatically, based on your configuration\.
   + Sysprep specialize
   + Windows Out of Box Experience \(OOBE\)
 
   When these steps are complete, Amazon EC2 stops the instance, and creates a snapshot that is later used for faster launching from the AMI\.
-+ **Launch frequency** – Controls the number of pre\-provisioned snapshots that Amazon EC2 can launch within the specified timeframe\. When faster launching is enabled for the AMI, Amazon EC2 creates the initial set of pre\-provisioned snapshots in the background\. For example, if the launch frequency is set to five launches per hour, which is the default, then Amazon EC2 creates an initial set of five pre\-provisioned snapshots\.
++ **Launch frequency** – Controls the number of pre\-provisioned snapshots that Amazon EC2 can launch within the specified timeframe\. When you enable faster launching for your AMI, Amazon EC2 creates the initial set of pre\-provisioned snapshots in the background\. For example, if the launch frequency is set to five launches per hour, which is the default, then Amazon EC2 creates an initial set of five pre\-provisioned snapshots\.
 
-  When an instance is launched, it uses one of the pre\-provisioned snapshots to reduce the launch time\. As snapshots are used, they are automatically replenished, up to the number specified by the launch frequency\.
+  When Amazon EC2 launches an instance from an AMI with faster launching enabled, it uses one of the pre\-provisioned snapshots to reduce the launch time\. As snapshots are used, they are automatically replenished, up to the number specified by the launch frequency\.
 
   If you expect a spike in the number of instances that are launched from your AMI – during a special event, for example – you can increase the launch frequency in advance to cover the additional instances that you'll need\. When your launch rate returns to normal, you can adjust the frequency back down\.
 
-  When you experience a higher number of launches than anticipated, you might use up the fast\-launching snapshots that you have available\. This does not cause any launches to fail\. However, it can result in some instances going through the standard launch process, until snapshots can be replenished\.
-+ **Target resource count** – The number of pre\-provisioned snapshots to keep on hand for a fast\-launch enabled Windows AMI\.
-+ **Max parallel launches** – Controls how many instances can be launched at a time for creating the pre\-provisioned snapshots\. If your target resource count is higher than the number of max parallel launches, Amazon EC2 will initially launch the number of instances specified by the max parallel launches setting for creating the snapshots\. As those instances complete the process and Amazon EC2 takes the snapshot and stops the instance, more instances are launched until the total number of snapshots available has reached the target resource count\. This value must be 6 or greater\.
+  When you experience a higher number of launches than anticipated, you might use up all the faster launching snapshots that you have available\. This does not cause any launches to fail\. However, it can result in some instances going through the standard launch process, until snapshots can be replenished\.
++ **Target resource count** – The number of pre\-provisioned snapshots to keep on hand for an AMI with faster launching enabled\.
++ **Max parallel launches** – Controls how many instances can be launched at a time for creating the pre\-provisioned snapshots\. If your target resource count is higher than the maximum number of parallel launches you've configured, Amazon EC2 will initially launch the number of instances specified by the **Max parallel launches** setting for creating the snapshots\. As those instances complete the process and Amazon EC2 takes the snapshot and stops the instance, more instances are launched until the total number of snapshots available has reached the target resource count\. This value must be 6 or greater\.
 
 **Resource costs**  
 There is no service charge to configure Windows AMIs for faster launching\. However, standard pricing applies for underlying AWS resources that are used to prepare and store the pre\-provisioned snapshots\. The following example demonstrates how associated costs are allocated\.
 
-**Example scenario:** The AtoZ Example company has a Windows AMI with a 50\-GiB EBS root volume\. They enable faster launching for their AMI, and set the target resource count to five\. Over the course of a month, using Windows faster launching for their AMI costs them around $5\.00, and the cost breakdown is as follows:
+**Example scenario:** The AtoZ Example company has a Windows AMI with a 50 GiB EBS root volume\. They enable faster launching for their AMI, and set the target resource count to five\. Over the course of a month, using Windows faster launching for their AMI costs them around $5\.00, and the cost breakdown is as follows:
 
 1. When AtoZ Example enables faster launching, Amazon EC2 launches five small instances\. Each instance runs through the Sysprep and OOBE Windows launch steps, rebooting as required\. This takes several minutes for each instance \(time can vary, based on how busy that Region or Availability Zone \(AZ\) is, and on the size of the AMI\)\.
 
@@ -32,7 +34,7 @@ There is no service charge to configure Windows AMIs for faster launching\. Howe
    + Instance runtime costs \(or minimum runtime, if applicable\): five instances
    + Volume costs: five EBS root volumes
 
-1. When the pre\-provisioning process completes, Amazon EC2 takes a snapshot of the instance, which it stores in Amazon S3\. Snapshots are typically stored for 4\-8 hours before they are consumed by a launch\. In this case, the cost is roughly $0\.02 to $0\.05 per snapshot\.
+1. When the pre\-provisioning process completes, Amazon EC2 takes a snapshot of the instance, which it stores in Amazon S3\. Snapshots are typically stored for 4–8 hours before they are consumed by a launch\. In this case, the cost is roughly $0\.02 to $0\.05 per snapshot\.
 
 **Costs**
    + Snapshot storage \(Amazon S3\): five snapshots
@@ -49,7 +51,7 @@ You can configure Windows AMIs that you own for faster launching using the Amazo
 
 **Topics**
 + [Prerequisites](#win-start-fast-launch-prereqs)
-+ [Configuration scenarios](#fast-launch-configuration-scenarios)
++ [Use a launch template when you set up faster launching](#win-fast-launch-with-template)
 + [Start faster launching for Windows AMIs](#win-start-fast-launch)
 + [Stop faster launching for Windows AMIs](#win-stop-fast-launch)
 + [View Windows AMIs that have faster launching enabled \(AWS CLI\)](#win-view-fast-launch)
@@ -57,25 +59,51 @@ You can configure Windows AMIs that you own for faster launching using the Amazo
 
 ## Prerequisites<a name="win-start-fast-launch-prereqs"></a>
 
-Before you set up faster launching for EC2 Windows instances, you must verify that the following prerequisites are met:
-+ If you are using the AWS Management Console to configure your settings, ensure that a default VPC is configured for the Region in which you use faster launching for EC2 Windows instances\. You cannot have EC2 Classic enabled in the Region, even if you have a default VPC configured\. For more information about EC2 Classic, see [EC2\-Classic Networking is Retiring \- Here's How to Prepare](http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)\.
-+ You can use a launch template to specify a non\-default VPC by using the AWS CLI, EC2 API actions, or SDKs\.
+Before you set up faster launching for EC2 Windows instances, verify that you've met the following prerequisites:
++ If you don't use a launch template to configure your settings, ensure that a default VPC is configured for the Region in which you use faster launching for EC2 Windows instances\. You cannot have EC2 Classic enabled in the Region, even if you have a default VPC configured\. For more information about EC2 Classic, see [EC2\-Classic Networking is Retiring \- Here's How to Prepare](http://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)\.
+**Note**  
+If you accidentally delete your default VPC in the Region where you plan to configure faster launching for EC2 Windows instances, you can create a new default VPC in that Region\. To learn more, see [Create a default VPC](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-vpc) in the *Amazon VPC User Guide*\.
++ To specify a non\-default VPC, you must use a launch template when you configure Windows faster launching\. For more information, see [Use a launch template when you set up faster launching](#win-fast-launch-with-template)\.
++ If your account includes a policy that enforces IMDSv2 for Amazon EC2 instances, you must create a launch template that specifies the metadata configuration to enforce IMDSv2\.
 + To change the settings for faster launching for EC2 Windows instances, your AWS account must own the Windows AMI\.
 + The Windows AMI that you use to configure faster launching for EC2 Windows instances must be created using Sysprep with the shutdown option\. AMIs that are created from an instance without running Sysprep are not currently supported\. To create an AMI using Sysprep, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
-## Configuration scenarios<a name="fast-launch-configuration-scenarios"></a>
+## Use a launch template when you set up faster launching<a name="win-fast-launch-with-template"></a>
 
-This section addresses specific scenarios to help you configure your Windows AMI for faster launching\.
+With a launch template, you can configure a set of launch parameters that Amazon EC2 uses each time it launches an instance from that template\. You can specify such things as an AMI to use for your base image, instance types, storage, network settings, and more\. Launch templates are optional, except for the following specific cases, where you must use a launch template for your Windows AMI when you configure faster launching:
++ You must use a launch template to specify a non\-default VPC for your Windows AMI\.
++ If your account includes a policy that enforces IMDSv2 for Amazon EC2 instances, you must create a launch template that specifies the metadata configuration to enforce IMDSv2\.
 
-**Scenario 1: You have deleted your default VPC**  
-You have the following options to specify your VPC:
-+ If you are using the AWS Management Console to configure your environment, you must use a default VPC in the Region for which you are configuring faster launching\. To create a default VPC, see [Create a default VPC](https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-vpc) in the *Amazon VPC User Guide*\.
-+ If you run the [enable\-fast\-launch](https://docs.aws.amazon.com/cli/latest/reference/ec2/enable-fast-launch.html) command in the AWS CLI, or call the [EnableFastLaunch](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastLaunch.html) API action, you can specify the VPC in your launch template\.
+  Use the launch template that includes your metadata configuration from the EC2 console, or when you run the [enable\-fast\-launch](https://docs.aws.amazon.com/cli/latest/reference/ec2/enable-fast-launch.html) command in the AWS CLI, or call the [EnableFastLaunch](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastLaunch.html) API action\.
 
-**Scenario 2: You are using IMDSv2 for your launch**  
-If your account includes a policy that enforces IMDSv2 for Amazon EC2 instances, you must create a launch template that specifies the metadata configuration to enforce IMDSv2\. Amazon EC2 does not currently support this in the AWS Management Console\.
+### Specify a non\-default VPC<a name="win-fast-launch-non-default-vpc"></a>
 
-Run the [enable\-fast\-launch](https://docs.aws.amazon.com/cli/latest/reference/ec2/enable-fast-launch.html) command in the AWS CLI, or call the [EnableFastLaunch](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastLaunch.html) API action, specifying the launch template that includes your metadata configuration\.
+**Step 1: Create a launch template**  
+Create a launch template that specifies the VPC for your Windows instances from the AWS Management Console or from the AWS CLI\. For more information, see [Create a launch template](ec2-launch-templates.md#create-launch-template)\.
+
+**Step 2: Specify the launch template for your faster launching AMI**  
+
++ To specify the launch template for faster launching for EC2 Windows instances, follow these steps:
+
+  1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+  1. In the navigation pane, under **Images**, choose **AMIs**\.
+
+  1. Choose the AMI to update by selecting the check box next to the **Name**\.
+
+  1. From the **Actions** menu above the list of AMIs, choose **Manage image optimization**\. This opens the **Manage image optimization** page, where you configure the settings for faster launching\.
+
+  1. The **Launch template** box performs a filtered search that finds launch templates in your account in the current Region that match the text you've entered\. Specify all or part of the launch template name or ID in the box to show a list of matching launch templates\. For example, if you enter `fast` in the box, Amazon EC2 finds all of the launch templates in your account in the current Region that have "fast" in the name\.
+
+     To create a new launch template, you can choose **Create launch template**\.
+
+  1. When you select a launch template, Amazon EC2 shows the default version for that template in the **Source template version** box\. To specify a different version, highlight the default version to replace it, and enter the version number you want in the box\.
+
+  1. When you're done making changes, choose **Save changes**\.
++ Specify the launch template name or ID in the `--launch-template` parameter when you run the [enable\-fast\-launch](https://docs.aws.amazon.com/cli/latest/reference/ec2/enable-fast-launch.html) command in the AWS CLI\.
++ Specify the launch template name or ID in the `LaunchTemplate` parameter when you call the [EnableFastLaunch](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastLaunch.html) API action\.
+
+For more information about EC2 launch templates, see [Launch an instance from a launch template](ec2-launch-templates.md)\.
 
 ## Start faster launching for Windows AMIs<a name="win-start-fast-launch"></a>
 
@@ -93,13 +121,16 @@ Before changing these settings, make sure that your AMI, and the Region that you
 
 1. Choose the AMI to update by selecting the check box next to the **Name**\.
 
-1. From the **Actions** menu above the list of AMIs, choose **Manage image optimization**\. This opens the **Manage image optimizations** page, where you configure the settings for faster launching\.
+1. From the **Actions** menu above the list of AMIs, choose **Manage image optimization**\. This opens the **Manage image optimization** page, where you configure the settings for faster launching\.
 
 1. To start using pre\-provisioned snapshots to launch instances from your Windows AMI faster, select the **Enable Windows faster launching** check box\.
 
 1. From the **Set anticipated launch frequency** drop\-down list, choose a value to specify the number of snapshots that are created and maintained to cover your expected instance launch volume\.
 
 1. When you're done making changes, choose **Save changes**\.
+
+**Note**  
+If you need to use a launch template to specify a non\-default VPC, or to configure metadata settings for IMDSv2, see [Use a launch template when you set up faster launching](#win-fast-launch-with-template)\.
 
 ------
 #### [ AWS CLI ]
@@ -212,7 +243,7 @@ Before changing these settings, make sure that your AMI, and the Region that you
 
 1. Choose the AMI to update by selecting the check box next to the **Name**\.
 
-1. From the **Actions** menu above the list of AMIs, choose **Manage image optimizations**\. This opens the **Manage image optimizations** page, where you configure the settings for faster launching\.
+1. From the **Actions** menu above the list of AMIs, choose **Manage image optimization**\. This opens the **Manage image optimization** page, where you configure the settings for faster launching\.
 
 1. Clear the **Enable Windows faster launching** check box to stop faster launching for EC2 Windows instances and to remove pre\-provisioned snapshots\. This results in the AMI using the standard launch process for each instance, going forward\.
 **Note**  
@@ -315,6 +346,8 @@ Amazon EC2 provides the following details for each Windows AMI that is returned 
 + The maximum number of parallel instances that are launched for creating resources\. 
 + The owner ID for the fast\-launch enabled Windows AMI\.
 + The current state of faster launching for the specified Windows AMI\. Supported values include: `enabling | enabling-failed | enabled | enabled-failed | disabling | disabling-failed`\.
+**Note**  
+You can also see the current state displayed in the **Manage image optimization** page in the EC2 console, as **Image optimization state**\.
 + The reason that faster launching for the Windows AMI changed to the current state\.
 + The time that faster launching for the Windows AMI changed to the current state\.
 
@@ -416,14 +449,14 @@ Amazon EC2 uses service\-linked roles for the permissions that it requires to ca
 
 Amazon EC2 uses the service\-linked role named `AWSServiceRoleForEC2FastLaunch` to create and manage a set of pre\-provisioned snapshots that reduce the time it takes to launch instances from your Windows AMI\.
 
-You don't need to create this service\-linked role manually\. When you start using faster launching for EC2 Windows instances for your AMI, Amazon EC2 creates the service\-linked role for you, if it does not already exist\.
+You don't need to create this service\-linked role manually\. When you start using faster launching for EC2 Windows instances for your AMI, Amazon EC2 creates the service\-linked role for you, if it doesn't already exist\.
 
 **Note**  
 If the service\-linked role is deleted from your account, you can start faster launching for EC2 Windows instances for another Windows AMI to re\-create the role in your account\. Alternatively, you can stop faster launching for EC2 Windows instances for your current AMI, and then start it again\. However, stopping the feature results in your AMI using the standard launch process for all new instances while Amazon EC2 removes all of your pre\-provisioned snapshots\. After all of the pre\-provisioned snapshots are gone, you can start using faster launching for EC2 Windows instances for your AMI again\.
 
 Amazon EC2 does not allow you to edit the `AWSServiceRoleForEC2FastLaunch` service\-linked role\. After you create a service\-linked role, you cannot change the name of the role because various entities might reference the role\. However, you can edit the description of the role by using IAM\. For more information, see [Editing a Service\-Linked Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#edit-service-linked-role) in the *IAM User Guide*\.
 
-You can delete a service\-linked role only after first deleting all of the related resources\. This protects the Amazon EC2 resources that are associated with your faster launching\-enabled AMI because you can't inadvertently remove permission to access the resources\.
+You can delete a service\-linked role only after first deleting all of the related resources\. This protects the Amazon EC2 resources that are associated with your AMI with faster launching enabled, because you can't inadvertently remove permission to access the resources\.
 
 Amazon EC2 supports the faster launching for EC2 Windows instances service\-linked role in all of the Regions where the Amazon EC2 service is available\. For more information, see [Regions](using-regions-availability-zones.md#concepts-regions)\.
 
@@ -431,9 +464,9 @@ Amazon EC2 supports the faster launching for EC2 Windows instances service\-link
 
 Amazon EC2 uses the `EC2FastLaunchServiceRolePolicy` managed policy to complete the following actions:
 + `cloudwatch:PutMetricData` – Post metric data associated with faster launching for EC2 Windows instances to the Amazon EC2 namespace\.
-+ `ec2:CreateLaunchTemplate` – Create a launch template for your faster launching\-enabled AMI\.
-+ `ec2:CreateSnapshot` – Create pre\-provisioned snapshots for your faster launching\-enabled AMI\.
-+ `ec2:CreateTags` – Create tags for resources that are associated with launching and pre\-provisioning Windows instances for your faster launching\-enabled AMI\.
++ `ec2:CreateLaunchTemplate` – Create a launch template for your AMI with faster launching enabled\.
++ `ec2:CreateSnapshot` – Create pre\-provisioned snapshots for your AMI with faster launching enabled\.
++ `ec2:CreateTags` – Create tags for resources that are associated with launching and pre\-provisioning Windows instances for your AMI with faster launching enabled\.
 + `ec2:DeleteSnapshots` – Delete all associated pre\-provisioned snapshots if faster launching for EC2 Windows instances is turned off for a previously enabled AMI\.
 + `ec2:DescribeImages` – Describe images for all resources\.
 + `ec2:DescribeInstanceAttribute` – Describe instance attributes for all resources\.
@@ -444,9 +477,9 @@ Amazon EC2 uses the `EC2FastLaunchServiceRolePolicy` managed policy to complete 
 + `ec2:DescribeLaunchTemplateVersions` – Describe launch template versions for all resources\.
 + `ec2:DescribeSnapshots` – Describe snapshot resources for all resources\.
 + `ec2:DescribeSubnets` – Describe subnets for all resources\.
-+ `ec2:RunInstances` – Launch instances from a faster launching\-enabled AMI, in order to perform provisioning steps\.
-+ `ec2:StopInstances` – Stop instances that were launched from a faster launching\-enabled AMI in order to create pre\-provisioned snapshots\.
-+ `ec2:TerminateInstances` – Terminate an instance that was launched from a faster launching\-enabled AMI after creating the pre\-provisioned snapshot from it\.
++ `ec2:RunInstances` – Launch instances from an AMI with faster launching enabled, in order to perform provisioning steps\.
++ `ec2:StopInstances` – Stop instances that were launched from an AMI with faster launching enabled, in order to create pre\-provisioned snapshots\.
++ `ec2:TerminateInstances` – Terminate an instance that was launched from an AMI with faster launching enabled, after creating the pre\-provisioned snapshot from it\.
 + `iam:PassRole` – Allows the `AWSServiceRoleForEC2FastLaunch` service\-linked role to launch instances on your behalf using the instance profile from your launch template\.
 
 For more information about using managed policies for Amazon EC2, see [AWS managed policies for Amazon Elastic Compute Cloud](security-iam-awsmanpol.md)\.

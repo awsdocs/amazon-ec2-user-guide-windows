@@ -24,6 +24,8 @@ Be sure to check the `readme.txt` file in the download for system requirements\.
 
 Use the following procedure to perform an in\-place upgrade of AWS PV drivers, or to upgrade from Citrix PV drivers to AWS PV drivers on Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, or Windows Server 2022\. This upgrade is not available for RedHat drivers, or for other versions of Windows Server\.
 
+Some older versions of Windows Server can't use the latest drivers\. To verify which driver version to use for your operating system, see the driver version table in the [Paravirtual drivers for Windows instances](xen-drivers-overview.md) page\.
+
 **Important**  
 If your instance is a domain controller, see [Upgrade a domain controller \(AWS PV upgrade\)](#aws-pv-upgrade-dc)\. The upgrade process for domain controller instances is different than standard editions of Windows\. 
 

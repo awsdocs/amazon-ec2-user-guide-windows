@@ -9,7 +9,7 @@ If you require high processing capability, you'll benefit from using accelerated
 + [Hardware specifications](#gpu-instance-specifications)
 + [Instance performance](#gpu-instance-performance)
 + [Network performance](#gpu-network-performance)
-+ [SSD I/O performance](#accelerated-computing-ssd-perf)
++ [Instance store volume I/O performance](#accelerated-computing-ssd-perf)
 + [Instance features](#gpu-instances-features)
 + [Release notes](#gpu-instance-release-notes)
 + [Install NVIDIA drivers on Windows instances](install-nvidia-driver.md)
@@ -160,7 +160,7 @@ The following is a summary of network performance for accelerated computing inst
 | g5\.4xlarge | 10 | 25 | 
 | p3\.2xlarge | 2\.5 | 10 | 
 
-## SSD I/O performance<a name="accelerated-computing-ssd-perf"></a>
+## Instance store volume I/O performance<a name="accelerated-computing-ssd-perf"></a>
 
 If you use all the SSD\-based instance store volumes available to your instance, you can get up to the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
 

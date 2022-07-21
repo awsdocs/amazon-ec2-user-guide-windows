@@ -53,7 +53,7 @@ For more information, see [Amazon EC2 T2 Instances](http://aws.amazon.com/ec2/in
 + [Hardware specifications](#general-purpose-hardware)
 + [Instance performance](#general-purpose-performance)
 + [Network performance](#general-purpose-network-performance)
-+ [SSD I/O performance](#general-purpose-ssd-perf)
++ [Instance store volume I/O performance](#general-purpose-ssd-perf)
 + [Instance features](#general-purpose-features)
 + [Release notes](#general-purpose-instances-release-notes)
 + [Burstable performance instances](burstable-performance-instances.md)
@@ -290,7 +290,7 @@ The following is a summary of network performance for general purpose instances 
 | t3a\.xlarge | 1\.024 | 5 | 
 | t3a\.2xlarge | 2\.048 | 5 | 
 
-## SSD I/O performance<a name="general-purpose-ssd-perf"></a>
+## Instance store volume I/O performance<a name="general-purpose-ssd-perf"></a>
 
 If you use all the SSD\-based instance store volumes available to your instance, you can get up to the IOPS \(4,096 byte block size\) performance listed in the following table \(at queue depth saturation\)\. Otherwise, you get lower IOPS performance\.
 

@@ -119,7 +119,7 @@ If you launched your instance using a current AWS Windows AMI, the required soft
 
 1. Connect to the instance\.
 
-1. Download the [Elastic Graphics installer](http://ec2-elasticgpus.s3-website.us-east-1.amazonaws.com/latest) and open it\. The installation manager connects to the Elastic Graphics endpoint and downloads the latest version of the required software\.
+1. Download the [Elastic Graphics installer](https://d3tgz4wtsu5afq.cloudfront.net/latest) and open it\. The installation manager connects to the Elastic Graphics endpoint and downloads the latest version of the required software\.
 **Note**  
 If the download link does not work, try a different browser, or copy the link address and paste it into a new browser tab\.
 

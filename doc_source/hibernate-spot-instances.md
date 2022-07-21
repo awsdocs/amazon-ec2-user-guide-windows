@@ -13,7 +13,7 @@ For information about hibernating On\-Demand Instances, see [Hibernate your On\-
 ## Considerations<a name="hibernate-interrupted-spot-instances-considerations"></a>
 + Only Amazon EC2 can hibernate a Spot Instance\. You can't manually hibernate a Spot Instance\.
 + Only Amazon EC2 can resume a hibernated Spot Instance\. You can't manually resume a hibernated Spot Instance\.
-+ Amazon EC2 resumes the instance when capacity becomes available with a Spot price that is less than your specified maximum price\.
++ Amazon EC2 resumes the instance when capacity becomes available\.
 + When Amazon EC2 hibernates a Spot Instance, hibernation begins immediately\. You receive an interruption notice, but you do not have two minutes before the Spot Instance is interrupted\.
 + While the instance is in the process of hibernating, instance health checks might fail\.
 + When the hibernation process completes, the state of the instance is `stopped`\.
@@ -28,16 +28,13 @@ To hibernate a Spot Instance, the following prerequisites must be in place:
 Spot Instance request type – Must be `persistent`\. You can't specify a launch group in the Spot Instance request\.  
 EC2 Fleet or Spot Fleet request type – Must be `maintain`\.
 
-**Supported Windows operating systems**  
-If you use one of the following operating systems, you must [install the hibernation agent](#install-spot-instance-hibernation-agent)\. Alternatively, use a supported AMI, which already includes the hibernation agent\.  
-+ Windows Server 2008 R2 and later
-
 **Supported Windows AMIs**  
-The following supported AMIs include the hibernation agent\.  
+The following supported AMIs include the hibernation agent\. To use an earlier version of the following AMIs, you must [install the hibernation agent](#install-spot-instance-hibernation-agent)\.  
 + Windows Server 2008 R2 AMI 2017\.11\.19 or later
 + Windows Server 2012 or Windows Server 2012 R2 AMI 2017\.11\.19 or later
 + Windows Server 2016 AMI 2017\.11\.19 or later
 + Windows Server 2019
+¹ To use an earlier version of the Ubuntu Xenial AMI, it must have an AWS\-tuned Ubuntu kernel \(`linux-aws`\) greater than 4\.4\.0\-1041\.  
 For information about the supported Linux AMIs, see the [prerequisites](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hibernate-spot-instances.html#spot-instance-hibernation-prerequisites) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 **Start the hibernation agent**  

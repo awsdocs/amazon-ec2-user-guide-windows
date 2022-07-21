@@ -5,8 +5,11 @@ EC2Launch v2 is currently available by download, by installation from SSM Distri
 **Download**  
 To install the latest version of EC2Launch v2, download the installer from the following locations:
 
-**Note**  
+**Warning**  
 AmazonEC2Launch\.msi uninstalls previous versions of the EC2 launch services, such as EC2Launch \(v1\) and EC2Config\.
+
+**Note**  
+The 32\-bit installation link will be deprecated\. We recommend that you use the 64\-bit installation link to install EC2Launch v2\. If you require a 32\-bit launch agent, use [EC2Config](ec2config-service.md)\.
 + **64Bit** — [https://s3\.amazonaws\.com/amazon\-ec2launch\-v2/windows/amd64/latest/AmazonEC2Launch\.msi](https://s3.amazonaws.com/amazon-ec2launch-v2/windows/amd64/latest/AmazonEC2Launch.msi)
 + **32Bit** — [https://s3\.amazonaws\.com/amazon\-ec2launch\-v2/windows/386/latest/AmazonEC2Launch\.msi](https://s3.amazonaws.com/amazon-ec2launch-v2/windows/386/latest/AmazonEC2Launch.msi)
 
@@ -32,6 +35,9 @@ $Url = "https://s3.amazonaws.com/amazon-ec2launch-v2/windows/amd64/latest/Amazon
 ```
 
 **32Bit**
+
+**Note**  
+The 32\-bit installation link will be deprecated\. We recommend that you use the 64\-bit installation link to install EC2Launch v2\. If you require a 32\-bit launch agent, use [EC2Config](ec2config-service.md)\.
 
 ```
 $Url = "https://s3.amazonaws.com/amazon-ec2launch-v2/windows/386/latest/AmazonEC2Launch.msi" 

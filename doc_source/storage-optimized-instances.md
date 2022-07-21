@@ -46,7 +46,7 @@ For more information, see [Amazon EC2 I4i Instances](https://aws.amazon.com/ec2/
 + [Hardware specifications](#storage-instances-hardware)
 + [Instance performance](#storage-performance)
 + [Network performance](#storage-network-performance)
-+ [SSD I/O performance](#storage-instances-diskperf)
++ [Instance store volume I/O performance](#storage-instances-diskperf)
 + [Instance features](#storage-instances-features)
 + [Release notes](#storage-instance-release-notes)
 
@@ -166,7 +166,7 @@ The following is a summary of network performance for storage optimized instance
 | i4i\.2xlarge | 4\.687 | 12 | 
 | i4i\.4xlarge | 9\.375 | 25 | 
 
-## SSD I/O performance<a name="storage-instances-diskperf"></a>
+## Instance store volume I/O performance<a name="storage-instances-diskperf"></a>
 
 The primary data storage for D2, D3, and D3en instances is HDD instance store volumes\. The primary data storage for I3 and I3en instances is non\-volatile memory express \(NVMe\) SSD instance store volumes\.
 

@@ -2,6 +2,8 @@
 
 You can use Amazon EC2 to create an RSA or ED25519 key pair, or you can use a third\-party tool to create a key pair and then import the public key to Amazon EC2\.
 
+For steps to connect to your Windows instance using RDP after you have created a key pair, see [Connect to your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/connecting_to_windows_instance.html)\.
+
 **Topics**
 + [Create a key pair using Amazon EC2](#having-ec2-create-your-key-pair)
 + [Create a key pair using a third\-party tool and import the public key to Amazon EC2](#how-to-generate-your-own-key-and-import-it-to-aws)
