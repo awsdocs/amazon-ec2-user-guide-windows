@@ -241,6 +241,7 @@ The following table summarizes the networking and storage features supported by 
 | R5d | No | Yes | NVMe \* | Yes | ENA | 
 | R5dn | No | Yes | NVMe \* | Yes | ENA | 
 | R5n | Yes | Yes | No | Yes | ENA | 
+| R6a | Yes | Yes | No | Yes | ENA | 
 | R6i | Yes | Yes | No | Yes | ENA | 
 | R6id | No | Yes | NVMe \* | Yes | ENA | 
 | T2 | Yes | No | No | No | No | 

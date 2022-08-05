@@ -125,7 +125,7 @@ Choose **Browse more AMIs** to browse the full AMI catalog\.
 + To search through all available AMIs, enter a keyword in the search bar and then press **Enter**\.
 + To search by category, choose **Quickstart AMIs**, **My AMIs**, **AWS Marketplace AMIs**, or **Community AMIs**\.
 
-  The AWS Marketplace is an online store where you can buy software that runs on AWS, including AMIs\. For more information about launching an instance from the AWS Marketplace, see [Launch an AWS Marketplace instance](launch-marketplace-console.md)\. In **Community AMIs**, you can find AMIs that AWS community members have made available for others to use\.
+  The AWS Marketplace is an online store where you can buy software that runs on AWS, including AMIs\. For more information about launching an instance from the AWS Marketplace, see [Launch an AWS Marketplace instance](launch-marketplace-console.md)\. In **Community AMIs**, you can find AMIs that AWS community members have made available for others to use\. AMIs from Amazon or a verified partner are marked **Verified provider**\.
 + To filter the list of AMIs, select one or more check boxes under **Refine results** on the left of the screen\. The filter options are different depending on the selected search category\.
 + Check the **Virtualization** type listed for each AMI\. Notice which AMIs are the type that you need: either **hvm** or **paravirtual**\. For example, some instance types require HVM\. 
 + Check the **Boot mode** listed for each AMI\. Notice which AMIs use the boot mode that you need: either **legacy\-bios** or **uefi**\. For more information, see [Boot modes](ami-boot.md)\.

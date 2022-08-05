@@ -68,9 +68,6 @@ The following is a summary of the hardware specifications for accelerated comput
 
 | Instance type | Default vCPUs | Memory \(GiB\) | Accelerators | 
 | --- | --- | --- | --- | 
-| f1\.2xlarge | 8 | 122 | 1 | 
-| f1\.4xlarge | 16 | 244 | 2 | 
-| f1\.16xlarge | 64 | 976 | 8 | 
 | g2\.2xlarge | 8 | 15 | 1 | 
 | g2\.8xlarge | 32 | 60 | 4 | 
 | g3s\.xlarge | 4 | 30\.5 | 1 | 
@@ -111,7 +108,7 @@ The accelerated computing instances use the following processors\.
 + **2nd generation AMD EPYC processors \(AMD EPYC 7R32\)**: G4ad, G5
 
 **Intel processors**
-+ **Intel Xeon Scalable processors \(Broadwell E5\-2686 v4\)**: F1, G3, P2, P3
++ **Intel Xeon Scalable processors \(Broadwell E5\-2686 v4\)**: G3, P2, P3
 + **Intel Xeon Scalable processors \(Skylake 8175\)**: P3dn
 + **2nd generation Intel Xeon Scalable processors \(Cascade Lake P\-8259CL\)**: VT1
 + **2nd generation Intel Xeon Scalable processors \(Cascade Lake P\-8259L\)**: G4dn
@@ -131,11 +128,11 @@ The following is a summary of network performance for accelerated computing inst
 
 | Instance type | Network performance | Enhanced networking | 
 | --- | --- | --- | 
-|  f1\.4xlarge and smaller \| g3\.4xlarge \| g3s\.xlarge \| g4ad\.4xlarge and smaller \| g5\.2xlarge and smaller \| p3\.2xlarge  | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  g3\.4xlarge \| g3s\.xlarge \| g4ad\.4xlarge and smaller \| g5\.2xlarge and smaller \| p3\.2xlarge  | Up to 10 Gbps † | [ENA](enhanced-networking-ena.md) | 
 |  g3\.8xlarge \| p2\.8xlarge \| p3\.8xlarge  | 10 Gbps | [ENA](enhanced-networking-ena.md) | 
 | g4ad\.8xlarge | 15 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  g4dn\.4xlarge and smaller \| g5\.4xlarge  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
-|  f1\.16xlarge \| g3\.16xlarge \| g4ad\.16xlarge \| g5\.8xlarge \| g5\.16xlarge \| p2\.16xlarge \| p3\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  g3\.16xlarge \| g4ad\.16xlarge \| g5\.8xlarge \| g5\.16xlarge \| p2\.16xlarge \| p3\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
 | g5\.12xlarge | 40 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  g4dn\.8xlarge \| g4dn\.12xlarge \| g4dn\.16xlarge \| g5\.24xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  g4dn\.metal \| g5\.48xlarge \| p3dn\.24xlarge  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
@@ -145,8 +142,6 @@ The following is a summary of network performance for accelerated computing inst
 
 | Instance type | Baseline bandwidth \(Gbps\) | Burst bandwidth \(Gbps\) | 
 | --- | --- | --- | 
-| f1\.2xlarge | 2\.5 | 10 | 
-| f1\.4xlarge | 5 | 10 | 
 | g3\.4xlarge | 5 | 10 | 
 | g3s\.xlarge | 1\.25 | 10 | 
 | g4ad\.xlarge | 2 | 10 | 
@@ -194,7 +189,6 @@ The following is a summary of features for accelerated computing instances\.
 
 |  | EBS only | NVMe EBS | Instance store | Placement group | 
 | --- | --- | --- | --- | --- | 
-|  F1  |  No  |  No  |  NVMe \*  |  Yes  | 
 |  G2  |  No  |  No  |  SSD  |  Yes  | 
 |  G3  |  Yes  |  No  |  No  |  Yes  | 
 |  G4ad  |  No  |  Yes  |  NVMe \*  |  Yes  | 

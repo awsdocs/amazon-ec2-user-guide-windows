@@ -2,6 +2,8 @@
 
 You can change the instance type only if the instance's current configuration is compatible with the instance type that you want\. If the instance type that you want is not compatible with the instance's current configuration, you must launch a new instance with a configuration that is compatible with the instance type, and then migrate your application to the new instance\.
 
+For compatibility information for changing Linux instance types, see [Compatibility for changing the instance type](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resize-limitations.html) in the *User Guide for Linux Instances*\.
+
 Compatibility is determined in the following ways:
 
 **Architecture**  
