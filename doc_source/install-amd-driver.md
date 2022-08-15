@@ -57,17 +57,22 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 1. Unzip the downloaded driver file and run the installer using the following PowerShell commands\.
 
    ```
-   Expand-Archive $LocalFilePath -DestinationPath $home\Desktop\AMD\latest -Verbose
-   $Driverdir = Get-ChildItem $home\Desktop\ -Directory -Filter "*WHQL*"
+   Expand-Archive $LocalFilePath -DestinationPath "$home\Desktop\AMD\latest" -Verbose
+   $Driverdir = Get-ChildItem "$home\Desktop\" -Directory -Filter "*WHQL*"
    Write-Host $Driverdir
    ```
 
-   Now, check the name of the new directory\. It may vary but a simple `ls` command will display the current name\. Example:
+   Now, check the name of the new directory\. The directory name can be retrieved using the `Get-ChildItem` PowerShell command\.
 
    ```
-   PS C:\Users\Administrator>  ls C:\Users\Administrator\Desktop\AMD\latest\
-       Directory: C:\Users\Administrator\Desktop\AMD\latest
-   
+   Get-ChildItem "$home\Desktop\AMD\latest\"
+   ```
+
+   The output should be similar to the following:
+
+   ```
+   Directory: C:\Users\Administrator\Desktop\AMD\latest
+   						
    Mode                LastWriteTime         Length Name
    ----                -------------         ------ ----
    d-----       10/13/2021  12:52 AM                210414a-365562C-Retail_End_User.2

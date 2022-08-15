@@ -240,7 +240,7 @@ If you migrate to a sixth generation EC2 instance, you might experience reduced 
 
 #### Cause<a name="ts-ena-drv-6gen-instance-perf-cause"></a>
 
-Sixth generation instances require upgrading to an ENAv3 driver\. Windows requires driver version 2\.2\.3 or later\. However, driver version 2\.2\.4 can also cause performance degradation on sixth generation instances, and has been rolled back\.
+Windows requires driver version 2\.2\.3 or later\. However, driver version 2\.2\.4 can also cause performance degradation on sixth generation instances, and has been rolled back\. For more information, see the article [What do I need to do before migrating my EC2 instance to a sixth generation instance to make sure that I get maximum network performance?](http://aws.amazon.com/premiumsupport/knowledge-center/migrate-to-gen6-ec2-instance/) in the AWS Knowledge Center\.
 
 #### Solution<a name="ts-ena-drv-6gen-instance-perf-solution"></a>
 

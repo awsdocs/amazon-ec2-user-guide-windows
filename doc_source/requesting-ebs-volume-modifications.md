@@ -50,7 +50,9 @@ To modify an EBS volume, use one of the following methods\.
 
 1. After you have finished changing the volume settings, choose **Modify**\. When prompted for confirmation, choose **Modify**\.
 
-1. Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extend a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
+1. 
+**Important**  
+If you've increased the size of your volume, then you must also extend the volume's partition to make use of the additional storage capacity\. For more information, see [Extend a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
 
 1. If you increase the size of an NVMe volume on an instance that does not have the AWS NVMe drivers, you must reboot the instance to enable Windows to see the new volume size\. For more information about installing the AWS NVMe drivers, see [AWS NVMe drivers for Windows instances](aws-nvme-drivers.md)\.
 
@@ -71,7 +73,9 @@ To modify an EBS volume, use one of the following methods\.
 
 1. After you have finished changing the volume settings, choose **Modify**\. When prompted for confirmation, choose **Yes**\.
 
-1. Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extend a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
+1. 
+**Important**  
+If you've increased the size of your volume, then you must also extend the volume's partition to make use of the additional storage capacity\. For more information, see [Extend a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
 
 1. If you increase the size of an NVMe volume on an instance that does not have the AWS NVMe drivers, you must reboot the instance to enable Windows to see the new volume size\. For more information about installing the AWS NVMe drivers, see [AWS NVMe drivers for Windows instances](aws-nvme-drivers.md)\.
 
@@ -104,7 +108,8 @@ The following is example output:
 }
 ```
 
-Modifying volume size has no practical effect until you also extend the volume's file system to make use of the new storage capacity\. For more information, see [Extend a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
+**Important**  
+If you've increased the size of your volume, then you must also extend the volume's partition to make use of the additional storage capacity\. For more information, see [Extend a Windows file system after resizing a volume](recognize-expanded-volume-windows.md)\.
 
 ------
 

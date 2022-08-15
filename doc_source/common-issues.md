@@ -44,6 +44,12 @@ Instances created from Amazon Machine Images \(AMIs\) for Windows Server 2016 an
    ```
    PS C:\>  C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeDisks.ps1 -Schedule
    ```
+**Note**  
+If the EC2Launch script does not initialize the volumes, ensure that the volumes are online\. If the volumes are offline, run the following command to bring all disks online\.  
+
+   ```
+   PS C:\> Get-Disk | Where-Object IsOffline -Eq $True | Set-Disk -IsOffline $False
+   ```
 
 ## Boot an EC2 Windows instance into Directory Services Restore Mode \(DSRM\)<a name="boot-dsrm"></a>
 

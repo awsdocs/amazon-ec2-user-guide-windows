@@ -159,11 +159,20 @@ The following components are part of the Nitro System:
 + Nitro security chip, integrated into the motherboard
 + Nitro hypervisor \- A lightweight hypervisor that manages memory and CPU allocation and delivers performance that is indistinguishable from bare metal for most workloads\.<a name="nitro-instance-types"></a>
 
-**Instance types**
+**Available instance types**  
+The following virtualized instances are built on the Nitro System:
++ **General purpose**: M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6a, M6i, M6id, T3, T3a
++ **Compute optimized**: C5, C5a, C5ad, C5d, C5n, C6a, C6i, C6id 
++ **Memory optimized**: R5, R5a, R5ad, R5b, R5d, R5dn, R5n, R6a, R6i, R6id, `u-3tb1.56xlarge`, `u-6tb1.56xlarge`, `u-6tb1.112xlarge`, `u-9tb1.112xlarge`, `u-12tb1.112xlarge`, X2idn, X2iedn, X2iezn, z1d
++ **Storage optimized**: D3, D3en, I3en, I4i 
++ **Accelerated computing**: G4, G4ad, G5, `p3dn.24xlarge` 
 
-The following instances are built on the Nitro System:
-+ **Virtualized**: C5, C5a, C5ad, C5d, C5n, C6a, C6i, C6id, D3, D3en, G4, G4ad, G5, I3en, I4i, M5, M5a, M5ad, M5d, M5dn, M5n, M5zn, M6a, M6i, M6id, `p3dn.24xlarge`, R5, R5a, R5ad, R5b, R5d, R5dn, R5n, R6a, R6i, R6id, T3, T3a, `u-3tb1.56xlarge`, `u-6tb1.56xlarge`, `u-6tb1.112xlarge`, `u-9tb1.112xlarge`, `u-12tb1.112xlarge`, X2idn, X2iedn, X2iezn, and z1d
-+ **Bare metal**: `c5.metal`, `c5d.metal`, `c5n.metal`, `c6a.metal`, `c6i.metal`, `c6id.metal`, `g4dn.metal`, `i3.metal`, `i3en.metal`, `i4i.metal`, `m5.metal`, `m5d.metal`, `m5dn.metal`, `m5n.metal`, `m5zn.metal`, `m6a.metal`, `m6i.metal`, `m6id.metal`, `r5.metal`, `r5b.metal`, `r5d.metal`, `r5dn.metal`, `r5n.metal`, r6a\.metal, `r6i.metal`, `r6id.metal`, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, `x2idn.metal`, `x2iedn.metal`, `x2iezn.metal`, and `z1d.metal`
+The following bare metal instances are built on the Nitro System:
++ **General purpose**: `m5.metal`, `m5d.metal`, `m5dn.metal`, `m5n.metal`, `m5zn.metal`, `m6a.metal`, `m6i.metal`, `m6id.metal`
++ **Compute optimized**: `c5.metal`, `c5d.metal`, `c5n.metal`, `c6a.metal`, `c6i.metal`, `c6id.metal`
++ **Memory optimized**: `r5.metal`, `r5b.metal`, `r5d.metal`, `r5dn.metal`, `r5n.metal`, `r6a.metal`, `r6i.metal`, `r6id.metal`, `u-6tb1.metal`, `u-9tb1.metal`, `u-12tb1.metal`, `u-18tb1.metal`, `u-24tb1.metal`, `x2idn.metal`, `x2iedn.metal`, `x2iezn.metal`, `z1d.metal`
++ **Storage optimized**: `i3.metal`, `i3en.metal`, `i4i.metal`
++ **Accelerated computing**: `g4dn.metal` 
 
 **Learn more**
 
@@ -196,7 +205,7 @@ When you select an instance type, this determines the networking and storage fea
 The following table summarizes the networking and storage features supported by current generation instance types\.
 
 
-|  | EBS only | NVMe EBS | Instance store | Placement group | Enhanced networking | 
+| Instance type | EBS only | NVMe EBS | Instance store | Placement group | Enhanced networking | 
 | --- | --- | --- | --- | --- | --- | 
 | C4 | Yes | No | No | Yes | Intel 82599 VF | 
 | C5 | Yes | Yes | No | Yes | ENA | 

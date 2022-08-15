@@ -7,10 +7,11 @@ The Special Admin Console \(SAC\) capability of Windows provides a way to troubl
 + [Prerequisites](#sac-prerequisites)
 + [Use SAC](#use-sac)
 + [Use the boot menu](#use-boot-menu)
++ [Disable SAC and the boot menu](#disable-sac-bootmenu)
 
 ## Limitations<a name="sac-limitations"></a>
 
-If you enable SAC on an instance, the EC2 services that rely on password retrieval will not work from the Amazon EC2 console\. Windows on Amazon EC2 launch agents \(EC2Config, EC2Launch v1, and EC2Launch v2\) rely on the serial console to execute various tasks\. These tasks do not perform successfully when you enable SAC on an instance\. For more information about Windows on Amazon EC2 launch agents, see [Configure your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-instances.html)\.
+If you enable SAC on an instance, the EC2 services that rely on password retrieval will not work from the Amazon EC2 console\. Windows on Amazon EC2 launch agents \(EC2Config, EC2Launch v1, and EC2Launch v2\) rely on the serial console to execute various tasks\. These tasks do not perform successfully when you enable SAC on an instance\. For more information about Windows on Amazon EC2 launch agents, see [Configure your Windows instance](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-instances.html)\. If you enable SAC, you can disable it later\. For more information, see [Disable SAC and the boot menu](#disable-sac-bootmenu)\.
 
 ## Prerequisites<a name="sac-prerequisites"></a>
 
@@ -144,3 +145,61 @@ Goes back to the initial boot menu\.
 The ESC key alone does not take you back to the main menu because Windows is waiting to see if an escape sequence is in progress\.
 
 ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/win-boot-2.png)
+
+## Disable SAC and the boot menu<a name="disable-sac-bootmenu"></a>
+
+If you enable SAC and the boot menu, you can disable these features later\.
+
+Use one of the following methods to disable SAC and the boot menu on an instance\.
+
+------
+#### [ PowerShell ]
+
+**To disable SAC and the boot menu on a Windows instance**
+
+1. [Connect](connecting_to_windows_instance.md) to your instance and perform the following steps from an elevated PowerShell command line\.
+
+1. First disable the boot menu by changing the value to `no`\.
+
+   ```
+   bcdedit /set '{bootmgr}' displaybootmenu no
+   ```
+
+1. Then disable SAC by changing the value to `off`\.
+
+   ```
+   bcdedit /ems '{current}' off
+   ```
+
+1. Apply the updated configuration by rebooting the instance\.
+
+   ```
+   shutdown -r -t 0
+   ```
+
+------
+#### [ Command prompt ]
+
+**To disable SAC and the boot menu on a Windows instance**
+
+1. [Connect](connecting_to_windows_instance.md) to your instance and perform the following steps from the command prompt\.
+
+1. First disable the boot menu by changing the value to `no`\.
+
+   ```
+   bcdedit /set {bootmgr} displaybootmenu no
+   ```
+
+1. Then disable SAC by changing the value to `off`\.
+
+   ```
+   bcdedit /ems {current} off
+   ```
+
+1. Apply the updated configuration by rebooting the instance\.
+
+   ```
+   shutdown -r -t 0
+   ```
+
+------

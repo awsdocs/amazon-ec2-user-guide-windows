@@ -20,7 +20,7 @@ The following script detaches all volumes attached to an instance, and then crea
    Set-AWSCredentials –AccessKey key_name –SecretKey key_name
    ```
 
-1. Run the following command to set the Region for your PowerShell session\. The example uses the us\-east\-2 Region\.
+1. Run the following command to set the Region for your PowerShell session\. The example uses the `us-east-2` Region\.
 
    ```
    Set-DefaultAWSRegion -Region us-east-2

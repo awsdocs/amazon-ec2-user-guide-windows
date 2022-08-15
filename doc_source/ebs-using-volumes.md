@@ -110,7 +110,7 @@ In Windows Server 2008, choose **Start**, **Administrative Tools**, **Computer M
 1. Bring the volume online\. In the lower pane, open the context \(right\-click\) menu for the left panel for the disk for the EBS volume\. Choose **Online**\.  
 ![\[Bring the volume online.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-2016-volume-online.png)
 
-1. \(Conditional\) You must initialize the disk before you can use it\.
+1. \(Conditional\) If the disk is not initialized, you must initialize it before you can use it\. If the disk is already initialized, skip this step\.
 **Warning**  
 If you're mounting a volume that already has data on it \(for example, a public data set, or a volume that you created from a snapshot\), do not reformat the volume or you will delete the existing data\.
 
