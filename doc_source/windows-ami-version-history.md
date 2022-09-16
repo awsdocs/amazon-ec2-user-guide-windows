@@ -13,7 +13,7 @@ Microsoft no longer supports Windows Server 2003, 2008, and 2008 R2\. We recomme
 
 **Topics**
 + [Select an initial Windows AMI](#select-windows-ami)
-+ [Keep your AMIs up\-to\-date](#WinAMI_Updating)
++ [Keep your AMIs up to date](#WinAMI_Updating)
 + [Virtualization types](#virtualization-types)
 + [Configure your Windows AMI for faster launching](win-ami-config-fast-launch.md)
 + [Managed AWS Windows AMIs](aws-windows-ami.md)
@@ -28,11 +28,13 @@ You can also create an AMI from software running on your own Windows computer\. 
 + [AWS Application Migration Service](https://docs.aws.amazon.com/mgn/latest/ug/)
 + [VM Import/Export](https://docs.aws.amazon.com/vm-import/latest/userguide/)
 
-## Keep your AMIs up\-to\-date<a name="WinAMI_Updating"></a>
+## Keep your AMIs up to date<a name="WinAMI_Updating"></a>
 
-AWS provides updated, fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. For more information, see [Details about AWS Windows AMI versions](aws-windows-ami.md#windows-ami-versions)\.
+AWS provides updated and fully\-patched Windows AMIs within five business days of Microsoft's patch Tuesday \(the second Tuesday of each month\)\. The AWS Windows AMIs contain the latest security updates available at the time they were created\. For more information, see [Details about AWS Windows AMI versions](aws-windows-ami.md#windows-ami-versions) and [Patches, security updates, and AMI IDs](aws-windows-ami.md#ami-patches-security-ID)\. 
 
-The AWS Windows AMIs contain the latest security updates available at the time they were created\. For more information, see [Patches, security updates, and AMI IDs](aws-windows-ami.md#ami-patches-security-ID)\.
+Use the AWS Systems Manager Automation runbook [AWS\-UpdateWindowsAmi](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-aws-updatewindowsami.html) to update an AMI by installing Windows updates, Amazon software, and Amazon drivers\. You can also use EC2 Image Builder, a fully managed AWS service, to help automate creating up\-to\-date AMIs\. For more information, see the *[EC2 Image Builder User Guide](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html)*\.
+
+For existing EC2 instances, we recommend that you regularly patch, update, and secure the operating system and applications\. For more information, see [Update your Windows instance](aws-windows-ami.md#update-windows-instance)\.
 
 ## Virtualization types<a name="virtualization-types"></a>
 

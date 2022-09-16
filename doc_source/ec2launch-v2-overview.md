@@ -2,6 +2,9 @@
 
 EC2Launch v2 is a service that performs tasks during instance startup and runs if an instance is stopped and later started, or restarted\. 
 
+**Note**  
+In order to use EC2Launch with IMDSv2, the version must be 1\.3\.2002730 or later\.
+
 **Topics**
 + [Compare Amazon EC2 launch services](#ec2launch-v2-agent-compare)
 + [EC2Launch v2 concepts](#ec2launch-v2-concepts)

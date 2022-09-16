@@ -1,6 +1,6 @@
 # Troubleshoot connecting to your Windows instance<a name="troubleshoot-connect-windows-instance"></a>
 
-The following are possible problems you may have and error messages you may see while trying to connect to your Windows instance\.
+The following are possible problems you might have and error messages you might see while trying to connect to your Windows instance\.
 
 **Topics**
 + [Remote Desktop can't connect to the remote computer](#rdp-issues)
@@ -152,7 +152,11 @@ The AWSSupport\-TroubleshootRDP automation document can be used with EC2 instanc
 
 1.  Verify that you are in the same Region as the impaired instance\.
 
-1. Open the [AWSSupport\-TroubleshootRDP](https://console.aws.amazon.com/systems-manager/automation/execute/AWSSupport-TroubleshootRDP) document\.
+1. Choose **Documents** from the left navigation pane\. 
+
+1. On the **Owned by Amazon** tab, enter `AWSSupport-TroubleshootRDP` in the search field\. When the `AWSSupport-TroubleshootRDP` document appears, select it\.
+
+1. Choose **Execute automation**\.
 
 1. For **Execution Mode**, choose **Simple execution**\.
 

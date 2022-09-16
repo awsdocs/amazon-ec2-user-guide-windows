@@ -1,6 +1,8 @@
 # Troubleshoot an unreachable instance<a name="screenshot-service"></a>
 
-If you are unable to reach your Windows instance through SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility into the status of the instance, and allows for quicker troubleshooting\. You can also use [EC2 Rescue](Windows-Server-EC2Rescue.md) on instances running Windows Server 2008 or later to gather and analyze data from offline instances\. 
+If you are unable to reach your Windows instance through SSH or RDP, you can capture a screenshot of your instance and view it as an image\. This provides visibility into the status of the instance, and allows for quicker troubleshooting\. You can also use [EC2 Rescue](Windows-Server-EC2Rescue.md) on instances running Windows Server 2008 or later to gather and analyze data from offline instances\.
+
+**Topics**
 + [Get a screenshot of an unreachable instance](#how-to-ics)
 + [Common screenshots](#ics-common)
 
@@ -29,7 +31,7 @@ You can get screenshots of an instance while it is running or after it has crash
 + South America \(São Paulo\) Region
 + Canada \(Central\) Region
 + Middle East \(Bahrain\) Region
-+ Africa \(Capetown\) Region
++ Africa \(Cape Town\) Region
 + China \(Beijing\) Region
 + China \(Ningxia\) Region
 
@@ -47,11 +49,11 @@ You can get screenshots of an instance while it is running or after it has crash
 
 **To get a screenshot of a running instance using the command line**
 
-You can use one of the following commands\. The returned output is base64\-encoded\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
+You can use one of the following commands\. For more information about these command line interfaces, see [Access Amazon EC2](concepts.md#access-ec2)\.
 + [get\-console\-screenshot](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-console-screenshot.html) \(AWS CLI\)
 + [GetConsoleScreenshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-GetConsoleScreenshot.html) \(Amazon EC2 Query API\)
 
-For API calls, the returned content is base64\-encoded\. For command line tools, the decoding is performed for you\.
+For API calls, the returned output is base64\-encoded\. For command line tools, the decoding is performed for you\.
 
 ## Common screenshots<a name="ics-common"></a>
 
@@ -74,7 +76,7 @@ If an instance becomes unreachable during logon, there could be a problem with y
 
 #### Network configuration<a name="network-config"></a>
 
-Use the following information, to verify that your AWS, Microsoft Windows, and local \(or on\-premises\) network configurations aren't blocking access to the instance\.
+Use the following information to verify that your AWS, Microsoft Windows, and local \(or on\-premises\) network configurations aren't blocking access to the instance\.
 
 
 **AWS network configuration**  
@@ -93,7 +95,7 @@ Use the following information, to verify that your AWS, Microsoft Windows, and l
 | Windows Firewall | Verify that Windows Firewall isn't blocking connections to your instance\. Disable Windows Firewall as described in bullet 7 of the remote desktop troubleshooting section, [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues)\.  | 
 | Advanced TCP/IP configuration \(Use of static IP\) | The instance may be unresponsive because you configured a static IP address\. For a VPC, [create a network interface](using-eni.md#create_eni) and [attach it to the instance](using-eni.md#attach_eni)\. For EC2 Classic, enable DHCP\. | 
 
-**Local or On\-Premises Network Configuration**
+**Local or on\-premises network configuration**
 
 Verify that a local network configuration isn't blocking access\. Try to connect to another instance in the same VPC as your unreachable instance\. If you can't access another instance, work with your local network administrator to determine whether a local policy is restricting access\.
 
@@ -125,9 +127,9 @@ Console Screenshot Service returned the following\.
 
 ![\[Recovery console screenshot\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-2.png)
 
-The operating system may boot into the Recovery console and get stuck in this state if the `bootstatuspolicy` is not set to `ignoreallfailures`\. Use the following procedure to change the `bootstatuspolicy` configuration to `ignoreallfailures`\.
+The operating system might boot into the Recovery console and get stuck in this state if the `bootstatuspolicy` is not set to `ignoreallfailures`\. Use the following procedure to change the `bootstatuspolicy` configuration to `ignoreallfailures`\.
 
-By default, the policy configuration for AWS\-provided public Windows AMIs is set to `ignoreallfailures`\. 
+By default, the policy configuration for public Windows AMIs provided by AWS is set to `ignoreallfailures`\.
 
 1. Stop the unreachable instance\.
 
@@ -135,9 +137,10 @@ By default, the policy configuration for AWS\-provided public Windows AMIs is se
 
    Detach the root volume from the unreachable instance, take a snapshot of the volume or create an AMI from it, and attach it to another instance in the same Availability Zone as a secondary volume\. For more information, see [Detach an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)\.
 **Warning**  
-If your temporary instance is based on the same AMI that the original instance is based on, you must complete additional steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\. Alternatively, select a different AMI for the temporary instance\. For example, if the original instance uses an AMI for Windows Server 2008 R2, launch the temporary instance using an AMI for Windows Server 2012\. If you must create a temporary instance based on the same AMI, see Step 6 in [Remote Desktop can't connect to the remote computer](troubleshoot-connect-windows-instance.md#rdp-issues) to avoid a disk signature collision\.
+If your temporary instance and the original instance were launched using the same AMI, you must complete additional steps or you won't be able to boot the original instance after you restore its root volume because of a disk signature collision\. If you must create a temporary instance using the same AMI, to avoid a disk signature collision, complete the steps in [Disk signature collision](common-issues.md#disk-signature-collision)\.  
+Alternatively, select a different AMI for the temporary instance\. For example, if the original instance uses an AMI for Windows Server 2008 R2, launch the temporary instance using an AMI for Windows Server 2012\.
 
-1. Log in to the instance and run the following command from a command prompt to change the `bootstatuspolicy` configuration to `ignoreallfailures`:
+1. Log in to the instance and run the following command from a command prompt to change the `bootstatuspolicy` configuration to `ignoreallfailures`\.
 
    ```
    bcdedit /store Drive Letter:\boot\bcd /set {default} bootstatuspolicy ignoreallfailures

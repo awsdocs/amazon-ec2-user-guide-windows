@@ -137,23 +137,25 @@ To complete the upgrade, you must attach the installation media volume to your E
 
 1. Create a new volume from a Windows Server installation media snapshot\.
 
-   1. In the navigation pane, choose **Snapshots**, and next to the filter field, select **Public Snapshots**\.
+   1. In the navigation pane, choose **Snapshots**, and next to the filter field, choose **Public snapshots**\.
 
-   1. Add the **Owner** filter and choose **Amazon images**\.
+   1. From the Search field, choose **Owner alias**, then **=**, then **amazon** \(new console\), or choose **Owner** and then **Amazon images** \(old console\)\.
 
-   1. Add the **Description** filter and enter **Windows**\. Press Enter\.
+   1. From the Search field, choose **Description**, then **:** \(contains\), and then enter **Windows** \(new console\), or choose **Description** and then enter **Windows** \(old console\)\. Press Enter\.
 
    1. Select the snapshot that matches the system architecture of your instance\. For example, **Windows 2012 Installation Media**\.
 
-   1. Choose **Actions**, **Create Volume**\.
+   1. Choose **Actions**, **Create volume from snapshot** \(new console\) or **Create Volume** \(old console\)\.
 
-   1. In the **Create Volume** dialog box, select the Availability Zone that matches your Windows instance, and choose **Create**\.
+   1. In the **Create volume** dialog box, select the Availability Zone that matches your Windows instance, and choose **Create volume**\.
 
-1. In the **Volume Successfully Created** dialog box, choose the volume that you just created\.
+1. \(New console\) From the navigation pane, choose **Volumes**, and then choose the volume that you just created
 
-1. Choose **Actions**, **Attach Volume**\.
+   \(Old console\) In the **Volume Successfully Created** dialog box, choose the volume that you just created\.
 
-1. In the **Attach Volume** dialog box, enter the instance ID and choose **Attach**\.
+1. Choose **Actions**, **Attach volume**\.
+
+1. In the **Attach volume** dialog box, enter the instance ID and choose **Attach volume**\.
 
 1. On your Windows instance, on the `C:\` drive, create a folder named `temp`\.
 **Important**  

@@ -145,16 +145,6 @@ These downloads are available to AWS customers only\. By downloading, you agree 
    New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global\GridLicensing" -Name "NvCplDisableManageLicensePage" -PropertyType "DWord" -Value "1"
    ```
 
-1. If you are using NVIDIA driver version 14\.x or greater on the G4dn or G5g instances, disable GSP with the following commands\. For more information, on why this is required visit [NVIDIA’s documentation](https://docs.nvidia.com/grid/latest/grid-vgpu-user-guide/index.html#disabling-gsp)\.
-
-   ```
-   sudo touch /etc/modprobe.d/nvidia.conf
-   ```
-
-   ```
-   echo "options nvidia NVreg_EnableGpuFirmware=0" | sudo tee --append /etc/modprobe.d/nvidia.conf
-   ```
-
 1. \(Optional\) Depending on your use case, you might complete the following optional steps\. If you do not require this functionality, do not complete these steps\.
 
    1. To help take advantage of the four displays of up to 4K resolution, set up the high\-performance display protocol, [NICE DCV](https://docs.aws.amazon.com/dcv/)\.
@@ -208,7 +198,7 @@ These drivers are available to AWS customers only\. By downloading them, you agr
      reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global" /v vGamingMarketplace /t REG_DWORD /d 2
      ```
 
-1. Run the following command, which downloads the certification file, renames the file `GridSwCert.txt`, and moves the file to the Public Documents folder on your system drive\. Typically, the folder path is C:\\Users\\Public\\Public Documents \(Windows Explorer\) or C:\\Users\\Public\\Documents \(Command Prompt window\)\.
+1. Run the following command in PowerShell\. This downloads the certification file, renames the file `GridSwCert.txt`, and moves the file to the Public Documents folder on your system drive\. Typically, the folder path is `C:\Users\Public\Documents`\.
    + For version 461\.40 or later:
 
      ```

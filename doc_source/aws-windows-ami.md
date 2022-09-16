@@ -130,7 +130,9 @@ The following configuration changes are applied to each AWS Windows AMI\.
 
 ## Update your Windows instance<a name="update-windows-instance"></a>
 
-After you launch a Windows instance, you are responsible for installing updates on it\. You can manually install only the updates that interest you, or you can start from a current AWS Windows AMI and build a new Windows instance\. For information about finding the current AWS Windows AMIs, see [Find a Windows AMI](finding-an-ami.md)\.
+After you launch a Windows instance, you are responsible for installing updates on it\. For more information, see [Update management in Amazon EC2](update-management.md)\.
+
+You can manually install only the updates that interest you, or you can start from a current AWS Windows AMI and build a new Windows instance\. For information about finding the current AWS Windows AMIs, and keeping your AMIs up to date, see [Find a Windows AMI](finding-an-ami.md) and [Keep your AMIs up to date](windows-ami-version-history.md#WinAMI_Updating)\.
 
 **Note**  
 Instances should be stateless when updating\. For more information, see [Managing Your AWS Infrastructure at Scale](https://d1.awsstatic.com/whitepapers/managing-your-aws-infrastructure-at-scale.pdf)\.

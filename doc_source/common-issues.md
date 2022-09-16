@@ -158,7 +158,7 @@ For information about troubleshooting a Windows Server 2012 R2 instance that is 
 
 ## Disk signature collision<a name="disk-signature-collision"></a>
 
-You can check for and resolve disk signature collisions using [EC2Rescue for Windows Server](Windows-Server-EC2Rescue.md)\. Or, you can manually resolve disk signature issues by performing the following steps:
+You can check for and resolve disk signature collisions using [EC2Rescue for Windows Server](Windows-Server-EC2Rescue.md)\. Or, you can manually resolve disk signature issues by performing the following steps\.
 **Warning**  
 The following procedure describes how to edit the Windows Registry using Registry Editor\. If you are not familiar with the Windows Registry or how to safely make changes using Registry Editor, see [Configure the Registry](https://technet.microsoft.com/en-us/library/cc725612.aspx)\.
 

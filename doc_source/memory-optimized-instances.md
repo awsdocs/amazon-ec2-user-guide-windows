@@ -266,7 +266,7 @@ Memory optimized instances have high memory and require 64\-bit HVM AMIs to take
 
 ## Instance performance<a name="memory-compute-perf"></a>
 
-Memory optimized instances enable increased cryptographic performance through the latest Intel AES\-NI feature, support Intel Transactional Synchronization Extensions \(TSX\) to boost the performance of in\-memory transactional data processing, and support Advanced Vector Extensions 2 \(Intel AVX2\) processor instructions to expand most integer commands to 256 bits\.
+Memory optimized instances enable increased cryptographic performance through the latest Intel AES\-NI feature and support Advanced Vector Extensions 2 \(Intel AVX2\) processor instructions to expand most integer commands to 256 bits\.
 
 ## Network performance<a name="memory-network-perf"></a>
 

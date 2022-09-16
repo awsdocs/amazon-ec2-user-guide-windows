@@ -4,13 +4,13 @@
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
@@ -107,7 +107,7 @@ Amazon's trademarks and trade dress may not be used in
          + [How Spot Instances work](how-spot-instances-work.md)
          + [Spot Instance pricing history](using-spot-instances-history.md)
          + [Savings from purchasing Spot Instances](spot-savings.md)
-         + [Spot Instance requests](spot-requests.md)
+         + [Working with Spot Instances](spot-requests.md)
             + [Spot Instance request example launch specifications](spot-request-examples.md)
          + [Spot request status](spot-request-status.md)
          + [EC2 instance rebalance recommendations](rebalance-recommendations.md)
@@ -243,7 +243,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Spot Fleet request types](spot-fleet-requests.md)
       + [Spot Fleet configuration strategies](how-spot-fleet-works.md)
          + [Plan a Spot Fleet request](plan-spot-fleet.md)
-         + [Allocation strategy for Spot Instances](spot-fleet-allocation-strategy.md)
+         + [Allocation strategies for Spot Instances](spot-fleet-allocation-strategy.md)
          + [Attribute-based instance type selection for Spot Fleet](spot-fleet-attribute-based-instance-type-selection.md)
          + [On-Demand in Spot Fleet](on-demand-in-spot.md)
          + [Capacity Rebalancing](spot-fleet-capacity-rebalance.md)
@@ -385,7 +385,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Create a VSS application-consistent snapshot](application-consistent-snapshots.md)
             + [Before you begin](application-consistent-snapshots-prereqs.md)
             + [Get started](application-consistent-snapshots-getting-started.md)
-            + [Create a VSS application-consistent snapshot using the AWS CLI, AWS Tools for Windows PowerShell, or the AWSEC2-ManageVssIO SSM document](application-consistent-snapshots-creating-commands.md)
+            + [Create a VSS application-consistent snapshot](application-consistent-snapshots-creating-commands.md)
             + [Restore volumes from VSS-enabled EBS snapshots](application-consistent-snapshots-restore.md)
             + [AWS VSS component package version history](application-consistent-snapshots-details.md)
          + [Delete an Amazon EBS snapshot](ebs-deleting-snapshot.md)

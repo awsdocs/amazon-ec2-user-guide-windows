@@ -289,12 +289,6 @@ Copy the following script and save it as `mapping.ps1` on your Windows instance\
 
 ```
 # List the disks
-
-function Get-EC2InstanceMetadata {
-  param([string]$Path)
-  (Invoke-WebRequest -Uri "http://169.254.169.254/latest/$Path").Content 
-}
-
 function Convert-SCSITargetIdToDeviceName {
   param([int]$SCSITargetId)
   If ($SCSITargetId -eq 0) {
@@ -308,60 +302,101 @@ function Convert-SCSITargetIdToDeviceName {
   return $deviceName
 }
 
+[string[]]$array1 = @()
+[string[]]$array2 = @()
+[string[]]$array3 = @()
+[string[]]$array4 = @()
+
+Get-WmiObject Win32_Volume | Select-Object Name, DeviceID | ForEach-Object {
+  $array1 += $_.Name
+  $array2 += $_.DeviceID
+}
+
+$i = 0
+While ($i -ne ($array2.Count)) {
+  $array3 += ((Get-Volume -Path $array2[$i] | Get-Partition | Get-Disk).SerialNumber) -replace "_[^ ]*$" -replace "vol", "vol-"
+  $array4 += ((Get-Volume -Path $array2[$i] | Get-Partition | Get-Disk).FriendlyName)
+  $i ++
+}
+
+[array[]]$array = $array1, $array2, $array3, $array4
+
 Try {
-  $InstanceId = Get-EC2InstanceMetadata "meta-data/instance-id"
-  $AZ = Get-EC2InstanceMetadata "meta-data/placement/availability-zone"
-  $Region = $AZ.Remove($AZ.Length - 1)
-  $BlockDeviceMappings = (Get-EC2Instance -Region $Region -Instance $InstanceId).Instances.BlockDeviceMappings
-  $VirtualDeviceMap = @{}
-  (Get-EC2InstanceMetadata "meta-data/block-device-mapping").Split("`n") | ForEach-Object {
-    $VirtualDevice = $_
-    $BlockDeviceName = Get-EC2InstanceMetadata "meta-data/block-device-mapping/$VirtualDevice"
-    $VirtualDeviceMap[$BlockDeviceName] = $VirtualDevice
-    $VirtualDeviceMap[$VirtualDevice] = $BlockDeviceName
-  }
+  $InstanceId = Get-EC2InstanceMetadata -Category "InstanceId"
+  $Region = Get-EC2InstanceMetadata -Category "Region" | Select-Object -ExpandProperty SystemName
 }
 Catch {
-  Write-Host "Could not access the AWS API, therefore, VolumeId is not available. 
-Verify that you provided your access keys." -ForegroundColor Yellow
+  Write-Host "Could not access the instance Metadata using AWS Get-EC2InstanceMetadata CMDLet.
+Verify you have AWSPowershell SDK version '3.1.73.0' or greater installed and Metadata is enabled for this instance." -ForegroundColor Yellow
+}
+Try {
+  $BlockDeviceMappings = (Get-EC2Instance -Region $Region -Instance $InstanceId).Instances.BlockDeviceMappings
+  $VirtualDeviceMap = (Get-EC2InstanceMetadata -Category "BlockDeviceMapping").GetEnumerator() | Where-Object { $_.Key -ne "ami" }
+}
+Catch {
+  Write-Host "Could not access the AWS API, therefore, VolumeId is not available.
+Verify that you provided your access keys or assigned an IAM role with adequate permissions." -ForegroundColor Yellow
 }
 
 Get-disk | ForEach-Object {
   $DriveLetter = $null
   $VolumeName = $null
+  $VirtualDevice = $null
+  $DeviceName = $_.FriendlyName
 
   $DiskDrive = $_
   $Disk = $_.Number
   $Partitions = $_.NumberOfPartitions
   $EbsVolumeID = $_.SerialNumber -replace "_[^ ]*$" -replace "vol", "vol-"
-  Get-Partition -DiskId $_.Path | ForEach-Object {
-    if ($_.DriveLetter -ne "") {
-      $DriveLetter = $_.DriveLetter
-      $VolumeName = (Get-PSDrive | Where-Object {$_.Name -eq $DriveLetter}).Description
-    }
-  } 
-
+  if ($Partitions -ge 1) {
+    $PartitionsData = Get-Partition -DiskId $_.Path
+    $DriveLetter = $PartitionsData.DriveLetter | Where-object { $_ -notin @("", $null) }
+    $VolumeName = (Get-PSDrive | Where-Object { $_.Name -in @($DriveLetter) }).Description | Where-object { $_ -notin @("", $null) }
+  }
   If ($DiskDrive.path -like "*PROD_PVDISK*") {
-    $BlockDeviceName = Convert-SCSITargetIdToDeviceName((Get-WmiObject -Class Win32_Diskdrive | Where-Object {$_.DeviceID -eq ("\\.\PHYSICALDRIVE" + $DiskDrive.Number) }).SCSITargetId)
+    $BlockDeviceName = Convert-SCSITargetIdToDeviceName((Get-WmiObject -Class Win32_Diskdrive | Where-Object { $_.DeviceID -eq ("\\.\PHYSICALDRIVE" + $DiskDrive.Number) }).SCSITargetId)
     $BlockDeviceName = "/dev/" + $BlockDeviceName
-    $BlockDevice = $BlockDeviceMappings | Where-Object { $BlockDeviceName -like "*"+$_.DeviceName+"*" }
-    $EbsVolumeID = $BlockDevice.Ebs.VolumeId 
-    $VirtualDevice = If ($VirtualDeviceMap.ContainsKey($BlockDeviceName)) { $VirtualDeviceMap[$BlockDeviceName] } Else { $null }
+    $BlockDevice = $BlockDeviceMappings | Where-Object { $BlockDeviceName -like "*" + $_.DeviceName + "*" }
+    $EbsVolumeID = $BlockDevice.Ebs.VolumeId
+    $VirtualDevice = ($VirtualDeviceMap.GetEnumerator() | Where-Object { $_.Value -eq $BlockDeviceName }).Key | Select-Object -First 1
   }
   ElseIf ($DiskDrive.path -like "*PROD_AMAZON_EC2_NVME*") {
-    $BlockDeviceName = Get-EC2InstanceMetadata "meta-data/block-device-mapping/ephemeral$((Get-WmiObject -Class Win32_Diskdrive | Where-Object {$_.DeviceID -eq ("\\.\PHYSICALDRIVE"+$DiskDrive.Number) }).SCSIPort - 2)"
+    $BlockDeviceName = (Get-EC2InstanceMetadata -Category "BlockDeviceMapping").ephemeral((Get-WmiObject -Class Win32_Diskdrive | Where-Object { $_.DeviceID -eq ("\\.\PHYSICALDRIVE" + $DiskDrive.Number) }).SCSIPort - 2)
     $BlockDevice = $null
-    $VirtualDevice = If ($VirtualDeviceMap.ContainsKey($BlockDeviceName)) { $VirtualDeviceMap[$BlockDeviceName] } Else { $null }
+    $VirtualDevice = ($VirtualDeviceMap.GetEnumerator() | Where-Object { $_.Value -eq $BlockDeviceName }).Key | Select-Object -First 1
   }
   ElseIf ($DiskDrive.path -like "*PROD_AMAZON*") {
+    if ($DriveLetter -match '[^a-zA-Z0-9]') {
+      $i = 0
+      While ($i -ne ($array3.Count)) {
+        if ($array[2][$i] -eq $EbsVolumeID) {
+          $DriveLetter = $array[0][$i]
+          $DeviceName = $array[3][$i]
+        }
+        $i ++
+      }
+    }
     $BlockDevice = ""
-    $BlockDeviceName = ($BlockDeviceMappings | Where-Object {$_.ebs.VolumeId -eq $EbsVolumeID}).DeviceName
-    $VirtualDevice = $null
+    $BlockDeviceName = ($BlockDeviceMappings | Where-Object { $_.ebs.VolumeId -eq $EbsVolumeID }).DeviceName
+  }
+  ElseIf ($DiskDrive.path -like "*NETAPP*") {
+    if ($DriveLetter -match '[^a-zA-Z0-9]') {
+      $i = 0
+      While ($i -ne ($array3.Count)) {
+        if ($array[2][$i] -eq $EbsVolumeID) {
+          $DriveLetter = $array[0][$i]
+          $DeviceName = $array[3][$i]
+        }
+        $i ++
+      }
+    }
+    $EbsVolumeID = "FSxN Volume"
+    $BlockDevice = ""
+    $BlockDeviceName = ($BlockDeviceMappings | Where-Object { $_.ebs.VolumeId -eq $EbsVolumeID }).DeviceName
   }
   Else {
     $BlockDeviceName = $null
     $BlockDevice = $null
-    $VirtualDevice = $null
   }
   New-Object PSObject -Property @{
     Disk          = $Disk;
@@ -371,8 +406,9 @@ Get-disk | ForEach-Object {
     Device        = If ($BlockDeviceName -eq $null) { "N/A" } Else { $BlockDeviceName };
     VirtualDevice = If ($VirtualDevice -eq $null) { "N/A" } Else { $VirtualDevice };
     VolumeName    = If ($VolumeName -eq $null) { "N/A" } Else { $VolumeName };
+    DeviceName    = If ($DeviceName -eq $null) { "N/A" } Else { $DeviceName };
   }
-} | Sort-Object Disk | Format-Table -AutoSize -Property Disk, Partitions, DriveLetter, EbsVolumeId, Device, VirtualDevice, VolumeName
+} | Sort-Object Disk | Format-Table -AutoSize -Property Disk, Partitions, DriveLetter, EbsVolumeId, Device, VirtualDevice, DeviceName, VolumeName
 ```
 
 Run the script as follows:
@@ -384,12 +420,11 @@ PS C:\> .\mapping.ps1
 The following is example output\.
 
 ```
-Disk Partitions DriveLetter EbsVolumeId           Device    VirtualDevice VolumeName
----- ---------- ----------- -----------           ------    ------------- ----------
-   0          1 Z           N/A                   xvdca     ephemeral0    N/A
-   1          1 Y           N/A                   xvdcb     ephemeral1    N/A
-   2          2 C           vol-0064aexamplec838a /dev/sda1 root          Windows
-   3          1 D           vol-02256example8a4a3 xvdf      ebs2          N/A
+Disk  Partitions  DriveLetter   EbsVolumeId             Device      VirtualDevice   DeviceName              VolumeName
+----  ----------  -----------   -----------             ------      -------------   ----------              ----------
+   0           1            C   vol-0561f1783298efedd   /dev/sda1   N/A             NVMe Amazon Elastic B   N/A
+   1           1            D   vol-002a9488504c5e35a   xvdb        N/A             NVMe Amazon Elastic B   N/A
+   2           1            E   vol-0de9d46fcc907925d   xvdc        N/A             NVMe Amazon Elastic B   N/A
 ```
 
 If you did not provide your credentials on the Windows instance, the script cannot get the EBS volume ID and uses N/A in the `EbsVolumeId` column\.

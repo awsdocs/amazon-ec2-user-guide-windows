@@ -8,7 +8,7 @@ There is no additional cost to use VSS\-enabled EBS snapshots\. You only pay for
 + [How it works](#application-consistent-snapshots-how)
 + [Before you begin](application-consistent-snapshots-prereqs.md)
 + [Get started](application-consistent-snapshots-getting-started.md)
-+ [Create snapshots using the command line](application-consistent-snapshots-creating-commands.md)
++ [Create VSS\-enabled snapshots](application-consistent-snapshots-creating-commands.md)
 + [Restore volumes from VSS\-enabled EBS snapshots](application-consistent-snapshots-restore.md)
 + [Version history](application-consistent-snapshots-details.md)
 
