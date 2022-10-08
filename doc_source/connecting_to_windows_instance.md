@@ -11,13 +11,15 @@ For information about connecting to a Linux instance, see [Connect to your Linux
 **Topics**
 + [Prerequisites](#rdp-prereqs)
 + [Connect to your Windows instance using RDP](#connect-rdp)
-+ [Connect to your Windows instance using RDP with Amazon EC2 Systems Manager Fleet Manager](#connect-rdp-fleet-manager)
++ [Connect to your Windows instance using Fleet Manager](#connect-rdp-fleet-manager)
 + [Connect to a Windows instance using its IPv6 address](#connecting-to-windows-ipv6)
 + [Connect to a Windows instance using Session Manager](#session-manager)
 + [Configure your accounts](#configure-admin-accounts)
 + [Transfer files to Windows instances](#AccessingInstancesWindowsFileTransfer)
 
 ## Prerequisites<a name="rdp-prereqs"></a>
+
+**To connect using RDP**
 + **Install an RDP client**
   + \[Windows\] Windows includes an RDP client by default\. To verify, type mstsc at a Command Prompt window\. If your computer doesn't recognize this command, see the [Windows home page](https://windows.microsoft.com) and search for the download for the Microsoft Remote Desktop app\.
   + \[Mac OS X\] Download the [Microsoft Remote Desktop app](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12) from the Mac App Store\.
@@ -28,6 +30,11 @@ For information about connecting to a Linux instance, see [Connect to your Linux
 + **Enable inbound RDP traffic from your IP address to your instance**
 
   Ensure that the security group associated with your instance allows incoming RDP traffic \(`port 3389`\) from your IP address\. The default security group does not allow incoming RDP traffic by default\. For more information, see [Authorize inbound traffic for your Windows instances](authorizing-access-to-an-instance.md)\.
+**Note**  
+You do not need to specifically allow incoming RDP traffic from your IP address if you use Fleet Manager to connect\. Fleet Manager handles that for you\.
+
+**To connect using Fleet Manager**  
+For prerequisites, see [Connect using Remote Desktop](https://docs.aws.amazon.com/systems-manager/latest/userguide/fleet-rdp.html) in the *AWS Systems Manager User Guide*\.
 
 ## Connect to your Windows instance using RDP<a name="connect-rdp"></a>
 
@@ -49,7 +56,7 @@ If you receive an error while attempting to connect to your instance, see [Remot
 1. In the navigation pane, select **Instances**\. Select the instance and then choose **Connect**\.
 
 1. On the **Connect to instance** page, choose the **RDP client** tab, and then choose **Get password**\.  
-![\[Get password for RDP.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-get-password.png)
+![\[Get password for RDP.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-rdp-get-password.png)
 
 1. Choose **Browse** and navigate to the private key \(`.pem`\) file you created when you launched the instance\. Select the file and choose **Open** to copy the entire contents of the file to this window\.
 
@@ -129,34 +136,22 @@ Sometimes copying and pasting content can corrupt data\. If you encounter a "Pas
 
 ------
 
-## Connect to your Windows instance using RDP with Amazon EC2 Systems Manager Fleet Manager<a name="connect-rdp-fleet-manager"></a>
+## Connect to your Windows instance using Fleet Manager<a name="connect-rdp-fleet-manager"></a>
 
-You can use Amazon EC2 Systems Manager Fleet Manager, a capability of AWS Systems Manager, to connect to your Windows instances using the Remote Desktop Protocol \(RDP\)\. These Remote Desktop sessions powered by NICE DCV provide secure connections to your instances directly from your browser\. With Fleet Manager, you can connect a maximum of four instances per browser window\. When connecting to your instance, you can use Windows credentials or the Amazon EC2 key pair \(\.pem file\) associated with the instance for authentication\. For information about Amazon EC2 key pairs, see [Amazon EC2 key pairs and Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) and [Amazon EC2 key pairs and Windows instances](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-key-pairs.html) in the *Amazon EC2 User Guide for Linux Instances* and *Amazon EC2 User Guide for Windows Instances*\.
+You can use Fleet Manager, a capability of AWS Systems Manager, to connect to Windows instances using the Remote Desktop Protocol \(RDP\) and display up to four Windows instances on the same page in the AWS Management Console\. You can connect to the first instance in the Fleet Manager Remote Desktop directly from the **Instances** page in the Amazon EC2 console as follows\.
 
-Alternatively, if you're authenticated to the AWS Management Console using AWS IAM Identity Center \(successor to AWS Single Sign\-On\), Fleet Manager integrates with IAM Identity Center so you can connect to your instances without providing additional credentials\. Fleet Manager; supports IAM Identity Center authenticated RDP connections in the same AWS Region where you enabled IAM Identity Center and user names can be a maximum of 16 characters\. For IAM Identity Center authenticated RDP connections, Fleet Manager creates a local user on the instance that persists after the connection ends\. IAM Identity Center authenticated RDP connections are not supported for nodes that are Microsoft Active Directory domain controllers\.
+**To connect to instances using RDP with Fleet Manager \(console\)**
 
-Because Fleet Manager uses Amazon EC2 Systems Manager Session Manager to connect to Windows instances using RDP, you must complete the prerequisites for Session Manager before using this feature\. Session Manager is a capability of AWS Systems Manager\. Session preferences in the AWS account and AWS Region are applied when connecting to your instances using RDP\. For information about setting up Session Manager, see [Setting up Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started.html)\.
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-In addition to the required AWS Identity and Access Management \(IAM\) permissions for Systems Manager and Session Manager, the user or role you use to access the console must allow the following actions:
-+ `ssm-guiconnect:CancelConnection`
-+ `ssm-guiconnect:GetConnection`
-+ `ssm-guiconnect:StartConnection`
+1. From the navigation pane, choose **Instances**\.
 
-**To connect to instances using RDP with Fleet Manager**
+1. Select the instance and then choose **Connect**\.
 
-1. Open the Amazon EC2 Systems Manager console at [https://console\.aws\.amazon\.com/systems\-manager/](https://console.aws.amazon.com/systems-manager)\.
+1. On the **Connect to instance** page, choose the option to **Connect using Fleet Manager**, then choose **Fleet Manager Remote Desktop**\. This opens the **Fleet Manager Remote Desktop** page in the AWS Systems Manager console\.  
+![\[The connect to instance page in the EC2 console with the Connect using Fleet Manager option selected and the Fleet Manager Remote Desktop button.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-rdp-with-fleet-manager.png)
 
-1. In the navigation pane, choose **Fleet Manager**\.
-
-1. Choose **Get started**\.
-
-1. Select the check box next to the instance that you want to connect to using RDP\.
-
-1. In the **Node actions** menu, select **Connect with Remote Desktop**\.
-
-1. Choose your preferred **Authentication type**\. If you choose **User credentials**, enter the user name and password for the Windows user account that you want to use when connecting to the instance\. If you choose **Key pair**, choose the **Browse local machine** option to browse your local machine and choose the PEM key associated with your instance, or copy and paste the contents into the empty field after choosing the **Paste key pair content** option\.
-
-1. Select **Connect**\.
+For more information about connecting to Windows instances from the **Fleet Manager Remote Desktop** page, see [Connect using Remote Desktop](https://docs.aws.amazon.com/systems-manager/latest/userguide/fleet-rdp.html) in the *AWS Systems Manager User Guide*\.
 
 ## Connect to a Windows instance using its IPv6 address<a name="connecting-to-windows-ipv6"></a>
 

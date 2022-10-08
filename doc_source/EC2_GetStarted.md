@@ -88,7 +88,7 @@ If you receive an error while attempting to connect to your instance, see [Remot
 1. In the navigation pane, select **Instances**\. Select the instance and then choose **Connect**\.
 
 1. On the **Connect to instance** page, choose the **RDP client** tab, and then choose **Get password**\.  
-![\[Get password for RDP.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-get-password.png)
+![\[Get password for RDP.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-rdp-get-password.png)
 
 1. Choose **Browse** and navigate to the private key \(`.pem`\) file you created when you launched the instance\. Select the file and choose **Open** to copy the entire contents of the file to this window\.
 

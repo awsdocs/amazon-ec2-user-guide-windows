@@ -39,7 +39,7 @@ From your Windows instance, unmount the volume as follows\.
 To detach the volume from the instance, use one of the following methods:
 
 ------
-#### [ New console ]
+#### [ Console ]
 
 **To detach an EBS volume using the console**
 
@@ -50,19 +50,6 @@ To detach the volume from the instance, use one of the following methods:
 1. Select the volume to detach and choose **Actions**, **Detach volume**\. 
 
 1. When prompted for confirmation, choose **Detach**\.
-
-------
-#### [ Old console ]
-
-**To detach an EBS volume using the console**
-
-1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
-
-1. In the navigation pane, choose **Volumes**\. 
-
-1. Select a volume and choose **Actions**, **Detach Volume**\. 
-
-1. When prompted for confirmation, choose **Yes, Detach**\. 
 
 ------
 #### [ Command line ]
@@ -85,9 +72,9 @@ When you unmount and detach a volume from an instance, Windows flags the device 
 
 1. In the list of devices, expand the **Storage controllers** node\.
 
-   The device locations to which the detached volumes were mounted should appear greyed out\.
+   The device locations to which the detached volumes were mounted are named `AWS NVMe Elastic Block Storage Adapter` and they should appear greyed out\.
 
-1. Right\-click each greyed out device location, select **Uninstall device** and choose **Uninstall**\.
+1. Right\-click each greyed out device location named `AWS NVMe Elastic Block Storage Adapter`, select **Uninstall device** and choose **Uninstall**\.
 **Important**  
 Do not select the **Delete the driver software for this device** check box\.
 

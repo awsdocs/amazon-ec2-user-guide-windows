@@ -22,6 +22,8 @@ If you have an AWS account already, skip to the next task\. If you don't have an
 
    Part of the sign\-up procedure involves receiving a phone call and entering a verification code on the phone keypad\.
 
+   When you sign up for an AWS account, an *AWS account root user* is created\. The root user has access to all AWS services and resources in the account\. As a security best practice, [assign administrative access to an administrative user](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html), and use only the root user to perform [tasks that require root user access](https://docs.aws.amazon.com/general/latest/gr/root-vs-iam.html#aws_tasks-that-require-root)\.
+
 ## Set up access for users<a name="create-users"></a>
 
 The first time that you use Systems Manager, you must provide AWS credentials\. To enable multiple users to access the same AWS account using unique credentials and permissions, create an IAM user for each user\. You can create one or more groups with policies that grant permissions to perform limited tasks\. Then you can create one or more IAM users, and add each user to the appropriate group\.

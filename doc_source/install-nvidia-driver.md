@@ -107,7 +107,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 **Prerequisites**
 + If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the GRID driver works\.
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
-+ IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
++ IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\. For more information, see [AWS managed policy: AmazonS3ReadOnlyAccess](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-amazons3readonlyaccess) in the *Amazon Simple Storage Service User Guide*\.
 + G3 instances require AWS provided DNS resolution for GRID licensing to work\.
 + [IMDSv2](configuring-instance-metadata-service.md) is only supported with NVIDIA driver version 14\.0 or greater\. 
 
@@ -158,7 +158,7 @@ These drivers are available to AWS customers only\. By downloading them, you agr
 **Prerequisites**
 + If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the gaming driver works\.
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
-+ IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\.
++ IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\. For more information, see [AWS managed policy: AmazonS3ReadOnlyAccess](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-amazons3readonlyaccess) in the *Amazon Simple Storage Service User Guide*\.
 + G3 instances require AWS provided DNS resolution for GRID licensing to work\.
 + [IMDSv2](configuring-instance-metadata-service.md) is only supported with NVIDIA driver version 495\.x or greater\. 
 

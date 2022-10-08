@@ -47,6 +47,27 @@ There is no service charge to configure Windows AMIs for faster launching\. Howe
 **Note**  
 The costs shown here are for demonstration purposes only\. Your costs will vary, depending on your AMI configuration and pricing plan\.
 
+**Track faster launching costs on your bill**  
+Cost allocation tags can help you organize your AWS bill to reflect the costs associated with faster launching for EC2 Windows instances\. You can use the following tag that Amazon EC2 adds to the resources it creates when it prepares and stores pre\-provisioned snapshots for faster launching:
+
+**Tag key:** `CreatedBy`, **Value:** `EC2 Fast Launch`
+
+After you activate the tag in the Billing and Cost Management console, and set up your detailed billing report, the `user:CreatedBy` column appears on the report\. The column includes values from all services\. However, if you download the CSV file, you can import the data into a spreadsheet, and filter for `EC2 Fast Launch` in the value\. This information also appears in the AWS Cost and Usage Report when the tag is activated\.
+
+**Step 1: Activate user\-defined cost allocation tags**  
+To include resource tags in your cost reports, you must first activate the tag in the Billing and Cost Management console\. For more information, see [Activating User\-Defined Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html) in the *AWS Billing and Cost Management User Guide*\.
+
+**Note**  
+Activation can take up to 24 hours\.
+
+**Step 2: Set up a cost report**  
+If you already have a cost report set up, a column for your tag appears the next time the report runs after activation is complete\. To set up cost reports for the first time, choose one of the following\.
++ See [Setting up a monthly cost allocation report](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/configurecostallocreport.html#allocation-report) in the *AWS Billing and Cost Management User Guide*\.
++ See [Creating Cost and Usage Reports](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html) in the *AWS Cost and Usage Report User Guide*\.
+
+**Note**  
+It can take up to 24 hours for AWS to start delivering reports to your S3 bucket\.
+
 You can configure Windows AMIs that you own for faster launching using the Amazon EC2 console, API, SDKs, or ec2 commands in the AWS CLI\. The following sections cover configuration steps for the Amazon EC2 console and AWS CLI\.
 
 **Topics**
