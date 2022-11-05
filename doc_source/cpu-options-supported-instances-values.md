@@ -39,6 +39,8 @@ The following tables list the instance types that support specifying CPU options
 | p3\.8xlarge | 32 | 16 | 2 | 1 to 16 | 1, 2 | 
 | p3\.16xlarge | 64 | 32 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32 | 1, 2 | 
 | p3dn\.24xlarge | 96 | 48 | 2 | 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48 | 1, 2 | 
+| trn1\.2xlarge | 8 | 4 | 2 | 2, 4 | 1, 2 | 
+| trn1\.32xlarge | 128 | 64 | 2 | 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64 | 1, 2 | 
 
 ## Compute optimized instances<a name="cpu-options-compute-optimized"></a>
 

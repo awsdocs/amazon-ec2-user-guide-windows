@@ -51,7 +51,9 @@ echo %DATE% %TIME% >> %SystemRoot%\Temp\test.log
 
 The AWS Windows AMIs include the [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell/), so you can specify these cmdlets in user data\. If you associate an IAM role with your instance, you don't need to specify credentials to the cmdlets, as applications that run on the instance use the role's credentials to access AWS resources \(for example, Amazon S3 buckets\)\.
 
-Specify a Windows PowerShell script using the `powershell` tag\. Separate the commands using line breaks\. For example:
+Specify a Windows PowerShell script using the `<powershell>` tag\. Separate the commands using line breaks\. The `<powershell>` tag is case\-sensitive\.
+
+para>For example:
 
 ```
 <powershell>

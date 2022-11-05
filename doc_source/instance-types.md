@@ -6,13 +6,14 @@ Amazon EC2 dedicates some resources of the host computer, such as CPU, memory, a
 
 Each instance type provides higher or lower minimum performance from a shared resource\. For example, instance types with high I/O performance have a larger allocation of shared resources\. Allocating a larger share of shared resources also reduces the variance of I/O performance\. For most applications, moderate I/O performance is more than enough\. However, for applications that require greater or more consistent I/O performance, consider an instance type with higher I/O performance\.
 
-**Instance type names**
+## Instance type names<a name="instance-type-names"></a>
 
 Amazon EC2 provides a variety of instance types so you can choose the type that best meets your requirements\. Instance types are named based on their family, generation, additional capabilities, and size\. The first position of the instance type name indicates the instance family, for example `c`\. The second position indicates the instance generation, for example `5`\. The remaining letters before the period indicate [additional capabilities](#instance-naming-conventions), such as local NVMe storage or full control over c\-states\. After the period \(`.`\) is the instance size, which is either a number followed by a size, such as `9xlarge`, or for metal instances the word `metal`\.
 
 ![\[The image shows the instance type c5n.xlarge, with a label for each part of the instance name.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/final_instance_ex.png)
 
 **Topics**
++ [Instance type names](#instance-type-names)
 + [Available instance types](#AvailableInstanceTypes)
 + [Hardware specifications](#instance-hardware-specs)
 + [Instances built on the Nitro System](#ec2-nitro-instances)
@@ -87,6 +88,7 @@ For the best performance, we recommend that you use the following instance types
 | T2 | t2\.nano \| t2\.micro \| t2\.small \| t2\.medium \| t2\.large \| t2\.xlarge \| t2\.2xlarge | [General purpose](general-purpose-instances.md) | 
 | T3 | t3\.nano \| t3\.micro \| t3\.small \| t3\.medium \| t3\.large \| t3\.xlarge \| t3\.2xlarge | [General purpose](general-purpose-instances.md) | 
 | T3a | t3a\.nano \| t3a\.micro \| t3a\.small \| t3a\.medium \| t3a\.large \| t3a\.xlarge \| t3a\.2xlarge | [General purpose](general-purpose-instances.md) | 
+| Trn1 | trn1\.2xlarge \| trn1\.32xlarge | [Accelerated computing](accelerated-computing-instances.md) | 
 | High memory \(u\-\*\) | u\-3tb1\.56xlarge \| u\-6tb1\.56xlarge \| u\-6tb1\.112xlarge \| u\-6tb1\.metal \| u\-9tb1\.112xlarge \| u\-9tb1\.metal \| u\-12tb1\.112xlarge \| u\-12tb1\.metal \| u\-18tb1\.metal \| u\-24tb1\.metal | [Memory optimized](memory-optimized-instances.md) | 
 | X1 | x1\.16xlarge \| x1\.32xlarge | [Memory optimized](memory-optimized-instances.md) | 
 | X1e | x1e\.xlarge \| x1e\.2xlarge \| x1e\.4xlarge \| x1e\.8xlarge \| x1e\.16xlarge \| x1e\.32xlarge | [Memory optimized](memory-optimized-instances.md) | 
@@ -262,6 +264,7 @@ The following table summarizes the networking and storage features supported by 
 | T2 | Yes | No | No | No | No | 
 | T3 | Yes | Yes | No | No | ENA | 
 | T3a | Yes | Yes | No | No | ENA | 
+| Trn1 | No | Yes | NVMe \* | Yes | ENA | 
 | High memory \(u\-\*\) | Yes | Yes | No |  Virtualized: Yes Bare metal: No  | ENA | 
 | X1 | No | No | SSD \* | Yes | ENA | 
 | X1e | No | No | SSD \* | Yes | ENA | 

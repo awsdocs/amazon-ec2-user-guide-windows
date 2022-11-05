@@ -60,13 +60,13 @@ You can add or remove account IDs from the list of accounts that have launch per
 
 **To make an AMI public**
 
-1. Use the [Edit\-EC2ImageAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2ImageAttribute.html) command as follows to add the `all` group to the `launchPermission` list for the specified AMI\.
+1. Use the [https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2ImageAttribute.html](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2ImageAttribute.html) command as follows to add the `all` group to the `launchPermission` list for the specified AMI\.
 
    ```
    PS C:\> Edit-EC2ImageAttribute -ImageId ami-0abcdef1234567890 -Attribute launchPermission -OperationType add -UserGroup all
    ```
 
-1. To verify the launch permissions of the AMI, use the following [Get\-EC2ImageAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ImageAttribute.html) command\.
+1. To verify the launch permissions of the AMI, use the following [https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ImageAttribute.html](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2ImageAttribute.html) command\.
 
    ```
    PS C:\> Get-EC2ImageAttribute -ImageId ami-0abcdef1234567890 -Attribute launchPermission
@@ -86,7 +86,7 @@ You can add or remove account IDs from the list of accounts that have launch per
 
 **To make an AMI public**
 
-1. Use the [modify\-image\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-image-attribute.html) command as follows to add the `all` group to the `launchPermission` list for the specified AMI\.
+1. Use the [https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-image-attribute.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-image-attribute.html) command as follows to add the `all` group to the `launchPermission` list for the specified AMI\.
 
    ```
    aws ec2 modify-image-attribute \
@@ -94,7 +94,7 @@ You can add or remove account IDs from the list of accounts that have launch per
        --launch-permission "Add=[{Group=all}]"
    ```
 
-1. To verify the launch permissions of the AMI, use the [describe\-image\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html) command\.
+1. To verify the launch permissions of the AMI, use the [https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-image-attribute.html) command\.
 
    ```
    aws ec2 describe-image-attribute \

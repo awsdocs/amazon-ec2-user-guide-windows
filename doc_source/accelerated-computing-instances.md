@@ -6,6 +6,7 @@ If you require high processing capability, you'll benefit from using accelerated
 
 **Topics**
 + [GPU instances](#gpu-instances)
++ [Instances with AWS Trainium](#aws-trainium-instances)
 + [Hardware specifications](#gpu-instance-specifications)
 + [Instance performance](#gpu-instance-performance)
 + [Network performance](#gpu-network-performance)
@@ -61,6 +62,12 @@ P2 instances use NVIDIA Tesla K80 GPUs and are designed for general purpose GPU 
 
 P2 instances support NVIDIA GPUDirect peer to peer transfers\. For more information, see [NVIDIA GPUDirect](https://developer.nvidia.com/gpudirect)\.
 
+## Instances with AWS Trainium<a name="aws-trainium-instances"></a>
+
+Amazon EC2 Trn1 instances, powered by [AWS Trainium](http://aws.amazon.com/machine-learning/trainium/), are purpose built for high\-performance, cost\-effective deep learning training\. You can use Trn1 instances to train natural language processing, computer vision, and recommender models used across a broad set of applications, such as speech recognition, recommendation, fraud detection, and image and video classification\. Use your existing workflows in popular ML frameworks, such as PyTorch and TensorFlow\. [AWS Neuron SDK](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/) integrates seamlessly with these frameworks so that you can get started with only a few lines of code changes\.
+
+For more information, see [Amazon EC2 Trn1 Instances](https://aws.amazon.com/ec2/instance-types/trn1/)\.
+
 ## Hardware specifications<a name="gpu-instance-specifications"></a>
 
 The following is a summary of the hardware specifications for accelerated computing instances\. A virtual central processing unit \(vCPU\) represents a portion of the physical CPU assigned to a virtual machine \(VM\)\. For x86 instances, there are two vCPUs per core\. For Graviton instances, there is one vCPU per core\.
@@ -101,6 +108,8 @@ The following is a summary of the hardware specifications for accelerated comput
 | p3\.8xlarge | 32 | 244 | 4 | 
 | p3\.16xlarge | 64 | 488 | 8 | 
 | p3dn\.24xlarge | 96 | 768 | 8 | 
+| trn1\.2xlarge | 8 | 32 | 1 | 
+| trn1\.32xlarge | 128 | 512 | 16 | 
 
 The accelerated computing instances use the following processors\.
 
@@ -138,6 +147,8 @@ The following is a summary of network performance for accelerated computing inst
 | g5\.12xlarge | 40 Gbps | [ENA](enhanced-networking-ena.md) | 
 | g4dn\.8xlarge \| g4dn\.12xlarge \| g4dn\.16xlarge \| g5\.24xlarge  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  g4dn\.metal \| g5\.48xlarge \| p3dn\.24xlarge  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+| trn1\.2xlarge | Up to 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
+| trn1\.32xlarge | 800 Gbps | [ENA](enhanced-networking-ena.md) | 
 
 † These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
 
@@ -156,6 +167,8 @@ The following is a summary of network performance for accelerated computing inst
 | g5\.2xlarge | 5 | 10 | 
 | g5\.4xlarge | 10 | 25 | 
 | p3\.2xlarge | 2\.5 | 10 | 
+| Trn1\.2xlarge | 3\.125 | 12\.5 | 
+| Trn1\.32xlarge | 800 | N/A | 
 
 ## Amazon EBS I/O performance<a name="accelerated-ebs-perf"></a>
 

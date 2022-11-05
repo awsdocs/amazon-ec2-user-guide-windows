@@ -390,6 +390,8 @@ Other instances can sustain the maximum performance indefinitely\. If you have a
 | t3a\.large \* | 2,780 | 347\.5 | 15,700 | 
 | t3a\.xlarge \* | 2,780 | 347\.5 | 15,700 | 
 | t3a\.2xlarge \* | 2,780 | 347\.5 | 15,700 | 
+| trn1\.2xlarge \* | 20,000 | 2,500 | 65,000 | 
+| trn1\.32xlarge | 80,000 | 10,000 | 260,000 | 
 | u\-3tb1\.56xlarge | 19,000 | 2,375 | 80,000 | 
 | u\-6tb1\.56xlarge | 38,000 | 4,750 | 160,000 | 
 | u\-6tb1\.112xlarge | 38,000 | 4,750 | 160,000 | 
@@ -567,6 +569,7 @@ The following table shows the baseline performance for those instance types that
 | t3a\.large | 695 | 86\.86 | 4,000 | 
 | t3a\.xlarge | 695 | 86\.86 | 4,000 | 
 | t3a\.2xlarge | 695 | 86\.86 | 4,000 | 
+| trn1\.2xlarge | 5,000 | 625 | 16,250 | 
 | x2iedn\.xlarge | 2,500 | 312\.5 | 8,125 | 
 | x2iedn\.2xlarge | 5,000 | 625 | 16,250 | 
 | x2iedn\.4xlarge | 10,000 | 1,250 | 32,500 | 
@@ -619,8 +622,8 @@ You can use the AWS CLI to view the instances types in the current Region that s
 Use the following [ describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command\.
 
 ```
-aws ec2 describe-instance-types \
---query 'InstanceTypes[].{InstanceType:InstanceType,"MaxBandwidth(Mb/s)":EbsInfo.EbsOptimizedInfo.MaximumBandwidthInMbps,MaxIOPS:EbsInfo.EbsOptimizedInfo.MaximumIops,"MaxThroughput(MB/s)":EbsInfo.EbsOptimizedInfo.MaximumThroughputInMBps}' \
+aws ec2 describe-instance-types ^
+--query "InstanceTypes[].{InstanceType:InstanceType,\"MaxBandwidth(Mb/s)\":EbsInfo.EbsOptimizedInfo.MaximumBandwidthInMbps,MaxIOPS:EbsInfo.EbsOptimizedInfo.MaximumIops,\"MaxThroughput(MB/s)\":EbsInfo.EbsOptimizedInfo.MaximumThroughputInMBps}" ^
 --filters Name=ebs-info.ebs-optimized-support,Values=default --output=table
 ```
 
@@ -644,8 +647,8 @@ Example output for `eu-west-1`:
 Use the following [ describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command\.
 
 ```
-aws ec2 describe-instance-types \
---query 'InstanceTypes[].{InstanceType:InstanceType,"MaxBandwidth(Mb/s)":EbsInfo.EbsOptimizedInfo.MaximumBandwidthInMbps,MaxIOPS:EbsInfo.EbsOptimizedInfo.MaximumIops,"MaxThroughput(MB/s)":EbsInfo.EbsOptimizedInfo.MaximumThroughputInMBps}' \
+aws ec2 describe-instance-types ^
+--query "InstanceTypes[].{InstanceType:InstanceType,\"MaxBandwidth(Mb/s)\":EbsInfo.EbsOptimizedInfo.MaximumBandwidthInMbps,MaxIOPS:EbsInfo.EbsOptimizedInfo.MaximumIops,\"MaxThroughput(MB/s)\":EbsInfo.EbsOptimizedInfo.MaximumThroughputInMBps}" ^
 --filters Name=ebs-info.ebs-optimized-support,Values=supported --output=table
 ```
 

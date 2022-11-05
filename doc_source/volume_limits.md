@@ -19,8 +19,6 @@ For other instances, the following limits apply:
 + High memory virtualized instances support a maximum of 27 EBS volumes\.
 + High memory bare metal instances support a maximum of 19 EBS volumes\.
 
-  If you launched a `u-6tb1.metal`, `u-9tb1.metal`, or `u-12tb1.metal` high memory bare metal instance before March 12, 2020, it supports a maximum of 14 EBS volumes\. To attach up to 19 EBS volumes to these instances, contact your account team to upgrade the instance at no additional cost\.
-
 ## Windows\-specific volume limits<a name="windows-specific-volume-limits"></a>
 
 The following table shows the volume limits for Windows instances based on the driver used\. Note that these numbers include the root volume, plus any attached instance store volumes and EBS volumes\.

@@ -8,17 +8,17 @@ You can use the fingerprint that's displayed on the **Key Pairs** page to verify
 
 ### How the fingerprints are calculated<a name="how-ec2-key-fingerprints-are-calculated"></a>
 
-Amazon EC2 uses different hash functions to calculate the fingerprints for RSA and ED25519 key pairs\. Furthermore, for RSA key pairs, Amazon EC2 calculates the fingerprints differently using different hash functions depending on whether the key pair was created by Amazon EC2 or imported to Amazon EC2\.
+Amazon EC2 calculates the fingerprints differently using different hash functions depending on whether the key pair was created by Amazon EC2 or imported to Amazon EC2\.
 
-The following table lists the hash functions that are used to calculate the fingerprints for RSA and ED25519 key pairs that are created by Amazon EC2 and imported to Amazon EC2\.
+The following table lists the hash functions that are used to calculate the fingerprints for RSA key pairs that are created by Amazon EC2 and imported to Amazon EC2\.
 
 
 **Hash functions used to calculate fingerprints**  
 
-| Key pair source | RSA key pairs | ED25519 key pairs | 
-| --- | --- | --- | 
-| Created by Amazon EC2 | SHA\-1 | SHA\-256 | 
-| Imported to Amazon EC2 | MD5¹ | SHA\-256 | 
+| Key pair source | RSA key pairs | 
+| --- | --- | 
+| Created by Amazon EC2 | SHA\-1 | 
+| Imported to Amazon EC2 | MD5¹ | 
 
 ¹ If you import a public RSA key to Amazon EC2, the fingerprint is calculated using an MD5 hash function\. This is true regardless of how you created the key pair, for example, by using a third\-party tool or by generating a new public key from an existing private key created using Amazon EC2\.
 
@@ -29,8 +29,6 @@ If you plan to use the same key pair to connect to instances in different AWS Re
 **Note**  
 If you create an RSA key pair using Amazon EC2, and then you generate a public key from the Amazon EC2 private key, the imported public keys will have a different fingerprint than the original public key\. This is because the fingerprint of the original RSA key created using Amazon EC2 is calculated using a SHA\-1 hash function, while the fingerprint of the imported RSA keys is calculated using an MD5 hash function\.
 
-For ED25519 key pairs, the fingerprints will be same regardless of whether they’re created by Amazon EC2 or imported to Amazon EC2, because the same SHA\-256 hash function is used to calculate the fingerprint\.
-
 ### Generate a fingerprint from the private key<a name="generate-fingerprint-from-private-key"></a>
 
 Use one of the following commands to generate a fingerprint from the private key on your local machine\.
@@ -40,18 +38,10 @@ If you're using a Windows local machine, you can run the following commands usin
 
   Use the OpenSSL tools to generate a fingerprint as shown in the following examples\.
 
-  For RSA key pairs:
-
   ```
   $ openssl pkcs8 -in path_to_private_key -inform PEM -outform DER -topk8 -nocrypt | openssl sha1 -c
   ```
-
-  For ED25519 key pairs:
-
-  ```
-  $ ssh-keygen -l -f path_to_private_key
-  ```
-+ **\(RSA key pairs only\) If you imported the public key to Amazon EC2**
++ **If you imported the public key to Amazon EC2**
 
    You can follow this procedure regardless of how you created the key pair, for example, by using a third\-party tool or by generating a new public key from an existing private key created using Amazon EC2
 
@@ -64,12 +54,6 @@ If you're using a Windows local machine, you can run the following commands usin
 
   Use ssh\-keygen to generate the fingerprint as shown in the following examples\.
 
-  For RSA key pairs:
-
   ```
   $ ssh-keygen -ef path_to_private_key -m PEM | openssl rsa -RSAPublicKey_in -outform DER | openssl md5 -c
-  ```
-
-  ```
-  $ ssh-keygen -l -f path_to_private_key
   ```
