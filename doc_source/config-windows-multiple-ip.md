@@ -84,7 +84,7 @@ After you have set up static IP addressing on your Windows instance, you are rea
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
-1. In the navigation pane, choose **Instances** and select your instance\.
+1. In the navigation panel, choose **Instances** and select your instance\.
 
 1. On the **Networking**, note the secondary IP address\.
 
