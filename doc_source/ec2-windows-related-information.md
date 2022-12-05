@@ -16,10 +16,7 @@ The following related resources can help you as you work with this service\.
 **[Amazon EC2 forum](https://forums.aws.amazon.com/forum.jspa?forumID=30)** – AWS Discussion forum for Amazon EC2 to post questions and feedback\. 
 
 **Pricing**  
-**[Amazon EC2 pricing](http://aws.amazon.com/ec2/pricing)** – ; Pricing information for Amazon EC2\. 
-
-**Tutorials**  
-**[Hands\-on tutorials](http://aws.amazon.com/getting-started/hands-on)** – Get started with step\-by\-step tutorials to launch your first application\. 
+**[Amazon EC2 pricing](http://aws.amazon.com/ec2/pricing)** – Pricing information for Amazon EC2\. 
 
 **General AWS resources**  
 The following related resources can help you as you work with AWS\.

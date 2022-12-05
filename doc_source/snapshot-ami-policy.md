@@ -447,12 +447,14 @@ The following is an example of the `policyDetails.json` file\.
 
 ## Considerations for snapshot lifecycle policies<a name="snapshot-considerations"></a>
 
-The following considerations apply when **creating snapshot lifecycle policies**:
+The following **general considerations** apply to snapshot lifecycle policies:
 + The first snapshot creation operation starts within one hour after the specified start time\. Subsequent snapshot creation operations start within one hour of their scheduled time\.
 + You can create multiple policies to back up a volume or instance\. For example, if a volume has two tags, where tag *A* is the target for policy *A* to create a snapshot every 12 hours, and tag *B* is the target for policy *B* to create a snapshot every 24 hours, Amazon Data Lifecycle Manager creates snapshots according to the schedules for both policies\. Alternatively, you can achieve the same result by creating a single policy that has multiple schedules\. For example, you can create a single policy that targets only tag *A*, and specify two schedules — one for every 12 hours and one for every 24 hours\.
 + Target resource tags are case sensitive\.
++ If you remove the target tags from a resource that is targeted by a policy, Amazon Data Lifecycle Manager no longer manages existing snapshots in the standard tier and archive tier; you must manually delete them if they are no longer needed\.
 + If you create a policy that targets instances, and new volumes are attached to a target instance after the policy has been created, the newly\-added volumes are included in the backup at the next policy run\. All volumes attached to the instance at the time of the policy run are included\.
 + If you create a policy with a custom cron\-based schedule that is configured to create only one snapshot, the policy will not automatically delete that snapshot when the retention threshold is reached\. You must manually delete the snapshot if it is no longer needed\.
++ If you create an age\-based policy where the retention period is shorter than the creation frequency, Amazon Data Lifecycle Manager will always retain the last snapshot until the next one is created\. For example, if an age\-based policy creates one snapshot every month with a retention period of seven days, Amazon Data Lifecycle Manager will retain each snapshot for one month, even though the retention period is seven days\.
 
 The following considerations apply to **[snapshot archiving](snapshot-archive.md)**:
 + You can enable snapshot archiving only for snapshot policies that target volumes\.
@@ -468,7 +470,7 @@ The following considerations apply to **[snapshot archiving](snapshot-archive.md
 + If you permanently or temporarily restore a snapshot archived by Amazon Data Lifecycle Manager to the standard tier, and the snapshot is still in the standard tier when the schedule's retention threshold is reached, Amazon Data Lifecycle Manager no longer manages the snapshot\. However, if you re\-archive the snapshot before the schedule's retention threshold is reached, the schedule will delete the snapshot when the retention threshold is met\.
 + Snapshots archived by Amazon Data Lifecycle Manager count towards your `Archived snapshots per volume` and `In-progress snapshot archives per account` quotas\.
 + If a schedule is unable to archive a snapshot after retrying for 24 hours, the snapshot remains in the standard tier and it is scheduled for deletion based on the time that it would have been deleted from the archive tier\. For example, if the schedule archives snapshots for 120 days, it remains in the standard tier for 120 days after the failed archiving before being permanently deleted\. For count\-based schedules, the snapshot does not count towards the schedule's retention count\.
-+ Snapshots must be archived in the same Region in which they were created\. If you enabled, cross\-Region copy and snapshot archiving, Amazon Data Lifecycle Manager does not archive the snapshot copy\.
++ Snapshots must be archived in the same Region in which they were created\. If you enabled cross\-Region copy and snapshot archiving, Amazon Data Lifecycle Manager does not archive the snapshot copy\.
 + Snapshots archived by Amazon Data Lifecycle Manager are tagged with the `aws:dlm:archived=true` system tag\. Additionally, snapshots created by an archive\-enabled, age\-based schedule are tagged with the `aws:dlm:expirationTime` system tag, which indicates the date and time at which the snapshot is scheduled to be archived\.
 
 The following considerations apply to **excluding root volumes and data \(non\-root\) volumes**:

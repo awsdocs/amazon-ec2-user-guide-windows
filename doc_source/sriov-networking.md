@@ -25,12 +25,12 @@ To verify that the driver is installed, connect to your instance and open Device
 
 **Instance attribute \(sriovNetSupport\)**  
 To check whether an instance has the enhanced networking `sriovNetSupport` attribute set, use one of the following commands:
-+ [describe\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
++ [https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
 
   ```
   aws ec2 describe-instance-attribute --instance-id instance_id --attribute sriovNetSupport
   ```
-+ [Get\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
++ [https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2InstanceAttribute.html](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
   ```
   Get-EC2InstanceAttribute -InstanceId instance-id -Attribute sriovNetSupport
@@ -46,12 +46,12 @@ If the attribute isn't set, `SriovNetSupport` is empty\. If the attribute is set
 
 **Image attribute \(sriovNetSupport\)**  
 To check whether an AMI already has the enhanced networking `sriovNetSupport` attribute set, use one of the following commands:
-+ [describe\-images](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI/AWS CloudShell\)
++ [https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html) \(AWS CLI/AWS CloudShell\)
 
   ```
   aws ec2 describe-images --image-id ami_id --query "Images[].SriovNetSupport"
   ```
-+ [Get\-EC2Image](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Image.html) \(AWS Tools for Windows PowerShell\)
++ [https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Image.html](https://docs.aws.amazon.com/powershell/latest/reference/items/Get-EC2Image.html) \(AWS Tools for Windows PowerShell\)
 
   ```
   (Get-EC2Image -ImageId ami-id).SriovNetSupport
@@ -73,13 +73,13 @@ There is no way to disable the enhanced networking attribute after you've enable
 
 1. <a name="amazon-linux-enhanced-networking-start-step"></a>Connect to your instance and log in as the local administrator\.
 
-1. \[Windows Server 2016 and later\] Run the following EC2Launch PowerShell script to configure the instance after the driver is installed\.
+1. \[Windows Server 2016 and later\] Run the following EC2 Launch PowerShell script to configure the instance after the driver is installed\.
 
    ```
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
    ```
 **Important**  
-The administrator password will reset when you enable the initialize instance EC2Launch script\. You can modify the configuration file to disable the administrator password reset by specifying it in the settings for the initialization tasks\. For steps on how to disable password reset, see [Configure initialization tasks](ec2launch.md#ec2launch-inittasks)\.
+The administrator password will reset when you enable the initialize instance EC2 Launch script\. You can modify the configuration file to disable the administrator password reset by specifying it in the settings for the initialization tasks\. For steps on how to disable password reset, see [Configure initialization tasks](ec2launch.md#ec2launch-inittasks)\.
 
 1. From the instance, download the Intel network adapter driver for your operating system:
 **Note**  
@@ -144,15 +144,15 @@ To avoid connectivity issues, we recommend you don't install the Intel Network A
           C:\> pnputil -i -a PROXGB\Winx64\NDIS63\vxn63x64.inf
           ```
 
-1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [stop\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [Stop\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
+1. From your local computer, stop the instance using the Amazon EC2 console or one of the following commands: [https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/stop-instances.html) \(AWS CLI\), [https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html](https://docs.aws.amazon.com/powershell/latest/reference/items/Stop-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should stop the instance in the AWS OpsWorks console so that the instance state remains in sync\.
 
 1. From your local computer, enable the enhanced networking attribute using one of the following commands:
-   + [modify\-instance\-attribute](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
+   + [https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/modify-instance-attribute.html) \(AWS CLI/AWS CloudShell\)
 
      ```
      aws ec2 modify-instance-attribute --instance-id instance_id --sriov-net-support simple
      ```
-   + [Edit\-EC2InstanceAttribute](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
+   + [https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html](https://docs.aws.amazon.com/powershell/latest/reference/items/Edit-EC2InstanceAttribute.html) \(AWS Tools for Windows PowerShell\)
 
      ```
      Edit-EC2InstanceAttribute -InstanceId instance_id -SriovNetSupport "simple"
@@ -160,4 +160,4 @@ To avoid connectivity issues, we recommend you don't install the Intel Network A
 
 1. \(Optional\) Create an AMI from the instance, as described in [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\. The AMI inherits the enhanced networking attribute from the instance\. Therefore, you can use this AMI to launch another instance with enhanced networking enabled by default\.
 
-1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [start\-instances](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\), [Start\-EC2Instance](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance in the AWS OpsWorks console so that the instance state remains in sync\.
+1. From your local computer, start the instance using the Amazon EC2 console or one of the following commands: [https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/start-instances.html) \(AWS CLI\), [https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html](https://docs.aws.amazon.com/powershell/latest/reference/items/Start-EC2Instance.html) \(AWS Tools for Windows PowerShell\)\. If your instance is managed by AWS OpsWorks, you should start the instance in the AWS OpsWorks console so that the instance state remains in sync\.

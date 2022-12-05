@@ -6,6 +6,8 @@ For examples of the assembly of a `UserData` property in a AWS CloudFormation te
 
 For information about running commands on your Linux instance at launch, see [Running commands on your Linux instance at launch](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
+For an example of running commands on an instance within an Auto Scaling that work with lifecycle hooks, see [Tutorial: Configure user data to retrieve the target lifecycle state through instance metadata](https://docs.aws.amazon.com/autoscaling/ec2/userguide/tutorial-lifecycle-hook-instance-metadata.html) in the *Amazon EC2 Auto Scaling User Guide*\.
+
 **Topics**
 + [User data scripts](#user-data-scripts)
 + [User data execution](#user-data-execution)
@@ -53,7 +55,7 @@ The AWS Windows AMIs include the [AWS Tools for Windows PowerShell](https://aws.
 
 Specify a Windows PowerShell script using the `<powershell>` tag\. Separate the commands using line breaks\. The `<powershell>` tag is case\-sensitive\.
 
-para>For example:
+For example:
 
 ```
 <powershell>

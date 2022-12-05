@@ -37,6 +37,17 @@ Bare metal instances such as `m6i.metal` provide your applications with direct a
 
 For more information, see [Amazon EC2 M6i Instances](http://aws.amazon.com/ec2/instance-types/m6i)\.
 
+**M6in and M6idn instances**
+
+These instances are well suited for network\-intensive workloads such as the following:
++ High\-performance file systems
++ Distributed web scale in\-memory caches
++ Caching fleets
++ Real\-time big data analytics
++ Telco applications such as 5G User Plane Function \(UPF\)
+
+For more information, see [Amazon EC2 M6i Instances](http://aws.amazon.com/ec2/instance-types/m6i)\.
+
 **T2, T3, and T3a instances**
 
 These instances provide a baseline level of CPU performance with the ability to burst to a higher level when required by your workload\. An Unlimited instance can sustain high CPU performance for any period of time whenever required\. For more information, see [Burstable performance instances](burstable-performance-instances.md)\. They are well\-suited for the following:
@@ -221,12 +232,19 @@ The following is a summary of network performance for general purpose instances 
 |  m6a\.8xlarge \| m6i\.8xlarge \| m6id\.8xlarge  | 12\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m6a\.12xlarge \| m6i\.12xlarge \| m6id\.12xlarge  | 18\.75 Gbps | [ENA](enhanced-networking-ena.md) | 
 |  m5\.16xlarge \| m5a\.24xlarge \| m5ad\.24xlarge \| m5d\.16xlarge  | 20 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5dn\.4xlarge and smaller \| m5n\.4xlarge and smaller \| m5zn\.3xlarge and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.4xlarge and smaller \| m5n\.4xlarge and smaller \| m5zn\.3xlarge \| m6in\.large \| m6idn\.large, and smaller  | Up to 25 Gbps † | [ENA](enhanced-networking-ena.md) | 
 |  m4\.16xlarge \| m5\.24xlarge \| m5\.metal \| m5d\.24xlarge \| m5d\.metal \| m5dn\.8xlarge \| m5n\.8xlarge \| m6a\.16xlarge \| m6i\.16xlarge \| m6id\.16xlarge  | 25 Gbps | [ENA](enhanced-networking-ena.md) | 
+| m6in\.xlarge \| m6idn\.xlarge | Up to 30 Gbps † |  | 
 |  m6a\.24xlarge \| m6i\.24xlarge \| m6id\.24xlarge  | 37\.5 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5dn\.12xlarge \| m5n\.12xlarge \| m5zn\.6xlarge \| m6a\.32xlarge \| m6a\.48xlarge \| m6a\.metal \| m6i\.32xlarge \| m6i\.metal \| m6id\.32xlarge \| m6id\.metal  | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5dn\.16xlarge \| m5n\.16xlarge  | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
-|  m5dn\.24xlarge \| m5dn\.metal \| m5n\.24xlarge \| m5n\.metal \| m5zn\.12xlarge \| m5zn\.metal  | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+| m6in\.2xlarge \| m6idn\.2xlarge | Up to 40 Gbps † | [ENA](enhanced-networking-ena.md) | 
+| m6in\.4xlarge \| m6idn\.4xlarge | Up to 50 Gbps † | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.12xlarge \| m5n\.12xlarge \| m5zn\.6xlarge \| m6a\.32xlarge \| m6a\.48xlarge \| m6a\.metal \| m6i\.32xlarge \| m6i\.metal \| m6id\.32xlarge \| m6id\.metal \| m6in\.8xlarge \| m6idn\.8xlarge | 50 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.16xlarge \| m5n\.16xlarge \| m6in\.12xlarge \| m6idn\.12xlarge | 75 Gbps | [ENA](enhanced-networking-ena.md) | 
+|  m5dn\.24xlarge \| m5dn\.metal \| m5n\.24xlarge \| m5n\.metal \| m5zn\.12xlarge \| m5zn\.metal \| m6in\.16xlarge \| m6idn\.16xlarge | 100 Gbps | [ENA](enhanced-networking-ena.md) | 
+| m6in\.24xlarge \| m6idn\.24xlarge | 150 Gbps | [ENA](enhanced-networking-ena.md) | 
+| m6in\.32xlarge \| m6idn\.32xlarge  | 200 Gbps\* | [ENA](enhanced-networking-ena.md) | 
+
+\*For 32xlarge and metal sizes, at least 2 ENIs, each attached to a different network card, are required on the instance to achieve 200 Gbps throughput\. Each ENI attached to a network card can achieve a max of 170 Gbps\. 
 
 † These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.<a name="baseline-bandwidth"></a>
 
@@ -273,6 +291,23 @@ The following is a summary of network performance for general purpose instances 
 | m6id\.xlarge | 1\.562 | 12\.5 | 
 | m6id\.2xlarge | 3\.125 | 12\.5 | 
 | m6id\.4xlarge | 6\.25 | 12\.5 | 
+| m6in\.large | 2 | 8 | 
+| m6in\.xlarge | 4 | 16 | 
+| m6in\.2xlarge | 8 | 32 | 
+| m6in\.4xlarge | 16 | 64 | 
+| m6in\.8xlarge | 32 | 128 | 
+| m6in\.16xlarge | 64 | 246 | 
+| m6in\.24xlarge | 96 | 384 | 
+| m6in\.32xlarge | 128 | 512 | 
+| m6idn\.large | 6\.25 | 12\.5 | 
+| m6idn\.xlarge | 2 | 8 | 
+| m6idn\.2xlarge | 4 | 16 | 
+| m6idn\.4xlarge | 16 | 64 | 
+| m6idn\.8xlarge | 32 | 128 | 
+| m6idn\.12xlarge | 48 | 192 | 
+| m6idn\.16xlarge | 64 | 256 | 
+| m6idn\.24xlarge | 96 | 384 | 
+| m6idn\.32xlarge | 128 | 512 | 
 | t3\.nano | \.032 | 5 | 
 | t3\.micro | \.064 | 5 | 
 | t3\.small | \.128 | 5 | 

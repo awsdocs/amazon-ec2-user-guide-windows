@@ -100,7 +100,7 @@ With a launch template, you can configure a set of launch parameters that Amazon
 ### Specify a non\-default VPC<a name="win-fast-launch-non-default-vpc"></a>
 
 **Step 1: Create a launch template**  
-Create a launch template that specifies the VPC for your Windows instances from the AWS Management Console or from the AWS CLI\. For more information, see [Create a launch template](ec2-launch-templates.md#create-launch-template)\.
+Create a launch template that specifies the VPC for your Windows instances from the AWS Management Console or from the AWS CLI\. For more information, see [Create a launch template](create-launch-template.md)\.
 
 **Step 2: Specify the launch template for your faster launching AMI**  
 

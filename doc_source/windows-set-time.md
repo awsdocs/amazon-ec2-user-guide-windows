@@ -22,6 +22,7 @@ For Linux instances, see [Set the time for your Linux instance](https://docs.aws
 + [Change the time zone](#windows-changing-time-zone)
 + [Configure network time protocol \(NTP\)](#windows-configuring-ntp)
 + [Default network time protocol \(NTP\) settings for Amazon Windows AMIs](#default-ntp-settings)
++ [Amazon Time Sync Public NTP](#public-ntp-settings)
 + [Configure time settings for Windows Server 2008 and later](#windows-persisting-time-changes-w2k8)
 + [Related resources](#server-time-related-topics)
 
@@ -62,6 +63,25 @@ You can assign the recommended UTC time zone by using the following command:
 ```
 tzutil /s "UTC"
 ```
+
+**To configure Amazon Time Sync Public NTP for **Microsoft Windows****
+
+For a backup to the Amazon Time Sync link\-local service, and to connect resources outside of Amazon EC2 to the Amazon Time Sync Service, you can use the Amazon Time Sync Public NTP pool located at `time.aws.com`\. Amazon Time Sync Public NTP, like the Amazon Time Sync service, automatically smooths any leap seconds that are added to UTC\. The Amazon Time Sync Service Public NTP is supported globally by our fleet of satellite\-connected and atomic reference clocks in each AWS Region See Configuring Clients to Amazon Time Sync Public NTP for configuration instructions\.
+
+1. Open the **Control Panel**\. 
+
+1. Choose the **Date and Time** icon\.
+
+1. Choose the **Internet Time**tab\. This will not be available if your PC is part of a domain\. In that case, it will synchronize time with the domain controller\. You can configure the controller to use Amazon Time Sync Public NTP\. 
+
+1. Choose **Change settings**\. 
+
+1. Select the check box for **Synchronize with an Internet time server**\. 
+
+1. Next to **Server**, enter **time\.aws\.com**\. 
+
+**To configure Amazon Time Sync Public NTP for **Microsoft Windows Server****
++ Follow [Microsoft's instructions](https://support.microsoft.com/en-us/kb/816042) to update your registry\. 
 
 ## Configure network time protocol \(NTP\)<a name="windows-configuring-ntp"></a>
 
@@ -139,6 +159,27 @@ Amazon Machine Images \(AMIs\) generally adhere to the out\-of\-the\-box default
 | HKLM:\\System\\CurrentControlSet\\services\\w32time\\TimeProviders\\NtpClient | Enabled | 1 | 
 | HKLM:\\System\\CurrentControlSet\\services\\w32time\\TimeProviders\\NtpClient | InputProvider | 1 | 
 | HKLM:\\System\\CurrentControlSet\\services\\w32time\\TimeProviders\\NtpClient | SpecialPollInterval | 900 | 
+
+## Amazon Time Sync Public NTP<a name="public-ntp-settings"></a>
+
+**To configure Amazon Time Sync Public NTP for **Microsoft Windows****
+
+For a backup to the Amazon Time Sync link\-local service, and to connect resources outside of Amazon EC2 to the Amazon Time Sync Service, you can use the Amazon Time Sync Public NTP pool located at `time.aws.com`\. Amazon Time Sync Public NTP, like the Amazon Time Sync service, automatically smooths any leap seconds that are added to UTC\. The Amazon Time Sync Service Public NTP is supported globally by our fleet of satellite\-connected and atomic reference clocks in each AWS Region See Configuring Clients to Amazon Time Sync Public NTP for configuration instructions\.
+
+1. Open the **Control Panel**\. 
+
+1. Choose the **Date and Time** icon\.
+
+1. Choose the **Internet Time** tab\. This will not be available if your PC is part of a domain\. In that case, it will synchronize time with the domain controller\. You can configure the controller to use Amazon Time Sync Public NTP\.
+
+1. Choose **Change settings**\. 
+
+1. Select the check box for **Synchronize with an Internet time server**\. 
+
+1. Next to **Server**, enter **time\.aws\.com**\. 
+
+**To configure Amazon Time Sync Public NTP for **Microsoft Windows Server****
++ Follow [Microsoft's instructions](https://support.microsoft.com/en-us/kb/816042) to update your registry\. 
 
 ## Configure time settings for Windows Server 2008 and later<a name="windows-persisting-time-changes-w2k8"></a>
 

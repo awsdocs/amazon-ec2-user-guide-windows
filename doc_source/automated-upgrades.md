@@ -61,9 +61,9 @@ This option is similar to **Simple execution**, but allows you to step through e
 
 The `[AWSEC2\-CloneInstanceAndUpgradeWindows](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-awsec2-CloneInstanceAndUpgradeWindows.html)` runbook creates an Amazon Machine Image \(AMI\) from a Windows Server instance in your account and upgrades this AMI to a supported version of your choice\. This multi\-step process can take up to two hours to complete\.
 
-To upgrade your Windows Server 2008 R2 instance to Windows Server 2016 or 2019, an in\-place upgrade is performed twice, first from Windows Server 2008 R2 to Windows Server 2012 R2, and then from Windows Server 2012 R2 to Windows Server 2016 or 2019\. Directly upgrading Windows Server 2008 R2 to Windows Server 2016 or 2019 is not supported\. 
+To upgrade your Windows Server 2008 R2 instance to Windows Server 2016, 2019, or 2022, an in\-place upgrade is performed twice, first from Windows Server 2008 R2 to Windows Server 2012 R2, and then from Windows Server 2012 R2 to Windows Server 2016, 2019, or 2022\. Directly upgrading Windows Server 2008 R2 to Windows Server 2016, 2019, or 2022 is not supported\. 
 
-In this workflow, the automation creates an AMI from the instance and then launches the new AMI in the subnet you provide\. The automation workflow performs an in\-place upgrade from Windows Server 2008 R2, 2012 R2 or 2016 to the selected version \(Windows Server 2012 R2, 2016, or 2019\)\. It also updates or installs the AWS drivers required by the upgraded instance\. After the upgrade is complete, the workflow creates a new AMI and terminates the upgraded instance\. If you upgrade from Windows Server 2008 R2 to Windows Server 2016 or 2019, the automation creates two AMIs because the in\-place upgrade is performed twice\.
+In this workflow, the automation creates an AMI from the instance and then launches the new AMI in the subnet you provide\. The automation workflow performs an in\-place upgrade from Windows Server 2008 R2, 2016, 2019 to the selected version \(Windows Server 2012 R2, 2016, 2019, or 2022\)\. It also updates or installs the AWS drivers required by the upgraded instance\. After the upgrade is complete, the workflow creates a new AMI and terminates the upgraded instance\. If you upgrade from Windows Server 2008 R2 to Windows Server 2016, 2019, or 2022, the automation creates two AMIs because the in\-place upgrade is performed twice\.
 
 There are two AMIs included in the automated upgrade process:
 + **Current running instance**\. The first AMI is the current running instance, which is not upgraded\. This AMI is used to launch another instance to run the in\-place upgrade\. When the process is complete, this AMI is deleted from your account, unless you specifically request to keep the original instance\. This setting is handled by the parameter `KeepPreUpgradeImageBackUp` \(default value is `false`, which means the AMI is deleted by default\)\.
@@ -79,7 +79,10 @@ The Systems Manager Automation runbook [AWSEC2\-CloneInstanceAndUpgradeWindows](
 + Windows Server 2008 R2 to Windows Server 2012 R2
 + Windows Server 2012 R2 to Windows Server 2016
 + Windows Server 2012 R2 to Windows Server 2019
++ Windows Server 2012 R2 to Windows Server 2022
 + Windows Server 2016 to Windows Server 2019
++ Windows Server 2016 to Windows Server 2022
++ Windows Server 2019 to Windows Server 2022
 
 ### Prerequisites<a name="automated-prereq-windows"></a>
 
@@ -90,7 +93,7 @@ In order to automate your Windows Server upgrade with the AWS Systems Manager Au
 + Windows PowerShell 3\.0 or later must be installed on your instance\.
 + For instances that are joined to a Microsoft Active Directory domain, we recommend specifying a `SubnetId` that does not have connectivity to your domain controllers to help avoid hostname conflicts\.
 + The `SubnetId` specified must be a public subnet with the auto\-assign public IPv4 address set to true\. For more information, see [Modifying the Public IPv4 Addressing Attribute for Your Subnet](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html#subnet-public-ip) in the *Amazon VPC User Guide*\.
-+ This Automation works with only Windows Server 2008 R2, 2012 R2, and 2016 instances\.
++ This Automation works with only Windows Server 2008 R2, 2012 R2, 2016, and 2019 instances\.
 + This Automation works on only Amazon EC2 instances with an unencrypted Amazon EBS root volume\. If the specified instance has an encrypted root volume, the automation fails\.
 + Verify that the instance has 20 GB of free disk space in the boot disk\.
 + If the instance does not use a Windows license provided by AWS, then specify an Amazon EBS snapshot ID that includes Windows Server 2012 R2 installation media\. To do this:
@@ -134,7 +137,7 @@ Follow these steps to upgrade your Windows Server instance using the [AWSEC2\-Cl
 
      **Type:** String
 
-     \(Required\) The instance running Windows Server 2008 R2, 2012 R2, or 2016 with the SSM agent installed\.
+     \(Required\) The instance running Windows Server 2008 R2, 2012 R2, 2016, or 2019 with the SSM agent installed\.
    + `InstanceProfile`\. 
 
      **Type:** String
