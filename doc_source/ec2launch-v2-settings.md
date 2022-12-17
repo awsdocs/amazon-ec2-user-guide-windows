@@ -623,7 +623,7 @@ task: executeProgram
 inputs:
 - frequency: always
   path: C:\Users\Administrator\Desktop\setup.exe
-  arguments: [‘—quiet']
+  arguments: ['-quiet']
 ```
 
 *Example 2*

@@ -60,7 +60,7 @@ Use the following procedure to download and install the `AwsVssComponents` packa
 1. Run the following command to download and install the required VSS components for Systems Manager\.
 
    ```
-   Send-SSMCommand -DocumentName AWS-ConfigureAWSPackage -InstanceId "$instance"-Parameter @{'action'='Install';'name'='AwsVssComponents'}
+   Send-SSMCommand -DocumentName AWS-ConfigureAWSPackage -InstanceId "$instance" -Parameter @{'action'='Install';'name'='AwsVssComponents'}
    ```
 
 ## Create VSS\-enabled EBS snapshots<a name="application-cosistent-snapshots-cli"></a>

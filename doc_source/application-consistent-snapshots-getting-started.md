@@ -149,7 +149,7 @@ Use the following procedure to create a VSS\-enabled EBS snapshot\.
 
 1. Choose **Run command**\.
 
-1. For **Command document**, choose `AWSEC2-CreateVssSnapshot` for the **Document name**, then choose `Latest version at runtime` as the **Document version**\.
+1. For **Command document**, choose `AWSEC2-CreateVssSnapshot` for the **Document name**, then choose `Default version at runtime` as the **Document version**\.
 
 1. For **Targets**, identify the instances on which you want to run this operation by specifying tags or selecting instances manually\.
 **Note**  

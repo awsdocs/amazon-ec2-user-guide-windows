@@ -10,7 +10,14 @@ For information about troubleshooting an unreachable Linux instance, see [Troubl
 
 ## Get a screenshot of an unreachable instance<a name="how-to-ics"></a>
 
-You can get screenshots of an instance while it is running or after it has crashed\. There is no data transfer cost for the screenshot\. The image is generated in JPG format and is no larger than 100 kb\. This feature is not supported when the instance is using an NVIDIA GRID driver, is on bare metal instances \(instances of type `*.metal`\), or is powered by Arm\-based Graviton or Graviton 2 processors\. This feature is available in the following Regions: 
+You can get screenshots of an instance while it is running or after it has crashed\. There is no data transfer cost for the screenshot\. The image is generated in JPG format and is no larger than 100 kb\.
+
+This feature is supported on all instances, except in:
++ Bare metal instances \(instance types that end in \.metal\)
++ Instance is using an NVIDIA GRID driver
++ Instances powered by Arm\-based Graviton processors
+
+This feature is available in the following Regions: 
 + Asia Pacific \(Hong Kong\) Region
 + Asia Pacific \(Tokyo\) Region
 + Asia Pacific \(Seoul\) Region

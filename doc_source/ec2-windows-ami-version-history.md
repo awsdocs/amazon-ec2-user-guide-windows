@@ -19,7 +19,8 @@ For more information about Microsoft updates, see [Description of Software Updat
 
 | Release | Changes | 
 | --- | --- | 
-| 2022\.11\.21 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
+| 2022\.12\.14 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
+| 2022\.11\.21 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)Previous versions of Amazon\-published Windows AMIs dated August 10, 2022 and earlier were made private\. | 
 | 2022\.11\.17 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) This is an out of band release for images that use EC2Config as the default launch agent\. This includes all Windows Server 2012 RTM and Windows Server 2012 R2 AMIs\. This release updates EC2Config to the latest version to improve support for our newest EC2 instance types\.  | 
 | 2022\.11\.10 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 | 2022\.10\.27 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated July 13, 2022 and earlier were made private\.  | 

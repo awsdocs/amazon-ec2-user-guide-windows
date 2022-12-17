@@ -11,6 +11,7 @@ The following table describes the released versions of EC2Launch v2\.
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 2\.0\.1082 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | December 7, 2022 | 
 | 2\.0\.1011 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | November 11, 2022 | 
 | 2\.0\.1009 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | November 8, 2022 | 
 | 2\.0\.982 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | October 31, 2022 | 
@@ -37,6 +38,7 @@ The following table describes the released versions of the EC2Launch v2 migratio
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 1\.0\.241 | Increments the version number of the EC2Launch agent to 2\.0\.1011\. | December 7, 2022 | 
 | 1\.0\.218 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | September 3, 2022 | 
 | 1\.0\.162 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | March 18, 2022 | 
 | 1\.0\.136 | Increments the version number of the EC2Launch agent to 2\.0\.651\. | October 13, 2021 | 

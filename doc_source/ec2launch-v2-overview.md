@@ -19,7 +19,7 @@ The following table shows the major functional differences between EC2Config, EC
 | Feature | EC2Config | EC2Launch v1 | EC2Launch v2 | 
 | --- | --- | --- | --- | 
 | Executed as | Windows Service |  PowerShell Scripts  | Windows Service | 
-| Supports |  Windows 2003 Windows 2008 Windows 2008 R2 Windows 2012 Windows 2012 R2  |  Windows 2016 Windows 2019 \(LTSC and SAC\)  |  Windows 2008 Windows 2008 R2 Windows 2012 Windows 2012 R2 Windows 2016 Windows 2019 \(LTSC and SAC\) Windows 2022  | 
+| Supports |  Windows 2012 Windows 2012 R2  |  Windows 2016 Windows 2019 \(LTSC and SAC\)  |  Windows 2012 Windows 2012 R2 Windows 2016 Windows 2019 \(LTSC and SAC\) Windows 2022  | 
 |  Configuration file  | XML | XML |  YAML  | 
 |  Set Administrator username  | No | No |  Yes  | 
 |  User data size  | 16 KB | 16 KB |  60 KB \(compressed\)  | 

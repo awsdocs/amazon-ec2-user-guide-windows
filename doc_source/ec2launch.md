@@ -188,7 +188,7 @@ If `AdminPasswordType` is still set to `Random`, EC2Launch will generate a new p
 
 ### Initialize drives and map drive letters<a name="ec2launch-mapping"></a>
 
-Specify settings in the `DriveLetterMappingConfig.json` file to map drive letters to volumes on your EC2 instance\. The script initializes drives that are not already initialized and partitioned\.
+Specify settings in the `DriveLetterMappingConfig.json` file to map drive letters to volumes on your EC2 instance\. The script initializes drives that are not already initialized and partitioned\. For more information about getting volume details in Windows, see [Get\-Volume](https://learn.microsoft.com/en-us/powershell/module/storage/get-volume) in the Microsoft documentation\.
 
 **To map drive letters to volumes**
 

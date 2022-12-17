@@ -27,7 +27,7 @@ When the network traffic for an instance exceeds a maximum, AWS shapes the traff
   1. On the **Driver** tab, locate **Driver Version**\.
 
   To upgrade your ENA driver, see [Enhanced networking](enhanced-networking-ena.md)\.
-+ To import these metrics to Amazon CloudWatch, install the CloudWatch agent\. For more information, see [Collect advanced network metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-ethtool-plugin.html) in the *Amazon CloudWatch User Guide*\.
++ To import these metrics to Amazon CloudWatch, install the CloudWatch agent\. For more information, see [Collect advanced network metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-network-performance.html) in the *Amazon CloudWatch User Guide*\.
 
 ## Metrics for the ENA driver<a name="network-performance-metrics"></a>
 
