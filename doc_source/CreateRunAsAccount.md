@@ -15,13 +15,13 @@ You must set up credentials that grant AWS Management Pack access to your AWS re
 1. In the **Create Run As Account Wizard**, on the **General Properties** page, in the **Run As account type** list, select **Basic Authentication**\.
 
 1. Enter a display name \(for example, "My IAM Account"\) and a description, and then click **Next**\.  
-![\[Configuring an AWS Run As account\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/configure_runas_account.png)
+![\[Configuring an AWS Run As account.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/configure_runas_account.png)
 
 1. On the **Credentials** page, enter the access key ID in the **Account name** box and the secret access key in the **Password** box, and then click **Next**\.  
-![\[Storing the access key ID and secret access key\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/store_access_key.png)
+![\[Storing the access key ID and secret access key.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/store_access_key.png)
 
 1. On the **Distribution Security** page, select **More secure \- I want to manually select the computers to which the credentials will be distributed**, and then click **Create**\.  
-![\[Distribution security option\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/distribution_security_option.png)
+![\[Distribution security option.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/distribution_security_option.png)
 
 1. Click **Close**\.
 
@@ -30,4 +30,4 @@ You must set up credentials that grant AWS Management Pack access to your AWS re
 1. In the **Actions** pane, click **Properties**\.
 
 1. In the **Properties** dialog box, verify that the **More Secure** option is selected and that all management servers to be used to monitor your AWS resources are listed\.  
-![\[Management servers\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AccountDistribution.png)
+![\[Management servers.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AccountDistribution.png)

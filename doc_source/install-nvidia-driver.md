@@ -131,7 +131,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
    }
    ```
 
-   Multiple versions of the NVIDIA GRID driver are stored in this bucket\. You can download all of the available versions in the bucket by removing the `-KeyPrefix $KeyPrefix` option\.
+   Multiple versions of the NVIDIA GRID driver are stored in this bucket\. You can download all of the available Windows versions in the bucket by using the `KeyPrefix="windows"` option\.
 
    Starting with GRID version 11\.0, you can use the drivers under `latest` for both G3 and G4dn instances\. We will not add versions later than 11\.0 to `g4/latest`, but will keep version 11\.0 and the earlier versions specific to G4dn under `g4/latest`\.
 
@@ -182,21 +182,67 @@ These drivers are available to AWS customers only\. By downloading them, you agr
    }
    ```
 
-   Multiple versions of the NVIDIA GRID driver are stored in this S3 bucket\. You can download all of the available versions in the bucket by removing the `-KeyPrefix $KeyPrefix` option\.
+   Multiple versions of the NVIDIA GRID driver are stored in this S3 bucket\. You can download all of the available versions in the bucket if you change the value of the `$KeyPrefix` variable from *"windows/latest"* to *"latest"*\.
 
 1. Navigate to the desktop and double\-click the installation file to launch it \(choose the driver version that corresponds to your instance OS version\)\. Follow the instructions to install the driver and reboot your instance as required\. To verify that the GPU is working properly, check Device Manager\.
 
-1. Create a registry value in the HKEY\_LOCAL\_MACHINE\\SOFTWARE\\NVIDIA Corporation\\Global key with the name vGamingMarketplace, the type DWord, and the value 2\. You can use either the Command Prompt window or a 64\-bit version of PowerShell as follows\.
-   + Use the following PowerShell command to create this registry value\. By default, the AWS Tools for PowerShell in AWS Windows AMIs is a 32\-bit version and this command fails\. Instead, use the 64\-bit version of PowerShell included with the operating system\.
+1. Use one of the following methods to register the driver\.
 
-     ```
-     New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global" -Name "vGamingMarketplace" -PropertyType "DWord" -Value "2"
-     ```
-   + Use the following registry command to create this registry value\. You can run it using the Command Prompt window or a 64\-bit version of PowerShell\.
+------
+#### [ Version 527\.27 or above ]
 
-     ```
-     reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global" /v vGamingMarketplace /t REG_DWORD /d 2
-     ```
+   Create the following registry key with the 64\-bit version of PowerShell, or the Command Prompt window\.
+
+   *key*: `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global`
+
+   *name*: vGamingMarketplace
+
+   *type*: DWord
+
+   *value*: 2
+
+**PowerShell**  
+Run the following PowerShell command to create this registry value\. The AWS Tools for PowerShell in AWS Windows AMIs defaults to the 32\-bit version and this command fails\. Instead, use the 64\-bit version of PowerShell included with the operating system\.
+
+   ```
+   New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global" -Name "vGamingMarketplace" -PropertyType "DWord" -Value "2"
+   ```
+
+**Command Prompt**  
+Run the following registry command to create this registry value\. You can run it using the Command Prompt window or a 64\-bit version of PowerShell\.
+
+   ```
+   reg add "HKLM\SYSTEM\CurrentControlSet\Services\nvlddmkm\Global" /v vGamingMarketplace /t REG_DWORD /d 2
+   ```
+
+------
+#### [ Earlier versions ]
+
+   Create the following registry key with the 64\-bit version of PowerShell, or the Command Prompt window\.
+
+   *key*: `HKEY_LOCAL_MACHINE\SOFTWARE\NVIDIA Corporation\Global`
+
+   *name*: vGamingMarketplace
+
+   *type*: DWord
+
+   *value*: 2
+
+**PowerShell**  
+Run the following PowerShell command to create this registry value\. The AWS Tools for PowerShell in AWS Windows AMIs defaults to the 32\-bit version and this command fails\. Instead, use the 64\-bit version of PowerShell included with the operating system\.
+
+   ```
+   New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global" -Name "vGamingMarketplace" -PropertyType "DWord" -Value "2"
+   ```
+
+**Command Prompt**  
+Run the following registry command to create this registry key with the Command Prompt window\. You can also use this command in the 64\-bit version of PowerShell\.
+
+   ```
+   reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global" /v vGamingMarketplace /t REG_DWORD /d 2
+   ```
+
+------
 
 1. Run the following command in PowerShell\. This downloads the certification file, renames the file `GridSwCert.txt`, and moves the file to the Public Documents folder on your system drive\. Typically, the folder path is `C:\Users\Public\Documents`\.
    + For version 461\.40 or later:

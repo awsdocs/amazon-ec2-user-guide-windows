@@ -16,7 +16,7 @@ You can't import Linux virtual machines from SCVMM to Amazon EC2\.
 + In AWS Systems Manager, click **Configuration**, select the **VM Import** tab, and review the following settings:
   + **S3 bucket prefix**: We create a bucket for disk images to be uploaded before they are imported\. The name of the bucket starts with the prefix listed here and includes the Region \(for example, `us-east-2`\)\. To delete the disk images after they are imported, select **Clean up S3 bucket after import**\.
   + **VM image export path**: A location for the disk images exported from the VM\. To delete the disk images after they are imported, select **Clean up export path after import**\.
-  + **Alternate Hyper\-V PowerShell module path**: The location of the Hyper\-V PowerShell module, if it's not installed in the standard location\. For more information, see [Installing the Hyper\-V Management Tools](http://technet.microsoft.com/en-us/library/dn632582.aspx#BKMK_SERVER) in the Microsoft TechNet Library\.
+  + **Alternate Hyper\-V PowerShell module path**: The location of the Hyper\-V PowerShell module, if it's not installed in the standard location\. For more information, see [Installing the Hyper\-V Management Tools](https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)\. 
 
 ## Import your virtual machine<a name="scvmm-importing"></a>
 
@@ -39,7 +39,7 @@ The permissions that you've been granted by your administrator determine whether
    1. Select a VPC from **Network \(VPC\)**\. Note that this list includes all VPCs for the region, including VPCs created using the Amazon VPC console and the default VPC \(if it exists\)\. If you have a default VPC in this region, we select it by default\. If the text is "There is no VPC available for launch or import operations in this region", then you must create a VPC in this region using the Amazon VPC console\.
 
    1. Select a subnet from **Subnet**\. Note that this list includes all subnets for the selected VPC, including any default subnets\. If this list is empty, you must add a subnet to the VPC using the Amazon VPC console, or select a different VPC\. Otherwise, we select a subnet for you\.  
-![\[The Create Amazon EC2 Instance dialog box\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_import.png)
+![\[The Create Amazon EC2 Instance dialog box.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_import.png)
 
 1. Click **Import**\. If you haven't specified the required information in the **VM Import** tab, you'll receive an error asking you to provide the required information\. Otherwise, you'll receive confirmation that the import task has started\. Click **Close**\.
 

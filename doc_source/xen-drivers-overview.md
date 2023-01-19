@@ -104,9 +104,12 @@ The source files for the RedHat drivers are in the `%ProgramFiles%\RedHat` \(32\
 
 ## Subscribe to notifications<a name="drivers-subscribe-notifications"></a>
 
-Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use the following procedure to subscribe to these notifications\.
+Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use one of the following methods to subscribe to these notifications\.
 
-**To subscribe to EC2 notifications from the console**
+**Note**  
+You must specify the Region for the SNS Topic you subscribe to\.
+
+**Subscribe to EC2 notifications from the console**
 
 1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
 
@@ -130,26 +133,26 @@ Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\
 
 1. You'll receive a confirmation email\. Open the email and follow the directions to complete your subscription\.
 
+**Subscribe to EC2 notifications using the AWS CLI**  
+To subscribe to EC2 notifications with the AWS CLI, use the following command\. 
+
+```
+aws sns subscribe --topic-arn arn:aws:sns:us-east-1:801119661308:ec2-windows-drivers --region us-east-1 --protocol email --notification-endpoint YourUserName@YourDomainName.ext
+```
+
+**Subscribe to EC2 notifications using the AWS Tools for PowerShell**  
+To subscribe to EC2 notifications with Tools for Windows PowerShell, use the following command\. 
+
+```
+Connect-SNSNotification -TopicArn 'arn:aws:sns:us-east-1:801119661308:ec2-windows-drivers' -Region us-east-1 -Protocol email -Endpoint 'YourUserName@YourDomainName.ext'
+```
+
 Whenever new EC2 Windows drivers are released, we send notifications to subscribers\. If you no longer want to receive these notifications, use the following procedure to unsubscribe\.
 
-**To unsubscribe from Amazon EC2 Windows driver notification**
+**Unsubscribe from Amazon EC2 Windows driver notification**
 
 1. Open the Amazon SNS console at [https://console\.aws\.amazon\.com/sns/v3/home](https://console.aws.amazon.com/sns/v3/home)\.
 
 1. In the navigation pane, choose **Subscriptions**\.
 
 1. Select the check box for the subscription and then choose **Actions**, **Delete subscriptions**\. When prompted for confirmation, choose **Delete**\.
-
-**To subscribe to EC2 notifications using the AWS CLI**  
-To subscribe to EC2 notifications with the AWS CLI, use the following command\. 
-
-```
-aws sns subscribe --topic-arn arn:aws:sns:us-east-1:801119661308:ec2-windows-drivers --protocol email --notification-endpoint YourUserName@YourDomainName.ext
-```
-
-**To subscribe to EC2 notifications using the AWS Tools for PowerShell**  
-To subscribe to EC2 notifications with Tools for Windows PowerShell, use the following command\. 
-
-```
-Connect-SNSNotification -TopicArn 'arn:aws:sns:us-east-1:801119661308:ec2-windows-drivers' -Protocol email -Region us-east-1 -Endpoint 'YourUserName@YourDomainName.ext'
-```

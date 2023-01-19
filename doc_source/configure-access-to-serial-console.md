@@ -70,7 +70,7 @@ For more information, see [Creating IAM policies](https://docs.aws.amazon.com/IA
    The **EC2 Serial Console access** field indicates whether account access is **Allowed** or **Prevented**\.
 
    The following screenshot shows that the account is prevented from using the EC2 serial console\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/serial-console-no-acct-access.png)
+![\[Access to the EC2 Serial Console is prevented.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/serial-console-no-acct-access.png)
 
 **To view account access status to the serial console \(AWS CLI\)**  
 Use the [get\-serial\-console\-access\-status](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-serial-console-access-status.html) command to view account access status to the serial console\.
@@ -166,18 +166,27 @@ By default, no one has access to the serial console\. To grant access to the ser
 
 The following policy allows access to the serial console of a specific instance, identified by its instance ID\.
 
+Note that the `DescribeInstances`, `DescribeInstanceTypes`, and `GetSerialConsoleAccessStatus` actions do not support resource\-level permissions, and therefore all resources, indicated by the `*` \(asterisk\), must be specified for these actions\.
+
 ```
 {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "AllowSerialConsoleAccess",
+            "Sid": "AllowDescribeInstances",
             "Effect": "Allow",
             "Action": [
-                "ec2-instance-connect:SendSerialConsoleSSHPublicKey",
                 "ec2:DescribeInstances",
                 "ec2:DescribeInstanceTypes",
                 "ec2:GetSerialConsoleAccessStatus"
+            ],
+             "Resource": "*"
+        },
+        {
+            "Sid": "AllowinstanceBasedSerialConsoleAccess",
+            "Effect": "Allow",
+            "Action": [
+                "ec2-instance-connect:SendSerialConsoleSSHPublicKey"
             ],
             "Resource": "arn:aws:ec2:region:account-id:instance/i-0598c7d356eba48d7"
         }
@@ -224,20 +233,29 @@ Attribute\-based access control is an authorization strategy that defines permis
 
 For more information about using tags to control access to your AWS resources, see [Controlling access to AWS resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html#access_tags_control-resources) in the *IAM User Guide*\.
 
+Note that the `DescribeInstances`, `DescribeInstanceTypes`, and `GetSerialConsoleAccessStatus` actions do not support resource\-level permissions, and therefore all resources, indicated by the `*` \(asterisk\), must be specified for these actions\.
+
 ```
 {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "AllowTagBasedSerialConsoleAccess",
+            "Sid": "AllowDescribeInstances",
             "Effect": "Allow",
             "Action": [
-                "ec2-instance-connect:SendSerialConsoleSSHPublicKey",
                 "ec2:DescribeInstances",
                 "ec2:DescribeInstanceTypes",
                 "ec2:GetSerialConsoleAccessStatus"
             ],
-            "Resource": "*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowTagBasedSerialConsoleAccess",
+            "Effect": "Allow",
+            "Action": [
+                "ec2-instance-connect:SendSerialConsoleSSHPublicKey"
+            ],
+            "Resource": "arn:aws:ec2:region:account-id:instance/*",
             "Condition": {
                 "StringEquals": {
                     "aws:ResourceTag/SerialConsole": "${aws:PrincipalTag/SerialConsole}"

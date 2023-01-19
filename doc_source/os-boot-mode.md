@@ -7,4 +7,4 @@ The boot mode of the operating system guides Amazon EC2 on which boot mode to us
 1. [Connect to your Windows instance using RDP](connecting_to_windows_instance.md)\.
 
 1. Go to **System Information** and check the **BIOS Mode** row\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/BIOS-mode-win.png)
+![\[BIOS mode within System Information.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/BIOS-mode-win.png)

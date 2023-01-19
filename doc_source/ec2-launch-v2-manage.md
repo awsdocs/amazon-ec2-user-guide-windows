@@ -38,8 +38,10 @@ If you don’t need to update the configuration settings, create your own AMI, o
 
 1. Launch and connect to your Windows instance\.
 
-1. On the **Start** menu, select **Control Panel**\.
+1. On the **Start** menu, choose **Control Panel**\.
 
-1. Open **Programs and Features**\.
+1. Open **Programs** and then **Programs and Features**\.
 
-1. In the list of programs, select **Amazon EC2Launch v2**, and select **Uninstall**\.
+1. In the list of programs, choose **Amazon EC2Launch**\. To confirm that you're choosing v2, check the **Version** column\.
+
+1. Choose **Uninstall**\.

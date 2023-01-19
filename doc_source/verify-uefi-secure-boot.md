@@ -5,7 +5,7 @@
 1. Open the msinfo32 tool\.
 
 1. Check the **Secure Boot State** field\. **Supported** indicates that UEFI Secure Boot is enabled\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/secure-boot-state-win.png)
+![\[Secure Boot State within System Information.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/secure-boot-state-win.png)
 
 You can also use the Windows PowerShell Cmdlet `Confirm-SecureBootUEFI` to check the the Secure Boot status\.
 

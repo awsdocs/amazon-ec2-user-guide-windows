@@ -195,7 +195,7 @@ The Failover Cluster Manager can be configured so that each IP address specified
 
 Each resource in a cluster has a setting for Possible Owners\. This setting tells the cluster which nodes are permitted to “online” a resource\. Each node is running on a unique subnet in a VPC\. Because EC2 cannot share IPs between instances, the IP resources in the cluster can be brought online only by specific nodes\. By default, each IP address that is added to the cluster as a resource has every node listed as a Possible Owner\. This does not result in failures\. However, during expected and unexpected failures, you can see errors in the logs about conflicting IPs and failures to bring IPs online\. These errors can be ignored\. If you set the Possible Owner property, you can eliminate these errors entirely, and also prevent down time while the services are moved to another node\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/failover_cluster_manager_1.PNG)
+![\[Configuring a node in the Failover Cluster Manager.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/failover_cluster_manager_1.PNG)
 
 ## Tune the failover thresholds<a name="sql-failover-thresholds"></a>
 

@@ -21,7 +21,7 @@ When you deregister an AMI, it doesn't affect the snapshot\(s\) that were create
 
 The following diagram illustrates the process for cleaning up your AMI\.
 
-![\[Process to clean up your AMI\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ami_delete_ebs.png)
+![\[Process to clean up your AMI.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ami_delete_ebs.png)
 
 You can use one of the following methods to clean up your AMI\.
 

@@ -79,7 +79,7 @@ You can perform a clean installation using the EC2Launch v2 interface or the com
 **Perform a clean installation using the EC2Launch v2 user interface**  
 When you install EC2Launch v2, choose the **Default Configuration** option under **Basic Install**\.
 
-![\[EC2Launch v2 clean install\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-clean-default-config.png)
+![\[EC2Launch v2 clean install.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-clean-default-config.png)
 
 **Perform a clean installation using the command line**  
 To perform a clean installation of EC2Launch v2 using the command line, run the following Windows command:

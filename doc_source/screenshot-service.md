@@ -77,7 +77,7 @@ You can use the following information to help you troubleshoot an unreachable in
 
 Console Screenshot Service returned the following\.
 
-![\[Log on screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-1.png)
+![\[Log on screen.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-1.png)
 
 If an instance becomes unreachable during logon, there could be a problem with your network configuration or Windows Remote Desktop Services\. An instance can also be unresponsive if a process is using large amounts of CPU\. 
 
@@ -132,7 +132,7 @@ For more information, see [Get Statistics for a Specific Resource](https://docs.
 
 Console Screenshot Service returned the following\.
 
-![\[Recovery console screenshot\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-2.png)
+![\[Recovery console screenshot.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-2.png)
 
 The operating system might boot into the Recovery console and get stuck in this state if the `bootstatuspolicy` is not set to `ignoreallfailures`\. Use the following procedure to change the `bootstatuspolicy` configuration to `ignoreallfailures`\.
 
@@ -159,7 +159,7 @@ Alternatively, select a different AMI for the temporary instance\. For example, 
 
 Console Screenshot Service returned the following\.
 
-![\[Windows Boot Manager Screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-3.png)
+![\[Windows Boot Manager Screen.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-3.png)
 
 The operating system experienced a fatal corruption in the system file and/or the registry\. When the instance is stuck in this state, you should recover the instance from a recent backup AMI or launch a replacement instance\. If you need to access data on the instance, detach any root volumes from the unreachable instance, take a snapshot of those volume or create an AMI from them, and attach them to another instance in the same Availability Zone as a secondary volume\. For more information, see [Detach an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)\.
 
@@ -167,7 +167,7 @@ The operating system experienced a fatal corruption in the system file and/or th
 
 Console Screenshot Service returned the following\.
 
-![\[Sysprep Screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-4.png)
+![\[Sysprep Screen.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-4.png)
 
 You may see this screen if you did not use the EC2Config Service to call Sysprep or if the operating system failed while running Sysprep\. You can reset the password using [EC2Rescue](Windows-Server-EC2Rescue.md)\. Otherwise, [Create a standardized Amazon Machine Image \(AMI\) using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
@@ -175,7 +175,7 @@ You may see this screen if you did not use the EC2Config Service to call Sysprep
 
 Console Screenshot Service returned the following\.
 
-![\[Getting Ready Screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-5.png)
+![\[Getting Ready Screen.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-5.png)
 
 Refresh the Instance Console Screenshot Service repeatedly to verify that the progress ring is spinning\. If the ring is spinning, wait for the operating system to start up\. You can also check the **CPUUtilization \(Maximum\)** metric on your instance by using Amazon CloudWatch to see if the operating system is active\. If the progress ring is not spinning, the instance may be stuck at the boot process\. Reboot the instance\. If rebooting does not solve the problem, recover the instance from a recent backup AMI or launch a replacement instance\. If you need to access data on the instance, detach the root volume from the unreachable instance, take a snapshot of the volume or create an AMI from it\. Then attach it to another instance in the same Availability Zone as a secondary volume\.
 
@@ -183,7 +183,7 @@ Refresh the Instance Console Screenshot Service repeatedly to verify that the pr
 
 Console Screenshot Service returned the following\.
 
-![\[Windows Update Screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-6.png)
+![\[Windows Update Screen.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-6.png)
 
 The Windows Update process is updating the registry\. Wait for the update to finish\. Do not reboot or stop the instance as this may cause data corruption during the update\.
 
@@ -194,6 +194,6 @@ The Windows Update process can consume resources on the server during the update
 
 Console Screenshot Service returned the following\.
 
-![\[Chkdsk Screen\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-7.png)
+![\[Chkdsk Screen.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ts-cs-7.png)
 
 Windows is running the chkdsk system tool on the drive to verify file system integrity and fix logical file system errors\. Wait for process to complete\.

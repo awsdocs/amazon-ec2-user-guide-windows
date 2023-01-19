@@ -60,7 +60,7 @@ The command adds the class to the current PowerShell session only\. If you start
 
 ------
 #### [ North America Regions ]
-   + Northern Virginia
+   + US East \(N\. Virginia\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -88,7 +88,7 @@ The command adds the class to the current PowerShell session only\. If you start
      NWIsDEcp3GUB4proOR+C7PNkY+VGODitBOw09qBGosCBstwyEqY=
      -----END CERTIFICATE-----
      ```
-   + Ohio
+   + US East \(Ohio\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -116,7 +116,7 @@ The command adds the class to the current PowerShell session only\. If you start
      K+cQ90xGxJ+gmlYbLFR5rbJOLfjrgDAb2ogbFy8LzHo2ZtSe60M=
      -----END CERTIFICATE-----
      ```
-   + Oregon
+   + US West \(Oregon\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -144,7 +144,7 @@ The command adds the class to the current PowerShell session only\. If you start
      QpVoZdt0SfbuNnmwRUMi+QbuccXweav29QeQ3ADqjgB0CZdSRKk=
      -----END CERTIFICATE-----
      ```
-   + Northern California
+   + US West \(N\. California\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -199,7 +199,7 @@ The command adds the class to the current PowerShell session only\. If you start
 
 ------
 #### [ South America Regions ]
-   + São Paulo
+   + South America \(São Paulo\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -230,7 +230,7 @@ The command adds the class to the current PowerShell session only\. If you start
 
 ------
 #### [ Europe, Middle East, and Africa Regions ]
-   + Frankfurt
+   + Europe \(Frankfurt\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -258,7 +258,7 @@ The command adds the class to the current PowerShell session only\. If you start
      Z6fboaHEd4RFamShM8uvSu6eEFD+qRmvqlcodbpsSOhuGNLzhOQ=
      -----END CERTIFICATE-----
      ```
-   + London
+   + Europe \(London\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -282,7 +282,7 @@ The command adds the class to the current PowerShell session only\. If you start
      pt1RCZe+W7/dF4zsbqwK
      -----END CERTIFICATE-----
      ```
-   + Paris
+   + Europe \(Paris\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -306,7 +306,7 @@ The command adds the class to the current PowerShell session only\. If you start
      OmY0v/xVmQUQl26jJXaM
      -----END CERTIFICATE-----
      ```
-   + Ireland
+   + Europe \(Ireland\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -334,7 +334,7 @@ The command adds the class to the current PowerShell session only\. If you start
      4CqoaPR05KWkdNUdGNwXewydb3+agdCgfTs+uAjeXKNdSpbhMYg=
      -----END CERTIFICATE-----
      ```
-   + Milan
+   + Europe \(Milan\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -358,7 +358,7 @@ The command adds the class to the current PowerShell session only\. If you start
      jgnq1bf+EZEZKvb6UCQV
      -----END CERTIFICATE-----
      ```
-   + Stockholm
+   + Europe \(Stockholm\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -382,7 +382,7 @@ The command adds the class to the current PowerShell session only\. If you start
      FEyxIdEjoeO1jhTsck3R
      -----END CERTIFICATE-----
      ```
-   + Bahrain
+   + Middle East \(Bahrain\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -406,7 +406,35 @@ The command adds the class to the current PowerShell session only\. If you start
      KHKgfiigQZ1+gv5FlyXH
      -----END CERTIFICATE-----
      ```
-   + Cape Town
+   + Middle East \(UAE\)
+
+     ```
+     -----BEGIN CERTIFICATE-----
+     MIIEEjCCAvqgAwIBAgIJAM4h7b1CVhqqMA0GCSqGSIb3DQEBCwUAMFwxCzAJBgNV
+     BAYTAlVTMRkwFwYDVQQIExBXYXNoaW5ndG9uIFN0YXRlMRAwDgYDVQQHEwdTZWF0
+     dGxlMSAwHgYDVQQKExdBbWF6b24gV2ViIFNlcnZpY2VzIExMQzAgFw0yMjA0MTEx
+     MDE1MDNaGA8yMjAxMDkxNTEwMTUwM1owXDELMAkGA1UEBhMCVVMxGTAXBgNVBAgT
+     EFdhc2hpbmd0b24gU3RhdGUxEDAOBgNVBAcTB1NlYXR0bGUxIDAeBgNVBAoTF0Ft
+     YXpvbiBXZWIgU2VydmljZXMgTExDMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+     CgKCAQEApybTWfMOhSoMpqPo72eqAmnn1dXGZM+G8EoZXzwHwT/+IHEXNB4q5N6k
+     tudYLre1bJxuzEw+iProSHjmb9bB9YscRTofjVhBlt35Fc+i8BaMeH94SR/eE8QO
+     mll8gnLNW3d62lyuhzuyv1e5wVlRqzYw+X2zRH4/wRDOCOpzjKoHIgyPKsMgwsw5
+     aTZhNMsGxZN9dbkf0iCGeQLDytwU/JTh/HqvSr3VfUOapTJJiyAxoCtZWgp1/7wC
+     RvOCSMRJobpUqxZgl/VsttwNkikSFz1wGkcYeSQvk+odbnYQckA8tdddoVI56eD4
+     qtREQvfpMAX5v7fcqLexl5d5vH8uZQIDAQABo4HUMIHRMAsGA1UdDwQEAwIHgDAd
+     BgNVHQ4EFgQUOadrbTs+OhzwoAgUJ7RqQNdwufkwgY4GA1UdIwSBhjCBg4AUOadr
+     bTs+OhzwoAgUJ7RqQNdwufmhYKReMFwxCzAJBgNVBAYTAlVTMRkwFwYDVQQIExBX
+     YXNoaW5ndG9uIFN0YXRlMRAwDgYDVQQHEwdTZWF0dGxlMSAwHgYDVQQKExdBbWF6
+     b24gV2ViIFNlcnZpY2VzIExMQ4IJAM4h7b1CVhqqMBIGA1UdEwEB/wQIMAYBAf8C
+     AQAwDQYJKoZIhvcNAQELBQADggEBAICTdAOGEOnII8HaGCpCB8us/hGFaLptJaAf
+     D5SJAyVy66/mdfjGzE1BKkKxnbxemEVUIzbRidOnyilB+pKwN3edAjTZtWdpVA0V
+     R/G/qQPmcVljtycBz4VC6SuOUYflGzLH1GZ6GJWbuDtFzw8r7HGdRN1wrEPe3UF2
+     sMpuVezqnRUdvVRoVQP4jFgNsE7kNvtn2NiPhb/CtrxpcwIQ7r6YeoHcBSheuV1Z
+     xZDHynC3KUprQGx1+Z9QqPrDf180MaoqAlTl4+W6Pr2NJYrVUFGS/ivYshMg574l
+     CPU6r4wWZSKwEUXq4BInYX6z6iclp/p/J5QnJp2mAwyi6M+I13Y=
+     -----END CERTIFICATE-----
+     ```
+   + Africa \(Cape Town\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -433,7 +461,7 @@ The command adds the class to the current PowerShell session only\. If you start
 
 ------
 #### [ Asia Pacific Regions ]
-   + Sydney
+   + Asia Pacific \(Sydney\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -461,7 +489,7 @@ The command adds the class to the current PowerShell session only\. If you start
      2LCawwaWm8FYAFd3IZl04RImNs/IMG7VmH1bf4swHOBHgCN1uYo=
      -----END CERTIFICATE-----
      ```
-   + Tokyo
+   + Asia Pacific \(Tokyo\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -489,7 +517,7 @@ The command adds the class to the current PowerShell session only\. If you start
      6KR6PNjlhxBsImQhmBvz6j5PLQxOxBZIpDoiK278e/1Wqm9LrBc=
      -----END CERTIFICATE-----
      ```
-   + Seoul
+   + Asia Pacific \(Seoul\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -513,7 +541,7 @@ The command adds the class to the current PowerShell session only\. If you start
      jmXe0aMy3thyK6g5sJVg
      -----END CERTIFICATE-----
      ```
-   + Osaka
+   + Asia Pacific \(Osaka\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -537,7 +565,7 @@ The command adds the class to the current PowerShell session only\. If you start
      izPrI09hMypJDP04ugQc
      -----END CERTIFICATE-----
      ```
-   + Mumbai
+   + Asia Pacific \(Mumbai\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -561,7 +589,7 @@ The command adds the class to the current PowerShell session only\. If you start
      OP2CclCHoZ8XDQcvvKAh
      -----END CERTIFICATE-----
      ```
-   + Hong Kong
+   + Asia Pacific \(Hong Kong\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -585,7 +613,7 @@ The command adds the class to the current PowerShell session only\. If you start
      tmmEJM7xeURdpBBx36Di
      -----END CERTIFICATE-----
      ```
-   + Singapore
+   + Asia Pacific \(Singapore\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -613,7 +641,7 @@ The command adds the class to the current PowerShell session only\. If you start
      5WuOr8unKj7YxdL1bv7//RtVYVVi296ldoRUYv4SCvJF11z0OdQ=
      -----END CERTIFICATE-----
      ```
-   + Jakarta
+   + Asia Pacific \(Jakarta\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -641,7 +669,7 @@ The command adds the class to the current PowerShell session only\. If you start
      XUrLTNWwuhZy88cOlqGPxnoRbw7TmifwPw/cunNrsjUUOgs6ZTk=
      -----END CERTIFICATE-----
      ```
-   + Ningxia
+   + China \(Ningxia\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -665,7 +693,7 @@ The command adds the class to the current PowerShell session only\. If you start
      YMqfiDtN5cbD8R8ojw9Y
      -----END CERTIFICATE-----
      ```
-   + Beijing
+   + China \(Beijing\)
 
      ```
      -----BEGIN CERTIFICATE-----
@@ -691,7 +719,7 @@ The command adds the class to the current PowerShell session only\. If you start
      ```
 
 ------
-#### [ AWS GovCloud Regions ]
+#### [ AWS GovCloud \(US\) Regions ]
    + AWS GovCloud \(US\-West\) Region
 
      ```

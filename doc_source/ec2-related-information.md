@@ -1,4 +1,4 @@
-# Related information<a name="ec2-windows-related-information"></a>
+# Related information<a name="ec2-related-information"></a>
 
 The following related resources can help you as you work with this service\.
 
@@ -8,18 +8,23 @@ The following related resources can help you as you work with this service\.
 + **[Microsoft Licensing on AWS: Options for using Microsoft software licenses on the AWS Cloud](http://aws.amazon.com/windows/resources/licensing)** – Options for using Microsoft software licenses on the AWS Cloud\. 
 + **[AWS Migration Acceleration Program for Windows](http://aws.amazon.com/windows/map-for-windows)** – AWS services, best practices, and tools to help you save costs and accelerate migrations of Windows workloads to AWS\.
 + **[AWS Optimization and Licensing Assessment](http://aws.amazon.com/windows/optimization-and-licensing-assessment/)** – Evaluate your Windows environment to reduce costs and optimize compute\.
-+ **[EC2 Image Builder](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html)** – automate the creation, management, and deployment of customized, secure, and up\-to\-date server images that are pre\-installed and pre\-configured with software settings to meet specific IT standards\.
 + **[AWS Launch Wizard](https://docs.aws.amazon.com/launchwizard)** – AWS Launch Wizard guides you through the sizing, configuration, and deployment of applications on AWS following the AWS Well\-Architected Framework\.
 + **[Microsoft SQL Server on AWS](http://aws.amazon.com/sql)** – Overview of Microsoft SQL Server on AWS workloads and services\. 
++ **[EC2 Image Builder](https://docs.aws.amazon.com/imagebuilder/latest/userguide/what-is-image-builder.html)** – Automate the creation, management, and deployment of customized, secure, and up\-to\-date server images that are pre\-installed and pre\-configured with software settings to meet specific IT standards\.
 
-**Forum**  
-**[Amazon EC2 forum](https://forums.aws.amazon.com/forum.jspa?forumID=30)** – AWS Discussion forum for Amazon EC2 to post questions and feedback\. 
+**Tutorials for developers**
++ **[Deploy a Web Application on Amazon EC2](http://aws.amazon.com/getting-started/guides/deploy-webapp-ec2/?ref=docs_id=ec2l1)** – Create an Amazon EC2 instance using AWS CDK and deploy a web application on the instance\.
++ **[Amazon EC2 Backup & Restore using AWS Backup](http://aws.amazon.com/getting-started/hands-on/amazon-ec2-backup-and-restore-using-aws-backup/?ref=docs_id=ec2l1)** – Create an on\-demand backup of an Amazon EC2 instance, then learn how to create a backup plan to backup Amazon EC2 instances\.
++ **[Break a Monolith Application into Microservices with Amazon Elastic Container Service, Docker, and Amazon EC2](http://aws.amazon.com/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/?ref=docs_id=ec2l1)** – Deploy a monolithic node\.js application to a Docker container, then decouple the application into microservices without any downtime\.
+
+**AWS re:Post**  
+**[AWS re:Post](https://repost.aws/)** – AWS managed question and answer \(Q & A\) service offering crowd\-sourced, expert\-reviewed answers to your technical questions\.
 
 **Pricing**  
 **[Amazon EC2 pricing](http://aws.amazon.com/ec2/pricing)** – Pricing information for Amazon EC2\. 
 
 **General AWS resources**  
-The following related resources can help you as you work with AWS\.
+The following general resources can help you as you work with AWS\.
 + ** [Classes & Workshops](https://aws.amazon.com/training/course-descriptions/)** – Links to role\-based and specialty courses, in addition to self\-paced labs to help sharpen your AWS skills and gain practical experience\.
 + ** [AWS Developer Center](https://aws.amazon.com/developer/?ref=docs_id=res1)** – Explore tutorials, download tools, and learn about AWS developer events\.
 + ** [AWS Developer Tools](https://aws.amazon.com/developer/tools/?ref=docs_id=res1)** – Links to developer tools, SDKs, IDE toolkits, and command line tools for developing and managing AWS applications\.

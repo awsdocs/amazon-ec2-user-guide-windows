@@ -546,5 +546,5 @@ sponsored by Amazon.
    + [Upgrade the AWS Management Pack](upgrading-awsmp.md)
    + [Uninstall the AWS Management Pack](uninstalling-awsmp.md)
    + [Troubleshoot the AWS Management Pack](TroubleshootingAWSmp.md)
-+ [Related information](ec2-windows-related-information.md)
++ [Related information](ec2-related-information.md)
 + [Document history](DocumentHistory.md)

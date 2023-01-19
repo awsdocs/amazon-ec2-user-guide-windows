@@ -31,9 +31,6 @@ Consider the following when changing the instance type of an existing instance:
 
 Use the following instructions to change the instance type of an instance if the instance type that you need is compatible with the instance's current configuration\.
 
-------
-#### [ New console ]
-
 **To change the instance type of an Amazon EBS\-backed instance**
 
 1. \(Optional\) If the new instance type requires drivers that are not installed on the existing instance, you must connect to your instance and install the drivers first\. For more information, see [Compatibility for changing the instance type](resize-limitations.md)\.
@@ -61,51 +58,12 @@ Use the following instructions to change the instance type of an instance if the
 1. To start the instance, select the instance and choose **Instance state**, **Start instance**\. It can take a few minutes for the instance to enter the `running` state\. If your instance won't start, see [Troubleshoot changing the instance type](troubleshoot-change-instance-type.md)\.
 
 1. \[Windows Server 2016 and later\] Connect to your Windows instance and run the following EC2Launch PowerShell script to configure the instance after the instance type is changed\.
+**Important**  
+The administrator password will reset when you enable the initialize instance EC2 Launch script\. You can modify the configuration file to disable the administrator password reset by specifying it in the settings for the initialization tasks\. For steps on how to disable password reset, see [Configure initialization tasks](ec2launch.md#ec2launch-inittasks)\.
 
    ```
    PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
    ```
-
-------
-#### [ Old console ]
-
-**To change the instance type of an Amazon EBS\-backed instance**
-
-1. \(Optional\) If the new instance type requires drivers that are not installed on the existing instance, you must connect to your instance and install the drivers first\. For more information, see [Compatibility for changing the instance type](resize-limitations.md)\.
-
-1. \(Optional\) If you configured your Windows instance to use [static IP addressing](config-windows-multiple-ip.md#step1) and you change from an instance type that doesn't support enhanced networking to an instance type that does support enhanced networking, you might get a warning about a potential IP address conflict when you reconfigure static IP addressing\. To prevent this, enable DHCP on the network interface for your instance before you change the instance type\. From your instance, open the **Network and Sharing Center**, go to **Internet Protocol Version 4 \(TCP/IPv4\) Properties** for the network interface, and choose **Obtain an IP address automatically**\. Change the instance type and reconfigure static IP addressing on the network interface\.
-
-1. Open the Amazon EC2 console\.
-
-1. In the navigation pane, choose **Instances**\.
-
-1. Select the instance and choose **Actions**, **Instance State**, **Stop**\. When prompted for confirmation, choose **Yes, Stop**\.
-
-   It can take a few minutes for the instance to stop\.
-
-1. With the instance still selected, choose **Actions**, **Instance Settings**, **Change Instance Type**\. This action is grayed out if the instance state is not `stopped`\.
-
-1. In the **Change Instance Type** dialog box, do the following:
-
-   1. From **Instance Type**, select the instance type that you want\.
-
-      If the instance type that you want does not appear in the list, then it is not compatible with the configuration of your instance\. Instead, use the following instructions: [Change the instance type by launching a new instance](#migrate-instance-configuration)\.
-
-   1. \(Optional\) If the instance type that you selected supports EBS–optimization, select **EBS\-optimized** to enable EBS–optimization or deselect **EBS\-optimized** to disable EBS–optimization\. If the instance type that you selected is EBS–optimized by default, **EBS\-optimized** is selected and you can't deselect it\.
-
-   1. Choose **Apply** to accept the new settings\.
-
-1. To restart the stopped instance, select the instance and choose **Actions**, **Instance State**, **Start**\.
-
-1. In the confirmation dialog box, choose **Yes, Start**\. It can take a few minutes for the instance to enter the `running` state\. If your instance won't start, see [Troubleshoot changing the instance type](troubleshoot-change-instance-type.md)\.
-
-1. \[Windows Server 2016 and later\] Connect to your Windows instance and run the following EC2Launch PowerShell script to configure the instance after the instance type is changed\.
-
-   ```
-   PS C:\> C:\ProgramData\Amazon\EC2-Windows\Launch\Scripts\InitializeInstance.ps1 -Schedule
-   ```
-
-------
 
 ## Change the instance type by launching a new instance<a name="migrate-instance-configuration"></a>
 
@@ -117,9 +75,6 @@ To migrate your application to a new instance, do the following:
 + Install your application and any software on your new instance\.
 + Restore any data\.
 + If your original instance has an Elastic IP address, and you want to ensure that your users can continue uninterrupted to use the applications on your new instance, you must associate the Elastic IP address with your new instance\. For more information, see [Elastic IP address](elastic-ip-addresses-eip.md)\.
-
-------
-#### [ New console ]
 
 **To change the instance type for a new instance configuration**
 
@@ -166,33 +121,3 @@ To migrate your application to a new instance, do the following:
    1. Choose **Associate**\.
 
 1. \(Optional\) You can terminate the original instance if it's no longer needed\. Select the instance, verify that you are about to terminate the original instance and not the new instance \(for example, check the name or launch time\), and then choose **Instance state**, **Terminate instance**\.
-
-------
-#### [ Old console ]
-
-**To migrate your application to a compatible instance**
-
-1. Back up any data on your instance store volumes that you need to keep to persistent storage\. To migrate data on your EBS volumes that you need to keep, create a snapshot of the volumes \(see [Create Amazon EBS snapshots](ebs-creating-snapshot.md)\) or detach the volume from the instance so that you can attach it to the new instance later \(see [Detach an Amazon EBS volume from a Windows instance](ebs-detaching-volume.md)\)\.
-
-1. Launch a new instance, selecting the following:
-   + If you are using an Elastic IP address, select the VPC that the original instance is currently running in\.
-   + Any EBS volumes that you detached from the original instance and want to attach to the new instance, or new EBS volumes based on the snapshots that you created\.
-   + If you want to allow the same traffic to reach the new instance, select the security group that is associated with the original instance\.
-
-1. Install your application and any required software on the instance\.
-
-1. Restore any data that you backed up from the instance store volumes of the original instance\.
-
-1. If you are using an Elastic IP address, assign it to the newly launched instance as follows:
-
-   1. In the navigation pane, choose **Elastic IPs**\.
-
-   1. Select the Elastic IP address that is associated with the original instance and choose **Actions**, **Disassociate address**\. When prompted for confirmation, choose **Disassociate address**\.
-
-   1. With the Elastic IP address still selected, choose **Actions**, **Associate address**\.
-
-   1. From **Instance**, select the new instance, and then choose **Associate**\.
-
-1. \(Optional\) You can terminate the original instance if it's no longer needed\. Select the instance and verify that you are about to terminate the original instance, not the new instance \(for example, check the name or launch time\)\. Choose **Actions**, **Instance State**, **Terminate**\.
-
-------

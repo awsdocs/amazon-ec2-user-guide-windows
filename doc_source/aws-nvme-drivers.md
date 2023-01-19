@@ -91,7 +91,7 @@ The following table describes the released versions of the AWS NVMe driver\.
 |  [1\.2\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.2.0/AWSNVMe.zip)  | Performance and reliability improvements for AWS NVMe devices on all supported instances, including bare metal instances | 13 June 2018 | 
 |  [1\.0\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.0.0.146/AWSNVMe.zip)  | AWS NVMe driver for supported instance types running Windows Server | 12 February 2018 | 
 
-## Subscribe to notifications<a name="drivers-subscribe-notifications"></a>
+## Subscribe to notifications<a name="nvme-drivers-subscribe-notifications"></a>
 
 Amazon SNS can notify you when new versions of EC2 Windows Drivers are released\. Use the following procedure to subscribe to these notifications\.
 

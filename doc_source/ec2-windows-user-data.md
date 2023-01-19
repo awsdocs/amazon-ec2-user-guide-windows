@@ -212,7 +212,7 @@ You can specify instance user data when you launch the instance\. If the root vo
 
 When you launch an instance, you specify the script in **Advanced Details**, **User data** on the **Step 3: Configure Instance Details** page of the Launch Instance Wizard\. The example in the following image creates a file in the Windows temporary folder, using the current date and time in the file name\. When you include `<persist>true</persist>`, the script is run every time you reboot or start the instance\. When you select **As text**, the Amazon EC2 console performs the base64 encoding for you\.
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/configure_ec2config_userdata.png)
+![\[Advance Details user data text field.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/configure_ec2config_userdata.png)
 
 ### View and update the instance user data<a name="user-data-view-change"></a>
 
@@ -233,7 +233,7 @@ When you stop an instance, the data on any instance store volumes is erased\. To
 1. With the instance still selected, choose **Actions**, **Instance settings**, **Edit user data**\. You can't change the user data if the instance is running, but you can view it\.
 
 1. In the **Edit user data** dialog box, update the user data, and then choose **Save**\. To run user data scripts every time you reboot or start the instance, add `<persist>true</persist>`, as shown in the following example:  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/view-change-user-data.png)
+![\[Edit User Data dialog box.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/view-change-user-data.png)
 
 1. Start the instance\. If you enabled user data execution for subsequent reboots or starts, the updated user data scripts are run as part of the instance start process\.
 

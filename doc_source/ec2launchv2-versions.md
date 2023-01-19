@@ -11,6 +11,7 @@ The following table describes the released versions of EC2Launch v2\.
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 2\.0\.1121 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | January 4, 2023 | 
 | 2\.0\.1082 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | December 7, 2022 | 
 | 2\.0\.1011 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | November 11, 2022 | 
 | 2\.0\.1009 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launchv2-versions.html) | November 8, 2022 | 

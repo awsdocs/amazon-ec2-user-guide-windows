@@ -4,7 +4,7 @@ An Amazon EC2 instance transitions through different states from the moment you 
 
 The following illustration represents the transitions between instance states\.
 
-![\[The instance lifecycle\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_lifecycle.png)
+![\[The instance lifecycle.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_lifecycle.png)
 
 The following table provides a brief description of each instance state and indicates whether it is billed or not\.
 

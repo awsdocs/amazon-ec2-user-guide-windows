@@ -19,7 +19,7 @@ If you improperly configure custom tasks in the agent\-config\.yml file, and you
 1. Launch and connect to your Windows instance\.
 
 1. From the Start menu, choose **All Programs**, and then navigate to **EC2Launch settings**\.   
-![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-settings.png)
+![\[EC2 Launch settings application.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-settings.png)
 
 1. On the **General** tab of the **EC2Launch settings** dialog box, you can enable or disable the following settings\.
 
@@ -72,15 +72,15 @@ If you improperly configure custom tasks in the agent\-config\.yml file, and you
       Select whether you want your EC2 instance to shut down with or without Sysprep\. When you want to run Sysprep with EC2Launch v2, choose **Shutdown with Sysprep**\.
 
 1. On the **DNS Suffix** tab, you can select whether you want to add a DNS suffix list for DNS resolution of servers running in EC2, without providing the fully qualified domain name\. DNS suffixes can contain the variables `$REGION` and `$AZ`\. Only suffixes that do not already exist will be added to the list\.   
-![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-dns.png)
+![\[EC2 Launch settings application.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-dns.png)
 
 1. On the **Wallpaper** tab, you can enable the display of selected instance details on the wallpaper\. You also have the option of choosing a custom image\. The details are generated each time that you log in\. Clear the check box to remove instance details from the wallpaper\.  
-![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-wallpaper-02.png)
+![\[EC2 Launch settings application.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-wallpaper-02.png)
 
 1. On the **Volumes** tab, select whether you want to initialize the volumes that are attached to the instance\. Enabling sets drive letters for any additional volumes and extends them to use available space\. If you select **All**, all of the storage volumes are initialized\. If you select **Devices**, only devices that are specified in the list are initialized\. You must enter the device for each device to be initialized\. Use the devices listed on the EC2 console, for example, `xvdb` or `/dev/nvme0n1`\. The dropdown list displays the storage volumes that are attached to the instance\. To enter a device that is not attached to the instance, enter it in the text field\.
 
    **Name**, **Letter**, and **Partition** are optional fields\. If no value is specified for **Partition**, storage volumes larger than 2 TB are initialized with the GPT partition type, and those smaller than 2 TB are initialized with the MBR partition type\. If devices are configured, and a non\-NTFS device either contains a partition table, or the first 4 KB of the disk contain data, then the disk is skipped and the action logged\.   
-![\[EC2 Launch settings application\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-volumes.png)
+![\[EC2 Launch settings application.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-volumes.png)
 
 The following is an example configuration YAML file created from the settings entered in the EC2Launch dialog\.
 

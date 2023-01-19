@@ -36,11 +36,11 @@ The following table describes some key differences between Windows Server and an
 
 A traditional server running Windows Server goes through the states shown in the following diagram\.
 
-![\[The States of a Traditional Windows Server\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows_server_lifecycle.png)
+![\[The States of a Traditional Windows Server.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows_server_lifecycle.png)
 
 An Amazon EC2 Windows instance is similar to the traditional Windows Server, as you can see by comparing the following diagram with the previous diagram for Windows Server\. After you launch an instance, it briefly goes into the pending state while registration takes place, then it goes into the running state\. The instance remains active until you stop or terminate it\. You can't restart an instance after you terminate it\. You can create a backup image of your instance while it's running, and launch a new instance from that backup image\.
 
-![\[Instance and AMI lifecycle\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_lifecycle.png)
+![\[Instance and AMI lifecycle.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_lifecycle.png)
 
 ## Design your applications to run on Windows instances<a name="Win_AppDesign"></a>
 

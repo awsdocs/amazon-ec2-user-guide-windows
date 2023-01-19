@@ -30,9 +30,9 @@ The AWS Management Pack provides the following views, which are displayed in the
 
 View the health state of the EC2 instances for a particular AWS account, from all Availability Zones and Regions\. The view also includes EC2 instances running in a virtual private cloud \(VPC\)\. The AWS Management Pack retrieves tags, so you can search and filter the list using those tags\.
 
-![\[EC2 instances view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2_instance_view.png)
+![\[Amazon EC2 instances view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2_instance_view.png)
 
-When you select an EC2 instance, you can perform instance health tasks:
+When you select an Amazon EC2 instance, you can perform instance health tasks:
 + **Open Amazon Console**: Launches the AWS Management Console in a web browser\.
 + **Open RDP to Amazon EC2 Instance**: Opens an RDP connection to the selected Windows instance\.
 + **Reboot Amazon EC2 Instance**: Reboots the selected EC2 instance\. 
@@ -42,75 +42,75 @@ When you select an EC2 instance, you can perform instance health tasks:
 **EC2 Instances Diagram View**  
 Shows the relationship of an instance with other components\.
 
-![\[EC2 instance diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_diagram_view-2.png)
+![\[Amazon EC2 instance diagram view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/instance_diagram_view-2.png)
 
 ### Amazon EBS Volumes<a name="awsmp-ebs-volumes-view"></a>
 
 Shows the health state of all the Amazon EBS volumes for a particular AWS account from all Availability Zones and Regions\.
 
-![\[Amazon Elastic Block Store volumes view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs_volume_view.png)
+![\[Amazon Elastic Block Store volumes view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs_volume_view.png)
 
 **Amazon EBS Volumes Diagram View**  
 Shows an Amazon EBS volume and any associated alarms\. The following illustration shows an example:
 
-![\[Amazon Elastic Block Store volume diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs_volume_diagram_view.png)
+![\[Amazon Elastic Block Store volume diagram view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ebs_volume_diagram_view.png)
 
 ### Classic Load Balancers<a name="awsmp-load-balancers-view"></a>
 
 Shows the health state of all of the Classic Load Balancers for a particular AWS account from all Regions\.
 
-![\[Elastic Load Balancing view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_view-2.png)
+![\[Elastic Load Balancing view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_view-2.png)
 
 **Elastic Load Balancing Diagram View**  
 Shows the Elastic Load Balancing relationship with other components\. The following illustration shows an example:
 
-![\[Elastic Load Balancing diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_diagram_view.png)
+![\[Elastic Load Balancing diagram view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/elb_diagram_view.png)
 
 ### AWS Elastic Beanstalk applications<a name="awsmp-beanstalk-apps-view"></a>
 
 Shows the state of all discovered AWS Elastic Beanstalk applications\.
 
-![\[AWS Elastic Beanstalk application state view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/beanstalk_state_view-2.png)
+![\[AWS Elastic Beanstalk application state view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/beanstalk_state_view-2.png)
 
 **AWS Elastic Beanstalk Applications Diagram View**  
 Shows the AWS Elastic Beanstalk application, application environment, application configuration, and application resources objects\.
 
-![\[AWS Elastic Beanstalk diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/beanstalk_diagram_view.png)
+![\[AWS Elastic Beanstalk diagram view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/beanstalk_diagram_view.png)
 
 ### AWS CloudFormation stacks<a name="awsmp-cfn-stacks-view"></a>
 
 Shows the health state of all the AWS CloudFormation stacks for a particular AWS account from all Regions\.
 
-![\[AWS CloudFormation stack state view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_view-2.png)
+![\[AWS CloudFormation stack state view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_view-2.png)
 
 **AWS CloudFormation stacks diagram view**  
 Shows the AWS CloudFormation stack relationship with other components\. An AWS CloudFormation stack might contain Amazon EC2 or Elastic Load Balancing resources\. The following illustration shows an example:
 
-![\[AWS CloudFormation stack diagram view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_diagram_view.png)
+![\[AWS CloudFormation stack diagram view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudformation_stack_diagram_view.png)
 
 ### Amazon performance views<a name="awsmp-performance-views"></a>
 
 Shows the Amazon CloudWatch metrics for Amazon EC2, Amazon EBS, and Elastic Load Balancing, custom metrics, and metrics created from CloudWatch alarms\. In addition, there are separate performance views for each resource\. The **Other Metrics** performance view contains custom metrics, and metrics created from CloudWatch alarms\. For more information about these metrics, see [AWS Services That Publish CloudWatch Metrics](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html) in the *Amazon CloudWatch User Guide*\. The following illustration shows an example\. 
 
-![\[Amazon performance views\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_performance_view-2.png)
+![\[Amazon performance views.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_performance_view-2.png)
 
 ### Amazon CloudWatch metric alarms<a name="awsmp-metric-alarms-view"></a>
 
 Shows Amazon CloudWatch alarms related to the discovered AWS resources\.
 
-![\[Amazon CloudWatch metric alarms\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudwatch_alarms_view-2.png)
+![\[Amazon CloudWatch metric alarms.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/cloudwatch_alarms_view-2.png)
 
 ### AWS alerts<a name="awsmp-aws-alerts-view"></a>
 
 Shows the alerts that the AWS management pack produces when the health of an object is in a critical state\. 
 
-![\[AWS Alerts\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_alerts_view-2.png)
+![\[AWS Alerts.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_alerts_view-2.png)
 
 ### Watcher nodes \(System Center Operations Manager 2007 R2\)<a name="awsmp-watcher-nodes-view"></a>
 
 View the health state of the watcher nodes across all of the AWS accounts that are being monitored\. A **Healthy** state means that the watcher node is configured correctly and can communicate with AWS\.
 
-![\[Watcher node state view\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/check_watcher_node_state.png)
+![\[Watcher node state view.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/check_watcher_node_state.png)
 
 ## Discoveries<a name="Discoveries"></a>
 
@@ -215,13 +215,13 @@ Events report on activities that involve the monitored resources\. Events are wr
 
 The following illustration shows the health model defined by the AWS Management Pack\.
 
-![\[Health model for an EC2 instance\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPHealthModel.png)
+![\[Health model for an EC2 instance.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPHealthModel.png)
 
 The health state for a CloudWatch alarm is rolled up to its corresponding CloudWatch metric\. The health state for a CloudWatch metric for Amazon EC2 is rolled up to the EC2 instance\. Similarly, the health state for the CloudWatch metrics for Amazon EBS is rolled up to the Amazon EBS volume\. The health states for the Amazon EBS volumes used by an EC2 instance are rolled up to the EC2 instance\.
 
 When the relationship between an EC2 instance and its operating system has been discovered, the operating system health state is rolled up to the EC2 instance\.
 
-![\[Windows/Linux computer health rolls up to an EC2 instance\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPWindowsLinuxHealthRollup.png)
+![\[Windows/Linux computer health rolls up to an EC2 instance.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPWindowsLinuxHealthRollup.png)
 
 The health state of an AWS CloudFormation stack depends on the status of the AWS CloudFormation stack itself and the health states of its resources, namely the load balancers and EC2 instances\.
 
@@ -236,7 +236,7 @@ The following table illustrates how the status of the AWS CloudFormation stack c
 
 The full health model for an AWS CloudFormation stack is as follows:
 
-![\[Health model for an AWS CloudFormation stack\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPCloudformationHealthModel.png)
+![\[Health model for an AWS CloudFormation stack.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/AWSMPCloudformationHealthModel.png)
 
 ## Customize the AWS Management Pack<a name="CustomizingAWSmp"></a>
 

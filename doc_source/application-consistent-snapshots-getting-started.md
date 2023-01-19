@@ -37,7 +37,8 @@ The following procedures describes how to work with IAM policies and IAM roles\.
                    "ec2:DescribeInstances",
                    "ec2:CreateSnapshot",
                    "ec2:CreateImage",
-                   "ec2:DescribeImages"
+                   "ec2:DescribeImages",
+                   "ec2:DescribeSnapshots"
                ],
                "Resource": "*"
            }
@@ -45,7 +46,7 @@ The following procedures describes how to work with IAM policies and IAM roles\.
    }
    ```
 
-   If you do not intend to set the **CreateAmi** parameter to **True**, then you can omit `arn:aws:ec2:*::image/*` from the first policy statement and you can omit `ec2:CreateImage` and `ec2:DescribeImages` from the second policy statement\. 
+   If you do not intend to set the **CreateAmi** parameter to **True**, then you can omit `arn:aws:ec2:*::image/*` from the first policy statement and you can omit `ec2:CreateImage`, `ec2:DescribeSnapshots`, and `ec2:DescribeImages` from the second policy statement\. 
 
    If you intend to always set the **CreateAmi** parameter to **True**, then you can omit `ec2:CreateSnapshot` from the second policy statement\.
 

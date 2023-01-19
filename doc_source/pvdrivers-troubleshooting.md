@@ -181,7 +181,7 @@ Disabling TCP offloading may reduce the network performance of your instance\.
 1. Choose **Change adapter settings**\.
 
 1. Right\-click **Citrix PV Ethernet Adapter \#0** and select **Properties**\.  
-![\[Local area connection properties\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/citrix-local-area-conn.png)
+![\[Local area connection properties.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/citrix-local-area-conn.png)
 
 1. In the **Local Area Connection Properties** dialog box, choose **Configure** to open the **Citrix PV Ethernet Adapter \#0 Properties** dialog box\.
 

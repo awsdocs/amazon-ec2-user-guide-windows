@@ -99,7 +99,7 @@ You can use Run Command to upgrade your existing instances to use to the latest 
 
 ## EC2Config and Sysprep<a name="ec2config-sysprep"></a>
 
-The EC2Config service runs Sysprep, a Microsoft tool that enables you to create a customized Windows AMI that can be reused\. When EC2Config calls Sysprep, it uses the files in `%ProgramFiles%\Amazon\EC2ConfigService\Settings` to determine which operations to perform\. You can edit these files indirectly using the **Ec2 Service Properties** dialog box, or directly using an XML editor or a text editor\. However, there are some advanced settings that aren't available in the **Ec2 Service Properties** dialog box, so you must edit those entries directly\.
+The EC2Config service runs Sysprep, a Microsoft tool that enables you to create a customized Windows AMI that can be reused\. When EC2Config calls Sysprep, it uses the files in `%ProgramFiles%\Amazon\EC2ConfigService\Settings` to determine which operations to perform\. You can edit these files indirectly using the **EC2 Service Properties** dialog box, or directly using an XML editor or a text editor\. However, there are some advanced settings that aren't available in the **Ec2 Service Properties** dialog box, so you must edit those entries directly\.
 
 If you create an AMI from an instance after updating its settings, the new settings are applied to any instance that's launched from the new AMI\. For information about creating an AMI, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
 
@@ -112,9 +112,9 @@ The following procedure describes how to use the **Ec2 Service Properties** dial
 1. Launch and connect to your Windows instance\.
 
 1. From the **Start** menu, click **All Programs**, and then click **EC2ConfigService Settings**\.   
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_General.png)
+![\[EC2 Service Properties.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_General.png)
 
-1. On the **General** tab of the **Ec2 Service Properties** dialog box, you can enable or disable the following settings\.  
+1. On the **General** tab of the **EC2 Service Properties** dialog box, you can enable or disable the following settings\.  
  **Set Computer Name**   
 If this setting is enabled \(it is disabled by default\), the host name is compared to the current internal IP address at each boot; if the host name and internal IP address do not match, the host name is reset to contain the internal IP address and then the system reboots to pick up the new host name\. To set your own host name, or to prevent your existing host name from being modified, do not enable this setting\.  
  **User Data**   
@@ -127,13 +127,13 @@ Click **Settings** to specify filters for the log entries sent to the console\. 
  **Wallpaper Information**   
 Use this setting to display system information on the desktop background\. The following is an example of the information displayed on the desktop background\.  
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_Wallpaper.png)
+![\[Wallpaper Information displayed on the desktop background.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_Wallpaper.png)
 The information displayed on the desktop background is controlled by the settings file `EC2ConfigService\Settings\WallpaperSettings.xml`\.  
  **Enable Hibernation**   
 Use this setting to allow EC2 to signal the operating system to perform hibernation\. 
 
 1. Click the **Storage** tab\. You can enable or disable the following settings\.  
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_Storage.png)  
+![\[Storage tab within EC2 Service Properties.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_Storage.png)  
  **Root Volume**   
 This setting dynamically extends Disk 0/Volume 0 to include any unpartitioned space\. This can be useful when the instance is booted from a root device volume that has a custom size\.  
  **Initialize Drives**   
@@ -142,10 +142,10 @@ This setting formats and mounts all volumes attached to the instance during star
 The system maps the volumes attached to an instance to drive letters\. For Amazon EBS volumes, the default is to assign drive letters going from D: to Z:\. For instance store volumes, the default depends on the driver\. AWS PV drivers and Citrix PV drivers assign instance store volumes drive letters going from Z: to A:\. Red Hat drivers assign instance store volumes drive letters going from D: to Z:\.  
 To choose the drive letters for your volumes, click **Mappings**\. In the **DriveLetterSetting** dialog box, specify the **Volume Name** and **Drive Letter** values for each volume, click **Apply**, and then click **OK**\. We recommend that you select drive letters that avoid conflicts with drive letters that are likely to be in use, such as drive letters in the middle of the alphabet\.  
 
-![\[Image NOT FOUND\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_driver_letter_mapping.png)
+![\[DriveLetterSetting dialog box.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/EC2ConfigProperties_driver_letter_mapping.png)
 After you specify a drive letter mapping and attach a volume with same label as one of the volume names that you specified, EC2Config automatically assigns your specified drive letter to that volume\. However, the drive letter mapping fails if the drive letter is already in use\. Note that EC2Config doesn't change the drive letters of volumes that were already mounted when you specified the drive letter mapping\.
 
-1. To save your settings and continue working on them later, click **OK** to close the **Ec2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
+1. To save your settings and continue working on them later, click **OK** to close the **EC2 Service Properties** dialog box\. If you have finished customizing your instance and want to create an AMI from that instance, see [Create a standardized Amazon Machine Image \(AMI\) using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\.
 
 ## EC2Config settings files<a name="UsingConfigXML_WinAMI"></a>
 

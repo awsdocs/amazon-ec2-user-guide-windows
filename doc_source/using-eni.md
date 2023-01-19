@@ -63,194 +63,31 @@ You can enable a VPC flow log on your network interface to capture information a
 
 ## IP addresses per network interface per instance type<a name="AvailableIpPerENI"></a>
 
-The following table lists the maximum number of network interfaces per instance type, and the maximum number of private IPv4 addresses and IPv6 addresses per network interface\. The limit for IPv6 addresses is separate from the limit for private IPv4 addresses per network interface\. Not all instance types support IPv6 addressing\.
+The following tables list the maximum number of network interfaces per instance type, and the maximum number of private IPv4 addresses and IPv6 addresses per network interface\. The limit for IPv6 addresses is separate from the limit for private IPv4 addresses per network interface\. Not all instance types support IPv6 addressing\.
+
+**Topics**
++ [General Purpose](#enis-generalpurpose)
++ [Compute Optimized](#enis-computeoptimized)
++ [Memory Optimized](#enis-memoryoptimized)
++ [Storage Optimized](#enis-storageoptimized)
++ [Accelerated Computing](#enis-acceleratedcomputing)
+
+### General Purpose<a name="enis-generalpurpose"></a>
 
 
 | Instance type | Maximum network interfaces | Private IPv4 addresses per interface | IPv6 addresses per interface | 
 | --- | --- | --- | --- | 
-| c1\.medium |  2  |  6  | IPv6 not supported | 
-| c1\.xlarge |  4  |  15  | IPv6 not supported | 
-| c3\.large |  3  |  10  | 10 | 
-| c3\.xlarge |  4  |  15  | 15 | 
-| c3\.2xlarge |  4  |  15  | 15 | 
-| c3\.4xlarge |  8  |  30  | 30 | 
-| c3\.8xlarge |  8  |  30  | 30 | 
-| c4\.large |  3  |  10  | 10 | 
-| c4\.xlarge |  4  |  15  | 15 | 
-| c4\.2xlarge |  4  |  15  | 15 | 
-| c4\.4xlarge |  8  |  30  | 30 | 
-| c4\.8xlarge |  8  |  30  | 30 | 
-| c5\.large | 3 | 10 | 10 | 
-| c5\.xlarge | 4 | 15 | 15 | 
-| c5\.2xlarge | 4 | 15 | 15 | 
-| c5\.4xlarge | 8 | 30 | 30 | 
-| c5\.9xlarge | 8 | 30 | 30 | 
-| c5\.12xlarge | 8 | 30 | 30 | 
-| c5\.18xlarge | 15 | 50 | 50 | 
-| c5\.24xlarge | 15 | 50 | 50 | 
-| c5\.metal | 15 | 50 | 50 | 
-| c5a\.large | 3 | 10 | 10 | 
-| c5a\.xlarge | 4 | 15 | 15 | 
-| c5a\.2xlarge | 4 | 15 | 15 | 
-| c5a\.4xlarge | 8 | 30 | 30 | 
-| c5a\.8xlarge | 8 | 30 | 30 | 
-| c5a\.12xlarge | 8 | 30 | 30 | 
-| c5a\.16xlarge | 15 | 50 | 50 | 
-| c5a\.24xlarge | 15 | 50 | 50 | 
-| c5ad\.large | 3 | 10 | 10 | 
-| c5ad\.xlarge | 4 | 15 | 15 | 
-| c5ad\.2xlarge | 4 | 15 | 15 | 
-| c5ad\.4xlarge | 8 | 30 | 30 | 
-| c5ad\.8xlarge | 8 | 30 | 30 | 
-| c5ad\.12xlarge | 8 | 30 | 30 | 
-| c5ad\.16xlarge | 15 | 50 | 50 | 
-| c5ad\.24xlarge | 15 | 50 | 50 | 
-| c5d\.large | 3 | 10 | 10 | 
-| c5d\.xlarge | 4 | 15 | 15 | 
-| c5d\.2xlarge | 4 | 15 | 15 | 
-| c5d\.4xlarge | 8 | 30 | 30 | 
-| c5d\.9xlarge | 8 | 30 | 30 | 
-| c5d\.12xlarge | 8 | 30 | 30 | 
-| c5d\.18xlarge | 15 | 50 | 50 | 
-| c5d\.24xlarge | 15 | 50 | 50 | 
-| c5d\.metal | 15 | 50 | 50 | 
-| c5n\.large | 3 | 10 | 10 | 
-| c5n\.xlarge | 4 | 15 | 15 | 
-| c5n\.2xlarge | 4 | 15 | 15 | 
-| c5n\.4xlarge | 8 | 30 | 30 | 
-| c5n\.9xlarge | 8 | 30 | 30 | 
-| c5n\.18xlarge | 15 | 50 | 50 | 
-| c5n\.metal | 15 | 50 | 50 | 
-| c6a\.large | 3 | 10 | 10 | 
-| c6a\.xlarge | 4 | 15 | 15 | 
-| c6a\.2xlarge | 4 | 15 | 15 | 
-| c6a\.4xlarge | 8 | 30 | 30 | 
-| c6a\.8xlarge | 8 | 30 | 30 | 
-| c6a\.12xlarge | 8 | 30 | 30 | 
-| c6a\.16xlarge | 15 | 50 | 50 | 
-| c6a\.24xlarge | 15 | 50 | 50 | 
-| c6a\.32xlarge | 15 | 50 | 50 | 
-| c6a\.48xlarge | 15 | 50 | 50 | 
-| c6a\.metal | 15 | 50 | 50 | 
-| c6i\.large | 3 | 10 | 10 | 
-| c6i\.xlarge | 4 | 15 | 15 | 
-| c6i\.2xlarge | 4 | 15 | 15 | 
-| c6i\.4xlarge | 8 | 30 | 30 | 
-| c6i\.8xlarge | 8 | 30 | 30 | 
-| c6i\.12xlarge | 8 | 30 | 30 | 
-| c6i\.16xlarge | 15 | 50 | 50 | 
-| c6i\.24xlarge | 15 | 50 | 50 | 
-| c6i\.32xlarge | 15 | 50 | 50 | 
-| c6i\.metal | 15 | 50 | 50 | 
-| c6id\.large | 3 | 10 | 10 | 
-| c6id\.xlarge | 4 | 15 | 15 | 
-| c6id\.2xlarge | 4 | 15 | 15 | 
-| c6id\.4xlarge | 8 | 30 | 30 | 
-| c6id\.8xlarge | 8 | 30 | 30 | 
-| c6id\.12xlarge | 8 | 30 | 30 | 
-| c6id\.16xlarge | 15 | 50 | 50 | 
-| c6id\.24xlarge | 15 | 50 | 50 | 
-| c6id\.32xlarge | 15 | 50 | 50 | 
-| c6id\.metal | 15 | 50 | 50 | 
-| c6in\.large | 3 | 10 | 10 | 
-| c6in\.xlarge | 4 | 15 | 15 | 
-| c6in\.2xlarge | 4 | 15 | 15 | 
-| c6in\.4xlarge | 8 | 30 | 30 | 
-| c6in\.8xlarge | 8 | 30 | 30 | 
-| c6in\.12xlarge | 8 | 30 | 30 | 
-| c6in\.16xlarge | 14 | 50 | 50 | 
-| c6in\.24xlarge | 14 | 50 | 50 | 
-| c6in\.32xlarge | 14 | 50 | 50 | 
-| cc2\.8xlarge |  8  |  30  | IPv6 not supported | 
-| cr1\.8xlarge |  8  |  30  | IPv6 not supported | 
-| d2\.xlarge |  4  |  15  | 15 | 
-| d2\.2xlarge |  4  |  15  | 15 | 
-| d2\.4xlarge |  8  |  30  | 30 | 
-| d2\.8xlarge |  8  |  30  | 30 | 
-| d3\.xlarge | 4 | 3 | 3 | 
-| d3\.2xlarge | 4 | 5 | 5 | 
-| d3\.4xlarge | 4 | 10 | 10 | 
-| d3\.8xlarge | 3 | 20 | 20 | 
-| d3en\.large | 4 | 2 | 2 | 
-| d3en\.xlarge | 4 | 3 | 3 | 
-| d3en\.2xlarge | 4 | 5 | 5 | 
-| d3en\.4xlarge | 4 | 10 | 10 | 
-| d3en\.6large | 4 | 15 | 15 | 
-| d3en\.8xlarge | 4 | 20 | 20 | 
-| d3en\.12xlarge | 3 | 30 | 30 | 
-| f1\.2xlarge |  4  | 15  |  15  | 
-| f1\.4xlarge |  8  | 30  |  30  | 
-| f1\.16xlarge | 8 | 50 | 50 | 
-| g2\.2xlarge |  4  |  15  | IPv6 not supported | 
-| g2\.8xlarge |  8  |  30  | IPv6 not supported | 
-| g3s\.xlarge | 4 | 15 | 15 | 
-| g3\.4xlarge | 8 | 30 | 30 | 
-| g3\.8xlarge | 8 | 30 | 30 | 
-| g3\.16xlarge | 15 | 50 | 50 | 
-| g4ad\.xlarge | 2 | 4 | 4 | 
-| g4ad\.2xlarge | 2 | 4 | 4 | 
-| g4ad\.4xlarge | 3 | 10 | 10 | 
-| g4ad\.8xlarge | 4 | 15 | 15 | 
-| g4ad\.16xlarge | 8 | 30 | 30 | 
-| g4dn\.xlarge | 3 | 10 | 10 | 
-| g4dn\.2xlarge | 3 | 10 | 10 | 
-| g4dn\.4xlarge | 3 | 10 | 10 | 
-| g4dn\.8xlarge | 4 | 15 | 15 | 
-| g4dn\.12xlarge | 8 | 30 | 30 | 
-| g4dn\.16xlarge | 4 | 15 | 15 | 
-| g4dn\.metal | 15 | 50 | 50 | 
-| g5\.xlarge | 4 | 15 | 15 | 
-| g5\.2xlarge | 4 | 15 | 15 | 
-| g5\.4xlarge | 8 | 30 | 30 | 
-| g5\.8xlarge | 8 | 30 | 30 | 
-| g5\.12xlarge | 15 | 50 | 50 | 
-| g5\.16xlarge | 8 | 30 | 30 | 
-| g5\.24xlarge | 15 | 50 | 50 | 
-| g5\.48xlarge | 7 | 50 | 50 | 
-| h1\.2xlarge | 4 | 15 | 15 | 
-| h1\.4xlarge | 8 | 30 | 30 | 
-| h1\.8xlarge | 8 | 30 | 30 | 
-| h1\.16xlarge | 15 | 50 | 50 | 
-| hs1\.8xlarge |  8  |  30  | IPv6 not supported | 
-| hpc6id\.32xlarge | 2 | 50 | 50 | 
-| i2\.xlarge |  4  |  15  | 15 | 
-| i2\.2xlarge |  4  |  15  | 15 | 
-| i2\.4xlarge |  8  |  30  | 30 | 
-| i2\.8xlarge |  8  |  30  | 30 | 
-| i3\.large | 3 | 10 | 10 | 
-| i3\.xlarge | 4 | 15 | 15 | 
-| i3\.2xlarge | 4 | 15 | 15 | 
-| i3\.4xlarge | 8 | 30 | 30 | 
-| i3\.8xlarge | 8 | 30 | 30 | 
-| i3\.16xlarge | 15 | 50 | 50 | 
-| i3\.metal | 15 | 50 | 50 | 
-| i3en\.large | 3 | 10 | 10 | 
-| i3en\.xlarge | 4 | 15 | 15 | 
-| i3en\.2xlarge | 4 | 15 | 15 | 
-| i3en\.3xlarge | 4 | 15 | 15 | 
-| i3en\.6xlarge | 8 | 30 | 30 | 
-| i3en\.12xlarge | 8 | 30 | 30 | 
-| i3en\.24xlarge | 15 | 50 | 50 | 
-| i3en\.metal | 15 | 50 | 50 | 
-| i4i\.large | 3 | 10 | 10 | 
-| i4i\.xlarge | 4 | 15 | 15 | 
-| i4i\.2xlarge | 4 | 15 | 15 | 
-| i4i\.4xlarge | 8 | 30 | 30 | 
-| i4i\.8xlarge | 8 | 30 | 30 | 
-| i4i\.16xlarge | 15 | 50 | 50 | 
-| i4i\.32xlarge | 15 | 50 | 50 | 
-| i4i\.metal | 15 | 50 | 50 | 
-| m1\.small |  2  |  4  | IPv6 not supported | 
-| m1\.medium |  2  |  6  | IPv6 not supported | 
-| m1\.large |  3  |  10  | IPv6 not supported | 
-| m1\.xlarge |  4  |  15  | IPv6 not supported | 
-| m2\.xlarge |  4  |  15  | IPv6 not supported | 
-| m2\.2xlarge |  4  |  30  | IPv6 not supported | 
-| m2\.4xlarge |  8  |  30  | IPv6 not supported | 
-| m3\.medium |  2  |  6  | IPv6 not supported | 
-| m3\.large |  3  |  10  | IPv6 not supported | 
-| m3\.xlarge |  4  |  15  | IPv6 not supported | 
-| m3\.2xlarge |  4  |  30  | IPv6 not supported | 
+| m1\.small | 2 | 4 | IPv6 not supported | 
+| m1\.medium | 2 | 6 | IPv6 not supported | 
+| m1\.large | 3 | 10 | IPv6 not supported | 
+| m1\.xlarge | 4 | 15 | IPv6 not supported | 
+| m2\.xlarge | 4 | 15 | IPv6 not supported | 
+| m2\.2xlarge | 4 | 30 | IPv6 not supported | 
+| m2\.4xlarge | 8 | 30 | IPv6 not supported | 
+| m3\.medium | 2 | 6 | IPv6 not supported | 
+| m3\.large | 3 | 10 | IPv6 not supported | 
+| m3\.xlarge | 4 | 15 | IPv6 not supported | 
+| m3\.2xlarge | 4 | 30 | IPv6 not supported | 
 | m4\.large | 2 | 10 | 10 | 
 | m4\.xlarge | 4 | 15 | 15 | 
 | m4\.2xlarge | 4 | 15 | 15 | 
@@ -347,31 +184,154 @@ The following table lists the maximum number of network interfaces per instance 
 | m6id\.24xlarge | 15 | 50 | 50 | 
 | m6id\.32xlarge | 15 | 50 | 50 | 
 | m6id\.metal | 15 | 50 | 50 | 
-| m6in\.large | 3 | 10 | 10 | 
-| m6in\.xlarge | 4 | 15 | 15 | 
-| m6in\.2xlarge | 4 | 15 | 15 | 
-| m6in\.4xlarge | 8 | 30 | 30 | 
-| m6in\.8xlarge | 8 | 30 | 30 | 
-| m6in\.12xlarge | 8 | 30 | 30 | 
-| m6in\.16xlarge | 14 | 50 | 50 | 
-| m6in\.24xlarge | 14 | 50 | 50 | 
-| m6in\.32xlarge | 14 | 50 | 50 | 
 | m6idn\.large | 3 | 10 | 10 | 
 | m6idn\.xlarge | 4 | 15 | 15 | 
 | m6idn\.2xlarge | 4 | 15 | 15 | 
 | m6idn\.4xlarge | 8 | 30 | 30 | 
 | m6idn\.8xlarge | 8 | 30 | 30 | 
 | m6idn\.12xlarge | 8 | 30 | 30 | 
-| m6idn\.16xlarge | 14 | 50 | 50 | 
-| m6idn\.24xlarge | 14 | 50 | 50 | 
+| m6idn\.16xlarge | 15 | 50 | 50 | 
+| m6idn\.24xlarge | 15 | 50 | 50 | 
 | m6idn\.32xlarge | 14 | 50 | 50 | 
-| p2\.xlarge | 4 | 15 | 15 | 
-| p2\.8xlarge | 8 | 30 | 30 | 
-| p2\.16xlarge | 8 | 30 | 30 | 
-| p3\.2xlarge | 4 | 15 | 15 | 
-| p3\.8xlarge | 8 | 30 | 30 | 
-| p3\.16xlarge | 8 | 30 | 30 | 
-| p3dn\.24xlarge | 15 | 50 | 50 | 
+| m6in\.large | 3 | 10 | 10 | 
+| m6in\.xlarge | 4 | 15 | 15 | 
+| m6in\.2xlarge | 4 | 15 | 15 | 
+| m6in\.4xlarge | 8 | 30 | 30 | 
+| m6in\.8xlarge | 8 | 30 | 30 | 
+| m6in\.12xlarge | 8 | 30 | 30 | 
+| m6in\.16xlarge | 15 | 50 | 50 | 
+| m6in\.24xlarge | 15 | 50 | 50 | 
+| m6in\.32xlarge | 14 | 50 | 50 | 
+| t1\.micro | 2 | 2 | IPv6 not supported | 
+| t2\.nano | 2 | 2 | 2 | 
+| t2\.micro | 2 | 2 | 2 | 
+| t2\.small | 3 | 4 | 4 | 
+| t2\.medium | 3 | 6 | 6 | 
+| t2\.large | 3 | 12 | 12 | 
+| t2\.xlarge | 3 | 15 | 15 | 
+| t2\.2xlarge | 3 | 15 | 15 | 
+| t3\.nano | 2 | 2 | 2 | 
+| t3\.micro | 2 | 2 | 2 | 
+| t3\.small | 3 | 4 | 4 | 
+| t3\.medium | 3 | 6 | 6 | 
+| t3\.large | 3 | 12 | 12 | 
+| t3\.xlarge | 4 | 15 | 15 | 
+| t3\.2xlarge | 4 | 15 | 15 | 
+| t3a\.nano | 2 | 2 | 2 | 
+| t3a\.micro | 2 | 2 | 2 | 
+| t3a\.small | 2 | 4 | 4 | 
+| t3a\.medium | 3 | 6 | 6 | 
+| t3a\.large | 3 | 12 | 12 | 
+| t3a\.xlarge | 4 | 15 | 15 | 
+| t3a\.2xlarge | 4 | 15 | 15 | 
+
+### Compute Optimized<a name="enis-computeoptimized"></a>
+
+
+| Instance type | Maximum network interfaces | Private IPv4 addresses per interface | IPv6 addresses per interface | 
+| --- | --- | --- | --- | 
+| c1\.medium | 2 | 6 | IPv6 not supported | 
+| c1\.xlarge | 4 | 15 | IPv6 not supported | 
+| c3\.large | 3 | 10 | 10 | 
+| c3\.xlarge | 4 | 15 | 15 | 
+| c3\.2xlarge | 4 | 15 | 15 | 
+| c3\.4xlarge | 8 | 30 | 30 | 
+| c3\.8xlarge | 8 | 30 | 30 | 
+| c4\.large | 3 | 10 | 10 | 
+| c4\.xlarge | 4 | 15 | 15 | 
+| c4\.2xlarge | 4 | 15 | 15 | 
+| c4\.4xlarge | 8 | 30 | 30 | 
+| c4\.8xlarge | 8 | 30 | 30 | 
+| c5\.large | 3 | 10 | 10 | 
+| c5\.xlarge | 4 | 15 | 15 | 
+| c5\.2xlarge | 4 | 15 | 15 | 
+| c5\.4xlarge | 8 | 30 | 30 | 
+| c5\.9xlarge | 8 | 30 | 30 | 
+| c5\.12xlarge | 8 | 30 | 30 | 
+| c5\.18xlarge | 15 | 50 | 50 | 
+| c5\.24xlarge | 15 | 50 | 50 | 
+| c5\.metal | 15 | 50 | 50 | 
+| c5a\.large | 3 | 10 | 10 | 
+| c5a\.xlarge | 4 | 15 | 15 | 
+| c5a\.2xlarge | 4 | 15 | 15 | 
+| c5a\.4xlarge | 8 | 30 | 30 | 
+| c5a\.8xlarge | 8 | 30 | 30 | 
+| c5a\.12xlarge | 8 | 30 | 30 | 
+| c5a\.16xlarge | 15 | 50 | 50 | 
+| c5a\.24xlarge | 15 | 50 | 50 | 
+| c5ad\.large | 3 | 10 | 10 | 
+| c5ad\.xlarge | 4 | 15 | 15 | 
+| c5ad\.2xlarge | 4 | 15 | 15 | 
+| c5ad\.4xlarge | 8 | 30 | 30 | 
+| c5ad\.8xlarge | 8 | 30 | 30 | 
+| c5ad\.12xlarge | 8 | 30 | 30 | 
+| c5ad\.16xlarge | 15 | 50 | 50 | 
+| c5ad\.24xlarge | 15 | 50 | 50 | 
+| c5d\.large | 3 | 10 | 10 | 
+| c5d\.xlarge | 4 | 15 | 15 | 
+| c5d\.2xlarge | 4 | 15 | 15 | 
+| c5d\.4xlarge | 8 | 30 | 30 | 
+| c5d\.9xlarge | 8 | 30 | 30 | 
+| c5d\.12xlarge | 8 | 30 | 30 | 
+| c5d\.18xlarge | 15 | 50 | 50 | 
+| c5d\.24xlarge | 15 | 50 | 50 | 
+| c5d\.metal | 15 | 50 | 50 | 
+| c5n\.large | 3 | 10 | 10 | 
+| c5n\.xlarge | 4 | 15 | 15 | 
+| c5n\.2xlarge | 4 | 15 | 15 | 
+| c5n\.4xlarge | 8 | 30 | 30 | 
+| c5n\.9xlarge | 8 | 30 | 30 | 
+| c5n\.18xlarge | 15 | 50 | 50 | 
+| c5n\.metal | 15 | 50 | 50 | 
+| c6a\.large | 3 | 10 | 10 | 
+| c6a\.xlarge | 4 | 15 | 15 | 
+| c6a\.2xlarge | 4 | 15 | 15 | 
+| c6a\.4xlarge | 8 | 30 | 30 | 
+| c6a\.8xlarge | 8 | 30 | 30 | 
+| c6a\.12xlarge | 8 | 30 | 30 | 
+| c6a\.16xlarge | 15 | 50 | 50 | 
+| c6a\.24xlarge | 15 | 50 | 50 | 
+| c6a\.32xlarge | 15 | 50 | 50 | 
+| c6a\.48xlarge | 15 | 50 | 50 | 
+| c6a\.metal | 15 | 50 | 50 | 
+| c6i\.large | 3 | 10 | 10 | 
+| c6i\.xlarge | 4 | 15 | 15 | 
+| c6i\.2xlarge | 4 | 15 | 15 | 
+| c6i\.4xlarge | 8 | 30 | 30 | 
+| c6i\.8xlarge | 8 | 30 | 30 | 
+| c6i\.12xlarge | 8 | 30 | 30 | 
+| c6i\.16xlarge | 15 | 50 | 50 | 
+| c6i\.24xlarge | 15 | 50 | 50 | 
+| c6i\.32xlarge | 15 | 50 | 50 | 
+| c6i\.metal | 15 | 50 | 50 | 
+| c6id\.large | 3 | 10 | 10 | 
+| c6id\.xlarge | 4 | 15 | 15 | 
+| c6id\.2xlarge | 4 | 15 | 15 | 
+| c6id\.4xlarge | 8 | 30 | 30 | 
+| c6id\.8xlarge | 8 | 30 | 30 | 
+| c6id\.12xlarge | 8 | 30 | 30 | 
+| c6id\.16xlarge | 15 | 50 | 50 | 
+| c6id\.24xlarge | 15 | 50 | 50 | 
+| c6id\.32xlarge | 15 | 50 | 50 | 
+| c6id\.metal | 15 | 50 | 50 | 
+| c6in\.large | 3 | 10 | 10 | 
+| c6in\.xlarge | 4 | 15 | 15 | 
+| c6in\.2xlarge | 4 | 15 | 15 | 
+| c6in\.4xlarge | 8 | 30 | 30 | 
+| c6in\.8xlarge | 8 | 30 | 30 | 
+| c6in\.12xlarge | 8 | 30 | 30 | 
+| c6in\.16xlarge | 15 | 50 | 50 | 
+| c6in\.24xlarge | 15 | 50 | 50 | 
+| c6in\.32xlarge | 14 | 50 | 50 | 
+| cc2\.8xlarge | 8 | 30 | IPv6 not supported | 
+
+### Memory Optimized<a name="enis-memoryoptimized"></a>
+
+
+| Instance type | Maximum network interfaces | Private IPv4 addresses per interface | IPv6 addresses per interface | 
+| --- | --- | --- | --- | 
+| cr1\.8xlarge | 8 | 30 | IPv6 not supported | 
+| hpc6id\.32xlarge | 2 | 50 | 50 | 
 | r3\.large | 3 | 10 | 10 | 
 | r3\.xlarge | 4 | 15 | 15 | 
 | r3\.2xlarge | 4 | 15 | 15 | 
@@ -465,6 +425,24 @@ The following table lists the maximum number of network interfaces per instance 
 | r6i\.24xlarge | 15 | 50 | 50 | 
 | r6i\.32xlarge | 15 | 50 | 50 | 
 | r6i\.metal | 15 | 50 | 50 | 
+| r6idn\.large | 3 | 10 | 10 | 
+| r6idn\.xlarge | 4 | 15 | 15 | 
+| r6idn\.2xlarge | 4 | 15 | 15 | 
+| r6idn\.4xlarge | 8 | 30 | 30 | 
+| r6idn\.8xlarge | 8 | 30 | 30 | 
+| r6idn\.12xlarge | 8 | 30 | 30 | 
+| r6idn\.16xlarge | 15 | 50 | 50 | 
+| r6idn\.24xlarge | 15 | 50 | 50 | 
+| r6idn\.32xlarge | 14 | 50 | 50 | 
+| r6in\.large | 3 | 10 | 10 | 
+| r6in\.xlarge | 4 | 15 | 15 | 
+| r6in\.2xlarge | 4 | 15 | 15 | 
+| r6in\.4xlarge | 8 | 30 | 30 | 
+| r6in\.8xlarge | 8 | 30 | 30 | 
+| r6in\.12xlarge | 8 | 30 | 30 | 
+| r6in\.16xlarge | 15 | 50 | 50 | 
+| r6in\.24xlarge | 15 | 50 | 50 | 
+| r6in\.32xlarge | 14 | 50 | 50 | 
 | r6id\.large | 3 | 10 | 10 | 
 | r6id\.xlarge | 4 | 15 | 15 | 
 | r6id\.2xlarge | 4 | 15 | 15 | 
@@ -475,66 +453,18 @@ The following table lists the maximum number of network interfaces per instance 
 | r6id\.24xlarge | 15 | 50 | 50 | 
 | r6id\.32xlarge | 15 | 50 | 50 | 
 | r6id\.metal | 15 | 50 | 50 | 
-|  `r6in.large`  |  3  |  10  |  10  | 
-| r6in\.xlarge | 4 | 15 | 15 | 
-| r6in\.2xlarge  | 4 | 15 | 15 | 
-| r6in\.4xlarge | 8 | 30 | 30 | 
-| r6in\.8xlarge | 8 | 30 | 30 | 
-| r6in\.12xlarge | 8 | 30 | 30 | 
-| r6in\.16xlarge | 14 | 50 | 50 | 
-| r6in\.24xlarge | 14 | 50 | 50 | 
-| r6in\.32xlarge | 14 | 50 | 50 | 
-| r6idn\.large  |  3  |  10  |  50  | 
-|  r6idn\.xlarge  | 4 | 15 | 10 | 
-| r6idn\.2xlarge | 4 | 15 | 15 | 
-|  r6idn\.4xlarge  | 8 | 30 | 15 | 
-| r6idn\.8xlarge | 8 | 30 | 30 | 
-| r6idn\.12xlarge | 8 | 30 | 30 | 
-| r6idn\.16xlarge | 14 | 50 | 50 | 
-| r6idn\.24xlarge | 14 | 50 | 50 | 
-| r6idn\.32xlarge | 14 | 50 | 50 | 
-| t1\.micro |  2  |  2  | IPv6 not supported | 
-| t2\.nano |  2  |  2  | 2 | 
-| t2\.micro |  2  |  2  | 2 | 
-| t2\.small |  3  |  4  | 4 | 
-| t2\.medium |  3  |  6  | 6 | 
-| t2\.large |  3  |  12  | 12 | 
-| t2\.xlarge |  3  |  15  |  15  | 
-| t2\.2xlarge |  3  |  15  |  15  | 
-| t3\.nano | 2 | 2 | 2 | 
-| t3\.micro | 2 | 2 | 2 | 
-| t3\.small | 3 | 4 | 4 | 
-| t3\.medium | 3 | 6 | 6 | 
-| t3\.large | 3 | 12 | 12 | 
-| t3\.xlarge | 4 | 15 | 15 | 
-| t3\.2xlarge | 4 | 15 | 15 | 
-| t3a\.nano |  2  |  2  | 2 | 
-| t3a\.micro |  2  |  2  | 2 | 
-| t3a\.small |  2  |  4  | 4 | 
-| t3a\.medium |  3  |  6  | 6 | 
-| t3a\.large |  3  |  12  | 12 | 
-| t3a\.xlarge |  4  |  15  |  15  | 
-| t3a\.2xlarge |  4  |  15  |  15  | 
-| Trn1\.2xlarge | 4 | 15 | 15 | 
-| Trn1\.32xlarge | 60 | 50 | 50 | 
 | u\-3tb1\.56xlarge | 8 | 30 | 30 | 
 | u\-6tb1\.56xlarge | 15 | 50 | 50 | 
 | u\-6tb1\.112xlarge | 15 | 50 | 50 | 
-| u\-6tb1\.metal | 15 | 50 | 50 | 
+| u\-6tb1\.metal | 5 | 30 | 30 | 
 | u\-9tb1\.112xlarge | 15 | 50 | 50 | 
-| u\-9tb1\.metal | 15 | 50 | 50 | 
+| u\-9tb1\.metal | 5 | 30 | 30 | 
 | u\-12tb1\.112xlarge | 15 | 50 | 50 | 
-| u\-12tb1\.metal | 15 | 50 | 50 | 
+| u\-12tb1\.metal | 5 | 30 | 30 | 
 | u\-18tb1\.metal | 15 | 50 | 50 | 
 | u\-24tb1\.metal | 15 | 50 | 50 | 
 | x1\.16xlarge | 8 | 30 | 30 | 
 | x1\.32xlarge | 8 | 30 | 30 | 
-| x1e\.xlarge | 3 | 10 | 10 | 
-| x1e\.2xlarge | 4 | 15 | 15 | 
-| x1e\.4xlarge | 4 | 15 | 15 | 
-| x1e\.8xlarge | 4 | 15 | 15 | 
-| x1e\.16xlarge | 8 | 30 | 30 | 
-| x1e\.32xlarge | 8 | 30 | 30 | 
 | x2idn\.16xlarge | 15 | 50 | 50 | 
 | x2idn\.24xlarge | 15 | 50 | 50 | 
 | x2idn\.32xlarge | 15 | 50 | 50 | 
@@ -553,6 +483,12 @@ The following table lists the maximum number of network interfaces per instance 
 | x2iezn\.8xlarge | 8 | 30 | 30 | 
 | x2iezn\.12xlarge | 15 | 50 | 50 | 
 | x2iezn\.metal | 15 | 50 | 50 | 
+| x1e\.xlarge | 3 | 10 | 10 | 
+| x1e\.2xlarge | 4 | 15 | 15 | 
+| x1e\.4xlarge | 4 | 15 | 15 | 
+| x1e\.8xlarge | 4 | 15 | 15 | 
+| x1e\.16xlarge | 8 | 30 | 30 | 
+| x1e\.32xlarge | 8 | 30 | 30 | 
 | z1d\.large | 3 | 10 | 10 | 
 | z1d\.xlarge | 4 | 15 | 15 | 
 | z1d\.2xlarge | 4 | 15 | 15 | 
@@ -560,6 +496,99 @@ The following table lists the maximum number of network interfaces per instance 
 | z1d\.6xlarge | 8 | 30 | 30 | 
 | z1d\.12xlarge | 15 | 50 | 50 | 
 | z1d\.metal | 15 | 50 | 50 | 
+
+### Storage Optimized<a name="enis-storageoptimized"></a>
+
+
+| Instance type | Maximum network interfaces | Private IPv4 addresses per interface | IPv6 addresses per interface | 
+| --- | --- | --- | --- | 
+| d2\.xlarge | 4 | 15 | 15 | 
+| d2\.2xlarge | 4 | 15 | 15 | 
+| d2\.4xlarge | 8 | 30 | 30 | 
+| d2\.8xlarge | 8 | 30 | 30 | 
+| d3\.xlarge | 4 | 3 | 3 | 
+| d3\.2xlarge | 4 | 5 | 5 | 
+| d3\.4xlarge | 4 | 10 | 10 | 
+| d3\.8xlarge | 3 | 20 | 20 | 
+| d3en\.xlarge | 4 | 3 | 3 | 
+| d3en\.2xlarge | 4 | 5 | 5 | 
+| d3en\.4xlarge | 4 | 10 | 10 | 
+| d3en\.6xlarge | 4 | 15 | 15 | 
+| d3en\.8xlarge | 4 | 20 | 20 | 
+| d3en\.12xlarge | 3 | 30 | 30 | 
+| h1\.2xlarge | 4 | 15 | 15 | 
+| h1\.4xlarge | 8 | 30 | 30 | 
+| h1\.8xlarge | 8 | 30 | 30 | 
+| h1\.16xlarge | 15 | 50 | 50 | 
+| hs1\.8xlarge | 8 | 30 | IPv6 not supported | 
+| i2\.xlarge | 4 | 15 | 15 | 
+| i2\.2xlarge | 4 | 15 | 15 | 
+| i2\.4xlarge | 8 | 30 | 30 | 
+| i2\.8xlarge | 8 | 30 | 30 | 
+| i3\.large | 3 | 10 | 10 | 
+| i3\.xlarge | 4 | 15 | 15 | 
+| i3\.2xlarge | 4 | 15 | 15 | 
+| i3\.4xlarge | 8 | 30 | 30 | 
+| i3\.8xlarge | 8 | 30 | 30 | 
+| i3\.16xlarge | 15 | 50 | 50 | 
+| i3\.metal | 15 | 50 | 50 | 
+| i3en\.large | 3 | 10 | 10 | 
+| i3en\.xlarge | 4 | 15 | 15 | 
+| i3en\.2xlarge | 4 | 15 | 15 | 
+| i3en\.3xlarge | 4 | 15 | 15 | 
+| i3en\.6xlarge | 8 | 30 | 30 | 
+| i3en\.12xlarge | 8 | 30 | 30 | 
+| i3en\.24xlarge | 15 | 50 | 50 | 
+| i3en\.metal | 15 | 50 | 50 | 
+| i4i\.large | 3 | 10 | 10 | 
+| i4i\.xlarge | 4 | 15 | 15 | 
+| i4i\.2xlarge | 4 | 15 | 15 | 
+| i4i\.4xlarge | 8 | 30 | 30 | 
+| i4i\.8xlarge | 8 | 30 | 30 | 
+| i4i\.16xlarge | 15 | 50 | 50 | 
+| i4i\.32xlarge | 15 | 50 | 50 | 
+| i4i\.metal | 15 | 50 | 50 | 
+
+### Accelerated Computing<a name="enis-acceleratedcomputing"></a>
+
+
+| Instance type | Maximum network interfaces | Private IPv4 addresses per interface | IPv6 addresses per interface | 
+| --- | --- | --- | --- | 
+| f1\.2xlarge | 4 | 15 | 15 | 
+| f1\.4xlarge | 8 | 30 | 30 | 
+| f1\.16xlarge | 8 | 50 | 50 | 
+| g2\.2xlarge | 4 | 15 | IPv6 not supported | 
+| g2\.8xlarge | 8 | 30 | IPv6 not supported | 
+| g3\.4xlarge | 8 | 30 | 30 | 
+| g3\.8xlarge | 8 | 30 | 30 | 
+| g3\.16xlarge | 15 | 50 | 50 | 
+| g4ad\.xlarge | 2 | 4 | 4 | 
+| g4ad\.2xlarge | 2 | 4 | 4 | 
+| g4ad\.4xlarge | 3 | 10 | 10 | 
+| g4ad\.8xlarge | 4 | 15 | 15 | 
+| g4ad\.16xlarge | 8 | 30 | 30 | 
+| g4dn\.xlarge | 3 | 10 | 10 | 
+| g4dn\.2xlarge | 3 | 10 | 10 | 
+| g4dn\.4xlarge | 3 | 10 | 10 | 
+| g4dn\.8xlarge | 4 | 15 | 15 | 
+| g4dn\.12xlarge | 8 | 30 | 30 | 
+| g4dn\.16xlarge | 4 | 15 | 15 | 
+| g4dn\.metal | 15 | 50 | 50 | 
+| g5\.xlarge | 4 | 15 | 15 | 
+| g5\.2xlarge | 4 | 15 | 15 | 
+| g5\.4xlarge | 8 | 30 | 30 | 
+| g5\.8xlarge | 8 | 30 | 30 | 
+| g5\.12xlarge | 15 | 50 | 50 | 
+| g5\.16xlarge | 8 | 30 | 30 | 
+| g5\.24xlarge | 15 | 50 | 50 | 
+| g5\.48xlarge | 7 | 50 | 50 | 
+| p2\.xlarge | 4 | 15 | 15 | 
+| p2\.8xlarge | 8 | 30 | 30 | 
+| p2\.16xlarge | 8 | 30 | 30 | 
+| p3\.2xlarge | 4 | 15 | 15 | 
+| p3\.8xlarge | 8 | 30 | 30 | 
+| p3\.16xlarge | 8 | 30 | 30 | 
+| p3dn\.24xlarge | 15 | 50 | 50 | 
 
 You can use the [describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) AWS CLI command to display information about an instance type, such as the supported network interfaces and IP addresses per interface\. The following example displays this information for all C5 instances\.
 

@@ -43,7 +43,7 @@ The permissions that you've been granted by your administrator determine whether
    1. \(Optional\) Under **Advanced settings**, create a security group or select one or more security groups\. If you select `Create default security group`, we create a security group that grants RDP and SSH access to everyone, which you can modify using the Amazon EC2 or Amazon VPC console\. You can enter a name for this security group in the **Group name** box\.
 
    1. \(Optional\) Under **Advanced settings**, select an IAM role\. If this list is empty, you can create a role using the IAM console\.  
-![\[The Create Amazon EC2 Instance dialog box\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_create.png)
+![\[The Create Amazon EC2 Instance dialog box.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_create.png)
 
 1. Click **Create**\. If you are creating a key pair, you are prompted to save the `.pem` file\. Save this file in a secure place; you'll need it to log in to your instance\. You'll receive confirmation that the instance has launched\. Click **Close**\.
 
@@ -67,7 +67,7 @@ The permissions that your administrator grants you determine whether you can vie
 1. From the list of instances, select one or more instances\.
 
 1. In the lower pane, click the down arrow next to each instance to view detailed information about the instance\.  
-![\[View instance details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_details.png)
+![\[View instance details.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/aws_systems_manager_details.png)
 
 ## Connect to your instance<a name="connect-instances"></a>
 
