@@ -107,9 +107,7 @@ The `setWallpaper` task creates the `setwallpaper.lnk` shortcut file in the star
 
 The shortcut path is:
 
-```
-$env:SystemDrive/Users/<user>/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/setwallpaper.lnk
-```
+`$env:SystemDrive/Users/<user>/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/setwallpaper.lnk`
 
 **Resolution**  
 Manually delete this file, or delete it using a script\.

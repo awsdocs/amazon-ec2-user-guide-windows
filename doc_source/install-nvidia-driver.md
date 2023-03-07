@@ -107,7 +107,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 **Prerequisites**
 + If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the GRID driver works\.
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
-+ IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\. For more information, see [AWS managed policy: AmazonS3ReadOnlyAccess](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-amazons3readonlyaccess) in the *Amazon Simple Storage Service User Guide*\.
++ Your user or role must have the permissions granted that contains the **AmazonS3ReadOnlyAccess** policy\. For more information, see [AWS managed policy: AmazonS3ReadOnlyAccess](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-amazons3readonlyaccess) in the *Amazon Simple Storage Service User Guide*\.
 + G3 instances require AWS provided DNS resolution for GRID licensing to work\.
 + [IMDSv2](configuring-instance-metadata-service.md) is only supported with NVIDIA driver version 14\.0 or greater\. 
 
@@ -131,7 +131,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
    }
    ```
 
-   Multiple versions of the NVIDIA GRID driver are stored in this bucket\. You can download all of the available Windows versions in the bucket by using the `KeyPrefix="windows"` option\.
+   Multiple versions of the NVIDIA GRID driver are stored in this bucket\. You can download all of the available Windows versions in the bucket by removing the `-KeyPrefix $KeyPrefix` option\.
 
    Starting with GRID version 11\.0, you can use the drivers under `latest` for both G3 and G4dn instances\. We will not add versions later than 11\.0 to `g4/latest`, but will keep version 11\.0 and the earlier versions specific to G4dn under `g4/latest`\.
 
@@ -158,11 +158,13 @@ These drivers are available to AWS customers only\. By downloading them, you agr
 **Prerequisites**
 + If you launch your Windows instance using a custom Windows AMI, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard) to ensure that the gaming driver works\.
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
-+ IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\. For more information, see [AWS managed policy: AmazonS3ReadOnlyAccess](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-amazons3readonlyaccess) in the *Amazon Simple Storage Service User Guide*\.
++ Your users or role must have the permissions granted that contains the **AmazonS3ReadOnlyAccess** policy\. For more information, see [AWS managed policy: AmazonS3ReadOnlyAccess](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-amazons3readonlyaccess) in the *Amazon Simple Storage Service User Guide*\.
 + G3 instances require AWS provided DNS resolution for GRID licensing to work\.
 + [IMDSv2](configuring-instance-metadata-service.md) is only supported with NVIDIA driver version 495\.x or greater\. 
 
 **To install the NVIDIA gaming driver on your Windows instance**
+**Note**  
+
 
 1. Connect to your Windows instance and open a PowerShell window\.
 
@@ -182,7 +184,7 @@ These drivers are available to AWS customers only\. By downloading them, you agr
    }
    ```
 
-   Multiple versions of the NVIDIA GRID driver are stored in this S3 bucket\. You can download all of the available versions in the bucket if you change the value of the `$KeyPrefix` variable from *"windows/latest"* to *"latest"*\.
+   Multiple versions of the NVIDIA GRID driver are stored in this S3 bucket\. You can download all of the available versions in the bucket if you change the value of the `$KeyPrefix` variable from *"windows/latest"* to *"windows"*\.
 
 1. Navigate to the desktop and double\-click the installation file to launch it \(choose the driver version that corresponds to your instance OS version\)\. Follow the instructions to install the driver and reboot your instance as required\. To verify that the GPU is working properly, check Device Manager\.
 
@@ -266,7 +268,7 @@ Run the following registry command to create this registry key with the Command 
 1. Verify the NVIDIA Gaming license using the following command\.
 
    ```
-   "C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe" -q
+   "C:\Windows\System32\DriverStore\FileRepository\nvgrid*\\nvidia-smi.exe" -q
    ```
 
    The output should be similar to the following\.

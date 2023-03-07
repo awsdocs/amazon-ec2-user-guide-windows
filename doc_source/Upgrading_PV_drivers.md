@@ -68,7 +68,7 @@ Verify that the driver version is the same as the latest version listed in the D
 
 If you previously disabled [TCP offloading](pvdrivers-troubleshooting.md#citrix-tcp-offloading) using Netsh for Citrix PV drivers we recommend that you re\-enable this feature after upgrading to AWS PV drivers\. TCP Offloading issues with Citrix drivers are not present in the AWS PV drivers\. As a result, TCP Offloading provides better performance with AWS PV drivers\.
 
-If you previously applied a static IP address or DNS configuration to the network interface, you must reapply the static IP address or DNS configuration after upgrading AWS PV drivers\.
+If you previously applied a static IP address or DNS configuration to the network interface, you might need to reapply the static IP address or DNS configuration after upgrading AWS PV drivers\.
 
 ## Upgrade a domain controller \(AWS PV upgrade\)<a name="aws-pv-upgrade-dc"></a>
 

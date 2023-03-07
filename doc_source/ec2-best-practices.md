@@ -29,7 +29,7 @@ Migrating enterprise applications to AWS can involve many variables and configur
 
 **Update launch agents**
 
-Update to the latest EC2Launch v2 \(Windows Server 2008 and later\) agent to ensure that the latest issue fixes are applied across your fleet\. To update, see the instructions at [Install the latest version ofEC2Launch v2](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-v2-install.html)\.
+Update to the latest EC2Launch v2 \(Windows Server 2008 and later\) agent to ensure that the latest issue fixes are applied across your fleet\. To update, see the instructions at [Install the latest version of EC2Launch v2](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-v2-install.html)\.
 
 If you want to continue to use the EC2Config \(Windows Server 2012 R2 and earlier\) or EC2Launch \(Windows Server 2016 and later\) agents, ensure that the latest issue fixes are applied across your fleet\.
 + For EC2Config update instructions, see [ Installing the Latest Version of EC2Config](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_Install.html)\. 

@@ -203,7 +203,7 @@ In order to automate your SQL Server upgrade with the AWS Systems Manager Automa
 + Create an IAM role with the specified IAM policies to allow Systems Manager to perform automation tasks on your Amazon EC2 instances and verify that you meet the prerequisites to use Systems Manager\. For more information, see [Creating a role to delegate permissions to an AWS service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html) in the *AWS Identity and Access Management User Guide*\.
 + [Select the option for how you want the automation to be run](#automated-execution-option)\. The options for execution are **Simple execution**, **Rate control**, **Multi\-account and Region**, and **Manual execution**\. For more information about these options, see [Execution options](#automated-execution-option)\.
 + The Amazon EC2 instance must use Windows Server 2008 R2 or later and SQL Server 2008 or later\.
-+ Verify that SSM Agent is installed on your instance\. For more information, see [Installing and configuring SSM Agent on Amazon EC2 instances for Windows Server](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)\.
++ Verify that SSM Agent is installed on your instance\. For more information, see [Working with SSM Agent on Amazon EC2 instances for Windows Server](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)\.
 + Verify that the instance has 20 GB of free disk space in the instance boot disk\.
 + For instances that use a Bring Your Own License \(BYOL\) SQL Server version, the following additional prerequisites apply:
   + Provide an Amazon EBS snapshot ID that includes the target SQL Server installation media\. To do this: 
@@ -233,9 +233,9 @@ Follow these steps to upgrade your SQL Server using the [AWSEC2\-CloneInstanceAn
 
 1. After the \.iso file is mounted, copy all of the component files and place them on any volume of your choice\. 
 
-1. Take an Amazon EBS snapshot of the volume and copy the snapshot ID onto a clipboard for later use\. For more information about creating an EBS snapshot, see [Creating an EBS Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-creating-snapshot.html) in the *Amazon Elastic Compute Cloud User Guide*\.
+1. Take an Amazon EBS snapshot of the volume and copy the snapshot ID onto a clipboard for later use\. For more information about creating an EBS snapshot, see [Create Amazon EBS snapshots](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-creating-snapshot.html)\.
 
-1. Attach the instance profile to the Amazon EC2 source instance\. This allows Systems Manager to communicate with the EC2 instance and run commands on it after it is added to the AWS Systems Manager service\. For this example, we named the role `SSM-EC2-Profile-Role` with the `AmazonSSMManagedInstanceCore ` policy attached to the role\. See [Create an IAM Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\.
+1. Attach the instance profile to the Amazon EC2 source instance\. This allows Systems Manager to communicate with the EC2 instance and run commands on it after it is added to the AWS Systems Manager service\. For this example, we named the role `SSM-EC2-Profile-Role` with the `AmazonSSMManagedInstanceCore ` policy attached to the role\. See [Create an IAM instance profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\.
 
 1. In the AWS Systems Manager console, in the left navigation pane, choose **Managed Instances**\. Verify that your EC2 instance is in the list of managed instance\. If you don't see your instance after a few minutes, see [Where Are My Instances?](https://docs.aws.amazon.com/systems-manager/latest/userguide/troubleshooting-remote-commands.html#where-are-instances) in the *AWS Systems Manager User Guide*\.
 

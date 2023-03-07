@@ -196,13 +196,13 @@ Before attempting to connect to an instance using Session Manager, ensure that t
 1. Choose **Connect**\.  
 ![\[Session Manager connection.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-session-manager.png)
 **Tip**  
-If you receive an error that you’re not authorized to perform one or more Systems Manager actions \(`ssm:command-name`\), then you must update your policies to allow you to start sessions from the Amazon EC2 console\. For more information and instructions, see [ Quickstart default IAM policies for Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-restrict-access-quickstart.html) in the *AWS Systems Manager User Guide*\.
+If you receive an error that you’re not authorized to perform one or more Systems Manager actions \(`ssm:command-name`\), then you must update your policies to allow you to start sessions from the Amazon EC2 console\. For more information and instructions, see [Quickstart default IAM policies for Session Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/getting-started-restrict-access-quickstart.html) in the *AWS Systems Manager User Guide*\.
 
 ## Configure your accounts<a name="configure-admin-accounts"></a>
 
 After you connect, we recommend that you perform the following:
 + Change the administrator password from the default value\. You [can change the password while you are logged on to the instance itself](https://support.microsoft.com/en-us/windows/change-or-reset-your-windows-password-8271d17c-9f9e-443f-835a-8318c8f68b9c), just as you would on any computer running Windows Server\.
-+ Create another user account with administrator privileges on the instance\. This is a safeguard in case you forget the administrator password or have a problem with the administrator account\. The new user account must have permission to access the instance remotely\. Open **System Properties** by right\-clicking on the **This PC** icon on your Windows desktop or File Explorer and selecting **Properties**\. Choose **Remote settings**, and choose **Select Users** to add the user to the **Remote Desktop Users** group\.  
++ Create another user with administrator privileges on the instance\. This is a safeguard in case you forget the administrator password or have a problem with the administrator account\. The new user must have permission to access the instance remotely\. Open **System Properties** by right\-clicking on the **This PC** icon on your Windows desktop or File Explorer and selecting **Properties**\. Choose **Remote settings**, and choose **Select Users** to add the user to the **Remote Desktop Users** group\.  
 ![\[System Properties window.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/windows-connect-properties-rdp.png)
 
 ## Transfer files to Windows instances<a name="AccessingInstancesWindowsFileTransfer"></a>

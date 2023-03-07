@@ -1,6 +1,6 @@
 # Run commands on your Windows instance at launch<a name="ec2-windows-user-data"></a>
 
-When you launch a Windows instance in Amazon EC2, you can pass user data to the instance that can be used to perform automated configuration tasks or to run scripts after the instance starts\. Instance user data is treated as opaque data; it is up to the instance to interpret it\. User data is processed by EC2Launch v2 \([supported preview AMIs and by download](ec2launch-v2-install.md)\), [EC2Launch](ec2launch.md) on Windows Server 2016 and later, and [EC2Config](ec2config-service.md) on Windows Server 2012 R2 and earlier\.
+When you launch a Windows instance using Amazon EC2, you can pass user data to the instance that can be used to perform automated configuration tasks, or to run scripts after the instance starts\. Instance user data is treated as opaque data; it is up to the instance to interpret it\. User data is processed by [EC2Launch v2](ec2launch-v2.md) on Windows Server 2022, [EC2Launch](ec2launch.md) on Windows Server 2016 and 2019, and [EC2Config](ec2config-service.md) on Windows Server 2012 R2 and earlier\.
 
 For examples of the assembly of a `UserData` property in a AWS CloudFormation template, see [Base64 Encoded UserData Property](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64) and [Base64 Encoded UserData Property with AccessKey and SecretKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html#scenario-userdata-base64-with-keys)\.
 

@@ -36,12 +36,6 @@ EC2Rescue for Windows Server can collect the following additional data from **ac
 | System Information | Collects MSInfo32\. | 
 | Group Policy Result | Collects a Group Policy report\. | 
 
-## Video walkthrough<a name="ec2rescue-walkthrough"></a>
-
-Brandon shows you how to use the Diagnose and Rescue feature of EC2Rescue for Windows Server:
-
-[![AWS Videos](http://img.youtube.com/vi/Apc6u2II5JA/0.jpg)](http://www.youtube.com/watch?v=Apc6u2II5JA)
-
 ## Analyze an offline instance<a name="ec2rescue-offline"></a>
 
 The **Offline Instance** option is useful for debugging boot issues with Windows instances\.

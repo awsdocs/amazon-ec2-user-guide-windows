@@ -293,7 +293,7 @@ Disables formatting for new drives\. Use this setting to initialize drives manua
 
 ## Configure proxy settings for the EC2Config service<a name="ec2config-proxy"></a>
 
-You can configure the EC2Config service to communicate through a proxy using one of the following methods: the AWS SDK for \.NET, the `system.net` element, or Microsoft Group Policy and Internet Explorer\. Using the AWS SDK for \.NET is the preferred method because you can specify a user name and password\.
+You can configure the EC2Config service to communicate through a proxy using one of the following methods: the AWS SDK for \.NET, the `system.net` element, or Microsoft Group Policy and Internet Explorer\. Using the AWS SDK for \.NET is the preferred method because you can specify sign\-in credentials\.
 
 **Topics**
 + [Configure proxy settings using the AWS SDK for \.NET \(Preferred\)](#sdk-proxy)

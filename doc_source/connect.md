@@ -1,6 +1,6 @@
 # Connect<a name="connect"></a>
 
-After you've launched an instance, you can connect to it\. You can also connect your instance to another AWS resource\.
+This section of the *Amazon EC2 User Guide for Windows Instances* provides information to help you connect to your Windows instance after you have launched it\. It also provides information to help you connect your Windows instance to another AWS resource\.
 
 **Topics**
 + [Connect to your Windows instance](connecting_to_windows_instance.md)

@@ -8,9 +8,19 @@ Each instance type provides higher or lower minimum performance from a shared re
 
 ## Instance type names<a name="instance-type-names"></a>
 
-Amazon EC2 provides a variety of instance types so you can choose the type that best meets your requirements\. Instance types are named based on their family, generation, additional capabilities, and size\. The first position of the instance type name indicates the instance family, for example `c`\. The second position indicates the instance generation, for example `5`\. The remaining letters before the period indicate [additional capabilities](#instance-naming-conventions), such as local NVMe storage or full control over c\-states\. After the period \(`.`\) is the instance size, which is either a number followed by a size, such as `9xlarge`, or for metal instances the word `metal`\.
+Amazon EC2 provides a variety of instance types so you can choose the type that best meets your requirements\. Instance types are named based on their family, generation, additional capabilities, and size\. The first position of the instance type name indicates the instance family, for example `c`\. The second position indicates the instance generation, for example `5`\. The remaining letters before the period indicate additional capabilities, such as instance store volumes\. After the period \(`.`\) is the instance size, which is either a number followed by a size, such as `9xlarge`, or `metal` for bare metal instances\.
 
 ![\[The image shows the instance type c5n.xlarge, with a label for each part of the instance name.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/final_instance_ex.png)
+
+The following are the additional capabilities indicated by the instance type names:
++ **a** – AMD processors
++ **g** – AWS Graviton processors
++ **i** – Intel processors
++ **d** – Instance store volumes
++ **n** – Network optimization
++ **b** – Block storage optimization
++ **e** – Extra storage or memory
++ **z** – High frequency
 
 **Topics**
 + [Instance type names](#instance-type-names)
@@ -165,20 +175,6 @@ Amazon Web Services offers previous generation instance types for users who have
 For more information, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\.
 
 To determine which instance type best meets your needs, we recommend that you launch an instance and use your own benchmark application\. Because you pay by the instance second, it's convenient and inexpensive to test multiple instance types before making a decision\. If your needs change, even after you make a decision, you can change the instance type later\. For more information, see [Change the instance type](ec2-instance-resize.md)\.
-
-### Naming conventions<a name="instance-naming-conventions"></a>
-
-Instance type names combine the instance family, generation, and size\. 
-
-They can also indicate additional capabilities, such as:
-+ **a** – AMD processors
-+ **g** – AWS Graviton processors
-+ **i** – Intel processors
-+ **d** – Instance store volumes
-+ **n** – Network optimization
-+ **b** – Block storage optimization
-+ **e** – Extra storage or memory
-+ **z** – High frequency
 
 ### Processor features<a name="instance-hardware-processors"></a>
 

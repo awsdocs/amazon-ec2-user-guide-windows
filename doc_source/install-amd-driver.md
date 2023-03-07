@@ -32,7 +32,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
 **Prerequisites**
 + Configure default credentials for the AWS Tools for Windows PowerShell on your Windows instance\. For more information, see [Getting Started with the AWS Tools for Windows PowerShell](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-started.html) in the *AWS Tools for Windows PowerShell User Guide*\.
-+ IAM users must have the permissions granted by the **AmazonS3ReadOnlyAccess** policy\. For more information, see [AWS managed policy: AmazonS3ReadOnlyAccess](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-amazons3readonlyaccess) in the *Amazon Simple Storage Service User Guide*\.
++ Your user or role must have the permissions granted that contains the **AmazonS3ReadOnlyAccess** policy\. For more information, see [AWS managed policy: AmazonS3ReadOnlyAccess](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-amazons3readonlyaccess) in the *Amazon Simple Storage Service User Guide*\.
 
 **To install the AMD driver on your Windows instance**
 

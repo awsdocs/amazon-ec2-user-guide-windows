@@ -17,7 +17,7 @@ Windows AMIs use one of the following sets of drivers to permit access to virtua
 The following table lists the available device names that you can specify in a block device mapping or when attaching an EBS volume\.
 
 
-| Driver type | Available | Reserved for root | Recommended for EBS volumes | Instance store volumes | 
+| Driver type | Available | Reserved for root volume | Recommended for EBS volumes | Instance store volumes | 
 | --- | --- | --- | --- | --- | 
 |  AWS PV, Citrix PV  |  xvd\[b\-z\] xvd\[b\-c\]\[a\-z\] /dev/sda1 /dev/sd\[b\-e\]  |  /dev/sda1  |  xvd\[f\-z\] \*  |  xvdc\[a\-x\]  xvd\[a\-e\] \*\*  | 
 |  Red Hat PV  |  xvd\[a\-z\] xvd\[b\-c\]\[a\-z\] /dev/sda1 /dev/sd\[b\-e\]  |  /dev/sda1  |  xvd\[f\-p\]  |  xvdc\[a\-x\]  xvd\[a\-e\]  | 

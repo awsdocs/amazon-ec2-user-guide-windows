@@ -12,6 +12,17 @@ For more information about components included in these AMIs, see the following:
 + [AWS PV driver package history](xen-drivers-overview.md#pv-driver-history)
 + [AWS Tools for PowerShell Change Log](https://github.com/aws/aws-tools-for-powershell/blob/master/CHANGELOG.md)
 
+## Monthly AMI updates for 2023 \(to date\)<a name="amis-2023"></a>
+
+For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2023](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv-2023)\.
+
+
+| Release | Changes | 
+| --- | --- | 
+| 2023\.02\.16 |  All AMIs[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)[\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)New Windows AMIs with Microsoft SQL Server with support for [NitroTPM](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/nitrotpm.html) and [UEFI Secure Boot](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/uefi-secure-boot.html) have been released\. The images include Windows Server 2019 or Windows Server 2022 with SQL Server 2019 or SQL Server 2022\. Each SQL Server version is available in Standard and Enterprise editions\.Previous versions of Amazon\-published Windows AMIs dated November 21st, 2022 and earlier were made private\. | 
+| 2023\.01\.19 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated October 27th, 2022 and earlier were made private\.  | 
+| 2023\.01\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
+
 ## Monthly AMI updates for 2022 \(to date\)<a name="amis-2022"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2022](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv-2022)\.

@@ -130,7 +130,7 @@ If you selected targets by choosing Amazon EC2 tags, and you are not certain how
 
 1. \(Optional\) For **Output options** section, if you want to save the command output to a file, select the box next to **Enable writing to an S3 bucket**\. Specify the bucket and \(optional\) prefix \(folder\) names\.
 **Note**  
-The S3 permissions that grant the ability to write the data to an S3 bucket are those of the instance profile assigned to the instance, not those of the IAM user performing this task\. For more information, see [Create an IAM Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\. 
+The S3 permissions that grant the ability to write the data to an S3 bucket are those of the instance profile assigned to the instance, not those of the user performing this task\. For more information, see [Create an IAM Instance Profile for Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-instance-profile.html) in the *AWS Systems Manager User Guide*\. 
 
 1. \(Optional\) Specify options for **SNS notifications**\.
 
@@ -190,7 +190,7 @@ If you selected targets by choosing Amazon EC2 tags, and you are not certain how
 
 1. \(Optional\) For **Output options**, to save the command output to a file, select the box next to **Enable writing to an S3 bucket**\. Specify the bucket and \(optional\) prefix \(folder\) names\.
 **Note**  
-The S3 permissions that grant the ability to write the data to an S3 bucket are those of the instance profile assigned to the instance, not those of the IAM user performing this task\. For more information, see [Setting Up Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html)\. 
+The S3 permissions that grant the ability to write the data to an S3 bucket are those of the instance profile assigned to the instance, not those of the user performing this task\. For more information, see [Setting Up Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html)\. 
 
 1. \(Optional\) Specify options for **SNS notifications**\.
 

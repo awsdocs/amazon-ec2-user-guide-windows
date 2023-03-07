@@ -7,7 +7,7 @@ There are several GPU setting optimizations that you can perform to achieve the 
 1. Open a PowerShell window and navigate to the NVIDIA installation folder\.
 
    ```
-   cd "C:\Program Files\NVIDIA Corporation\NVSMI"
+   cd "C:\Windows\System32\DriverStore\FileRepository\nvgrid*\"
    ```
 
 1. \[G2, G3, and P2 instances only\] Disable the autoboost feature for all GPUs on the instance\.

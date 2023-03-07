@@ -31,7 +31,7 @@ You can use the Amazon EC2 console or AWS CLI to view information about your pub
 #### [ AWS CLI ]
 
 **To describe a public key**  
-Use the [describe\-key\-pairs](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html) command and specify the `--key-names` parameter\.
+Use the [https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html) command and specify the `--key-names` parameter\.
 
 ```
 aws ec2 describe-key-pairs --key-names key-pair-name
@@ -95,8 +95,6 @@ Use one of the following methods to retrieve the public key material\.
 ------
 #### [ From the private key ]
 
-**To retrieve the public key material from the private key**  
-
 On your local Windows computer, you can use PuTTYgen to get the public key for your key pair\.
 
 Start PuTTYgen and choose **Load**\. Select the `.ppk` or `.pem` private key file\. PuTTYgen displays the public key under **Public key for pasting into OpenSSH authorized\_keys file**\. You can also view the public key by choosing **Save public key**, specifying a name for the file, saving the file, and then opening the file\.
@@ -144,7 +142,7 @@ For more information about instance metadata, see [Retrieve instance metadata](i
 #### [ From describe\-key\-pairs ]
 
 **To retrieve the public key material from the `describe-key-pairs`AWS CLI command**  
-Use the [describe\-key\-pairs](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html) command and specify the `--key-names` parameter to identify the public key\. To include the public key material in the output, specify the `--include-public-key` parameter\.
+Use the [https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-key-pairs.html) command and specify the `--key-names` parameter to identify the public key\. To include the public key material in the output, specify the `--include-public-key` parameter\.
 
 ```
 aws ec2 describe-key-pairs --key-names key-pair-name --include-public-key

@@ -8,13 +8,17 @@ UEFI Secure Boot protects your instance and its operating system against boot fl
 **AMI**  
 Requires an AMI with UEFI Secure Boot enabled\.  
 The following Windows AMIs are preconfigured to enable UEFI Secure Boot with Microsoft keys:  
-+ TPM\-Windows\_Server\-2022\-English\-Full\-Base
 + TPM\-Windows\_Server\-2022\-English\-Core\-Base
-+ TPM\-Windows\_Server\-2019\-English\-Full\-Base
++ TPM\-Windows\_Server\-2022\-English\-Full\-Base
++ TPM\-Windows\_Server\-2022\-English\-Full\-SQL\_2022\_Enterprise
++ TPM\-Windows\_Server\-2022\-English\-Full\-SQL\_2022\_Standard
 + TPM\-Windows\_Server\-2019\-English\-Core\-Base
-+ TPM\-Windows\_Server\-2016\-English\-Full\-Base
++ TPM\-Windows\_Server\-2019\-English\-Full\-Base
++ TPM\-Windows\_Server\-2019\-English\-Full\-SQL\_2019\_Enterprise
++ TPM\-Windows\_Server\-2019\-English\-Full\-SQL\_2019\_Standard
 + TPM\-Windows\_Server\-2016\-English\-Core\-Base
-Currently, we do not support importing Windows with UEFI Secure Boot by using the [import\-image](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html) command\.
++ TPM\-Windows\_Server\-2016\-English\-Full\-Base
+Currently, we do not support importing Windows with UEFI Secure Boot by using the [https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html](https://docs.aws.amazon.com/cli/latest/reference/ec2/import-image.html) command\.
 
 **Instance type**  
 + Supported: All virtualized instance types that support UEFI also support UEFI Secure Boot\. For the instance types that support UEFI Secure Boot, see [Considerations](launch-instance-boot-mode.md#boot-considerations)\.

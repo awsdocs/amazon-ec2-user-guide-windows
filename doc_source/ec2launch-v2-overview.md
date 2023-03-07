@@ -36,12 +36,12 @@ The following table shows the major functional differences between EC2Config, EC
 The following concepts are useful to understand when considering EC2Launch v2\.
 
 **Task**  
-A task can be invoked to perform an action on an instance\. For a complete list of available tasks for EC2Launch v2, see [EC2Launch v2 tasks](#ec2launch-v2-tasks)\. Each task includes a set of stages in which it can run, a defined frequency, and inputs\. Tasks can be configured in the `agent-config` file or through `user-data`\.
+A task can be invoked to perform an action on an instance\. For a list of available tasks for EC2Launch v2, see [EC2Launch v2 tasks](#ec2launch-v2-tasks)\. For task configuration schema and details, see [EC2Launch v2 task configuration](ec2launch-v2-settings.md#ec2launch-v2-task-configuration)\. Tasks can be configured in the `agent-config.yml` file or through user data\.
 
-**Stages**  
-A stage is a logical grouping of tasks that are run by the service\. Some tasks can run only in a specific stage\. Others can run in multiple stages\. When using local data, you must specify the stage in which a task will run\. When using user data, the stage is implied\.
+**Stage**  
+A stage is a logical grouping of tasks that are run by the service\. Some tasks can run only in a specific stage\. Others can run in multiple stages\. When using `agent-config.yml`, you must specify a list of stages, and a list of tasks within each stage\.
 
-The following list shows the stages in the order in which they run:
+The service runs the stages in the following order:
 
 1. Boot
 
@@ -51,12 +51,16 @@ The following list shows the stages in the order in which they run:
 
 1. PostReady
 
-1. UserData
+After the PreReady stage completes, the service sends the `Windows is ready` message to the Amazon EC2 console\. Then, the PostReady stage will run\. User data runs after the PostReady stage completes\. For example stages and tasks, see [Example: `agent-config.yml`](ec2launch-v2-settings.md#ec2launch-v2-example-agent-config)\.
+
+When you use user data, you must specify a list of tasks\. The stage is implied\. For example tasks, see [Example: user data](ec2launch-v2-settings.md#ec2launch-v2-example-user-data)\.
+
+The service runs the list of tasks in the order that you specify in `agent-config.yml` and in user data\. Stages run sequentially\. The next stage starts after the previous stage completes\. Tasks are also run sequentially\. 
 
 **Frequency**  
-Task frequency is used to schedule when tasks should run, depending on the boot context\.
+Task frequency determines when tasks should run, depending on the boot context\. Most tasks have only one allowed frequency\. You can specify a frequency for `executeScript` tasks\.
 
-The following frequencies can be specified:
+You will see the following frequencies in the [EC2Launch v2 task configuration](ec2launch-v2-settings.md#ec2launch-v2-task-configuration)\.
 + Once — The task runs once, when the AMI has booted for the first time \(finished Sysprep\)\.
 + Always — The task runs every time that the launch agent runs\. The launch agent runs when:
   + an instance starts or restarts

@@ -20,7 +20,7 @@ A Microsoft SQL Server backup copies data or log records from a Microsoft SQL Se
 
  **Restore** 
 
-A logical and meaningful sequence for restoring a set of Microsoft SQL Server backups\. For more information, see [Restore and Recovery Overview \(Microsoft SQL Server\)](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-2017)\. 
+A logical and meaningful sequence for restoring a set of Microsoft SQL Server backups\. For more information, see [Restore and recovery overview \( SQL Server\)](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/restore-and-recovery-overview-sql-server?view=sql-server-2017)\. 
 
  **Replatform** 
 

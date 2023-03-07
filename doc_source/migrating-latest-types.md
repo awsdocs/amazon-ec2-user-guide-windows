@@ -200,7 +200,7 @@ Online and offline upgrades create an AMI before attempting the upgrade operatio
 SubnetId  
 \(Optional\) Enter one of the following values:  
    + `SelectedInstanceSubnet` — \(Default\) The upgrade process launches the *helper* instance into the same subnet as the instance that is to be upgraded\. The subnet must allow communication to the Systems Manager endpoints \(`ssm.*`\)\.
-   + `CreateNewVPC` — The upgrade process launches the *helper* instance into a new VPC\. Use this option if you're not sure whether the target instance's subnet allows communication to the `ssm.*` endpoints\. Your IAM user must have permission to create a VPC\.
+   + `CreateNewVPC` — The upgrade process launches the *helper* instance into a new VPC\. Use this option if you're not sure whether the target instance's subnet allows communication to the `ssm.*` endpoints\. Your user must have permission to create a VPC\.
    + A specific subnet ID — Specify the ID of a specific subnet into which to launch the *helper* instance\. The subnet must be in the same Availability Zone as the instance that is to be upgraded, and it must allow communication with the `ssm.*` endpoints\.
 
 1. Choose **Execute automation**\.

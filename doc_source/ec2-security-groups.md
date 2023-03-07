@@ -8,6 +8,8 @@ Security is a shared responsibility between AWS and you\. For more information, 
 
 To allow traffic to a Linux instance, see [Amazon EC2 security groups for Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
+There is no additional charge for using security groups\.
+
 **Contents**
 + [Security group rules](security-group-rules.md)
 + [Security group connection tracking](security-group-connection-tracking.md)

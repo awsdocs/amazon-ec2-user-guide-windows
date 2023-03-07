@@ -74,8 +74,19 @@ If you improperly configure custom tasks in the agent\-config\.yml file, and you
 1. On the **DNS Suffix** tab, you can select whether you want to add a DNS suffix list for DNS resolution of servers running in EC2, without providing the fully qualified domain name\. DNS suffixes can contain the variables `$REGION` and `$AZ`\. Only suffixes that do not already exist will be added to the list\.   
 ![\[EC2 Launch settings application.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-dns.png)
 
-1. On the **Wallpaper** tab, you can enable the display of selected instance details on the wallpaper\. You also have the option of choosing a custom image\. The details are generated each time that you log in\. Clear the check box to remove instance details from the wallpaper\.  
-![\[EC2 Launch settings application.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-wallpaper-02.png)
+1. On the **Wallpaper** tab, you can configure your instance wallpaper with a background image, and specify instance details for the wallpaper to display\. Amazon EC2 generates the details each time you log in\.
+
+   You can configure your wallpaper with the following controls\.
+   + **Display instance details on wallpaper** – This checkbox activates or deactivates instance detail display on the wallpaper\.
+   + **Image path \(\.jpg\)** – Specify the path to the image to use as the wallpaper background\.
+   + **Select attributes to display on wallpaper** – Select the check boxes for the instance details that you want to appear on the wallpaper\. Clear the check boxes for previously selected instance details that you want to remove from the wallpaper\.
+   + **Display Instance Tags on wallpaper** – Select one of the following settings to display instance tags on the wallpaper:
+     + **None** – Don't display any instance tags on the wallpaper\.
+     + **Show all** – Display all instance tags on the wallpaper\.
+     + **Show filtered** – Display specified instance tags on the wallpaper\. When you select this setting, you can add instance tags that you want to display on your wallpaper in the **Instance tag filter** box\.
+**Note**  
+You must enable tags in metadata to show tags on the wallpaper\. For more information about instance tags and metadata, see [Work with instance tags in instance metadata](Using_Tags.md#work-with-tags-in-IMDS)\.  
+![\[EC2 Launch settings Wallpaper tab.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/ec2launchv2-wallpaper-02.png)
 
 1. On the **Volumes** tab, select whether you want to initialize the volumes that are attached to the instance\. Enabling sets drive letters for any additional volumes and extends them to use available space\. If you select **All**, all of the storage volumes are initialized\. If you select **Devices**, only devices that are specified in the list are initialized\. You must enter the device for each device to be initialized\. Use the devices listed on the EC2 console, for example, `xvdb` or `/dev/nvme0n1`\. The dropdown list displays the storage volumes that are attached to the instance\. To enter a device that is not attached to the instance, enter it in the text field\.
 
@@ -415,31 +426,31 @@ help for `version`
 
 Sets new wallpaper to the wallpaper path that is provided \(\.jpg file\), and displays the selected instance details\.
 
-**Example**
+#### Syntax<a name="lv2-wallpaper-syntax"></a>
 
 ```
 ec2launch wallpaper ^
 --path="C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg" ^
+--all-tags ^
 --attributes=hostName,instanceId,privateIpAddress,publicIpAddress,instanceSize,availabilityZone,architecture,memory,network
 ```
 
-**Usage**
+#### Inputs<a name="lv2-wallpaper-inputs"></a>Parameters
 
-`ec2launch wallpaper [flags]`
+**\-\-allowed\-tags \[*tag\-name\-1*, *tag\-name\-n*\]**  
+\(Optional\) Base64 encoded JSON array of instance tag names to display on the wallpaper\. You can use this tag or the `--all-tags`, but not both\.
 
-**Flags**
+**\-\-attributes *attribute\-string\-1*, *attribute\-string\-n***  
+\(Optional\) A comma\-separated list of `wallpaper` attribute strings to apply settings to the wallpaper\.
 
-`--attributes strings`
+**\[\-\-path \| \-p\] *path\-string***  
+\(Required\) Specifies the `wallpaper` background image file path\.Flags
 
-`wallpaper` attributes
+**\-\-all\-tags**  
+\(Optional\) Displays all of the instance tags on the wallpaper\. You can use this tag or the `--allowed-tags`, but not both\.
 
-`-h`, `--help`
-
-help for `wallpaper`
-
-`-p`, `--path string`
-
-`wallpaper` file path
+**\[\-\-help \| \-h\]**  
+Displays help for the wallpaper command\.
 
 ## EC2Launch v2 task configuration<a name="ec2launch-v2-task-configuration"></a>
 
@@ -541,7 +552,7 @@ tasks:
 
 ### activateWindows<a name="ec2launch-v2-activatewindows"></a>
 
-Activates Windows against a set of AWS KMS servers\.
+Activates Windows against a set of AWS KMS servers\. Activation is skipped if the instance is detected as Bring\-Your\-Own\-License \(BYOL\)\.
 
 *Frequency* — once
 
@@ -896,27 +907,56 @@ inputs:
 
 ### setWallpaper<a name="ec2launch-v2-setwallpaper"></a>
 
-Creates the `setwallpaper.lnk` shortcut file in the startup folder of each existing user except for `Default User`\. This shortcut file runs when the user logs in for the first time after instance boot\. It sets up the instance with a custom wallpaper that displays the instance attributes\. 
+Creates the `setwallpaper.lnk` shortcut file in the startup folder of each existing user except for `Default User`\. This shortcut file runs when the user logs in for the first time after instance boot\. It sets up the instance with a custom wallpaper that displays the instance attributes\.
 
-The shortcut path is:
+The shortcut file path is:
 
 ```
 $env:SystemDrive/Users/<user>/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/setwallpaper.lnk
 ```
 
- Note that removing the `setWallpaper` task does not delete this shortcut file\. For more information, see [`setWallpaper` task is not enabled but the wallpaper resets at reboot](ec2launchv2-troubleshooting.md#ec2launchv2-troubleshooting-wallpaper-resets)\.
+**Note**  
+When you remove the `setWallpaper` task, it does not delete this shortcut file\. For more information, see [`setWallpaper` task is not enabled but the wallpaper resets at reboot](ec2launchv2-troubleshooting.md#ec2launchv2-troubleshooting-wallpaper-resets)\.
 
-*Frequency* — always
+**Stages:** You can configure wallpaper during the `PreReady`, and `UserData` stages\.
 
-*AllowedStages* — `[PreReady, UserData]`
+**Frequency:** `always`
 
-*Inputs* — 
+**Wallpaper configuration**  
+You can use the following settings to configure your wallpaper\.
 
-`path`: \(string\) path to a local \.jpg file to use as the wallpaper image
+**Inputs**  
+Input parameters that you provide, and attributes that you can set to configure your wallpaper:    
+**attributes \(list of strings\)**  
+\(Optional\) You can add one or more of the following attributes to your wallpaper:  
++ `architecture`
++ `availabilityZone`
++ `hostName`
++ `instanceId`
++ `instanceSize`
++ `memory`
++ `network`
++ `privateIpAddress`
++ `publicIpAddress`  
+**instanceTags**  
+\(Optional\) You can use exactly one of the following options for this setting\.  
++ **AllTags** \(string\) – Add all instance tags to your wallpaper\.
 
-`attributes`: \(list of strings\) list of attributes to add to the wallpaper; one of `hostName`, `instanceId`, `privateIpAddress`, `publicIpAddress`, `instanceSize`, `availabilityZone`, `architecture`, `memory`, or `network`
+  ```
+  instanceTags: AllTags
+  ```
++ **instanceTags** \(list of strings\) – Specify a list of instance tag names to add to your wallpaper\. For example:
 
-*Example*
+  ```
+  instanceTags:
+  - Tag 1
+  - Tag 2
+  ```  
+**path \(string\)**  
+\(Required\) The filename path of the local \.jpg format image file to use for your wallpaper image\.
+
+**Example**  
+The following example shows wallpaper configuration inputs that set the file path for the wallpaper background image, along with instance tags named `Tag 1` and `Tag 2`, and attributes that include the host name, instance ID, and private and public IP addresses for the instance\.
 
 ```
 task: setWallpaper
@@ -927,7 +967,13 @@ inputs:
   - instanceId
   - privateIpAddress
   - publicIpAddress
+  instanceTags:
+  - Tag 1
+  - Tag 2
 ```
+
+**Note**  
+You must enable tags in metadata to show tags on the wallpaper\. For more information about instance tags and metadata, see [Work with instance tags in instance metadata](Using_Tags.md#work-with-tags-in-IMDS)\.
 
 ### startSsm<a name="ec2launch-v2-startssm"></a>
 

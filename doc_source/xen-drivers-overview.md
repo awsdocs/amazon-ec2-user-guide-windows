@@ -59,6 +59,7 @@ The following table shows the changes to AWS PV drivers for each driver release\
 
 | Package version | Details | Release date | 
 | --- | --- | --- | 
+|  [8\.4\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.4.3/AWSPVDriver.zip)  | Fixed bugs in the package installer to improve the upgrade experience\. | 24 January 2023 | 
 |  [8\.4\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.4.2/AWSPVDriver.zip)  | Stability fixes to address race condition\. | 13 April 2022 | 
 |  [8\.4\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.4.1/AWSPVDriver.zip)  | Improved package installer\. | 7 January 2022 | 
 |  [8\.4\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/AWSPV/8.4.0/AWSPVDriver.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/xen-drivers-overview.html)  | 2 March 2021 | 

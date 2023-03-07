@@ -19,6 +19,7 @@ For more information, see the [Amazon EventBridge User Guide](https://docs.aws.a
 
 Amazon EC2 supports the following event types:
 + [EC2 AMI State Change](monitor-ami-events.md#ami-events)
++ [EC2 Fast Launch State\-change Notification](win-ami-config-fast-launch.md#win-monitor-fast-launch-events)
 + [EC2 Fleet Error](ec2-fleet-event-types.md#ec2-fleet-config-not-valid)
 + [EC2 Fleet Information](ec2-fleet-event-types.md#ec2-fleet-info)
 + [EC2 Fleet Instance Change](ec2-fleet-event-types.md#ec2-fleet-instance-change)

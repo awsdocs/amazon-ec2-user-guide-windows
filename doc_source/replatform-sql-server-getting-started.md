@@ -142,7 +142,7 @@ Type: String
 Required: No
 
 **`-AWSProfileName`**  
-The name of the AWS profile that the automation uses when connecting to AWS services\. For more information on the required IAM user permissions, see [Getting Started with Automation](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-setup.html) in the *AWS Systems Manager User Guide*\. If a profile is not entered, the automation uses your default AWS profile\.
+The name of the AWS profile that the automation uses when connecting to AWS services\. For more information on the required user permissions, see [Getting Started with Automation](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-setup.html) in the *AWS Systems Manager User Guide*\. If a profile is not entered, the automation uses your default AWS profile\.
 
 Type: String
 

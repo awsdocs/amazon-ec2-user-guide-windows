@@ -76,6 +76,7 @@ You can configure Windows AMIs that you own for faster launching using the Amazo
 + [Start faster launching for Windows AMIs](#win-start-fast-launch)
 + [Stop faster launching for Windows AMIs](#win-stop-fast-launch)
 + [View Windows AMIs that have faster launching enabled \(AWS CLI\)](#win-view-fast-launch)
++ [Monitor state changes with EventBridge](#win-monitor-fast-launch-events)
 + [Service\-linked role for faster launching for EC2 Windows instances](#slr-windows-fast-launch)
 
 ## Prerequisites<a name="win-start-fast-launch-prereqs"></a>
@@ -463,6 +464,67 @@ StateTransitionTime   : 2/25/2022 12:54:43 PM
 ```
 
 ------
+
+## Monitor state changes with EventBridge<a name="win-monitor-fast-launch-events"></a>
+
+When the state changes for a Windows AMI with faster launching enabled, Amazon EC2 generates an `EC2 Fast Launch State-change Notification` event\. Then Amazon EC2 sends the state change event to Amazon EventBridge \(formerly known as Amazon CloudWatch Events\)\.
+
+You can create EventBridge rules that trigger one or more actions in response to the state change event\. For example, you can create an EventBridge rule that detects when the Windows faster launching feature is enabled and performs the following actions:
++ Sends a message to an Amazon SNS topic that notifies its subscribers\.
++ Invokes a Lambda function that performs some action\.
++ Sends the state change data to Amazon Kinesis Data Firehose for analytics\.
+
+For more information, see [Creating Amazon EventBridge rules that react to events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule.html) in the *Amazon EventBridge User Guide*\.
+
+**State change events**  
+The Windows faster launching feature emits JSON formatted state change events on a best\-effort basis\. Amazon EC2 sends the events to EventBridge in near real time\. This section describes the event fields and shows an example of the event format\.
+
+**`EC2 Fast Launch State-change Notification`**
+
+**imageId**  
+Identifies the AMI with the Windows faster launching feature state change\.
+
+**resourceType**  
+The type of resource to use for pre\-provisioning\. Supported value: `snapshot`\. The default value is `snapshot`\.
+
+**state**  
+The current state of the Windows faster launching feature for the specified AMI\. Valid values include the following:  
++ **enabling** – You've enabled the Windows faster launching feature for the AMI, and Amazon EC2 has started creating snapshots for the pre\-provisioning process\.
++ **enabling\-failed** – Something went wrong that caused the pre\-provisioning process to fail the first time that you enabled the Windows faster launching feature for an AMI\. This can happen anytime during the pre\-provisioning process\.
++ **enabled** – The Windows faster launching feature is enabled\. The state changes to `enabled` as soon as Amazon EC2 creates the first pre\-provisioned snapshot for a newly enabled faster launching Windows AMI\. If the AMI was already enabled and goes through pre\-provisioning again, the state change happens right away\.
++ **enabled\-failed** – This state applies only if this is not the first time your faster launching AMI goes through the pre\-provisioning process\. This can happen if the Windows faster launching feature is disabled and then later enabled again, or if there is a configuration change or other error after pre\-provisioning is completed for the first time\.
++ **disabling** – The AMI owner has turned off the Windows faster launching feature for the AMI, and Amazon EC2 has started the clean up process\.
++ **disabled** – The Windows faster launching feature is disabled\. The state changes to `disabled` as soon as Amazon EC2 completes the clean up process\.
++ **disabling\-failed** – Something went wrong that caused the clean up process to fail\. This means that some pre\-provisioned snapshots may still remain in the account\.
+
+**stateTransitionReason**  
+The reason that the Windows AMI state changed for faster launching\.
+
+**Note**  
+All fields in this event message are required\.
+
+The following example shows a newly enabled faster launching Windows AMI that has launched the first instance to start the pre\-provisioning process\. At this point, the state is `enabling`\. After Amazon EC2 creates the first pre\-provisioned snapshot, the state changes to `enabled`\.
+
+```
+{
+	"version": "0",
+	"id": "01234567-0123-0123-0123-012345678901",
+	"detail-type": "EC2 Fast Launch State-change Notification",
+	"source": "aws.ec2",
+	"account": "123456789012",
+	"time": "2022-08-31T20:30:12Z",
+	"region": "us-east-1",
+	"resources": [
+		"arn:aws:ec2:us-east-1:123456789012:image/ami-123456789012"
+	],
+	"detail": {
+		"imageId": "ami-123456789012",
+		"resourceType": "snapshot",
+		"state": "enabling",
+		"stateTransitionReason": "Client.UserInitiated"
+	}
+}
+```
 
 ## Service\-linked role for faster launching for EC2 Windows instances<a name="slr-windows-fast-launch"></a>
 

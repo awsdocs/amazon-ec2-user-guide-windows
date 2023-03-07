@@ -6,7 +6,7 @@ The following are possible problems you might have and error messages you might 
 + [Remote Desktop can't connect to the remote computer](#rdp-issues)
 + [Error using the macOS RDP client](#troubleshoot-instance-connect-mac-rdp)
 + [RDP displays a black screen instead of the desktop](#rdp-black-screen)
-+ [Unable to remotely log on to an instance with a user account that is not an administrator](#remote-failure)
++ [Unable to remotely log on to an instance with a user that is not an administrator](#remote-failure)
 + [Troubleshooting Remote Desktop issues using AWS Systems Manager](#Troubleshooting-Remote-Desktop-Connection-issues-using-AWS-Systems-Manager)
 + [Enable Remote Desktop on an EC2 Instance With Remote Registry](#troubleshooting-windows-rdp-remote-registry)
 + [I've lost my private key\. How can I connect to my Windows instance?](#replacing-lost-key-pair-windows)
@@ -105,7 +105,7 @@ The drive is automatically offline if the temporary instance is running the same
 + Verify that you are connecting to the correct Remote Desktop Protocol port, which by default is 3389 \(use [AWSSupport\-TroubleshootRDP](#AWSSupport-TroubleshootRDP) to [read the current RDP port](#check-rdp) and [change it back to 3389](#restore-3389)\)\.
 +  Verify that Remote Desktop connections are allowed on your instance \(use [AWSSupport\-TroubleshootRDP](#AWSSupport-TroubleshootRDP) to [enable Remote Desktop connections](#allow-rdp)\)\.
 + Verify that the password has not expired\. If the password has expired, you can reset it\. For more information, see [Reset a lost or expired Windows administrator password](ResettingAdminPassword.md)\.
-+ If you attempt to connect using a user account that you created on the instance and receive the error `The user cannot connect to the server due to insufficient access privileges`, verify that you granted the user the right to log on locally\. For more information, see [Grant a Member the Right to Log On Locally](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/ee957044(v%3dws.10))\.
++ If you attempt to connect using a user that you created on the instance and receive the error `The user cannot connect to the server due to insufficient access privileges`, verify that you granted the user the right to log on locally\. For more information, see [Grant a Member the Right to Logon Locally](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/ee957044(v%3dws.10))\.
 + If you attempt more than the maximum allowed concurrent RDP sessions, your session is terminated with the message `Your Remote Desktop Services session has ended. Another user connected to the remote computer, so your connection was lost.` By default, you are allowed two concurrent RDP sessions to your instance\.
 
 ## Error using the macOS RDP client<a name="troubleshoot-instance-connect-mac-rdp"></a>
@@ -132,9 +132,9 @@ Try the following to resolve this issue:
 + If the server is running a full\-screen application, it might have stopped responding\. Use Ctrl\+Shift\+Esc to start Windows Task Manager, and then close the application\.
 + If the server is over\-utilized, it might have stopped responding\. To monitor the instance using the Amazon EC2 console, select the instance and then select the **Monitoring** tab\. If you need to change the instance type to a larger size, see [Change the instance type](ec2-instance-resize.md)\.
 
-## Unable to remotely log on to an instance with a user account that is not an administrator<a name="remote-failure"></a>
+## Unable to remotely log on to an instance with a user that is not an administrator<a name="remote-failure"></a>
 
-If you are not able to remotely log on to a Windows instance with a user account that is not an administrator account, ensure that you have granted the user the right to log on locally\. See [Grant a user or group the right to log on locally to the domain controllers in the domain](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee957044(v=ws.10)#grant-a-user-or-group-the-right-to-log-on-locally-to-the-domain-controllers-in-the-domain)\. 
+If you are not able to remotely log on to a Windows instance with a user that is not an administrator account, ensure that you have granted the user the right to log on locally\. See [Grant a user or group the right to log on locally to the domain controllers in the domain](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee957044(v=ws.10)#grant-a-user-or-group-the-right-to-log-on-locally-to-the-domain-controllers-in-the-domain)\. 
 
 ## Troubleshooting Remote Desktop issues using AWS Systems Manager<a name="Troubleshooting-Remote-Desktop-Connection-issues-using-AWS-Systems-Manager"></a>
 
@@ -170,7 +170,7 @@ The AWSSupport\-TroubleshootRDP automation document can be used with EC2 instanc
 
 #### AWSSupport\-TroubleshootRDP examples<a name="AWSSupport-TroubleshootRDP-Examples"></a>
 
-The following examples show you how to accomplish common troubleshooting tasks using AWSSupport\-TroubleshootRDP\. You can use either the example AWS CLI [start\-automation\-execution](https://docs.aws.amazon.com/cli/latest/reference/ssm/start-automation-execution.html) command or the provided link to the AWS Management Console\.
+The following examples show you how to accomplish common troubleshooting tasks using AWSSupport\-TroubleshootRDP\. You can use either the example AWS CLI [https://docs.aws.amazon.com/cli/latest/reference/ssm/start-automation-execution.html](https://docs.aws.amazon.com/cli/latest/reference/ssm/start-automation-execution.html) command or the provided link to the AWS Management Console\.
 
 **Example: Check the current RDP status**  <a name="check-rdp"></a>
 AWS CLI:  
@@ -324,4 +324,4 @@ If the value in the **Value data** field is `1`, then the instance will deny rem
 
 When you connect to a newly\-launched Windows instance, you decrypt the password for the Administrator account using the private key for the key pair that you specified when you launched the instance\.
 
-If you lose the Administrator password and you no longer have the private key, you must reset the password or create a new instance\. For more information, see [Reset a lost or expired Windows administrator password](ResettingAdminPassword.md)\. For steps to reset the password using an Systems Manager document, see [Walkthrough: Reset passwords and SSH keys on EC2 instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
+If you lose the Administrator password and you no longer have the private key, you must reset the password or create a new instance\. For more information, see [Reset a lost or expired Windows administrator password](ResettingAdminPassword.md)\. For steps to reset the password using an Systems Manager document, see [Reset passwords and SSH keys on EC2 instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.

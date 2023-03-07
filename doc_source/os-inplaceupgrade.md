@@ -3,7 +3,7 @@
 Before you perform an in\-place upgrade, you must determine which network drivers the instance is running\. PV network drivers enable you to access your instance using Remote Desktop\. Starting with Windows Server 2008 R2, instances use either *AWS PV*, Intel Network Adapter, or the Enhanced Networking drivers\. Instances with Windows Server 2003 and Windows Server 2008 use *Citrix PV* drivers\. For more information, see [Paravirtual drivers for Windows instances](xen-drivers-overview.md)\.
 
 **Automated upgrades**  
-For steps on how to use AWS Systems Manager to automate the upgrade of your Windows Server 2008 R2 to Server 2012 R2 or from SQL Server 2008 R2 on Windows Server 2012 R2 to SQL Server 2016, see [ Upgrade Your End of Support Microsoft 2008 Workloads in AWS with Ease](https://aws.amazon.com/blogs/database/upgrade-your-end-of-support-microsoft-2008-r2-workloads-in-aws-with-ease/)\.
+For steps on how to use AWS Systems Manager to automate the upgrade of your Windows Server 2008 R2 to Server 2012 R2 or from SQL Server 2008 R2 on Windows Server 2012 R2 to SQL Server 2016, see [Upgrade Your End of Support Microsoft 2008 Workloads in AWS with Ease](https://aws.amazon.com/blogs/database/upgrade-your-end-of-support-microsoft-2008-r2-workloads-in-aws-with-ease/)\.
 
 ## Before you begin an in\-place upgrade<a name="os-upgrade-before"></a>
 
@@ -37,7 +37,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
 1. In the navigation pane, choose **Instances**\. Locate the instance\. Make a note of the instance ID and Availability Zone for the instance\. You need this information later in this procedure\.
 
-1. If you are upgrading from Windows Server 2012 or 2012 R2 to Windows Server 2016, 2019, or 2022 perform the following on your instance before proceeding:
+1. If you are upgrading from Windows Server 2012 or 2012 R2 to Windows Server 2016, 2019, or 2022, perform the following on your instance before proceeding:
 
    1. Uninstall the EC2Config service\. For more information, see [Stop, restart, delete, or uninstall EC2Config](ec2config-service.md#UsingConfig_StopDelete)\.
 
@@ -77,7 +77,7 @@ Do not initialize the disk because doing so will delete the existing data\.
       ./setup.exe /auto upgrade /dynamicupdate disable
       ```
 **Note**  
-Running the setup\.exe with the /dynamicupdate option set to disabled prevents Windows from installing updates during the Windows Server upgrade process, as installing updates during the upgrade can cause failures\. You can install updates with Windows Update after the upgrade completes\.
+Running the setup\.exe with the `/dynamicupdate` option set to disabled prevents Windows from installing updates during the Windows Server upgrade process, as installing updates during the upgrade can cause failures\. You can install updates with Windows Update after the upgrade completes\.
 
       If you are upgrading to an earlier version of Windows Server, run the following:
 
@@ -189,6 +189,6 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 
 1. Install Microsoft hotfix [KB2922223](http://support.microsoft.com/en-us/kb/2922223)\.
 
-1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance , we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Install or upgrade AWS NVMe drivers using PowerShell](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
+1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance, we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Install or upgrade AWS NVMe drivers using PowerShell](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
 
 1. Re\-enable antivirus and anti\-spyware software and firewalls\.

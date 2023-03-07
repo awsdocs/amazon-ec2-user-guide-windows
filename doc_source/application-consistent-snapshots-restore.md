@@ -14,7 +14,7 @@ The following script detaches all volumes attached to an instance, and then crea
 
 **To restore volumes from VSS\-enabled EBS snapshots**
 
-1. Open AWS Tools for Windows PowerShell and run the following command to specify your credentials\. You must either have administrator privileges in Amazon EC2 or have been granted the appropriate permission in IAM\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
+1. Open AWS Tools for Windows PowerShell and run the following command to specify your user access keys\. Your user must either have administrative access for Amazon EC2 or it must have the required permissions granted\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 
    ```
    Set-AWSCredentials –AccessKey key_name –SecretKey key_name

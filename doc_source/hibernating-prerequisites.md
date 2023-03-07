@@ -23,12 +23,12 @@ Must be an HVM AMI that supports hibernation:
 For information about the supported Linux AMIs, see [Supported Linux AMIs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/hibernating-prerequisites.html#hibernation-prereqs-supported-amis) in the *Amazon EC2 User Guide for Linux Instances*\.
 
 ## Supported instance families<a name="hibernation-prereqs-supported-instance-families"></a>
-+ General purpose: M3, M4, M5, M5a, M5ad, M5d, M6i, T2, T3, and T3a
-+ Compute optimized: C3, C4, C5, C5d, and C6i
++ General purpose: M3, M4, M5, M5a, M5ad, M5d, M6i, M6id, T2, T3, and T3a
++ Compute optimized: C3, C4, C5, C5d, C6i, and C6id
 + Memory optimized: R3, R4, R5, R5a, R5ad, and R5d
 + Storage optimized: I3, and I3en
 
-\* For hibernation, we recommend that you use a T3 or T3a instance with at least 1 GB of RAM\.
+Note that for hibernating a T3 or T3a instance, we recommend at least 1 GB of RAM\.
 
 **To see the available instance types that support hibernation in a specific Region**  
 The available instance types vary by Region\. To see the available instance types that support hibernation in a Region, use the [describe\-instance\-types](https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instance-types.html) command with the `--region` parameter\. Include the `--filters` parameter to scope the results to the instance types that support hibernation and the `--query` parameter to scope the output to the value of `InstanceType`\.
@@ -58,6 +58,8 @@ Not supported for bare metal instances\.
 ## Instance RAM size<a name="instance-ram-size"></a>
 
 Can be up to 16 GB\.
+
+Note that for hibernating a T3 or T3a instance, we recommend at least 1 GB of RAM\.
 
 ## Root volume type<a name="hibernation-prereqs-root-volume-type"></a>
 

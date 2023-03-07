@@ -45,7 +45,7 @@ Use the following procedure to download and install the `AwsVssComponents` packa
 
 **To install the VSS package using the AWS Tools for Windows PowerShell**
 
-1. Open AWS Tools for Windows PowerShell and run the following command to specify your credentials\. You must either have administrator privileges in Amazon EC2 or have been granted the appropriate permission in IAM\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
+1. Open AWS Tools for Windows PowerShell and run the following command to specify your user access keys\. Your user must either have administrative access for Amazon EC2 or it must have the required permissions granted\. For more information, see [ Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 
    ```
    Set-AWSCredentials –AccessKey key_name –SecretKey key_name
@@ -108,7 +108,7 @@ Use the following procedure to create VSS\-enabled EBS snapshots by using the AW
 
 **To create VSS\-enabled EBS snapshots by using AWS Tools for Windows PowerShell**
 
-1. Open AWS Tools for Windows PowerShell and run the following command to specify your credentials\. You must either have administrator privileges in Amazon EC2, or you must have been granted the appropriate permission in IAM\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
+1. Open AWS Tools for Windows PowerShell and run the following command to specify your user access keys\. Your user must either have administrative access for Amazon EC2 or it must have the required permissions granted\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 
    ```
    Set-AWSCredentials –AccessKey key_name –SecretKey key_name
@@ -145,7 +145,7 @@ Note the following important details about this process:
 
 **To create VSS\-enabled EBS snapshots by using the `AWSEC2-ManageVssIO` SSM document**
 
-1. Open AWS Tools for Windows PowerShell and run the following command to specify your credentials\. You must either have administrator privileges in Amazon EC2 or have been granted the appropriate permission in IAM\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
+1. Open AWS Tools for Windows PowerShell and run the following command to specify your user access keys\. Your user must either have administrative access for Amazon EC2 or it must have the required permissions granted\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
 
    ```
    Set-AWSCredentials –AccessKey key_name –SecretKey key_name
@@ -166,7 +166,7 @@ If successful, the command populates the list of EBS snapshots with the new snap
 ## Troubleshoot VSS\-enabled EBS snapshots<a name="application-consistent-snapshots-troubleshooting"></a>
 
 **General: Checking the log files**  
-If you experience problems or receive error messages when creating VSS\-enabled EBS snapshots, you can view the command output in the Systems Manager console\. You can also view the following logs:
+If you experience problems or receive error messages when creating VSS\-enabled EBS snapshots, you can view the command output in the Systems Manager console\.  You can also view the following logs:
 + `%ProgramData%\Amazon\SSM\InstanceData\InstanceID\document\orchestration\SSMCommandID\awsrunPowerShellScript\runPowerShellScript\stdout`
 + `%ProgramData%\Amazon\SSM\InstanceData\InstanceID\document\orchestration\SSMCommandID\awsrunPowerShellScript\runPowerShellScript\stderr`
 
