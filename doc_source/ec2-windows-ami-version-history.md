@@ -23,7 +23,7 @@ For more information about Microsoft updates, see [Description of Software Updat
 | 2023\.01\.19 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html) Previous versions of Amazon\-published Windows AMIs dated October 27th, 2022 and earlier were made private\.  | 
 | 2023\.01\.11 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-ami-version-history.html)  | 
 
-## Monthly AMI updates for 2022 \(to date\)<a name="amis-2022"></a>
+## Monthly AMI updates for 2022<a name="amis-2022"></a>
 
 For more information about Microsoft updates, see [Description of Software Update Services and Windows Server Update Services changes in content for 2022](https://support.microsoft.com/en-us/help/894199/description-of-software-update-services-and-windows-server-update-serv-2022)\.
 
