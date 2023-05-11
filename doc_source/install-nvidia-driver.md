@@ -94,7 +94,9 @@ Log on to your Windows instance and download the 64\-bit NVIDIA driver appropria
 
 1. Open the folder where you downloaded the driver and launch the installation file\. Follow the instructions to install the driver and reboot your instance as required\.
 
-1. Disable the built\-in display adapter using Device Manager\. Install these Windows features: **Media Foundation** and **Quality Windows Audio Video Experience**\.
+1. Disable the display adapter named **Microsoft Basic Display Adapter** that is marked with a warning icon using Device Manager\. Install these Windows features: **Media Foundation** and **Quality Windows Audio Video Experience**\.
+**Important**  
+Don't disable the display adapter named **Microsoft Remote Display Adapter**\. If **Microsoft Remote Display Adapter** is disabled your connection might be interrupted and attempts to connect to the instance after it has rebooted might fail\.
 
 1. Check Device Manager to verify that the GPU is working correctly\.
 
@@ -131,7 +133,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
    }
    ```
 
-   Multiple versions of the NVIDIA GRID driver are stored in this bucket\. You can download all of the available Windows versions in the bucket by removing the `-KeyPrefix $KeyPrefix` option\.
+   Multiple versions of the NVIDIA GRID driver are stored in this bucket\. You can download all of the available Windows versions in the bucket by removing the `-KeyPrefix $KeyPrefix` option\. For information about the version of the NVIDIA GRID driver for your operating system, see the [NVIDIA® Virtual GPU \(vGPU\) Software Documentation](https://docs.nvidia.com/grid/) on the *NVIDIA website*\.
 
    Starting with GRID version 11\.0, you can use the drivers under `latest` for both G3 and G4dn instances\. We will not add versions later than 11\.0 to `g4/latest`, but will keep version 11\.0 and the earlier versions specific to G4dn under `g4/latest`\.
 
@@ -141,8 +143,19 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
 1. \(Optional\) Use the following command to disable the licensing page in the control panel to prevent users from accidentally changing the product type \(NVIDIA GRID Virtual Workstation is enabled by default\)\. For more information, see the [GRID Licensing User Guide](http://docs.nvidia.com/grid/4.6/grid-licensing-user-guide/index.html)\.
 
+**PowerShell**  
+Run the following PowerShell commands to create the registry value to disable the licensing page in the control panel\. The AWS Tools for PowerShell in AWS Windows AMIs defaults to the 32\-bit version and this command fails\. Instead, use the 64\-bit version of PowerShell included with the operating system\.
+
    ```
+   New-Item -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global" -Name GridLicensing
    New-ItemProperty -Path "HKLM:\SOFTWARE\NVIDIA Corporation\Global\GridLicensing" -Name "NvCplDisableManageLicensePage" -PropertyType "DWord" -Value "1"
+   ```
+
+**Command Prompt**  
+Run the following registry command to create the registry value to disable the licensing page in the control panel\. You can run it using the Command Prompt window or a 64\-bit version of PowerShell\.
+
+   ```
+   reg add "HKLM\SOFTWARE\NVIDIA Corporation\Global\GridLicensing" /v NvCplDisableManageLicensePage /t REG_DWORD /d 1
    ```
 
 1. \(Optional\) Depending on your use case, you might complete the following optional steps\. If you do not require this functionality, do not complete these steps\.
@@ -163,8 +176,6 @@ These drivers are available to AWS customers only\. By downloading them, you agr
 + [IMDSv2](configuring-instance-metadata-service.md) is only supported with NVIDIA driver version 495\.x or greater\. 
 
 **To install the NVIDIA gaming driver on your Windows instance**
-**Note**  
-
 
 1. Connect to your Windows instance and open a PowerShell window\.
 

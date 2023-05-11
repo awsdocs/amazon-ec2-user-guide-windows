@@ -6,9 +6,7 @@ You must set up credentials that grant AWS Management Pack access to your AWS re
 
 1. We recommend that you create an IAM user with the minimum access rights required \(for example, the **ReadOnlyAccess** AWS managed policy works in most cases\)\. You'll need the access keys \(access key ID and secret access key\) for this user to complete this procedure\. For more information, see [Administering Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/ManagingCredentials.html) in the *IAM User Guide*\.
 
-   Users need programmatic access if they want to interact with AWS outside of the AWS Management Console\. The way to grant programmatic access depends on the type of user that's accessing AWS:
-   + If you manage identities in IAM Identity Center, the AWS APIs require a profile, and the AWS Command Line Interface requires a profile or an environment variable\.
-   + If you have IAM users, the AWS APIs and the AWS Command Line Interface require access keys\. Whenever possible, create temporary credentials that consist of an access key ID, a secret access key, and a security token that indicates when the credentials expire\.
+   Users need programmatic access if they want to interact with AWS outside of the AWS Management Console\. The way to grant programmatic access depends on the type of user that's accessing AWS\.
 
    To grant users programmatic access, choose one of the following options\.  
 ****    

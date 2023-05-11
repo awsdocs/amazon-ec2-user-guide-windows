@@ -9,6 +9,7 @@ The following table describes the released versions of EC2Config\. For informati
 
 | Version | Details | Release date | 
 | --- | --- | --- | 
+| 4\.9\.5288 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 8 March 2023 | 
 | 4\.9\.5231 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 14 February 2023 | 
 | 4\.9\.5103 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 5 December 2022 | 
 | 4\.9\.5064 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2config-version-details.html)  | 16 November 2022 | 

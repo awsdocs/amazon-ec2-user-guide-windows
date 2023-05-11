@@ -18,10 +18,20 @@ The `AWSVssComponents` package requires \.NET Framework version 4\.6 and later\.
 Update your instances to use SSM Agent version 2\.2\.58\.0 or later\. If you are using an older version of SSM Agent, you can update it by using Run Command\. For more information, see [Update SSM Agent by using Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/rc-console.html#rc-console-agentexample) in the *AWS Systems Manager User Guide*\.
 
 **AWS Tools for Windows PowerShell version**  
-Ensure that your instance is running version 3\.3\.48\.0 or later of the AWS Tools for Windows PowerShell\. To check your version number, run the following command on the instance:
+Ensure that your instance is running version 3\.3\.48\.0 or later of the AWS Tools for Windows PowerShell\. To check your version number, run the following command on the instance in a PowerShell console:
 
 ```
 Get-AWSPowerShellVersion
 ```
 
 If you need to update the version of Tools for Windows PowerShell on your instance, see [Setting up the AWS Tools for Windows PowerShell on a Windows\-based Computer](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-getting-set-up-windows.html) in the *AWS Tools for Windows PowerShell User Guide*\.
+
+**Windows Powershell version**  
+Ensure that your instance is running Windows PowerShell major version 3, 4, or 5\. To check your version number, run the following command on the instance in a Windows PowerShell console:
+
+```
+$PSVersionTable.PSVersion
+```
+
+**PowerShell language mode**  
+Ensure that your instance has the PowerShell language mode set to `FullLanguage`\. For more information about language modes, see [about\_Language\_Modes](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_modes) in the Microsoft documentation\.

@@ -6,7 +6,8 @@ Amazon EC2 provides enhanced networking capabilities through the Elastic Network
 + [Requirements](#ena-requirements)
 + [Enhanced networking performance](#ena-performance)
 + [Test whether enhanced networking is enabled](#test-enhanced-networking-ena)
-+ [Enable enhanced networking on Windows](#enable-enhanced-networking-ena-WIN)
++ [Enable enhanced networking on Windows](#enable-enhanced-networking-ena-windows)
++ [Install or upgrade Elastic Network Adapter \(ENA\) driver](#ena-adapter-driver-install-upgrade-win)
 + [Amazon ENA driver versions](#ena-adapter-driver-versions)
 + [Subscribe to notifications](#drivers-subscribe-notifications)
 
@@ -59,7 +60,7 @@ To check whether an AMI has the enhanced networking `enaSupport` attribute set, 
   (Get-EC2Image -ImageId ami_id).EnaSupport
   ```
 
-## Enable enhanced networking on Windows<a name="enable-enhanced-networking-ena-WIN"></a>
+## Enable enhanced networking on Windows<a name="enable-enhanced-networking-ena-windows"></a>
 
 If you launched your instance and it does not have enhanced networking enabled already, you must download and install the required network adapter driver on your instance, and then set the `enaSupport` instance attribute to activate enhanced networking\. You can only enable this attribute on supported instance types and only if the ENA driver is installed\. For more information, see [Enhanced networking support](enhanced-networking.md#supported_instances)\.
 
@@ -127,7 +128,7 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
 
       ```
       [
-          true
+      	true
       ]
       ```
 
@@ -142,6 +143,122 @@ If you get an execution policy error, set the policy to `Unrestricted` \(by defa
    1. Choose **Details**\. For **Network Connection Details**, check that **Description** is **Amazon Elastic Network Adapter**\.
 
 1. \(Optional\) Create an AMI from the instance\. The AMI inherits the `enaSupport` attribute from the instance\. Therefore, you can use this AMI to launch another instance with ENA enabled by default\. For more information, see [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)\.
+
+## Install or upgrade Elastic Network Adapter \(ENA\) driver<a name="ena-adapter-driver-install-upgrade-win"></a>
+
+If your instance isn't based on one of the latest Windows Amazon Machine Images \(AMIs\) that Amazon provides, use the following procedure to install the current ENA driver on your instance\. You should perform this update at a time when it’s convenient to reboot your instance\. If the install script doesn’t automatically reboot your instance, we recommend that you reboot the instance as the final step\.
+
+If you use an instance store volume to store data while the instance is running, that data is erased when you stop the instance\. Before you stop your instance, verify that you've copied any data that you need from your instance store volumes to persistent storage, such as Amazon EBS or Amazon S3\.
+
+### Prerequisites<a name="ena-driver-install-prereq-win"></a>
+
+To install or upgrade the ENA driver, your Windows instance must meet the following prerequisites:
++ Have PowerShell version 3\.0 or later installed
+
+### Step 1: Back up your data<a name="ena-driver-install-step1-backup-win"></a>
+
+We recommend that you create a backup AMI, in case you're not able to roll back your changes through the **Device Manager**\. To create a backup AMI with the AWS Management Console, follow these steps:
+
+1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
+
+1. In the navigation pane, choose **Instances**\.
+
+1. Select the instance that requires the driver upgrade, and choose **Stop instance** from the **Instance state** menu\.
+
+1. After the instance is stopped, select the instance again\. To create your backup, choose **Image and templates** from the **Actions** menu, then choose **Create image**\.
+
+1. To restart your instance, choose **Start instance** from the **Instance state** menu\.
+
+### Step 2: Install or upgrade your ENA driver<a name="ena-driver-install-step2-install-win"></a>
+
+You can install or upgrade your ENA driver with AWS Systems Manager Distributor, or with PowerShell cmdlets\. For further instructions, select the tab that matches the method that you want to use\.
+
+------
+#### [ Systems Manager Distributor ]
+
+You can use the Systems Manager Distributor feature to deploy packages to your Systems Manager managed nodes\. With Systems Manager Distributor, you can install the ENA driver package once, or with scheduled updates\. For more information about how to install the ENA driver package \(`AwsEnaNetworkDriver`\) with Systems Manager Distributor, see [Install or update packages](https://docs.aws.amazon.com/systems-manager/latest/userguide/distributor-working-with-packages-deploy.html) in the *AWS Systems Manager User Guide*\. 
+
+------
+#### [ PowerShell ]
+
+This section covers how to download and install ENA driver packages on your instance with PowerShell cmdlets\.
+
+**Option 1: Download and extract the latest version**
+
+1. Connect to your instance and log in as the local administrator\.
+
+1. Use the invoke\-webrequest cmdlet to download the latest driver package:
+
+   ```
+   PS C:\> invoke-webrequest https://ec2-windows-drivers-downloads.s3.amazonaws.com/ENA/Latest/AwsEnaNetworkDriver.zip -outfile $env:USERPROFILE\AwsEnaNetworkDriver.zip
+   ```
+**Note**  
+Alternatively, you can download the latest driver package from a browser window on your instance\.
+
+1. Use the expand\-archive cmdlet to extract the zip archive that you downloaded to your instance:
+
+   ```
+   PS C:\> expand-archive $env:userprofile\AwsEnaNetworkDriver.zip -DestinationPath $env:userprofile\AwsEnaNetworkDriver
+   ```
+
+**Option 2: Download and extract a specific version**
+
+1. Connect to your instance and log in as the local administrator\.
+
+1. Download the ENA driver package for the specific version you want from the version link in the [Amazon ENA driver versions](#ena-adapter-driver-versions) table\.
+
+1. Extract the zip archive to your instance\.
+
+**Install the ENA driver with PowerShell**  
+The install steps are the same whether you've downloaded the latest driver or a specific version\. To install the ENA driver, follow these steps\.
+
+1. To install the driver, run the `install.ps1` PowerShell script from the `AwsEnaNetworkDriver` directory on your instance\. If you get an error, make sure that you’re using PowerShell 3\.0 or later\.
+
+1. If the installer doesn’t automatically reboot your instance, run the Restart\-Computer PowerShell cmdlet\.
+
+   ```
+   PS C:\> Restart-Computer
+   ```
+
+------
+
+### Step 3 \(optional\): Verify the ENA driver version after installation<a name="ena-driver-install-step3-verify-win"></a>
+
+To ensure that the ENA driver package was successfully installed on your instance, you can verify the new version as follows:
+
+1. Connect to your instance and log in as the local administrator\.
+
+1. To open the Windows Device Manager, enter `devmgmt.msc` in the **Run** box\.
+
+1. Choose **OK**\. This opens the Device Manager window\.
+
+1. Select the arrow to the left of **Network adapters** to expand the list\.
+
+1. Choose the name, or open the context menu for the **Amazon Elastic Network Adapter**, and then choose **Properties**\. This opens the **Amazon Elastic Network Adapter Properties** dialog\.
+**Note**  
+ENA adapters all use the same driver\. If you have multiple ENA adapters, you can select any one of them to update the driver for all of the ENA adapters\.
+
+1. To verify the current version that's installed, open the **Driver** tab and check the **Driver Version**\. If the current version doesn't match your target version, see [Troubleshoot the Elastic Network Adapter \(ENA\) Windows driver](troubleshoot-ena-driver.md)\.
+
+### Roll back an ENA driver installation<a name="ena-driver-install-roll-back-win"></a>
+
+If anything goes wrong with the installation, you might need to roll back the driver\. Follow these steps to roll back to the previous version of the ENA driver that was installed on your instance\.
+
+1. Connect to your instance and log in as the local administrator\.
+
+1. To open the Windows Device Manager, enter `devmgmt.msc` in the **Run** box\.
+
+1. Choose **OK**\. This opens the Device Manager window\.
+
+1. Select the arrow to the left of **Network adapters** to expand the list\.
+
+1. Choose the name, or open the context menu for the **Amazon Elastic Network Adapter**, and then choose **Properties**\. This opens the **Amazon Elastic Network Adapter Properties** dialog\.
+**Note**  
+ENA adapters all use the same driver\. If you have multiple ENA adapters, you can select any one of them to update the driver for all of the ENA adapters\.
+
+1. To roll back the driver, open the **Driver** tab and choose **Roll Back Driver**\. This opens the **Driver Package rollback** window\.
+**Note**  
+If the **Driver** tab doesn't show the **Roll Back Driver** action, or if the action is unavailable, it means that the [Driver Store](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/driver-store) on your instance doesn't contain the previously installed driver package\. To troubleshoot this issue, see [Troubleshooting scenarios](troubleshoot-ena-driver.md#ts-ena-drv-scenarios), and expand the **Unexpected ENA driver version installed** section\. For more information about the device driver package selection process, see [How Windows selects a driver package for a device](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/how-windows-selects-a-driver-for-a-device) on the *Microsoft documentation website*\.
 
 ## Amazon ENA driver versions<a name="ena-adapter-driver-versions"></a>
 
@@ -178,7 +295,6 @@ The following table summarizes the changes for each release\.
 |  [2\.1\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/2.1.0/AwsEnaNetworkDriver.zip)  | ENA Windows driver v2\.1 introduces new ENA device capabilities, provides a performance boost, adds new features, and includes multiple stability improvements\. [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html) | July 1, 2019 | 
 |  [1\.5\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.5.0/AwsEnaNetworkDriver.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html)  | October 4, 2018 | 
 |  [1\.2\.3](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.2.3/AwsEnaNetworkDriver.zip)  |  Includes reliability fixes and unifies support for Windows Server 2008 R2 through Windows Server 2016\.  | February 13, 2018 | 
-|  [1\.0\.9](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.0.8/AwsEnaNetworkDriver.zip)  |  Includes some reliability fixes\. Applies only to Windows Server 2008 R2\. Not recommended for other versions of Windows Server\.  | December 2016 | 
 |  [1\.0\.8](https://s3.amazonaws.com/ec2-windows-drivers-downloads/ENA/1.0.8/AwsEnaNetworkDriver.zip)  |  The initial release\. Included in AMIs for Windows Server 2008 R2, Windows Server 2012 RTM, Windows Server 2012 R2, and Windows Server 2016\.  | July 2016 | 
 
 ## Subscribe to notifications<a name="drivers-subscribe-notifications"></a>

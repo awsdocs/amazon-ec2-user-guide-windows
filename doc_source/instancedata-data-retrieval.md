@@ -21,9 +21,9 @@ http://[fd00:ec2::254]/latest/meta-data/
 The IP addresses are link\-local addresses and are valid only from the instance\. For more information, see [Link\-local address](https://en.wikipedia.org/wiki/Link-local_address) on Wikipedia\.
 
 **Note**  
-The examples in this section use the IPv4 address of the instance metadata service: `169.254.169.254`\. If you are retrieving instance metadata for EC2 instances over the IPv6 address, ensure that you enable and use the IPv6 address instead: `fd00:ec2::254`\. The IPv6 address of the instance metadata service is compatible with IMDSv2 commands\. The IPv6 address is only accessible on [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances)\.
+The examples in this section use the IPv4 address of the IMDS: `169.254.169.254`\. If you are retrieving instance metadata for EC2 instances over the IPv6 address, ensure that you enable and use the IPv6 address instead: `fd00:ec2::254`\. The IPv6 address of the IMDS is compatible with IMDSv2 commands\. The IPv6 address is only accessible on [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances)\.
 
-The command format is different, depending on whether you use IMDSv1 or IMDSv2\. By default, you can use both instance metadata services\. To require the use of IMDSv2, see [Use IMDSv2](configuring-instance-metadata-service.md)\.
+The command format is different, depending on whether you use IMDSv1 or IMDSv2\. By default, you can use both versions of the IMDS\. To require the use of IMDSv2, see [Use IMDSv2](configuring-instance-metadata-service.md)\.
 
 You can use PowerShell cmdlets to retrieve the URI\. For example, if you are running version 3\.0 or later of PowerShell, use the following cmdlet\.
 
@@ -62,7 +62,7 @@ You are not billed for HTTP requests used to retrieve instance metadata and user
 
 To avoid problems with instance metadata retrieval, consider the following:
 + The AWS SDKs use IMDSv2 calls by default\. If the IMDSv2 call receives no response, the SDK retries the call and, if still unsuccessful, uses IMDSv1\. This can result in a delay\. In a container environment, if the hop limit is 1, the IMDSv2 response does not return because going to the container is considered an additional network hop\. To avoid the process of falling back to IMDSv1 and the resultant delay, in a container environment we recommend that you set the hop limit to 2\. For more information, see [Configure the instance metadata options](configuring-instance-metadata-options.md)\.
-+ If you launch a Windows instance using a custom Windows AMI, to ensure that the instance metadata service works on the instance, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\. Otherwise, the instance metadata service won't work\.
++ If you launch a Windows instance using a custom Windows AMI, to ensure that the IMDS works on the instance, the AMI must be a standardized image created [using Sysprep](Creating_EBSbacked_WinAMI.md#ami-create-standard)\. Otherwise, the IMDS won't work\.
 + For IMDSv2, you must use `/latest/api/token` when retrieving the token\. Issuing `PUT` requests to any version\-specific path, for example `/2021-03-23/api/token`, will result in the metadata service returning 403 Forbidden errors\. This behavior is intended\. 
 
   
@@ -78,7 +78,7 @@ A request for a general metadata resource \(the URI ends with a /\) returns a li
 For requests made using Instance Metadata Service Version 2, the following HTTP error codes can be returned:
 + `400 - Missing or Invalid Parameters` – The `PUT` request is not valid\.
 + `401 - Unauthorized` – The `GET` request uses an invalid token\. The recommended action is to generate a new token\.
-+ `403 - Forbidden` – The request is not allowed or the instance metadata service is turned off\.
++ `403 - Forbidden` – The request is not allowed or the IMDS is turned off\.
 
 ## Examples of retrieving instance metadata<a name="instancedata-meta-data-retrieval-examples"></a>
 
@@ -487,15 +487,15 @@ MyInstance
 
 ## Query throttling<a name="instancedata-throttling"></a>
 
-We throttle queries to the instance metadata service on a per\-instance basis, and we place limits on the number of simultaneous connections from an instance to the instance metadata service\. 
+We throttle queries to the IMDS on a per\-instance basis, and we place limits on the number of simultaneous connections from an instance to the IMDS\. 
 
-If you're using the instance metadata service to retrieve AWS security credentials, avoid querying for credentials during every transaction or concurrently from a high number of threads or processes, as this might lead to throttling\. Instead, we recommend that you cache the credentials until they start approaching their expiry time\. For more information about IAM role and security credentials associated with the role, see [Retrieve security credentials from instance metadata](iam-roles-for-amazon-ec2.md#instance-metadata-security-credentials)\.
+If you're using the IMDS to retrieve AWS security credentials, avoid querying for credentials during every transaction or concurrently from a high number of threads or processes, as this might lead to throttling\. Instead, we recommend that you cache the credentials until they start approaching their expiry time\. For more information about IAM role and security credentials associated with the role, see [Retrieve security credentials from instance metadata](iam-roles-for-amazon-ec2.md#instance-metadata-security-credentials)\.
 
-If you are throttled while accessing the instance metadata service, retry your query with an exponential backoff strategy\.
+If you are throttled while accessing the IMDS, retry your query with an exponential backoff strategy\.
 
-## Limit instance metadata service access<a name="instance-metadata-limiting-access"></a>
+## Limit IMDS access<a name="instance-metadata-limiting-access"></a>
 
-You can consider using local firewall rules to disable access from some or all processes to the instance metadata service\.
+You can consider using local firewall rules to disable access from some or all processes to the IMDS\.
 
 **Note**  
 For [Instances built on the Nitro System](instance-types.md#ec2-nitro-instances), IMDS can be reached from your own network when a network appliance within your VPC, such as a virtual router, forwards packets to the IMDS address, and the default [source/destination check](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html#EIP_Disable_SrcDestCheck) on the instance is disabled\. To prevent a source from outside your VPC reaching IMDS, we recommend that you modify the configuration of the network appliance to drop packets with the destination IPv4 address of IMDS 169\.254\.169\.254 and, if you enabled the IPv6 endpoint, the IPv6 address of IMDS fd00:ec2::254\.

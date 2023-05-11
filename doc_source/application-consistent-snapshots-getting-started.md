@@ -138,6 +138,20 @@ The S3 permissions that grant the ability to write the data to an S3 bucket are 
 
 1. Choose **Run**\.
 
+### Verify the signature on AWS VSS components<a name="vss2-updates"></a>
+
+Use the following procedure to verify the signature on the `AWSVssComponents` package\.
+
+1. Connect to your Windows instance\. For more information, see [Connect to your Windows instance](connecting_to_windows_instance.md)\.
+
+1. Navigate to C:\\Program Files\\Amazon\\AwsVssComponents\.
+
+1. Open the context \(right\-click\) menu for `ec2-vss-agent.exe`, and then choose **Properties**\.
+
+1. Navigate to the **Digital Signatures** tab and verify that the name of the signer is Amazon Web Services Inc\.
+
+1. Use the preceding steps to verify the signature on `Ec2VssInstaller` and `Ec2VssProvider.dll`\.
+
 ## Create a VSS application\-consistent snapshot using the console<a name="application-consistent-snapshots-creating-console"></a>
 
 Use the following procedure to create a VSS\-enabled EBS snapshot\.

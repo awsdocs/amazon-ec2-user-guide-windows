@@ -13,7 +13,6 @@ EC2Launch v2 publishes Windows event logs to help you troubleshoot errors and se
 + Windows Server 2019 \(Long\-Term Servicing Channel and Semi\-Annual Channel\)
 + Windows Server 2016
 + Windows Server 2012 and 2012 R2
-+ Windows Server 2008 SP2 and 2008 R2
 
 **Topics**
 + [EC2Launch v2 overview](ec2launch-v2-overview.md)

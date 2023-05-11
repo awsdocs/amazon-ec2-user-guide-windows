@@ -34,16 +34,14 @@ When the network traffic for an instance exceeds a maximum, AWS shapes the traff
 The ENA driver delivers the following metrics to the instance in real time\. They provide the cumulative number of packets queued or dropped on each network interface since the last driver reset\.
 
 
-| Metric | Description | 
-| --- | --- | 
-| bw\_in\_allowance\_exceeded |  The number of packets queued or dropped because the inbound aggregate bandwidth exceeded the maximum for the instance\.  | 
-| bw\_out\_allowance\_exceeded |  The number of packets queued or dropped because the outbound aggregate bandwidth exceeded the maximum for the instance\.  | 
-| conntrack\_allowance\_exceeded |  The number of packets dropped because connection tracking exceeded the maximum for the instance and new connections could not be established\. This can result in packet loss for traffic to or from the instance\.  | 
-| conntrack\_allowance\_available\* | The number of tracked connections that can be established by the instance before hitting the Connections Tracked allowance of that instance type\. | 
-| linklocal\_allowance\_exceeded |  The number of packets dropped because the PPS of the traffic to local proxy services exceeded the maximum for the network interface\. This impacts traffic to the DNS service, the Instance Metadata Service, and the Amazon Time Sync Service\.  | 
-| pps\_allowance\_exceeded |  The number of packets queued or dropped because the bidirectional PPS exceeded the maximum for the instance\.  | 
-
-**\*** conntrack\_allowance\_available metric is supported on Nitro based instance types\. Currently, these [Nitro System](instance-types.md#ec2-nitro-instances) instances do not publish the conntrack utilization metric: C6a, C6gn, C6i, C6id, C6in, Hpc6a, I4i, Im4gn, Is4gen, M6a, M6i, M6in, M6idn, R6i, R6id, R6idn, R6in, Trn1, X2idn, X2iedn, X2iezn, c7gn, p4d, p4de\. Support for these instances is coming soon\.
+| Metric | Description | Supported on | 
+| --- | --- | --- | 
+| bw\_in\_allowance\_exceeded |  The number of packets queued or dropped because the inbound aggregate bandwidth exceeded the maximum for the instance\.  | All instance types | 
+| bw\_out\_allowance\_exceeded |  The number of packets queued or dropped because the outbound aggregate bandwidth exceeded the maximum for the instance\.  | All instance types | 
+| conntrack\_allowance\_exceeded |  The number of packets dropped because connection tracking exceeded the maximum for the instance and new connections could not be established\. This can result in packet loss for traffic to or from the instance\.  | All instance types | 
+| conntrack\_allowance\_available | The number of tracked connections that can be established by the instance before hitting the Connections Tracked allowance of that instance type\. | [Nitro\-based instance types](instance-types.md#ec2-nitro-instances) only | 
+| linklocal\_allowance\_exceeded |  The number of packets dropped because the PPS of the traffic to local proxy services exceeded the maximum for the network interface\. This impacts traffic to the DNS service, the Instance Metadata Service, and the Amazon Time Sync Service\.  | All instance types | 
+| pps\_allowance\_exceeded |  The number of packets queued or dropped because the bidirectional PPS exceeded the maximum for the instance\.  | All instance types | 
 
 ## View the network performance metrics for your Windows instance<a name="view-network-performance-metrics"></a>
 

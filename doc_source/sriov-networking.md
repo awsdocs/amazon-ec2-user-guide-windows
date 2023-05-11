@@ -82,8 +82,6 @@ There is no way to disable the enhanced networking attribute after you've enable
 The administrator password will reset when you enable the initialize instance EC2 Launch script\. You can modify the configuration file to disable the administrator password reset by specifying it in the settings for the initialization tasks\. For steps on how to disable password reset, see [Configure initialization tasks](ec2launch.md#ec2launch-inittasks)\.
 
 1. From the instance, download the Intel network adapter driver for your operating system:
-**Note**  
-To avoid connectivity issues, we recommend you don't install the Intel Network Adapter driver release 26\.6 or later\.
    + **Windows Server 2019** including for Server version 1809 and later\*
 
      Visit the [ download page](https://www.intel.com/content/www/us/en/download/19372/intel-network-adapter-driver-for-windows-server-2019.html) and download `Wired_driver_version_x64.zip`\.

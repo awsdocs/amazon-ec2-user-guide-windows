@@ -42,7 +42,7 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 
    ```
    $Bucket = "ec2-amd-windows-drivers"
-   $KeyPrefix = "latest"
+   $KeyPrefix = "latest" # use "archives" for Windows Server 2016
    $LocalPath = "$home\Desktop\AMD"
    $Objects = Get-S3Object -BucketName $Bucket -KeyPrefix $KeyPrefix -Region us-east-1
    foreach ($Object in $Objects) {
@@ -57,15 +57,13 @@ These downloads are available to AWS customers only\. By downloading, you agree 
 1. Unzip the downloaded driver file and run the installer using the following PowerShell commands\.
 
    ```
-   Expand-Archive $LocalFilePath -DestinationPath "$home\Desktop\AMD\latest" -Verbose
-   $Driverdir = Get-ChildItem "$home\Desktop\" -Directory -Filter "*WHQL*"
-   Write-Host $Driverdir
+   Expand-Archive $LocalFilePath -DestinationPath "$home\Desktop\AMD\$KeyPrefix" -Verbose
    ```
 
-   Now, check the name of the new directory\. The directory name can be retrieved using the `Get-ChildItem` PowerShell command\.
+   Now, check the content of the new directory\. The directory name can be retrieved using the `Get-ChildItem` PowerShell command\.
 
    ```
-   Get-ChildItem "$home\Desktop\AMD\latest\"
+   Get-ChildItem "$home\Desktop\AMD\$KeyPrefix"
    ```
 
    The output should be similar to the following:
@@ -78,10 +76,10 @@ These downloads are available to AWS customers only\. By downloading, you agree 
    d-----       10/13/2021  12:52 AM                210414a-365562C-Retail_End_User.2
    ```
 
-   Note the correct file path and install the drivers:
+   Install the drivers:
 
    ```
-   pnputil /add-driver $home\Desktop\AMD\latest\210414a-365562C-Retail_End_User.2\packages\Drivers\Display\WT6A_INF/*.inf /install
+   pnputil /add-driver $home\Desktop\AMD\$KeyPrefix\*.inf /install /subdirs
    ```
 
 1. Follow the instructions to install the driver and reboot your instance as required\.

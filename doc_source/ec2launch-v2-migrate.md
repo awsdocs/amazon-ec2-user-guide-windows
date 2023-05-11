@@ -14,7 +14,7 @@ The 32\-bit migration tool link will be deprecated\. We recommend that you use t
 **Note**  
 You must run the EC2Launch v2 migration tool as an Administrator\. EC2Launch v2 is installed as a service after you run the migration tool\. It does not run immediately\. By default, it runs during instance startup and runs if an instance is stopped and later started, or restarted\.
 
-Use the [https://console.aws.amazon.com/systems-manager/documents/AWSEC2Launch-RunMigration/description?region=us-east-1](https://console.aws.amazon.com/systems-manager/documents/AWSEC2Launch-RunMigration/description?region=us-east-1) SSM document to migrate to the latest EC2Launch version with SSM Run Command\. The document does not require any parameters\. For more information about using SSM Run Command, see [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html)\.
+Use the [https://console.aws.amazon.com/systems-manager/documents/AWSEC2Launch-RunMigration/description?region=us-east-1](https://console.aws.amazon.com/systems-manager/documents/AWSEC2Launch-RunMigration/description?region=us-east-1) SSM document to migrate to the latest EC2Launch v2 version with SSM Run Command\. The document does not require any parameters\. For more information about using SSM Run Command, see [AWS Systems Manager Run Command](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html)\.
 
 The migration tool applies the following configurations from EC2Config to EC2Launch v2\.
 + If `Ec2DynamicBootVolumeSize` is set to `false`, removes EC2Launch v2 `boot` stage

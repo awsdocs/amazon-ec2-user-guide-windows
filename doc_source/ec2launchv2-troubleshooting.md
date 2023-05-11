@@ -75,17 +75,17 @@ The following example idempotent script sets the computer name and joins a domai
 <powershell>
   $name = $env:computername
   if ($name -ne $desiredName) {
-    Rename-Computer -NewName $desiredName
+	Rename-Computer -NewName $desiredName
   }
   $domain = Get-ADDomain
   if ($domain -ne $desiredDomain) 
   {
-    Add-Computer -DomainName $desiredDomain
+	Add-Computer -DomainName $desiredDomain
   }
   $telnet = Get-WindowsFeature -Name Telnet-Client
   if (-not $telnet.Installed)
   {
-    Install-WindowsFeature -Name "Telnet-Client"
+	Install-WindowsFeature -Name "Telnet-Client"
   }
 </powershell>
 <persist>false</persist>
@@ -117,15 +117,15 @@ Manually delete this file, or delete it using a script\.
 ```
 foreach ($userDir in (Get-ChildItem "C:\Users" -Force -Directory).FullName)
 {
-    $startupPath = Join-Path $userDir -ChildPath "AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
-    if (Test-Path $startupPath)
-    {
-        $wallpaperSetupPath = Join-Path $startupPath -ChildPath "setwallpaper.lnk"
-        if (Test-Path $wallpaperSetupPath)
-        {
-            Remove-Item $wallpaperSetupPath -Force -Confirm:$false
-        }
-    }
+	$startupPath = Join-Path $userDir -ChildPath "AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup"
+	if (Test-Path $startupPath)
+	{
+		$wallpaperSetupPath = Join-Path $startupPath -ChildPath "setwallpaper.lnk"
+		if (Test-Path $wallpaperSetupPath)
+		{
+			Remove-Item $wallpaperSetupPath -Force -Confirm:$false
+		}
+	}
 }
 ```
 
@@ -142,7 +142,7 @@ foreach ($userDir in (Get-ChildItem "C:\Users" -Force -Directory).FullName)
   service is still running...checking again in '5.000000' seconds
   service is still running...checking again in '5.000000' seconds
   ```
-+ EC2Launch is blocked with logs \(`agent.log`\) similar to the following:
++ EC2Launch v2 is blocked with logs \(`agent.log`\) similar to the following:
 
   ```
   2022-02-24 08:08:58 Info: *****************************************************************************************
@@ -335,6 +335,7 @@ The following is sample console log output for EC2Launch v2\.
 2020/08/13 17:28:13Z: Password: <Password>
 A1B2C3D4E5F6G7H8I9J10K11L12M13N14O15P16Q17
 </Password>
+2020/08/13 17:28:13Z: User data format: yaml_1.1
 2020/08/13 17:28:13Z: Message: Windows is Ready to use
 ```
 
@@ -388,4 +389,5 @@ Message: Waiting for meta-data accessibility...
 Message: Meta-data is now available.
 Message: Still waiting for meta-data accessibility...
 Message: Failed to find primary network interface...retrying...
+User data format: {format}
 ```

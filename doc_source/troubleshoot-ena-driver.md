@@ -42,9 +42,9 @@ To check the status of your ENA Windows driver using the Windows Device Manager,
 
 1. Select the arrow to the left of **Network adapters** to expand the list\.
 
-1. Choose the name, or open the context menu for the **Amazon Elastic Network Adapter**, and then choose **Properties**\.
+1. Choose the name, or open the context menu for the **Amazon Elastic Network Adapter**, and then choose **Properties**\. This opens the **Amazon Elastic Network Adapter Properties** dialog\.
 
-1. Verify that the message in the **General** tab of the **Amazon Elastic Network Adapter Properties** window says "This device is working properly\."
+1. Verify that the message in the **General** tab says "This device is working properly\."
 
 ### Investigate driver event messages<a name="ts-ena-diagnostics-event-log"></a>
 
@@ -121,7 +121,7 @@ To change the metrics refresh interval for the ENA Windows driver, follow these 
 
 1. Select the arrow to the left of **Network adapters** to expand the list\.
 
-1. Open the context menu for the **Amazon Elastic Network Adapter**, and then choose **Properties**\.
+1. Choose the name, or open the context menu for the **Amazon Elastic Network Adapter**, and then choose **Properties**\. This opens the **Amazon Elastic Network Adapter Properties** dialog\.
 
 1. Open the **Advanced** tab in the pop\-up window\.
 
@@ -151,6 +151,48 @@ The ENA adapter might also indirectly request a device reset procedure, by faili
 ## Troubleshooting scenarios<a name="ts-ena-drv-scenarios"></a>
 
 The following scenarios can help you troubleshoot issues that you might experience with the ENA Windows driver\. We recommend that you start with upgrading your ENA driver, if you don't have the latest version\. To find the latest driver for your Windows OS version, see [Amazon ENA driver versions](enhanced-networking-ena.md#ena-adapter-driver-versions)\.
+
+### Unexpected ENA driver version installed<a name="ts-ena-drv-sc-unexpected-vsn"></a>
+
+#### Description<a name="ts-ena-drv-sc-unexpected-vsn-descr"></a>
+
+After you go through the steps to install a specific version of the ENA driver, the Windows Device Manager shows that Windows installed a different version of the ENA driver\.
+
+#### Cause<a name="ts-ena-drv-sc-unexpected-vsn-cause"></a>
+
+When you run the install for a driver package, Windows ranks all of the driver packages that are valid for the given device in the local [Driver Store](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/driver-store) before it begins\. Then it selects the package with the lowest rank value as the best match\. This can be different from the package that you intended to install\. For more information about the device driver package selection process, see [How Windows selects a driver package for a device](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/how-windows-selects-a-driver-for-a-device) on the *Microsoft documentation website*\.
+
+#### Solution<a name="ts-ena-drv-sc-unexpected-vsn-solution"></a>
+
+To ensure that Windows installs your chosen driver package version, you can remove lower ranked driver packages from the Driver Store with the [PnPUtil](https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/pnputil) command line tool\.
+
+Follow these steps to update the ENA driver:
+
+1. Connect to your instance and log in as the local administrator\.
+
+1. Open the Device Manager properties window, as described in the [Check ENA device status](#ts-ena-diagnostics-device-mgr) section\. This opens the **General** tab of the **Amazon Elastic Network Adapter Properties** window\.
+
+1. Open the **Driver** tab\.
+
+1. Choose **Update Driver**\. This opens the **Update Driver Software – Amazon Elastic Network Adapter** dialog box\.
+
+   1. On the **How do you want to search for driver software?** page, choose **Browse my computer for driver software**\.
+
+   1. On the **Browse for driver software on your computer** page, choose **Let me pick from a list of device drivers on my computer**, located below the search bar\.
+
+   1. On the **Select the device driver you want to install for this hardware** page, choose **Have Disk\.\.\.**\.
+
+   1. In the **Install from Disk** window, choose **Browse\.\.\.**, next to the file location from the dropdown list\.
+
+   1. Navigate to the location where you downloaded the target ENA driver package\. Select the file named `ena.inf` and choose **Open**\.
+
+   1. To start the install, choose **OK**, and then choose **Next**\.
+
+1. If the installer doesn’t automatically reboot your instance, run the Restart\-Computer PowerShell cmdlet\.
+
+   ```
+   PS C:\> Restart-Computer
+   ```
 
 ### Device warning for ENA driver<a name="ts-ena-drv-sc-device-warn"></a>
 
@@ -250,7 +292,7 @@ Prior to upgrading to sixth generation EC2 instances, make sure that the AMI tha
 ENA Windows driver version 2\.2\.4 has been rolled back due to potential performance degradation on the sixth generation EC2 instances\. If driver version 2\.2\.4 is installed, we recommend that you downgrade the driver, using one of the following methods:
 Download the previous version package from the [Amazon ENA driver versions](enhanced-networking-ena.md#ena-adapter-driver-versions) table \(version 2\.2\.3\)\.
 Run the install\.ps1 PowerShell installation script\.
-For more details for pre\- and post\-installation steps see [Enable enhanced networking on Windows](enhanced-networking-ena.md#enable-enhanced-networking-ena-WIN)\.  
+For more details for pre\- and post\-installation steps see [Enable enhanced networking on Windows](enhanced-networking-ena.md#enable-enhanced-networking-ena-windows)\.  
 Perform a bulk update via SSM document `AWS-ConfigureAWSPackage`, with the following parameters:  
 **Name**: AwsEnaNetworkDriver
 **Version**: 2\.2\.3
@@ -283,11 +325,11 @@ To change ENA adapter properties, follow these steps:
 
 1. Select the arrow to the left of **Network adapters** to expand the list\.
 
-1. Choose the name, or open the context menu for the **Amazon Elastic Network Adapter**, and then choose **Properties**\.
+1. Choose the name, or open the context menu for the **Amazon Elastic Network Adapter**, and then choose **Properties**\. This opens the **Amazon Elastic Network Adapter Properties** dialog\.
 
-1. Open the **Advanced** tab in the **Amazon Elastic Network Adapter Properties** window\.
+1. To make your changes, open the **Advanced** tab\.
 
-1. Select the property that you want to change\. When you are done, choose **OK** to save your changes\.
+1. When you're done, choose **OK** to save your changes\.
 
 The following example shows an ENA adapter property in the Windows Device Manager:
 

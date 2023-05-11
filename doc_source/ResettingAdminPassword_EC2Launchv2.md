@@ -13,17 +13,17 @@ If you have disabled the local administrator account on the instance and your in
 There is an AWS Systems Manager Automation document that automatically applies the manual steps necessary to reset the local administrator password\. For more information, see [Reset Passwords and SSH Keys on Amazon EC2 Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
 
 To reset your Windows administrator password using EC2Launch v2, you need to do the following:
-+ [Step 1: Verify that the EC2Launch v2 service is running](#resetting-password-ec2launchv2-step1)
++ [Step 1: Verify that the EC2Launch v2 agent is running](#resetting-password-ec2launchv2-step1)
 + [Step 2: Detach the root volume from the instance](#resetting-password-ec2launchv2-step2)
 + [Step 3: Attach the volume to a temporary instance](#resetting-password-ec2launchv2-step3)
 + [Step 4: Delete the `.run-once` file](#resetting-password-ec2launchv2-step4)
 + [Step 5: Restart the original instance](#resetting-password-ec2launchv2-step5)
 
-## Step 1: Verify that the EC2Launch v2 service is running<a name="resetting-password-ec2launchv2-step1"></a>
+## Step 1: Verify that the EC2Launch v2 agent is running<a name="resetting-password-ec2launchv2-step1"></a>
 
-Before you attempt to reset the administrator password, verify that the EC2Launch v2 service is installed and running\. You use the EC2Launch v2 service to reset the administrator password later in this section\.
+Before you attempt to reset the administrator password, verify that the EC2Launch v2 agent is installed and running\. You use the EC2Launch v2 agent to reset the administrator password later in this section\.
 
-**To verify that the EC2Launch v2 service is running**
+**To verify that the EC2Launch v2 agent is running**
 
 1. Open the Amazon EC2 console at [https://console\.aws\.amazon\.com/ec2/](https://console.aws.amazon.com/ec2/)\.
 
@@ -33,7 +33,7 @@ Before you attempt to reset the administrator password, verify that the EC2Launc
 
 1. Locate the EC2 Launch entry, for example, **Launch: EC2Launch v2 service v2\.0\.124**\. If you see this entry, the EC2Launch v2 service is running\.
 
-   If the system log output is empty, or if the EC2Launch v2 service is not running, troubleshoot the instance using the Instance Console Screenshot service\. For more information, see [Troubleshoot an unreachable instance](screenshot-service.md)\.
+   If the system log output is empty, or if the EC2Launch v2 agent is not running, troubleshoot the instance using the Instance Console Screenshot service\. For more information, see [Troubleshoot an unreachable instance](screenshot-service.md)\.
 
 ## Step 2: Detach the root volume from the instance<a name="resetting-password-ec2launchv2-step2"></a>
 

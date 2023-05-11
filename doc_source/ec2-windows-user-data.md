@@ -98,7 +98,7 @@ tasks:
 *Example YAML syntax to run a batch script*
 
 ```
-version: 1.0
+version: 1.1
 tasks:
 - task: executeScript
   inputs:

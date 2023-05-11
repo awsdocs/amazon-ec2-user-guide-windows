@@ -1,6 +1,6 @@
 # EC2Launch v2 settings<a name="ec2launch-v2-settings"></a>
 
-This section contains information about how to configure settings for EC2Launch v2\. 
+This section contains information about how to configure settings for EC2Launch v2\.
 
 **Topics**
 + [Change settings using the EC2Launch v2 settings dialog box](#ec2launch-v2-ui)
@@ -99,7 +99,7 @@ The following is an example configuration YAML file created from the settings en
 version: 1.0
 config:
   - stage: boot
-    tasks:
+	tasks:
       - task: extendRootPartition
   - stage: preReady
     tasks:
@@ -286,7 +286,7 @@ ec2launch reset -c
 
 `-b`, `--block`
 
-blocks the `reset` command until the service stops\. If the reset command is run with the `--block` flag as part of the `executeScript` task, the `detach` argument must be set to true\. For more information, see Example 4 under [executeScript ](#ec2launch-v2-executescript)\. 
+blocks the `reset` command until the service stops\. If the reset command is run with the `--block` flag as part of the `executeScript` task, the `detach` argument must be set to true\. For more information, see Example 4 under [executeScript](#ec2launch-v2-executescript)\. 
 
 `-c`, `--clean`
 
@@ -318,17 +318,17 @@ help for `run`
 
 ### status<a name="ec2launch-v2-settings-status"></a>
 
-Gets the status of the EC2Launch service\. Optionally blocks the process until the service is finished\. The process exit code determines the service state:
-+ `0` — the service ran and was successful\.
-+ `1` — the service ran and failed\.
-+ `2` — the service is still running\.
-+ `3` — the service is in an unknown state\. The service state is not running or stopped\.
-+ `4` — an error occurred when attempting to retrieve the service state\.
-+ `5` — the service is not running and the status of the last known run is unknown\. This could mean one of the following:
+Gets the status of the EC2Launch v2 agent\. Optionally blocks the process until the agent is finished\. The process exit code determines the agent state:
++ `0` — the agent ran and was successful\.
++ `1` — the agent ran and failed\.
++ `2` — the agent is still running\.
++ `3` — the agent is in an unknown state\. The agent state is not running or stopped\.
++ `4` — an error occurred when attempting to retrieve the agent state\.
++ `5` — the agent is not running and the status of the last known run is unknown\. This could mean one of the following:
   + both the `state.json` and `previous-state.json` are deleted\.
   + the `previous-state.json` is corrupted\.
 
-  This is the service state after running the [`reset`](#ec2launch-v2-reset) command\.
+  This is the agent state after running the [`reset`](#ec2launch-v2-reset) command\.
 
 **Example:**
 
@@ -344,7 +344,7 @@ ec2launch status -b
 
 `-b`,`--block`
 
-blocks the process until the services finishes running
+blocks the process until the agent finishes running
 
 `-h`,`--help`
 
@@ -352,7 +352,7 @@ help for `status`
 
 ### sysprep<a name="ec2launch-v2-settings-sysprep"></a>
 
-Resets the service state, updates `unattend.xml`, disables RDP, and runs Sysprep\.
+Resets the agent state, updates `unattend.xml`, disables RDP, and runs Sysprep\.
 
 **Example:**
 
@@ -368,7 +368,7 @@ ec2launch sysprep
 
 `-b`,`--block`
 
-blocks the `sysprep` command until the service stops\. If the reset command is run with the `--block` flag as part of the `executeScript` task, the `detach` argument must be set to true\. For more information, see Example 4 under [executeScript ](#ec2launch-v2-executescript)\. 
+blocks the `sysprep` command until the agent stops\. If the reset command is run with the `--block` flag as part of the `executeScript` task, the `detach` argument must be set to true\. For more information, see Example 4 under [executeScript](#ec2launch-v2-executescript)\. 
 
 `-c`,`--clean`
 
@@ -459,6 +459,164 @@ This section includes the configuration schema, tasks, details, and examples for
 **Topics**
 + [Schema: `agent-config.yml`](#ec2launch-v2-schema-agent-config)
 + [Schema: user data](#ec2launch-v2-schema-user-data)
++ [Task definitions](#ec2launch-v2-task-definitions)
+
+### Schema: `agent-config.yml`<a name="ec2launch-v2-schema-agent-config"></a>
+
+The structure of the `agent-config.yml` file is shown below\. Note that a task cannot be repeated in the same stage\. For task properties, see the task descriptions that follow\.
+
+#### Document structure: agent\-config\.yml<a name="ec2launch-v2-schema-agent-config-doc-structure"></a>
+
+**JSON**
+
+```
+{
+	"version": "1.0",
+	"config": [
+		{
+			"stage": "string",
+			"tasks": [
+				{
+					"task": "string",
+					"inputs": {
+						...
+					}
+				},
+				...
+			]
+		},
+		...
+	]
+}
+```
+
+**YAML**
+
+```
+version: 1.0
+config:
+- stage: string
+  tasks:
+  - task: string
+	inputs:
+	  ...
+  ...
+...
+```
+
+#### Example: `agent-config.yml`<a name="ec2launch-v2-example-agent-config"></a>
+
+The following example shows settings for the `agent-config.yml` configuration file\.
+
+```
+#version: 1.0
+config:
+- stage: boot
+  tasks:
+  - task: extendRootPartition
+- stage: preReady
+  tasks:
+  - task: activateWindows
+    inputs:
+      activation:
+        type: amazon
+  - task: setDnsSuffix
+    inputs:
+      suffixes:
+      - $REGION.ec2-utilities.amazonaws.com
+  - task: setAdminAccount
+    inputs:
+      password:
+        type: random
+  - task: setWallpaper
+    inputs:
+      path: C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg
+      attributes:
+      - hostName
+      - instanceId
+      - privateIpAddress
+      - publicIpAddress
+      - instanceSize
+      - availabilityZone
+      - architecture
+      - memory
+      - network
+- stage: postReady
+  tasks:
+  - task: startSsm
+```
+
+### Schema: user data<a name="ec2launch-v2-schema-user-data"></a>
+
+The following JSON and YAML examples show the document structure for user data\. Amazon EC2 parses each task named in the `tasks` array that you specify in the document\. Each task has its own set of properties and requirements\. For details, see the [Task definitions](#ec2launch-v2-task-definitions)\.
+
+**Note**  
+A task must only appear once in user data tasks array\.
+
+#### Document structure: user data<a name="ec2launch-v2-schema-user-data-doc-structure"></a>
+
+**JSON**
+
+```
+{
+	"version": "1.1",
+	"tasks": [
+		{
+			"task": "string",
+			"inputs": {
+				...
+			},
+		},
+		...
+	]
+}
+```
+
+#### Change log: user data<a name="ec2launch-v2-versions-user-data"></a>
+
+The following table lists changes for user data, and cross\-references them to the EC2Launch v2 agent version that applies\.
+
+
+| User data version | Details | Introduced in | 
+| --- | --- | --- | 
+| 1\.1 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-v2-settings.html) | EC2Launch v2 version 2\.0\.1245 | 
+| 1\.0 | [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-v2-settings.html) | EC2Launch v2 version 2\.0\.0 | 
+
+\* When used with the default `agent-congif.yml` file\.
+
+#### Example: user data<a name="ec2launch-v2-example-user-data"></a>
+
+For more information about user data, see [Run commands on your Windows instance at launch](ec2-windows-user-data.md)\.
+
+The following example shows settings for user data\.
+
+```
+version: 1.1
+tasks:
+- task: executeScript
+  inputs:
+  - frequency: always
+    type: powershell
+    runAs: localSystem
+    content: |-
+      New-Item -Path 'C:\PowerShellTest.txt' -ItemType File
+```
+
+The following format is compatible with the previous version of this service\. It is run as an `executeScript` task in the `UserData` stage\. To mimic the behavior of the previous version, it will be set to run as a detached process\.
+
+```
+<powershell>
+  $file = $env:SystemRoot + "\Temp" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+  New-Item $file -ItemType file
+</powershell>
+<persist>true</persist>
+```
+
+### Task definitions<a name="ec2launch-v2-task-definitions"></a>
+
+Each task has its own set of properties and requirements\. For details, see the individual tasks that you want to include in your document\.
+
+**Topics**
 + [activateWindows](#ec2launch-v2-activatewindows)
 + [enableJumboFrames](#ec2launch-v2-enablejumboframes)
 + [enableOpenSsh](#ec2launch-v2-enableopenssh)
@@ -474,83 +632,8 @@ This section includes the configuration schema, tasks, details, and examples for
 + [startSsm](#ec2launch-v2-startssm)
 + [sysprep](#ec2launch-v2-task-sysprep)
 + [writeFile](#ec2-launch-v2-writefile)
-+ [Example: `agent-config.yml`](#ec2launch-v2-example-agent-config)
-+ [Example: user data](#ec2launch-v2-example-user-data)
 
-### Schema: `agent-config.yml`<a name="ec2launch-v2-schema-agent-config"></a>
-
-The structure of the `agent-config.yml` file is shown below\. Note that a task cannot be repeated in the same stage\. For task properties, see the task descriptions that follow\.
-
-**JSON**
-
-```
-{
-    "version": "1.0",
-    "config": [
-        {
-            "stage": "string",
-            "tasks": [
-                {
-                    "task": "string",
-                    "inputs": {
-                        ...
-                    }
-                },
-                ...
-            ]
-        },
-        ...
-    ]
-}
-```
-
-**YAML**
-
-```
-version: 1.0
-config:
-- stage: string
-  tasks:
-  - task: string
-    inputs:
-      ...
-  ...
-...
-```
-
-### Schema: user data<a name="ec2launch-v2-schema-user-data"></a>
-
-The structure of user data is shown below\. The `tasks` list is parsed and executed in the same manner as the `tasks` list in the [`agent-config.yml`](#ec2launch-v2-schema-agent-config) file\. A task cannot be repeated\. For task properties, see the task descriptions that follow\.
-
-**JSON**
-
-```
-{
-    "version": "1.0",
-    "tasks": [
-        {
-            "task": "string",
-            "inputs": {
-                ...
-            },
-        },
-        ...
-    ]
-}
-```
-
-**YAML**
-
-```
-version: 1.0
-tasks:
-- task: string
-  inputs:
-    ...
-...
-```
-
-### activateWindows<a name="ec2launch-v2-activatewindows"></a>
+#### activateWindows<a name="ec2launch-v2-activatewindows"></a>
 
 Activates Windows against a set of AWS KMS servers\. Activation is skipped if the instance is detected as Bring\-Your\-Own\-License \(BYOL\)\.
 
@@ -573,7 +656,7 @@ inputs:
     type: amazon
 ```
 
-### enableJumboFrames<a name="ec2launch-v2-enablejumboframes"></a>
+#### enableJumboFrames<a name="ec2launch-v2-enablejumboframes"></a>
 
 Enables Jumbo Frames, which increase the maximum transmission unit \(MTU\) of the network adapter\. For more information, see [Jumbo frames \(9001 MTU\)](network_mtu.md#jumbo_frame_instances)\.
 
@@ -589,7 +672,7 @@ Enables Jumbo Frames, which increase the maximum transmission unit \(MTU\) of th
 task: enableJumboFrames
 ```
 
-### enableOpenSsh<a name="ec2launch-v2-enableopenssh"></a>
+#### enableOpenSsh<a name="ec2launch-v2-enableopenssh"></a>
 
 Enables Windows OpenSSH and adds the public key for the instance to the authorized keys folder\.
 
@@ -607,27 +690,49 @@ The following example shows how to enable OpenSSH on an instance, and to add the
 task: enableOpenSsh
 ```
 
-### executeProgram<a name="ec2launch-v2-executeprogram"></a>
+#### executeProgram<a name="ec2launch-v2-executeprogram"></a>
 
-Executes a program with optional arguments and a specified frequency\.
+Runs a program with optional arguments and a specified frequency\.
 
-*Frequency* — see *Inputs*
+**Stages:** You can run the `executeProgram` task during the `PreReady`, `PostReady`, and `UserData` stages\.
 
-*AllowedStages* — `[PostReady, UserData]`
+**Frequency:** configurable, see *Inputs*\.
 
-*Inputs* — 
+**Inputs**  
+You can configure runtime parameters as follows:    
+**frequency \(string\)**  
+\(Required\) Specify exactly one of the following values:  
++ `once`
++ `always`  
+**path \(string\)**  
+\(Required\) The file path for the executable to run\.  
+**arguments \(list of strings\)**  
+\(Optional\) A comma separated list of arguments to provide to the program as input\.  
+**runAs \(string\)**  
+\(Required\) Must be set to `localSystem`
 
-`frequency`: \(string\) one of `once` or `always`
+**Output**  
+All of the tasks write logfile entries to the `agent.log` file\. Additional output from the `executeProgram` task is stored separately in a dynamically named folder, as follows:  
+`%LocalAppData%\Temp\EC2Launch#########\outputfilename.tmp`  
+The exact path to the output files is included in the `agent.log` file, for example:  
 
-`path`: \(string\) path to the executable
+```
+Program file is created at: C:\Windows\system32\config\systemprofile\AppData\Local\Temp\EC2Launch123456789\ExecuteProgramInputs.tmp
+Output file is created at: C:\Windows\system32\config\systemprofile\AppData\Local\Temp\EC2Launch123456789\Output.tmp
+Error file is created at: C:\Windows\system32\config\systemprofile\AppData\Local\Temp\EC2Launch123456789\Err.tmp
+```
+**Output files for the `executeProgram` task**    
+`ExecuteProgramInputs.tmp`  
+Contains the path for the executable, and all of the input parameters that the `executeProgram` task passes to it when it runs\.  
+`Output.tmp`  
+Contains runtime output from the program that the `executeProgram` task runs\.  
+`Err.tmp`  
+Contains runtime error messages from the program that the `executeProgram` task runs\.
 
-`arguments`: \(list of strings\) list of string arguments to pass to the executable
-
-`runAs`: \(string\) must be set to `localSystem`
-
-*Example*
-
-The following example shows how to run an executable file that is already on an instance\. 
+**Examples**  
+The following examples show how to run an executable file from a local directory on an instance with the `executeProgram` task\.  
+**Example 1: Setup executable with one argument**  
+This example shows an `executeProgram` task that runs a setup executable in quiet mode\.
 
 ```
 task: executeProgram
@@ -636,10 +741,8 @@ inputs:
   path: C:\Users\Administrator\Desktop\setup.exe
   arguments: ['-quiet']
 ```
-
-*Example 2*
-
-The following example shows how to run an executable file that is already on an instance\. This configuration installs a VLC `.exe` file that is present on the `C:` drive of the instance\. `/L=1033` and `/S` are VLC arguments passed as a string list with the VLC `.exe` file\.
+**Example 2: VLC executable with two arguments**  
+This example shows an `executeProgram` task that runs a VLC executable file with two arguments passed as input parameters\.
 
 ```
 task: executeProgram
@@ -650,47 +753,60 @@ inputs:
   runAs: localSystem
 ```
 
-### executeScript<a name="ec2launch-v2-executescript"></a>
+#### executeScript<a name="ec2launch-v2-executescript"></a>
 
 Runs a script with optional arguments and a specified frequency\.
 
-*Frequency* — see *Inputs*
+**Stages:** You can run the `executeScript` task during the `PreReady`, `PostReady`, and `UserData` stages\.
 
-*AllowedStages* — `[PostReady, UserData]`
+**Frequency:** configurable, see *Inputs*\.
 
-*Inputs* — 
+**Inputs**  
+You can configure runtime parameters as follows:    
+**frequency \(string\)**  
+\(Required\) Specify exactly one of the following values:  
++ `once`
++ `always`  
+**type \(string\)**  
+\(Required\) Specify exactly one of the following values:  
++ `batch`
++ `powershell`  
+**arguments \(list of strings\)**  
+\(Optional\) A list of string arguments to pass to the shell\. This parameter isn't supported for `type: batch`\.  
+**content \(string\)**  
+\(Required\) Inline script content\.  
+**runAs \(string\)**  
+\(Required\) Specify exactly one of the following values:  
++ `admin`
++ `localSystem`  
+**detach \(Boolean\)**  
+\(Optional\) The EC2Launch agent defaults to run scripts one at a time \(`detach: false`\)\. To run the script concurrently with other tasks, set the value to `true` \(`detach: true`\)\.  
+Script exit codes \(including `3010`\) have no effect when `detach` is set to `true`\.
 
-`frequency`: \(string\) one of `once` or `always`
-
-`type`: \(string\) one of `batch` or `powershell`
-
-`arguments`: \(list of strings\) list of string arguments to pass to the shell\. This parameter is not supported when `type` is set to `batch`\.
-
-`content`: \(string\) contents of the script
-
-`runAs`: \(string\) one of `admin` or `localSystem`
-
-`detach`: \(Boolean\) defaults to `false`\. Set to `true` if the script should run in detached mode, where EC2Launch runs it concurrently with other tasks\. Script exit codes \(including `3010`\) have no effect when `detach` is set to `true`\.
-
-*Example*
+**Output**  
+All of the tasks write logfile entries to the `agent.log` file\. Additional output from script that the `executeScript` task runs is stored separately in a dynamically named folder, as follows:  
+`%LocalAppData%\Temp\EC2Launch#########\outputfilename.ext`  
+The exact path to the output files is included in the `agent.log` file, for example:  
 
 ```
-task: executeScript
-inputs:
-- frequency: always
-  type: powershell
-  content: |
-    Get-Process | Out-File -FilePath .\Process.txt
-  runAs: localSystem
-- frequency: always
-  type: batch
-  content: |
-    systeminfo
+Program file is created at: C:\Windows\system32\config\systemprofile\AppData\Local\Temp\EC2Launch123456789\UserScript.ps1
+Output file is created at: C:\Windows\system32\config\systemprofile\AppData\Local\Temp\EC2Launch123456789\Output.tmp
+Error file is created at: C:\Windows\system32\config\systemprofile\AppData\Local\Temp\EC2Launch123456789\Err.tmp
 ```
+**Output files for the `executeScript` task**    
+`UserScript.ext`  
+Contains the script that the `executeScript` task ran\. The file extention depends on the type of script you specified in the `type` parameter for the `executeScript` task, as follows:  
++ If the type is `batch`, then the file extension is `.bat`\.
++ If the type is `powershell`, then the file extension is `.ps1`\.  
+`Output.tmp`  
+Contains runtime output from the script that the `executeScript` task runs\.  
+`Err.tmp`  
+Contains runtime error messages from the script that the `executeScript` task runs\.
 
-*Example 2*
-
-The following example shows how to run a PowerShell script on an EC2 instance\. This configuration creates a text file in the `C:` drive\.
+**Examples**  
+The following examples show how to run an inline script with the `executeScript` task\.  
+**Example 1: Hello world output text file**  
+This example shows an `executeScript` task that runs a PowerShell script to create a "Hello world" text file on the `C:` drive\.
 
 ```
 task: executeScript
@@ -700,12 +816,32 @@ inputs:
   runAs: admin
   content: |-
     New-Item -Path 'C:\PowerShellTest.txt' -ItemType File
-    Set-Content 'C:\PowerShellTest.txt' "hello world"
+    Set-Content 'C:\PowerShellTest.txt' "Hello world"
 ```
+**Example 2: Run two scripts**  
+This example shows that the `executeScript` task can run more than one script, and the script type doesn't necessarily need to match\.
+The first script \(`type: powershell`\) writes a summary of the processes that are currently running on the instance to a text file located on the `C:` drive\.  
+The second script \(`batch`\) writes the system information to the `Output.tmp` file\.  
 
-*Example 3*
-
-The following example shows an idempotent script that reboots an instance multiple times\.
+```
+task: executeScript
+inputs:
+- frequency: always
+  type: powershell
+  content: |
+    Get-Process | Out-File -FilePath C:\Process.txt
+  runAs: localSystem
+- frequency: always
+  type: batch
+  content: |
+    systeminfo
+```
+**Example 3: Idempotent system configuration with reboots**  
+This example shows an `executeScript` task that runs an idempotent script to perform the following system configuration with a reboot between each step:
++ Rename the computer\.
++ Join the computer to the domain\.
++ Enable Telnet\.
+The script ensures that each operation runs one time only\. This prevents a reboot loop and makes the script idempotent\.  
 
 ```
 task: executeScript
@@ -732,10 +868,9 @@ inputs:
       exit 3010 
     }
 ```
-
-*Example 4*
-
-You can run EC2Launch v2 CLI commands as part of scripts\. `reset` and `sysprep` commands must include the `--block` flag because they depend on the agent finishing first\. When the `--block` flag is used, the `detach` argument for this task must be set to true\. A deadlock results when you use the `--block` flag in a non\-detached script\. The commands detect the potential deadlock and exit with an error\. The following example shows a script that resets the agent state after the agent finishes running\.
+**Example 4: Reset the launch agent state with a blocking CLI command**  
+This example shows an `executeScript` task that runs a blocking CLI command to reset the launch agent\.
+To ensure that the agent finishes any tasks that are currently running before your script runs a `[reset](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-v2-settings.html#ec2launch-v2-reset)` or `[sysprep](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-v2-settings.html#ec2launch-v2-settings-sysprep)` CLI command, you must include the `--block` flag \(`-b` in this example\)\. To prevent a potential deadlock error on the command, you must also set the `detach` argument for this task to `true`\. If Amazon EC2 detects a potential deadlock, caused by using the `--block` flag in a non\-detached script, it exits the command with an error\.  
 
 ```
 task: executeScript
@@ -748,7 +883,7 @@ inputs:
     & 'C:\Program Files\Amazon\EC2Launch\ec2launch.exe' reset -c -b
 ```
 
-### extendRootPartition<a name="ec2launch-v2-extendrootpartition"></a>
+#### extendRootPartition<a name="ec2launch-v2-extendrootpartition"></a>
 
 Extends the root volume to use all of the available space on the disk\.
 
@@ -764,7 +899,7 @@ Extends the root volume to use all of the available space on the disk\.
 task: extendRootParitition
 ```
 
-### initializeVolume<a name="ec2launch-v2-initializevolume"></a>
+#### initializeVolume<a name="ec2launch-v2-initializevolume"></a>
 
 Initializes volumes attached to the instance so that they are activated and partitioned\. Any volumes that are detected as not empty are not initialized\. A volume is considered empty if the first 4 KiB of a volume are empty, or if a volume does not have a [Windows\-recognizable drive layout](https://docs.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-drive_layout_information_ex)\. The volume `letter` field is always applied when this task runs, regardless of whether the drive is already initialized\.
 
@@ -815,7 +950,7 @@ inputs:
   initialize: all
 ```
 
-### optimizeEna<a name="ec2launch-v2-optimizeena"></a>
+#### optimizeEna<a name="ec2launch-v2-optimizeena"></a>
 
 Optimizes ENA settings based on the current instance type; might reboot the instance\.
 
@@ -831,7 +966,7 @@ Optimizes ENA settings based on the current instance type; might reboot the inst
 task: optimizeEna
 ```
 
-### setAdminAccount<a name="ec2launch-v2-setadminaccount"></a>
+#### setAdminAccount<a name="ec2launch-v2-setadminaccount"></a>
 
 Sets attributes for the default administrator account that is created on the local machine\.
 
@@ -859,7 +994,7 @@ inputs:
     type: random
 ```
 
-### setDnsSuffix<a name="ec2launch-v2-setdnssuffix"></a>
+#### setDnsSuffix<a name="ec2launch-v2-setdnssuffix"></a>
 
 Adds DNS suffixes to the list of search suffixes\. Only suffixes that do not already exist are added to the list\.
 
@@ -880,7 +1015,7 @@ inputs:
   - $REGION.ec2-utilities.amazonaws.com
 ```
 
-### setHostName<a name="ec2launch-v2-sethostname"></a>
+#### setHostName<a name="ec2launch-v2-sethostname"></a>
 
 Sets the hostname of the computer to a custom string or, if `hostName` is not specified, the private IPv4 address\.
 
@@ -905,7 +1040,7 @@ inputs:
   reboot: true
 ```
 
-### setWallpaper<a name="ec2launch-v2-setwallpaper"></a>
+#### setWallpaper<a name="ec2launch-v2-setwallpaper"></a>
 
 Creates the `setwallpaper.lnk` shortcut file in the startup folder of each existing user except for `Default User`\. This shortcut file runs when the user logs in for the first time after instance boot\. It sets up the instance with a custom wallpaper that displays the instance attributes\.
 
@@ -949,8 +1084,8 @@ Input parameters that you provide, and attributes that you can set to configure 
 
   ```
   instanceTags:
-  - Tag 1
-  - Tag 2
+    - Tag 1
+    - Tag 2
   ```  
 **path \(string\)**  
 \(Required\) The filename path of the local \.jpg format image file to use for your wallpaper image\.
@@ -975,7 +1110,7 @@ inputs:
 **Note**  
 You must enable tags in metadata to show tags on the wallpaper\. For more information about instance tags and metadata, see [Work with instance tags in instance metadata](Using_Tags.md#work-with-tags-in-IMDS)\.
 
-### startSsm<a name="ec2launch-v2-startssm"></a>
+#### startSsm<a name="ec2launch-v2-startssm"></a>
 
 Starts the Systems Manager \(SSM\) service following Sysprep\.
 
@@ -991,7 +1126,7 @@ Starts the Systems Manager \(SSM\) service following Sysprep\.
 task: startSsm
 ```
 
-### sysprep<a name="ec2launch-v2-task-sysprep"></a>
+#### sysprep<a name="ec2launch-v2-task-sysprep"></a>
 
 Resets the service state, updates `unattend.xml`, disables RDP, and runs Sysprep\. This task runs only after all other tasks are completed\.
 
@@ -1014,7 +1149,7 @@ inputs:
   shutdown: true
 ```
 
-### writeFile<a name="ec2-launch-v2-writefile"></a>
+#### writeFile<a name="ec2-launch-v2-writefile"></a>
 
 Writes a file to a destination\.
 
@@ -1038,76 +1173,6 @@ inputs:
 - frequency: once
   destination: C:\Users\Administrator\Desktop\booted.txt
   content: Windows Has Booted
-```
-
-### Example: `agent-config.yml`<a name="ec2launch-v2-example-agent-config"></a>
-
-The following example shows settings for the `agent-config.yml` configuration file\.
-
-```
-version: 1.0
-config:
-- stage: boot
-  tasks:
-  - task: extendRootPartition
-- stage: preReady
-  tasks:
-  - task: activateWindows
-    inputs:
-      activation:
-        type: amazon
-  - task: setDnsSuffix
-    inputs:
-      suffixes:
-      - $REGION.ec2-utilities.amazonaws.com
-  - task: setAdminAccount
-    inputs:
-      password:
-        type: random
-  - task: setWallpaper
-    inputs:
-      path: C:\ProgramData\Amazon\EC2Launch\wallpaper\Ec2Wallpaper.jpg
-      attributes:
-      - hostName
-      - instanceId
-      - privateIpAddress
-      - publicIpAddress
-      - instanceSize
-      - availabilityZone
-      - architecture
-      - memory
-      - network
-- stage: postReady
-  tasks:
-  - task: startSsm
-```
-
-### Example: user data<a name="ec2launch-v2-example-user-data"></a>
-
-For more information about user data, see [Run commands on your Windows instance at launch](ec2-windows-user-data.md)\.
-
-The following example shows settings for user data\.
-
-```
-version: 1.0
-tasks:
-- task: executeScript
-  inputs:
-  - frequency: always
-    type: powershell
-    runAs: localSystem
-    content: |-
-      New-Item -Path 'C:\PowerShellTest.txt' -ItemType File
-```
-
-The following format is compatible with the previous version of this service\. It is run as an `executeScript` task in the `UserData` stage\. To mimic the behavior of the previous version, it will be set to run as a detached process\.
-
-```
-<powershell>
-  $file = $env:SystemRoot + "\Temp" + (Get-Date).ToString("MM-dd-yy-hh-mm")
-  New-Item $file -ItemType file
-</powershell>
-<persist>true</persist>
 ```
 
 ## EC2Launch v2 exit codes and reboots<a name="ec2launch-v2-exit-codes-reboots"></a>

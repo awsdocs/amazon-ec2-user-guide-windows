@@ -23,16 +23,13 @@ Bare metal instances are not supported\.
 Elastic Graphics accelerators are available in the following AWS Regions: `us-east-1`, `us-east-2`, `us-west-2`, `ap-northeast-1`, `ap-southeast-1`, `ap-southeast-2`, `eu-central-1`, and `eu-west-1`\.
 
 The following instance types support Elastic Graphics accelerators:
-+ C3 \| C4 \| C5 \| C5a \| C5ad \| C5d \| C5n
-+ D2 \| D3 \| D3en
-+ H1
-+ I3 \| I3en
-+ M3 \| M4 \| M5 \| M5d \| M5dn \| M5n
-+ P2 \| P3 \| P3dn
-+ R3 \| R4 \| R5 \| R5d \| R5dn \| R5n
-+ `t2.medium` or larger \| `t3.medium` or larger
-+ X1 \| X1e
-+ z1d
++ **General purpose:** M3, M4, M5, M5d, M5dn, M5n, T2, and T3
+**Note**  
+Only `t2.medium` and larger and `t3.medium` and larger are supported\.
++ **Compute optimized:** C3, C4, C5, C5a, C5ad, C5d, and C5n
++ **Memory optimized:** R3, R4, R5, R5d, R5dn, R5n, X1, X1e, and z1d
++ **Storage optimized:** D2, D3, D3en, H1, I3, and I3en
++ **Accelerated computing:** P2, P3, and P3dn
 
 The following Elastic Graphics accelerators are available\. You can attach any Elastic Graphics accelerator to any supported instance type\.
 

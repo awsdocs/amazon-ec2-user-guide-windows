@@ -4,6 +4,15 @@ The following table describes important additions to the Amazon EC2 documentatio
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [New storage optimized instances](#DocumentHistory) | I4g is a new storage optimized instance that features the AWS Graviton2 processor and AWS Nitro SSDs\. | May 9, 2023 | 
+| [Trn1n instances](#DocumentHistory) | New accelerated computing instances optimized for machine learning training powered by AWS Trainium accelerators\. | April 13, 2023 | 
+| [Inf2 instances](#DocumentHistory) | New instances featuring AWS Inferentia2 accelerators, the latest machine learning chip designed by AWS\. | April 13, 2023 | 
+| [Launch template quotas](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/launch-template-restrictions.html) | You can now view your quotas for launch templates and launch template versions in the Service Quotas console and by using the Service Quotas CLI\. | April 3, 2023 | 
+| [Capacity Reservation utilization notifications](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/monitor-cr-utilization.html) | AWS Health now sends notifications when capacity utilization for Capacity Reservations in your account drops below 20 percent\. | April 3, 2023 | 
+| [Amazon EBS performance updates](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-optimized.html#current) | Updated Amazon EBS performance for M6a and C6a instances\. | April 3, 2023 | 
+| [Capacity Reservation groups](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/create-cr-group.html) | You can now add Capacity Reservations that are shared with you to Capacity Reservation groups that you own\. | March 30, 2023 | 
+| [New bare metal instances](#DocumentHistory) | Bare metal instances for C6in, M6idn, M6in, R6idn, and R6in\. | March 21, 2023 | 
+| [Modify instance metadata options](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/configuring-IMDS-existing-instances.html) | You can now use the Amazon EC2 console to modify instance metadata options\. | March 20, 2023 | 
 | [UEFI preferred](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/set-ami-boot-mode.html) | You can now create a single AMI that supports both Unified Extensible Firmware Interface \(UEFI\) and Legacy BIOS boot modes\. | March 3, 2023 | 
 | [Modify an AMI for IMDSv2](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/configuring-IMDS-new-instances.html#configure-IMDS-new-instances-ami-configuration) | Modify your existing AMI so that instances launched from the AMI require IMDSv2 by default\. | February 28, 2023 | 
 | [Add supported instances for ENA Express](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ena-express.html) | Added a table with new and existing supported instance types for ENA Express\. | February 13, 2023 | 
@@ -12,7 +21,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 | [AMI alias in launch templates](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/create-launch-template.html#use-an-ssm-parameter-instead-of-an-ami-id) | You can specify an AWS Systems Manager parameter instead of the AMI ID in your launch templates to avoid having to update the templates every time the AMI ID changes\. | January 19, 2023 | 
 | [Hibernation support for C6i, I3en, and M6i](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/hibernating-prerequisites.html#hibernation-prereqs-supported-instance-families) | Hibernate your newly\-launched instances running on C6i, I3en, and M6i instance types\. | December 19, 2022 | 
 | [Torn write prevention](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/storage-twp.html) | Improve the performance of your I/O\-intensive relational database workloads and reduce latency without negatively impacting data resiliency with torn write prevention, a block storage feature\. | November 29, 2022 | 
-| [Hpc6id\.32xlarge instance](#DocumentHistory) | New memory optimized instances featuring 3rd generation Intel Xeon Scalable processors \(Ice Lake\)\. | November 29, 2022 | 
+| [Hpc6id instance](#DocumentHistory) | New memory optimized instance featuring 3rd generation Intel Xeon Scalable processors \(Ice Lake\)\. | November 29, 2022 | 
 | [R6in and R6idn instances](#DocumentHistory) | New memory optimized instances for network\-intensive workloads\. | November 28, 2022 | 
 | [M6in and M6idn instances](#DocumentHistory) | New general computing instances types\. | November 28, 2022 | 
 | [ENA Express](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ena-express.html) | Increase throughput and minimize tail latency of network traffic between EC2 instances with ENA Express\. | November 28, 2022 | 
@@ -130,7 +139,7 @@ The following table describes important additions to the Amazon EC2 documentatio
 | [Wavelength Zones](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/EC2Win_Infrastructure.html#EC2Win_Regions) | A Wavelength Zone is an isolated zone in the carrier location where the Wavelength infrastructure is deployed\.  | August 6, 2020 | 
 | [Capacity Reservation groups](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/capacity-reservations-using.html#create-cr-group) | You can use AWS Resource Groups to create logical collections of Capacity Reservations, and then target instance launches into those groups\. | July 29, 2020 | 
 | [Fast snapshot restore](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-fast-snapshot-restore.html) | You can enable fast snapshot restore for snaphots that are shared with you\. | July 21, 2020 | 
-| [ EC2Launch v2 ](ec2launch-v2.md) | You can use EC2Launch v2 to perform tasks during instance startup, if an instance is stopped and later started, if an instance is restarted, and on demand\. EC2Launch v2 supports all versions of Windows Server and replaces EC2Launch and EC2Config\. | June 30, 2020 | 
+| [EC2Launch v2 ](ec2launch-v2.md) | You can use EC2Launch v2 to perform tasks during instance startup, if an instance is stopped and later started, if an instance is restarted, and on demand\. EC2Launch v2 supports all versions of Windows Server and replaces EC2Launch and EC2Config\. | June 30, 2020 | 
 | [Bare metal instances for G4dn](#DocumentHistory) | New instances that provide your applications with direct access to the physical resources of the host server\. | June 5, 2020 | 
 | [C5a instances](#DocumentHistory) | New compute optimized instances featuring second\-generation AMD EPYC processors\. | June 4, 2020 | 
 | [Bring your own IPv6 addresses](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-byoip.html) | You can bring part or all of your IPv6 address range from your on\-premises network to your AWS account\. | May 21, 2020 | 

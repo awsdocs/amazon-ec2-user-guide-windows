@@ -72,6 +72,7 @@ The following table shows the corresponding NVMe driver version to download for 
 
 | Windows Server version | AWSNVMe driver version | 
 | --- | --- | 
+| Windows Server 2022 |  latest  | 
 | Windows Server 2019 |  latest  | 
 | Windows Server 2016 | latest | 
 | Windows Server 2012 R2 | latest | 
@@ -83,13 +84,14 @@ The following table describes the released versions of the AWS NVMe driver\.
 
 | Driver version | Details | Release date | 
 | --- | --- | --- | 
-|  [1\.4\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.4.1/AWSNVMe.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-nvme-drivers.html)  | 20 May 2022 | 
+|  [1\.4\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.4.2/AWSNVMe.zip)  | Fixed a bug where the AWS NVMe driver did not support instance store volumes on D3 instances\. | 16 March 2023 | 
+|  [1\.4\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.4.1/AWSNVMe.zip)  |  Reports Namespace Preferred Write Granularity \(NPGW\) for EBS volumes that support this optional NVMe feature\. For more information, see section 8\.25, "Improving Performance through I/O Size and Alignment Adherence," in the [NVMe Base Specification, version 1\.4](https://nvmexpress.org/wp-content/uploads/NVM-Express-1_4b-2020.09.21-Ratified.pdf)\.   | 20 May 2022 | 
 |  [1\.4\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.4.0/AWSNVMe.zip)  |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-nvme-drivers.html)  | 23 November 2021 | 
 |  [1\.3\.2](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.3.2/AWSNVMe.zip)  |  Fixed issue with modifying EBS volumes actively processing IO, which may result in data corruption\. Customers who do not modify online EBS volumes \(for example, resizing or changing type\) are not impacted\.  | 10 September 2019 | 
-|  [1\.3\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.3.1/AWSNVMe.zip)  |  Reliability Improvements | 21 May 2019 | 
-|  [1\.3\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.3.0/AWSNVMe.zip)  | Device optimization improvements | 31 August 2018 | 
-|  [1\.2\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.2.0/AWSNVMe.zip)  | Performance and reliability improvements for AWS NVMe devices on all supported instances, including bare metal instances | 13 June 2018 | 
-|  [1\.0\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.0.0.146/AWSNVMe.zip)  | AWS NVMe driver for supported instance types running Windows Server | 12 February 2018 | 
+|  [1\.3\.1](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.3.1/AWSNVMe.zip)  |  Reliability Improvements\. | 21 May 2019 | 
+|  [1\.3\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.3.0/AWSNVMe.zip)  | Device optimization improvements\. | 31 August 2018 | 
+|  [1\.2\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.2.0/AWSNVMe.zip)  | Performance and reliability improvements for AWS NVMe devices on all supported instances, including bare metal instances\. | 13 June 2018 | 
+|  [1\.0\.0](https://s3.amazonaws.com/ec2-windows-drivers-downloads/NVMe/1.0.0.146/AWSNVMe.zip)  | AWS NVMe driver for supported instance types running Windows Server\. | 12 February 2018 | 
 
 ## Subscribe to notifications<a name="nvme-drivers-subscribe-notifications"></a>
 

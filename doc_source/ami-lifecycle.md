@@ -4,6 +4,7 @@ You can create your own AMIs, copy them, back them up, and maintain them until y
 
 **Topics**
 + [Create a custom Windows AMI](Creating_EBSbacked_WinAMI.md)
++ [Modify an AMI](modify-ami.md)
 + [Copy an AMI](CopyingAMIs.md)
 + [Store and restore an AMI using S3](ami-store-restore.md)
 + [Deprecate an AMI](ami-deprecate.md)

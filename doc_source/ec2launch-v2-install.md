@@ -59,7 +59,7 @@ EC2Launch v2 is preinstalled by default on Windows Server 2022 AMIs and UEFI AMI
 + Windows Server 2022 AMIs with all other languages
 + Windows Server 2022 AMIs with SQL installed
 
-EC2Launch is also preinstalled on the following Windows Server AMIs\. You can find these AMIs from the Amazon EC2 console, or by using the AWS Command Line Interface and using the following search prefix: `EC2LaunchV2-`
+EC2Launch v2 is also preinstalled on the following Windows Server AMIs\. You can find these AMIs from the Amazon EC2 console, or by using the AWS Command Line Interface and using the following search prefix: `EC2LaunchV2-`
 + EC2LaunchV2\-Windows\_Server\-2019\-English\-Full\-Base
 + EC2LaunchV2\-Windows\_Server\-2016\-English\-Full\-Base
 + EC2LaunchV2\-Windows\_Server\-2012\_R2\_RTM\-English\-Full\-Base
@@ -68,7 +68,7 @@ EC2Launch is also preinstalled on the following Windows Server AMIs\. You can fi
 + EC2LaunchV2\-Windows\_Server\-2019\-English\-Full\-ContainersLatest
 + EC2LaunchV2\-Windows\_Server\-2012\_RTM\-English\-Full\-Base
 
-EC2Launch Preview AMIs will be deprecated in December 2021\.
+EC2Launch v2 Preview AMIs will be deprecated in December 2021\.
 
 ## Installation options<a name="ec2launch-v2-install-options"></a>
 

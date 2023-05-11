@@ -190,3 +190,14 @@ Usually, when running into time limits with the `AWSEC2-CreateVssSnapshot` comma
 + If there are a lot of EC2 API calls being made at the time of the snapshot, API throttling might cause the snapshots to take too long to start\. Try taking snapshots again when there is less API activity in the account\.
 + Run the command `vssadmin list writers` in a shell and see if it reports any errors in the **Last error** field for any writers on the system\. If any writers report a **time out** error, consider retrying snapshots when the instance is under less load\.
 + If one or more PowerShell modules have Group Policies that enable PowerShell module logging, try temporarily disabling the logging before you take a snapshot\.
+
+**Error: Cannot invoke method\. Method invocation is supported only on core types in this language mode\.**  
+You will encounter this error when the PowerShell language mode is not set to `FullLanguage`\. The `AWSEC2-CreateVssSnapshot` and `AWSEC2-ManageVssIo` SSM documents require PowerShell to be configured to `FullLanguage` mode\.
+
+To verify the language mode, run the following command on the instance in a PowerShell console:
+
+```
+$ExecutionContext.SessionState.LanguageMode
+```
+
+For more information about language modes, see [about\_Language\_Modes](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_language_modes) in the Microsoft documentation\.

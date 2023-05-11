@@ -6,24 +6,8 @@ Amazon EC2 dedicates some resources of the host computer, such as CPU, memory, a
 
 Each instance type provides higher or lower minimum performance from a shared resource\. For example, instance types with high I/O performance have a larger allocation of shared resources\. Allocating a larger share of shared resources also reduces the variance of I/O performance\. For most applications, moderate I/O performance is more than enough\. However, for applications that require greater or more consistent I/O performance, consider an instance type with higher I/O performance\.
 
-## Instance type names<a name="instance-type-names"></a>
-
-Amazon EC2 provides a variety of instance types so you can choose the type that best meets your requirements\. Instance types are named based on their family, generation, additional capabilities, and size\. The first position of the instance type name indicates the instance family, for example `c`\. The second position indicates the instance generation, for example `5`\. The remaining letters before the period indicate additional capabilities, such as instance store volumes\. After the period \(`.`\) is the instance size, which is either a number followed by a size, such as `9xlarge`, or `metal` for bare metal instances\.
-
-![\[The image shows the instance type c5n.xlarge, with a label for each part of the instance name.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/final_instance_ex.png)
-
-The following are the additional capabilities indicated by the instance type names:
-+ **a** – AMD processors
-+ **g** – AWS Graviton processors
-+ **i** – Intel processors
-+ **d** – Instance store volumes
-+ **n** – Network optimization
-+ **b** – Block storage optimization
-+ **e** – Extra storage or memory
-+ **z** – High frequency
-
 **Topics**
-+ [Instance type names](#instance-type-names)
++ [Instance type naming convention](#instance-type-names)
 + [Available instance types](#AvailableInstanceTypes)
 + [Hardware specifications](#instance-hardware-specs)
 + [Instances built on the Nitro System](#ec2-nitro-instances)
@@ -38,13 +22,63 @@ The following are the additional capabilities indicated by the instance type nam
 + [Get recommendations for an instance type](ec2-instance-recommendations.md)
 + [Change the instance type](ec2-instance-resize.md)
 
+## Instance type naming convention<a name="instance-type-names"></a>
+
+Amazon EC2 provides a variety of instance types so you can choose the type that best meets your requirements\. Instance types are named based on their family, generation, additional capabilities, and size\. The first position of the instance type name indicates the instance family, for example `c`\. The second position indicates the instance generation, for example `5`\. The remaining letters before the period indicate additional capabilities, such as instance store volumes\. After the period \(`.`\) is the instance size, which is either a number followed by a size, such as `9xlarge`, or `metal` for bare metal instances\.
+
+![\[The image shows the instance type c5n.xlarge, with a label for each part of the instance name.\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/images/final_instance_ex.png)
+
+**Instance families**
++ **C** – Compute
++ **D** – Dense storage
++ **F** – FPGA
++ **G** – GPU
++ **Hpc** – High performance computing
++ **I** – I/O
++ **Inf** – AWS Inferentia
++ **M** – Most scenarios
++ **P** – GPU
++ **R** – Random access memory
++ **T** – Turbo
++ **Trn** – AWS Tranium
++ **U** – Ultra\-high memory
++ **VT** – Video transcoding
++ **X** – Extra\-large memory
+
+**Additional capabilities**
++ **a** – AMD processors
++ **g** – AWS Graviton processors
++ **i** – Intel processors
++ **d** – Instance store volumes
++ **n** – Network optimization
++ **b** – Block storage optimization
++ **e** – Extra storage or memory
++ **z** – High frequency
+
 ## Available instance types<a name="AvailableInstanceTypes"></a>
 
-Amazon EC2 provides a wide selection of instance types optimized for different use cases\. To determine which instance types meet your requirements, such as supported Regions, compute resources, or storage resources, see [Find an Amazon EC2 instance type](instance-discovery.md)\.
+Amazon EC2 provides a wide selection of instance types optimized to fit different use cases\. Instance types comprise varying combinations of CPU, memory, storage, and networking capacity and give you the flexibility to choose the appropriate mix of resources for your applications\. Each instance type includes one or more instance sizes, allowing you to scale your resources to the requirements of your target workload\. 
+
+**Note**  
+Previous generation instances are still fully supported and retain the same features and functionality\. We encourage you to use the latest generation of instances to get the best performance\.
+
+To determine which instance types meet your requirements, such as supported Regions, compute resources, or storage resources, see [Find an Amazon EC2 instance type](instance-discovery.md)\.
+
+**Topics**
++ [Current generation instances](#current-gen-instances)
++ [Previous generation instances](#previous-gen-instances)
 
 ### Current generation instances<a name="current-gen-instances"></a>
 
 For the best performance, we recommend that you use the following instance types when you launch new instances\. For more information, see [Amazon EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/)\.
+
+**Sixth and seventh generation of Amazon EC2 instances**  
+Sixth and seventh generation instances include:
++ **General purpose: **M6a, M6g, M6gd, M6i, M6id, M6idn, M6in, M7g, T4g
++ **Computer optimized: **C6a, C6g, C6gd, C6gn, C6i, C6id, C6in, C7g, Hpc6a
++ **Memory optimized: **Hpc6id, R6a, R6g, R6gd, R6i, R6id, R6idn, R6in, R7g, X2gd, X2idn, X2iedn
++ **Storage optimized: **I4i, Im4gn, Is4gen
++ **Accelerated computing: **G5g, Trn1
 
 **Topics**
 + [General purpose](#current-gp)
@@ -69,8 +103,8 @@ For the best performance, we recommend that you use the following instance types
 | M6a | m6a\.large \| m6a\.xlarge \| m6a\.2xlarge \| m6a\.4xlarge \| m6a\.8xlarge \| m6a\.12xlarge \| m6a\.16xlarge \| m6a\.24xlarge \| m6a\.32xlarge \| m6a\.48xlarge \| m6a\.metal | 
 | M6i | m6i\.large \| m6i\.xlarge \| m6i\.2xlarge \| m6i\.4xlarge \| m6i\.8xlarge \| m6i\.12xlarge \| m6i\.16xlarge \| m6i\.24xlarge \| m6i\.32xlarge \| m6i\.metal | 
 | M6id | m6id\.large \| m6id\.xlarge \| m6id\.2xlarge \| m6id\.4xlarge \| m6id\.8xlarge \| m6id\.12xlarge \| m6id\.16xlarge \| m6id\.24xlarge \| m6id\.32xlarge \| m6id\.metal | 
-| M6idn | m6idn\.large \| m6idn\.xlarge \| m6idn\.2xlarge \| m6idn\.4xlarge \| m6idn\.8xlarge \| m6idn\.12xlarge \| m6idn\.16xlarge \| m6idn\.24xlarge \| m6idn\.32xlarge | 
-| M6in | m6in\.large \| m6in\.xlarge \| m6in\.2xlarge \| m6in\.4xlarge \| m6in\.8xlarge \| m6in\.12xlarge \| m6in\.16xlarge \| m6in\.24xlarge \| m6in\.32xlarge | 
+| M6idn | m6idn\.large \| m6idn\.xlarge \| m6idn\.2xlarge \| m6idn\.4xlarge \| m6idn\.8xlarge \| m6idn\.12xlarge \| m6idn\.16xlarge \| m6idn\.24xlarge \| m6idn\.32xlarge \| m6idn\.metal | 
+| M6in | m6in\.large \| m6in\.xlarge \| m6in\.2xlarge \| m6in\.4xlarge \| m6in\.8xlarge \| m6in\.12xlarge \| m6in\.16xlarge \| m6in\.24xlarge \| m6in\.32xlarge \| m6in\.metal | 
 | T2 | t2\.nano \| t2\.micro \| t2\.small \| t2\.medium \| t2\.large \| t2\.xlarge \| t2\.2xlarge | 
 | T3 | t3\.nano \| t3\.micro \| t3\.small \| t3\.medium \| t3\.large \| t3\.xlarge \| t3\.2xlarge | 
 | T3a | t3a\.nano \| t3a\.micro \| t3a\.small \| t3a\.medium \| t3a\.large \| t3a\.xlarge \| t3a\.2xlarge | 
@@ -89,7 +123,7 @@ For the best performance, we recommend that you use the following instance types
 | C6a | c6a\.large \| c6a\.xlarge \| c6a\.2xlarge \| c6a\.4xlarge \| c6a\.8xlarge \| c6a\.12xlarge \| c6a\.16xlarge \| c6a\.24xlarge \| c6a\.32xlarge \| c6a\.48xlarge \| c6a\.metal | 
 | C6i | c6i\.large \| c6i\.xlarge \| c6i\.2xlarge \| c6i\.4xlarge \| c6i\.8xlarge \| c6i\.12xlarge \| c6i\.16xlarge \| c6i\.24xlarge \| c6i\.32xlarge \| c6i\.metal | 
 | C6id | c6id\.large \| c6id\.xlarge \| c6id\.2xlarge \| c6id\.4xlarge \| c6id\.8xlarge \| c6id\.12xlarge \| c6id\.16xlarge \| c6id\.24xlarge \| c6id\.32xlarge \| c6id\.metal | 
-| C6in | c6in\.large \| c6in\.xlarge \| c6in\.2xlarge \| c6in\.4xlarge \| c6in\.8xlarge \| c6in\.12xlarge \| c6in\.16xlarge \| c6in\.24xlarge \| c6in\.32xlarge | 
+| C6in | c6in\.large \| c6in\.xlarge \| c6in\.2xlarge \| c6in\.4xlarge \| c6in\.8xlarge \| c6in\.12xlarge \| c6in\.16xlarge \| c6in\.24xlarge \| c6in\.32xlarge \| c6in\.metal | 
 | CC2 | cc2\.8xlarge | 
 
 #### Memory optimized<a name="current-mo"></a>
@@ -109,8 +143,8 @@ For the best performance, we recommend that you use the following instance types
 | R5n | r5n\.large \| r5n\.xlarge \| r5n\.2xlarge \| r5n\.4xlarge \| r5n\.8xlarge \| r5n\.12xlarge \| r5n\.16xlarge \| r5n\.24xlarge \| r5n\.metal | 
 | R6a | r6a\.large \| r6a\.xlarge \| r6a\.2xlarge \| r6a\.4xlarge \| r6a\.8xlarge \| r6a\.12xlarge \| r6a\.16xlarge \| r6a\.24xlarge \| r6a\.32xlarge \| r6a\.48xlarge \| r6a\.metal | 
 | R6i | r6i\.large \| r6i\.xlarge \| r6i\.2xlarge \| r6i\.4xlarge \| r6i\.8xlarge \| r6i\.12xlarge \| r6i\.16xlarge \| r6i\.24xlarge \| r6i\.32xlarge \| r6i\.metal | 
-| R6idn | r6idn\.large \| r6idn\.xlarge \| r6idn\.2xlarge \| r6idn\.4xlarge \| r6idn\.8xlarge \| r6idn\.12xlarge \| r6idn\.16xlarge \| r6idn\.24xlarge \| r6idn\.32xlarge | 
-| R6in | r6in\.large \| r6in\.xlarge \| r6in\.2xlarge \| r6in\.4xlarge \| r6in\.8xlarge \| r6in\.12xlarge \| r6in\.16xlarge \| r6in\.24xlarge \| r6in\.32xlarge | 
+| R6idn | r6idn\.large \| r6idn\.xlarge \| r6idn\.2xlarge \| r6idn\.4xlarge \| r6idn\.8xlarge \| r6idn\.12xlarge \| r6idn\.16xlarge \| r6idn\.24xlarge \| r6idn\.32xlarge \| r6idn\.metal | 
+| R6in | r6in\.large \| r6in\.xlarge \| r6in\.2xlarge \| r6in\.4xlarge \| r6in\.8xlarge \| r6in\.12xlarge \| r6in\.16xlarge \| r6in\.24xlarge \| r6in\.32xlarge \| r6in\.metal | 
 | R6id | r6id\.large \| r6id\.xlarge \| r6id\.2xlarge \| r6id\.4xlarge \| r6id\.8xlarge \| r6id\.12xlarge \| r6id\.16xlarge \| r6id\.24xlarge \| r6id\.32xlarge \| r6id\.metal | 
 | U\-3tb1 | u\-3tb1\.56xlarge | 
 | U\-6tb1 | u\-6tb1\.56xlarge \| u\-6tb1\.112xlarge \| u\-6tb1\.metal | 
@@ -221,9 +255,9 @@ The following virtualized instances are built on the Nitro System:
 ### Bare metal instances<a name="nitro-bare-metal"></a>
 
 The following bare metal instances are built on the Nitro System:
-+ **General purpose:** `m5.metal` \| `m5d.metal` \| `m5dn.metal` \| `m5n.metal` \| `m5zn.metal` \| `m6a.metal` \| `m6i.metal` \| `m6id.metal`
-+ **Compute optimized:** `c5.metal` \| `c5d.metal` \| `c5n.metal` \| `c6a.metal` \| `c6i.metal` \| `c6id.metal`
-+ **Memory optimized:** `r5.metal` \| `r5b.metal` \| `r5d.metal` \| `r5dn.metal` \| `r5n.metal` \| `r6a.metal` \| `r6i.metal` \| `r6id.metal` \| `u-6tb1.metal` \| `u-9tb1.metal` \| `u-12tb1.metal` \| `u-18tb1.metal` \| `u-24tb1.metal` \| `x2idn.metal` \| `x2iedn.metal` \| `x2iezn.metal` \| `z1d.metal`
++ **General purpose:** `m5.metal` \| `m5d.metal` \| `m5dn.metal` \| `m5n.metal` \| `m5zn.metal` \| `m6a.metal` \| `m6i.metal` \| `m6id.metal` \| `m6idn.metal` \| `m6in.metal`
++ **Compute optimized:** `c5.metal` \| `c5d.metal` \| `c5n.metal` \| `c6a.metal` \| `c6i.metal` \| `c6id.metal` \| `c6in.metal`
++ **Memory optimized:** `r5.metal` \| `r5b.metal` \| `r5d.metal` \| `r5dn.metal` \| `r5n.metal` \| `r6a.metal` \| `r6i.metal` \| `r6idn.metal` \| `r6in.metal` \| `r6id.metal` \| `u-6tb1.metal` \| `u-9tb1.metal` \| `u-12tb1.metal` \| `u-18tb1.metal` \| `u-24tb1.metal` \| `x2idn.metal` \| `x2iedn.metal` \| `x2iezn.metal` \| `z1d.metal`
 + **Storage optimized:** `i3.metal` \| `i3en.metal` \| `i4i.metal`
 + **Accelerated computing:** `g4dn.metal`
 

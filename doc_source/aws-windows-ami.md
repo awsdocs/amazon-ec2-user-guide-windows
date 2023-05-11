@@ -16,10 +16,11 @@ For information about other customizations, see [AWS Windows AMIs](windows-ami-v
 
 **Contents**
 + [Details about AWS Windows AMI versions](#windows-ami-versions)
+  + [Windows Server installation media](#windows-server-media)
   + [What to expect in an official AWS Windows AMI](#windows-ami-creation-standards)
+  + [Validation of software on AWS AMIs](#validate-amis)
   + [How AWS decides which Windows AMIs to offer](#windows-ami-creation-standards-AMI-type)
   + [Patches, security updates, and AMI IDs](#ami-patches-security-ID)
-  + [Semiannual channel releases](#channel-releases)
 + [Configuration changes for AWS Windows AMIs](#windows-ami-configuration)
 + [Update your Windows instance](#update-windows-instance)
 + [Upgrade or migrate to a newer version of Windows Server](#WinAMI_Upgrading)
@@ -29,17 +30,34 @@ For information about other customizations, see [AWS Windows AMIs](windows-ami-v
 
 ## Details about AWS Windows AMI versions<a name="windows-ami-versions"></a>
 
+### Where AWS gets the Windows Server installation media<a name="windows-server-media"></a>
+
+When a new version of Windows Server is released, we download the Windows ISO from Microsoft and validate the hash Microsoft publishes\. An initial AMI is then created from the Windows distribution ISO\. The drivers needed to boot on EC2 are included in addition to our EC2 launch agent\. To prepare this initial AMI for public release, we perform automated processes to convert the ISO to an AMI\. This prepared AMI is used for the monthly automated update and release process\.
+
 ### What to expect in an official AWS Windows AMI<a name="windows-ami-creation-standards"></a>
 
-AWS provides AMIs with a variety of configurations for all supported Windows Operating System versions\. For each of these images, AWS:
-+ Installs all Microsoft recommended Windows security patches\. We release images shortly after the monthly Microsoft patches are made available\.
-+ Installs the latest drivers for AWS hardware, including network and disk drivers, EC2WinUtil for troubleshooting, as well as GPU drivers in selected AMIs\.
-+ Includes AWS helper software, like [EC2Config](ec2config-service.md) for Server 2012 R2 and earlier, [EC2Launch](ec2launch.md) for Server 2016 and 2019, or [EC2Launch v2](ec2launch-v2.md) for Server 2022\.
-+ Configures Windows Time to use the [Amazon Time Sync Service](windows-set-time.md) \.
-+ Makes changes in all power schemes to set the display to never turn off\.
-+ Performs minor bug fixes – generally one\-line registry changes to enable or disable features that we have found to improve performance on AWS\.
+AWS provides AMIs with a variety of configurations for popular versions of Microsoft supported Windows Server Operating Systems\. As outlined in the previous section, we start with the Windows Server ISO from Microsoft’s Volume Licensing Service Center \(VLSC\) and validates the hash to ensure it matches Microsoft’s documentation for new Windows Server operating systems\.
 
-Other than the adjustments listed above, we keep our AMIs as close as possible to the default install\. This means we default to the “stock” PowerShell or \.NET framework versions, don’t install Windows Features, and generally don’t change the AMI\.
+We perform the following changes using automation on AWS to take the current Windows Server AMIs and update them:
++ Install all Microsoft recommended Windows security patches\. We release images shortly after the monthly Microsoft patches are made available\.
++ Install the latest drivers for AWS hardware, including network and disk drivers, EC2WinUtil for troubleshooting, as well as GPU drivers in selected AMIs\.
++ Include the following AWS launch agent software by default:
+  + [EC2Launch v2](ec2launch-v2.md) for Windows Server 2022 and optionally for Windows Server 2019 and 2016 with specific AMIs\. For more information, see [Configure a Windows instance using EC2Launch v2](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch-v2.html)\.
+  + [EC2Launch](ec2launch.md) for Windows Server 2016 and 2019\.
+  + [EC2Config](ec2config-service.md) for Windows Server 2012 R2 and earlier\.
++ Configure Windows Time to use the [Amazon Time Sync Service](windows-set-time.md) \.
++ Make changes in all power schemes to set the display to never turn off\.
++ Perform minor bug fixes – generally one\-line registry changes to enable or disable features that we have found to improve performance on AWS\.
++ Tests and validates AMIs across new and existing EC2 platforms to ensure compatibility, stability, and consistency prior to release\.
++ Other than the previously mentioned changes, we keep the AMIs as close as possible to the Microsoft default installation of Windows Server\. For example, we keep the PowerShell and \.NET Framework installations as they are and don't install additional Windows roles, role services, or features\.
+
+### How AWS validates security, integrity, and authenticity of software on AMIs<a name="validate-amis"></a>
+
+We take a number of steps during the image build process, to maintain the security, integrity, and authenticity of AWS provided Windows AMIs\. A few examples include:
++ AWS provided Windows AMIs are built using source media obtained directly from Microsoft\.
++ Windows Updates are downloaded directly from Microsoft’s Windows Update Service by Windows, and installed on the instance used to create the AMI during the image build process\.
++ AWS Software is downloaded from secure S3 buckets and installed in the AMIs\.
++ Drivers—such as for the chipset and GPU—are obtained directly from the vendor, stored in secure S3 buckets, and installed on the AMIs during the image build process\.
 
 ### How AWS decides which Windows AMIs to offer<a name="windows-ami-creation-standards-AMI-type"></a>
 
@@ -64,10 +82,6 @@ The Windows AMIs in each release have new AMI IDs\. Therefore, we recommend that
 + [Get\-EC2ImageByName](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-ec2-get-amis.html#pstools-ec2-get-ec2imagebyname) \(AWS Tools for Windows PowerShell\)
 + [Query for the Latest Windows AMI Using Systems Manager Parameter Store](https://aws.amazon.com/blogs/mt/query-for-the-latest-windows-ami-using-systems-manager-parameter-store/)
 + [Walkthrough: Looking Up Amazon Machine Image IDs](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/walkthrough-custom-resources-lambda-lookup-amiids.html) \(AWS Lambda, AWS CloudFormation\)
-
-### Semiannual channel releases<a name="channel-releases"></a>
-
-AWS provides Windows Server semiannual channel releases that combine the scale, performance, and elasticity of AWS with the new capabilities in the [Semiannual channel release versions of Windows Server](https://docs.microsoft.com/en-us/windows-server/get-started/semi-annual-channel-overview)\. 
 
 ## Configuration changes for AWS Windows AMIs<a name="windows-ami-configuration"></a>
 
@@ -118,6 +132,7 @@ The following configuration changes are applied to each AWS Windows AMI\.
 |  Configure a paging file on the system volume as follows: [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/aws-windows-ami.html)  | All AMIs | 
 |  Configure an additional system managed paging file on `Z:`, if available  | Windows Server 2012 R2 and earlier | 
 | Disable hibernation and delete the hibernation file | All AMIs | 
+| Disable the Connected User Experiences and Telemetry service |  All AMIs  | 
 | Set the performance options for best performance | All AMIs | 
 | Set the power setting to high performance | All AMIs | 
 | Disable the screen saver password | All AMIs | 
@@ -145,7 +160,7 @@ For Windows instances, you can install updates to the following services or appl
 + [Install the latest version of EC2Launch](ec2launch-download.md)
 + [Install the latest version of EC2Config](UsingConfig_Install.md)
 + [AWS Systems Manager SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-ssm-win.html)
-+ [Enable enhanced networking on Windows](enhanced-networking-ena.md#enable-enhanced-networking-ena-WIN)
++ [Enable enhanced networking on Windows](enhanced-networking-ena.md#enable-enhanced-networking-ena-windows)
 + [Install or upgrade AWS NVMe drivers using PowerShell](aws-nvme-drivers.md#install-nvme-drivers)
 + [Upgrade PV drivers on Windows instances](Upgrading_PV_drivers.md)
 + [AWS Tools for Windows PowerShell](https://aws.amazon.com/powershell)

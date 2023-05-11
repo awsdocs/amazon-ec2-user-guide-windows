@@ -17,4 +17,4 @@ After you have successfully launched and logged into your instance, you can make
 + [Configure a secondary private IPv4 address for your Windows instance](config-windows-multiple-ip.md)
 + [Run commands on your Windows instance at launch](ec2-windows-user-data.md)
 + [Instance metadata and user data](ec2-instance-metadata.md)
-+ [Best practices and recommendations for SQL Server clustering on EC2](aws-sql-clustering.md)
++ [Best practices and recommendations for SQL Server clustering in Amazon EC2](aws-sql-clustering.md)

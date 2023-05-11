@@ -64,9 +64,9 @@ P2 instances support NVIDIA GPUDirect peer to peer transfers\. For more informat
 
 ## Instances with AWS Trainium<a name="aws-trainium-instances"></a>
 
-Amazon EC2 Trn1 instances, powered by [AWS Trainium](http://aws.amazon.com/machine-learning/trainium/), are purpose built for high\-performance, cost\-effective deep learning training\. You can use Trn1 instances to train natural language processing, computer vision, and recommender models used across a broad set of applications, such as speech recognition, recommendation, fraud detection, and image and video classification\. Use your existing workflows in popular ML frameworks, such as PyTorch and TensorFlow\. [AWS Neuron SDK](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/) integrates seamlessly with these frameworks so that you can get started with only a few lines of code changes\.
+Amazon EC2 Trn1 and Trn1n instances, powered by [AWS Trainium](http://aws.amazon.com/machine-learning/trainium/), are purpose built for high\-performance, cost\-effective deep learning training\. You can use Trn1 and Trn1n instances to train natural language processing, computer vision, and recommender models used across a broad set of applications, such as speech recognition, recommendation, fraud detection, and image and video classification\. Use your existing workflows in popular ML frameworks, such as PyTorch and TensorFlow\. [AWS Neuron SDK](https://awsdocs-neuron.readthedocs-hosted.com/en/latest/) integrates seamlessly with these frameworks so that you can get started with only a few lines of code changes\.
 
-For more information, see [Amazon EC2 Trn1 Instances](https://aws.amazon.com/ec2/instance-types/trn1/)\.
+For more information, see [Amazon EC2 Trn1 instances](http://aws.amazon.com/ec2/instance-types/trn1/)\.
 
 ## Hardware specifications<a name="gpu-instance-specifications"></a>
 
@@ -112,6 +112,8 @@ The following is a summary of the hardware specifications for accelerated comput
 | p3dn\.24xlarge | 96 | 768\.00 | 8 GPUs | 
 
 **Note**  
+**Trn1n** instances feature the following number of Trainium Accelerators\.  
+`trn1n.32xlarge` — 16
 **Trn1** instances feature the following number of Trainium Accelerators\.  
 `trn1.2xlarge` — 1
 `trn1.32xlarge` — 16
@@ -143,32 +145,48 @@ You can enable enhanced networking on supported instance types to provide lower 
 
 The following is a summary of network performance for accelerated computing instances that support enhanced networking\.
 
+**Note**  
+Instance types indicated with a **†** have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.
 
-| Instance type | Baseline bandwidth \(Gbps\) | Burst bandwidth \(Gbps\) | Enhanced networking features | 
-| --- | --- | --- | --- | 
-| g4ad\.xlarge † | 2\.0 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g4ad\.2xlarge † | 4\.167 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g4ad\.4xlarge † | 8\.333 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g4ad\.8xlarge | 15\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g4ad\.16xlarge | 25\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g4dn\.xlarge † | 5\.0 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g4dn\.2xlarge † | 10\.0 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g4dn\.4xlarge † | 20\.0 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g4dn\.8xlarge | 50\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
-| g4dn\.12xlarge | 50\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
-| g4dn\.16xlarge | 50\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g4dn\.metal | 100\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
-| g5\.xlarge † | 2\.5 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g5\.2xlarge † | 5\.0 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g5\.4xlarge † | 10\.0 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g5\.8xlarge | 25\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g5\.12xlarge | 40\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g5\.16xlarge | 25\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g5\.24xlarge | 50\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| g5\.48xlarge | 100\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
-| p3dn\.24xlarge | 100\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
 
-† These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.
+| Instance type | Network performance | Enhanced networking features | 
+| --- | --- | --- | 
+| g4ad\.xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g4ad\.2xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g4ad\.4xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g4ad\.8xlarge | 15 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g4ad\.16xlarge | 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g4dn\.xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g4dn\.2xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g4dn\.4xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g4dn\.8xlarge | 50 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| g4dn\.12xlarge | 50 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| g4dn\.16xlarge | 50 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| g4dn\.metal | 100 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| g5\.xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g5\.2xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g5\.4xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| g5\.8xlarge | 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| g5\.12xlarge | 40 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| g5\.16xlarge | 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| g5\.24xlarge | 50 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| g5\.48xlarge | 100 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| p3dn\.24xlarge | 100 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+
+The following table shows the baseline and burst bandwidth for instance types that use the network I/O credit mechanism to burst beyond their baseline bandwidth\.
+
+
+| Instance type | Baseline bandwidth \(Gbps\) | Burst bandwidth \(Gbps\) | 
+| --- | --- | --- | 
+| g4ad\.xlarge | 2\.0 | 10\.0 | 
+| g4ad\.2xlarge | 4\.167 | 10\.0 | 
+| g4ad\.4xlarge | 8\.333 | 10\.0 | 
+| g4dn\.xlarge | 5\.0 | 25\.0 | 
+| g4dn\.2xlarge | 10\.0 | 25\.0 | 
+| g4dn\.4xlarge | 20\.0 | 25\.0 | 
+| g5\.xlarge | 2\.5 | 10\.0 | 
+| g5\.2xlarge | 5\.0 | 10\.0 | 
+| g5\.4xlarge | 10\.0 | 25\.0 | 
 
 ## Amazon EBS I/O performance<a name="accelerated-ebs-perf"></a>
 
@@ -183,19 +201,27 @@ If you use all the SSD\-based instance store volumes available to your instance,
 
 | Instance Size | 100% Random Read IOPS | Write IOPS | 
 | --- | --- | --- | 
-| g4ad\.xlarge | 10,417 | 8,333 | 
-| g4ad\.2xlarge | 20,833 | 16,667 | 
-| g4ad\.4xlarge | 41,667 | 33,333 | 
-| g4ad\.8xlarge | 83,333 | 66,667 | 
-| g4ad\.16xlarge | 166,667 | 133,333 | 
-| g5\.xlarge | 40,625 | 20,313 | 
-| g5\.2xlarge | 40,625 | 20,313 | 
-| g5\.4xlarge | 125,000 | 62,500 | 
-| g5\.8xlarge | 250,000 | 125,000 | 
-| g5\.12xlarge | 312,500 | 156,250 | 
-| g5\.16xlarge | 250,000 | 125,000 | 
-| g5\.24xlarge | 312,500 | 156,250 | 
-| g5\.48xlarge | 625,000 | 312,500 | 
+| g4ad\.xlarge | 10417 | 8333 | 
+| g4ad\.2xlarge | 20833 | 16667 | 
+| g4ad\.4xlarge | 41667 | 33333 | 
+| g4ad\.8xlarge | 83333 | 66667 | 
+| g4ad\.16xlarge | 166666 | 133332 | 
+| g4dn\.xlarge | 42500 | 32500 | 
+| g4dn\.2xlarge | 42500 | 32500 | 
+| g4dn\.4xlarge | 85000 | 65000 | 
+| g4dn\.8xlarge | 250000 | 200000 | 
+| g4dn\.12xlarge | 250000 | 200000 | 
+| g4dn\.16xlarge | 250000 | 200000 | 
+| g4dn\.metal | 500000 | 400000 | 
+| g5\.xlarge | 40625 | 20313 | 
+| g5\.2xlarge | 40625 | 20313 | 
+| g5\.4xlarge | 125000 | 62500 | 
+| g5\.8xlarge | 250000 | 125000 | 
+| g5\.12xlarge | 312500 | 156250 | 
+| g5\.16xlarge | 250000 | 125000 | 
+| g5\.24xlarge | 312500 | 156250 | 
+| g5\.48xlarge | 625000 | 312500 | 
+| p3dn\.24xlarge | 700000 | 340000 | 
 
 As you fill the SSD\-based instance store volumes for your instance, the number of write IOPS that you can achieve decreases\. This is due to the extra work the SSD controller must do to find available space, rewrite existing data, and erase unused space so that it can be rewritten\. This process of garbage collection results in internal write amplification to the SSD, expressed as the ratio of SSD write operations to user write operations\. This decrease in performance is even larger if the write operations are not in multiples of 4,096 bytes or not aligned to a 4,096\-byte boundary\. If you write a smaller amount of bytes or bytes that are not aligned, the SSD controller must read the surrounding data and store the result in a new location\. This pattern results in significantly increased write amplification, increased latency, and dramatically reduced I/O performance\.
 

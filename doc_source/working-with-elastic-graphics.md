@@ -12,16 +12,20 @@ You can launch an instance and associate it with an Elastic Graphics accelerator
 
 ## Configure your security groups<a name="elastic-graphics-security"></a>
 
-Elastic Graphics requires a self\-referencing security group that allows inbound and outbound traffic to and from the security group itself\. The security group must include the following inbound and outbound rules:
+Elastic Graphics requires a self\-referencing security group that allows inbound and outbound traffic to and from the security group itself\. The security group must include the following inbound and outbound rules\.
 
 
-|  | 
-| --- |
-| Inbound rule | 
+**Inbound**  
+
 | Type | Protocol | Port | Source | 
+| --- | --- | --- | --- | 
 | Elastic Graphics | TCP | 2007 | The security group ID \(its own resource ID\) | 
-| Outbound rule  | 
+
+
+**Outbound**  
+
 | Type | Protocol | Port range | Destination | 
+| --- | --- | --- | --- | 
 | Elastic Graphics | TCP | 2007 | The security group ID \(its own resource ID\) | 
 
 If you use the Amazon EC2 console to launch your instance with an Elastic Graphics accelerator, you can either allow the launch instance wizard to automatically create the required security group rules, or you can select a security that you created previously\.

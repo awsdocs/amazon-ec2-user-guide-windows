@@ -127,56 +127,90 @@ You can enable enhanced networking on supported instance types to provide lower 
 
 The following is a summary of network performance for storage optimized instances that support enhanced networking\.
 
+**Note**  
+Instance types indicated with a **†** have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.
 
-| Instance type | Baseline bandwidth \(Gbps\) | Burst bandwidth \(Gbps\) | Enhanced networking features | 
-| --- | --- | --- | --- | 
-| d2\.xlarge † | 1\.25 | 2\.8 | Not supported | 
-| d2\.2xlarge † | 2\.5 | 10\.0 | Not supported | 
-| d2\.4xlarge † | 5\.0 | 10\.0 | Not supported | 
-| d2\.8xlarge † | 5\.0 | 10\.0 | Not supported | 
-| d3\.xlarge † | 3\.0 | 15\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| d3\.2xlarge † | 6\.0 | 15\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| d3\.4xlarge † | 12\.5 | 15\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| d3\.8xlarge | 25\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| d3en\.xlarge † | 6\.0 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| d3en\.2xlarge † | 12\.5 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| d3en\.4xlarge | 25\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| d3en\.6xlarge | 40\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| d3en\.8xlarge | 50\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| d3en\.12xlarge | 75\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| h1\.2xlarge † | 2\.5 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| h1\.4xlarge † | 5\.0 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| h1\.8xlarge | 12\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| h1\.16xlarge | 25\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i2\.xlarge † | 0\.7 | 2\.8 | Not supported | 
-| i2\.2xlarge † | 1\.0 | 10\.0 | Not supported | 
-| i2\.4xlarge † | 2\.0 | 10\.0 | Not supported | 
-| i2\.8xlarge † | 5\.0 | 10\.0 | Not supported | 
-| i3\.large † | 0\.75 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3\.xlarge † | 1\.25 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3\.2xlarge † | 2\.5 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3\.4xlarge † | 5\.0 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3\.8xlarge | 12\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3\.16xlarge | 25\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3\.metal | 25\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3en\.large † | 2\.1 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3en\.xlarge † | 4\.2 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3en\.2xlarge † | 8\.4 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3en\.3xlarge † | 12\.5 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3en\.6xlarge | 25\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i3en\.12xlarge | 50\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
-| i3en\.24xlarge | 100\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
-| i3en\.metal | 100\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
-| i4i\.large † | 0\.781 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i4i\.xlarge † | 1\.875 | 10\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i4i\.2xlarge † | 4\.687 | 12\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i4i\.4xlarge † | 9\.375 | 25\.0 | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i4i\.8xlarge | 18\.75 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i4i\.16xlarge | 37\.5 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
-| i4i\.32xlarge | 75\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
-| i4i\.metal | 75\.0 | \- | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
 
-† These instances have a baseline bandwidth and can use a network I/O credit mechanism to burst beyond their baseline bandwidth on a best effort basis\. For more information, see [instance network bandwidth](ec2-instance-network-bandwidth.md)\.
+| Instance type | Network performance | Enhanced networking features | 
+| --- | --- | --- | 
+| d2\.xlarge † | Moderate | Not supported | 
+| d2\.2xlarge † | High | Not supported | 
+| d2\.4xlarge † | High | Not supported | 
+| d2\.8xlarge † | 10 Gigabit | Not supported | 
+| d3\.xlarge † | Up to 15 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| d3\.2xlarge † | Up to 15 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| d3\.4xlarge † | Up to 15 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| d3\.8xlarge | 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| d3en\.xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| d3en\.2xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| d3en\.4xlarge | 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| d3en\.6xlarge | 40 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| d3en\.8xlarge | 50 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| d3en\.12xlarge | 75 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| h1\.2xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| h1\.4xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| h1\.8xlarge | 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| h1\.16xlarge | 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i2\.xlarge † | Moderate | Not supported | 
+| i2\.2xlarge † | High | Not supported | 
+| i2\.4xlarge † | High | Not supported | 
+| i2\.8xlarge † | 10 Gigabit | Not supported | 
+| i3\.large † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3\.xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3\.2xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3\.4xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3\.8xlarge | 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3\.16xlarge | 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3\.metal | 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3en\.large † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3en\.xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3en\.2xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3en\.3xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3en\.6xlarge | 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i3en\.12xlarge | 50 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| i3en\.24xlarge | 100 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| i3en\.metal | 100 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| i4i\.large † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i4i\.xlarge † | Up to 10 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i4i\.2xlarge † | Up to 12 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i4i\.4xlarge † | Up to 25 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i4i\.8xlarge | 18\.75 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i4i\.16xlarge | 37\.5 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) | 
+| i4i\.32xlarge | 75 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+| i4i\.metal | 75 Gigabit | [ENA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/enhanced-networking.html) \| [EFA](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) | 
+
+The following table shows the baseline and burst bandwidth for instance types that use the network I/O credit mechanism to burst beyond their baseline bandwidth\.
+
+
+| Instance type | Baseline bandwidth \(Gbps\) | Burst bandwidth \(Gbps\) | 
+| --- | --- | --- | 
+| d2\.xlarge | 1\.25 | 2\.8 | 
+| d2\.2xlarge | 2\.5 | 10\.0 | 
+| d2\.4xlarge | 5\.0 | 10\.0 | 
+| d2\.8xlarge | 5\.0 | 10\.0 | 
+| d3\.xlarge | 3\.0 | 15\.0 | 
+| d3\.2xlarge | 6\.0 | 15\.0 | 
+| d3\.4xlarge | 12\.5 | 15\.0 | 
+| d3en\.xlarge | 6\.0 | 25\.0 | 
+| d3en\.2xlarge | 12\.5 | 25\.0 | 
+| h1\.2xlarge | 2\.5 | 10\.0 | 
+| h1\.4xlarge | 5\.0 | 10\.0 | 
+| i2\.xlarge | 0\.7 | 2\.8 | 
+| i2\.2xlarge | 1\.0 | 10\.0 | 
+| i2\.4xlarge | 2\.0 | 10\.0 | 
+| i2\.8xlarge | 5\.0 | 10\.0 | 
+| i3\.large | 0\.75 | 10\.0 | 
+| i3\.xlarge | 1\.25 | 10\.0 | 
+| i3\.2xlarge | 2\.5 | 10\.0 | 
+| i3\.4xlarge | 5\.0 | 10\.0 | 
+| i3en\.large | 2\.1 | 25\.0 | 
+| i3en\.xlarge | 4\.2 | 25\.0 | 
+| i3en\.2xlarge | 8\.4 | 25\.0 | 
+| i3en\.3xlarge | 12\.5 | 25\.0 | 
+| i4i\.large | 0\.781 | 10\.0 | 
+| i4i\.xlarge | 1\.875 | 10\.0 | 
+| i4i\.2xlarge | 4\.687 | 12\.0 | 
+| i4i\.4xlarge | 9\.375 | 25\.0 | 
 
 ## Amazon EBS I/O performance<a name="storage-ebs-perf"></a>
 

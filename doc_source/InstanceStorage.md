@@ -1,6 +1,6 @@
 # Amazon EC2 instance store<a name="InstanceStorage"></a>
 
-An *instance store* provides temporary block\-level storage for your instance\. This storage is located on disks that are physically attached to the host computer\. Instance store is ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content, or for data that is replicated across a fleet of instances, such as a load\-balanced pool of web servers\.
+An *instance store* provides temporary block\-level storage for your instance\. This storage is located on disks that are physically attached to the host computer\. Instance store is ideal for temporary storage of information that changes frequently, such as buffers, caches, scratch data, and other temporary content\. It can also be used to store temporary data that you replicate across a fleet of instances, such as a load\-balanced pool of web servers\.
 
 An instance store consists of one or more instance store volumes exposed as block devices\. The size of an instance store as well as the number of devices available varies by instance type\.
 
@@ -111,6 +111,7 @@ The following table provides the quantity, size, type, and performance optimizat
 | m6idn\.16xlarge | 2 x 1900 GB | NVMe SSD |   | ✔ | 
 | m6idn\.24xlarge | 4 x 1425 GB | NVMe SSD |   | ✔ | 
 | m6idn\.32xlarge | 4 x 1900 GB | NVMe SSD |   | ✔ | 
+| m6idn\.metal | 4 x 1900 GB | NVMe SSD |   | ✔ | 
 
 ### Compute optimized<a name="instance-store-vol-co"></a>
 
@@ -200,6 +201,7 @@ The following table provides the quantity, size, type, and performance optimizat
 | r6idn\.16xlarge | 2 x 1900 GB | NVMe SSD |   | ✔ | 
 | r6idn\.24xlarge | 4 x 1425 GB | NVMe SSD |   | ✔ | 
 | r6idn\.32xlarge | 4 x 1900 GB | NVMe SSD |   | ✔ | 
+| r6idn\.metal | 4 x 1900 GB | NVMe SSD |   | ✔ | 
 | r6id\.large | 1 x 118 GB | NVMe SSD |   | ✔ | 
 | r6id\.xlarge | 1 x 237 GB | NVMe SSD |   | ✔ | 
 | r6id\.2xlarge | 1 x 474 GB | NVMe SSD |   | ✔ | 

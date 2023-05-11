@@ -41,7 +41,7 @@ Use the following procedure to upgrade a Windows Server instance using the AWS P
 
    1. Uninstall the EC2Config service\. For more information, see [Stop, restart, delete, or uninstall EC2Config](ec2config-service.md#UsingConfig_StopDelete)\.
 
-   1. Install EC2Launch or the EC2Launch v2 agent\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md) and [Configure a Windows instance using EC2Launch v2](ec2launch-v2.md)\.
+   1. Install EC2Launch v1 or the EC2Launch v2 agent\. For more information, see [Configure a Windows instance using EC2Launch](ec2launch.md) and [Configure a Windows instance using EC2Launch v2](ec2launch-v2.md)\.
 
    1. Install the AWS Systems Manager SSM Agent\. For more information, see [Working with SSM Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent.html) in the *AWS Systems Manager User Guide*\.
 
@@ -189,6 +189,6 @@ Windows Server Setup copies and processes files\. After several minutes, your Re
 
 1. Install Microsoft hotfix [KB2922223](http://support.microsoft.com/en-us/kb/2922223)\.
 
-1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance, we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Install or upgrade AWS NVMe drivers using PowerShell](aws-nvme-drivers.md#install-nvme-drivers), or [Enabling Enhanced Networking on Windows](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/enhanced-networking-ena.html#enable-enhanced-networking-ena-WIN)\.
+1. If you upgraded to Windows Server 2012 R2, we recommend that you upgrade the PV drivers to AWS PV drivers\. If you upgraded on a Nitro\-based instance, we recommend that you install or upgrade the NVME and ENA drivers\. For more information, see [Windows Server 2012 R2](https://aws.amazon.com/windows/products/ec2/server2012r2/network-drivers/), [Install or upgrade AWS NVMe drivers using PowerShell](aws-nvme-drivers.md#install-nvme-drivers), or [Enable enhanced networking on Windows](enhanced-networking-ena.md#enable-enhanced-networking-ena-windows)\.
 
 1. Re\-enable antivirus and anti\-spyware software and firewalls\.

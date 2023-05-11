@@ -57,7 +57,7 @@ If you already have a running Windows instance, you can go directly to step 5\.
 1. Once you connect to the instance, you can perform any of the following actions to customize it for your needs:
    + Install software and applications
    + Copy data
-   + Reduce start time by deleting temporary files, defragmenting your hard drive, and zeroing out free space
+   + Reduce start time by deleting temporary files and defragmenting your hard drive
    + Attach additional EBS volumes
    + Create a new user account and add it to the Administrators group
 

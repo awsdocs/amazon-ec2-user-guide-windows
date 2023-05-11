@@ -41,17 +41,24 @@ A task can be invoked to perform an action on an instance\. For a list of availa
 **Stage**  
 A stage is a logical grouping of tasks that are run by the service\. Some tasks can run only in a specific stage\. Others can run in multiple stages\. When using `agent-config.yml`, you must specify a list of stages, and a list of tasks within each stage\.
 
-The service runs the stages in the following order:
+The service runs stages in the following order:
 
-1. Boot
+Stage 1: Boot  
 
-1. Network
 
-1. PreReady
+Stage 2: Network  
 
-1. PostReady
 
-After the PreReady stage completes, the service sends the `Windows is ready` message to the Amazon EC2 console\. Then, the PostReady stage will run\. User data runs after the PostReady stage completes\. For example stages and tasks, see [Example: `agent-config.yml`](ec2launch-v2-settings.md#ec2launch-v2-example-agent-config)\.
+Stage 3: PreReady  
+After the PreReady stage completes, the service sends the `Windows is ready` message to the Amazon EC2 console\.  
+The following scripts run after Amazon EC2 sends the `Windows is ready` message, before the PostReady stage begins:  
++ YAML user data version 1\.1
++ XML user data scripts
+
+Stage 4: PostReady  
+YAML user data version 1\.0 runs after the PostReady stage completes\.
+
+For example stages and tasks, see [Example: `agent-config.yml`](ec2launch-v2-settings.md#ec2launch-v2-example-agent-config)\.
 
 When you use user data, you must specify a list of tasks\. The stage is implied\. For example tasks, see [Example: user data](ec2launch-v2-settings.md#ec2launch-v2-example-user-data)\.
 

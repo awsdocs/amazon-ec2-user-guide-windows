@@ -17,8 +17,8 @@ The following tables list the instance types that support specifying CPU options
 | m2\.xlarge | 2 | 2 | 1 | 1, 2 | 1 | 
 | m2\.2xlarge | 4 | 4 | 1 | 1, 2, 3, 4 | 1 | 
 | m2\.4xlarge | 8 | 8 | 1 | 1, 2, 3, 4, 5, 6, 7, 8 | 1 | 
-| m3\.large | 2 | 2 | 1 | 1, 2 | 1 | 
-| m3\.xlarge | 4 | 4 | 1 | 1, 2, 3, 4 | 1 | 
+| m3\.large | 2 | 1 | 2 | 1 | 1, 2 | 
+| m3\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 
 | m3\.2xlarge | 8 | 4 | 2 | 1, 2, 3, 4 | 1, 2 | 
 | m4\.large | 2 | 1 | 2 | 1 | 1, 2 | 
 | m4\.xlarge | 4 | 2 | 2 | 1, 2 | 1, 2 | 

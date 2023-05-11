@@ -6,7 +6,7 @@ If you are no longer able to access your Windows Amazon EC2 instance because the
 There is an AWS Systems Manager Automation document that automatically applies the manual steps necessary to reset the local administrator password\. For more information, see [Reset Passwords and SSH Keys on Amazon EC2 Instances](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2reset.html) in the *AWS Systems Manager User Guide*\.
 
 The manual methods to reset the administrator password use EC2Launch v2, EC2Config, or EC2Launch\.
-+ For all supported Windows AMIs that include the EC2Launch v2 service, use EC2Launch v2\.
++ For all supported Windows AMIs that include the EC2Launch v2 agent, use EC2Launch v2\.
 + For Windows AMIs before Windows Server 2016, use the EC2Config service\.
 + For Windows Server 2016 and later AMIs, use the EC2Launch service\.
 

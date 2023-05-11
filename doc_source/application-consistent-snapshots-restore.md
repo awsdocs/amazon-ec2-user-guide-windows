@@ -10,8 +10,6 @@ You can use the `RestoreVssSnapshotSampleScript.ps1` script to restore volumes o
 **Important**  
 The following script detaches all volumes attached to an instance, and then creates new volumes from a snapshot\. Make sure that you have properly backed\-up the instance\. The old volumes are not deleted\. If you want, you can edit the script to delete the old volumes\.
 
-
-
 **To restore volumes from VSS\-enabled EBS snapshots**
 
 1. Open AWS Tools for Windows PowerShell and run the following command to specify your user access keys\. Your user must either have administrative access for Amazon EC2 or it must have the required permissions granted\. For more information, see [Setting Up AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html) in the *AWS Systems Manager User Guide*\.
