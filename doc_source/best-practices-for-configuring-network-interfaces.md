@@ -1,9 +1,0 @@
-# Best practices for configuring network interfaces<a name="best-practices-for-configuring-network-interfaces"></a>
-+ You can attach a network interface to an instance when it's running \(hot attach\), when it's stopped \(warm attach\), or when the instance is being launched \(cold attach\)\.
-+ You can detach secondary network interfaces when the instance is running or stopped\. However, you can't detach the primary network interface\.
-+ You can move a network interface from one instance to another, if the instances are in the same Availability Zone and VPC but in different subnets\.
-+ When launching an instance using the CLI, API, or an SDK, you can specify the primary network interface and additional network interfaces\.
-+ Launching an Amazon Linux or Windows Server instance with multiple network interfaces automatically configures interfaces, private IPv4 addresses, and route tables on the operating system of the instance\.
-+ A warm or hot attach of an additional network interface might require you to manually bring up the second interface, configure the private IPv4 address, and modify the route table accordingly\. Instances running Amazon Linux or Windows Server automatically recognize the warm or hot attach and configure themselves\.
-+ You cannot attach another network interface to an instance \(for example, a NIC teaming configuration\) to increase or double the network bandwidth to or from the dual\-homed instance\.
-+ If you attach two or more network interfaces from the same subnet to an instance, you might encounter networking issues such as asymmetric routing\. If possible, use a secondary private IPv4 address on the primary network interface instead\. If you need to use multiple network interfaces, you must configure the network interfaces to use static routing\. 
